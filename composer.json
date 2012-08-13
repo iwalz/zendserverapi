@@ -1,0 +1,28 @@
+{
+    "name": "iwalz/zendserverapi",
+    "description": "Zend Server API Wrapper",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "zend server",
+        "api"
+    ],
+    "homepage": "https://github.com/iwalz/zendserverapi",
+    "authors": [
+        {
+            "name": "Ingo Walz",
+            "email": "ingo.walz@googlemail.com",
+            "homepage": "http://www.rubber-duckling.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "ZendServerAPI": "src/",
+            "ZendServerAPITest": "tests/"
+        }
+    }
+}

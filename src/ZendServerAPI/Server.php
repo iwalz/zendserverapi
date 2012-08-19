@@ -6,15 +6,19 @@ class Server extends Startup
 {
 	private $request = null;
 	
-	public function __construct()
+	public function __construct(\ZendServerAPI\Request $request = null)
 	{
 		parent::startup();
-		$this->request = self::$di->get('ZendServerAPI\Request');
+		if($request === null)
+			$this->request = self::$di->get('ZendServerAPI\Request');
+		else
+			$this->request = $request;
 	}
 	
 	public function getSystemInfo()
 	{
-		return $this->request->setAction(new \ZendServerAPI\Method\GetSystemInfo())->send();
+		$this->request->setAction(new \ZendServerAPI\Method\GetSystemInfo());
+		return $this->request->send();
 	}
 }
 

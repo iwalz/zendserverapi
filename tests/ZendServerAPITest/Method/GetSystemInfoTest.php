@@ -9,8 +9,10 @@ class GetSystemInfoTest extends PHPUnit_Framework_TestCase {
 	
 	public function testGetSystemInfoMethod()
 	{
-		$systemInfo = new \ZendServerAPI\Method\GetSystemInfo();
-		$this->assertNotNull($systemInfo);
+		$systemInfo = $this->getMock('\ZendServerAPI\Method\GetSystemInfo', array('configure'));
+		$systemInfo->expects($this->once())->method('configure');
+		
+		$systemInfo->configure();
 	}
 }
 

@@ -3,7 +3,6 @@ namespace ZendServerAPI;
 
 class Request 
 {
-	private $apiKey = null;
 	private $action = null;
 	private $userAgent = 'HTTPFUL';
 	private $config = null;
@@ -11,11 +10,6 @@ class Request
 	public function __construct()
 	{
 
-	}
-	
-	public function setApiKey(ApiKey $apiKey)
-	{
-		$this->apiKey = $apiKey;
 	}
 	
 	public function setAction($action)
@@ -27,11 +21,6 @@ class Request
 	public function setConfig(\ZendServerAPI\Config $config)
 	{
 		$this->config = $config;
-	}
-	
-	public function getApiKey()
-	{
-		return $this->apiKey;
 	}
 	
 	public function getAction()
@@ -49,14 +38,24 @@ class Request
 		if($this->action->getMethod() === 'GET')
 		{
 			$response = \Httpful\Request::get($this->getLink())
-				->addHeader('X-Zend-Signature', $this->apiKey->getName().';'.$this->generateRequestSignature())
+				->addHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature())
 				->addHeader('Accept', 'application/vnd.zend.serverapi+xml;version=1.0')
 				->addHeader('lookInCupboard', 'true')
 				->addHeader('Date', $this->getDate())
 				->addHeader("User-Agent", $this->userAgent)
 				->send();
-
-			return $response;
+			if($response->code === 200)
+				return $response;
+			elseif($response->code === 400)
+				throw new Exception\ClientSide($response);
+			elseif($response->code === 401)
+				throw new Exception\ClientSide($response);
+			elseif($response->code === 405)
+				throw new Exception\ClientSide($response);
+			elseif($response->code === 406)
+				throw new Exception\ClientSide($response);
+			elseif($response->code === 500)
+				throw new Exception\ServerSide($response);
 		}
 		
 		
@@ -84,6 +83,6 @@ class Request
 				$this->action->getFunctionPath() . ":" .
 				$this->userAgent . ":" .
 				$date;
-		return hash_hmac('sha256', $data, $this->apiKey->getKey());
+		return hash_hmac('sha256', $data, $this->config->getApiKey()->getKey());
 	}
 }

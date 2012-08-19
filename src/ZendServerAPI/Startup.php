@@ -23,7 +23,6 @@ class Startup {
 					'definition' => array(
 						'class' => array(
 							'ZendServerAPI\Request' => array(
-								'setApiKey' => array('required' => true),
 								'setConfig' => array('required' => true)		
 							),
 							'ZendServerAPI\Config' => array(

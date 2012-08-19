@@ -27,12 +27,5 @@ class ServerTest extends PHPUnit_Framework_TestCase {
 		$this->server->getSystemInfo();
 	}
 	
-	public function testParseResultIntoDataType()
-	{
-		$this->server = new \ZendServerAPI\Server();
-		
-		echo $this->server->getSystemInfo();
-	}
-	
 }
 

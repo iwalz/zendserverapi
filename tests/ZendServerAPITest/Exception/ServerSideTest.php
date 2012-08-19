@@ -9,6 +9,11 @@ require_once 'PHPUnit/Framework/TestCase.php';
  */
 class ServerSideTest extends PHPUnit_Framework_TestCase {
 
+    /**
+     * @expectedException \ZendServerAPI\Exception\ServerSide
+     * @expectedExceptionCode 500
+     * @expectedExceptionMessage serverNotLicensed: Zend Server Cluster Manager is not licensed.
+     */
 	public function testXMLParsing()
 	{
 		$xml = <<<EOF
@@ -22,13 +27,7 @@ class ServerSideTest extends PHPUnit_Framework_TestCase {
 	<errorMessage><![CDATA[Zend Server Cluster Manager is not licensed.]]></errorMessage>
 </errorData></zendServerAPIResponse>		
 EOF;
-		try {
-			throw new ServerSide($xml);
-		} catch(Exception $e)
-		{
-			$this->assertEquals($e->getMessage(), "serverNotLicensed: Zend Server Cluster Manager is not licensed.");
-			$this->assertEquals($e->getCode(), 500);
-		}
+		throw new ServerSide($xml);
 	}
 	
 }

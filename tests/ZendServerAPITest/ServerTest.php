@@ -7,24 +7,29 @@ require_once 'PHPUnit/Framework/TestCase.php';
  */
 class ServerTest extends PHPUnit_Framework_TestCase {
 	
-	private $server = null;
-	
 	/**
-	 * Constructs the test case.
+	 * @dataProvider provider
 	 */
-	public function __construct() {
-
-	}
-	
-	public function testGetSystemInfo()
+	public function testMethods($action, $xml, $model)
 	{
 		$stub = $this->getMock('\ZendServerAPI\Request', array('send', 'setAction'));
-		$stub->expects($this->once())->method('setAction')->with(new \ZendServerAPI\Method\GetSystemInfo());
-		$stub->expects($this->once())->method('send');
+		$stub->expects($this->once())->method('setAction')->with($action);
+		$stub->expects($this->once())->method('send')->will($this->returnValue(SystemInfoTest::$systemInfoObject));
 		
-		$this->server = new \ZendServerAPI\Server($stub);
+		$server = new \ZendServerAPI\Server($stub);
 		
-		$this->server->getSystemInfo();
+		$this->assertEquals(SystemInfoTest::$systemInfoObject, $server->getSystemInfo());
+	}
+	
+	public function provider()
+	{
+	    return array(
+	        array(
+	                new \ZendServerAPI\Method\GetSystemInfo(),
+	                SystemInfoTest::$systemInfo,
+	                SystemInfoTest::$systemInfoObject
+	        ),
+        );
 	}
 	
 }

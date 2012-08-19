@@ -45,7 +45,7 @@ class Request
 				->addHeader("User-Agent", $this->userAgent)
 				->send();
 			if($response->code === 200)
-				return $response;
+				return new DataTypes\SystemInfo($response);
 			elseif($response->code === 400)
 				throw new Exception\ClientSide($response);
 			elseif($response->code === 401)

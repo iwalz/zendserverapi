@@ -9,6 +9,11 @@ require_once 'PHPUnit/Framework/TestCase.php';
  */
 class ClientSideTest extends PHPUnit_Framework_TestCase {
 
+    /**
+     * @expectedException \ZendServerAPI\Exception\ClientSide
+     * @expectedExceptionCode 400
+     * @expectedExceptionMessage authError: Incorrect signature 
+     */
 	public function testXMLParsing()
 	{
 		$xml = <<<EOF
@@ -22,13 +27,7 @@ class ClientSideTest extends PHPUnit_Framework_TestCase {
 	<errorMessage><![CDATA[Incorrect signature]]></errorMessage>
 </errorData></zendServerAPIResponse>		
 EOF;
-		try {
-			throw new ClientSide($xml);
-		} catch(Exception $e)
-		{
-			$this->assertEquals($e->getMessage(), "authError: Incorrect signature");
-			$this->assertEquals($e->getCode(), 400);
-		}
+		throw new ClientSide($xml);
 	}
 	
 }

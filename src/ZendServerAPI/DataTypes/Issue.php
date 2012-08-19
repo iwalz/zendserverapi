@@ -1,7 +1,7 @@
 <?php
-namespace ZendServerAPI\Mapping;
+namespace ZendServerAPI\DataTypes;
 
-class Step
+class Issue
 {
 	public function __construct()
 	{

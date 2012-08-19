@@ -1,7 +1,7 @@
 <?php
-namespace ZendServerAPI\Mapping;
+namespace ZendServerAPI\DataTypes;
 
-class Event
+class Step
 {
 	public function __construct()
 	{

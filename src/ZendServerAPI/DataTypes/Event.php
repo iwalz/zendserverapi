@@ -1,7 +1,7 @@
 <?php
-namespace ZendServerAPI\Mapping;
+namespace ZendServerAPI\DataTypes;
 
-class Issue
+class Event
 {
 	public function __construct()
 	{

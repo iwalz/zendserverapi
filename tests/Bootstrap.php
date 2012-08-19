@@ -7,4 +7,4 @@ if (!(@include_once __DIR__ . '/../vendor/autoload.php') &&
 }
 
 $config = new \ZendServerAPI\Config;
-$config->setServer('127.0.0.1:10081');
+$config->setHost('127.0.0.1');

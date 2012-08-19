@@ -3,42 +3,42 @@ namespace ZendServerAPI;
 
 class Config 
 {
-	protected $server = null;
-	protected $readOnlyKey = null;
-	protected $fullKey = null;
+	protected $host = null;
+	protected $port = '10081';
+	protected $apiKey = null;
 	
 	public function __construct()
 	{
-		echo "Done";
+
 	}
 	
-	public function setServer($server)
+	public function setApiKey(ApiKey $apiKey)
 	{
-		$this->server = $server;
+		$this->apiKey = $apiKey;
 	}
 	
-	public function setReadOnlyKey($readOnlyKey)
+	public function setHost($host)
 	{
-		$this->readOnlyKey = $readOnlyKey;
+		$this->host = $host;
 	}
 	
-	public function setFullKey($fullKey)
+	public function setPort($port)
 	{
-		$this->fullKey = $fullKey;
+		$this->port = $port;
 	}
 	
-	public function getServer()
+	public function getHost()
 	{
-		return $this->server;
+		return $this->host;
 	}
 	
-	public function getReadOnlyKey()
+	public function getPort()
 	{
-		return $this->readOnlyKey;
+		return $this->port;
 	}
 	
-	public function getFullKey()
+	public function getApiKey()
 	{
-		return $this->fullKey;
+		return $this->apiKey;
 	}
 }

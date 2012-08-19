@@ -1,5 +1,5 @@
 <?php
-namespace ZendServerAPI\Mapping;
+namespace ZendServerAPI\DataTypes;
 
 class RequestSummary
 {

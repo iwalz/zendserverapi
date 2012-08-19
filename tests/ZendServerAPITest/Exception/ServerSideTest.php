@@ -2,12 +2,11 @@
 
 use ZendServerAPI\Exception\ServerSide;
 
-require_once 'PHPUnit/Framework/TestCase.php';
 
 /**
  * test case.
  */
-class ServerSideTest extends PHPUnit_Framework_TestCase {
+class ServerSideTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @expectedException \ZendServerAPI\Exception\ServerSide

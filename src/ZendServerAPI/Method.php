@@ -35,6 +35,7 @@ abstract class Method {
 	}
 	
 	abstract function configure();
+	abstract function parseResponse($xml);
 }
 
 ?>

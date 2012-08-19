@@ -37,27 +37,31 @@ class Request
 	{
 		if($this->action->getMethod() === 'GET')
 		{
-			$response = \Httpful\Request::get($this->getLink())
-				->addHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature())
-				->addHeader('Accept', 'application/vnd.zend.serverapi+xml;version=1.0')
-				->addHeader('lookInCupboard', 'true')
-				->addHeader('Date', $this->getDate())
-				->addHeader("User-Agent", $this->userAgent)
-				->send();
-			if($response->code === 200)
-				return new DataTypes\SystemInfo($response);
-			elseif($response->code === 400)
-				throw new Exception\ClientSide($response);
-			elseif($response->code === 401)
-				throw new Exception\ClientSide($response);
-			elseif($response->code === 405)
-				throw new Exception\ClientSide($response);
-			elseif($response->code === 406)
-				throw new Exception\ClientSide($response);
-			elseif($response->code === 500)
-				throw new Exception\ServerSide($response);
+		    $httpful = \Httpful\Request::get($this->getLink());
 		}
-		
+		elseif($this->action->getMethod() === 'Post')
+		{
+		    $httpful = \Httpful\Request::post($this->getLink());
+		}
+		$response = $httpful
+			->addHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature())
+			->addHeader('Accept', 'application/vnd.zend.serverapi+xml;version=1.0')
+			->addHeader('lookInCupboard', 'true')
+			->addHeader('Date', $this->getDate())
+			->addHeader("User-Agent", $this->userAgent)
+			->send();
+		if($response->code === 200)
+			return $this->action->parseResponse($response);
+		elseif($response->code === 400)
+			throw new Exception\ClientSide($response);
+		elseif($response->code === 401)
+			throw new Exception\ClientSide($response);
+		elseif($response->code === 405)
+			throw new Exception\ClientSide($response);
+		elseif($response->code === 406)
+			throw new Exception\ClientSide($response);
+		elseif($response->code === 500)
+			throw new Exception\ServerSide($response);
 		
 	}
 	

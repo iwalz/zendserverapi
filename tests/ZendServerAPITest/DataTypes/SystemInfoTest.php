@@ -1,13 +1,12 @@
 <?php
-
-require_once 'PHPUnit/Framework/TestCase.php';
+namespace ZendServerAPITest;
 use ZendServerAPI\DataTypes\MessageList;
 
 use ZendServerAPI\DataTypes\LicenseInfo;
 /**
  * test case.
  */
-class SystemInfoTest extends PHPUnit_Framework_TestCase
+class SystemInfoTest extends \PHPUnit_Framework_TestCase
 {
 
     public static $systemInfoObject = null;
@@ -48,8 +47,8 @@ class SystemInfoTest extends PHPUnit_Framework_TestCase
 EOF;
     public function testParseResultSystemInfo()
     {
-    
-        $systemInfo = new \ZendServerAPI\DataTypes\SystemInfo(self::$systemInfo);
+        $action = new \ZendServerAPI\Method\GetSystemInfo();
+        $systemInfo = $action->parseResponse(self::$systemInfo);
     
         $this->assertEquals($systemInfo->getStatus(), "OK");
         $this->assertEquals($systemInfo->getEdition(), "ZendServer");

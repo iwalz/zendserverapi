@@ -1,13 +1,11 @@
 <?php
-
+namespace ZendServerAPITest;
 use ZendServerAPI\Exception\ClientSide;
-
-require_once 'PHPUnit/Framework/TestCase.php';
 
 /**
  * test case.
  */
-class ClientSideTest extends PHPUnit_Framework_TestCase {
+class ClientSideTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @expectedException \ZendServerAPI\Exception\ClientSide

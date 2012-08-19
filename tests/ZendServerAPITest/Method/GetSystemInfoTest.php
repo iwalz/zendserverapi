@@ -1,17 +1,16 @@
 <?php
-
-require_once 'PHPUnit/Framework/TestCase.php';
+namespace ZendServerAPITest;
 
 /**
  * test case.
  */
-class GetSystemInfoTest extends PHPUnit_Framework_TestCase {
+class GetSystemInfoTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testGetSystemInfoMethod()
 	{
 		$systemInfo = $this->getMock('\ZendServerAPI\Method\GetSystemInfo', array('setMethod', 'setFunctionPath'));
-		$systemInfo->expects($this->once())->method('setMethod');
-		$systemInfo->expects($this->once())->method('setFunctionPath');
+		$systemInfo->expects($this->once())->method('setMethod')->with('GET');
+		$systemInfo->expects($this->once())->method('setFunctionPath')->with('/ZendServerManager/Api/getSystemInfo');
 		
 		$systemInfo->configure();
 	}

@@ -1,11 +1,10 @@
 <?php
-
-require_once 'PHPUnit/Framework/TestCase.php';
+namespace ZendServerAPITest;
 
 /**
  * test case.
  */
-class ServerTest extends PHPUnit_Framework_TestCase {
+class ServerTest extends \PHPUnit_Framework_TestCase {
 	
 	/**
 	 * @dataProvider provider
@@ -30,6 +29,12 @@ class ServerTest extends PHPUnit_Framework_TestCase {
 	                SystemInfoTest::$systemInfoObject
 	        ),
         );
+	}
+	
+	public function testProd()
+	{
+	    $server = new \ZendServerAPI\Server();
+	    $this->assertNotNull($server->getSystemInfo());
 	}
 	
 }

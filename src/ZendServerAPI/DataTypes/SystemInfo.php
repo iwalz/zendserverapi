@@ -3,7 +3,6 @@ namespace ZendServerAPI\DataTypes;
 
 class SystemInfo
 {
-	private $xml = null;
 	private $status = null;
 	private $edition = null;
 	private $zendServerVersion = null;
@@ -14,21 +13,6 @@ class SystemInfo
 	private $serverLincenseInfo = null;
 	private $managerLicenseInfo = null;
 	private $messageList = null;
-	
-	public function __construct($xml)
-	{
-	    $this->xml = simplexml_load_string($xml);
-	
-	    $this->status = (string)$this->xml->responseData->systemInfo->status;
-	    $this->edition = (string)$this->xml->responseData->systemInfo->edition;
-	    $this->zendServerVersion = (string)$this->xml->responseData->systemInfo->zendServerVersion;
-	    $this->supportedApiVersions = (string)trim($this->xml->responseData->systemInfo->supportedApiVersions);
-	    $this->phpVersion = (string)$this->xml->responseData->systemInfo->phpVersion;
-	    $this->operatingSystem = (string)$this->xml->responseData->systemInfo->operatingSystem;
-	    $this->serverLincenseInfo = new LicenseInfo($this->xml->responseData->systemInfo->serverLicenseInfo->asXml());
-	    $this->managerLicenseInfo = new LicenseInfo($this->xml->responseData->systemInfo->managerLicenseInfo->asXml());
-	    $this->messageList = new MessageList($this->xml->responseData->systemInfo->messageList->asXml());
-	}
 	
 	/**
      * @return the $xml

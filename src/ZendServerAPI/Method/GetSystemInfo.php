@@ -2,6 +2,8 @@
 
 namespace ZendServerAPI\Method;
 
+use ZendServerAPI\DataTypes\LicenseInfo;
+
 class GetSystemInfo extends \ZendServerAPI\Method 
 {
 	public function configure()
@@ -21,8 +23,21 @@ class GetSystemInfo extends \ZendServerAPI\Method
 	    $systemInfo->setSupportedApiVersions((string)trim($xml->responseData->systemInfo->supportedApiVersions));
 	    $systemInfo->setPhpVersion((string)$xml->responseData->systemInfo->phpVersion);
 	    $systemInfo->setOperatingSystem((string)$xml->responseData->systemInfo->operatingSystem);
-	    $systemInfo->setServerLincenseInfo(new \ZendServerAPI\DataTypes\LicenseInfo($xml->responseData->systemInfo->serverLicenseInfo->asXml()));
-	    $systemInfo->setManagerLicenseInfo(new \ZendServerAPI\DataTypes\LicenseInfo($xml->responseData->systemInfo->managerLicenseInfo->asXml()));
+
+	    $serverLicenseInfo = new LicenseInfo();
+	    $serverLicenseInfo->setStatus((string)$xml->responseData->systemInfo->serverLicenseInfo->status);
+	    $serverLicenseInfo->setOrderNumber((string)$xml->responseData->systemInfo->serverLicenseInfo->orderNumber);
+	    $serverLicenseInfo->setValidUntil((string)$xml->responseData->systemInfo->serverLicenseInfo->validUntil);
+	    $serverLicenseInfo->setServerLimit((string)$xml->responseData->systemInfo->serverLicenseInfo->nodeLimit);
+	    $systemInfo->setServerLincenseInfo($serverLicenseInfo);
+	    
+	    $managerLicenseInfo = new LicenseInfo();
+	    $managerLicenseInfo->setStatus((string)$xml->responseData->systemInfo->managerLicenseInfo->status);
+	    $managerLicenseInfo->setOrderNumber((string)$xml->responseData->systemInfo->managerLicenseInfo->orderNumber);
+	    $managerLicenseInfo->setValidUntil((string)$xml->responseData->systemInfo->managerLicenseInfo->validUntil);
+	    $managerLicenseInfo->setServerLimit((string)$xml->responseData->systemInfo->managerLicenseInfo->nodeLimit);
+	    $systemInfo->setManagerLicenseInfo($managerLicenseInfo);
+	    
 	    $systemInfo->setMessageList(new \ZendServerAPI\DataTypes\MessageList($xml->responseData->systemInfo->messageList->asXml()));
 	    
 	    return $systemInfo;

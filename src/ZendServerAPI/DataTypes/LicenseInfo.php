@@ -8,19 +8,6 @@ class LicenseInfo
 	private $validUntil = null;
 	private $serverLimit = null;
 
-	public function __construct($xmlData = null)
-	{
-		if($xmlData !== null)
-		{
-			$xml = simplexml_load_string($xmlData);
-
-			$this->status = (string)$xml->status;
-			$this->orderNumber = (string)$xml->orderNumber;
-			$this->validUntil = (string)$xml->validUntil;
-			$this->serverLimit = (string)$xml->nodeLimit;
-		}
-	}
-	
 	/**
 	 * @return the $status
 	 */

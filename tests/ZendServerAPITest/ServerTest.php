@@ -28,11 +28,6 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	                SystemInfoTest::$systemInfo,
 	                SystemInfoTest::$systemInfoObject
 	        ),
-	            array(
-                    new \ZendServerAPI\Method\GetSystemInfo(),
-                    SystemInfoTest::$systemInfo,
-                    SystemInfoTest::$systemInfoObject
-            ),
         );
 	}
 	

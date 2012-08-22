@@ -15,7 +15,7 @@ class Server
 	        $this->di = $di;
 	    
 		if($request === null)
-			$this->request = $di->get('ZendServerAPI\Request');
+			$this->request = $this->di->get('ZendServerAPI\Request');
 		else
 			$this->request = $request;
 	}
@@ -24,6 +24,26 @@ class Server
 	{
 		$this->request->setAction(new \ZendServerAPI\Method\GetSystemInfo());
 		return $this->request->send();
+	}
+	
+	public function getRequest()
+	{
+	    return $this->request;
+	}
+	
+	public function getDi()
+	{
+	    return $this->di;
+	}
+	
+	public function setRequest(Request $request)
+	{
+	    $this->request = $request;
+	}
+	
+	public function setDi(\Zend\Di\Di $di)
+	{
+	    $this->di = $di;
 	}
 }
 

@@ -10,8 +10,8 @@ class Request
 	
 	public function __construct()
 	{
-	    $di = Startup::getDIC();
-        $this->config = $di->get('ZendServerAPI\Config');
+	    $this->di = Startup::getDIC();
+        $this->config = $this->di->get('ZendServerAPI\Config');
 	}
 	
 	public function setAction($action)

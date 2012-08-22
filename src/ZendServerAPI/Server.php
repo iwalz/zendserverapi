@@ -2,15 +2,17 @@
 
 namespace ZendServerAPI;
 
-class Server extends Startup 
+class Server 
 {
 	private $request = null;
 	
-	public function __construct(\ZendServerAPI\Request $request = null)
+	public function __construct(\ZendServerAPI\Request $request = null, $di = null)
 	{
-		parent::startup();
+	    if($di === null)
+            $di = Startup::startup();
+
 		if($request === null)
-			$this->request = self::$di->get('ZendServerAPI\Request');
+			$this->request = $di->get('ZendServerAPI\Request');
 		else
 			$this->request = $request;
 	}

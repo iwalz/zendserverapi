@@ -8,3 +8,4 @@ before_install:
 
 script:
  - cd tests/
+ - phpunit

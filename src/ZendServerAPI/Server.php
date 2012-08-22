@@ -5,12 +5,15 @@ namespace ZendServerAPI;
 class Server 
 {
 	private $request = null;
+	private $di = null;
 	
 	public function __construct(\ZendServerAPI\Request $request = null, $di = null)
 	{
 	    if($di === null)
-            $di = Startup::startup();
-
+	        $this->di = Startup::getDIC();
+	    else
+	        $this->di = $di;
+	    
 		if($request === null)
 			$this->request = $di->get('ZendServerAPI\Request');
 		else

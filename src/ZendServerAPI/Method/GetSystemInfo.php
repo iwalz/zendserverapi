@@ -2,7 +2,8 @@
 
 namespace ZendServerAPI\Method;
 
-use ZendServerAPI\DataTypes\LicenseInfo;
+use ZendServerAPI\DataTypes\LicenseInfo,
+    ZendServerAPI\DataTypes\MessageList;
 
 class GetSystemInfo extends \ZendServerAPI\Method 
 {
@@ -68,6 +69,12 @@ class GetSystemInfo extends \ZendServerAPI\Method
 	            (string)$xml->responseData->systemInfo->managerLicenseInfo->serverLimit
         );
 	    $systemInfo->setManagerLicenseInfo($managerLicenseInfo);
+	    
+	    $messageList = new MessageList();
+	    $messageList->setError((string)$xml->responseData->messageList->error);
+	    $messageList->setInfo((string)$xml->responseData->messageList->info);
+	    $messageList->setWarning((string)$xml->responseData->messageList->warning);
+	    $systemInfo->setMessageList($messageList);
 	    
 	    return $systemInfo;
 	}

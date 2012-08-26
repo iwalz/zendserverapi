@@ -1,6 +1,8 @@
 <?php
 namespace ZendServerAPITest;
 
+use ZendServerAPI\Method\ClusterGetServerStatus;
+
 use ZendServerAPI\Server,
     ZendServerAPI\Method\GetSystemInfo,
     ZendServerAPI\Startup,
@@ -17,7 +19,6 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	public function testMethods($action, $xml, $model)
 	{
 		$stub = $this->getMock('\ZendServerAPI\Request', array('send', 'setAction'));
-// 		$stub->expects($this->once())->method('setAction')->with($action);
 		$stub->expects($this->once())->method('send')->will($this->returnValue(SystemInfoTest::$systemInfoObject));
 		
 		$server = new Server($stub);
@@ -29,10 +30,15 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	{
 	    return array(
 	        array(
-	                new GetSystemInfo(),
-	                SystemInfoTest::$systemInfo,
-	                SystemInfoTest::$systemInfoObject
+	            new GetSystemInfo(),
+	            SystemInfoTest::$systemInfo,
+	            SystemInfoTest::$systemInfoObject
 	        ),
+	        array(
+	            new ClusterGetServerStatus(),
+	            \ServersListTest::$serversList,
+	            \ServersListTest::$serversListObject,
+            )
         );
 	}
 	

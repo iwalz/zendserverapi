@@ -4,7 +4,7 @@ namespace ZendServerAPITest;
 /**
  * test case.
  */
-class GetSystemInfoTest extends \PHPUnit_Framework_TestCase {
+class MethodImplementationTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testGetSystemInfoMethod()
 	{

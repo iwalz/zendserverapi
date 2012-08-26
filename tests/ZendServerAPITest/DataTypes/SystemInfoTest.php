@@ -86,6 +86,8 @@ EOF;
         $this->assertInstanceOf('\ZendServerAPI\DataTypes\LicenseInfo', $testSystemInfo->getManagerLicenseInfo());
         $this->assertEquals($testManagerLicenseInfo, $testSystemInfo->getManagerLicenseInfo());
         
+        $testSystemInfo->setMessageList(new MessageList());
+        
         $this->assertEquals($testSystemInfo, $systemInfo);
         
         self::$systemInfoObject = $testSystemInfo;

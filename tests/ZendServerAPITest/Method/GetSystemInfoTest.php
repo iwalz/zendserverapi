@@ -14,5 +14,14 @@ class GetSystemInfoTest extends \PHPUnit_Framework_TestCase {
 		
 		$systemInfo->configure();
 	}
+	
+	public function testClusterGetServerStatus()
+	{
+	    $systemInfo = $this->getMock('\ZendServerAPI\Method\ClusterGetServerStatus', array('setMethod', 'setFunctionPath'));
+	    $systemInfo->expects($this->once())->method('setMethod')->with('GET');
+	    $systemInfo->expects($this->once())->method('setFunctionPath')->with('/ZendServerManager/Api/clusterGetServerStatus');
+	
+	    $systemInfo->configure();
+	}
 }
 

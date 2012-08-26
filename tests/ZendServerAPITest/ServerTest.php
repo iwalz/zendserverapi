@@ -96,5 +96,12 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	    $this->assertSame($di, $server->getDI());
 	}
 	
+	public function testProd()
+	{
+	    /*$server = new Server;
+	    var_dump($server->getSystemInfo());
+ 	    var_dump($server->clusterGetServerStatus());*/
+	}
+	
 }
 

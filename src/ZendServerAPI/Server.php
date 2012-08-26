@@ -23,6 +23,15 @@ class Server extends BaseAPI
 		$this->request->setAction(new \ZendServerAPI\Method\GetSystemInfo());
 		return $this->request->send();
 	}
+	
+	public function clusterGetServerStatus()
+	{
+	    if($this->request === null)
+	        $this->request = $this->di->get('ZendServerAPI\Request');
+	     
+	    $this->request->setAction(new \ZendServerAPI\Method\ClusterGetServerStatus());
+	    return $this->request->send();
+	}
 
 }
 

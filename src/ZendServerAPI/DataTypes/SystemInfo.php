@@ -123,7 +123,7 @@ class SystemInfo
      */
     public function setEdition ($edition)
     {
-        $this->edition = $edition;
+        $this->edition = trim($edition);
     }
 
 	/**

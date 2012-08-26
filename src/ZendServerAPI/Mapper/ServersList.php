@@ -1,0 +1,51 @@
+<?php
+namespace ZendServerAPI\Mapper;
+
+use ZendServerAPI\DataTypes\ServerInfo,
+    ZendServerAPI\DataTypes\MessageList,
+    ZendServerAPI\DataTypes\ServersList as ServersListData;
+
+class ServersList extends Mapper
+{
+    public function parse($xml)
+    {
+        $xml = simplexml_load_string($xml);
+        
+        $serversList = new ServersListData();
+        
+        foreach($xml->responseData->serversList->serverInfo as $serverInfo)
+        {
+            $server = new ServerInfo();
+            $server->setId(
+                    (int)$serverInfo->id
+            );
+            $server->setName(
+                    (string)$serverInfo->name
+            );
+            $server->setAddress(
+                    (string)$serverInfo->address
+            );
+            $server->setStatus(
+                    (string)$serverInfo->status
+            );
+        
+            $messageList = new MessageList();
+            $messageList->setError(
+                    (string)$serverInfo->messageList->error
+            );
+            $messageList->setInfo(
+                    (string)$serverInfo->messageList->info
+            );
+            $messageList->setWarning(
+                    (string)$serverInfo->messageList->warning
+            );
+            $server->setMessageList($messageList);
+        
+            $serversList->addServerInfo($server);
+        }
+        
+        return $serversList;
+    }
+}
+
+?>

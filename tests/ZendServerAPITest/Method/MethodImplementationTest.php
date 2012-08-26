@@ -8,20 +8,29 @@ class MethodImplementationTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testGetSystemInfoMethod()
 	{
-		$systemInfo = $this->getMock('\ZendServerAPI\Method\GetSystemInfo', array('setMethod', 'setFunctionPath'));
-		$systemInfo->expects($this->once())->method('setMethod')->with('GET');
-		$systemInfo->expects($this->once())->method('setFunctionPath')->with('/ZendServerManager/Api/getSystemInfo');
+		$implementation = $this->getMock('\ZendServerAPI\Method\GetSystemInfo', array('setMethod', 'setFunctionPath'));
+		$implementation->expects($this->once())->method('setMethod')->with('GET');
+		$implementation->expects($this->once())->method('setFunctionPath')->with('/ZendServerManager/Api/getSystemInfo');
 		
-		$systemInfo->configure();
+		$implementation->configure();
 	}
 	
 	public function testClusterGetServerStatus()
 	{
-	    $systemInfo = $this->getMock('\ZendServerAPI\Method\ClusterGetServerStatus', array('setMethod', 'setFunctionPath'));
-	    $systemInfo->expects($this->once())->method('setMethod')->with('GET');
-	    $systemInfo->expects($this->once())->method('setFunctionPath')->with('/ZendServerManager/Api/clusterGetServerStatus');
+	    $implementation = $this->getMock('\ZendServerAPI\Method\ClusterGetServerStatus', array('setMethod', 'setFunctionPath'));
+	    $implementation->expects($this->once())->method('setMethod')->with('GET');
+	    $implementation->expects($this->once())->method('setFunctionPath')->with('/ZendServerManager/Api/clusterGetServerStatus');
 	
-	    $systemInfo->configure();
+	    $implementation->configure();
+	}
+	
+	public function testRestartPHP()
+	{
+	    $implementation = $this->getMock('\ZendServerAPI\Method\RestartPHP', array('setMethod', 'setFunctionPath'));
+	    $implementation->expects($this->once())->method('setMethod')->with('POST');
+	    $implementation->expects($this->once())->method('setFunctionPath')->with('/ZendServerManager/Api/restartPhp');
+	    
+	    $implementation->configure();
 	}
 }
 

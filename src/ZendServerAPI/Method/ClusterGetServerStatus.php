@@ -21,15 +21,29 @@ class ClusterGetServerStatus  extends \ZendServerAPI\Method
         foreach($xml->responseData->serversList->serverInfo as $serverInfo)
         {
             $server = new ServerInfo();
-            $server->setId((int)$serverInfo->id);
-            $server->setName((string)$serverInfo->name);
-            $server->setAddress((string)$serverInfo->address);
-            $server->setStatus((string)$serverInfo->status);
+            $server->setId(
+                    (int)$serverInfo->id
+            );
+            $server->setName(
+                    (string)$serverInfo->name
+            );
+            $server->setAddress(
+                    (string)$serverInfo->address
+            );
+            $server->setStatus(
+                    (string)$serverInfo->status
+            );
 
             $messageList = new MessageList();
-            $messageList->setError((string)$serverInfo->messageList->error);
-            $messageList->setInfo((string)$serverInfo->messageList->info);
-            $messageList->setWarning((string)$serverInfo->messageList->warning);
+            $messageList->setError(
+                    (string)$serverInfo->messageList->error
+            );
+            $messageList->setInfo(
+                    (string)$serverInfo->messageList->info
+            );
+            $messageList->setWarning(
+                    (string)$serverInfo->messageList->warning
+            );
             $server->setMessageList($messageList);
             
             $serversList->addServerInfo($server);

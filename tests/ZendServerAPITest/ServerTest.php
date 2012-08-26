@@ -19,11 +19,11 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	public function testMethods($action, $xml, $model)
 	{
 		$stub = $this->getMock('\ZendServerAPI\Request', array('send', 'setAction'));
-		$stub->expects($this->once())->method('send')->will($this->returnValue(SystemInfoTest::$systemInfoObject));
+		$stub->expects($this->once())->method('send')->will($this->returnValue(GetSystemInfoTest::$GetSystemInfoObject));
 		
 		$server = new Server($stub);
 		
-		$this->assertEquals(SystemInfoTest::$systemInfoObject, $server->getSystemInfo());
+		$this->assertEquals(GetSystemInfoTest::$GetSystemInfoObject, $server->getSystemInfo());
 	}
 	
 	public function provider()
@@ -31,13 +31,13 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	    return array(
 	        array(
 	            new GetSystemInfo(),
-	            SystemInfoTest::$systemInfo,
-	            SystemInfoTest::$systemInfoObject
+	            GetSystemInfoTest::$GetSystemInfoResponse,
+	            GetSystemInfoTest::$GetSystemInfoObject
 	        ),
 	        array(
 	            new ClusterGetServerStatus(),
-	            \ServersListTest::$serversList,
-	            \ServersListTest::$serversListObject,
+	            ClusterGetServerStatusTest::$ClusterGetServerStatusResponse,
+	            ClusterGetServerStatusTest::$ClusterGetServerStatusObject,
             )
         );
 	}

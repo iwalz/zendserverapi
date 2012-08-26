@@ -1,6 +1,18 @@
 <?php
 namespace ZendServerAPITest;
 
+use ZendServerAPI\Method\ClusterEnableServer;
+
+use ZendServerAPI\Method\RestartPHP;
+
+use ZendServerAPI\Method\ClusterReconfigureServer;
+
+use ZendServerAPI\Method\ClusterAddServer;
+
+use ZendServerAPI\Method\ClusterRemoveServer;
+
+use ZendServerAPI\Method\ClusterDisableServer;
+
 use ZendServerAPI\Method\ClusterGetServerStatus;
 
 use ZendServerAPI\Server,
@@ -38,7 +50,37 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	            new ClusterGetServerStatus(),
 	            ClusterGetServerStatusTest::$ClusterGetServerStatusResponse,
 	            ClusterGetServerStatusTest::$ClusterGetServerStatusObject,
-            )
+            ),
+            array(
+                new ClusterDisableServer(),
+                ClusterDisableServerTest::$ClusterDisableServerResponse,
+                ClusterDisableServerTest::$ClusterDisableServerObject,
+            ),
+            array(
+                new ClusterRemoveServer(),
+                ClusterRemoveServerTest::$ClusterRemoveServerResponse,
+                ClusterRemoveServerTest::$ClusterRemoveServerObject,
+            ),
+            array(
+                new ClusterAddServer(),
+                ClusterAddServerTest::$ClusterAddServerResponse,
+                ClusterAddServerTest::$ClusterAddServerObject,
+            ),
+            array(
+                new ClusterReconfigureServer(),
+                ClusterReconfigureServerTest::$ClusterReconfigureServerResponse,
+                ClusterReconfigureServerTest::$ClusterReconfigureServerObject,
+            ),
+            array(
+                new RestartPHP(),
+                RestartPHPTest::$RestartPHPResponse,
+                RestartPHPTest::$RestartPHPObject,
+            ),
+            array(
+                new ClusterEnableServer(),
+                ClusterEnableServerTest::$ClusterEnableServerResponse,
+                ClusterEnableServerTest::$ClusterEnableServerObject,
+            ),
         );
 	}
 	

@@ -42,8 +42,8 @@ class ServerInfo extends \ZendServerAPI\Mapper\Mapper
             $messageList->setWarning(
                 (string)$xml->responseData->serverInfo->messageList->warning
             );
-            $server->setMessageList($messageList);
         }
+        $server->setMessageList($messageList);
         
         return $server;
     }

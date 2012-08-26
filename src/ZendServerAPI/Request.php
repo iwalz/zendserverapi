@@ -45,6 +45,7 @@ class Request
 		{
 		    $httpful = \Httpful\Request::post($this->getLink());
 		}
+		
 		$response = $httpful
 			->addHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature())
 			->addHeader('Accept', 'application/vnd.zend.serverapi+xml;version=1.0')
@@ -52,8 +53,9 @@ class Request
 			->addHeader('Date', $this->getDate())
 			->addHeader("User-Agent", $this->userAgent)
 			->send();
+		
 		if($response->code === 200)
-			return $this->action->parseResponse($response);
+			return $this->getAction()->parseResponse($response);
 		elseif($response->code === 400)
 			throw new Exception\ClientSide($response);
 		elseif($response->code === 401)

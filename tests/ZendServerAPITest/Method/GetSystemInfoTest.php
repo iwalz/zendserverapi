@@ -56,6 +56,17 @@ EOF;
         $action = new \ZendServerAPI\Method\GetSystemInfo();
         $systemInfo = $action->parseResponse(self::$GetSystemInfoResponse);
     
+        $testSystemInfo = self::getSystemInfo();
+        
+        $this->assertInstanceOf('\ZendServerAPI\DataTypes\LicenseInfo', $testSystemInfo->getServerLincenseInfo());
+        $this->assertInstanceOf('\ZendServerAPI\DataTypes\LicenseInfo', $testSystemInfo->getManagerLicenseInfo());
+
+        $this->assertEquals($testSystemInfo, $systemInfo);
+    
+    }
+    
+    public static function getSystemInfo()
+    {
         $testSystemInfo = new SystemInfo();
         $testSystemInfo->setStatus("OK");
         $testSystemInfo->setEdition("ZendServerClusterManager");
@@ -81,18 +92,14 @@ EOF;
         $testManagerLicenseInfo->setServerLimit("10");
     
         $testSystemInfo->setServerLincenseInfo($testLicenseInfo);
-        $this->assertInstanceOf('\ZendServerAPI\DataTypes\LicenseInfo', $testSystemInfo->getServerLincenseInfo());
-        $this->assertEquals($testLicenseInfo, $testSystemInfo->getServerLincenseInfo());
     
         $testSystemInfo->setManagerLicenseInfo($testManagerLicenseInfo);
-        $this->assertInstanceOf('\ZendServerAPI\DataTypes\LicenseInfo', $testSystemInfo->getManagerLicenseInfo());
-        $this->assertEquals($testManagerLicenseInfo, $testSystemInfo->getManagerLicenseInfo());
     
         $testSystemInfo->setMessageList(new MessageList());
-    
-        $this->assertEquals($testSystemInfo, $systemInfo);
-    
+        
         self::$GetSystemInfoObject = $testSystemInfo;
+        
+        return self::$GetSystemInfoObject;
     }
 }
 

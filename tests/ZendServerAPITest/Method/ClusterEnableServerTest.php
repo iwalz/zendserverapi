@@ -33,7 +33,6 @@ EOF;
     {
         $action = new ClusterEnableServer();
         $clusterEnableServer = $action->parseResponse(self::$ClusterEnableServerResponse);
-        
         $testClusterEnableServer = new ServerInfo();
         
         self::$ClusterEnableServerObject = $testClusterEnableServer;

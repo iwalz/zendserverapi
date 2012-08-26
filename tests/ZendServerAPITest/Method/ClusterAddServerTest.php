@@ -1,6 +1,8 @@
 <?php
 namespace ZendServerAPITest;
 
+use ZendServerAPI\DataTypes\MessageList;
+
 use ZendServerAPI\Method\ClusterAddServer;
 use ZendServerAPI\DataTypes\ServerInfo;
 
@@ -34,9 +36,24 @@ EOF;
         $action = new ClusterAddServer();
         $clusterAddServer = $action->parseResponse(self::$ClusterAddServerResponse);
 
-        $testClusterAddServer = new ServerInfo();
+        $testClusterAddServer = self::getAddServerObject();
+        
+        $this->assertEquals($testClusterAddServer, $clusterAddServer);
         
         self::$ClusterAddServerObject = $testClusterAddServer;
+    }
+    
+    public static function getAddServerObject()
+    {
+        $testClusterAddServer = new ServerInfo();
+        $testClusterAddServer->setId(25);
+        $testClusterAddServer->setName("www-05");
+        $testClusterAddServer->setStatus("OK");
+        $testClusterAddServer->setAddress("https://www-05.local:10082/ZendServer");
+        $testClusterAddServer->setMessageList(new MessageList());
+
+        self::$ClusterAddServerObject = $testClusterAddServer;
+        return $testClusterAddServer;
     }
 
 }

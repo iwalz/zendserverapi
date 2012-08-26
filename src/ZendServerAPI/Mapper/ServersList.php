@@ -1,7 +1,7 @@
 <?php
 namespace ZendServerAPI\Mapper;
 
-use ZendServerAPI\DataTypes\ServerInfo,
+use ZendServerAPI\DataTypes\ServerInfo as ServerInfoData,
     ZendServerAPI\DataTypes\MessageList,
     ZendServerAPI\DataTypes\ServersList as ServersListData;
 
@@ -15,7 +15,7 @@ class ServersList extends Mapper
         
         foreach($xml->responseData->serversList->serverInfo as $serverInfo)
         {
-            $server = new ServerInfo();
+            $server = new ServerInfoData();
             $server->setId(
                     (int)$serverInfo->id
             );

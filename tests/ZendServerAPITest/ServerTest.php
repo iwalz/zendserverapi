@@ -30,23 +30,29 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testMethods($action, $xml, $model)
 	{
-		$stub = $this->getMock('\ZendServerAPI\Request', array('send', 'setAction'));
-		$stub->expects($this->once())->method('send')->will($this->returnValue(GetSystemInfoTest::$GetSystemInfoObject));
+		/*$requestStub = $this->getMock('\ZendServerAPI\Request', array('send', 'setAction'));
+		$requestStub->expects($this->once())->method('setAction')->with($action);
+		$requestStub->expects($this->once())->method('send')->will($this->returnValue($model));
 		
-		$server = new Server($stub);
+		$server = new Server($requestStub);
+		$server->getSystemInfo();*/
 		
-		$this->assertEquals(GetSystemInfoTest::$GetSystemInfoObject, $server->getSystemInfo());
+ 		$this->assertEquals($action->parseResponse($xml), $model);
+		
 	}
 	
+	/**
+	 * @depends testParseResultSystemInfo
+	 */
 	public function provider()
 	{
 	    return array(
 	        array(
 	            new GetSystemInfo(),
 	            GetSystemInfoTest::$GetSystemInfoResponse,
-	            GetSystemInfoTest::$GetSystemInfoObject
+	            GetSystemInfoTest::getSystemInfo()
 	        ),
-	        array(
+	        /*array(
 	            new ClusterGetServerStatus(),
 	            ClusterGetServerStatusTest::$ClusterGetServerStatusResponse,
 	            ClusterGetServerStatusTest::$ClusterGetServerStatusObject,
@@ -60,13 +66,13 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
                 new ClusterRemoveServer(),
                 ClusterRemoveServerTest::$ClusterRemoveServerResponse,
                 ClusterRemoveServerTest::$ClusterRemoveServerObject,
-            ),
+            ),*/
             array(
                 new ClusterAddServer(),
                 ClusterAddServerTest::$ClusterAddServerResponse,
-                ClusterAddServerTest::$ClusterAddServerObject,
-            ),
-            array(
+                ClusterAddServerTest::getAddServerObject(),
+            )
+            /*array(
                 new ClusterReconfigureServer(),
                 ClusterReconfigureServerTest::$ClusterReconfigureServerResponse,
                 ClusterReconfigureServerTest::$ClusterReconfigureServerObject,
@@ -80,7 +86,7 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
                 new ClusterEnableServer(),
                 ClusterEnableServerTest::$ClusterEnableServerResponse,
                 ClusterEnableServerTest::$ClusterEnableServerObject,
-            ),
+            ),*/
         );
 	}
 	
@@ -146,7 +152,7 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testProd()
 	{
-	    /*$server = new Server;
+        /*$server = new Server;
 	    var_dump($server->getSystemInfo());
  	    var_dump($server->clusterGetServerStatus());*/
 	}

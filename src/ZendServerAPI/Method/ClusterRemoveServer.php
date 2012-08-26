@@ -7,11 +7,7 @@ class ClusterRemoveServer extends \ZendServerAPI\Method
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/clusterRemoveServer');
-    }
-
-    function parseResponse ($xml)
-    {
-        
+        $this->setParser(new \ZendServerAPI\Mapper\ServerInfo());
     }
 }
 

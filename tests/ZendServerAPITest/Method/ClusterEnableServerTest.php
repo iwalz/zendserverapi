@@ -41,7 +41,7 @@ EOF;
         $this->assertEquals($testClusterEnableServer, $clusterEnableServer);
     }
     
-    public function getClusterEnableServer()
+    public static function getClusterEnableServer()
     {
         $testClusterEnableServer = new ServerInfo();
         $testClusterEnableServer->setId(5);

@@ -44,7 +44,7 @@ class ServerInfo extends \ZendServerAPI\Mapper\Mapper
             );
         }
         $server->setMessageList($messageList);
-        
+
         return $server;
     }
 }

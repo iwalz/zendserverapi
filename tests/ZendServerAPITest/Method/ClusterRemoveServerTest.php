@@ -1,6 +1,8 @@
 <?php
 namespace ZendServerAPITest;
 
+use ZendServerAPI\DataTypes\MessageList;
+
 use ZendServerAPI\DataTypes\ServerInfo;
 
 use ZendServerAPI\Method\ClusterRemoveServer;
@@ -33,9 +35,22 @@ EOF;
     {
         $action = new ClusterRemoveServer();
         $clusterRemoveServer = $action->parseResponse(self::$ClusterRemoveServerResponse);
+        $testClusterRemoveServer = self::getClusterRemoveServer();
         
+        $this->assertEquals($clusterRemoveServer, $testClusterRemoveServer);
+    }
+    
+    public static function getClusterRemoveServer()
+    {
         $testClusterRemoveServer = new ServerInfo();
+        $testClusterRemoveServer->setId(5);
+        $testClusterRemoveServer->setName("www-02");
+        $testClusterRemoveServer->setAddress("https://www-02.local:10082/ZendServer");
+        $testClusterRemoveServer->setStatus("shuttingDown");
+        $testClusterRemoveServer->setMessageList(new MessageList());
         
         self::$ClusterRemoveServerObject = $testClusterRemoveServer;
+        
+        return self::$ClusterRemoveServerObject; 
     }
 }

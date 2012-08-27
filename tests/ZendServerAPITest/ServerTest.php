@@ -1,22 +1,16 @@
 <?php
 namespace ZendServerAPITest;
 
-use ZendServerAPI\Method\ClusterEnableServer;
-
-use ZendServerAPI\Method\RestartPHP;
-
-use ZendServerAPI\Method\ClusterReconfigureServer;
-
-use ZendServerAPI\Method\ClusterAddServer;
-
-use ZendServerAPI\Method\ClusterRemoveServer;
-
-use ZendServerAPI\Method\ClusterDisableServer;
-
-use ZendServerAPI\Method\ClusterGetServerStatus;
+use ZendServerAPI\Method\ClusterEnableServer,
+    ZendServerAPI\Method\RestartPHP,
+    ZendServerAPI\Method\ClusterReconfigureServer,
+    ZendServerAPI\Method\ClusterAddServer,
+    ZendServerAPI\Method\ClusterRemoveServer,
+    ZendServerAPI\Method\ClusterDisableServer,
+    ZendServerAPI\Method\GetSystemInfo,
+    ZendServerAPI\Method\ClusterGetServerStatus;
 
 use ZendServerAPI\Server,
-    ZendServerAPI\Method\GetSystemInfo,
     ZendServerAPI\Startup,
     ZendServerAPI\Request,
     Zend\Di\Di;
@@ -52,41 +46,41 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	            GetSystemInfoTest::$GetSystemInfoResponse,
 	            GetSystemInfoTest::getSystemInfo()
 	        ),
-	        /*array(
+	        array(
 	            new ClusterGetServerStatus(),
 	            ClusterGetServerStatusTest::$ClusterGetServerStatusResponse,
-	            ClusterGetServerStatusTest::$ClusterGetServerStatusObject,
+	            ClusterGetServerStatusTest::getClusterGetServerStatus(),
             ),
             array(
                 new ClusterDisableServer(),
                 ClusterDisableServerTest::$ClusterDisableServerResponse,
-                ClusterDisableServerTest::$ClusterDisableServerObject,
+                ClusterDisableServerTest::getClusterDisableServer(),
             ),
             array(
                 new ClusterRemoveServer(),
                 ClusterRemoveServerTest::$ClusterRemoveServerResponse,
-                ClusterRemoveServerTest::$ClusterRemoveServerObject,
-            ),*/
+                ClusterRemoveServerTest::getClusterRemoveServer(),
+            ),
             array(
                 new ClusterAddServer(),
                 ClusterAddServerTest::$ClusterAddServerResponse,
                 ClusterAddServerTest::getAddServerObject(),
-            )
-            /*array(
+            ),
+            array(
                 new ClusterReconfigureServer(),
                 ClusterReconfigureServerTest::$ClusterReconfigureServerResponse,
-                ClusterReconfigureServerTest::$ClusterReconfigureServerObject,
+                ClusterReconfigureServerTest::getClusterReconfigureServer(),
             ),
             array(
                 new RestartPHP(),
                 RestartPHPTest::$RestartPHPResponse,
-                RestartPHPTest::$RestartPHPObject,
+                RestartPHPTest::getRestartPHP(),
             ),
             array(
                 new ClusterEnableServer(),
                 ClusterEnableServerTest::$ClusterEnableServerResponse,
-                ClusterEnableServerTest::$ClusterEnableServerObject,
-            ),*/
+                ClusterEnableServerTest::getClusterEnableServer(),
+            )
         );
 	}
 	

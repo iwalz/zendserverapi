@@ -1,6 +1,8 @@
 <?php
 namespace ZendServerAPITest;
 
+use ZendServerAPI\DataTypes\MessageList;
+
 use ZendServerAPI\DataTypes\ServerInfo;
 
 use ZendServerAPI\Method\ClusterEnableServer;
@@ -33,8 +35,23 @@ EOF;
     {
         $action = new ClusterEnableServer();
         $clusterEnableServer = $action->parseResponse(self::$ClusterEnableServerResponse);
+        
+        $testClusterEnableServer = self::getClusterEnableServer();
+        
+        $this->assertEquals($testClusterEnableServer, $clusterEnableServer);
+    }
+    
+    public function getClusterEnableServer()
+    {
         $testClusterEnableServer = new ServerInfo();
+        $testClusterEnableServer->setId(5);
+        $testClusterEnableServer->setName("www-02");
+        $testClusterEnableServer->setAddress("https://www-02.local:10082/ZendServer");
+        $testClusterEnableServer->setStatus("pendingRestart");
+        $testClusterEnableServer->setMessageList(new MessageList());
         
         self::$ClusterEnableServerObject = $testClusterEnableServer;
+        
+        return self::$ClusterEnableServerObject;
     }
 }

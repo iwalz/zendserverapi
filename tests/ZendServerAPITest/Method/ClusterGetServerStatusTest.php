@@ -44,18 +44,26 @@ EOF;
     public function testParseResult()
     {
         $action = new \ZendServerAPI\Method\ClusterGetServerStatus();
-        $serversList = $action->parseResponse(self::$ClusterGetServerStatusResponse);
+        $clusterGetServerStatus = $action->parseResponse(self::$ClusterGetServerStatusResponse);
+
+        $testClusterGetServerStatus = self::getClusterGetServerStatus();
+        
+        $this->assertEquals($clusterGetServerStatus, $testClusterGetServerStatus);
+    }
     
+    public static function getClusterGetServerStatus()
+    {
+        
         $testServersList = new ServersList();
         $testServerInfo1 = new ServerInfo();
         $testServerInfo2 = new ServerInfo();
-    
+        
         $testServerInfo1->setId(12);
         $testServerInfo1->setName("www-01");
         $testServerInfo1->setAddress("https://www-01.local:10082/ZendServer");
         $testServerInfo1->setStatus("OK");
         $testServerInfo1->setMessageList(new MessageList());
-    
+        
         $testServerInfo2->setId(15);
         $testServerInfo2->setName("www-02");
         $testServerInfo2->setAddress("https://www-02.local:10082/ZendServer");
@@ -63,13 +71,13 @@ EOF;
         $testMessageList = new MessageList();
         $testMessageList->setWarning("This server is waiting a PHP restart");
         $testServerInfo2->setMessageList($testMessageList);
-    
+        
         $testServersList->addServerInfo($testServerInfo1);
         $testServersList->addServerInfo($testServerInfo2);
-    
-        $this->assertEquals($serversList, $testServersList);
-    
-        self::$ClusterGetServerStatusObject = $serversList;
+        
+        self::$ClusterGetServerStatusObject = $testServersList;
+        
+        return self::$ClusterGetServerStatusObject;
     }
 }
 

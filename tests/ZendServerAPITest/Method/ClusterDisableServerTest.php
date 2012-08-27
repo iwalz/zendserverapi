@@ -1,6 +1,8 @@
 <?php
 namespace ZendServerAPITest;
 
+use ZendServerAPI\DataTypes\MessageList;
+
 use ZendServerAPI\Method\ClusterDisableServer,
     ZendServerAPI\DataTypes\ServerInfo;
 
@@ -33,8 +35,23 @@ EOF;
         $action = new ClusterDisableServer();
         $clusterDisableServer = $action->parseResponse(self::$ClusterDisableServerResponse);
         
+        $testClusterDisableServer = self::getClusterDisableServer();
+        
+        $this->assertEquals($clusterDisableServer, $testClusterDisableServer);
+    }
+    
+    public static function getClusterDisableServer()
+    {
         $testClusterDisableServer = new ServerInfo();
+        $testClusterDisableServer->setId(5);
+        $testClusterDisableServer->setName("www-02");
+        $testClusterDisableServer->setAddress("https://www-02.local:10082/ZendServer");
+        $testClusterDisableServer->setStatus("disabled");
+        $testClusterDisableServer->setMessageList(new MessageList());
         
         self::$ClusterDisableServerObject = $testClusterDisableServer;
+        
+        return self::$ClusterDisableServerObject;
+        
     }
 }

@@ -6,8 +6,11 @@ use ZendServerAPI\DataTypes\ServersList,
 
 class ClusterGetServerStatus  extends \ZendServerAPI\Method
 {
-    public function __construct()
+    private $paramters = null;
+    
+    public function __construct(array $servers = array())
     {
+        $this->setParameters($servers);
         parent::__construct();
     }
     
@@ -16,6 +19,14 @@ class ClusterGetServerStatus  extends \ZendServerAPI\Method
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/clusterGetServerStatus');
         $this->setParser(new \ZendServerAPI\Mapper\ServersList());
+    }
+    
+    public function setParameters(array $servers)
+    {
+        if(0 === count($servers))
+            throw new \Exception("No given arguments");
+        else
+            $this->parameters = $servers;
     }
     
 }

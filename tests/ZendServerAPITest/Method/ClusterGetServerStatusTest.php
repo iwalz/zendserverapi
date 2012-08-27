@@ -43,7 +43,7 @@ EOF;
     
     public function testParseResult()
     {
-        $action = new \ZendServerAPI\Method\ClusterGetServerStatus();
+        $action = new \ZendServerAPI\Method\ClusterGetServerStatus(self::getParameters());
         $clusterGetServerStatus = $action->parseResponse(self::$ClusterGetServerStatusResponse);
 
         $testClusterGetServerStatus = self::getClusterGetServerStatus();
@@ -78,6 +78,11 @@ EOF;
         self::$ClusterGetServerStatusObject = $testServersList;
         
         return self::$ClusterGetServerStatusObject;
+    }
+    
+    public static function getParameters()
+    {
+        return array(1,2);
     }
 }
 

@@ -47,7 +47,7 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	            GetSystemInfoTest::getSystemInfo()
 	        ),
 	        array(
-	            new ClusterGetServerStatus(),
+	            new ClusterGetServerStatus(ClusterGetServerStatusTest::getParameters()),
 	            ClusterGetServerStatusTest::$ClusterGetServerStatusResponse,
 	            ClusterGetServerStatusTest::getClusterGetServerStatus(),
             ),

@@ -17,7 +17,7 @@ class MethodImplementationTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testClusterGetServerStatus()
 	{
-	    $implementation = $this->getMock('\ZendServerAPI\Method\ClusterGetServerStatus', array('setMethod', 'setFunctionPath'));
+	    $implementation = $this->getMock('\ZendServerAPI\Method\ClusterGetServerStatus', array('setMethod', 'setFunctionPath'), array(ClusterGetServerStatusTest::getParameters()));
 	    $implementation->expects($this->once())->method('setMethod')->with('GET');
 	    $implementation->expects($this->once())->method('setFunctionPath')->with('/ZendServerManager/Api/clusterGetServerStatus');
 	

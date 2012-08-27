@@ -12,7 +12,7 @@ abstract class Method {
 	
 	public function __construct()
 	{
-		$this->configure();
+		static::configure();
 	}
 	
 	public function setMethod($method)

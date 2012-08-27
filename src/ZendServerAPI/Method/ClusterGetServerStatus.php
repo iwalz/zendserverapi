@@ -6,6 +6,11 @@ use ZendServerAPI\DataTypes\ServersList,
 
 class ClusterGetServerStatus  extends \ZendServerAPI\Method
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+    
     public function configure()
     {
         $this->setMethod('GET');

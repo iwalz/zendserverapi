@@ -49,8 +49,17 @@ class ConfigValidator
          $this->ini[$name]['key'] = $key;
          $this->ini[$name]['state'] = $state;
          
-         if(!isset($this->ini[$name]['apiName']))
+         if(
+                 !isset($this->ini[$name]['apiName']) ||
+                 !$this->ini[$name]['apiName']
+            )
              throw new \InvalidArgumentException("apiName is not part of the config from " . $name);
+
+         if(
+                 !isset($this->ini[$name]['host']) ||
+                 !$this->ini[$name]['host']
+         )
+             throw new \InvalidArgumentException("host not specified in " . $name);
     }
     
     private function checkForValidAPIKey($apiKey)

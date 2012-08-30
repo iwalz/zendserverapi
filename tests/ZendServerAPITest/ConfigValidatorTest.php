@@ -41,5 +41,15 @@ class ConfigValidatorTest extends PHPUnit_Framework_TestCase
         $configValidator = new \ZendServerAPI\ConfigValidator(Startup::getConfigPath());
         $configValidator->getConfig("example72");
     }
+    
+    /**
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage host not specified in example102
+     */
+    public function testInvalidExceptionWithMissingHost()
+    {
+        $configValidator = new \ZendServerAPI\ConfigValidator(Startup::getConfigPath());
+        $configValidator->getConfig("example102");
+    }
 }
 

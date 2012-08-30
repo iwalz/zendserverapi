@@ -50,37 +50,17 @@ class Startup {
 	    else
     	    self::$name = $name;
         
-	    $configFile = self::getConfigPath();
-	    $ini = \Zend\Config\Factory::fromFile($configFile, true);
-	    
-	    // Couldn't parse config
-	    if(!isset($ini->{self::$name}))
-	        throw new \InvalidArgumentException("Configuration part '".self::$name."' not found in: " . $configFile);
-	    else
-	        $config = $ini->{self::$name};
-	    
-	    // Check for apikeys in the configfile
-	    if(isset($config->fullApiKey))
-	    {
-	        $state = ApiKey::FULL;
-	        $key = $config->fullApiKey;
-	    }
-	    elseif(isset($config->readApiKey))
-	    {
-	        $state = ApiKey::READONLY;
-	        $key = $config->readApiKey;
-	    }
-	    else
-	        throw new \InvalidArgumentException(self::$name . " does not seem to have an apikey included");
+	    $validator = new ConfigValidator(self::getConfigPath());
+	    $config = $validator->getConfig(self::$name);
 	    
 		self::$di->instanceManager()->setParameters('ZendServerAPI\ApiKey', array(
-				'name' => $config->apiName, 
-				'key' => $key, 
-				'state' => $state
+				'name' => $config['apiName'], 
+				'key' => $config['key'], 
+				'state' => $config['state']
 			)
 		);
  		self::$di->instanceManager()->setParameters('ZendServerAPI\Config', array(
- 				'host' => $config->host
+ 				'host' => $config['host']
  			)
  		);
 	    

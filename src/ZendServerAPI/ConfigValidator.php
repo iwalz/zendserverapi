@@ -44,7 +44,7 @@ class ConfigValidator
         else
             throw new \InvalidArgumentException($name . " does not seem to have an apikey included");
         
-        $this->checkForValidAPIKey($key, $name);
+        $this->checkForValidAPIKey($key);
         
          $this->ini[$name]['key'] = $key;
          $this->ini[$name]['state'] = $state;
@@ -53,7 +53,7 @@ class ConfigValidator
              throw new \InvalidArgumentException("apiName is not part of the config from " . $name);
     }
     
-    private function checkForValidAPIKey($apiKey, $name)
+    private function checkForValidAPIKey($apiKey)
     {
         // Check invalid characters
         $invalidCharacters = array(

@@ -29,6 +29,24 @@ class ClusterGetServerStatus  extends \ZendServerAPI\Method
             $this->parameters = $servers;
     }
     
+    public function getLink()
+    {
+        $link = $this->getFunctionPath();
+        $parameterCount = count($this->parameters); 
+        
+        if($parameterCount > 0)
+            $link .= "?";
+        
+        foreach($this->parameters as $index => $parameter)
+        {
+            $link .= urlencode("servers[".$index."]")."=".$parameter;
+            if($index+1 < $parameterCount)
+                $link .= "&";
+        }
+        
+        return $link;
+    }
+    
 }
 
 ?>

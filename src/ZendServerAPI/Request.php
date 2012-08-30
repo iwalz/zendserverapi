@@ -35,13 +35,14 @@ class Request
 	
 	public function send()
 	{
+	    $link = 'http://' . $this->config->getHost() . ':' . $this->config->getPort() . $this->action->getLink();
 		if($this->action->getMethod() === 'GET')
 		{
-		    $httpful = \Httpful\Request::get($this->getLink());
+		    $httpful = \Httpful\Request::get($link);
 		}
 		elseif($this->action->getMethod() === 'Post')
 		{
-		    $httpful = \Httpful\Request::post($this->getLink());
+		    $httpful = \Httpful\Request::post($link);
 		}
 		
 		$response = $httpful
@@ -65,12 +66,6 @@ class Request
 		elseif($response->code === 500)
 			throw new Exception\ServerSide($response);
 		
-	}
-	
-	public function getLink()
-	{
-		return 'http://' . $this->config->getHost() . ':' . $this->config->getPort() .
-				$this->action->getFunctionPath();
 	}
 	
 	private function getDate()

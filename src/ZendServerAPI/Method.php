@@ -50,6 +50,11 @@ abstract class Method {
 	    return $this->getParser()->parse($xml);
 	}
 	
+	public function getLink()
+	{
+	    return $this->action->getFunctionPath();
+	}
+	
 	abstract function configure();
 }
 

@@ -35,12 +35,12 @@ class Startup {
 			)		
 		);
 		
-		self::configureApiKey($name, &$di);
+		self::configureApiKey($name, $di);
 		
 		return $di;
 	}
 	
-	private function configureApiKey($name, &$di)
+	private static function configureApiKey($name, &$di)
 	{
 	    if(null === $name)
 	        self::$name = "general";

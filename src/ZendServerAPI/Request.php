@@ -6,12 +6,10 @@ class Request
 	private $action = null;
 	private $userAgent = 'HTTPFUL';
 	private $config = null;
-	private $di = null;
 	
 	public function __construct()
 	{
-	    $this->di = Startup::getDIC();
-        $this->config = $this->di->get('ZendServerAPI\Config');
+
 	}
 	
 	public function setAction($action)

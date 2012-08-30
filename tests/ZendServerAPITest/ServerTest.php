@@ -12,8 +12,7 @@ use ZendServerAPI\Method\ClusterEnableServer,
 
 use ZendServerAPI\Server,
     ZendServerAPI\Startup,
-    ZendServerAPI\Request,
-    Zend\Di\Di;
+    ZendServerAPI\Request;
 /**
  * test case.
  */
@@ -86,17 +85,13 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testConstructorInjection()
 	{
-	    $tmpDi = new Di;
 	    $tmpRequest = new Request();
-	    $server = new Server("general", $tmpRequest, $tmpDi);
+	    $server = new Server("general", $tmpRequest);
 	    $serverRequest = $server->getRequest();
-	    $serverDi = $server->getDi();
 	    
-	    $di = Startup::getDIC();
-	    $request = $di->get('ZendServerAPI\Request');
+	    $request = Startup::getRequest();
 	    
 	    $this->assertNotSame($serverRequest, $request);
-	    $this->assertNotSame($serverDi, $di);
 	}
 	
 	public function testRequestObjectInDI()
@@ -135,16 +130,12 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	public function testGetterAndSetter()
 	{
 	    $request = new Request;
-	    $di = new Di;
 	    $server = new Server;
 	    
 	    $this->assertNotSame($request, $server->getRequest());
 	    $server->setRequest($request);
 	    $this->assertSame($request, $server->getRequest());
 	    
-	    $this->assertNotSame($di, $server->getDI());
-	    $server->setDI($di);
-	    $this->assertSame($di, $server->getDI());
 	}
 	
 	public function testApiKeyInstances()

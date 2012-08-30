@@ -2,45 +2,25 @@
 
 namespace ZendServerAPI;
 
-use Zend\Di\Di,
-	Zend\Di\DefinitionList,
-	Zend\Di\Config as DiConfig;
-
 class Startup {
 	protected static $name = null;
 	protected static $configPath = null;
 	
-	public static function getDIC($name = null)
+	public static function getRequest($name = null)
 	{
-	    return self::setUpDIC($name);
+	    return self::setUpRequest($name);
 	}
 	
-	private static function setUpDIC($name = null)
+	private static function setUpRequest($name = null)
 	{
-	    $di = new Di;
-		$di->configure(
-			new DiConfig(
-				array(
-					'definition' => array(
-						'class' => array(
-							'ZendServerAPI\Request' => array(
-								'setConfig' => array('required' => true)		
-							),
-							'ZendServerAPI\Config' => array(
-								'setApiKey' => array('required' => true)
-							)		
-						)
-					)				
-				)		
-			)		
-		);
+	    $request = new Request();
+        		
+		self::configureApiKey($name, $request);
 		
-		self::configureApiKey($name, $di);
-		
-		return $di;
+		return $request;
 	}
 	
-	private static function configureApiKey($name, &$di)
+	private static function configureApiKey($name, &$request)
 	{
 	    if(null === $name)
 	        self::$name = "general";
@@ -50,16 +30,11 @@ class Startup {
 	    $validator = new ConfigValidator(self::getConfigPath());
 	    $config = $validator->getConfig(self::$name);
 	    
-		$di->instanceManager()->setParameters('ZendServerAPI\ApiKey', array(
-				'name' => $config['apiName'], 
-				'key' => $config['key'], 
-				'state' => $config['state']
-			)
-		);
- 		$di->instanceManager()->setParameters('ZendServerAPI\Config', array(
- 				'host' => $config['host']
- 			)
- 		);
+	    $apiKey = new ApiKey($config['apiName'], $config['key'], $config['state']);
+        $config = new Config($config['host']);
+        $config->setApiKey($apiKey);
+        
+        $request->setConfig($config);
 	    
 	}
 	
@@ -71,7 +46,7 @@ class Startup {
 	public static function getConfigPath()
 	{
 	    if(null === self::$configPath)
-	        self::$configPath = __DIR__.'/../../config/servers.ini';
+	        self::$configPath = __DIR__.'/../../config/servers.php';
 	    
 	    return self::$configPath;
 	}

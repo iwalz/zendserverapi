@@ -8,20 +8,19 @@ class StartupTest extends \PHPUnit_Framework_TestCase
 {
     public function testStartup()
     {
-        $di = \ZendServerAPI\Startup::getDIC();
-        $this->assertInstanceOf('\Zend\Di\Di', $di);
-        $this->assertInstanceOf('ZendServerAPI\Request', $di->get('ZendServerAPI\Request'));
+        $request = \ZendServerAPI\Startup::getRequest();
+        $this->assertInstanceOf('ZendServerAPI\Request', $request);
     }
     
     public function testNameInjections()
     {
-        $di = \ZendServerAPI\Startup::getDIC();
+        $di = \ZendServerAPI\Startup::getRequest();
         $this->assertEquals(\ZendServerAPI\Startup::getName(), "general");
         
-        $di = \ZendServerAPI\Startup::getDIC("example62");
+        $di = \ZendServerAPI\Startup::getRequest("example62");
         $this->assertEquals(\ZendServerAPI\Startup::getName(), "example62");
         
-        $di = \ZendServerAPI\Startup::getDIC();
+        $di = \ZendServerAPI\Startup::getRequest();
         $this->assertEquals(\ZendServerAPI\Startup::getName(), "general");
     }
 
@@ -31,7 +30,7 @@ class StartupTest extends \PHPUnit_Framework_TestCase
                 "InvalidArgumentException",
                 "Configuration part 'duck' not found in: " . realpath('_files/config/servers.ini')
         );
-        $di2 = \ZendServerAPI\Startup::getDIC("duck");
+        $di2 = \ZendServerAPI\Startup::getRequest("duck");
     }
 }
 

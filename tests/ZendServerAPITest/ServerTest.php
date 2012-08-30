@@ -88,7 +88,7 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	{
 	    $tmpDi = new Di;
 	    $tmpRequest = new Request();
-	    $server = new Server($tmpRequest, $tmpDi);
+	    $server = new Server("general", $tmpRequest, $tmpDi);
 	    $serverRequest = $server->getRequest();
 	    $serverDi = $server->getDi();
 	    

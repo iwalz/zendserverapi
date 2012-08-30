@@ -8,18 +8,21 @@ use Zend\Di\Di,
 
 class Startup {
 	protected static $di = null;
+	protected static $name = null;
+	protected static $configPath = null;
 	
-	public static function getDIC()
+	public static function getDIC($name = null)
 	{
 	    if(self::$di === null)
-	        self::setUpDIC();
-	    
+	        self::setUpDIC($name);
+	    if(self::$name !== $name)
+	        self::configureApiKey($name);
 	    return self::$di;
 	}
 	
-	private static function setUpDIC()
+	private static function setUpDIC($name = null)
 	{
-		self::$di = new Di;
+	    self::$di = new Di;
 		self::$di->configure(
 			new DiConfig(
 				array(
@@ -36,16 +39,69 @@ class Startup {
 				)		
 			)		
 		);
+		
+		self::configureApiKey($name);
+	}
+	
+	private function configureApiKey($name)
+	{
+	    if(null === $name)
+	        self::$name = "general";
+	    else
+    	    self::$name = $name;
+        
+	    $configFile = self::getConfigPath();
+	    $ini = \Zend\Config\Factory::fromFile($configFile, true);
+	    
+	    // Couldn't parse config
+	    if(!isset($ini->{self::$name}))
+	        throw new \InvalidArgumentException("Configuration part '".self::$name."' not found in: " . $configFile);
+	    else
+	        $config = $ini->{self::$name};
+	    
+	    // Check for apikeys in the configfile
+	    if(isset($config->fullApiKey))
+	    {
+	        $state = ApiKey::FULL;
+	        $key = $config->fullApiKey;
+	    }
+	    elseif(isset($config->readApiKey))
+	    {
+	        $state = ApiKey::READONLY;
+	        $key = $config->readApiKey;
+	    }
+	    else
+	        throw new \InvalidArgumentException(self::$name . " does not seem to have an apikey included");
+	    
 		self::$di->instanceManager()->setParameters('ZendServerAPI\ApiKey', array(
-				'name' => 'api', 
-				'key' => '058b82f191d934a7bfe17d12060dd3320869f132d3428fa19d35463903673eee', 
-				'state' => ApiKey::FULL
+				'name' => $config->apiName, 
+				'key' => $key, 
+				'state' => $state
 			)
 		);
  		self::$di->instanceManager()->setParameters('ZendServerAPI\Config', array(
- 				'host' => '127.0.0.1'
+ 				'host' => $config->host
  			)
  		);
+	    
+	}
+	
+	public static function setConfigPath($configPath)
+	{
+	    self::$configPath = $configPath;
+	} 
+	
+	public static function getConfigPath()
+	{
+	    if(null === self::$configPath)
+	        self::$configPath = __DIR__.'/../../config/servers.ini';
+	    
+	    return self::$configPath;
+	}
+	
+	public static function getName()
+	{
+	    return self::$name;
 	}
 }
 

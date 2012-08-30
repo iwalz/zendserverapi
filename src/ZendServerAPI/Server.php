@@ -4,11 +4,11 @@ namespace ZendServerAPI;
 
 class Server extends BaseAPI 
 {
-	public function __construct(\ZendServerAPI\Request $request = null, \Zend\Di\Di $di = null)
+	public function __construct($name = null, \ZendServerAPI\Request $request = null, \Zend\Di\Di $di = null)
 	{
-	    if($di === null)
-	        $this->di = Startup::getDIC();
-	    else
+	    parent::__construct($name);
+	    
+	    if(null !== $di)
 	        $this->di = $di;
 	    
 		if($request !== null)

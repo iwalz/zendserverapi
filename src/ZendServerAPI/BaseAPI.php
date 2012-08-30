@@ -6,6 +6,11 @@ class BaseAPI
     protected $request = null;
     protected $di = null;
     
+    public function __construct($name = null)
+    {
+        $this->di = Startup::getDIC($name);
+    }
+    
     public function getRequest()
     {
         if($this->request === null)

@@ -104,7 +104,8 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	    $server1 = new Server;
 	    $server2 = new Server;
 	    
-	    $this->assertSame($server1->getRequest(), $server2->getRequest());
+	    $this->assertNotSame($server1->getRequest(), $server2->getRequest());
+	    $this->assertEquals($server1->getRequest(), $server2->getRequest());
 	}
 	
 	public function testAPIObjectInDI()
@@ -115,7 +116,8 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	    $server2 = new Server;
 	    $request2 = $server2->getRequest();
 	    
-	    $this->assertSame($request1->getConfig()->getApiKey(),     $request2->getConfig()->getApiKey());
+	    $this->assertNotSame($request1->getConfig()->getApiKey(),     $request2->getConfig()->getApiKey());
+	    $this->assertEquals($request1->getConfig()->getApiKey(),     $request2->getConfig()->getApiKey());
 	}
 	
 	public function testConfigObjectInDI()
@@ -126,7 +128,8 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	    $server2 = new Server;
 	    $request2 = $server2->getRequest();
 	     
-	    $this->assertSame($request1->getConfig(), $request2->getConfig());
+	    $this->assertNotSame($request1->getConfig(), $request2->getConfig());
+	    $this->assertEquals($request1->getConfig(), $request2->getConfig());
 	}
 	
 	public function testGetterAndSetter()
@@ -142,6 +145,23 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	    $this->assertNotSame($di, $server->getDI());
 	    $server->setDI($di);
 	    $this->assertSame($di, $server->getDI());
+	}
+	
+	public function testApiKeyInstances()
+	{
+	    $server1 = new Server();
+	    $server2 = new Server("example62");
+	    
+	    $this->assertNotSame($server1, $server2);
+	    
+	    $apiKey1 = $server1->getRequest()->getConfig()->getApiKey();
+	    $this->assertInstanceOf("\ZendServerAPI\ApiKey", $apiKey1);
+	    
+	    $apiKey2 = $server2->getRequest()->getConfig()->getApiKey();
+	    $this->assertInstanceOf("\ZendServerAPI\ApiKey", $apiKey1);
+	    
+	    $this->assertEquals($apiKey1->getName(), 'api');
+	    $this->assertEquals($apiKey2->getName(), 'apikey');
 	}
 	
 	public function testProd()

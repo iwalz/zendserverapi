@@ -7,23 +7,18 @@ use Zend\Di\Di,
 	Zend\Di\Config as DiConfig;
 
 class Startup {
-	protected static $di = null;
 	protected static $name = null;
 	protected static $configPath = null;
 	
 	public static function getDIC($name = null)
 	{
-	    if(self::$di === null)
-	        self::setUpDIC($name);
-	    if(self::$name !== $name)
-	        self::configureApiKey($name);
-	    return self::$di;
+	    return self::setUpDIC($name);
 	}
 	
 	private static function setUpDIC($name = null)
 	{
-	    self::$di = new Di;
-		self::$di->configure(
+	    $di = new Di;
+		$di->configure(
 			new DiConfig(
 				array(
 					'definition' => array(
@@ -40,10 +35,12 @@ class Startup {
 			)		
 		);
 		
-		self::configureApiKey($name);
+		self::configureApiKey($name, &$di);
+		
+		return $di;
 	}
 	
-	private function configureApiKey($name)
+	private function configureApiKey($name, &$di)
 	{
 	    if(null === $name)
 	        self::$name = "general";
@@ -53,13 +50,13 @@ class Startup {
 	    $validator = new ConfigValidator(self::getConfigPath());
 	    $config = $validator->getConfig(self::$name);
 	    
-		self::$di->instanceManager()->setParameters('ZendServerAPI\ApiKey', array(
+		$di->instanceManager()->setParameters('ZendServerAPI\ApiKey', array(
 				'name' => $config['apiName'], 
 				'key' => $config['key'], 
 				'state' => $config['state']
 			)
 		);
- 		self::$di->instanceManager()->setParameters('ZendServerAPI\Config', array(
+ 		$di->instanceManager()->setParameters('ZendServerAPI\Config', array(
  				'host' => $config['host']
  			)
  		);

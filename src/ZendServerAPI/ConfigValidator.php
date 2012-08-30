@@ -9,7 +9,7 @@ class ConfigValidator
     public function __construct($fileName)
     {
         $this->fileName = $fileName;
-        $this->ini = \Zend\Config\Factory::fromFile($this->fileName);
+        $this->ini = include $fileName;
     }
     
     public function getConfig($name)

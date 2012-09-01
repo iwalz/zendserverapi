@@ -33,6 +33,12 @@ class Server extends BaseAPI
 	    $this->request->setAction(new \ZendServerAPI\Method\ClusterRemoveServer($serverId));
 	    return $this->request->send();
 	}
+	
+	public function clusterAddServer($serverName, $serverUrl, $guiPassword)
+	{
+	    $this->request->setAction(new \ZendServerAPI\Method\ClusterAddServer($serverName, $serverUrl, $guiPassword));
+	    return $this->request->send();
+	}
 
 }
 

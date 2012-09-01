@@ -33,7 +33,7 @@ EOF;
 
     public function testParseResult()
     {
-        $action = new ClusterAddServer();
+        $action = new ClusterAddServer(self::getServerName(), self::getServerUrl(), self::getGuiPassword());
         $clusterAddServer = $action->parseResponse(self::$ClusterAddServerResponse);
 
         $testClusterAddServer = self::getAddServerObject();
@@ -54,6 +54,21 @@ EOF;
 
         self::$ClusterAddServerObject = $testClusterAddServer;
         return $testClusterAddServer;
+    }
+    
+    public static function getServerName()
+    {
+        return 'www-05';
+    }
+    
+    public static function getServerUrl()
+    {
+        return 'https://www-05.local:10081/ZendServer';
+    }
+    
+    public static function getGuiPassword()
+    {
+        return 'somepassword';
     }
 
 }

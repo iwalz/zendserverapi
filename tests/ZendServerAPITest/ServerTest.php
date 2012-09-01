@@ -61,7 +61,7 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
                 ClusterRemoveServerTest::getClusterRemoveServer(),
             ),
             array(
-                new ClusterAddServer(),
+                new ClusterAddServer(ClusterAddServerTest::getServerName(), ClusterAddServerTest::getServerUrl(), ClusterAddServerTest::getGuiPassword()),
                 ClusterAddServerTest::$ClusterAddServerResponse,
                 ClusterAddServerTest::getAddServerObject(),
             ),

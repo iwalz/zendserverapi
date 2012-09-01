@@ -49,5 +49,13 @@ return array(
 		"apiName" => "api",
 		"host" => "",
 		"port" => "10081"
-	)
+	),
+    # "Production" test
+    "prod" => array(
+        "clusterManager" => true,
+        "fullApiKey" => "f739a0f7e43e55b2ea4dcca3ca1a3a744540836657af4e35df919578e1c3e442",
+        "apiName" => "api",
+        "host" => "127.0.0.1",
+        "port" => "11111"
+    )
 );

@@ -56,7 +56,7 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
                 ClusterDisableServerTest::getClusterDisableServer(),
             ),
             array(
-                new ClusterRemoveServer(),
+                new ClusterRemoveServer(ClusterRemoveServerTest::getParameter()),
                 ClusterRemoveServerTest::$ClusterRemoveServerResponse,
                 ClusterRemoveServerTest::getClusterRemoveServer(),
             ),
@@ -153,13 +153,6 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	    
 	    $this->assertEquals($apiKey1->getName(), 'api');
 	    $this->assertEquals($apiKey2->getName(), 'apikey');
-	}
-	
-	public function testProd()
-	{
-        /*$server = new Server;
-	    var_dump($server->getSystemInfo());
- 	    var_dump($server->clusterGetServerStatus());*/
 	}
 	
 }

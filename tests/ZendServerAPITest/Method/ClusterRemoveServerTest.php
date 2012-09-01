@@ -33,11 +33,16 @@ EOF;
     
     public function testParseResult()
     {
-        $action = new ClusterRemoveServer();
+        $action = new ClusterRemoveServer(self::getParameter());
         $clusterRemoveServer = $action->parseResponse(self::$ClusterRemoveServerResponse);
         $testClusterRemoveServer = self::getClusterRemoveServer();
         
         $this->assertEquals($clusterRemoveServer, $testClusterRemoveServer);
+    }
+    
+    public static function getParameter()
+    {
+        return 5;
     }
     
     public static function getClusterRemoveServer()
@@ -52,5 +57,12 @@ EOF;
         self::$ClusterRemoveServerObject = $testClusterRemoveServer;
         
         return self::$ClusterRemoveServerObject; 
+    }
+    
+    public function testLink()
+    {
+        $action = new \ZendServerAPI\Method\ClusterRemoveServer(self::getParameter());
+    
+        $this->assertEquals("/ZendServerManager/Api/clusterRemoveServer", $action->getLink());
     }
 }

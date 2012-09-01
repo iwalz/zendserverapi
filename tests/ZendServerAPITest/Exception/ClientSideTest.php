@@ -15,15 +15,16 @@ class ClientSideTest extends \PHPUnit_Framework_TestCase {
 	public function testXMLParsing()
 	{
 		$xml = <<<EOF
-<zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.0">
-	<requestData>
-		<apiKeyName><![CDATA[api]]></apiKeyName>
-		<method><![CDATA[getSystemInfo]]></method>
-	</requestData>
-	<errorData>
-	<errorCode>authError</errorCode>
-	<errorMessage><![CDATA[Incorrect signature]]></errorMessage>
-</errorData></zendServerAPIResponse>		
+            <zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.0">
+	            <requestData>
+		            <apiKeyName><![CDATA[api]]></apiKeyName>
+		            <method><![CDATA[getSystemInfo]]></method>
+	            </requestData>
+	            <errorData>
+	                <errorCode>authError</errorCode>
+	                <errorMessage><![CDATA[Incorrect signature]]></errorMessage>
+                </errorData>
+            </zendServerAPIResponse>		
 EOF;
 		throw new ClientSide($xml);
 	}

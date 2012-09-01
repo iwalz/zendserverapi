@@ -52,7 +52,7 @@ abstract class Method {
 	
 	public function getLink()
 	{
-	    return $this->action->getFunctionPath();
+	    return $this->getFunctionPath();
 	}
 	
 	abstract function configure();

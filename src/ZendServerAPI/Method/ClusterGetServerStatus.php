@@ -24,7 +24,7 @@ class ClusterGetServerStatus  extends \ZendServerAPI\Method
     public function setParameters(array $servers)
     {
         if(0 === count($servers))
-            throw new \Exception("No given arguments");
+            throw new \InvalidArgumentException("No given arguments");
         else
             $this->parameters = $servers;
     }

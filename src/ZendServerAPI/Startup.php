@@ -28,10 +28,12 @@ class Startup {
     	    self::$name = $name;
         
 	    $validator = new ConfigValidator(self::getConfigPath());
-	    $config = $validator->getConfig(self::$name);
+	    $conf = $validator->getConfig(self::$name);
 	    
-	    $apiKey = new ApiKey($config['apiName'], $config['key'], $config['state']);
-        $config = new Config($config['host']);
+	    $apiKey = new ApiKey($conf['apiName'], $conf['key'], $conf['state']);
+        $config = new Config();
+        $config->setHost($conf['host']);
+        $config->setPort($conf['port']);
         $config->setApiKey($apiKey);
         
         $request->setConfig($config);

@@ -40,11 +40,14 @@ class Request
 		{
 		    $httpful = \Httpful\Request::get($link);
 		}
-		elseif($this->action->getMethod() === 'Post')
+		elseif($this->action->getMethod() === 'POST')
 		{
 		    $httpful = \Httpful\Request::post($link);
+		    $content = $this->action->getContent();
+		    $httpful->addHeader("Content-length", strlen($content));
+		    $httpful->addHeader("Content-type", "application/x-www-form-urlencoded");
+		    $httpful->body($content);
 		}
-		
 		$response = $httpful
 			->addHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature())
 			->addHeader('Accept', 'application/vnd.zend.serverapi+xml;version=1.0')
@@ -52,19 +55,17 @@ class Request
 			->addHeader('Date', $this->getDate())
 			->addHeader("User-Agent", $this->userAgent)
 			->send();
-		
-		if($response->code === 200)
-			return $this->getAction()->parseResponse($response);
-		elseif($response->code === 400)
+		if($response->code === 200 || $response->code === 202)
+		{
+		    return $this->getAction()->parseResponse($response);
+			
+		}
+		elseif($response->code >= 400 && $response->code <= 499)
 			throw new Exception\ClientSide($response);
-		elseif($response->code === 401)
-			throw new Exception\ClientSide($response);
-		elseif($response->code === 405)
-			throw new Exception\ClientSide($response);
-		elseif($response->code === 406)
-			throw new Exception\ClientSide($response);
-		elseif($response->code === 500)
-			throw new Exception\ServerSide($response);
+		elseif($response->code >= 500 && $response->code <= 599)
+		    throw new Exception\ServerSide($response);
+		else
+		    throw new \Exception($response);
 		
 	}
 	

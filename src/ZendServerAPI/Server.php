@@ -14,12 +14,8 @@ class Server extends BaseAPI
 	
 	public function getSystemInfo()
 	{
-	    var_dump($this->request);
 		$this->request->setAction(new \ZendServerAPI\Method\GetSystemInfo());
-		var_dump($this->request);
-		$foo = $this->request->send();
-		var_dump($foo);
-		return $foo;
+		return $this->request->send();
 	}
 	
 	public function clusterGetServerStatus(array $parameters)

@@ -93,7 +93,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
  	    $this->assertEquals($request->send($httpful), new SystemInfo());
 	}
 	
-	public function testSendWithPostAction()
+	/*public function testSendWithPostAction()
 	{
 	    $this->markTestSkipped('Damn, public method expects in Httpful - uncool for mocking...');
 	    $response = new \stdClass();
@@ -109,7 +109,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
 	     
 	    $request->setAction($action);
 	    $this->assertEquals($request->send($httpful), new ServerInfo());
-	}
+	}*/
 
 	/**
 	 * @expectedException \ZendServerAPI\Exception\ServerSide

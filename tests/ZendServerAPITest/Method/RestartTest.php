@@ -77,9 +77,7 @@ EOF;
         $testRestartPHP->addServerInfo($server2);
         $testRestartPHP->addServerInfo($server3);
     
-        self::$RestartPHPObject = $testRestartPHP;
-    
-        return self::$RestartPHPObject;
+        return $testRestartPHP;
     }
     
     public static function getParameter()

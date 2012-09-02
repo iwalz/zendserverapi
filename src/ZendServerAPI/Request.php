@@ -18,6 +18,11 @@ class Request
 		return $this;
 	}
 	
+	public function setUserAgent($userAgent)
+	{
+	    $this->userAgent = $userAgent;
+	}
+	
 	public function setConfig(\ZendServerAPI\Config $config)
 	{
 		$this->config = $config;
@@ -28,28 +33,36 @@ class Request
 		return $this->action;
 	}
 	
+	public function getUserAgent()
+	{
+	    return $this->userAgent;
+	}
+	
 	public function getConfig()
 	{
 		return $this->config;
 	}
 	
-	public function send()
+	public function send($class = null)
 	{
 	    $link = 'http://' . $this->config->getHost() . ':' . $this->config->getPort() . $this->action->getLink();
+	    if($class === null)
+	        $class = '\Httpful\Request';
+	    
 		if($this->action->getMethod() === 'GET')
 		{
-		    $httpful = \Httpful\Request::get($link);
+		    $httpful = $class::get($link);
 		}
 		elseif($this->action->getMethod() === 'POST')
 		{
-		    $httpful = \Httpful\Request::post($link);
+		    $httpful = $class::post($link);
 		    $content = $this->action->getContent();
 		    $httpful->addHeader("Content-length", strlen($content));
 		    $httpful->addHeader("Content-type", "application/x-www-form-urlencoded");
 		    $httpful->body($content);
 		}
 		$response = $httpful
-			->addHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature())
+			->addHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()))
 			->addHeader('Accept', 'application/vnd.zend.serverapi+xml;version=1.0')
 			->addHeader('lookInCupboard', 'true')
 			->addHeader('Date', $this->getDate())
@@ -77,10 +90,8 @@ class Request
 		return $date;
 	}
 	
-	private function generateRequestSignature()
+	private function generateRequestSignature($date)
 	{
-		$date = $this->getDate();
-		
 		$data = $this->config->getHost() . ":".$this->config->getPort().":" .
 				$this->action->getFunctionPath() . ":" .
 				$this->userAgent . ":" .

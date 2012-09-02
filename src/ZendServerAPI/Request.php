@@ -43,31 +43,30 @@ class Request
 		return $this->config;
 	}
 	
-	public function send($class = null)
+	public function send($httpful = null)
 	{
 	    $link = 'http://' . $this->config->getHost() . ':' . $this->config->getPort() . $this->action->getLink();
-	    if($class === null)
-	        $class = '\Httpful\Request';
 	    
-		if($this->action->getMethod() === 'GET')
+		if($this->action->getMethod() === 'GET' && !$httpful)
 		{
-		    $httpful = $class::get($link);
+		    $httpful = \Httpful\Request::get($link);
 		}
 		elseif($this->action->getMethod() === 'POST')
 		{
-		    $httpful = $class::post($link);
+		    if(!$httpful)
+		        $httpful = \Httpful\Request::post($link);
 		    $content = $this->action->getContent();
 		    $httpful->addHeader("Content-length", strlen($content));
 		    $httpful->addHeader("Content-type", "application/x-www-form-urlencoded");
 		    $httpful->body($content);
 		}
-		$response = $httpful
-			->addHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()))
-			->addHeader('Accept', 'application/vnd.zend.serverapi+xml;version=1.0')
-			->addHeader('lookInCupboard', 'true')
-			->addHeader('Date', $this->getDate())
-			->addHeader("User-Agent", $this->userAgent)
-			->send();
+		
+		$httpful->addHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
+		$httpful->addHeader('Accept', 'application/vnd.zend.serverapi+xml;version=1.0');
+		$httpful->addHeader('lookInCupboard', 'true');
+		$httpful->addHeader('Date', $this->getDate());
+		$httpful->addHeader("User-Agent", $this->userAgent);
+		$response = $httpful->send();
 		if($response->code === 200 || $response->code === 202)
 		{
 		    return $this->getAction()->parseResponse($response);

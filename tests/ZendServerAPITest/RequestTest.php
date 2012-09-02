@@ -1,6 +1,14 @@
 <?php
 namespace ZendServerAPITest;
 
+use ZendServerAPI\DataTypes\ServerInfo;
+
+use ZendServerAPI\DataTypes\SystemInfo;
+
+use ZendServerAPI\Startup;
+
+use ZendServerAPI\Method\GetSystemInfo;
+
 use ZendServerAPI\Request;
 
 /**
@@ -67,5 +75,111 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
 	    
 	    $this->assertStringEndsWith('GMT', $method->invoke(new Request()));
 	}
+	
+	public function testSendWithGetAction()
+	{
+	    $response = new \stdClass();
+	    $response->code = 200;
+	    
+	    $request = Startup::getRequest();
+	    $action = $this->getMock('\ZendServerAPI\Method\GetSystemInfo', array('parseResponse'));
+	    $action->expects($this->once())->method('parseResponse')->with($response)->will($this->returnValue(new SystemInfo()));
+	    
+	    $httpful = $this->getMockBuilder('\Httpful\Request', array('addHeader', 'send'))->disableOriginalConstructor()->getMock();
+	    $httpful->expects($this->any())->method('addHeader');
+	    $httpful->expects($this->once())->method('send')->will($this->returnValue($response));
+	    
+ 	    $request->setAction($action);
+ 	    $this->assertEquals($request->send($httpful), new SystemInfo());
+	}
+	
+	public function testSendWithPostAction()
+	{
+	    $response = new \stdClass();
+	    $response->code = 200;
+	     
+	    $request = Startup::getRequest();
+	    $action = $this->getMock('\ZendServerAPI\Method\ClusterRemoveServer', array('parseResponse'), array(2));
+	    $action->expects($this->once())->method('parseResponse')->with($response)->will($this->returnValue(new ServerInfo()));
+	     
+	    $httpful = $this->getMockBuilder('\Httpful\Request', array('addHeader', 'send'))->disableOriginalConstructor()->getMock();
+	    $httpful->expects($this->any())->method('addHeader');
+	    $httpful->expects($this->once())->method('send')->will($this->returnValue($response));
+	     
+	    $request->setAction($action);
+	    $this->assertEquals($request->send($httpful), new ServerInfo());
+	}
+
+	/**
+	 * @expectedException \ZendServerAPI\Exception\ServerSide
+	 * @expectedExceptionMessage serverNotLicensed: Zend Server Cluster Manager is not licensed.
+	 * @expectedExceptionCode 500
+	 */
+	public function testSendWithErrorcode500()
+	{
+	    $request = Startup::getRequest();
+	    $action = $this->getMock('\ZendServerAPI\Method\ClusterRemoveServer', array('parseResponse'), array(2));
+	    $httpful = $this->getMockBuilder('\Httpful\Request', array('addHeader', 'send'))->disableOriginalConstructor()->getMock();
+	     
+	    $body = <<<EOF
+            <zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.0">
+	            <requestData>
+		            <apiKeyName><![CDATA[api]]></apiKeyName>
+		            <method><![CDATA[getSystemInfo]]></method>
+	            </requestData>
+	            <errorData>
+	                <errorCode>serverNotLicensed</errorCode>
+	                <errorMessage><![CDATA[Zend Server Cluster Manager is not licensed.]]></errorMessage>
+                </errorData>
+		    </zendServerAPIResponse>
+EOF;
+	    
+	    $xmlResponse = new \Httpful\Response($body, "HTTP/1.1 200 OK
+Content-Type: application/xml
+Connection: keep-alive
+Transfer-Encoding: chunked\r\n", $httpful);
+	    $xmlResponse->code = 500;
+	    $httpful->expects($this->any())->method('addHeader');
+	    $httpful->expects($this->once())->method('send')->will($this->returnValue($xmlResponse));
+	     
+	    $request->setAction($action);
+	    $request->send($httpful);
+	}
+	
+	/**
+	 * @expectedException \ZendServerAPI\Exception\ClientSide
+	 * @expectedExceptionMessage authError: Incorrect signature
+	 * @expectedExceptionCode 400
+	 */
+	public function testSendWithErrorcode400()
+	{
+	    $request = Startup::getRequest();
+	    $action = $this->getMock('\ZendServerAPI\Method\ClusterRemoveServer', array('parseResponse'), array(2));
+	    $httpful = $this->getMockBuilder('\Httpful\Request', array('addHeader', 'send'))->disableOriginalConstructor()->getMock();
+	    
+	    $body = <<<EOF
+        	<zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.0">
+	            <requestData>
+		            <apiKeyName><![CDATA[api]]></apiKeyName>
+		            <method><![CDATA[getSystemInfo]]></method>
+	            </requestData>
+	            <errorData>
+	                <errorCode>authError</errorCode>
+	                <errorMessage><![CDATA[Incorrect signature]]></errorMessage>
+                </errorData>
+            </zendServerAPIResponse>    
+EOF;
+	    $xmlResponse = new \Httpful\Response($body, "HTTP/1.1 200 OK
+Content-Type: application/xml
+Connection: keep-alive
+Transfer-Encoding: chunked\r\n", $httpful);
+	    $xmlResponse->code = 400;
+	    $httpful->expects($this->any())->method('addHeader');
+	    $httpful->expects($this->once())->method('send')->will($this->returnValue($xmlResponse));
+	    
+	    $request->setAction($action);
+	    $request->send($httpful);
+	}
+	
 }
 

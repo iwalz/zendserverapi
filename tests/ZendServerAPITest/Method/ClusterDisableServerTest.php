@@ -32,7 +32,7 @@ EOF;
     
     public function testParseResult()
     {
-        $action = new ClusterDisableServer();
+        $action = new ClusterDisableServer(self::getParameter());
         $clusterDisableServer = $action->parseResponse(self::$ClusterDisableServerResponse);
         
         $testClusterDisableServer = self::getClusterDisableServer();
@@ -53,5 +53,23 @@ EOF;
         
         return self::$ClusterDisableServerObject;
         
+    }
+    
+    public static function getParameter()
+    {
+        return 5;
+    }
+    
+    public function testLink()
+    {
+        $action = new \ZendServerAPI\Method\ClusterDisableServer(self::getParameter());
+    
+        $this->assertEquals("/ZendServerManager/Api/clusterDisableServer", $action->getLink());
+    }
+    
+    public function testRequestBody()
+    {
+        $action = new \ZendServerAPI\Method\ClusterDisableServer(self::getParameter());
+        $this->assertEquals('serverId=5', $action->getContent());
     }
 }

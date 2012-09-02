@@ -72,6 +72,58 @@ class Server extends BaseAPI
 	    $this->request->setAction(new \ZendServerAPI\Method\ClusterAddServer($serverName, $serverUrl, $guiPassword));
 	    return $this->request->send();
 	}
+	
+	/**
+	 * PHP function for 'ClusterDisableServer' API call
+	 *
+	 * @access public
+	 * @param int $serverId The id of the server to disable
+	 * @return \ZendServerAPI\DataTypes\ServerInfo
+	 */
+	public function clusterDisableServer($serverId)
+	{
+	    $this->request->setAction(new \ZendServerAPI\Method\ClusterDisableServer($serverId));
+	    return $this->request->send();
+	}
+	
+	/**
+	 * PHP function for 'ClusterEnableServer' API call
+	 *
+	 * @access public
+	 * @param int $serverId The id of the server to enable
+	 * @return \ZendServerAPI\DataTypes\ServerInfo
+	 */
+	public function clusterEnableServer($serverId)
+	{
+	    $this->request->setAction(new \ZendServerAPI\Method\ClusterEnableServer($serverId));
+	    return $this->request->send();
+	}
+	
+	/**
+	 * PHP function for 'RestartPhp' API call
+	 *
+	 * @access public
+	 * @param array $serverIds The ids of the server to restart
+	 * @return \ZendServerAPI\DataTypes\ServerInfo
+	 */
+	public function restartPhp($serverIds = array())
+	{
+	    $this->request->setAction(new \ZendServerAPI\Method\RestartPHP($serverIds));
+	    return $this->request->send();
+	}
+	
+	/**
+	 * PHP function for 'ClusterReconfigureServer' API call
+	 *
+	 * @access public
+	 * @param int $serverId The id of the server to reconfigure
+	 * @return \ZendServerAPI\DataTypes\ServerInfo
+	 */
+	public function clusterReconfigureServer($serverId)
+	{
+	    $this->request->setAction(new \ZendServerAPI\Method\ClusterReconfigureServer($serverId));
+	    return $this->request->send();
+	}
 
 }
 

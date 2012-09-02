@@ -49,12 +49,8 @@ class MethodImplementationTest extends \PHPUnit_Framework_TestCase {
 	public function testMethods($action, $xml, $model)
 	{
 	    $this->assertEquals($action->parseResponse($xml), $model);
-	
 	}
 	
-	/**
-	 * @depends testParseResultSystemInfo
-	 */
 	public function provider()
 	{
 	    return array(
@@ -69,7 +65,7 @@ class MethodImplementationTest extends \PHPUnit_Framework_TestCase {
 	                    ClusterGetServerStatusTest::getClusterGetServerStatus(),
 	            ),
 	            array(
-	                    new ClusterDisableServer(),
+	                    new ClusterDisableServer(ClusterDisableServerTest::getParameter()),
 	                    ClusterDisableServerTest::$ClusterDisableServerResponse,
 	                    ClusterDisableServerTest::getClusterDisableServer(),
 	            ),
@@ -84,17 +80,12 @@ class MethodImplementationTest extends \PHPUnit_Framework_TestCase {
 	                    ClusterAddServerTest::getAddServerObject(),
 	            ),
 	            array(
-	                    new ClusterReconfigureServer(),
+	                    new ClusterReconfigureServer(ClusterReconfigureServerTest::getParameter()),
 	                    ClusterReconfigureServerTest::$ClusterReconfigureServerResponse,
 	                    ClusterReconfigureServerTest::getClusterReconfigureServer(),
 	            ),
 	            array(
-	                    new RestartPHP(),
-	                    RestartPHPTest::$RestartPHPResponse,
-	                    RestartPHPTest::getRestartPHP(),
-	            ),
-	            array(
-	                    new ClusterEnableServer(),
+	                    new ClusterEnableServer(ClusterEnableServerTest::getParameter()),
 	                    ClusterEnableServerTest::$ClusterEnableServerResponse,
 	                    ClusterEnableServerTest::getClusterEnableServer(),
 	            )

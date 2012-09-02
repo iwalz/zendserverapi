@@ -46,7 +46,7 @@ class Request
 	public function send($httpful = null)
 	{
 	    $link = 'http://' . $this->config->getHost() . ':' . $this->config->getPort() . $this->action->getLink();
-	    
+
 		if($this->action->getMethod() === 'GET' && !$httpful)
 		{
 		    $httpful = \Httpful\Request::get($link);

@@ -50,7 +50,7 @@ class GetSystemInfoTest extends \PHPUnit_Framework_TestCase
         </responseData>
     </zendServerAPIResponse>
 EOF;
-
+    
     public function testParseResultSystemInfo()
     {
         $action = new \ZendServerAPI\Method\GetSystemInfo();

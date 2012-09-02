@@ -32,7 +32,7 @@ class ClusterAddServerTest extends \PHPUnit_Framework_TestCase
     </zendServerAPIResponse>
     
 EOF;
-
+    
     public function testParseResult()
     {
         $action = new ClusterAddServer(self::getServerName(), self::getServerUrl(), self::getGuiPassword());

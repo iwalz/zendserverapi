@@ -33,12 +33,17 @@ EOF;
     
     public function testParseResult()
     {
-        $action = new ClusterEnableServer();
+        $action = new ClusterEnableServer(self::getParameter());
         $clusterEnableServer = $action->parseResponse(self::$ClusterEnableServerResponse);
         
         $testClusterEnableServer = self::getClusterEnableServer();
         
         $this->assertEquals($testClusterEnableServer, $clusterEnableServer);
+    }
+    
+    public static function getParameter()
+    {
+        return 5;
     }
     
     public static function getClusterEnableServer()
@@ -53,5 +58,18 @@ EOF;
         self::$ClusterEnableServerObject = $testClusterEnableServer;
         
         return self::$ClusterEnableServerObject;
+    }
+    
+    public function testLink()
+    {
+        $action = new \ZendServerAPI\Method\ClusterEnableServer(self::getParameter());
+    
+        $this->assertEquals("/ZendServerManager/Api/clusterEnableServer", $action->getLink());
+    }
+    
+    public function testRequestBody()
+    {
+        $action = new \ZendServerAPI\Method\ClusterEnableServer(self::getParameter());
+        $this->assertEquals('serverId=5', $action->getContent());
     }
 }

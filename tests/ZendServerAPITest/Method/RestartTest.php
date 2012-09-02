@@ -2,17 +2,14 @@
 namespace ZendServerAPITest\Method;
 
 use ZendServerAPI\DataTypes\MessageList;
-
 use ZendServerAPI\DataTypes\ServerInfo;
-
 use ZendServerAPI\DataTypes\ServersList;
-
 use ZendServerAPI\Method\RestartPHP;
 
 /**
  * test case.
  */
-class RestartPHPTest extends \PHPUnit_Framework_TestCase
+class RestartTest extends \PHPUnit_Framework_TestCase
 {
     public static $RestartPHPObject = null;
     public static $RestartPHPResponse = <<<EOF
@@ -49,15 +46,7 @@ class RestartPHPTest extends \PHPUnit_Framework_TestCase
     </zendServerAPIResponse>
     
 EOF;
-    
-    public function testParseResult()
-    {
-        $action = new RestartPHP();
-        $restartPHP = $action->parseResponse(self::$RestartPHPResponse);
-        
-        $testRestartPHP = self::getRestartPHP();
-        
-    }
+
     
     public static function getRestartPHP()
     {
@@ -69,27 +58,46 @@ EOF;
         $server1->setAddress("https://www-01.local:10082/ZendServer");
         $server1->setStatus("restarting");
         $server1->setMessageList(new MessageList());
-        
+    
         $server2 = new ServerInfo();
         $server2->setId(2);
         $server2->setName("www-02");
         $server2->setAddress("https://www-02.local:10082/ZendServer");
         $server2->setStatus("restarting");
         $server2->setMessageList(new MessageList());
-        
+    
         $server3 = new ServerInfo();
         $server3->setId(3);
         $server3->setName("www-03");
         $server3->setAddress("https://www-03.local:10082/ZendServer");
         $server3->setStatus("OK");
         $server3->setMessageList(new MessageList());
-        
+    
         $testRestartPHP->addServerInfo($server1);
         $testRestartPHP->addServerInfo($server2);
         $testRestartPHP->addServerInfo($server3);
-        
+    
         self::$RestartPHPObject = $testRestartPHP;
-        
+    
         return self::$RestartPHPObject;
     }
+    
+    public static function getParameter()
+    {
+        return array(1,2);
+    }
+
+    public function testLink()
+    {
+        $action = new \ZendServerAPI\Method\RestartPHP(self::getParameter());
+    
+        $this->assertEquals("/ZendServerManager/Api/restartPhp", $action->getLink());
+    }
+    
+    public function testContent()
+    {
+        $action = new \ZendServerAPI\Method\RestartPHP(self::getParameter());
+        $this->assertEquals("servers%5B0%5D=1&servers%5B1%5D=2", $action->getContent());
+    }
 }
+

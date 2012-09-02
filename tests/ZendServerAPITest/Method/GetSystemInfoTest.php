@@ -1,5 +1,5 @@
 <?php
-namespace ZendServerAPITest;
+namespace ZendServerAPITest\Method;
 
 use ZendServerAPI\DataTypes\SystemInfo,
     ZendServerAPI\DataTypes\LicenseInfo,

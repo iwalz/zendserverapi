@@ -1,5 +1,7 @@
 <?php
-namespace ZendServerAPITest;
+namespace ZendServerAPITest\Method;
+
+use ZendServerAPI\Server;
 
 use ZendServerAPI\DataTypes\MessageList;
 
@@ -69,6 +71,22 @@ EOF;
     public static function getGuiPassword()
     {
         return 'somepassword';
+    }
+    
+    public function testRequestOfAction()
+    {
+        $requestStub = $this->getMock('\ZendServerAPI\Request', array('setAction', 'send'));
+        $requestStub->expects($this->once())->method('setAction')->with(new ClusterAddServer(self::getServerName(), self::getServerUrl(), self::getGuiPassword()));
+        $requestStub->expects($this->once())->method('send');
+        
+        $server = new Server("documentation");
+        $request = $server->getRequest();
+        $config = $request->getConfig();
+        
+        $requestStub->setConfig($config);
+        $server->setRequest($requestStub);
+        
+        $server->clusterAddServer(self::getServerName(), self::getServerUrl(), self::getGuiPassword());
     }
 
 }

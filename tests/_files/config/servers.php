@@ -57,5 +57,12 @@ return array(
         "apiName" => "api",
         "host" => "127.0.0.1",
         "port" => "11111"
+    ),
+    "documentation" => array(
+        "clusterManager" => true,
+        "fullApiKey" => "9dc7f8c5ac43bb2ab36120861b4aeda8f9bb6c521e124360fd5821ef279fd9c7",
+        "apiName" => "angel.eyes",
+        "host" => "zscm.local",
+        "port" => "10081"
     )
 );

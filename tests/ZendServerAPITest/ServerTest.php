@@ -18,71 +18,6 @@ use ZendServerAPI\Server,
  */
 class ServerTest extends \PHPUnit_Framework_TestCase {
 	
-	/**
-	 * @dataProvider provider
-	 */
-	public function testMethods($action, $xml, $model)
-	{
-		/*$requestStub = $this->getMock('\ZendServerAPI\Request', array('send', 'setAction'));
-		$requestStub->expects($this->once())->method('setAction')->with($action);
-		$requestStub->expects($this->once())->method('send')->will($this->returnValue($model));
-		
-		$server = new Server($requestStub);
-		$server->getSystemInfo();*/
-		
- 		$this->assertEquals($action->parseResponse($xml), $model);
-		
-	}
-	
-	/**
-	 * @depends testParseResultSystemInfo
-	 */
-	public function provider()
-	{
-	    return array(
-	        array(
-	            new GetSystemInfo(),
-	            GetSystemInfoTest::$GetSystemInfoResponse,
-	            GetSystemInfoTest::getSystemInfo()
-	        ),
-	        array(
-	            new ClusterGetServerStatus(ClusterGetServerStatusTest::getParameters()),
-	            ClusterGetServerStatusTest::$ClusterGetServerStatusResponse,
-	            ClusterGetServerStatusTest::getClusterGetServerStatus(),
-            ),
-            array(
-                new ClusterDisableServer(),
-                ClusterDisableServerTest::$ClusterDisableServerResponse,
-                ClusterDisableServerTest::getClusterDisableServer(),
-            ),
-            array(
-                new ClusterRemoveServer(ClusterRemoveServerTest::getParameter()),
-                ClusterRemoveServerTest::$ClusterRemoveServerResponse,
-                ClusterRemoveServerTest::getClusterRemoveServer(),
-            ),
-            array(
-                new ClusterAddServer(ClusterAddServerTest::getServerName(), ClusterAddServerTest::getServerUrl(), ClusterAddServerTest::getGuiPassword()),
-                ClusterAddServerTest::$ClusterAddServerResponse,
-                ClusterAddServerTest::getAddServerObject(),
-            ),
-            array(
-                new ClusterReconfigureServer(),
-                ClusterReconfigureServerTest::$ClusterReconfigureServerResponse,
-                ClusterReconfigureServerTest::getClusterReconfigureServer(),
-            ),
-            array(
-                new RestartPHP(),
-                RestartPHPTest::$RestartPHPResponse,
-                RestartPHPTest::getRestartPHP(),
-            ),
-            array(
-                new ClusterEnableServer(),
-                ClusterEnableServerTest::$ClusterEnableServerResponse,
-                ClusterEnableServerTest::getClusterEnableServer(),
-            )
-        );
-	}
-	
 	public function testConstructorInjection()
 	{
 	    $tmpRequest = new Request();
@@ -103,7 +38,7 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	    $this->assertEquals($server1->getRequest(), $server2->getRequest());
 	}
 	
-	public function testAPIObjectInDI()
+	public function testAPIObject()
 	{
 	    $server1 = new Server;
 	    $request1 = $server1->getRequest();
@@ -115,7 +50,7 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	    $this->assertEquals($request1->getConfig()->getApiKey(),     $request2->getConfig()->getApiKey());
 	}
 	
-	public function testConfigObjectInDI()
+	public function testConfigObject()
 	{
 	    $server1 = new Server;
 	    $request1 = $server1->getRequest();
@@ -155,5 +90,9 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	    $this->assertEquals($apiKey2->getName(), 'apikey');
 	}
 	
+	public function testGetSystemInfo()
+	{
+	    
+	}
 }
 

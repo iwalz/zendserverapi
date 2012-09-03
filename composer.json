@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "nategood/httpful": "*"
+        "guzzle/guzzle": "*"
     },
     "minimum-stability": "dev",
     "autoload": {

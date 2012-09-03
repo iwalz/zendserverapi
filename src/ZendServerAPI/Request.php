@@ -1,6 +1,8 @@
 <?php
 namespace ZendServerAPI;
 
+use Guzzle\Service\Client;
+
 class Request 
 {
     /**
@@ -92,47 +94,62 @@ class Request
 	/**
 	 * This method performs the real REST call
 	 * 
-	 * @param \Httpful\Request $httpful
+	 * @param \Guzzle\Service\Client $client
 	 * @throws \ZendServerAPI\Exception\ClientSide
 	 * @throws \ZendServerAPI\Exception\ServerSide
 	 * @throws \Exception
 	 */
-	public function send($httpful = null)
+	public function send($client = null)
 	{
 	    $link = 'http://' . $this->config->getHost() . ':' . $this->config->getPort() . $this->action->getLink();
 
-		if($this->action->getMethod() === 'GET' && !$httpful)
+	    $client = new Client('http://{host}:{port}', array('host' => $this->config->getHost(), 'port' => $this->config->getPort()));
+
+		if($this->action->getMethod() === 'GET')
 		{
-		    $httpful = \Httpful\Request::get($link);
+		    $requests = $client->get(
+                $this->action->getLink(),           
+	            array(
+	                    'X-Zend-Signature' => $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()),
+	                    'Accept' => 'application/vnd.zend.serverapi+xml;version=1.0',
+	                    'lookInCupboard' => 'true',
+	                    'Date' => $this->getDate(),
+	                    'User-Agent' => $this->userAgent
+	            )
+            );
 		}
 		elseif($this->action->getMethod() === 'POST')
 		{
-		    if(!$httpful)
-		        $httpful = \Httpful\Request::post($link);
 		    $content = $this->action->getContent();
-		    $httpful->addHeader("Content-length", strlen($content));
-		    $httpful->addHeader("Content-type", "application/x-www-form-urlencoded");
-		    $httpful->body($content);
+		    $requests = $client->post(
+		            $this->action->getLink(),
+		            array(
+		                    'X-Zend-Signature' => $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()),
+		                    'Accept' => 'application/vnd.zend.serverapi+xml;version=1.0',
+		                    'lookInCupboard' => 'true',
+		                    'Date' => $this->getDate(),
+		                    'User-Agent' => $this->userAgent,
+		                    'Content-length' => strlen($content),
+		                    'Content-type' => 'application/x-www-form-urlencoded'
+		            ),
+		            $content
+		    );
 		}
 		
-		$httpful->addHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
-		$httpful->addHeader('Accept', 'application/vnd.zend.serverapi+xml;version=1.0');
-		$httpful->addHeader('lookInCupboard', 'true');
-		$httpful->addHeader('Date', $this->getDate());
-		$httpful->addHeader("User-Agent", $this->userAgent);
-		$response = $httpful->send();
-		if($response->code === 200 || $response->code === 202)
-		{
-		    return $this->getAction()->parseResponse($response);
-			
-		}
-		elseif($response->code >= 400 && $response->code <= 499)
-			throw new Exception\ClientSide($response);
-		elseif($response->code >= 500 && $response->code <= 599)
-		    throw new Exception\ServerSide($response);
-		else
-		    throw new \Exception($response);
-		
+        try {
+    		$response = $client->send($requests);
+        } catch(\Guzzle\Http\Exception\BadResponseException $exception) {
+            
+            if($response->getStatusCode() >= 400 && $response->getStatusCode() <= 499)
+                throw new Exception\ClientSide($exception->getMessage());
+            elseif($response->code >= 500 && $response->code <= 599)
+                throw new Exception\ServerSide($exception->getMessage());
+            else
+                throw new \Exception($response->getBody());
+            
+        }
+
+        return $this->getAction()->parseResponse($response->getBody());
 	}
 	
 	/**

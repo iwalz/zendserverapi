@@ -7,15 +7,18 @@ class ClientSide extends \Exception
     /**
      * Constructor for clientside exception
      * 
-     * @param string $error
+     * @param string error message
+     * @param int error code
      */
-	public function __construct($error)
+	public function __construct($error, $code = null)
 	{
 		$xml = simplexml_load_string($error);
 		$errorCode = (string)$xml->errorData->errorCode;
 		$errorMessage = (string)$xml->errorData->errorMessage;
 		
-		parent::__construct($errorCode . ': ' . $errorMessage, 400);
+		if($code === null)
+		    $code = 400;
+		parent::__construct($errorCode . ': ' . $errorMessage, $code);
 	}
 }
 

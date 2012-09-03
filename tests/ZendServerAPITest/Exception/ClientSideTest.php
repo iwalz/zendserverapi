@@ -7,14 +7,7 @@ use ZendServerAPI\Exception\ClientSide;
  */
 class ClientSideTest extends \PHPUnit_Framework_TestCase {
 
-    /**
-     * @expectedException \ZendServerAPI\Exception\ClientSide
-     * @expectedExceptionCode 400
-     * @expectedExceptionMessage authError: Incorrect signature 
-     */
-	public function testXMLParsing()
-	{
-		$xml = <<<EOF
+	public static $Response = <<<EOF
             <zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.0">
 	            <requestData>
 		            <apiKeyName><![CDATA[api]]></apiKeyName>
@@ -24,10 +17,19 @@ class ClientSideTest extends \PHPUnit_Framework_TestCase {
 	                <errorCode>authError</errorCode>
 	                <errorMessage><![CDATA[Incorrect signature]]></errorMessage>
                 </errorData>
-            </zendServerAPIResponse>		
+            </zendServerAPIResponse>
 EOF;
-		throw new ClientSide($xml);
+ 
+    /**
+     * @expectedException \ZendServerAPI\Exception\ClientSide
+     * @expectedExceptionCode 400
+     * @expectedExceptionMessage authError: Incorrect signature 
+     */
+	public function testXMLParsing()
+	{
+		throw new ClientSide(self::$Response);
 	}
+	
 	
 }
 

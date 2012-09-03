@@ -8,14 +8,7 @@ use ZendServerAPI\Exception\ServerSide;
  */
 class ServerSideTest extends \PHPUnit_Framework_TestCase {
 
-    /**
-     * @expectedException \ZendServerAPI\Exception\ServerSide
-     * @expectedExceptionCode 500
-     * @expectedExceptionMessage serverNotLicensed: Zend Server Cluster Manager is not licensed.
-     */
-	public function testXMLParsing()
-	{
-		$xml = <<<EOF
+    public static $Response = <<<EOF
             <zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.0">
 	            <requestData>
 		            <apiKeyName><![CDATA[api]]></apiKeyName>
@@ -27,7 +20,15 @@ class ServerSideTest extends \PHPUnit_Framework_TestCase {
                 </errorData>
 		    </zendServerAPIResponse>		
 EOF;
-		throw new ServerSide($xml);
+    
+    /**
+     * @expectedException \ZendServerAPI\Exception\ServerSide
+     * @expectedExceptionCode 500
+     * @expectedExceptionMessage serverNotLicensed: Zend Server Cluster Manager is not licensed.
+     */
+	public function testXMLParsing()
+	{
+		throw new ServerSide(self::$Response);
 	}
 }
 

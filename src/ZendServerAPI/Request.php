@@ -20,6 +20,11 @@ class Request
 	 * @var \ZendServerAPI\Config
 	 */
 	private $config = null;
+	/**
+	 * Client to use for real http requests 
+	 * @var \Guzzle\Http\Client
+	 */
+	private $client = null;
 	
 	/**
 	 * Constructor for the request class
@@ -92,25 +97,52 @@ class Request
 	}
 	
 	/**
+	 * Get HTTP client
+	 * 
+	 * @return \Guzzle\Http\Client
+	 */
+	public function getClient()
+	{
+	    return $this->client;
+	}
+	
+	/**
+	 * Set the client for requests
+	 * 
+	 * @param \Guzzle\Http\Client $client
+	 */
+	public function setClient(\Guzzle\Http\Client $client)
+	{
+	    $this->client = $client;
+	}
+	
+	/**
 	 * This method performs the real REST call
 	 * 
-	 * @param \Guzzle\Service\Client $client
 	 * @throws \ZendServerAPI\Exception\ClientSide
 	 * @throws \ZendServerAPI\Exception\ServerSide
 	 * @throws \Exception
 	 */
-	public function send($client = null)
+	public function send()
 	{
-	    $client = new Client('http://{host}:{port}', array('host' => $this->config->getHost(), 'port' => $this->config->getPort()));
-
+	    if(!$this->client)
+	    {
+    	    $this->client = new Client(
+    	            'http://{host}:{port}', 
+    	            array(
+    	                    'host' => $this->config->getHost(), 
+    	                    'port' => $this->config->getPort())
+            );
+	    }
+    	    
 		if($this->action->getMethod() === 'GET')
 		{
-		    $requests = $client->get($this->action->getLink());
+		    $requests = $this->client->get($this->action->getLink());
 		}
 		elseif($this->action->getMethod() === 'POST')
 		{
 		    $content = $this->action->getContent();
-		    $requests = $client->post(
+		    $requests = $this->client->post(
 		            $this->action->getLink(),
 		            array(
 		                    'Content-length' => strlen($content),
@@ -127,15 +159,15 @@ class Request
         $requests->setHeader('User-Agent', $this->userAgent);
 		
         try {
-    		$response = $client->send($requests);
+    		$response = $this->client->send($requests);
         } catch(\Guzzle\Http\Exception\BadResponseException $exception) {
             
             if($exception->getCode() >= 400 && $exception->getCode() <= 499)
-                throw new Exception\ClientSide($exception->getMessage());
+                throw new Exception\ClientSide($exception->getMessage(), $exception->getCode());
             elseif($exception->getCode() >= 500 && $exception->getCode() <= 599)
-                throw new Exception\ServerSide($exception->getMessage());
+                throw new Exception\ServerSide($exception->getMessage(), $exception->getCode());
             else
-                throw new \Exception($exception->getMessage());
+                throw new \InvalidArgumentException($exception->getMessage(), $exception->getCode());
             
         }
         

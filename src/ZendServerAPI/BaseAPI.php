@@ -37,6 +37,16 @@ class BaseAPI
     {
         $this->request = $request;
     }
+    
+    /**
+     * Set the client. Most likly for testing
+     * 
+     * @param \Guzzle\Http\Client $client
+     */
+    public function setClient(\Guzzle\Http\Client $client)
+    {
+        $this->request->setClient($client);
+    }
 }
 
 ?>

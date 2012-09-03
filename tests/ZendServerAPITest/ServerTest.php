@@ -1,6 +1,20 @@
 <?php
 namespace ZendServerAPITest;
 
+use ZendServerAPITest\Method\ClusterRemoveServerTest;
+
+use ZendServerAPITest\Method\ClusterGetServerStatusTest;
+
+use ZendServerAPITest\Method\ClusterReconfigureServerTest;
+
+use ZendServerAPITest\Method\RestartTest;
+
+use ZendServerAPITest\Method\ClusterEnableServerTest;
+
+use ZendServerAPITest\Method\ClusterDisableServerTest;
+
+use ZendServerAPITest\Method\GetSystemInfoTest;
+
 use ZendServerAPI\Method\ClusterEnableServer,
     ZendServerAPI\Method\RestartPHP,
     ZendServerAPI\Method\ClusterReconfigureServer,
@@ -92,7 +106,93 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testGetSystemInfo()
 	{
+	    $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200));
+	    $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(GetSystemInfoTest::$GetSystemInfoResponse));
 	    
+	    $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
+	    $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
+	    
+	    $server = new Server("example62");
+	    $server->setClient($clientStub);
+	    $this->assertEquals(GetSystemInfoTest::getSystemInfo(), $server->getSystemInfo());
+	}
+	
+	public function testClusterDisableServer()
+	{
+	    $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200));
+	    $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(ClusterDisableServerTest::$ClusterDisableServerResponse));
+	     
+	    $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
+	    $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
+	     
+	    $server = new Server("example62");
+	    $server->setClient($clientStub);
+	    $this->assertEquals(ClusterDisableServerTest::getClusterDisableServer(), $server->clusterDisableServer(ClusterDisableServerTest::getParameter()));
+	}
+	
+	public function testClusterEnableServer()
+	{
+	    $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200));
+	    $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(ClusterEnableServerTest::$ClusterEnableServerResponse));
+	
+	    $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
+	    $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
+	
+	    $server = new Server("example62");
+	    $server->setClient($clientStub);
+	    $this->assertEquals(ClusterEnableServerTest::getClusterEnableServer(), $server->clusterEnableServer(ClusterEnableServerTest::getParameter()));
+	}
+	
+	public function testRestartPhp()
+	{
+	    $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200));
+	    $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(RestartTest::$RestartPHPResponse));
+	
+	    $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
+	    $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
+	
+	    $server = new Server("example62");
+	    $server->setClient($clientStub);
+	    $this->assertEquals(RestartTest::getRestartPHP(), $server->restartPhp(RestartTest::getParameter()));
+	}
+	
+	public function testClusterReconfigureServer()
+	{
+	    $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200));
+	    $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(ClusterReconfigureServerTest::$ClusterReconfigureServerResponse));
+	
+	    $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
+	    $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
+	
+	    $server = new Server("example62");
+	    $server->setClient($clientStub);
+	    $this->assertEquals(ClusterReconfigureServerTest::getClusterReconfigureServer(), $server->clusterReconfigureServer(ClusterReconfigureServerTest::getParameter()));
+	}
+	
+	public function testClusterGetServerStatus()
+	{
+	    $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200));
+	    $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(ClusterGetServerStatusTest::$ClusterGetServerStatusResponse));
+	
+	    $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
+	    $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
+	
+	    $server = new Server("example62");
+	    $server->setClient($clientStub);
+	    $this->assertEquals(ClusterGetServerStatusTest::getClusterGetServerStatus(), $server->clusterGetServerStatus(ClusterGetServerStatusTest::getParameters()));
+	}
+	
+	public function testClusterRemoveServer()
+	{
+	    $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200));
+	    $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(ClusterRemoveServerTest::$ClusterRemoveServerResponse));
+	
+	    $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
+	    $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
+	
+	    $server = new Server("example62");
+	    $server->setClient($clientStub);
+	    $this->assertEquals(ClusterRemoveServerTest::getClusterRemoveServer(), $server->clusterRemoveServer(ClusterRemoveServerTest::getParameter()));
 	}
 }
 

@@ -106,7 +106,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
 	    $action = new \ZendServerAPI\Method\ClusterAddServer("zendserver2", 'http://127.1.1.1:10081/ZendServer', 'foo');
 	    $request->setAction($action);
 	     
-	    $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200, array(), GetSystemInfoTest::$GetSystemInfoResponse));
+	    $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200, array(), ClusterAddServerTest::$ClusterAddServerResponse));
 	    $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(ClusterAddServerTest::$ClusterAddServerResponse));
 	
 	    $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));

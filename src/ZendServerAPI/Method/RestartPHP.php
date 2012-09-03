@@ -3,34 +3,46 @@ namespace ZendServerAPI\Method;
 
 class RestartPHP extends \ZendServerAPI\Method
 {
-    private $paramter = null;
+    /**
+     * ServerIds to restart
+     * @var array
+     */
+    private $servers = null;
     
+    /**
+     * Constructor for RestartPhp method
+     * 
+     * @param array $servers ServerIds to restart
+     */
     public function __construct(array $servers = array())
     {
-        $this->setParameter($servers);
+        $this->servers = $servers;
         parent::__construct();
     }
     
-    private function setParameter($parameter)
-    {
-        $this->parameter = $parameter;
-    }
-    
+    /**
+     * @see \ZendServerAPI\Method::configure()
+     */
     function configure ()
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/restartPhp');
         $this->setParser(new \ZendServerAPI\Mapper\ServersList());
     }
-    
+
+    /**
+     * Content for POST request
+     * 
+     * @return string
+     */
     public function getContent()
     {
         $content = "";
-        $parameterCount = count($this->parameter);
+        $parameterCount = count($this->servers);
     
-        foreach($this->parameter as $index => $parameter)
+        foreach($this->servers as $index => $server)
         {
-            $content .= urlencode("servers[".$index."]")."=".$parameter;
+            $content .= urlencode("servers[".$index."]")."=".$server;
             if($index+1 < $parameterCount)
                 $content .= "&";
         }

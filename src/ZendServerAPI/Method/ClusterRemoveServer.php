@@ -3,29 +3,41 @@ namespace ZendServerAPI\Method;
 
 class ClusterRemoveServer extends \ZendServerAPI\Method
 {
-    private $paramter = null;
+    /**
+     * ServerId to remove
+     * @var int
+     */
+    private $server = null;
     
+    /**
+     * Constructor for ClusterRemoveServer method
+     * 
+     * @param int $server ServerId to remove
+     */
     public function __construct($server)
     {
-        $this->setParameter($server);
+        $this->server = $server;
         parent::__construct();
     }
     
+    /**
+     * @see \ZendServerAPI\Method::configure()
+     */
     public function configure ()
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/clusterRemoveServer');
         $this->setParser(new \ZendServerAPI\Mapper\ServerInfo());
     }
-    
-    private function setParameter($parameter)
-    {
-        $this->parameter = $parameter;
-    }
-    
+
+    /**
+     * Content for POST request
+     * 
+     * @return string
+     */
     public function getContent()
     {
-        return ("serverId=".$this->parameter);
+        return ("serverId=".$this->server);
     }
 }
 

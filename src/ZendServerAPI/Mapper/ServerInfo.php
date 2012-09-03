@@ -6,6 +6,9 @@ use \ZendServerAPI\DataTypes\MessageList,
 
 class ServerInfo extends \ZendServerAPI\Mapper\Mapper
 {
+    /**
+     * @see \ZendServerAPI\Mapper\Mapper::parse()
+     */
     public function parse($xml)
     {
         $xml = simplexml_load_string($xml);

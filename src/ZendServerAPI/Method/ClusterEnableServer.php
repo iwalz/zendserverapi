@@ -3,14 +3,26 @@ namespace ZendServerAPI\Method;
 
 class ClusterEnableServer extends \ZendServerAPI\Method
 {
-    private $paramter = null;
+    /**
+     * Id of server to enable
+     * @var int
+     */
+    private $serverId = null;
     
-    public function __construct($server)
+    /**
+     * Constructor of ClusterEnableServer method
+     * 
+     * @param int $serverId
+     */
+    public function __construct($serverId)
     {
-        $this->setParameter($server);
+        $this->serverId = $serverId;
         parent::__construct();
     }
     
+    /**
+     * @see \ZendServerAPI\Method::configure()
+     */
     function configure ()
     {
         $this->setMethod('POST');
@@ -18,14 +30,14 @@ class ClusterEnableServer extends \ZendServerAPI\Method
         $this->setParser(new \ZendServerAPI\Mapper\ServerInfo());
     }
 
-    private function setParameter($parameter)
-    {
-        $this->parameter = $parameter;
-    }
-    
+    /**
+     * Content for POST request
+     * 
+     * @return string
+     */
     public function getContent()
     {
-        return ("serverId=".$this->parameter);
+        return ("serverId=".$this->serverId);
     }
 }
 

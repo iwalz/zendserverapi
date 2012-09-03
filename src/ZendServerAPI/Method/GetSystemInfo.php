@@ -7,6 +7,9 @@ use ZendServerAPI\DataTypes\LicenseInfo,
 
 class GetSystemInfo extends \ZendServerAPI\Method 
 {
+    /**
+     * @see \ZendServerAPI\Method::configure()
+     */
 	public function configure()
 	{
 		$this->setMethod('GET');

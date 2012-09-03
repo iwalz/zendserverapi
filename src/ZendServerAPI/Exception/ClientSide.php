@@ -2,7 +2,13 @@
 
 namespace ZendServerAPI\Exception;
 
-class ClientSide extends \Exception {
+class ClientSide extends \Exception 
+{
+    /**
+     * Constructor for clientside exception
+     * 
+     * @param string $error
+     */
 	public function __construct($error)
 	{
 		$xml = simplexml_load_string($error);

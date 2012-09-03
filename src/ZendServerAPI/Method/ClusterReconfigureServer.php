@@ -3,24 +3,36 @@ namespace ZendServerAPI\Method;
 
 class ClusterReconfigureServer extends \ZendServerAPI\Method
 {
-    private $parameter = null;
+    /**
+     * ServerId for reconfiguration
+     * @var int
+     */
+    private $server = null;
     
+    /**
+     * Constructor for ClusterReconfigureServer method
+     * 
+     * @param int $server ServerId to reconfigure
+     */
     public function __construct($server)
     {
-        $this->setParameter($server);
+        $this->server = $server;
         parent::__construct();
     }
     
-    private function setParameter($parameter)
-    {
-        $this->parameter = $parameter;
-    }
-    
+    /**
+     * Content for POST request
+     * 
+     * @return string
+     */
     public function getContent()
     {
-        return ("serverId=".$this->parameter);
+        return ("serverId=".$this->server);
     }
     
+    /**
+     * @see \ZendServerAPI\Method::configure()
+     */
     function configure ()
     {
         $this->setMethod('POST');

@@ -6,40 +6,57 @@ use ZendServerAPI\DataTypes\ServersList,
 
 class ClusterGetServerStatus  extends \ZendServerAPI\Method
 {
-    private $paramters = null;
+    /**
+     * Servers to get the status for
+     * @var array
+     */
+    private $servers = null;
     
+    /**
+     * Constructor for ClusterGetServerStatus
+     * 
+     * @param array $servers Default returns all servers of the cluster
+     */
     public function __construct(array $servers = array())
     {
-        $this->setParameters($servers);
+        $this->servers = $servers;
         parent::__construct();
     }
     
+    /**
+     * @see \ZendServerAPI\Method::configure()
+     */
     public function configure()
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/clusterGetServerStatus');
         $this->setParser(new \ZendServerAPI\Mapper\ServersList());
     }
-    
+
+    /**
+     * Set the list of server ids
+     * 
+     * @param array $servers
+     */
     public function setParameters(array $servers)
     {
-        if(0 === count($servers))
-            throw new \InvalidArgumentException("No given arguments");
-        else
-            $this->parameters = $servers;
+        $this->servers = $servers;
     }
     
+    /**
+     * @see \ZendServerAPI\Method::getLink()
+     */
     public function getLink()
     {
         $link = $this->getFunctionPath();
-        $parameterCount = count($this->parameters); 
+        $parameterCount = count($this->servers); 
         
         if($parameterCount > 0)
             $link .= "?";
         
-        foreach($this->parameters as $index => $parameter)
+        foreach($this->servers as $index => $server)
         {
-            $link .= urlencode("servers[".$index."]")."=".$parameter;
+            $link .= urlencode("servers[".$index."]")."=".$server;
             if($index+1 < $parameterCount)
                 $link .= "&";
         }

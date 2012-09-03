@@ -7,6 +7,9 @@ use ZendServerAPI\DataTypes\ServerInfo as ServerInfoData,
 
 class ServersList extends Mapper
 {
+    /**
+     * @see \ZendServerAPI\Mapper\Mapper::parse()
+     */
     public function parse($xml)
     {
         $xml = simplexml_load_string($xml);

@@ -7,6 +7,9 @@ use \ZendServerAPI\DataTypes\LicenseInfo,
 
 class SystemInfo extends Mapper
 {
+    /**
+     * @see \ZendServerAPI\Mapper\Mapper::parse()
+     */
     public function parse($xml)
     {
         $xml = simplexml_load_string($xml);

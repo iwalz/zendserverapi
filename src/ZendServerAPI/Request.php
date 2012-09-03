@@ -3,46 +3,100 @@ namespace ZendServerAPI;
 
 class Request 
 {
+    /**
+     * Method class for the request
+     * @var \ZendServerAPI\Method
+     */
 	private $action = null;
+	/**
+	 * Useragent for the request
+	 * @var string
+	 */
 	private $userAgent = 'HTTPFUL';
+	/**
+	 * Config for the connection
+	 * @var \ZendServerAPI\Config
+	 */
 	private $config = null;
 	
+	/**
+	 * Constructor for the request class
+	 */
 	public function __construct()
 	{
 
 	}
 	
-	public function setAction($action)
+	/**
+	 * Set method implementation object
+	 * 
+	 * @param \ZendServerAPI\Method $action
+	 * @return \ZendServerAPI\Request
+	 */
+	public function setAction(\ZendServerAPI\Method $action)
 	{
 		$this->action = $action;
 		return $this;
 	}
 	
+	/**
+	 * Set the user agent used by the request
+	 * 
+	 * @param string $userAgent
+	 */
 	public function setUserAgent($userAgent)
 	{
 	    $this->userAgent = $userAgent;
 	}
 	
+	/**
+	 * Get the used config object
+	 * 
+	 * @param \ZendServerAPI\Config $config
+	 */
 	public function setConfig(\ZendServerAPI\Config $config)
 	{
 		$this->config = $config;
 	}
 	
+	/**
+	 * Return the current action object
+	 * 
+	 * @return \ZendServerAPI\Method
+	 */
 	public function getAction()
 	{
 		return $this->action;
 	}
 	
+	/**
+	 * Returns the user agent 
+	 * 
+	 * @return string
+	 */
 	public function getUserAgent()
 	{
 	    return $this->userAgent;
 	}
 	
+	/**
+	 * Returns the currently used config
+	 * 
+	 * @return \ZendServerAPI\Config
+	 */
 	public function getConfig()
 	{
 		return $this->config;
 	}
 	
+	/**
+	 * This method performs the real REST call
+	 * 
+	 * @param \Httpful\Request $httpful
+	 * @throws \ZendServerAPI\Exception\ClientSide
+	 * @throws \ZendServerAPI\Exception\ServerSide
+	 * @throws \Exception
+	 */
 	public function send($httpful = null)
 	{
 	    $link = 'http://' . $this->config->getHost() . ':' . $this->config->getPort() . $this->action->getLink();
@@ -81,6 +135,11 @@ class Request
 		
 	}
 	
+	/**
+	 * Get a special formatted date string, needed by the server api
+	 * 
+	 * @return string
+	 */
 	private function getDate()
 	{
 		$date = gmdate('D, d M Y H:i:s e');
@@ -89,6 +148,12 @@ class Request
 		return $date;
 	}
 	
+	/**
+	 * Calculate the request signature used for authentification
+	 * 
+	 * @param string $date
+	 * @return string
+	 */
 	private function generateRequestSignature($date)
 	{
 		$data = $this->config->getHost() . ":".$this->config->getPort().":" .

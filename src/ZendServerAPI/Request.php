@@ -101,22 +101,11 @@ class Request
 	 */
 	public function send($client = null)
 	{
-	    $link = 'http://' . $this->config->getHost() . ':' . $this->config->getPort() . $this->action->getLink();
-
 	    $client = new Client('http://{host}:{port}', array('host' => $this->config->getHost(), 'port' => $this->config->getPort()));
 
 		if($this->action->getMethod() === 'GET')
 		{
-		    $requests = $client->get(
-                $this->action->getLink(),           
-	            array(
-	                    'X-Zend-Signature' => $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()),
-	                    'Accept' => 'application/vnd.zend.serverapi+xml;version=1.0',
-	                    'lookInCupboard' => 'true',
-	                    'Date' => $this->getDate(),
-	                    'User-Agent' => $this->userAgent
-	            )
-            );
+		    $requests = $client->get($this->action->getLink());
 		}
 		elseif($this->action->getMethod() === 'POST')
 		{
@@ -124,17 +113,18 @@ class Request
 		    $requests = $client->post(
 		            $this->action->getLink(),
 		            array(
-		                    'X-Zend-Signature' => $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()),
-		                    'Accept' => 'application/vnd.zend.serverapi+xml;version=1.0',
-		                    'lookInCupboard' => 'true',
-		                    'Date' => $this->getDate(),
-		                    'User-Agent' => $this->userAgent,
 		                    'Content-length' => strlen($content),
 		                    'Content-type' => 'application/x-www-form-urlencoded'
 		            ),
 		            $content
 		    );
 		}
+		
+		$requests->setHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
+        $requests->setHeader('Accept', 'application/vnd.zend.serverapi+xml;version=1.0');
+        $requests->setHeader('lookInCupboard', 'true');
+        $requests->setHeader('Date', $this->getDate());
+        $requests->setHeader('User-Agent', $this->userAgent);
 		
         try {
     		$response = $client->send($requests);

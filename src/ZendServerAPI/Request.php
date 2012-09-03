@@ -140,15 +140,15 @@ class Request
     		$response = $client->send($requests);
         } catch(\Guzzle\Http\Exception\BadResponseException $exception) {
             
-            if($response->getStatusCode() >= 400 && $response->getStatusCode() <= 499)
+            if($exception->getCode() >= 400 && $exception->getCode() <= 499)
                 throw new Exception\ClientSide($exception->getMessage());
-            elseif($response->code >= 500 && $response->code <= 599)
+            elseif($exception->getCode() >= 500 && $exception->getCode() <= 599)
                 throw new Exception\ServerSide($exception->getMessage());
             else
-                throw new \Exception($response->getBody());
+                throw new \Exception($exception->getMessage());
             
         }
-
+        
         return $this->getAction()->parseResponse($response->getBody());
 	}
 	

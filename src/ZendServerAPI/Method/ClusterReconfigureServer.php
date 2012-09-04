@@ -8,15 +8,22 @@ class ClusterReconfigureServer extends \ZendServerAPI\Method
      * @var int
      */
     private $server = null;
+    /**
+     * Restart server after action
+     * @var
+     */
+    private $doRestart = null;
     
     /**
      * Constructor for ClusterReconfigureServer method
      * 
      * @param int $server ServerId to reconfigure
+     * @param boolean restart server after action
      */
-    public function __construct($server)
+    public function __construct($server, $doRestart = false)
     {
         $this->server = $server;
+        $this->doRestart = $doRestart;
         parent::__construct();
     }
     
@@ -27,7 +34,7 @@ class ClusterReconfigureServer extends \ZendServerAPI\Method
      */
     public function getContent()
     {
-        return ("serverId=".$this->server);
+        return ("serverId=".$this->server."&doRestart=".($this->doRestart === true ? 'TRUE' : 'FALSE'));
     }
     
     /**

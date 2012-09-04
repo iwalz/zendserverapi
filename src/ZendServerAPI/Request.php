@@ -14,7 +14,7 @@ class Request
 	 * Useragent for the request
 	 * @var string
 	 */
-	private $userAgent = 'HTTPFUL';
+	private $userAgent = 'Guzzle';
 	/**
 	 * Config for the connection
 	 * @var \ZendServerAPI\Config

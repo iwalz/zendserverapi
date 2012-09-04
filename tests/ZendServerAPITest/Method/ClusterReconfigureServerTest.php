@@ -68,4 +68,16 @@ EOF;
         $action = new ClusterReconfigureServer(self::getParameter());
         $this->assertEquals('/ZendServerManager/Api/clusterReconfigureServer', $action->getLink());
     }
+    
+    public function testContent()
+    {
+        $action = new ClusterReconfigureServer(self::getParameter());
+        $this->assertEquals('serverId=5&doRestart=FALSE', $action->getContent());
+    }
+    
+    public function testContentWithDoRestart()
+    {
+        $action = new ClusterReconfigureServer(self::getParameter(), true);
+        $this->assertEquals('serverId=5&doRestart=TRUE', $action->getContent());
+    }
 }

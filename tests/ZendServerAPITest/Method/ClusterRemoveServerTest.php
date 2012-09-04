@@ -66,9 +66,15 @@ EOF;
         $this->assertEquals("/ZendServerManager/Api/clusterRemoveServer", $action->getLink());
     }
     
-    public function testRequestBody()
+    public function testContent()
     {
-        $action = new \ZendServerAPI\Method\ClusterEnableServer(self::getParameter());
-        $this->assertEquals('serverId=5', $action->getContent());
+        $action = new \ZendServerAPI\Method\ClusterRemoveServer(self::getParameter());
+        $this->assertEquals('serverId=5&force=FALSE', $action->getContent());
+    }
+    
+    public function testContentWithForce()
+    {
+        $action = new \ZendServerAPI\Method\ClusterRemoveServer(self::getParameter(), true);
+        $this->assertEquals('serverId=5&force=TRUE', $action->getContent());
     }
 }

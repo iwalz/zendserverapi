@@ -95,7 +95,13 @@ EOF;
     public function testContent()
     {
         $action = new \ZendServerAPI\Method\RestartPHP(self::getParameter());
-        $this->assertEquals("servers%5B0%5D=1&servers%5B1%5D=2", $action->getContent());
+        $this->assertEquals("servers%5B0%5D=1&servers%5B1%5D=2&parallelRestart=FALSE", $action->getContent());
+    }
+    
+    public function testContentWithParallelRestart()
+    {
+        $action = new \ZendServerAPI\Method\RestartPHP(self::getParameter(), true);
+        $this->assertEquals("servers%5B0%5D=1&servers%5B1%5D=2&parallelRestart=TRUE", $action->getContent());
     }
 }
 

@@ -54,7 +54,7 @@ class Server extends BaseAPI
 	 */
 	public function clusterRemoveServer($serverId, $force = false)
 	{
-	    $this->request->setAction(new \ZendServerAPI\Method\ClusterRemoveServer($serverId));
+	    $this->request->setAction(new \ZendServerAPI\Method\ClusterRemoveServer($serverId, $force));
 	    return $this->request->send();
 	}
 	
@@ -66,10 +66,11 @@ class Server extends BaseAPI
 	 * @param string $serverUrl URL to server (e.g. 127.0.0.1:10081)
 	 * @param string $guiPassword password of Zend Server GUI
 	 * @param boolean $propagateSettings
+	 * @return \ZendServerAPI\DataTypes\ServerInfo
 	 */
 	public function clusterAddServer($serverName, $serverUrl, $guiPassword, $propagateSettings = false)
 	{
-	    $this->request->setAction(new \ZendServerAPI\Method\ClusterAddServer($serverName, $serverUrl, $guiPassword));
+	    $this->request->setAction(new \ZendServerAPI\Method\ClusterAddServer($serverName, $serverUrl, $guiPassword, $propagateSettings));
 	    return $this->request->send();
 	}
 	
@@ -104,11 +105,12 @@ class Server extends BaseAPI
 	 *
 	 * @access public
 	 * @param array $serverIds The ids of the server to restart
+	 * @param boolean restart all servers in parallel
 	 * @return \ZendServerAPI\DataTypes\ServerInfo
 	 */
-	public function restartPhp($serverIds = array())
+	public function restartPhp($serverIds = array(), $parallelRestart = false)
 	{
-	    $this->request->setAction(new \ZendServerAPI\Method\RestartPHP($serverIds));
+	    $this->request->setAction(new \ZendServerAPI\Method\RestartPHP($serverIds, $parallelRestart));
 	    return $this->request->send();
 	}
 	
@@ -117,11 +119,12 @@ class Server extends BaseAPI
 	 *
 	 * @access public
 	 * @param int $serverId The id of the server to reconfigure
+	 * @param boolean restart server
 	 * @return \ZendServerAPI\DataTypes\ServerInfo
 	 */
-	public function clusterReconfigureServer($serverId)
+	public function clusterReconfigureServer($serverId, $doRestart = false)
 	{
-	    $this->request->setAction(new \ZendServerAPI\Method\ClusterReconfigureServer($serverId));
+	    $this->request->setAction(new \ZendServerAPI\Method\ClusterReconfigureServer($serverId, $doRestart));
 	    return $this->request->send();
 	}
 

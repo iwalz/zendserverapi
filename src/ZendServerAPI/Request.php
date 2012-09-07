@@ -153,7 +153,7 @@ class Request
 		}
 		
 		$requests->setHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
-        $requests->setHeader('Accept', 'application/vnd.zend.serverapi+xml;version=1.0');
+        $requests->setHeader('Accept', $this->action->getAcceptHeader());
         $requests->setHeader('lookInCupboard', 'true');
         $requests->setHeader('Date', $this->getDate());
         $requests->setHeader('User-Agent', $this->userAgent);

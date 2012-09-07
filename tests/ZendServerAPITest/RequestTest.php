@@ -1,6 +1,8 @@
 <?php
 namespace ZendServerAPITest;
 
+use ZendServerAPITest\Method\ClusterRemoveServerTest;
+
 use ZendServerAPITest\Method\ClusterAddServerTest;
 
 use ZendServerAPITest\Method\GetSystemInfoTest;

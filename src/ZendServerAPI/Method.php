@@ -108,6 +108,17 @@ abstract class Method {
 	}
 	
 	/**
+	 * Returns the default accept header
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function getAcceptHeader()
+	{
+	    return "application/vnd.zend.serverapi+xml;version=1.1";
+	}
+	
+	/**
 	 * Configures all needed information for the method implementation
 	 */
 	abstract function configure();

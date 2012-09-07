@@ -47,17 +47,6 @@ class BaseAPI
     {
         $this->request->setClient($client);
     }
-    
-    /**
-     * Returns the default accept header
-     * 
-     * @access public
-     * @return string
-     */
-    public function getAcceptHeader()
-    {
-        return "application/vnd.zend.serverapi+xml;version=1.1";
-    }
 }
 
 ?>

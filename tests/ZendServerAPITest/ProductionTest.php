@@ -8,16 +8,15 @@ class ProductionTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $server = new \ZendServerAPI\Server("prod");
-        /*try {
+        try {
             $server->clusterGetServerStatus();
         } catch(\Exception $e) {
             $this->markTestSkipped("No ZendSerer available for production testing");
-        }*/
+        }
     }
     
     public function testAddRemoveServer()
     {
-        $this->markTestSkipped("No ZendSerer available for production testing");
         $server = new \ZendServerAPI\Server("prod");
         $serversList = $server->clusterGetServerStatus();
         foreach($serversList->getServerInfos() as $serverInfo)
@@ -36,7 +35,6 @@ class ProductionTest extends PHPUnit_Framework_TestCase
     
     public function testEnableDisableServer()
     {
-        $this->markTestSkipped("No ZendSerer available for production testing");
         $server = new \ZendServerAPI\Server("prod");
         $serversList = $server->clusterGetServerStatus();
         if($serversList->getServerInfos() === array())
@@ -55,7 +53,6 @@ class ProductionTest extends PHPUnit_Framework_TestCase
     
     public function testProdConfigurationExport()
     {
-        $this->markTestSkipped("No ZendSerer available for production testing");
         $configuration = new \ZendServerAPI\Configuration("prod");
         $fileInfo = $configuration->configurationExport('/var/www/zendserverapi/export');
         
@@ -67,8 +64,8 @@ class ProductionTest extends PHPUnit_Framework_TestCase
         unlink($fileInfo->getRealPath());
         $this->assertFileNotExists((string)$fileInfo->getRealPath());
 
-        $fileInfo = $configuration->configurationExport('/var/www/zendserverapi/export', 'Test1.zcfg');
-        $this->assertEquals("Test1.zcfg", $fileInfo->getFilename());
+        $fileInfo = $configuration->configurationExport('/var/www/zendserverapi/export', 'Test2.zcfg');
+        $this->assertEquals("Test2.zcfg", $fileInfo->getFilename());
         
         $this->assertEquals($configuration->getExportDirectory(), $fileInfo->getPath());
         $this->assertFileExists((string)$fileInfo->getRealPath());

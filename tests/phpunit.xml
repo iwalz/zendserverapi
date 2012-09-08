@@ -7,7 +7,6 @@
     <testsuites>
         <testsuite name="Zend Server API Wrapper Suite">
             <directory>./</directory>
-            <exclude>ZendServerAPITest/ProductionTest.php</exclude>
         </testsuite>
     </testsuites>
 </phpunit>

@@ -106,7 +106,7 @@ class Server extends BaseAPI
 	 * @access public
 	 * @param array $serverIds The ids of the server to restart
 	 * @param boolean restart all servers in parallel
-	 * @return \ZendServerAPI\DataTypes\ServerInfo
+	 * @return \ZendServerAPI\DataTypes\ServersList
 	 */
 	public function restartPhp($serverIds = array(), $parallelRestart = false)
 	{
@@ -126,6 +126,37 @@ class Server extends BaseAPI
 	{
 	    $this->request->setAction(new \ZendServerAPI\Method\ClusterReconfigureServer($serverId, $doRestart));
 	    return $this->request->send();
+	}
+	
+	/**
+	 * Wait for status = OK on $server, check every $interval seconds
+	 * 
+	 * @param string|int $server Servername or server id
+	 * @param int $interval Seconds to repeat test
+	 * @return \ZendServerAPI\DataTypes\ServerInfo
+	 */
+	public function waitForStableState($server, $interval = 5)
+	{
+        $serversList = $this->clusterGetServerStatus();
+	    if(is_string($server))
+	    {
+	        $serverInfo = $serversList->getServerStatusByName($server);
+	        $serverId = $serverInfo->getId();
+	    }
+	    elseif(is_int($server))
+	    {
+	        $serverInfo = $serversList->getServerStatusById($server);
+	        $serverId = $server;
+	    }
+	    
+	    while($serverInfo->getStatus() !== "OK")
+	    {
+	        $serversList = $this->clusterGetServerStatus(array($serverId));
+	        $serverInfo = $serversList->getServerStatusById($serverId);
+	        sleep($interval*1000);
+	    }
+	    
+	    return $serverInfo;
 	}
 
 }

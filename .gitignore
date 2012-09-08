@@ -4,4 +4,3 @@
 .settings/
 composer.lock
 /tests/report
-/tests/ZendServerAPITest/ProductionTest.php

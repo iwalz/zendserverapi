@@ -146,11 +146,15 @@ class Request
 		            $this->action->getLink(),
 		            array(
 		                    'Content-length' => strlen($content),
-		                    'Content-type' => 'application/x-www-form-urlencoded'
+		                    'Content-type' => $this->action->getContentType()
 		            ),
 		            $content
 		    );
 		}
+
+		$postFiles = $this->action->getPostFiles();
+		if(count($postFiles) > 0)
+		    $requests->addPostFiles($postFiles);
 		
 		$requests->setHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
         $requests->setHeader('Accept', $this->action->getAcceptHeader());

@@ -5,6 +5,21 @@ use ZendServerAPI\Mapper\ConfigurationExport as ConfigExportMapper;
 
 class ConfigurationExport extends \ZendServerAPI\Method
 {
+    /**
+     * 
+     * @param string $exportDirectory
+     */
+    public function __construct($exportDirectory = null, $fileName = null)
+    {
+        parent::__construct();    
+        
+        if($exportDirectory !== null)
+            $this->setExportDirectory($exportDirectory);
+        
+        if($fileName !== null)
+            $this->setFileName($fileName);
+    }
+    
     public function configure()
     {
         $this->setFunctionPath('/ZendServerManager/Api/configurationExport');
@@ -17,16 +32,6 @@ class ConfigurationExport extends \ZendServerAPI\Method
         return "application/vnd.zend.serverconfig";
     }
     
-    public function getImportDirectory()
-    {
-        return $this->getParser()->getImportDirectory();
-    }
-    
-    public function setImportDirectory($importDirectory)
-    {
-        $this->getParser()->setImportDirectory($importDirectory);
-    }
-    
     public function getExportDirectory()
     {
         return $this->getParser()->getExportDirectory();
@@ -35,6 +40,16 @@ class ConfigurationExport extends \ZendServerAPI\Method
     public function setExportDirectory($exportDirectory)
     {
         $this->getParser()->setExportDirectory($exportDirectory);
+    }
+    
+    public function setFileName($fileName)
+    {
+        $this->getParser()->setFileName($fileName);
+    }
+    
+    public function getFileName()
+    {
+        return $this->getParser()->getFileName();
     }
 }
 

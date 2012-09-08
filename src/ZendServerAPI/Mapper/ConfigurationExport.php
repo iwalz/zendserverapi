@@ -5,7 +5,7 @@ use ZendServerAPI\Exception\ClientSide;
 
 class ConfigurationExport extends Mapper
 {
-    private $importDirectory = null;
+    private $fileName = null;
     private $exportDirectory = null;
     
 	/* 
@@ -13,22 +13,19 @@ class ConfigurationExport extends Mapper
      */
     function parse ()
     {
-        $contentDisposition = $this->getResponse()->getContentDisposition();
-        $parts = explode("\"", $contentDisposition);
-        $fileName = $this->exportDirectory . DIRECTORY_SEPARATOR . $parts[1];
+        if($this->fileName === null)
+        {
+            $contentDisposition = $this->getResponse()->getContentDisposition();
+            $parts = explode("\"", $contentDisposition);
+            $fileName = $this->exportDirectory . DIRECTORY_SEPARATOR . $parts[1];
+        }
+        else
+        {
+            $fileName = $this->exportDirectory . DIRECTORY_SEPARATOR . $this->fileName;
+        }
         file_put_contents( $fileName, $this->getResponse()->getBody());
         
         return new \SplFileInfo($fileName);
-    }
-    
-    public function getImportDirectory()
-    {
-        return $this->importDirectory;
-    }
-    
-    public function setImportDirectory($importDirectory)
-    {
-        $this->importDirectory = $this->checkPermission($importDirectory);
     }
     
     public function getExportDirectory()
@@ -39,6 +36,16 @@ class ConfigurationExport extends Mapper
     public function setExportDirectory($exportDirectory)
     {
         $this->exportDirectory = $this->checkPermission($exportDirectory);
+    }
+    
+    public function setFileName($fileName)
+    {
+        $this->fileName = $fileName;
+    }
+    
+    public function getFileName()
+    {
+        return $this->fileName;
     }
     
     private function checkPermission($directory)

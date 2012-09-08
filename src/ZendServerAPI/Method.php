@@ -129,6 +129,27 @@ abstract class Method {
 	}
 	
 	/**
+	 * Returns the default content type
+	 * 
+	 * @access public
+	 * @return string
+	 */
+	public function getContentType()
+	{
+	    return "application/x-www-form-urlencoded";
+	}
+	
+	/**
+	 * Returns the default post files
+	 * 
+	 * @return array
+	 */
+	public function getPostFiles()
+	{
+	    return array();
+	}
+	
+	/**
 	 * Configures all needed information for the method implementation
 	 */
 	abstract function configure();

@@ -4,10 +4,10 @@ namespace ZendServerAPI;
 class Configuration extends BaseAPI
 {
     /**
-     * Directory where to get imported configs
+     * The config file to import
      * @var string
      */
-    protected $importDirectory = null;
+    protected $importFile = null;
     /**
      * Directory where to save exported configs
      * @var string
@@ -18,16 +18,16 @@ class Configuration extends BaseAPI
      * Constructor for Configuration Zend Server API section 
      * 
      * @param string $name Name for config
-     * @param string Directory where to get imported configs
+     * @param string Config file to import
      * @param string Directory where to save exported configs
      * @param \ZendServerAPI\Request $request
      */
-    public function __construct($name = null, $importDirectory = null, $exportDirectory = null, Request $request = null)
+    public function __construct($name = null, $importFile = null, $exportDirectory = null, Request $request = null)
     {
         parent::__construct($name);
         
-        if($importDirectory !== null)
-            $this->importDirectory = $importDirectory;
+        if($importFile !== null)
+            $this->importFile = $importFile;
         
         if($exportDirectory !== null)
             $this->exportDirectory = $exportDirectory;
@@ -42,33 +42,67 @@ class Configuration extends BaseAPI
      * @param string $exportDirectory Directory where to save the exported configs
      * @return \SplFileInfo
      */
-    public function configurationExport($exportDirectory = null)
+    public function configurationExport($exportDirectory = null, $fileName = null)
     {
         if($exportDirectory !== null)
             $this->exportDirectory = $exportDirectory;
         
-        $action = new \ZendServerAPI\Method\ConfigurationExport();
-        $action->setExportDirectory($this->exportDirectory);
-        $this->request->setAction($action);
+        $this->request->setAction(new \ZendServerAPI\Method\ConfigurationExport($this->exportDirectory, $fileName));
         
         return $this->request->send();
     }
     
-    public function getImportDirectory()
+    /**
+     * Import a local config file
+     *
+     * @param string $importFile File to import
+     * @return \ZendServerAPI\DataTypes\ServersList
+     */
+    public function configurationImport($importFile = null)
     {
-        return $this->importDirectory;
+        if($importFile !== null)
+            $this->importFile = $importFile;
+            
+        $this->request->setAction(new \ZendServerAPI\Method\ConfigurationImport($this->importFile));
+        
+        return $this->request->send();
     }
     
-    public function setImportDirectory($importDirectory)
+    /**
+     * Get the config file to import
+     * 
+     * @return string
+     */
+    public function getImportFile()
     {
-        $this->importDirectory = $importDirectory;
+        return $this->importFile;
     }
     
+    /**
+     * Set the import config file
+     * 
+     * @param string $importFile Full path to file
+     */
+    public function setImportFile($importFile)
+    {
+        $this->importFile = $importFile;
+    }
+    
+    /**
+     * Get the directory for saving the configs
+     * 
+     * @return string
+     */
     public function getExportDirectory()
     {
         return $this->exportDirectory;
     }
     
+    /**
+     * Directory for exported config files
+     * 
+     * @param string $exportDirectory
+     */
     public function setExportDirectory($exportDirectory)
     {
         $this->exportDirectory = $exportDirectory;

@@ -9,8 +9,11 @@ class ServerInfo extends \ZendServerAPI\Mapper\Mapper
     /**
      * @see \ZendServerAPI\Mapper\Mapper::parse()
      */
-    public function parse($xml)
+    public function parse($xml = null)
     {
+        if($xml === null)
+            $xml = $this->getResponse()->getBody();
+        
         $xml = simplexml_load_string($xml);
         
         $server = new ServerInfoData();

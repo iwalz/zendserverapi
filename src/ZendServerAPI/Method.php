@@ -76,6 +76,16 @@ abstract class Method {
 	{
 		$this->functionPath = $functionPath;
 	}
+
+	/**
+	 * Set the Guzzle Response
+	 * 
+	 * @param \Guzzle\Http\Message\Response
+	 */
+	public function setResponse(\Guzzle\Http\Message\Response $response)
+	{
+	    $this->getParser()->setResponse($response);
+	}
 	
 	/**
 	 * Getter for the path to server method
@@ -92,7 +102,7 @@ abstract class Method {
 	 * 
 	 * @param string $xml
 	 */
-	public function parseResponse($xml)
+	public function parseResponse($xml = null)
 	{
 	    return $this->getParser()->parse($xml);
 	}

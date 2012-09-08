@@ -160,6 +160,7 @@ class Request
 		
         try {
     		$response = $this->client->send($requests);
+    		$this->getAction()->setResponse($response);
         } catch(\Guzzle\Http\Exception\BadResponseException $exception) {
             
             if($exception->getCode() >= 400 && $exception->getCode() <= 499)
@@ -171,7 +172,7 @@ class Request
             
         }
         
-        return $this->getAction()->parseResponse($response->getBody());
+        return $this->getAction()->parseResponse();
 	}
 	
 	/**

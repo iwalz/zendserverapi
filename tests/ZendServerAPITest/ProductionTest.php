@@ -46,17 +46,21 @@ class ProductionTest extends PHPUnit_Framework_TestCase
         
         $serverInfo = $server->clusterEnableServer($serverInfo->getId());
         $serversList = $server->restartPhp(array($serverInfo->getId()));
-        $serverInfo = $serversList->getServerStatusById($serverInfo->getId());
         $serverInfo = $server->waitForStableState($serverInfo->getId());
         
         $this->assertEquals("OK", $serverInfo->getStatus());
     }
     
-    
-    public function testProdConfiguration()
+    public function testProdConfigurationExport()
     {
         $configuration = new \ZendServerAPI\Configuration("prod");
-//         var_dump($configuration->configurationExport());
+        $configuration->setExportDirectory('/var/www/zendserverapi/export');
+        $fileInfo = $configuration->configurationExport();
+        
+        $date = gmdate('Ymd', time());
+        $this->assertEquals("ZendServerConfig-".$date.".zcfg", $fileInfo->getFilename());
+        
+        $this->assertEquals($configuration->getExportDirectory(), $fileInfo->getPath());
     }
 }
 

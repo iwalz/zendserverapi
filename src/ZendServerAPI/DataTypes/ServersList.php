@@ -45,8 +45,7 @@ class ServersList
      * Returns the ServerInfo by a given Zend Server ID
      * 
      * @param int $serverId
-     * @throws \InvalidArgumentException
-     * @return \ZendServerAPI\DataTypes\ServerInfo
+     * @return \ZendServerAPI\DataTypes\ServerInfo|false
      */
     public function getServerStatusById($serverId)
     {
@@ -55,15 +54,14 @@ class ServersList
             if($serverInfo->getId() === $serverId)
                 return $serverInfo;
         }
-        throw new \InvalidArgumentException("Zend Server not found by ID: " . $serverId);
+        return false;
     }
     
     /**
      * Returns the ServerInfo by a given Zend Server Name
      *
      * @param string $serverName
-     * @throws \InvalidArgumentException
-     * @return \ZendServerAPI\DataTypes\ServerInfo
+     * @return \ZendServerAPI\DataTypes\ServerInfo|false
      */
     public function getServerStatusByName($serverName)
     {
@@ -72,19 +70,18 @@ class ServersList
             if($serverInfo->getName() === $serverName)
                 return $serverInfo;
         }
-        throw new \InvalidArgumentException("Zend Server not found by Name: " . $serverName);
+        return false;
     }
     
     /**
      * Returns the first ServerInfo object
      * 
-     * @throws \ZendServerAPI\Exception\ClientSide
      * @return \ZendServerAPI\DataTypes\ServerInfo
      */
     public function getFirst()
     {
        if(count($this->serverInfos) === 0)
-           throw new ClientSide("No server in list");
+           throw new \Exception("No server in list");
 
        return $this->serverInfos[0];
     }

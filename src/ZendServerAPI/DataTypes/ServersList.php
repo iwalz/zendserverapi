@@ -5,18 +5,37 @@ use ZendServerAPI\Exception\ClientSide;
 
 class ServersList
 {
+    /**
+     * Internal container for ServerInfo storage
+     * @var array
+     */
     private $serverInfos = array();
     
+    /**
+     * Get the internal ServerInfo container
+     * 
+     * @return array
+     */
     public function getServerInfos()
     {
         return $this->serverInfos;
     }
     
+    /**
+     * Set ServerInfo container
+     * 
+     * @param array $serverInfos
+     */
     public function setServerInfos(array $serverInfos)
     {
         $this->serverInfos = $serverInfos;
     }
     
+    /**
+     * Add ServerInfo to container
+     * 
+     * @param ServerInfo $serverInfo
+     */
     public function addServerInfo(ServerInfo $serverInfo)
     {
         $this->serverInfos[] = $serverInfo;

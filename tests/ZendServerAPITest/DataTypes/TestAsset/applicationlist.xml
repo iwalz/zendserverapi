@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.1">
+	<requestData>
+		<apiKeyName>angel.eyes</apiKeyName>
+		<method>applicationGetStatus</method>
+	</requestData>
+	<responseData>
+		<applicationsList>
+			<applicationInfo>
+				<id>1</id>
+				<baseUrl>http://example.com/myapp</baseUrl>
+				<appName>Wordpress</appName>
+				<userAppName>Wolfgang's Blog</userAppName>
+				<installedLocation>
+					/usr/local/somewhere
+				</installedLocation>
+					<status>partially deployed</status>
+					<servers>
+						<applicationServer>
+							<id>1</id>
+							<deployedVersion>
+								1.6
+							</deployedVersion>
+								<status>OK</status>
+						</applicationServer>
+						<applicationServer>
+							<id>4</id>
+							<deployedVersion>
+								1.6
+							</deployedVersion>
+								<status>OK</status>
+						</applicationServer>
+						<applicationServer>
+							<id>8</id>
+							<deployedVersion>
+								1.5
+							</deployedVersion>
+								<status>OK</status>
+						</applicationServer>
+					</servers>
+					<deployedVersions>
+						<deployedVersion>1.6</deployedVersion>
+						<deployedVersion>1.5</deployedVersion>
+					</deployedVersions>
+					<messageList />
+			</applicationInfo>
+			<applicationInfo>
+				<id>2</id>
+				<baseUrl>http://oapp.example.com:8080/</baseUrl>
+				<appName>Blog 2.0</appName>
+				<userAppName>Wolfgang's Blog</userAppName>
+				<installedLocation>
+					/usr/local/somewhere
+				</installedLocation>
+					<status>staging</status>
+					<servers>
+						<applicationServer>
+							<id>1</id>
+							<deployedVersion>
+								1.6
+							</deployedVersion>
+								<status>staging</status>
+						</applicationServer>
+						<applicationServer>
+							<id>4</id>
+							<deployedVersion>
+								1.6
+							</deployedVersion>
+								<status>staging</status>
+						</applicationServer>
+						<applicationServer>
+							<id>8</id>
+							<deployedVersion>
+								1.5
+							</deployedVersion>
+								<status>staging</status>
+						</applicationServer>
+					</servers>
+					<deployedVersions>
+						<deployedVersion>1.6</deployedVersion>
+						<deployedVersion>1.5</deployedVersion>
+					</deployedVersions>
+					<messageList />
+			</applicationInfo>
+		</applicationsList>
+	</responseData>
+</zendServerAPIResponse>

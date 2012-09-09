@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.1">
+	<requestData>
+		<apiKeyName>angel.eyes</apiKeyName>
+		<method>applicationUpdate</method>
+	</requestData>
+	<responseData>
+		<applicationInfo>
+			<id>2</id>
+			<baseUrl>http://oapp.example.com:8080/</baseUrl>
+			<appName>Blog 2.0</appName>
+			<userAppName>Wolfgang's Blog</userAppName>
+			<installedLocation>
+				/usr/local/somewhere
+			</installedLocation>
+				<status>staging</status>
+				<servers>
+					<applicationServer>
+						<id>1</id>
+						<deployedVersion>
+							1.6
+						</deployedVersion>
+							<status>staging</status>
+					</applicationServer>
+					<applicationServer>
+						<id>4</id>
+						<deployedVersion>
+							1.6
+						</deployedVersion>
+							<status>staging</status>
+					</applicationServer>
+					<applicationServer>
+						<id>8</id>
+						<deployedVersion>
+							1.6
+						</deployedVersion>
+							<status>staging</status>
+					</applicationServer>
+				</servers>
+				<deployedVersions>
+					<deployedVersion>1.6</deployedVersion>
+					<deployedVersion>1.5</deployedVersion>
+				</deployedVersions>
+				<messageList />
+		</applicationInfo>
+	</responseData>
+</zendServerAPIResponse>

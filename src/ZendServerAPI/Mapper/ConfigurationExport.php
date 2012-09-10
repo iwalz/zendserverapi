@@ -11,7 +11,7 @@ class ConfigurationExport extends Mapper
 	/* 
      * @see \ZendServerAPI\Mapper\Mapper::parse()
      */
-    function parse ()
+    public function parse ()
     {
         if($this->fileName === null)
         {

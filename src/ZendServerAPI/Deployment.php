@@ -28,7 +28,8 @@ class Deployment extends BaseAPI
 	 */
 	public function applicationGetStatus(array $applicationIds = array())
 	{
-	    
+	    $this->request->setAction(new \ZendServerAPI\Method\ApplicationGetStatus($applicationIds));
+	    return $this->request->send();
 	}
 	
 	/**

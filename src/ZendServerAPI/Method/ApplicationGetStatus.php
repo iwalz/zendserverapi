@@ -28,7 +28,7 @@ class ApplicationGetStatus extends \ZendServerAPI\Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/applicationGetStatus');
-        $this->setParser(new \ZendServerAPI\Mapper\DumpParser());
+        $this->setParser(new \ZendServerAPI\Mapper\ApplicationList());
     }
 
     /**

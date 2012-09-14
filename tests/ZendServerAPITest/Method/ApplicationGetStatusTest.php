@@ -11,5 +11,10 @@ class ApplicationGetStatusTest extends \PHPUnit_Framework_TestCase
 
        $this->assertEquals("/ZendServerManager/Api/applicationGetStatus?applications%5B0%5D=1&applications%5B1%5D=2", $method->getLink());
     }
+    
+    public function getResponse()
+    {
+        return file_get_contents(__DIR__.'/../DataTypes/TestAsset/applicationlist.xml');
+    }
 }
 

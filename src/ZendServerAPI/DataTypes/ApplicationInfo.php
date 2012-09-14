@@ -55,10 +55,15 @@ class ApplicationInfo
      */
     protected $servers = array();
     /**
-     * A list of messages related to the application
-     * @var \ZendServerAPI\DataTypes\DeployedVersions
+     * Some messages
+     * @var \ZendServerAPI\DataTypes\MessageList
      */
-    protected $deployedVersions = null;
+    protected $messageList = null;
+    /**
+     * A list of messages related to the application
+     * @var array \ZendServerAPI\DataTypes\DeployedVersions
+     */
+    protected $deployedVersions = array();
 
     /**
      * Get the application's ID
@@ -98,6 +103,15 @@ class ApplicationInfo
 	public function getUserAppName ()
     {
         return $this->userAppName;
+    }
+    
+    /**
+     * Some messages
+     * @return \ZendServerAPI\DataTypes\MessageList
+     */
+    public function getMessageList()
+    {
+        return $this->messageList;
     }
 
     /**
@@ -148,7 +162,7 @@ class ApplicationInfo
     /**
      * Get the list of messages, related to the application
      * 
-     * @return \ZendServerAPI\DataTypes\DeployedVersions
+     * @return array 
      */
 	public function getDeployedVersions ()
     {
@@ -195,6 +209,15 @@ class ApplicationInfo
         $this->userAppName = $userAppName;
     }
 
+    /**
+     * Set some messages
+     * @param \ZendServerAPI\DataTypes\MessageList $messageList
+     */
+    public function setMessageList(\ZendServerAPI\DataTypes\MessageList $messageList)
+    {
+        $this->messageList = $messageList;    
+    }
+    
     /**
      * Set path of the application
      * 
@@ -245,7 +268,17 @@ class ApplicationInfo
      * 
      * @param \ZendServerAPI\DataTypes\DeployedVersions $deployedVersions
      */
-	public function setDeployedVersions (\ZendServerAPI\DataTypes\DeployedVersions $deployedVersions)
+	public function addDeployedVersions (\ZendServerAPI\DataTypes\DeployedVersions $deployedVersions)
+    {
+        $this->deployedVersions[] = $deployedVersions;
+    }
+    
+    /**
+     * Set a list of messages, related to the application
+     *
+     * @param array $deployedVersions
+     */
+    public function setDeployedVersions (array $deployedVersions)
     {
         $this->deployedVersions = $deployedVersions;
     }

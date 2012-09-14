@@ -30,8 +30,8 @@ return array(
 	"example62" => array(
 		"clusterManager" => true,
 		"fullApiKey" => "058b82f191d934a7bfe17d12060dd3320869f132d3428fa19d35463903673eee",
-		"apiName" => "apikey",
-		"host" => "10.0.1.72",
+		"apiName" => "api",
+		"host" => "localhost",
 		"port" => "10081"
 	),
 	# Invalid character

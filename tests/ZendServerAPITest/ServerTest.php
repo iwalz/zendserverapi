@@ -101,7 +101,7 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	    $this->assertInstanceOf("\ZendServerAPI\ApiKey", $apiKey1);
 	    
 	    $this->assertEquals($apiKey1->getName(), 'api');
-	    $this->assertEquals($apiKey2->getName(), 'apikey');
+	    $this->assertEquals($apiKey2->getName(), 'api');
 	}
 	
 	public function testGetSystemInfo()

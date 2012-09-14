@@ -72,18 +72,6 @@ class ApplicationInfoMapperTest extends \PHPUnit_Framework_TestCase
         $applicationInfo2->addServer($server3);
         $applicationList->addApplicationInfo($applicationInfo2);
         
-        foreach($result->getApplicationInfos() as $applicationInfo)
-        {
-            $this->assertNull($applicationInfo->getMessageList());
-            foreach($applicationInfo->getServers() as $server)
-            {
-                $this->assertInstanceOf('\ZendServerAPI\DataTypes\ApplicationServer', $server);
-            }
-            foreach($applicationInfo->getDeployedVersions() as $deployedVersion)
-            {
-                $this->assertInstanceOf('\ZendServerAPI\DataTypes\DeployedVersions', $deployedVersion);
-            }
-        }
         $this->assertEquals($applicationList, $result);
     }
     

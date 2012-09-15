@@ -13,8 +13,7 @@ class Deployment extends BaseAPI
      * @param \ZendServerAPI\Request $request
      *            Request object that should be used
      */
-    public function __construct ($name = null, 
-            ZendServerAPI\Request $request = null)
+    public function __construct ($name = null, ZendServerAPI\Request $request = null)
     {
         parent::__construct($name);
         
@@ -57,9 +56,9 @@ class Deployment extends BaseAPI
      *            array Set values for user parameters defined in package
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
-    public function applicationDeploy ($file, $baseUrl, 
-            $createVhost = false, $defaultServer = false, $userAppName = null, 
-            $igonreFailures = false, $userParams = array())
+    public function applicationDeploy ($file, $baseUrl, $createVhost = false, 
+            $defaultServer = false, $userAppName = null, $igonreFailures = false, 
+            $userParams = array())
     {
         $this->request->setAction(
                 new \ZendServerAPI\Method\ApplicationDeploy($file, $baseUrl, 
@@ -95,7 +94,8 @@ class Deployment extends BaseAPI
      */
     public function applicationRemove ($appId)
     {
-        $this->request->setAction(new \ZendServerAPI\Method\ApplicationRemove($appId));
+        $this->request->setAction(
+                new \ZendServerAPI\Method\ApplicationRemove($appId));
         return $this->request->send();
     }
 
@@ -114,6 +114,64 @@ class Deployment extends BaseAPI
     public function applicationSynchronize ($appId, array $servers = array(), 
             $ignoreFailures = false)
     {}
+
+    /**
+     * Wait for status = OK on $server, check every $interval seconds
+     *
+     * @param int $applicationId
+     *            The application's ID
+     * @param int $interval
+     *            Seconds to repeat test
+     * @return \ZendServerAPI\DataTypes\ApplicationInfo
+     */
+    public function waitForStableState ($applicationId, $interval = 5)
+    {
+        $applicationInfo = null;
+        $i = 0;
+        do {
+            sleep($interval);
+            
+            $applicationList = $this->applicationGetStatus(array($applicationId));
+            $applicationInfos = $applicationList->getApplicationInfos();
+            $applicationInfo = $applicationInfos[0];
+
+            if($i++ == 5)
+                break;
+        } while($applicationInfo->getStatus() !== "deployed");
+        
+        return $applicationInfo;
+    }
+    
+    /**
+     * Wait for application not beeing in the list
+     *
+     * @param int $applicationId
+     *            The application's ID
+     * @param int $interval
+     *            Seconds to repeat test
+     * @return boolean
+     */
+    public function waitForRemoved ($applicationId, $interval = 5)
+    {
+        $applicationInfo = null;
+        $i = 0;
+        $retVal = true;
+        
+        do {
+            sleep($interval);
+        
+            $applicationList = $this->applicationGetStatus(array($applicationId));
+            $applicationInfos = $applicationList->getApplicationInfos();
+        
+            if($i++ == 5)
+            {
+                $retVal = false;
+                break;
+            }
+        } while($applicationInfos !== array());
+        
+        return $retVal;
+    }
 }
 
 ?>

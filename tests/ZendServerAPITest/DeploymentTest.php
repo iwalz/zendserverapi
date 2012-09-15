@@ -55,35 +55,59 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
     
     public function testApplicationDeploy()
     {
-            $deployment = new \ZendServerAPI\Deployment("example62");
-            if(!$deployment->canConnect())
-                $this->markTestSkipped();
+        $deployment = new \ZendServerAPI\Deployment("example62");
+        if(!$deployment->canConnect())
+            $this->markTestSkipped();
+        
+        $apps = $deployment->applicationGetStatus();
+        foreach($apps->getApplicationInfos() as $applicationInfo)
+        {
+            $deployment->applicationRemove($applicationInfo->getId());
+        }
+        
+        $deploy = $deployment->applicationDeploy(
+                __DIR__.'/../_files/example2.zpk', 
+                "http://test2.com", 
+                true, 
+                false, 
+                'Simple test app', 
+                false, 
+                array(
+                    'locale' => 'GMT',
+                    'db_host' => 'localhost'        
+                )
+        );
+        $deployment->waitForStableState($deploy->getId());
+        $this->assertInstanceOf('\ZendServerAPI\DataTypes\ApplicationInfo', $deploy);
+        $deployment->applicationRemove($deploy->getId());
+        $deployment->waitForRemoved($deploy->getId());
             
-            $apps = $deployment->applicationGetStatus();
-            $installed = false;
-            foreach($apps->getApplicationInfos() as $applicationInfo)
-            {
-                if($applicationInfo->getBaseUrl() == "http://test2.com")
-                {
-                    $installed = true;
-                }
-            }
-            if($installed)
-                $this->setExpectedException('\ZendServerAPI\Exception\ClientSide', 'baseUrlConflict: This application has already been installed', 409);
-            
-            $deploy = $deployment->applicationDeploy(
-                    __DIR__.'/../_files/example2.zpk', 
-                    "http://test2.com", 
-                    true, 
-                    false, 
-                    'Simple test app', 
-                    false, 
-                    array(
+    }
+    
+    public function testWaitForMethods()
+    {
+        $deployment = new \ZendServerAPI\Deployment("example62");
+        if(!$deployment->canConnect())
+            $this->markTestSkipped();
+        
+        $deploy = $deployment->applicationDeploy(
+                __DIR__.'/../_files/example2.zpk',
+                "http://testwait.com",
+                true,
+                false,
+                'Simple test app for waiting function',
+                false,
+                array(
                         'locale' => 'GMT',
-                        'db_host' => 'localhost'        
-                    )
-            );
-            $this->assertInstanceOf('\ZendServerAPI\DataTypes\ApplicationInfo', $deploy);
+                        'db_host' => 'localhost'
+                )
+        );
+        $result = $deployment->waitForStableState($deploy->getId());
+        
+        $this->assertEquals("deployed", $result->getStatus());
+        $deployment->applicationRemove($result->getId());
+        $retVal = $deployment->waitForRemoved($result->getId());
+        $this->assertTrue($retVal);
     }
 }
 

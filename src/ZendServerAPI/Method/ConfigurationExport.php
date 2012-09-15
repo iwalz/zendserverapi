@@ -29,7 +29,7 @@ class ConfigurationExport extends \ZendServerAPI\Method
     
     public function getAcceptHeader()
     {
-        return "application/vnd.zend.serverconfig";
+        return "application/vnd.zend.serverapi+xml;version=1.2";
     }
     
     public function getExportDirectory()

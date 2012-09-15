@@ -1,5 +1,7 @@
 <?php
 namespace ZendServerAPITest;
+use Guzzle\Http\Exception\CurlException;
+
 use ZendServerAPI\Exception\ClientSide;
 
 /**
@@ -29,7 +31,19 @@ EOF;
 	{
 		throw new ClientSide(self::$Response);
 	}
-	
+
+	/**
+	 * @expectedException \ZendServerAPI\Exception\ClientSide
+	 * @expectedExceptionCode 400
+	 * @expectedExceptionMessage missingParameter: This action requires the baseUrl parameter
+	 */
+	public function testExceptionParsingAgainstProduction()
+	{
+	    $deployment = new \ZendServerAPI\Deployment("example62");
+	    if(!$deployment->canConnect())
+	        $this->markTestSkipped();
+        $deployment->applicationDeploy(__DIR__.'/../../_files/example1.zpk', null);
+	}
 	
 }
 

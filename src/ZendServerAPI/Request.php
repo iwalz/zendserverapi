@@ -165,16 +165,18 @@ class Request
         try {
     		$response = $this->client->send($requests);
     		$this->getAction()->setResponse($response);
+        } catch (\Guzzle\Http\Exception\CurlException $exception) {
+            throw $exception;
         } catch(\Guzzle\Http\Exception\BadResponseException $exception) {
-            
-            if($exception->getCode() >= 400 && $exception->getCode() <= 499)
-                throw new Exception\ClientSide($exception->getMessage(), $exception->getCode());
-            elseif($exception->getCode() >= 500 && $exception->getCode() <= 599)
-                throw new Exception\ServerSide($exception->getMessage(), $exception->getCode());
+
+            $statusCode = $exception->getResponse()->getStatusCode();
+            if($statusCode >= 400 && $statusCode <= 499)
+                throw new Exception\ClientSide($exception->getResponse()->getBody(), $statusCode);
+            elseif($statusCode >= 500 && $statusCode <= 599)
+                throw new Exception\ServerSide($exception->getResponse()->getBody(), $statusCode);
             else
-                throw new \InvalidArgumentException($exception->getMessage(), $exception->getCode());
-            
-        }
+                throw new \InvalidArgumentException($exception->getResponse()->getBody(), $statusCode);
+        }            
         
         return $this->getAction()->parseResponse();
 	}

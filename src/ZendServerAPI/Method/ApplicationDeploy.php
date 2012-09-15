@@ -73,6 +73,7 @@ class ApplicationDeploy extends \ZendServerAPI\Method
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/applicationDeploy');
         $this->setParser(new \ZendServerAPI\Mapper\ApplicationInfo());
+//         $this->setParser(new \ZendServerAPI\Mapper\DumpParser());
     }
     
     /**
@@ -80,18 +81,19 @@ class ApplicationDeploy extends \ZendServerAPI\Method
      */
     public function getContent()
     {
-        //($this->propagateSettings === true ? 'TRUE' : 'FALSE')
         return "";
     }
     
     public function getContentValues()
     {
-        return array(
-                'baseUrl' => $this->baseUrl,
-                'userParams' => $this->getUserParams(),
-                'createVhost' => ($this->createVhost === true ? 'TRUE' : 'FALSE'),
-                'defaultServer' => ($this->defaultServer === true ? 'TRUE' : 'FALSE')
+        $contentArray = array(
+            'baseUrl' => $this->baseUrl,
+            'userParams' => $this->getUserParams(),
+            'createVhost' => ($this->createVhost === true ? 'TRUE' : 'FALSE'),
+            'defaultServer' => ($this->defaultServer === true ? 'TRUE' : 'FALSE')
         );
+
+        return $contentArray;
     }
 
     /**
@@ -107,7 +109,7 @@ class ApplicationDeploy extends \ZendServerAPI\Method
      */
     public function getPostFiles()
     {
-        return array('appPackage' => $this->appPackage);        
+        return array('appPackage' => array('fileName' => $this->appPackage, 'contentType' => 'application/vnd.zend.applicationpackage'));        
     }
     
     /**

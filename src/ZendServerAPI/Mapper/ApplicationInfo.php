@@ -14,16 +14,16 @@ class ApplicationInfo extends Mapper
         $xml = simplexml_load_string($xml);
 
         $applicationInfo = new \ZendServerAPI\DataTypes\ApplicationInfo();
-        $applicationInfo->setAppName((string)$xml->responseData->appName);
-        $applicationInfo->setId((string)$xml->responseData->id);
-        $applicationInfo->setBaseUrl((string)$xml->responseData->baseUrl);
-        $applicationInfo->setUserAppName((string)$xml->responseData->userAppName);
-        $applicationInfo->setInstalledlocation((string)trim($xml->responseData->installedLocation));
-        $applicationInfo->setStatus((string)$xml->responseData->status);
+        $applicationInfo->setAppName((string)$xml->responseData->applicationInfo->appName);
+        $applicationInfo->setId((string)$xml->responseData->applicationInfo->id);
+        $applicationInfo->setBaseUrl((string)$xml->responseData->applicationInfo->baseUrl);
+        $applicationInfo->setUserAppName((string)$xml->responseData->applicationInfo->userAppName);
+        $applicationInfo->setInstalledlocation((string)trim($xml->responseData->applicationInfo->installedLocation));
+        $applicationInfo->setStatus((string)$xml->responseData->applicationInfo->status);
         
-        if(isset($xml->responseData->servers->applicationServer))
+        if(isset($xml->responseData->applicationInfo->servers->applicationServer))
         {
-            foreach($xml->responseData->servers->applicationServer as $xmlServer)
+            foreach($xml->responseData->applicationInfo->servers->applicationServer as $xmlServer)
             {
                 $server = new \ZendServerAPI\DataTypes\ApplicationServer();
                 $server->setId((string)$xmlServer->id);
@@ -32,9 +32,9 @@ class ApplicationInfo extends Mapper
                 $applicationInfo->addServer($server);
             }
         }
-        if(isset($xml->responseData->deployedVersions->deployedVersion))
+        if(isset($xml->responseData->applicationInfo->deployedVersions->deployedVersion))
         {
-            foreach($xml->responseData->deployedVersions->deployedVersion as $xmlDeployedVersions)
+            foreach($xml->responseData->applicationInfo->deployedVersions->deployedVersion as $xmlDeployedVersions)
             {
                 $deployedVersions = new \ZendServerAPI\DataTypes\DeployedVersions();
                 $deployedVersions->setVersion((string)trim($xmlDeployedVersions));
@@ -43,7 +43,7 @@ class ApplicationInfo extends Mapper
         }
         
         $messageListMapper = new \ZendServerAPI\Mapper\MessageList();
-        $xmlMessageList = (string)$xml->responseData->messageList;
+        $xmlMessageList = (string)$xml->responseData->applicationInfo->messageList;
         
         if(!empty($xmlMessageList))
             $applicationInfo->setMessageList($messageListMapper->parse($xmlMessageList));

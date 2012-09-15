@@ -8,6 +8,7 @@ class DumpParser extends \ZendServerAPI\Mapper\Mapper
      */
     function parse ()
     {
+        var_dump((string)$this->getResponse()->getBody());
         return $this->getResponse()->getBody();
     }
 

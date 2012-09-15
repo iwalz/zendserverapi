@@ -155,17 +155,24 @@ class Request
 
 		$postFiles = $this->action->getPostFiles();
 		if(count($postFiles) > 0)
-		    $requests->addPostFiles($postFiles);
+		{
+		    foreach($postFiles as $field => $postValue)
+		    {
+		        $fileName = $postValue['fileName'];
+		        $contentType = $postValue['contentType'];
+		        $requests->addPostFile($field, $fileName, $contentType);
+		    }
+		}
 
 		/**
-		 * @var \Guzzle\Http\Message\Request $request
+		 * @var \Guzzle\Http\Message\Request $requests
 		 */
 		$requests->setHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
         $requests->setHeader('Accept', $this->action->getAcceptHeader());
         $requests->setHeader('lookInCupboard', 'true');
         $requests->setHeader('Date', $this->getDate());
         $requests->setHeader('User-Agent', $this->userAgent);
-
+    
         try {
     		$response = $this->client->send($requests);
     		$this->getAction()->setResponse($response);

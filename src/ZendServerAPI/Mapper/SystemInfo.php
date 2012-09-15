@@ -2,7 +2,7 @@
 namespace ZendServerAPI\Mapper;
 
 use \ZendServerAPI\DataTypes\LicenseInfo,
-    \ZendServerAPI\DataTypes\MessageList,
+    \ZendServerAPI\DataTypes\MessageList as MessageListData,
     \ZendServerAPI\DataTypes\SystemInfo as SystemInfoData;
 
 class SystemInfo extends Mapper
@@ -39,10 +39,8 @@ class SystemInfo extends Mapper
         $managerLicenseInfo->setServerLimit((string)$xml->responseData->systemInfo->managerLicenseInfo->serverLimit);
         $systemInfo->setManagerLicenseInfo($managerLicenseInfo);
          
-        $messageList = new MessageList();
-        $messageList->setError((string)$xml->responseData->messageList->error);
-        $messageList->setInfo((string)$xml->responseData->messageList->info);
-        $messageList->setWarning((string)$xml->responseData->messageList->warning);
+        $messageListMapper = new \ZendServerAPI\Mapper\MessageList();
+        $messageList = $messageListMapper->parse((string)$xml->responseData->messageList);
         $systemInfo->setMessageList($messageList);
          
         return $systemInfo;

@@ -28,7 +28,7 @@ class ConfigurationImport extends \ZendServerAPI\Method
     
     public function getPostFiles()
     {
-        return array('configFile' => $this->file);
+        return array('configFile' => array('fileName' => $this->file, 'contentType' => 'application/vnd.zend.serverconfig'));
     }
     
     public function getContent()

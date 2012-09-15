@@ -15,7 +15,6 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
     
     public function testConstructorInjection()
     {
-        $this->markTestSkipped();
         $deployment = new Deployment("example62");
         $config = $deployment->getRequest()->getConfig();
         $request = new Request();
@@ -29,8 +28,8 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
     
     public function testApplicationGetStatus()
     {
-        $this->markTestSkipped();
         $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200));
+        require_once 'ZendServerAPITest/Method/ApplicationGetStatusTest.php';
         $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(ApplicationGetStatusTest::getResponse()));
         
         $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
@@ -56,11 +55,25 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
     
     public function testApplicationDeploy()
     {
-        try {
             $deployment = new \ZendServerAPI\Deployment("example62");
+            if(!$deployment->canConnect())
+                $this->markTestSkipped();
+            
+            $apps = $deployment->applicationGetStatus();
+            $installed = false;
+            foreach($apps->getApplicationInfos() as $applicationInfo)
+            {
+                if($applicationInfo->getBaseUrl() == "http://test2.com")
+                {
+                    $installed = true;
+                }
+            }
+            if($installed)
+                $this->setExpectedException('\ZendServerAPI\Exception\ClientSide', 'baseUrlConflict: This application has already been installed', 409);
+            
             $deploy = $deployment->applicationDeploy(
-                    __DIR__.'/../_files/example1.zpk', 
-                    "test.com", 
+                    __DIR__.'/../_files/example2.zpk', 
+                    "http://test2.com", 
                     true, 
                     false, 
                     'Simple test app', 
@@ -70,10 +83,7 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
                         'db_host' => 'localhost'        
                     )
             );
-            var_dump($deploy);
-        } catch(\Exception $e) {
-            $this->markTestSkipped();
-        }
+            $this->assertInstanceOf('\ZendServerAPI\DataTypes\ApplicationInfo', $deploy);
     }
 }
 

@@ -142,13 +142,14 @@ class Request
 		elseif($this->action->getMethod() === 'POST')
 		{
 		    $content = $this->action->getContent();
+		    
 		    $requests = $this->client->post(
 		            $this->action->getLink(),
 		            array(
 		                    'Content-length' => strlen($content),
 		                    'Content-type' => $this->action->getContentType()
 		            ),
-		            $this->action->getContentValues()
+		            $content
 		    );
 		    
 		}
@@ -163,6 +164,12 @@ class Request
 		        $requests->addPostFile($field, $fileName, $contentType);
 		    }
 		}
+		
+		$contentValues = $this->getAction()->getContentValues();
+		if(count($contentValues) > 0)
+		{
+		        $requests->addPostFields($contentValues);
+		}
 
 		/**
 		 * @var \Guzzle\Http\Message\Request $requests
@@ -172,7 +179,7 @@ class Request
         $requests->setHeader('lookInCupboard', 'true');
         $requests->setHeader('Date', $this->getDate());
         $requests->setHeader('User-Agent', $this->userAgent);
-    
+
         try {
     		$response = $this->client->send($requests);
     		$this->getAction()->setResponse($response);

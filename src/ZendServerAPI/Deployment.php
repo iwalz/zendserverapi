@@ -116,7 +116,7 @@ class Deployment extends BaseAPI
     {}
 
     /**
-     * Wait for status = OK on $server, check every $interval seconds
+     * Wait for status = deployed on the application, check every $interval seconds
      *
      * @param int $applicationId
      *            The application's ID

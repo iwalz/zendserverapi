@@ -28,6 +28,16 @@ abstract class Method {
 	}
 	
 	/**
+	 * Get the values for preparing the post
+	 * 
+	 * @return array
+	 */
+	public function getContentValues()
+	{
+	    return array();
+	}
+	
+	/**
 	 * Set method for the api call
 	 * 
 	 * @param string GET|POST

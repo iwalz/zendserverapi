@@ -148,34 +148,54 @@ class Request
 		                    'Content-length' => strlen($content),
 		                    'Content-type' => $this->action->getContentType()
 		            ),
-		            $content
+		            $this->action->getContentValues()
 		    );
+		    
 		}
 
 		$postFiles = $this->action->getPostFiles();
 		if(count($postFiles) > 0)
 		    $requests->addPostFiles($postFiles);
-		
+
+		/**
+		 * @var \Guzzle\Http\Message\Request $request
+		 */
 		$requests->setHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
         $requests->setHeader('Accept', $this->action->getAcceptHeader());
         $requests->setHeader('lookInCupboard', 'true');
         $requests->setHeader('Date', $this->getDate());
         $requests->setHeader('User-Agent', $this->userAgent);
-		
+
         try {
     		$response = $this->client->send($requests);
     		$this->getAction()->setResponse($response);
         } catch (\Guzzle\Http\Exception\CurlException $exception) {
             throw $exception;
         } catch(\Guzzle\Http\Exception\BadResponseException $exception) {
-
-            $statusCode = $exception->getResponse()->getStatusCode();
-            if($statusCode >= 400 && $statusCode <= 499)
-                throw new Exception\ClientSide($exception->getResponse()->getBody(), $statusCode);
-            elseif($statusCode >= 500 && $statusCode <= 599)
-                throw new Exception\ServerSide($exception->getResponse()->getBody(), $statusCode);
+            if($exception->getResponse() !== null)
+            {
+                $statusCode = $exception->getResponse()->getStatusCode();
+                if($statusCode >= 400 && $statusCode <= 499)
+                    throw new Exception\ClientSide($exception->getResponse()->getBody(), $statusCode);
+                elseif($statusCode >= 500 && $statusCode <= 599)
+                    throw new Exception\ServerSide($exception->getResponse()->getBody(), $statusCode);
+                else
+                    throw new \InvalidArgumentException($exception->getResponse()->getBody(), $statusCode);
+            } 
+            elseif($exception->getMessage() !== null)
+            {
+                $statusCode = $exception->getCode();
+                if($statusCode >= 400 && $statusCode <= 499)
+                    throw new Exception\ClientSide($exception->getMessage(), $exception->getCode());
+                elseif($statusCode >= 500 && $statusCode <= 599)
+                throw new Exception\ServerSide($exception->getMessage(), $exception->getCode());
+                else
+                    throw new \InvalidArgumentException($exception->getMessage(), $exception->getCode());
+            }
             else
-                throw new \InvalidArgumentException($exception->getResponse()->getBody(), $statusCode);
+            {
+                throw $exception;
+            }
         }            
         
         return $this->getAction()->parseResponse();

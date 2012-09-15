@@ -47,6 +47,30 @@ class BaseAPI
     {
         $this->request->setClient($client);
     }
+    
+    /**
+     * Check if connection is possible or not
+     * 
+     * @return boolean
+     */
+    public function canConnect()
+    {
+        $previousAction = $this->request->getAction();
+        $action = new \ZendServerAPI\Method\GetSystemInfo();
+        $this->request->setAction($action);
+        try {
+            $response = $this->request->send();
+        } catch( \Guzzle\Http\Exception\CurlException $e)
+        {
+            if($previousAction !== null)
+                $this->request->setAction($previousAction);
+            return false;
+        }
+        
+        if($previousAction !== null)
+            $this->request->setAction($previousAction);
+        return true;
+    }
 }
 
 ?>

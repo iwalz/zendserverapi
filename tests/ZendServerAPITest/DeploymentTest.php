@@ -110,7 +110,7 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($retVal);
     }
     
-    public function testUpdate()
+    public function testUpdateAndRollback()
     {
         $deployment = new \ZendServerAPI\Deployment("example62");
         if(!$deployment->canConnect())
@@ -137,6 +137,15 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
         $deployedVersion = new \ZendServerAPI\DataTypes\DeployedVersions();
         $deployedVersion->setVersion("0.2");
         $this->assertEquals($deployedVersions[0], $deployedVersion);
+        
+        $app = $deployment->applicationRollback($app->getId());
+        $app = $deployment->waitForStableState($app->getId());
+        
+        $deployedVersions = $app->getDeployedVersions();
+        $deployedVersion = new \ZendServerAPI\DataTypes\DeployedVersions();
+        $deployedVersion->setVersion("0.1");
+        $this->assertEquals($deployedVersions[0], $deployedVersion);
+        
     }
 }
 

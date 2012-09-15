@@ -101,6 +101,20 @@ class Deployment extends BaseAPI
                 new \ZendServerAPI\Method\ApplicationRemove($appId));
         return $this->request->send();
     }
+    
+    /**
+     * Implementation of 'applicationRollback' method
+     *
+     * @access public
+     * @param id $appId
+     * @return \ZendServerAPI\DataTypes\ApplicationInfo
+     */
+    public function applicationRollback ($appId)
+    {
+        $this->request->setAction(
+                new \ZendServerAPI\Method\ApplicationRollback($appId));
+        return $this->request->send();
+    }
 
     /**
      * Implementation of 'applicationSynchronize' method

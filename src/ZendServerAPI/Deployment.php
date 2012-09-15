@@ -94,7 +94,10 @@ class Deployment extends BaseAPI
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function applicationRemove ($appId)
-    {}
+    {
+        $this->request->setAction(new \ZendServerAPI\Method\ApplicationRemove($appId));
+        return $this->request->send();
+    }
 
     /**
      * Implementation of 'applicationSynchronize' method

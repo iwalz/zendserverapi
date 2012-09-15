@@ -1,33 +1,18 @@
 <?php
 namespace ZendServerAPI\Method;
 
-class ApplicationDeploy extends \ZendServerAPI\Method
+class ApplicationUpdate extends \ZendServerAPI\Method
 {
+    /**
+     * The application's ID to update
+     * @var int
+     */
+    protected $appId = null;
     /**
      * The application package file
      * @var string
      */
     protected $appPackage = null;
-    /**
-     * The baseurl
-     * @var string
-     */
-    protected $baseUrl = null;
-    /**
-     * Create VHost based on the baseurl
-     * @var boolean
-     */
-    protected $createVhost = null;
-    /**
-     * Deploy the application on the default server
-     * @var boolean
-     */
-    protected $defaultServer = null;
-    /**
-     * The user's application name
-     * @var string
-     */
-    protected $userAppName = null;
     /**
      * Ignore failures
      * @var boolean
@@ -50,15 +35,10 @@ class ApplicationDeploy extends \ZendServerAPI\Method
      * @param boolean $ignoreFailure            
      * @param array $userParams            
      */
-    public function __construct ($appPackage, $baseUrl, 
-            $createVhost = false, $defaultServer = false, $userAppName = null, 
-            $ignoreFailure = false, array $userParams = array())
+    public function __construct ($appId, $appPackage, $ignoreFailure = false, array $userParams = array())
     {
+        $this->appId = $appId;
         $this->appPackage = $appPackage;
-        $this->baseUrl = $baseUrl;
-        $this->createVhost = $createVhost;
-        $this->defaultServer = $defaultServer;
-        $this->userAppName = $userAppName;
         $this->ignoreFailures = $ignoreFailure;
         $this->userParams = $userParams;
         
@@ -71,7 +51,7 @@ class ApplicationDeploy extends \ZendServerAPI\Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/applicationDeploy');
+        $this->setFunctionPath('/ZendServerManager/Api/applicationUpdate');
         $this->setParser(new \ZendServerAPI\Mapper\ApplicationInfo());
 //         $this->setParser(new \ZendServerAPI\Mapper\DumpParser());
     }
@@ -87,10 +67,8 @@ class ApplicationDeploy extends \ZendServerAPI\Method
     public function getContentValues()
     {
         $contentArray = array(
-            'baseUrl' => $this->baseUrl,
+            'appId' => $this->appId,
             'userParams' => $this->getUserParams(),
-            'createVhost' => ($this->createVhost === true ? 'TRUE' : 'FALSE'),
-            'defaultServer' => ($this->defaultServer === true ? 'TRUE' : 'FALSE'),
             'ignoreFailures' => ($this->ignoreFailures === true ? 'TRUE' : 'FALSE')
         );
 
@@ -122,47 +100,17 @@ class ApplicationDeploy extends \ZendServerAPI\Method
     {
         return $this->appPackage;
     }
-
+    
     /**
-     * Get the application's baseurl
+     * Get the application ID
      * 
-     * @return $baseUrl
+     * @return int
      */
-    public function getBaseUrl ()
+    public function getApplicationId()
     {
-        return $this->baseUrl;
+        return $this->appId;
     }
-
-    /**
-     * Create VHost based on baseurl
-     * 
-     * @return $createVhost
-     */
-    public function getCreateVhost ()
-    {
-        return $this->createVhost;
-    }
-
-    /**
-     * Deploy application on the default server
-     * 
-     * @return $defaultServer
-     */
-    public function getDefaultServer ()
-    {
-        return $this->defaultServer;
-    }
-
-    /**
-     * Get the user's application name
-     * 
-     * @return $userAppName
-     */
-    public function getUserAppName ()
-    {
-        return $this->userAppName;
-    }
-
+    
     /**
      * Ignore failures
      * 
@@ -192,45 +140,15 @@ class ApplicationDeploy extends \ZendServerAPI\Method
     {
         $this->appPackage = $appPackage;
     }
-
+    
     /**
-     * Set the application's baseurl
+     * Set the application ID to update
      * 
-     * @param string $baseUrl            
+     * @param int $appId
      */
-    public function setBaseUrl ($baseUrl)
+    public function setApplicationId($appId)
     {
-        $this->baseUrl = $baseUrl;
-    }
-
-    /**
-     * Create VHost based on the baseurl
-     * 
-     * @param boolean $createVhost            
-     */
-    public function setCreateVhost ($createVhost)
-    {
-        $this->createVhost = $createVhost;
-    }
-
-    /**
-     * Deploy the application to the default server
-     * 
-     * @param boolean $defaultServer            
-     */
-    public function setDefaultServer ($defaultServer)
-    {
-        $this->defaultServer = $defaultServer;
-    }
-
-    /**
-     * Set the user's application name
-     * 
-     * @param string $userAppName            
-     */
-    public function setUserAppName ($userAppName)
-    {
-        $this->userAppName = $userAppName;
+        $this->appId = $appId;
     }
 
     /**

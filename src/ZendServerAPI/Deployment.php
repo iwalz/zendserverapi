@@ -74,16 +74,19 @@ class Deployment extends BaseAPI
      * @param
      *            Integer The application's ID
      * @param
-     *            \SplFileInfo The application's package
+     *            string The application's package
      * @param
      *            s boolean Ignore failures during staging on some servers
      * @param
      *            s array Set values for user parameters defined in package
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
-    public function applicationUpdate ($appId, SplFileInfo $package, 
+    public function applicationUpdate ($appId, $package, 
             $ignoreFailures = false, array $userParams = array())
-    {}
+    {
+        $this->request->setAction(new \ZendServerAPI\Method\ApplicationUpdate($appId, $package, $ignoreFailures, $userParams));
+        return $this->request->send();
+    }
 
     /**
      * Implementation of 'applicationRemove' method

@@ -109,5 +109,34 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
         $retVal = $deployment->waitForRemoved($result->getId());
         $this->assertTrue($retVal);
     }
+    
+    public function testUpdate()
+    {
+        $deployment = new \ZendServerAPI\Deployment("example62");
+        if(!$deployment->canConnect())
+            $this->markTestSkipped();
+        
+        $deploy = $deployment->applicationDeploy(
+                __DIR__.'/../_files/example1.zpk',
+                "http://test.com",
+                true,
+                false,
+                'Simple test app',
+                false,
+                array(
+                        'locale' => 'GMT',
+                        'db_host' => 'localhost'
+                )
+        );
+        $result = $deployment->waitForStableState($deploy->getId());
+        
+        $app = $deployment->applicationUpdate($result->getId(), __DIR__.'/../_files/example1-2.zpk');
+        $app = $deployment->waitForStableState($app->getId());
+        
+        $deployedVersions = $app->getDeployedVersions();
+        $deployedVersion = new \ZendServerAPI\DataTypes\DeployedVersions();
+        $deployedVersion->setVersion("0.2");
+        $this->assertEquals($deployedVersions[0], $deployedVersion);
+    }
 }
 

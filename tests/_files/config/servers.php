@@ -53,8 +53,8 @@ return array(
     # "Production" test
     "prod" => array(
         "clusterManager" => true,
-        "fullApiKey" => "f739a0f7e43e55b2ea4dcca3ca1a3a744540836657af4e35df919578e1c3e442",
-        "apiName" => "api",
+        "fullApiKey" => "ad8572190150cfb7085bcc57e6c07c7d7bff3448742a86f0d973ae8fb3848cb7",
+        "apiName" => "full",
         "host" => "127.0.0.1",
         "port" => "11111"
     ),

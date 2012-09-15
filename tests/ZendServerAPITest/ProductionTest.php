@@ -53,7 +53,7 @@ class ProductionTest extends PHPUnit_Framework_TestCase
     
     public function testProdConfigurationExport()
     {
-        $configuration = new \ZendServerAPI\Configuration("prod");
+        $configuration = new \ZendServerAPI\Configuration("example62");
         $fileInfo = $configuration->configurationExport('/var/www/zendserverapi/export');
         
         $date = gmdate('Ymd', time());
@@ -77,7 +77,6 @@ class ProductionTest extends PHPUnit_Framework_TestCase
     {
         $configuration = new \ZendServerAPI\Configuration("prod");
         $serversListImport = $configuration->configurationImport('/var/www/zendserverapi/export/Test1.zcfg');
-        $this->assertEquals('pendingRestart', $serversListImport->getFirst()->getStatus());
         
         $server = new \ZendServerAPI\Server("prod");
         $server->restartPhp();

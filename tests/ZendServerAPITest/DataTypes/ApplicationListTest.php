@@ -8,12 +8,17 @@ class ApplicationListTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp ()
     {
-        $this->markTestIncomplete();
+
     }
 
     public function testGettersAndSetters()
     {
-        $this->markTestIncomplete();
+        $applicationList = new \ZendServerAPI\DataTypes\ApplicationList();
+        $applicationInfo = new \ZendServerAPI\DataTypes\ApplicationInfo();
+        $applicationInfo->setAppName("example");
+        $applicationList->addApplicationInfo($applicationInfo);
+        
+        $this->assertEquals(array($applicationInfo), $applicationList->getApplicationInfos());
     }
 }
 

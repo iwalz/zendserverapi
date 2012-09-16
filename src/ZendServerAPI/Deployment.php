@@ -130,7 +130,10 @@ class Deployment extends BaseAPI
      */
     public function applicationSynchronize ($appId, array $servers = array(), 
             $ignoreFailures = false)
-    {}
+    {
+        $this->request->setAction(new \ZendServerAPI\Method\ApplicationSynchronize($appId, $servers, $ignoreFailures));
+        return $this->request->send();
+    }
 
     /**
      * Wait for status = deployed on the application, check every $interval seconds

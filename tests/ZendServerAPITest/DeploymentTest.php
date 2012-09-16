@@ -147,5 +147,16 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($deployedVersions[0], $deployedVersion);
         
     }
+    
+    public function testSynchronize()
+    {
+        $deployment = new \ZendServerAPI\Deployment("example62");
+        $applications = $deployment->applicationGetStatus();
+        $applicationList = $applications->getApplicationInfos();
+        $applicationInfo = $applicationList[0];
+        $applicationInfo = $deployment->applicationSynchronize($applicationInfo->getId(), array(0));
+        $this->assertInstanceOf('\ZendServerAPI\DataTypes\ApplicationInfo', $applicationInfo);
+        $this->assertNotEquals('deployed', $applicationInfo->getStatus());
+    }
 }
 

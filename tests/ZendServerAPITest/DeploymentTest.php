@@ -151,6 +151,9 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
     public function testSynchronize()
     {
         $deployment = new \ZendServerAPI\Deployment("example62");
+        if(!$deployment->canConnect())
+            $this->markTestSkipped();
+        
         $applications = $deployment->applicationGetStatus();
         $applicationList = $applications->getApplicationInfos();
         $applicationInfo = $applicationList[0];

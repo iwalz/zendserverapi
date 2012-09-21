@@ -1,16 +1,16 @@
 <?php
 namespace ZendServerAPI\Mapper;
 
-class DumpParser extends \ZendServerAPI\Mapper\Mapper 
+class DumpParser extends \ZendServerAPI\Mapper\Mapper
 {
-	/* 
+    /*
      * @see \ZendServerAPI\Mapper\Mapper::parse()
      */
-    function parse ()
+    public function parse ()
     {
-        var_dump((string)$this->getResponse()->getBody());
+        var_dump((string) $this->getResponse()->getBody());
+
         return $this->getResponse()->getBody();
     }
 
-    
 }

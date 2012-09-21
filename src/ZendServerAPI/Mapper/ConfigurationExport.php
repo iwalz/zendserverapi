@@ -1,53 +1,48 @@
 <?php
 namespace ZendServerAPI\Mapper;
 
-use ZendServerAPI\Exception\ClientSide;
-
 class ConfigurationExport extends Mapper
 {
     private $fileName = null;
     private $exportDirectory = null;
-    
-	/* 
+
+    /*
      * @see \ZendServerAPI\Mapper\Mapper::parse()
      */
     public function parse ()
     {
-        if($this->fileName === null)
-        {
+        if ($this->fileName === null) {
             $contentDisposition = $this->getResponse()->getContentDisposition();
             $parts = explode("\"", $contentDisposition);
             $fileName = $this->exportDirectory . DIRECTORY_SEPARATOR . $parts[1];
-        }
-        else
-        {
+        } else {
             $fileName = $this->exportDirectory . DIRECTORY_SEPARATOR . $this->fileName;
         }
         file_put_contents( $fileName, $this->getResponse()->getBody());
-        
+
         return new \SplFileInfo($fileName);
     }
-    
+
     public function getExportDirectory()
     {
         return $this->exportDirectory;
     }
-    
+
     public function setExportDirectory($exportDirectory)
     {
         $this->exportDirectory = $this->checkPermission($exportDirectory);
     }
-    
+
     public function setFileName($fileName)
     {
         $this->fileName = $fileName;
     }
-    
+
     public function getFileName()
     {
         return $this->fileName;
     }
-    
+
     private function checkPermission($directory)
     {
         $directoryRealpath = realpath($directory);
@@ -55,9 +50,7 @@ class ConfigurationExport extends Mapper
             throw new \InvalidArgumentException("Directory " . $directory . " does not exist");
         if(!is_writable($directory))
             throw new \InvalidArgumentException("Directory " . $directory . " is not writeable");
-        
+
         return $directoryRealpath;
     }
 }
-
-?>

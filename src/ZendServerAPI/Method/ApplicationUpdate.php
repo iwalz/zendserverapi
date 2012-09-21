@@ -27,13 +27,13 @@ class ApplicationUpdate extends \ZendServerAPI\Method
     /**
      * Method implementation of 'ApplicationDeploy' call
      *
-     * @param string $appPackage            
-     * @param string $baseUrl            
-     * @param boolean $createVhost            
-     * @param boolean $defaultServer            
-     * @param string $userAppName            
-     * @param boolean $ignoreFailure            
-     * @param array $userParams            
+     * @param string  $appPackage
+     * @param string  $baseUrl
+     * @param boolean $createVhost
+     * @param boolean $defaultServer
+     * @param string  $userAppName
+     * @param boolean $ignoreFailure
+     * @param array   $userParams
      */
     public function __construct ($appId, $appPackage, $ignoreFailure = false, array $userParams = array())
     {
@@ -41,7 +41,7 @@ class ApplicationUpdate extends \ZendServerAPI\Method
         $this->appPackage = $appPackage;
         $this->ignoreFailures = $ignoreFailure;
         $this->userParams = $userParams;
-        
+
         parent::__construct();
     }
 
@@ -55,7 +55,7 @@ class ApplicationUpdate extends \ZendServerAPI\Method
         $this->setParser(new \ZendServerAPI\Mapper\ApplicationInfo());
 //         $this->setParser(new \ZendServerAPI\Mapper\DumpParser());
     }
-    
+
     /**
      * @return string
      */
@@ -63,7 +63,7 @@ class ApplicationUpdate extends \ZendServerAPI\Method
     {
         return "";
     }
-    
+
     public function getContentValues()
     {
         $contentArray = array(
@@ -82,38 +82,38 @@ class ApplicationUpdate extends \ZendServerAPI\Method
     {
         return 'multipart/form-data';
     }
-    
+
     /**
      * @see \ZendServerAPI\Method::getPostFiles()
      */
     public function getPostFiles()
     {
-        return array('appPackage' => array('fileName' => $this->appPackage, 'contentType' => 'application/vnd.zend.applicationpackage'));        
+        return array('appPackage' => array('fileName' => $this->appPackage, 'contentType' => 'application/vnd.zend.applicationpackage'));
     }
-    
+
     /**
      * Get the application's package name
-     * 
+     *
      * @return $appPackage
      */
     public function getAppPackage ()
     {
         return $this->appPackage;
     }
-    
+
     /**
      * Get the application ID
-     * 
+     *
      * @return int
      */
     public function getApplicationId()
     {
         return $this->appId;
     }
-    
+
     /**
      * Ignore failures
-     * 
+     *
      * @return $ignoreFailures
      */
     public function getIgnoreFailures ()
@@ -123,7 +123,7 @@ class ApplicationUpdate extends \ZendServerAPI\Method
 
     /**
      * Get the user params
-     * 
+     *
      * @return $userParams
      */
     public function getUserParams ()
@@ -133,17 +133,17 @@ class ApplicationUpdate extends \ZendServerAPI\Method
 
     /**
      * Set the application package
-     * 
-     * @param string $appPackage            
+     *
+     * @param string $appPackage
      */
     public function setAppPackage ($appPackage)
     {
         $this->appPackage = $appPackage;
     }
-    
+
     /**
      * Set the application ID to update
-     * 
+     *
      * @param int $appId
      */
     public function setApplicationId($appId)
@@ -153,8 +153,8 @@ class ApplicationUpdate extends \ZendServerAPI\Method
 
     /**
      * Ignore failures
-     * 
-     * @param boolean $ignoreFailures            
+     *
+     * @param boolean $ignoreFailures
      */
     public function setIgnoreFailures ($ignoreFailures)
     {
@@ -163,13 +163,11 @@ class ApplicationUpdate extends \ZendServerAPI\Method
 
     /**
      * Set the user params for the application
-     * 
-     * @param array $userParams            
+     *
+     * @param array $userParams
      */
     public function setUserParams ($userParams)
     {
         $this->userParams = $userParams;
     }
 }
-
-?>

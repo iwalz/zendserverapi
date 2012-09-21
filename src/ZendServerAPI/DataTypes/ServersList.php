@@ -1,8 +1,6 @@
 <?php
 namespace ZendServerAPI\DataTypes;
 
-use ZendServerAPI\Exception\ClientSide;
-
 class ServersList
 {
     /**
@@ -10,72 +8,74 @@ class ServersList
      * @var array
      */
     private $serverInfos = array();
-    
+
     /**
      * Get the internal ServerInfo container
-     * 
+     *
      * @return array
      */
     public function getServerInfos()
     {
         return $this->serverInfos;
     }
-    
+
     /**
      * Set ServerInfo container
-     * 
+     *
      * @param array $serverInfos
      */
     public function setServerInfos(array $serverInfos)
     {
         $this->serverInfos = $serverInfos;
     }
-    
+
     /**
      * Add ServerInfo to container
-     * 
+     *
      * @param ServerInfo $serverInfo
      */
     public function addServerInfo(ServerInfo $serverInfo)
     {
         $this->serverInfos[] = $serverInfo;
     }
-    
+
     /**
      * Returns the ServerInfo by a given Zend Server ID
-     * 
-     * @param int $serverId
+     *
+     * @param  int                                       $serverId
      * @return \ZendServerAPI\DataTypes\ServerInfo|false
      */
     public function getServerStatusById($serverId)
     {
-        foreach($this->serverInfos as $serverInfo)
-        {
+        foreach ($this->serverInfos as $serverInfo) {
             if($serverInfo->getId() === $serverId)
+
                 return $serverInfo;
         }
+
         return false;
     }
-    
+
     /**
      * Returns the ServerInfo by a given Zend Server Name
      *
-     * @param string $serverName
+     * @param  string                                    $serverName
      * @return \ZendServerAPI\DataTypes\ServerInfo|false
      */
     public function getServerStatusByName($serverName)
     {
-        foreach($this->serverInfos as $serverInfo)
-        {
+        foreach ($this->serverInfos as $serverInfo) {
             if($serverInfo->getName() === $serverName)
+
                 return $serverInfo;
         }
+
         return false;
     }
-    
+
     /**
      * Returns the first ServerInfo object
-     * 
+     *
      * @return \ZendServerAPI\DataTypes\ServerInfo
      */
     public function getFirst()
@@ -86,5 +86,3 @@ class ServersList
        return $this->serverInfos[0];
     }
 }
-
-?>

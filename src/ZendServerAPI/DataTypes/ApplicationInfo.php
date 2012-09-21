@@ -67,44 +67,44 @@ class ApplicationInfo
 
     /**
      * Get the application's ID
-     * 
+     *
      * @return integer
      */
-	public function getId ()
+    public function getId ()
     {
         return $this->id;
     }
 
     /**
      * Get the application's base Url
-     * 
+     *
      * @return string
      */
-	public function getBaseUrl ()
+    public function getBaseUrl ()
     {
         return $this->baseUrl;
     }
 
     /**
      * Get the application's name
-     * 
+     *
      * @return string
      */
-	public function getAppName ()
+    public function getAppName ()
     {
         return $this->appName;
     }
 
     /**
      * Get free text
-     * 
+     *
      * @return string
      */
-	public function getUserAppName ()
+    public function getUserAppName ()
     {
         return $this->userAppName;
     }
-    
+
     /**
      * Some messages
      * @return \ZendServerAPI\DataTypes\MessageList
@@ -116,10 +116,10 @@ class ApplicationInfo
 
     /**
      * Get the application's path on the file system
-     * 
+     *
      * @return string
      */
-	public function getInstalledlocation ()
+    public function getInstalledlocation ()
     {
         return $this->installedlocation;
     }
@@ -141,70 +141,70 @@ class ApplicationInfo
      * - unknown
      * - partially deployed (available for Zend Server Cluster Manager only)
      * - notExists
-     * 
+     *
      * @return string
      */
-	public function getStatus ()
+    public function getStatus ()
     {
         return $this->status;
     }
 
     /**
      * Get the list of servers with the application's status and version
-     * 
+     *
      * @return array \ZendServerAPI\DataTypes\ApplicationServer
      */
-	public function getServers ()
+    public function getServers ()
     {
         return $this->servers;
     }
 
     /**
      * Get the list of messages, related to the application
-     * 
-     * @return array 
+     *
+     * @return array
      */
-	public function getDeployedVersions ()
+    public function getDeployedVersions ()
     {
         return $this->deployedVersions;
     }
 
     /**
      * Set the application's ID
-     * 
+     *
      * @param integer $id
      */
-	public function setId ($id)
+    public function setId ($id)
     {
         $this->id = $id;
     }
 
     /**
      * Set the application's base Url
-     * 
+     *
      * @param string $baseUrl
      */
-	public function setBaseUrl ($baseUrl)
+    public function setBaseUrl ($baseUrl)
     {
         $this->baseUrl = $baseUrl;
     }
 
     /**
      * Set the application's name
-     * 
+     *
      * @param string $appName
      */
-	public function setAppName ($appName)
+    public function setAppName ($appName)
     {
         $this->appName = $appName;
     }
 
     /**
      * Set free text
-     * 
+     *
      * @param string $userAppName
      */
-	public function setUserAppName ($userAppName)
+    public function setUserAppName ($userAppName)
     {
         $this->userAppName = $userAppName;
     }
@@ -215,19 +215,19 @@ class ApplicationInfo
      */
     public function setMessageList(\ZendServerAPI\DataTypes\MessageList $messageList)
     {
-        $this->messageList = $messageList;    
+        $this->messageList = $messageList;
     }
-    
+
     /**
      * Set path of the application
-     * 
+     *
      * @param string $installedlocation
      */
-	public function setInstalledlocation ($installedlocation)
+    public function setInstalledlocation ($installedlocation)
     {
         $this->installedlocation = $installedlocation;
     }
-    
+
     /**
      * Set the application's status, has to be one of this:
      * - uploadError
@@ -245,34 +245,34 @@ class ApplicationInfo
      * - unknown
      * - partially deployed (available for Zend Server Cluster Manager only)
      * - notExists
-     *  
+     *
      * @param string $status
      */
-	public function setStatus ($status)
+    public function setStatus ($status)
     {
         $this->status = $status;
     }
 
     /**
      * Set the application's servers
-     * 
+     *
      * @param array \ZendServerAPI\DataTypes\ApplicationServer
      */
-	public function setServers ($servers)
+    public function setServers ($servers)
     {
         $this->servers = $servers;
     }
 
     /**
      * Set a list of messages, related to the application
-     * 
+     *
      * @param \ZendServerAPI\DataTypes\DeployedVersions $deployedVersions
      */
-	public function addDeployedVersions (\ZendServerAPI\DataTypes\DeployedVersions $deployedVersions)
+    public function addDeployedVersions (\ZendServerAPI\DataTypes\DeployedVersions $deployedVersions)
     {
         $this->deployedVersions[] = $deployedVersions;
     }
-    
+
     /**
      * Set a list of messages, related to the application
      *
@@ -285,7 +285,7 @@ class ApplicationInfo
 
     /**
      * Add a server
-     * 
+     *
      * @param \ZendServerAPI\DataTypes\ApplicationServer
      */
     public function addServer(\ZendServerAPI\DataTypes\ApplicationServer $server)

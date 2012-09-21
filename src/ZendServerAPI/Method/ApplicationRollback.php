@@ -8,10 +8,10 @@ class ApplicationRollback extends \ZendServerAPI\Method
      * @var int
      */
     private $appId = null;
-    
+
     /**
      * Constructor for ApplicationRollback method
-     * 
+     *
      * @param int $appId ApplicationId to rollback
      */
     public function __construct($appId)
@@ -19,7 +19,7 @@ class ApplicationRollback extends \ZendServerAPI\Method
         $this->appId = $appId;
         parent::__construct();
     }
-    
+
     /**
      * @see \ZendServerAPI\Method::configure()
      */
@@ -32,7 +32,7 @@ class ApplicationRollback extends \ZendServerAPI\Method
 
     /**
      * Content for POST request
-     * 
+     *
      * @return string
      */
     public function getContent()
@@ -40,5 +40,3 @@ class ApplicationRollback extends \ZendServerAPI\Method
         return ("appId=".$this->appId);
     }
 }
-
-?>

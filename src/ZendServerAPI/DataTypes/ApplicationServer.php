@@ -3,7 +3,7 @@ namespace ZendServerAPI\DataTypes;
 
 class ApplicationServer
 {
-    /** 
+    /**
      * The server ID
      * @var int
      */
@@ -20,54 +20,54 @@ class ApplicationServer
      * @var string
      */
     protected $status = null;
-    
+
     /**
      * Get the server's ID
-     * 
+     *
      * @return integer
      */
-	public function getId ()
+    public function getId ()
     {
         return $this->id;
     }
 
     /**
      * Get the latest deployed Version
-     * 
+     *
      * @return string
      */
-	public function getDeployedVersion ()
+    public function getDeployedVersion ()
     {
         return $this->deployedVersion;
     }
 
     /**
      * Get the application's status
-     * 
+     *
      * @see \ZendServerAPI\DataTypes\ApplicationInfo::getStatus
      * @return string
      */
-	public function getStatus ()
+    public function getStatus ()
     {
         return $this->status;
     }
 
     /**
      * Set the server's ID
-     * 
+     *
      * @param integer $id
-     */    
-	public function setId ($id)
+     */
+    public function setId ($id)
     {
         $this->id = $id;
     }
 
     /**
      * Set the latest deployed Version
-     * 
+     *
      * @param string $deployedVersion
      */
-	public function setDeployedVersion ($deployedVersion)
+    public function setDeployedVersion ($deployedVersion)
     {
         $this->deployedVersion = $deployedVersion;
     }
@@ -78,7 +78,7 @@ class ApplicationServer
      * @see * @see \ZendServerAPI\DataTypes\ApplicationInfo::setStatus
      * @param string $status
      */
-	public function setStatus ($status)
+    public function setStatus ($status)
     {
         $this->status = $status;
     }

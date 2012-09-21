@@ -42,16 +42,16 @@ class ApplicationDeploy extends \ZendServerAPI\Method
     /**
      * Method implementation of 'ApplicationDeploy' call
      *
-     * @param string $appPackage            
-     * @param string $baseUrl            
-     * @param boolean $createVhost            
-     * @param boolean $defaultServer            
-     * @param string $userAppName            
-     * @param boolean $ignoreFailure            
-     * @param array $userParams            
+     * @param string  $appPackage
+     * @param string  $baseUrl
+     * @param boolean $createVhost
+     * @param boolean $defaultServer
+     * @param string  $userAppName
+     * @param boolean $ignoreFailure
+     * @param array   $userParams
      */
-    public function __construct ($appPackage, $baseUrl, 
-            $createVhost = false, $defaultServer = false, $userAppName = null, 
+    public function __construct ($appPackage, $baseUrl,
+            $createVhost = false, $defaultServer = false, $userAppName = null,
             $ignoreFailure = false, array $userParams = array())
     {
         $this->appPackage = $appPackage;
@@ -61,7 +61,7 @@ class ApplicationDeploy extends \ZendServerAPI\Method
         $this->userAppName = $userAppName;
         $this->ignoreFailures = $ignoreFailure;
         $this->userParams = $userParams;
-        
+
         parent::__construct();
     }
 
@@ -75,7 +75,7 @@ class ApplicationDeploy extends \ZendServerAPI\Method
         $this->setParser(new \ZendServerAPI\Mapper\ApplicationInfo());
 //         $this->setParser(new \ZendServerAPI\Mapper\DumpParser());
     }
-    
+
     /**
      * @return string
      */
@@ -83,7 +83,7 @@ class ApplicationDeploy extends \ZendServerAPI\Method
     {
         return "";
     }
-    
+
     public function getContentValues()
     {
         $contentArray = array(
@@ -104,18 +104,18 @@ class ApplicationDeploy extends \ZendServerAPI\Method
     {
         return 'multipart/form-data';
     }
-    
+
     /**
      * @see \ZendServerAPI\Method::getPostFiles()
      */
     public function getPostFiles()
     {
-        return array('appPackage' => array('fileName' => $this->appPackage, 'contentType' => 'application/vnd.zend.applicationpackage'));        
+        return array('appPackage' => array('fileName' => $this->appPackage, 'contentType' => 'application/vnd.zend.applicationpackage'));
     }
-    
+
     /**
      * Get the application's package name
-     * 
+     *
      * @return $appPackage
      */
     public function getAppPackage ()
@@ -125,7 +125,7 @@ class ApplicationDeploy extends \ZendServerAPI\Method
 
     /**
      * Get the application's baseurl
-     * 
+     *
      * @return $baseUrl
      */
     public function getBaseUrl ()
@@ -135,7 +135,7 @@ class ApplicationDeploy extends \ZendServerAPI\Method
 
     /**
      * Create VHost based on baseurl
-     * 
+     *
      * @return $createVhost
      */
     public function getCreateVhost ()
@@ -145,7 +145,7 @@ class ApplicationDeploy extends \ZendServerAPI\Method
 
     /**
      * Deploy application on the default server
-     * 
+     *
      * @return $defaultServer
      */
     public function getDefaultServer ()
@@ -155,7 +155,7 @@ class ApplicationDeploy extends \ZendServerAPI\Method
 
     /**
      * Get the user's application name
-     * 
+     *
      * @return $userAppName
      */
     public function getUserAppName ()
@@ -165,7 +165,7 @@ class ApplicationDeploy extends \ZendServerAPI\Method
 
     /**
      * Ignore failures
-     * 
+     *
      * @return $ignoreFailures
      */
     public function getIgnoreFailures ()
@@ -175,7 +175,7 @@ class ApplicationDeploy extends \ZendServerAPI\Method
 
     /**
      * Get the user params
-     * 
+     *
      * @return $userParams
      */
     public function getUserParams ()
@@ -185,8 +185,8 @@ class ApplicationDeploy extends \ZendServerAPI\Method
 
     /**
      * Set the application package
-     * 
-     * @param string $appPackage            
+     *
+     * @param string $appPackage
      */
     public function setAppPackage ($appPackage)
     {
@@ -195,8 +195,8 @@ class ApplicationDeploy extends \ZendServerAPI\Method
 
     /**
      * Set the application's baseurl
-     * 
-     * @param string $baseUrl            
+     *
+     * @param string $baseUrl
      */
     public function setBaseUrl ($baseUrl)
     {
@@ -205,8 +205,8 @@ class ApplicationDeploy extends \ZendServerAPI\Method
 
     /**
      * Create VHost based on the baseurl
-     * 
-     * @param boolean $createVhost            
+     *
+     * @param boolean $createVhost
      */
     public function setCreateVhost ($createVhost)
     {
@@ -215,8 +215,8 @@ class ApplicationDeploy extends \ZendServerAPI\Method
 
     /**
      * Deploy the application to the default server
-     * 
-     * @param boolean $defaultServer            
+     *
+     * @param boolean $defaultServer
      */
     public function setDefaultServer ($defaultServer)
     {
@@ -225,8 +225,8 @@ class ApplicationDeploy extends \ZendServerAPI\Method
 
     /**
      * Set the user's application name
-     * 
-     * @param string $userAppName            
+     *
+     * @param string $userAppName
      */
     public function setUserAppName ($userAppName)
     {
@@ -235,8 +235,8 @@ class ApplicationDeploy extends \ZendServerAPI\Method
 
     /**
      * Ignore failures
-     * 
-     * @param boolean $ignoreFailures            
+     *
+     * @param boolean $ignoreFailures
      */
     public function setIgnoreFailures ($ignoreFailures)
     {
@@ -245,13 +245,11 @@ class ApplicationDeploy extends \ZendServerAPI\Method
 
     /**
      * Set the user params for the application
-     * 
-     * @param array $userParams            
+     *
+     * @param array $userParams
      */
     public function setUserParams ($userParams)
     {
         $this->userParams = $userParams;
     }
 }
-
-?>

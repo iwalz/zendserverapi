@@ -3,8 +3,8 @@ namespace ZendServerAPI\DataTypes;
 
 class RequestSummary
 {
-	public function __construct()
-	{
+    public function __construct()
+    {
 
-	}
+    }
 }

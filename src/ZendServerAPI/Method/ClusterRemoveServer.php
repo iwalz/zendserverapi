@@ -13,10 +13,10 @@ class ClusterRemoveServer extends \ZendServerAPI\Method
      * @var boolean
      */
     private $force = null;
-    
+
     /**
      * Constructor for ClusterRemoveServer method
-     * 
+     *
      * @param int $server ServerId to remove
      */
     public function __construct($server, $force = false)
@@ -25,7 +25,7 @@ class ClusterRemoveServer extends \ZendServerAPI\Method
         $this->force = $force;
         parent::__construct();
     }
-    
+
     /**
      * @see \ZendServerAPI\Method::configure()
      */
@@ -38,7 +38,7 @@ class ClusterRemoveServer extends \ZendServerAPI\Method
 
     /**
      * Content for POST request
-     * 
+     *
      * @return string
      */
     public function getContent()
@@ -46,5 +46,3 @@ class ClusterRemoveServer extends \ZendServerAPI\Method
         return ("serverId=".$this->server."&force=".($this->force === true ? 'TRUE' : 'FALSE'));
     }
 }
-
-?>

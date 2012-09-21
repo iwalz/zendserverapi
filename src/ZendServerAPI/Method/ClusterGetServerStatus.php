@@ -11,10 +11,10 @@ class ClusterGetServerStatus  extends \ZendServerAPI\Method
      * @var array
      */
     private $servers = null;
-    
+
     /**
      * Constructor for ClusterGetServerStatus
-     * 
+     *
      * @param array $servers Default returns all servers of the cluster
      */
     public function __construct(array $servers = array())
@@ -22,7 +22,7 @@ class ClusterGetServerStatus  extends \ZendServerAPI\Method
         $this->servers = $servers;
         parent::__construct();
     }
-    
+
     /**
      * @see \ZendServerAPI\Method::configure()
      */
@@ -35,35 +35,32 @@ class ClusterGetServerStatus  extends \ZendServerAPI\Method
 
     /**
      * Set the list of server ids
-     * 
+     *
      * @param array $servers
      */
     public function setParameters(array $servers)
     {
         $this->servers = $servers;
     }
-    
+
     /**
      * @see \ZendServerAPI\Method::getLink()
      */
     public function getLink()
     {
         $link = $this->getFunctionPath();
-        $parameterCount = count($this->servers); 
-        
+        $parameterCount = count($this->servers);
+
         if($parameterCount > 0)
             $link .= "?";
-        
-        foreach($this->servers as $index => $server)
-        {
+
+        foreach ($this->servers as $index => $server) {
             $link .= urlencode("servers[".$index."]")."=".$server;
             if($index+1 < $parameterCount)
                 $link .= "&";
         }
-        
+
         return $link;
     }
-    
-}
 
-?>
+}

@@ -3,18 +3,18 @@ namespace ZendServerAPI\DataTypes;
 
 class SystemInfo
 {
-	private $status = null;
-	private $edition = null;
-	private $zendServerVersion = null;
-	private $supportedApiVersions = null;	
-	private $phpVersion = null;
-	private $operatingSystem = null;
-	private $deploymentVersion = null;
-	private $serverLincenseInfo = null;
-	private $managerLicenseInfo = null;
-	private $messageList = null;
-	
-	/**
+    private $status = null;
+    private $edition = null;
+    private $zendServerVersion = null;
+    private $supportedApiVersions = null;
+    private $phpVersion = null;
+    private $operatingSystem = null;
+    private $deploymentVersion = null;
+    private $serverLincenseInfo = null;
+    private $managerLicenseInfo = null;
+    private $messageList = null;
+
+    /**
      * @return the $xml
      */
     public function getXml ()
@@ -22,7 +22,7 @@ class SystemInfo
         return $this->xml;
     }
 
-	/**
+    /**
      * @return the $status
      */
     public function getStatus ()
@@ -30,7 +30,7 @@ class SystemInfo
         return $this->status;
     }
 
-	/**
+    /**
      * @return the $edition
      */
     public function getEdition ()
@@ -38,7 +38,7 @@ class SystemInfo
         return $this->edition;
     }
 
-	/**
+    /**
      * @return the $zendServerVersion
      */
     public function getZendServerVersion ()
@@ -46,7 +46,7 @@ class SystemInfo
         return $this->zendServerVersion;
     }
 
-	/**
+    /**
      * @return the $supportedApiVersions
      */
     public function getSupportedApiVersions ()
@@ -54,7 +54,7 @@ class SystemInfo
         return $this->supportedApiVersions;
     }
 
-	/**
+    /**
      * @return the $phpVersion
      */
     public function getPhpVersion ()
@@ -62,7 +62,7 @@ class SystemInfo
         return $this->phpVersion;
     }
 
-	/**
+    /**
      * @return the $operatingSystem
      */
     public function getOperatingSystem ()
@@ -70,7 +70,7 @@ class SystemInfo
         return $this->operatingSystem;
     }
 
-	/**
+    /**
      * @return the $deploymentVersion
      */
     public function getDeploymentVersion ()
@@ -78,7 +78,7 @@ class SystemInfo
         return $this->deploymentVersion;
     }
 
-	/**
+    /**
      * @return the $serverLincenseInfo
      */
     public function getServerLincenseInfo ()
@@ -86,7 +86,7 @@ class SystemInfo
         return $this->serverLincenseInfo;
     }
 
-	/**
+    /**
      * @return the $managerLicenseInfo
      */
     public function getManagerLicenseInfo ()
@@ -94,7 +94,7 @@ class SystemInfo
         return $this->managerLicenseInfo;
     }
 
-	/**
+    /**
      * @return the $messageList
      */
     public function getMessageList ()
@@ -102,7 +102,7 @@ class SystemInfo
         return $this->messageList;
     }
 
-	/**
+    /**
      * @param NULL $xml
      */
     public function setXml ($xml)
@@ -110,7 +110,7 @@ class SystemInfo
         $this->xml = $xml;
     }
 
-	/**
+    /**
      * @param NULL $status
      */
     public function setStatus ($status)
@@ -118,7 +118,7 @@ class SystemInfo
         $this->status = $status;
     }
 
-	/**
+    /**
      * @param NULL $edition
      */
     public function setEdition ($edition)
@@ -126,7 +126,7 @@ class SystemInfo
         $this->edition = trim($edition);
     }
 
-	/**
+    /**
      * @param NULL $zendServerVersion
      */
     public function setZendServerVersion ($zendServerVersion)
@@ -134,7 +134,7 @@ class SystemInfo
         $this->zendServerVersion = $zendServerVersion;
     }
 
-	/**
+    /**
      * @param NULL $supportedApiVersions
      */
     public function setSupportedApiVersions ($supportedApiVersions)
@@ -142,7 +142,7 @@ class SystemInfo
         $this->supportedApiVersions = $supportedApiVersions;
     }
 
-	/**
+    /**
      * @param NULL $phpVersion
      */
     public function setPhpVersion ($phpVersion)
@@ -150,7 +150,7 @@ class SystemInfo
         $this->phpVersion = $phpVersion;
     }
 
-	/**
+    /**
      * @param NULL $operatingSystem
      */
     public function setOperatingSystem ($operatingSystem)
@@ -158,7 +158,7 @@ class SystemInfo
         $this->operatingSystem = $operatingSystem;
     }
 
-	/**
+    /**
      * @param NULL $deploymentVersion
      */
     public function setDeploymentVersion ($deploymentVersion)
@@ -166,7 +166,7 @@ class SystemInfo
         $this->deploymentVersion = $deploymentVersion;
     }
 
-	/**
+    /**
      * @param NULL $serverLincenseInfo
      */
     public function setServerLincenseInfo ($serverLincenseInfo)
@@ -174,7 +174,7 @@ class SystemInfo
         $this->serverLincenseInfo = $serverLincenseInfo;
     }
 
-	/**
+    /**
      * @param NULL $managerLicenseInfo
      */
     public function setManagerLicenseInfo ($managerLicenseInfo)
@@ -182,12 +182,12 @@ class SystemInfo
         $this->managerLicenseInfo = $managerLicenseInfo;
     }
 
-	/**
+    /**
      * @param NULL $messageList
      */
     public function setMessageList ($messageList)
     {
         $this->messageList = $messageList;
     }
-	
+
 }

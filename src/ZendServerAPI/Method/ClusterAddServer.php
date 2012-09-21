@@ -28,16 +28,15 @@ class ClusterAddServer extends \ZendServerAPI\Method
      * @var boolean
      */
     private $doRestart = null;
-    
-    
+
     /**
      * Constructor of method ClusterAddServer
-     * 
-     * @param string $serverName Name of server to add
-     * @param string $serverUrl Url of server e.g. http://192.168.1.5:10081/ZendServer
-     * @param string $guiPassword Password for gui
+     *
+     * @param string  $serverName        Name of server to add
+     * @param string  $serverUrl         Url of server e.g. http://192.168.1.5:10081/ZendServer
+     * @param string  $guiPassword       Password for gui
      * @param boolean $propagateSettings Propagate this servers config to the cluster
-     * @param boolean $doRestart Automatically restart after config changes during the add
+     * @param boolean $doRestart         Automatically restart after config changes during the add
      */
     public function __construct($serverName, $serverUrl, $guiPassword, $propagateSettings = false, $doRestart = false)
     {
@@ -48,7 +47,7 @@ class ClusterAddServer extends \ZendServerAPI\Method
         $this->doRestart = $doRestart;
         parent::__construct();
     }
-    
+
     /**
      * @see \ZendServerAPI\Method::configure()
      */
@@ -61,7 +60,7 @@ class ClusterAddServer extends \ZendServerAPI\Method
 
     /**
      * Get content for POST body
-     * 
+     *
      * @return string
      */
     public function getContent()
@@ -74,5 +73,3 @@ class ClusterAddServer extends \ZendServerAPI\Method
             "doRestart=".($this->doRestart === true ? 'TRUE' : 'FALSE');
     }
 }
-
-?>

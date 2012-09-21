@@ -18,10 +18,10 @@ class ApplicationSynchronize extends \ZendServerAPI\Method
      * @var boolean
      */
     protected $ignoreFailures = null;
-    
+
     /**
      * Constructor for ApplicationRemove method
-     * 
+     *
      * @param int $applicationId ApplicationId to remove
      */
     public function __construct($applicationId, array $servers = array(), $ignoreFailures = false)
@@ -31,7 +31,7 @@ class ApplicationSynchronize extends \ZendServerAPI\Method
         $this->ignoreFailures = $ignoreFailures;
         parent::__construct();
     }
-    
+
     /**
      * @see \ZendServerAPI\Method::configure()
      */
@@ -44,19 +44,17 @@ class ApplicationSynchronize extends \ZendServerAPI\Method
 
     /**
      * Content for POST request
-     * 
+     *
      * @return string
      */
     public function getContent()
     {
         $content = "appId=".$this->applicationId;
-        
+
         $content .= "&ignoreFailures=".($this->ignoreFailures == true ? 'TRUE' : 'FALSE');
-        
-        if(count($this->servers) > 0)
-        {
-            foreach($this->servers as $index => $server)
-            {
+
+        if (count($this->servers) > 0) {
+            foreach ($this->servers as $index => $server) {
                 $content .= "&".urlencode("servers[".$index."]")."=".$server;
                 if($index+1 < count($this->servers))
                     $content .= "&";
@@ -65,7 +63,5 @@ class ApplicationSynchronize extends \ZendServerAPI\Method
 
         return $content;
     }
-    
-}
 
-?>
+}

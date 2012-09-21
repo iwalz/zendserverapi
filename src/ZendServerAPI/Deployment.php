@@ -16,7 +16,7 @@ class Deployment extends BaseAPI
     public function __construct ($name = null, ZendServerAPI\Request $request = null)
     {
         parent::__construct($name);
-        
+
         if ($request !== null)
             $this->request = $request;
     }
@@ -33,6 +33,7 @@ class Deployment extends BaseAPI
     {
         $this->request->setAction(
                 new \ZendServerAPI\Method\ApplicationGetStatus($applicationIds));
+
         return $this->request->send();
     }
 
@@ -56,14 +57,15 @@ class Deployment extends BaseAPI
      *            array Set values for user parameters defined in package
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
-    public function applicationDeploy ($file, $baseUrl, $createVhost = false, 
-            $defaultServer = false, $userAppName = null, $igonreFailures = false, 
+    public function applicationDeploy ($file, $baseUrl, $createVhost = false,
+            $defaultServer = false, $userAppName = null, $igonreFailures = false,
             $userParams = array())
     {
         $this->request->setAction(
-                new \ZendServerAPI\Method\ApplicationDeploy($file, $baseUrl, 
-                        $createVhost, $defaultServer, $userAppName, 
+                new \ZendServerAPI\Method\ApplicationDeploy($file, $baseUrl,
+                        $createVhost, $defaultServer, $userAppName,
                         $igonreFailures, $userParams));
+
         return $this->request->send();
     }
 
@@ -81,10 +83,11 @@ class Deployment extends BaseAPI
      *            s array Set values for user parameters defined in package
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
-    public function applicationUpdate ($appId, $package, 
+    public function applicationUpdate ($appId, $package,
             $ignoreFailures = false, array $userParams = array())
     {
         $this->request->setAction(new \ZendServerAPI\Method\ApplicationUpdate($appId, $package, $ignoreFailures, $userParams));
+
         return $this->request->send();
     }
 
@@ -92,27 +95,29 @@ class Deployment extends BaseAPI
      * Implementation of 'applicationRemove' method
      *
      * @access public
-     * @param id $appId            
+     * @param  id                                       $appId
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function applicationRemove ($appId)
     {
         $this->request->setAction(
                 new \ZendServerAPI\Method\ApplicationRemove($appId));
+
         return $this->request->send();
     }
-    
+
     /**
      * Implementation of 'applicationRollback' method
      *
      * @access public
-     * @param id $appId
+     * @param  id                                       $appId
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function applicationRollback ($appId)
     {
         $this->request->setAction(
                 new \ZendServerAPI\Method\ApplicationRollback($appId));
+
         return $this->request->send();
     }
 
@@ -128,10 +133,11 @@ class Deployment extends BaseAPI
      *            boolean Ignore failures during staging on some servers
      * @return \ZendServerAPI\DataTypes\ApplicationList
      */
-    public function applicationSynchronize ($appId, array $servers = array(), 
+    public function applicationSynchronize ($appId, array $servers = array(),
             $ignoreFailures = false)
     {
         $this->request->setAction(new \ZendServerAPI\Method\ApplicationSynchronize($appId, $servers, $ignoreFailures));
+
         return $this->request->send();
     }
 
@@ -150,18 +156,18 @@ class Deployment extends BaseAPI
         $i = 0;
         do {
             sleep($interval);
-            
+
             $applicationList = $this->applicationGetStatus(array($applicationId));
             $applicationInfos = $applicationList->getApplicationInfos();
             $applicationInfo = $applicationInfos[0];
 
             if($i++ == 5)
                 break;
-        } while($applicationInfo->getStatus() !== "deployed");
-        
+        } while ($applicationInfo->getStatus() !== "deployed");
+
         return $applicationInfo;
     }
-    
+
     /**
      * Wait for application not beeing in the list
      *
@@ -176,22 +182,19 @@ class Deployment extends BaseAPI
         $applicationInfo = null;
         $i = 0;
         $retVal = true;
-        
+
         do {
             sleep($interval);
-        
+
             $applicationList = $this->applicationGetStatus(array($applicationId));
             $applicationInfos = $applicationList->getApplicationInfos();
-        
-            if($i++ == 5)
-            {
+
+            if ($i++ == 5) {
                 $retVal = false;
                 break;
             }
-        } while($applicationInfos !== array());
-        
+        } while ($applicationInfos !== array());
+
         return $retVal;
     }
 }
-
-?>

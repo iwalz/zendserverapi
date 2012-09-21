@@ -8,7 +8,7 @@ class DeployedVersions
      * @var string
      */
     protected $version = null;
-    
+
     /**
      * Set the version number
      * @param string $version
@@ -17,10 +17,10 @@ class DeployedVersions
     {
         $this->version = $version;
     }
-    
+
     /**
      * Get the version number
-     * 
+     *
      * @return string
      */
     public function getVersion()

@@ -1,24 +1,24 @@
 <?php
 namespace ZendServerAPI\DataTypes;
 
-class MessageList {
+class MessageList
+{
     private $info = null;
     private $warning = null;
     private $error = null;
-    
+
     public function __construct($xmlData = null)
     {
-        if($xmlData !== null)
-        {
+        if ($xmlData !== null) {
             $xml = simplexml_load_string($xmlData);
-            
-            $this->info = (string)$xml->info;
-            $this->warning = (string)$xml->warning;
-            $this->error = (string)$xml->error;
+
+            $this->info = (string) $xml->info;
+            $this->warning = (string) $xml->warning;
+            $this->error = (string) $xml->error;
         }
     }
-    
-	/**
+
+    /**
      * @return the $info
      */
     public function getInfo ()
@@ -26,7 +26,7 @@ class MessageList {
         return $this->info;
     }
 
-	/**
+    /**
      * @return the $warning
      */
     public function getWarning ()
@@ -34,7 +34,7 @@ class MessageList {
         return $this->warning;
     }
 
-	/**
+    /**
      * @return the $error
      */
     public function getError ()
@@ -42,7 +42,7 @@ class MessageList {
         return $this->error;
     }
 
-	/**
+    /**
      * @param NULL $info
      */
     public function setInfo ($info)
@@ -50,7 +50,7 @@ class MessageList {
         $this->info = $info;
     }
 
-	/**
+    /**
      * @param NULL $warning
      */
     public function setWarning ($warning)
@@ -58,7 +58,7 @@ class MessageList {
         $this->warning = $warning;
     }
 
-	/**
+    /**
      * @param NULL $error
      */
     public function setError ($error)

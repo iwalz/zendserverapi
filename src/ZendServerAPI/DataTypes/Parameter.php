@@ -3,8 +3,8 @@ namespace ZendServerAPI\DataTypes;
 
 class Parameter
 {
-	public function __construct()
-	{
+    public function __construct()
+    {
 
-	}
+    }
 }

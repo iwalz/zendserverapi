@@ -3,8 +3,8 @@ namespace ZendServerAPI\DataTypes;
 
 class CodeTrace
 {
-	public function __construct()
-	{
+    public function __construct()
+    {
 
-	}
+    }
 }

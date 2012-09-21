@@ -8,10 +8,10 @@ class ApplicationRemove extends \ZendServerAPI\Method
      * @var int
      */
     private $applicationId = null;
-    
+
     /**
      * Constructor for ApplicationRemove method
-     * 
+     *
      * @param int $applicationId ApplicationId to remove
      */
     public function __construct($applicationId)
@@ -19,7 +19,7 @@ class ApplicationRemove extends \ZendServerAPI\Method
         $this->applicationId = $applicationId;
         parent::__construct();
     }
-    
+
     /**
      * @see \ZendServerAPI\Method::configure()
      */
@@ -32,7 +32,7 @@ class ApplicationRemove extends \ZendServerAPI\Method
 
     /**
      * Content for POST request
-     * 
+     *
      * @return string
      */
     public function getContent()
@@ -40,5 +40,3 @@ class ApplicationRemove extends \ZendServerAPI\Method
         return ("appId=".$this->applicationId);
     }
 }
-
-?>

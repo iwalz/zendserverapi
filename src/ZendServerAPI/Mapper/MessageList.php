@@ -14,17 +14,16 @@ class MessageList extends Mapper
     {
         if($xml === null)
             $xml = $this->getResponse()->getBody();
-        
+
         $xml = simplexml_load_string($xml);
         $messageList = new MessageListData();
         if(isset($xml->error))
-            $messageList->setError((string)$xml->error);
+            $messageList->setError((string) $xml->error);
         if(isset($xml->info))
-            $messageList->setInfo((string)$xml->info);
+            $messageList->setInfo((string) $xml->info);
         if(isset($xml->warning))
-            $messageList->setWarning((string)$xml->warning);
-        
+            $messageList->setWarning((string) $xml->warning);
+
         return $messageList;
     }
 }
-?>

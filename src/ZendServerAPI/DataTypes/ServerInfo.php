@@ -23,8 +23,8 @@ class ServerInfo
      * @var \ZendServerAPI\DataTypes\MessageList
      */
     private $messageList = null;
-    
-	/**
+
+    /**
      * @return the $id
      */
     public function getId ()
@@ -32,7 +32,7 @@ class ServerInfo
         return $this->id;
     }
 
-	/**
+    /**
      * @return the $name
      */
     public function getName ()
@@ -40,7 +40,7 @@ class ServerInfo
         return $this->name;
     }
 
-	/**
+    /**
      * @return the $address
      */
     public function getAddress ()
@@ -48,7 +48,7 @@ class ServerInfo
         return $this->address;
     }
 
-	/**
+    /**
      * @return the $status
      */
     public function getStatus ()
@@ -56,7 +56,7 @@ class ServerInfo
         return $this->status;
     }
 
-	/**
+    /**
      * @return the $messageList
      */
     public function getMessageList ()
@@ -64,15 +64,15 @@ class ServerInfo
         return $this->messageList;
     }
 
-	/**
+    /**
      * @param Integer $id
      */
     public function setId ($id)
     {
-        $this->id = (int)$id;
+        $this->id = (int) $id;
     }
 
-	/**
+    /**
      * @param string $name
      */
     public function setName ($name)
@@ -80,7 +80,7 @@ class ServerInfo
         $this->name = $name;
     }
 
-	/**
+    /**
      * @param string $address
      */
     public function setAddress ($address)
@@ -88,7 +88,7 @@ class ServerInfo
         $this->address = $address;
     }
 
-	/**
+    /**
      * @param string $status
      */
     public function setStatus ($status)
@@ -96,7 +96,7 @@ class ServerInfo
         $this->status = $status;
     }
 
-	/**
+    /**
      * @param \ZendServerAPI\MessageList $messageList
      */
     public function setMessageList ($messageList)
@@ -104,7 +104,4 @@ class ServerInfo
         $this->messageList = $messageList;
     }
 
-    
 }
-
-?>

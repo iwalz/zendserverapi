@@ -8,10 +8,10 @@ class ClusterEnableServer extends \ZendServerAPI\Method
      * @var int
      */
     private $serverId = null;
-    
+
     /**
      * Constructor of ClusterEnableServer method
-     * 
+     *
      * @param int $serverId
      */
     public function __construct($serverId)
@@ -19,11 +19,11 @@ class ClusterEnableServer extends \ZendServerAPI\Method
         $this->serverId = $serverId;
         parent::__construct();
     }
-    
+
     /**
      * @see \ZendServerAPI\Method::configure()
      */
-    function configure ()
+    public function configure ()
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/clusterEnableServer');
@@ -32,7 +32,7 @@ class ClusterEnableServer extends \ZendServerAPI\Method
 
     /**
      * Content for POST request
-     * 
+     *
      * @return string
      */
     public function getContent()
@@ -40,5 +40,3 @@ class ClusterEnableServer extends \ZendServerAPI\Method
         return ("serverId=".$this->serverId);
     }
 }
-
-?>

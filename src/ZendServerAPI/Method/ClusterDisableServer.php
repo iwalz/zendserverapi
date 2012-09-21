@@ -8,10 +8,10 @@ class ClusterDisableServer extends \ZendServerAPI\Method
      * @var int
      */
     private $serverId = null;
-    
+
     /**
      * Constructor for ClusterDisableServer method
-     * 
+     *
      * @param int $server Id of the server to disable
      */
     public function __construct($serverId)
@@ -19,11 +19,11 @@ class ClusterDisableServer extends \ZendServerAPI\Method
         $this->serverId = $serverId;
         parent::__construct();
     }
-    
+
     /**
      * @see \ZendServerAPI\Method::configure()
      */
-    function configure ()
+    public function configure ()
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/clusterDisableServer');
@@ -39,5 +39,3 @@ class ClusterDisableServer extends \ZendServerAPI\Method
         return ("serverId=".$this->serverId);
     }
 }
-
-?>

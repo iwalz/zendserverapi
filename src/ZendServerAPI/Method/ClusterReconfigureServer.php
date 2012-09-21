@@ -13,10 +13,10 @@ class ClusterReconfigureServer extends \ZendServerAPI\Method
      * @var
      */
     private $doRestart = null;
-    
+
     /**
      * Constructor for ClusterReconfigureServer method
-     * 
+     *
      * @param int $server ServerId to reconfigure
      * @param boolean restart server after action
      */
@@ -26,21 +26,21 @@ class ClusterReconfigureServer extends \ZendServerAPI\Method
         $this->doRestart = $doRestart;
         parent::__construct();
     }
-    
+
     /**
      * Content for POST request
-     * 
+     *
      * @return string
      */
     public function getContent()
     {
         return ("serverId=".$this->server."&doRestart=".($this->doRestart === true ? 'TRUE' : 'FALSE'));
     }
-    
+
     /**
      * @see \ZendServerAPI\Method::configure()
      */
-    function configure ()
+    public function configure ()
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/clusterReconfigureServer');
@@ -48,4 +48,3 @@ class ClusterReconfigureServer extends \ZendServerAPI\Method
     }
 
 }
-

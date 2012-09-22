@@ -4,3 +4,8 @@
 .settings/
 composer.lock
 /tests/report
+cache/
+php/
+downloads/
+.configsnapshots/
+.pear2registry

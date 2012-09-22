@@ -24,12 +24,12 @@ class CodeTracingStatus
      * @var string
      */
     protected $awaitsRestart = null;
-    
+
     public function __construct()
     {
 
     }
-	/**
+    /**
      * @return the $componentStatus
      */
     public function getComponentStatus ()
@@ -37,7 +37,7 @@ class CodeTracingStatus
         return $this->componentStatus;
     }
 
-	/**
+    /**
      * @return the $alwaysDump
      */
     public function getAlwaysDump ()
@@ -45,7 +45,7 @@ class CodeTracingStatus
         return $this->alwaysDump;
     }
 
-	/**
+    /**
      * @return the $traceEnabled
      */
     public function getTraceEnabled ()
@@ -53,7 +53,7 @@ class CodeTracingStatus
         return $this->traceEnabled;
     }
 
-	/**
+    /**
      * @return the $awaitsRestart
      */
     public function getAwaitsRestart ()
@@ -61,7 +61,7 @@ class CodeTracingStatus
         return $this->awaitsRestart;
     }
 
-	/**
+    /**
      * @param NULL $componentStatus
      */
     public function setComponentStatus ($componentStatus)
@@ -69,7 +69,7 @@ class CodeTracingStatus
         $this->componentStatus = $componentStatus;
     }
 
-	/**
+    /**
      * @param NULL $alwaysDump
      */
     public function setAlwaysDump ($alwaysDump)
@@ -77,7 +77,7 @@ class CodeTracingStatus
         $this->alwaysDump = $alwaysDump;
     }
 
-	/**
+    /**
      * @param NULL $traceEnabled
      */
     public function setTraceEnabled ($traceEnabled)
@@ -85,7 +85,7 @@ class CodeTracingStatus
         $this->traceEnabled = $traceEnabled;
     }
 
-	/**
+    /**
      * @param NULL $awaitsRestart
      */
     public function setAwaitsRestart ($awaitsRestart)

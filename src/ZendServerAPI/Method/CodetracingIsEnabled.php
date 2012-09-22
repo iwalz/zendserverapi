@@ -21,7 +21,7 @@ class CodetracingIsEnabled extends \ZendServerAPI\Method
     {
         return "application/vnd.zend.serverapi+xml;version=1.2";
     }
-    
+
     /**
      * @see \ZendServerAPI\Method::configure()
      */

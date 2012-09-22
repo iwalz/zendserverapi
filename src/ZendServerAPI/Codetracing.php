@@ -20,28 +20,30 @@ class Codetracing extends BaseAPI
 
     /**
      * Implementation of codetracingEnable method
-     * 
-     * @param boolean $restartNow Restart after method call
+     *
+     * @param  boolean                                    $restartNow Restart after method call
      * @return \ZendServerAPI\DataTypes\CodeTracingStatus
      */
     public function codetracingEnable($restartNow = true)
     {
         $this->request->setAction(new \ZendServerAPI\Method\CodetracingEnable($restartNow));
+
         return $this->request->send();
     }
-    
+
     /**
      * Implementation of codetracingDisable method
      *
-     * @param boolean $restartNow Restart after method call
+     * @param  boolean                                    $restartNow Restart after method call
      * @return \ZendServerAPI\DataTypes\CodeTracingStatus
      */
     public function codetracingDisable($restartNow = true)
     {
         $this->request->setAction(new \ZendServerAPI\Method\CodetracingDisable($restartNow));
+
         return $this->request->send();
     }
-    
+
     /**
      * Implementation of codetracingIsEnabled method
      *
@@ -50,6 +52,7 @@ class Codetracing extends BaseAPI
     public function codetracingIsEnabled()
     {
         $this->request->setAction(new \ZendServerAPI\Method\CodetracingIsEnabled());
+
         return $this->request->send();
     }
 }

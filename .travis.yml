@@ -3,8 +3,8 @@ php:
   - "5.3"
 
 before_install:
- - pyrus channel-discover packages.zendframework.com
- - pyrus install zf2/zend_log
+ - pyrus . channel-discover packages.zendframework.com
+ - pyrus . install zf2/zend_log
  - curl -s https://getcomposer.org/installer | php -- --quiet
  - php composer.phar install --dev
  - phpenv rehash

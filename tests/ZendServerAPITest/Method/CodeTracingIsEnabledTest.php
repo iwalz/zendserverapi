@@ -9,5 +9,10 @@ class CodetracingIsEnabledTest extends \PHPUnit_Framework_TestCase
     {
         $this->markTestIncomplete();
     }
+    
+    public static function getResponse()
+    {
+        return file_get_contents(__DIR__.'/../DataTypes/TestAsset/codetracingstatus.xml');
+    }
 }
 

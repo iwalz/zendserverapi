@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.1">
+	<requestData>
+		<apiKeyName><![CDATA[Admin]]></apiKeyName>
+		<method>codetracingDisable</method>
+	</requestData>
+	<responseData>
+		<codeTracingStatus>
+			<componentStatus>Inactive</componentStatus>
+			<alwaysDump>Off</alwaysDump>
+			<traceEnabled>Off</traceEnabled>
+			<awaitsRestart>0</awaitsRestart>
+		</codeTracingStatus>
+	</responseData>
+</zendServerAPIResponse>

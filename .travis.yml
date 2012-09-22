@@ -3,12 +3,11 @@ php:
   - "5.3"
 
 before_install:
- - wget http://packages.zendframework.com/pyrus.phar .
- - chmod +x ./pyrus.phar
- - ./pyrus.phar . channel-discover packages.zendframework.com
- - ./pyrus.phar . install zf2/zend_log
+ - pyrus.phar . channel-discover packages.zendframework.com
+ - pyrus.phar . install zf2/zend_log
  - curl -s https://getcomposer.org/installer | php -- --quiet
  - php composer.phar install --dev
+ - phpenv rehash
 
 script:
  - cd tests/

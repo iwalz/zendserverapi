@@ -7,6 +7,8 @@ class ProductionTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
+        if(DISABLE_REAL_INTERFACE === true)
+            $this->markTestSkipped();
         $server = new \ZendServerAPI\Server("prod");
         try {
             $server->clusterGetServerStatus();

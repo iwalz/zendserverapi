@@ -37,10 +37,29 @@ class Startup
         $request = new Request();
 
         self::configureApiKey($name, $request);
-
+        self::setUpLogger($request);
+        
         return $request;
     }
 
+    /**
+     * Configure request logger
+     * 
+     * @param \ZendServerAPI\Request $request
+     */
+    private static function setUpLogger(&$request)
+    {
+        if(!is_dir(__DIR__.'/../../logs'))
+            mkdir(__DIR__.'/../../logs');
+
+        $logger = new \Zend\Log\Logger();
+        $logWriter = new \Zend\Log\Writer\Stream(__DIR__.'/../../logs/request.log');
+        
+        $logger->addWriter($logWriter);
+        
+        $request->setLogger($logger);
+    }
+    
     /**
      * Configure the api key for the request
      *

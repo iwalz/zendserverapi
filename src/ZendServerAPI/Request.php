@@ -25,7 +25,12 @@ class Request
      * @var \Guzzle\Http\Client
      */
     private $client = null;
-
+    /**
+     * Internal logger
+     * @var \Zend\Log\Logger
+     */
+    private $logger = null;
+    
     /**
      * Constructor for the request class
      */
@@ -47,6 +52,16 @@ class Request
         return $this;
     }
 
+    /**
+     * Set request logger
+     * 
+     * @param \Zend\Log\Logger $logger
+     */
+    public function setLogger(\Zend\Log\Logger $logger)
+    {
+        $this->logger = $logger;
+    }
+    
     /**
      * Set the user agent used by the request
      *
@@ -97,6 +112,21 @@ class Request
         return $this->config;
     }
 
+    /**
+     * Get request logger
+     *
+     * @return \Zend\Log\Logger $logger
+     */
+    public function getLogger()
+    {
+        if($this->logger === null) {
+            $this->logger = new \Zend\Log\Logger();
+            $mockWriter = new \Zend\Log\Writer\Mock();
+            $this->logger->addWriter($mockWriter);
+        }
+        return $this->logger;
+    }
+    
     /**
      * Get HTTP client
      *
@@ -165,7 +195,7 @@ class Request
                 $requests->addPostFields($contentValues);
         }
 
-        /**
+        /*
          * @var \Guzzle\Http\Message\Request $requests
          */
         $requests->setHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
@@ -173,9 +203,13 @@ class Request
         $requests->setHeader('lookInCupboard', 'true');
         $requests->setHeader('Date', $this->getDate());
         $requests->setHeader('User-Agent', $this->userAgent);
+        
+        $this->getLogger()->debug($requests);
 
         try {
             $response = $this->client->send($requests);
+            $this->getLogger()->debug($response);
+            
             $this->getAction()->setResponse($response);
         } catch (\Guzzle\Http\Exception\CurlException $exception) {
             throw $exception;

@@ -43,6 +43,9 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
 
     public function testApplicationGetStatusAgainstProduction()
     {
+        if(DISABLE_REAL_INTERFACE === true)
+            $this->markTestSkipped();
+        
         try {
             $deployment = new \ZendServerAPI\Deployment("example62");
             $deploymentStatus = $deployment->applicationGetStatus();
@@ -55,6 +58,8 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
     
     public function testApplicationDeploy()
     {
+        if(DISABLE_REAL_INTERFACE === true)
+            $this->markTestSkipped();
         $deployment = new \ZendServerAPI\Deployment("example62");
         if(!$deployment->canConnect())
             $this->markTestSkipped();
@@ -86,6 +91,8 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
     
     public function testWaitForMethods()
     {
+        if(DISABLE_REAL_INTERFACE === true)
+            $this->markTestSkipped();
         $deployment = new \ZendServerAPI\Deployment("example62");
         if(!$deployment->canConnect())
             $this->markTestSkipped();
@@ -112,6 +119,8 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
     
     public function testUpdateAndRollback()
     {
+        if(DISABLE_REAL_INTERFACE === true)
+            $this->markTestSkipped();
         $deployment = new \ZendServerAPI\Deployment("example62");
         if(!$deployment->canConnect())
             $this->markTestSkipped();
@@ -150,6 +159,8 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
     
     public function testSynchronize()
     {
+        if(DISABLE_REAL_INTERFACE === true)
+            $this->markTestSkipped();
         $deployment = new \ZendServerAPI\Deployment("example62");
         if(!$deployment->canConnect())
             $this->markTestSkipped();

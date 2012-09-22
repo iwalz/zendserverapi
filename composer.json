@@ -23,7 +23,8 @@
     "autoload": {
         "psr-0": {
             "ZendServerAPI": "src/",
-            "ZendServerAPITest": "tests/"
+            "ZendServerAPITest": "tests/",
+            "Zend": "php/"
         }
     }
 }

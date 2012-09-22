@@ -10,3 +10,4 @@ downloads/
 .configsnapshots/
 .pear2registry
 export/
+logs/

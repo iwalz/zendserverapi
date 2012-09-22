@@ -9,7 +9,8 @@ class CodetracingTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-//         $this->markTestSkipped();
+        if(DISABLE_REAL_INTERFACE === true)
+            $this->markTestSkipped();
     }
     
     public function testCodetracingEnableDisable()

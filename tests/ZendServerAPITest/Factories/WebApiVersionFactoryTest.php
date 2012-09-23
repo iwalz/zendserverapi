@@ -42,5 +42,43 @@ class WebApiVersionFactoryTest extends \PHPUnit_Framework_TestCase
         $getSystemInfo = $retFactory::factory('getSystemInfo');
         $this->assertInstanceOf('\ZendServerAPI\Method\GetSystemInfo', $getSystemInfo);
     }
+    
+    /**
+     * @expectedException \RuntimeException
+     * @expectedExceptionMessage The method test is not available
+     */
+    public function testWebApiIncorrectCommandException()
+    {
+        $request = Startup::getRequest();
+        $config = $request->getConfig();
+        $webApiVersionFactory = new \ZendServerAPI\Factories\WebApiVersionFactory();
+        $webApiVersionFactory->setConfig($config);
+        
+        $retFactory = $webApiVersionFactory->getCommandFactory();
+        
+        $retFactory::factory('test');
+    }
+    
+    public function testWebApiVersion10Factory()
+    {
+        $request = Startup::getRequest("ZS50");
+        $config = $request->getConfig();
+        $webApiVersionFactory = new \ZendServerAPI\Factories\WebApiVersionFactory();
+        $webApiVersionFactory->setConfig($config);
+        
+        $retFactory = $webApiVersionFactory->getCommandFactory();
+        $this->assertEquals('ZendServerAPI\Factories\ApiVersion10CommandFactory', get_class($retFactory));
+    }
+    
+    public function testWebApiVersion11Factory()
+    {
+        $request = Startup::getRequest("ZS55");
+        $config = $request->getConfig();
+        $webApiVersionFactory = new \ZendServerAPI\Factories\WebApiVersionFactory();
+        $webApiVersionFactory->setConfig($config);
+    
+        $retFactory = $webApiVersionFactory->getCommandFactory();
+        $this->assertEquals('ZendServerAPI\Factories\ApiVersion11CommandFactory', get_class($retFactory));
+    }
 }
 

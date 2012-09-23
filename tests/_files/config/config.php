@@ -68,6 +68,22 @@ return array(
             "apiName" => "angel.eyes",
             "host" => "zscm.local",
             "port" => "10081"
-        )
+        ),
+        # "50" test
+        "ZS50" => array(
+            "version" => \ZendServerAPI\Version::ZS50,
+            "fullApiKey" => "ad8572190150cfb7085bcc57e6c07c7d7bff3448742a86f0d973ae8fb3848cb7",
+            "apiName" => "full",
+            "host" => "127.0.0.1",
+            "port" => "11111"
+        ),
+        # "55" test
+        "ZS55" => array(
+            "version" => \ZendServerAPI\Version::ZS55,
+            "fullApiKey" => "ad8572190150cfb7085bcc57e6c07c7d7bff3448742a86f0d973ae8fb3848cb7",
+            "apiName" => "full",
+            "host" => "127.0.0.1",
+            "port" => "11111"
+        ),
     )
 );

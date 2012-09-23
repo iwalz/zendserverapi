@@ -14,6 +14,11 @@ class Startup
      * @var string
      */
     protected static $configPath = null;
+    /**
+     * Disable logging
+     * @var boolean
+     */
+    protected static $disableLogging = null;
 
     /**
      * Generate base request based on a config section
@@ -53,9 +58,14 @@ class Startup
             mkdir(__DIR__.'/../../logs');
 
         $logger = new \Zend\Log\Logger();
-        $logWriter = new \Zend\Log\Writer\Stream(__DIR__.'/../../logs/request.log');
         
+        if(self::$disableLogging) {
+            $logWriter = new \Zend\Log\Writer\Mock();
+        } else {
+            $logWriter = new \Zend\Log\Writer\Stream(__DIR__.'/../../logs/request.log');
+        }
         $logger->addWriter($logWriter);
+        
         
         $request->setLogger($logger);
     }
@@ -109,6 +119,22 @@ class Startup
         return self::$configPath;
     }
 
+    /**
+     * Disable logging
+     */
+    public static function disableLogging()
+    {
+        self::$disableLogging = true;
+    }
+    
+    /**
+     * Enable logging
+     */
+    public static function enableLogging()
+    {
+        self::$disableLogging = false;
+    }
+    
     /**
      * Get the name
      *

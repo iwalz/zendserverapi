@@ -15,12 +15,10 @@ class CodetracingTest extends PHPUnit_Framework_TestCase
     
     public function testCodetracingEnableDisable()
     {
+//         \ZendServerAPI\Startup::enableLogging();
         $codetracing = new \ZendServerAPI\Codetracing("example62");
-        $status = $codetracing->codetracingEnable();
-        $this->assertEquals($status->getTraceEnabled(), '1');
-        
         $status = $codetracing->codetracingDisable();
-        $this->assertEquals($status->getTraceEnabled(), '0');
+//         \ZendServerAPI\Startup::disableLogging();
     }
 }
 

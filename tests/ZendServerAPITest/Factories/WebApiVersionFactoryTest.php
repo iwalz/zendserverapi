@@ -85,12 +85,12 @@ class WebApiVersionFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function testWebApiMethodFromNewerApiVersion()
     {
-        $request = Startup::getRequest("ZS50");
+        $request = Startup::getRequest("ZS51");
         $config = $request->getConfig();
         $webApiVersionFactory = new \ZendServerAPI\Factories\WebApiVersionFactory();
         $webApiVersionFactory->setConfig($config);
         
-        $this->assertEquals($config->getApiVersion(), \ZendServerAPI\Version::ZS50);
+        $this->assertEquals($config->getApiVersion(), \ZendServerAPI\Version::ZS51);
         
         $retFactory = $webApiVersionFactory->getCommandFactory();
         $applicationUpdate = $retFactory::factory('applicationUpdate', '1', 'mypackage.zpk');
@@ -114,7 +114,7 @@ class WebApiVersionFactoryTest extends \PHPUnit_Framework_TestCase
     
     public function testWebApiVersion10Factory()
     {
-        $request = Startup::getRequest("ZS50");
+        $request = Startup::getRequest("ZS51");
         $config = $request->getConfig();
         $webApiVersionFactory = new \ZendServerAPI\Factories\WebApiVersionFactory();
         $webApiVersionFactory->setConfig($config);

@@ -4,11 +4,11 @@ namespace ZendServerAPI;
 class Version
 {
     /**
-     * Zend Server Cluster Manager 5.0
+     * Zend Server Cluster Manager 5.1
      * API Version 1.0
      * @var string
      */
-    const ZSCM50 = "1.0";
+    const ZSCM51 = "1.0";
     /**
      * Zend Server Cluster Manager 5.5
      * API Version 1.1
@@ -22,11 +22,11 @@ class Version
      */
     const ZSCM56 = "1.2";
     /**
-     * Zend Server Community Edition 5.0
+     * Zend Server Community Edition 5.1
      * API Version 1.0
      * @var string
      */
-    const ZSCE50 = "1.0";
+    const ZSCE51 = "1.0";
     /**
      * Zend Server Community Edition 5.5
      * API Version 1.1
@@ -40,11 +40,11 @@ class Version
      */
     const ZSCE56 = "1.2";
     /**
-     * Zend Server 5.0
+     * Zend Server 5.1
      * API Version 1.0
      * @var string
      */
-    const ZS50 = "1.0";
+    const ZS51 = "1.0";
     /**
      * Zend Server 5.5
      * API Version 1.1

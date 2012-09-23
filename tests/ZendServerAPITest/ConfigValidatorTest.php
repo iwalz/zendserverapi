@@ -11,7 +11,7 @@ class ConfigValidatorTest extends PHPUnit_Framework_TestCase
         
         $this->assertEquals($configValidator->getConfig("example62"), 
                 array(
-                        'clusterManager' => '1',
+                        "version" => \ZendServerAPI\Version::ZSCM56,
                         'fullApiKey'=>'058b82f191d934a7bfe17d12060dd3320869f132d3428fa19d35463903673eee',
                         'apiName'=>'api',
                         'host'=>'localhost',

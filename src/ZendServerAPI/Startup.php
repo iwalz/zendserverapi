@@ -95,6 +95,7 @@ class Startup
         $config = new Config();
         $config->setHost($conf['host']);
         $config->setPort($conf['port']);
+        $config->setApiVersion($conf['version']);
         $config->setApiKey($apiKey);
 
         $request->setConfig($config);

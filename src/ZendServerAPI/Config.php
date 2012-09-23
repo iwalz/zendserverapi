@@ -1,6 +1,8 @@
 <?php
 namespace ZendServerAPI;
 
+use Guzzle\Tests\Common\Validation\StringTest;
+
 class Config
 {
     /**
@@ -18,6 +20,11 @@ class Config
      * @var \ZendServerAPI\ApiKey
      */
     protected $apiKey = null;
+    /**
+     * Api Version
+     * @var string
+     */
+    protected $apiVersion = null;
 
     /**
      * Construct for ZendServerAPI\Config
@@ -27,6 +34,26 @@ class Config
 
     }
 
+    /**
+     * Set the API Version
+     * 
+     * @param string Api Version
+     */
+    public function setApiVersion($apiVersion)
+    {
+        $this->apiVersion = $apiVersion;
+    }
+    
+    /**
+     * Get the api version
+     * 
+     * @return string
+     */
+    public function getApiVersion()
+    {
+        return $this->apiVersion;
+    }
+    
     /**
      * The api key for the current connection
      *

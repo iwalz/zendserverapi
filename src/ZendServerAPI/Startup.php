@@ -43,13 +43,13 @@ class Startup
 
         self::configureApiKey($name, $request);
         self::setUpLogger($request);
-        
+
         return $request;
     }
 
     /**
      * Configure request logger
-     * 
+     *
      * @param \ZendServerAPI\Request $request
      */
     private static function setUpLogger(&$request)
@@ -59,22 +59,21 @@ class Startup
 
         $validator = new ConfigValidator(self::getConfigPath());
         $conf = $validator->getSettings();
-        
+
         $filter = new \Zend\Log\Filter\Priority($conf['loglevel']);
         $logger = new \Zend\Log\Logger();
-        
-        if(self::$disableLogging) {
+
+        if (self::$disableLogging) {
             $logWriter = new \Zend\Log\Writer\Mock();
         } else {
             $logWriter = new \Zend\Log\Writer\Stream(__DIR__.'/../../logs/request.log');
         }
         $logWriter->addFilter($filter);
         $logger->addWriter($logWriter);
-        
-        
+
         $request->setLogger($logger);
     }
-    
+
     /**
      * Configure the api key for the request
      *
@@ -132,7 +131,7 @@ class Startup
     {
         self::$disableLogging = true;
     }
-    
+
     /**
      * Enable logging
      */
@@ -140,7 +139,7 @@ class Startup
     {
         self::$disableLogging = false;
     }
-    
+
     /**
      * Get the name
      *

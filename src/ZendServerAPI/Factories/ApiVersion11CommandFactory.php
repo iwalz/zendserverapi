@@ -1,20 +1,6 @@
 <?php
 namespace ZendServerAPI\Factories;
 
-use ZendServerAPI\Method\ClusterReconfigureServer;
-
-use ZendServerAPI\Method\ApplicationUpdate;
-
-use ZendServerAPI\Method\ApplicationSynchronize;
-
-use ZendServerAPI\Method\ApplicationRollback;
-
-use ZendServerAPI\Method\ApplicationRemove;
-
-use ZendServerAPI\Method\ApplicationDeploy;
-
-use ZendServerAPI\Method\ApplicationGetStatus;
-
 class ApiVersion11CommandFactory extends ApiVersion10CommandFactory
 {
     public static function factory($name)
@@ -22,33 +8,30 @@ class ApiVersion11CommandFactory extends ApiVersion10CommandFactory
         $args = func_get_args();
         array_shift($args);
 
-        switch($name)
-        {
+        switch ($name) {
             case 'clusterReconfigureServer':
-                return new ClusterReconfigureServer($args[0]);
+                return new \ZendServerAPI\Method\ClusterReconfigureServer($args[0]);
                 break;
             case 'applicationGetStatus':
-                return new ApplicationGetStatus($args[0]);
+                return new \ZendServerAPI\Method\ApplicationGetStatus($args[0]);
                 break;
             case 'applicationDeploy':
-                return new ApplicationDeploy($args[0], $args[1]);
+                return new \ZendServerAPI\Method\ApplicationDeploy($args[0], $args[1]);
                 break;
             case 'applicationRemove':
-                return new ApplicationRemove($args[0]);
-                break;                
+                return new \ZendServerAPI\Method\ApplicationRemove($args[0]);
+                break;
             case 'applicationRollback':
-                return new ApplicationRollback($args[0]);
+                return new \ZendServerAPI\Method\ApplicationRollback($args[0]);
                 break;
             case 'applicationSynchronize':
-                return new ApplicationSynchronize($args[0]);
+                return new \ZendServerAPI\Method\ApplicationSynchronize($args[0]);
                 break;
             case 'applicationUpdate':
-                return new ApplicationUpdate($args[0], $args[1]);
+                return new \ZendServerAPI\Method\ApplicationUpdate($args[0], $args[1]);
                 break;
             default:
                 return call_user_func_array('parent::factory', array_merge(array($name), $args));
         }
     }
 }
-
-?>

@@ -8,12 +8,9 @@ class ApiVersion12CommandFactory extends ApiVersion11CommandFactory
         $args = func_get_args();
         array_shift($args);
 
-        switch($name)
-        {
+        switch ($name) {
             default:
                 return call_user_func_array('parent::factory', array_merge(array($name), $args));
         }
     }
 }
-
-?>

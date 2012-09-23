@@ -7,9 +7,8 @@ class ApiVersion10CommandFactory implements CommandFactory
     {
         $args = func_get_args();
         array_shift($args);
-        
-        switch($name)
-        {
+
+        switch ($name) {
             case 'clusterGetServerStatus':
                 return new \ZendServerAPI\Method\ClusterGetServerStatus($args[0]);
                 break;
@@ -42,5 +41,3 @@ class ApiVersion10CommandFactory implements CommandFactory
         }
     }
 }
-
-?>

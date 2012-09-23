@@ -58,5 +58,3 @@ class Version
      */
     const ZS56 = "1.2";
 }
-
-?>

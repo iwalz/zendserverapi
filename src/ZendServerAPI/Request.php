@@ -30,7 +30,7 @@ class Request
      * @var \Zend\Log\Logger
      */
     private $logger = null;
-    
+
     /**
      * Constructor for the request class
      */
@@ -54,14 +54,14 @@ class Request
 
     /**
      * Set request logger
-     * 
+     *
      * @param \Zend\Log\Logger $logger
      */
     public function setLogger(\Zend\Log\Logger $logger)
     {
         $this->logger = $logger;
     }
-    
+
     /**
      * Set the user agent used by the request
      *
@@ -119,14 +119,15 @@ class Request
      */
     public function getLogger()
     {
-        if($this->logger === null) {
+        if ($this->logger === null) {
             $this->logger = new \Zend\Log\Logger();
             $mockWriter = new \Zend\Log\Writer\Mock();
             $this->logger->addWriter($mockWriter);
         }
+
         return $this->logger;
     }
-    
+
     /**
      * Get HTTP client
      *
@@ -203,13 +204,13 @@ class Request
         $requests->setHeader('lookInCupboard', 'true');
         $requests->setHeader('Date', $this->getDate());
         $requests->setHeader('User-Agent', $this->userAgent);
-        
+
         $this->getLogger()->debug($requests);
 
         try {
             $response = $this->client->send($requests);
             $this->getLogger()->debug($response);
-            
+
             $this->getAction()->setResponse($response);
         } catch (\Guzzle\Http\Exception\CurlException $exception) {
             throw $exception;

@@ -5,11 +5,6 @@ namespace ZendServerAPITest;
  */
 class CodetracingDisableTest extends \PHPUnit_Framework_TestCase
 {
-    public function testGetterAndSetter()
-    {
-        $this->markTestIncomplete();
-    }
-    
     public static function getResponse()
     {
         return file_get_contents(__DIR__.'/../DataTypes/TestAsset/codetracingstatus.xml');
@@ -24,6 +19,30 @@ class CodetracingDisableTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($result->getAlwaysDump(), 'Off');
         $this->assertEquals($result->getTraceEnabled(), 'Off');
         $this->assertEquals($result->getAwaitsRestart(), '0');
+    }
+    
+    public function testDefaultRestartNow()
+    {
+        $codetraceDisableMethod = new \ZendServerAPI\Method\CodetracingDisable();
+        $this->assertEquals('restartNow=TRUE', $codetraceDisableMethod->getContent());
+    }
+    
+    public function testLink()
+    {
+        $codetraceDisableMethod = new \ZendServerAPI\Method\CodetracingDisable();
+        $this->assertEquals('/ZendServerManager/Api/codetracingDisable', $codetraceDisableMethod->getLink());
+    }
+    
+    public function testMethod()
+    {
+        $codetraceDisableMethod = new \ZendServerAPI\Method\CodetracingDisable();
+        $this->assertEquals('POST', $codetraceDisableMethod->getMethod());
+    }
+    
+    public function testAcceptHeader()
+    {
+        $codetraceDisableMethod = new \ZendServerAPI\Method\CodetracingDisable();
+        $this->assertEquals('application/vnd.zend.serverapi+xml;version=1.2', $codetraceDisableMethod->getAcceptHeader());
     }
 }
 

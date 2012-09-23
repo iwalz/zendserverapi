@@ -1,6 +1,8 @@
 <?php
 namespace ZendServerAPI\Factories;
 
+use ZendServerAPI\Method\ClusterReconfigureServer;
+
 use ZendServerAPI\Method\ApplicationUpdate;
 
 use ZendServerAPI\Method\ApplicationSynchronize;
@@ -22,6 +24,9 @@ class ApiVersion11CommandFactory extends ApiVersion10CommandFactory
 
         switch($name)
         {
+            case 'clusterReconfigureServer':
+                return new ClusterReconfigureServer($args[0]);
+                break;
             case 'applicationGetStatus':
                 return new ApplicationGetStatus($args[0]);
                 break;

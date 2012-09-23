@@ -25,14 +25,17 @@ class ApiVersion10CommandFactory implements CommandFactory
             case 'clusterDisableServer':
                 return new \ZendServerAPI\Method\ClusterDisableServer($args[0]);
                 break;
-            case 'clusterReconfigureServer':
-                return new \ZendServerAPI\Method\ClusterReconfigureServer($args[0]);
-                break;
             case 'restartPHP':
                 return new \ZendServerAPI\Method\RestartPHP($args[0], $args[1]);
                 break;
             case 'getSystemInfo':
                 return new \ZendServerAPI\Method\GetSystemInfo();
+                break;
+            case 'configurationImport':
+                return new \ZendServerAPI\Method\ConfigurationImport($args[0]);
+                break;
+            case 'configurationExport':
+                return new \ZendServerAPI\Method\ConfigurationExport($args[0], $args[1]);
                 break;
             default:
                 throw new \RuntimeException('The method ' . $name . ' is not available');

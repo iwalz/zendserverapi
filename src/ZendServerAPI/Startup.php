@@ -114,7 +114,7 @@ class Startup
     public static function getConfigPath()
     {
         if(null === self::$configPath)
-            self::$configPath = __DIR__.'/../../config/servers.php';
+            self::$configPath = __DIR__.'/../../config/config.php';
 
         return self::$configPath;
     }

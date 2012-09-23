@@ -57,6 +57,10 @@ class Startup
         if(!is_dir(__DIR__.'/../../logs'))
             mkdir(__DIR__.'/../../logs');
 
+        $validator = new ConfigValidator(self::getConfigPath());
+        $conf = $validator->getSettings();
+        
+        $filter = new \Zend\Log\Filter\Priority($conf['loglevel']);
         $logger = new \Zend\Log\Logger();
         
         if(self::$disableLogging) {
@@ -64,6 +68,7 @@ class Startup
         } else {
             $logWriter = new \Zend\Log\Writer\Stream(__DIR__.'/../../logs/request.log');
         }
+        $logWriter->addFilter($filter);
         $logger->addWriter($logWriter);
         
         

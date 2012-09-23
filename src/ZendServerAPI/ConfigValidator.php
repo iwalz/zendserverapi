@@ -45,7 +45,37 @@ class ConfigValidator
      */
     public function getSettings()
     {
-        return $this->config['settings'] ?: array();
+        $this->validateSettings($this->config);
+        return $this->config['settings'];
+    }
+    
+    /**
+     * Test for existing settings section and valid values
+     * 
+     * @throws \RuntimeException If settings section is missing
+     */
+    private function validateSettings(&$config)
+    {
+        if(!isset($config['settings']))
+            throw new \RuntimeException('settings section in config file is missing');
+
+        if(isset($config['settings']['loglevel'])) {
+            $validEntries = array(
+                    \Zend\Log\Logger::ALERT, 
+                    \Zend\Log\Logger::CRIT, 
+                    \Zend\Log\Logger::DEBUG, 
+                    \Zend\Log\Logger::EMERG, 
+                    \Zend\Log\Logger::ERR, 
+                    \Zend\Log\Logger::INFO, 
+                    \Zend\Log\Logger::NOTICE, 
+                    \Zend\Log\Logger::WARN);
+            
+            if(!in_array($config['settings']['loglevel'], $validEntries, true)) {
+                throw new \RuntimeException($config['settings']['loglevel'] . ' is not a valid entry for the loglevel');
+            }
+        } else {
+            $config['settings']['loglevel'] = \Zend\Log\Logger::CRIT;
+        }
     }
 
     /**

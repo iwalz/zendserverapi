@@ -28,7 +28,7 @@ class CodetracingEnable extends \ZendServerAPI\Method
      */
     public function getAcceptHeader()
     {
-        return "application/vnd.zend.serverapi+xml;version=1.0";
+        return "application/vnd.zend.serverapi+xml;version=1.2";
     }
 
     /**

@@ -3,5 +3,5 @@ namespace ZendServerAPI\Factories;
 
 interface CommandFactory
 {
-    public static function factory($name);
+    public function factory($name);
 }

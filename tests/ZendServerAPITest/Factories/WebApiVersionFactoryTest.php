@@ -25,25 +25,25 @@ class WebApiVersionFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\ZendServerAPI\Factories\ApiVersion12CommandFactory', $retFactory);
         $this->assertEquals('ZendServerAPI\Factories\ApiVersion12CommandFactory', get_class($retFactory));
         
-        $clusterAddServer = $retFactory::factory('clusterAddServer', 'example62', 'http://example62:10081/ZendServer', 'test');
+        $clusterAddServer = $retFactory->factory('clusterAddServer', 'example62', 'http://example62:10081/ZendServer', 'test');
         $this->assertInstanceOf('\ZendServerAPI\Method\ClusterAddServer', $clusterAddServer);
         
-        $clusterRemoveServer = $retFactory::factory('clusterRemoveServer', '1', true);
+        $clusterRemoveServer = $retFactory->factory('clusterRemoveServer', '1', true);
         $this->assertInstanceOf('\ZendServerAPI\Method\ClusterRemoveServer', $clusterRemoveServer);
         $this->assertEquals('serverId=1&force=TRUE', $clusterRemoveServer->getContent());
         
-        $clusterEnableServer = $retFactory::factory('clusterEnableServer', '1');
+        $clusterEnableServer = $retFactory->factory('clusterEnableServer', '1');
         $this->assertInstanceOf('\ZendServerAPI\Method\ClusterEnableServer', $clusterEnableServer);
         $this->assertEquals('serverId=1', $clusterEnableServer->getContent());
         
-        $clusterDisableServer = $retFactory::factory('clusterDisableServer', '1');
+        $clusterDisableServer = $retFactory->factory('clusterDisableServer', '1');
         $this->assertInstanceOf('\ZendServerAPI\Method\ClusterDisableServer', $clusterDisableServer);
         $this->assertEquals('serverId=1', $clusterDisableServer->getContent());
         
-        $clusterGetServerStatus = $retFactory::factory('clusterGetServerStatus', array(1));
+        $clusterGetServerStatus = $retFactory->factory('clusterGetServerStatus', array(1));
         $this->assertInstanceOf('\ZendServerAPI\Method\ClusterGetServerStatus', $clusterGetServerStatus);
         
-        $getSystemInfo = $retFactory::factory('getSystemInfo');
+        $getSystemInfo = $retFactory->factory('getSystemInfo');
         $this->assertInstanceOf('\ZendServerAPI\Method\GetSystemInfo', $getSystemInfo);
     }
     
@@ -60,22 +60,22 @@ class WebApiVersionFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\ZendServerAPI\Factories\ApiVersion11CommandFactory', $retFactory);
         $this->assertEquals('ZendServerAPI\Factories\ApiVersion11CommandFactory', get_class($retFactory));
     
-        $applicationDeploy = $retFactory::factory('applicationDeploy', 'mypackage.zpk', 'http://www.test.com');
+        $applicationDeploy = $retFactory->factory('applicationDeploy', 'mypackage.zpk', 'http://www.test.com');
         $this->assertInstanceOf('\ZendServerAPI\Method\ApplicationDeploy', $applicationDeploy);
         
-        $applicationRemove = $retFactory::factory('applicationRemove', '1');
+        $applicationRemove = $retFactory->factory('applicationRemove', '1');
         $this->assertInstanceOf('\ZendServerAPI\Method\ApplicationRemove', $applicationRemove);
 
-        $applicationUpdate = $retFactory::factory('applicationUpdate', '1', 'mypackage.zpk');
+        $applicationUpdate = $retFactory->factory('applicationUpdate', '1', 'mypackage.zpk');
         $this->assertInstanceOf('\ZendServerAPI\Method\ApplicationUpdate', $applicationUpdate);
         
-        $applicationSynchronize = $retFactory::factory('applicationSynchronize', '1');
+        $applicationSynchronize = $retFactory->factory('applicationSynchronize', '1');
         $this->assertInstanceOf('\ZendServerAPI\Method\ApplicationSynchronize', $applicationSynchronize);
         
-        $applicationRollback = $retFactory::factory('applicationRollback', '1');
+        $applicationRollback = $retFactory->factory('applicationRollback', '1');
         $this->assertInstanceOf('\ZendServerAPI\Method\ApplicationRollback', $applicationRollback);
         
-        $applicationGetStatus = $retFactory::factory('applicationGetStatus', array('1'));
+        $applicationGetStatus = $retFactory->factory('applicationGetStatus', array('1'));
         $this->assertInstanceOf('\ZendServerAPI\Method\ApplicationGetStatus', $applicationGetStatus);
     }
     
@@ -93,7 +93,8 @@ class WebApiVersionFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($config->getApiVersion(), \ZendServerAPI\Version::ZS51);
         
         $retFactory = $webApiVersionFactory->getCommandFactory();
-        $applicationUpdate = $retFactory::factory('applicationUpdate', '1', 'mypackage.zpk');
+        $applicationUpdate = $retFactory->factory('applicationUpdate', '1', 'mypackage.zpk');
+        $this->assertInstanceOf('\ZendServerAPI\Method\ApplicationUpdate', $applicationUpdate);
     }
     
     /**
@@ -109,7 +110,7 @@ class WebApiVersionFactoryTest extends \PHPUnit_Framework_TestCase
         
         $retFactory = $webApiVersionFactory->getCommandFactory();
         
-        $retFactory::factory('test');
+        $retFactory->factory('test');
     }
     
     public function testWebApiVersion10Factory()
@@ -133,5 +134,6 @@ class WebApiVersionFactoryTest extends \PHPUnit_Framework_TestCase
         $retFactory = $webApiVersionFactory->getCommandFactory();
         $this->assertEquals('ZendServerAPI\Factories\ApiVersion11CommandFactory', get_class($retFactory));
     }
+    
 }
 

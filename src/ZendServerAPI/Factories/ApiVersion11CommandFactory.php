@@ -3,7 +3,7 @@ namespace ZendServerAPI\Factories;
 
 class ApiVersion11CommandFactory extends ApiVersion10CommandFactory
 {
-    public static function factory($name)
+    public function factory($name)
     {
         $args = func_get_args();
         array_shift($args);

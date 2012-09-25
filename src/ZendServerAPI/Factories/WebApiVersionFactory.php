@@ -7,7 +7,8 @@ class WebApiVersionFactory
 
     public function getCommandFactory()
     {
-        if ($this->config->getApiVersion() == "1.0") {
+        if($this->config === null ||
+           $this->config->getApiVersion() == "1.0") {
             return new \ZendServerAPI\Factories\ApiVersion10CommandFactory();
         } elseif ($this->config->getApiVersion() == "1.1") {
             return new \ZendServerAPI\Factories\ApiVersion11CommandFactory();

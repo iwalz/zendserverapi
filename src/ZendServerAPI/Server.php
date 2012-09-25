@@ -5,21 +5,6 @@ namespace ZendServerAPI;
 class Server extends BaseAPI
 {
     /**
-     * Construct of 'Server' section
-     *
-     * @access public
-     * @param string                 $name    name of the server to connect to
-     * @param \ZendServerAPI\Request $request Request object that should be used
-     */
-    public function __construct($name = null, \ZendServerAPI\Request $request = null)
-    {
-        parent::__construct($name);
-
-        if($request !== null)
-            $this->request = $request;
-    }
-
-    /**
      * PHP function for 'getSystemInfo' API call
      *
      * @access public
@@ -27,7 +12,7 @@ class Server extends BaseAPI
      */
     public function getSystemInfo()
     {
-        $this->request->setAction(new \ZendServerAPI\Method\GetSystemInfo());
+        $this->request->setAction($this->apiFactory->factory('getSystemInfo'));
 
         return $this->request->send();
     }
@@ -41,7 +26,7 @@ class Server extends BaseAPI
      */
     public function clusterGetServerStatus(array $parameters = array())
     {
-        $this->request->setAction(new \ZendServerAPI\Method\ClusterGetServerStatus($parameters));
+        $this->request->setAction($this->apiFactory->factory('clusterGetServerStatus', $parameters));
 
         return $this->request->send();
     }
@@ -56,7 +41,7 @@ class Server extends BaseAPI
      */
     public function clusterRemoveServer($serverId, $force = false)
     {
-        $this->request->setAction(new \ZendServerAPI\Method\ClusterRemoveServer($serverId, $force));
+        $this->request->setAction($this->apiFactory->factory('clusterRemoveServer', $serverId, $force));
 
         return $this->request->send();
     }
@@ -73,7 +58,7 @@ class Server extends BaseAPI
      */
     public function clusterAddServer($serverName, $serverUrl, $guiPassword, $propagateSettings = false)
     {
-        $this->request->setAction(new \ZendServerAPI\Method\ClusterAddServer($serverName, $serverUrl, $guiPassword, $propagateSettings));
+        $this->request->setAction($this->apiFactory->factory('clusterAddServer', $serverName, $serverUrl, $guiPassword, $propagateSettings));
 
         return $this->request->send();
     }
@@ -87,7 +72,7 @@ class Server extends BaseAPI
      */
     public function clusterDisableServer($serverId)
     {
-        $this->request->setAction(new \ZendServerAPI\Method\ClusterDisableServer($serverId));
+        $this->request->setAction($this->apiFactory->factory('clusterDisableServer', $serverId));
 
         return $this->request->send();
     }
@@ -101,7 +86,7 @@ class Server extends BaseAPI
      */
     public function clusterEnableServer($serverId)
     {
-        $this->request->setAction(new \ZendServerAPI\Method\ClusterEnableServer($serverId));
+        $this->request->setAction($this->apiFactory->factory('clusterEnableServer', $serverId));
 
         return $this->request->send();
     }
@@ -116,7 +101,7 @@ class Server extends BaseAPI
      */
     public function restartPhp($serverIds = array(), $parallelRestart = false)
     {
-        $this->request->setAction(new \ZendServerAPI\Method\RestartPHP($serverIds, $parallelRestart));
+        $this->request->setAction($this->apiFactory->factory('restartPHP', $serverIds, $parallelRestart));
 
         return $this->request->send();
     }
@@ -131,7 +116,7 @@ class Server extends BaseAPI
      */
     public function clusterReconfigureServer($serverId, $doRestart = false)
     {
-        $this->request->setAction(new \ZendServerAPI\Method\ClusterReconfigureServer($serverId, $doRestart));
+        $this->request->setAction($this->apiFactory->factory('clusterReconfigureServer', $serverId, $doRestart));
 
         return $this->request->send();
     }

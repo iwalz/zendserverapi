@@ -10,12 +10,25 @@ class BaseAPI
     protected $request = null;
 
     /**
+     * Api Factory to fetch Method's from there
+     * @var Factories\CommandFactory
+     */
+    protected $apiFactory = null;
+    /**
      * Base constructor for all method implementations
      * @param string $name Name of the config
      */
-    public function __construct($name = null)
+    public function __construct($name = null, Request $request = null)
     {
-        $this->request = Startup::getRequest($name);
+        if($request !== null) {
+            $this->request = $request;
+        } else {
+            $this->request = Startup::getRequest($name);
+        }
+        
+        $webApiVersionFactory = new Factories\WebApiVersionFactory();
+        $webApiVersionFactory->setConfig($this->request->getConfig()); 
+        $this->apiFactory = $webApiVersionFactory->getCommandFactory();
     }
 
     /**

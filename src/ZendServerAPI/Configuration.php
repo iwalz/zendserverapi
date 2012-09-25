@@ -15,28 +15,6 @@ class Configuration extends BaseAPI
     protected $exportDirectory = null;
 
     /**
-     * Constructor for Configuration Zend Server API section
-     *
-     * @param string $name Name for config
-     * @param string Config file to import
-     * @param string Directory where to save exported configs
-     * @param \ZendServerAPI\Request $request
-     */
-    public function __construct($name = null, $importFile = null, $exportDirectory = null, Request $request = null)
-    {
-        parent::__construct($name);
-
-        if($importFile !== null)
-            $this->importFile = $importFile;
-
-        if($exportDirectory !== null)
-            $this->exportDirectory = $exportDirectory;
-
-        if($request !== null)
-            $this->request = $request;
-    }
-
-    /**
      * Export the configuration and store locally
      *
      * @param  string       $exportDirectory Directory where to save the exported configs
@@ -47,7 +25,7 @@ class Configuration extends BaseAPI
         if($exportDirectory !== null)
             $this->exportDirectory = $exportDirectory;
 
-        $this->request->setAction(new \ZendServerAPI\Method\ConfigurationExport($this->exportDirectory, $fileName));
+        $this->request->setAction($this->apiFactory->factory('configurationExport', $this->exportDirectory, $fileName));
 
         return $this->request->send();
     }
@@ -63,7 +41,7 @@ class Configuration extends BaseAPI
         if($importFile !== null)
             $this->importFile = $importFile;
 
-        $this->request->setAction(new \ZendServerAPI\Method\ConfigurationImport($this->importFile));
+        $this->request->setAction($this->apiFactory->factory('configurationImport', $this->importFile));
 
         return $this->request->send();
     }

@@ -5,23 +5,6 @@ class Deployment extends BaseAPI
 {
 
     /**
-     * Construct of 'Deployment' section
-     *
-     * @access public
-     * @param string $name
-     *            name of the server to connect to
-     * @param \ZendServerAPI\Request $request
-     *            Request object that should be used
-     */
-    public function __construct ($name = null, ZendServerAPI\Request $request = null)
-    {
-        parent::__construct($name);
-
-        if ($request !== null)
-            $this->request = $request;
-    }
-
-    /**
      * Implementation of 'applicationGetStatus' method
      *
      * @access public
@@ -31,8 +14,7 @@ class Deployment extends BaseAPI
      */
     public function applicationGetStatus (array $applicationIds = array())
     {
-        $this->request->setAction(
-                new \ZendServerAPI\Method\ApplicationGetStatus($applicationIds));
+        $this->request->setAction($this->apiFactory->factory('applicationGetStatus', $applicationIds));
 
         return $this->request->send();
     }
@@ -61,8 +43,7 @@ class Deployment extends BaseAPI
             $defaultServer = false, $userAppName = null, $igonreFailures = false,
             $userParams = array())
     {
-        $this->request->setAction(
-                new \ZendServerAPI\Method\ApplicationDeploy($file, $baseUrl,
+        $this->request->setAction($this->apiFactory->factory('applicationDeploy', $file, $baseUrl,
                         $createVhost, $defaultServer, $userAppName,
                         $igonreFailures, $userParams));
 
@@ -86,7 +67,7 @@ class Deployment extends BaseAPI
     public function applicationUpdate ($appId, $package,
             $ignoreFailures = false, array $userParams = array())
     {
-        $this->request->setAction(new \ZendServerAPI\Method\ApplicationUpdate($appId, $package, $ignoreFailures, $userParams));
+        $this->request->setAction($this->apiFactory->factory('applicationUpdate', $appId, $package, $ignoreFailures, $userParams));
 
         return $this->request->send();
     }
@@ -100,8 +81,7 @@ class Deployment extends BaseAPI
      */
     public function applicationRemove ($appId)
     {
-        $this->request->setAction(
-                new \ZendServerAPI\Method\ApplicationRemove($appId));
+        $this->request->setAction($this->apiFactory->factory('applicationRemove', $appId));
 
         return $this->request->send();
     }
@@ -115,8 +95,7 @@ class Deployment extends BaseAPI
      */
     public function applicationRollback ($appId)
     {
-        $this->request->setAction(
-                new \ZendServerAPI\Method\ApplicationRollback($appId));
+        $this->request->setAction($this->apiFactory->factory('applicationRollback', $appId));
 
         return $this->request->send();
     }
@@ -136,7 +115,7 @@ class Deployment extends BaseAPI
     public function applicationSynchronize ($appId, array $servers = array(),
             $ignoreFailures = false)
     {
-        $this->request->setAction(new \ZendServerAPI\Method\ApplicationSynchronize($appId, $servers, $ignoreFailures));
+        $this->request->setAction($this->apiFactory->factory('applicationSynchronize', $appId, $servers, $ignoreFailures));
 
         return $this->request->send();
     }

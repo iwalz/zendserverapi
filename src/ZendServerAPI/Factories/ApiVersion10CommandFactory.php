@@ -10,31 +10,40 @@ class ApiVersion10CommandFactory implements CommandFactory
 
         switch ($name) {
             case 'clusterGetServerStatus':
-                return new \ZendServerAPI\Method\ClusterGetServerStatus($args[0]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ClusterGetServerStatus');
+                return $reflect->newInstanceArgs($args);
                 break;
             case 'clusterAddServer':
-                return new \ZendServerAPI\Method\ClusterAddServer($args[0], $args[1], $args[2]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ClusterAddServer');
+                return $reflect->newInstanceArgs($args);
                 break;
             case 'clusterRemoveServer':
-                return new \ZendServerAPI\Method\ClusterRemoveServer($args[0], $args[1]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ClusterRemoveServer');
+                return $reflect->newInstanceArgs($args);
                 break;
             case 'clusterEnableServer':
-                return new \ZendServerAPI\Method\ClusterEnableServer($args[0]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ClusterEnableServer');
+                return $reflect->newInstanceArgs($args);
                 break;
             case 'clusterDisableServer':
-                return new \ZendServerAPI\Method\ClusterDisableServer($args[0]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ClusterDisableServer');
+                return $reflect->newInstanceArgs($args);
                 break;
             case 'restartPHP':
-                return new \ZendServerAPI\Method\RestartPHP($args[0], $args[1]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\RestartPHP');
+                return $reflect->newInstanceArgs($args);
                 break;
             case 'getSystemInfo':
-                return new \ZendServerAPI\Method\GetSystemInfo();
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\GetSystemInfo');
+                return $reflect->newInstanceArgs($args);
                 break;
             case 'configurationImport':
-                return new \ZendServerAPI\Method\ConfigurationImport($args[0]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ConfigurationImport');
+                return $reflect->newInstanceArgs($args);
                 break;
             case 'configurationExport':
-                return new \ZendServerAPI\Method\ConfigurationExport($args[0], $args[1]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ConfigurationExport');
+                return $reflect->newInstanceArgs($args);
                 break;
             default:
                 throw new \RuntimeException('The method ' . $name . ' is not available');

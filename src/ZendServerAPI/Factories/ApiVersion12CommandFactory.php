@@ -10,13 +10,16 @@ class ApiVersion12CommandFactory extends ApiVersion11CommandFactory
 
         switch ($name) {
             case 'codetracingDisable':
-                return new \ZendServerAPI\Method\CodetracingDisable($args[0]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\CodetracingDisable');
+                return $reflect->newInstanceArgs($args);
                 break;
             case 'codetracingEnable':
-                return new \ZendServerAPI\Method\CodetracingEnable($args[0]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\CodetracingEnable');
+                return $reflect->newInstanceArgs($args);
                 break;
             case 'codetracingIsEnabled':
-                return new \ZendServerAPI\Method\CodetracingIsEnabled();
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\CodetracingIsEnabled');
+                return $reflect->newInstanceArgs($args);
                 break;
             default:
                 return call_user_func_array('parent::factory', array_merge(array($name), $args));

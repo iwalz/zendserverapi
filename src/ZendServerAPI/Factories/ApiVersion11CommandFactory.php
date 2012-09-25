@@ -10,25 +10,32 @@ class ApiVersion11CommandFactory extends ApiVersion10CommandFactory
 
         switch ($name) {
             case 'clusterReconfigureServer':
-                return new \ZendServerAPI\Method\ClusterReconfigureServer($args[0]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ClusterReconfigureServer');
+                return $reflect->newInstanceArgs($args);
                 break;
             case 'applicationGetStatus':
-                return new \ZendServerAPI\Method\ApplicationGetStatus($args[0]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ApplicationGetStatus');
+                return $reflect->newInstanceArgs($args);
                 break;
             case 'applicationDeploy':
-                return new \ZendServerAPI\Method\ApplicationDeploy($args[0], $args[1]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ApplicationDeploy');
+                return $reflect->newInstanceArgs($args);
                 break;
             case 'applicationRemove':
-                return new \ZendServerAPI\Method\ApplicationRemove($args[0]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ApplicationRemove');
+                return $reflect->newInstanceArgs($args);
                 break;
             case 'applicationRollback':
-                return new \ZendServerAPI\Method\ApplicationRollback($args[0]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ApplicationRollback');
+                return $reflect->newInstanceArgs($args);
                 break;
             case 'applicationSynchronize':
-                return new \ZendServerAPI\Method\ApplicationSynchronize($args[0]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ApplicationSynchronize');
+                return $reflect->newInstanceArgs($args);
                 break;
             case 'applicationUpdate':
-                return new \ZendServerAPI\Method\ApplicationUpdate($args[0], $args[1]);
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ApplicationUpdate');
+                return $reflect->newInstanceArgs($args);
                 break;
             default:
                 return call_user_func_array('parent::factory', array_merge(array($name), $args));

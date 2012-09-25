@@ -3,21 +3,6 @@ namespace ZendServerAPI;
 
 class Codetracing extends BaseAPI
 {
-
-    /**
-     * Constructor for Codetracing Zend Server API section
-     *
-     * @param string Name for connection
-     * @param \ZendServerAPI\Request $request
-     */
-    public function __construct($name = null, Request $request = null)
-    {
-        parent::__construct($name);
-
-        if($request !== null)
-            $this->request = $request;
-    }
-
     /**
      * Implementation of codetracingEnable method
      *
@@ -26,7 +11,7 @@ class Codetracing extends BaseAPI
      */
     public function codetracingEnable($restartNow = true)
     {
-        $this->request->setAction(new \ZendServerAPI\Method\CodetracingEnable($restartNow));
+        $this->request->setAction($this->apiFactory->factory('codetracingEnable', $restartNow));
 
         return $this->request->send();
     }
@@ -39,7 +24,7 @@ class Codetracing extends BaseAPI
      */
     public function codetracingDisable($restartNow = true)
     {
-        $this->request->setAction(new \ZendServerAPI\Method\CodetracingDisable($restartNow));
+        $this->request->setAction($this->apiFactory->factory('codetracingDisable', $restartNow));
 
         return $this->request->send();
     }
@@ -51,7 +36,7 @@ class Codetracing extends BaseAPI
      */
     public function codetracingIsEnabled()
     {
-        $this->request->setAction(new \ZendServerAPI\Method\CodetracingIsEnabled());
+        $this->request->setAction($this->apiFactory->factory('codetracingIsEnabled'));
 
         return $this->request->send();
     }

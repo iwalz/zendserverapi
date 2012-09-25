@@ -20,14 +20,14 @@ class BaseAPI
      */
     public function __construct($name = null, Request $request = null)
     {
-        if($request !== null) {
+        if ($request !== null) {
             $this->request = $request;
         } else {
             $this->request = Startup::getRequest($name);
         }
-        
+
         $webApiVersionFactory = new Factories\WebApiVersionFactory();
-        $webApiVersionFactory->setConfig($this->request->getConfig()); 
+        $webApiVersionFactory->setConfig($this->request->getConfig());
         $this->apiFactory = $webApiVersionFactory->getCommandFactory();
     }
 

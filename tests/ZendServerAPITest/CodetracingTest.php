@@ -17,7 +17,7 @@ class CodetracingTest extends PHPUnit_Framework_TestCase
     {
         \ZendServerAPI\Startup::enableLogging();
         $codetracing = new \ZendServerAPI\Codetracing("example62");
-        $status = $codetracing->codetracingDelete("0.8580.1");
+        $status = $codetracing->codetracingList(array('-1'), null, null, 'Date', 'Asc');
         \ZendServerAPI\Startup::disableLogging();
     }
 }

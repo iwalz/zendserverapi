@@ -161,6 +161,26 @@ abstract class Method
     }
 
     /**
+     * Returns the parameter array for index $index
+     * 
+     * @param string $index
+     * @param array $values
+     */
+    public function buildParameterArray($index, array $values)
+    {
+        $link = '';   
+        $parameterCount = count($values);
+        
+        foreach ($values as $key => $value) {
+            $link .= urlencode($index."[".$key."]")."=".$value;
+            if($key+1 < $parameterCount)
+                $link .= "&";
+        }
+        
+        return $link;
+    }
+    
+    /**
      * Configures all needed information for the method implementation
      */
     abstract public function configure();

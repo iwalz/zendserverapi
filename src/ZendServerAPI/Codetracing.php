@@ -40,4 +40,18 @@ class Codetracing extends BaseAPI
 
         return $this->request->send();
     }
+    
+    /**
+     * Implementation of codetracingCreate method
+     *
+     * @param string $url the url to trace
+     * @return \ZendServerAPI\DataTypes\CodeTracing
+     */
+    public function codetracingCreate($url)
+    {
+        $this->request->setAction($this->apiFactory->factory('codetracingCreate', $url));
+    
+        return $this->request->send();
+    }
+    
 }

@@ -26,17 +26,17 @@ class ApiVersion12CommandFactory extends ApiVersion11CommandFactory
                 break;
             case 'codetracingCreate':
                 $reflect  = new \ReflectionClass('\ZendServerAPI\Method\CodetracingCreate');
-            
+
                 return $reflect->newInstanceArgs($args);
                 break;
             case 'codetracingDelete':
                 $reflect  = new \ReflectionClass('\ZendServerAPI\Method\CodetracingDelete');
-            
+
                 return $reflect->newInstanceArgs($args);
                 break;
             case 'codetracingList':
                 $reflect  = new \ReflectionClass('\ZendServerAPI\Method\CodetracingList');
-            
+
                 return $reflect->newInstanceArgs($args);
                 break;
             default:

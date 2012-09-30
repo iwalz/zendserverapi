@@ -97,7 +97,7 @@ class CodeTracingStatus
     {
         $this->awaitsRestart = $awaitsRestart;
     }
-	/**
+    /**
      * @return the $developerMode
      */
     public function getDeveloperMode ()
@@ -105,13 +105,12 @@ class CodeTracingStatus
         return $this->developerMode;
     }
 
-	/**
+    /**
      * @param boolean $developerMode
      */
     public function setDeveloperMode ($developerMode)
     {
         $this->developerMode = $developerMode;
     }
-
 
 }

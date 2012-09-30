@@ -40,48 +40,48 @@ class Codetracing extends BaseAPI
 
         return $this->request->send();
     }
-    
+
     /**
      * Implementation of codetracingCreate method
      *
-     * @param string $url the url to trace
+     * @param  string                               $url the url to trace
      * @return \ZendServerAPI\DataTypes\CodeTracing
      */
     public function codetracingCreate($url)
     {
         $this->request->setAction($this->apiFactory->factory('codetracingCreate', $url));
-    
+
         return $this->request->send();
     }
-    
+
     /**
      * Implementation of codetracingDelete method
      *
-     * @param integer $id Trace file ID
+     * @param  integer                              $id Trace file ID
      * @return \ZendServerAPI\DataTypes\CodeTracing
      */
     public function codetracingDelete($id)
     {
         $this->request->setAction($this->apiFactory->factory('codetracingDelete', $id));
-    
+
         return $this->request->send();
     }
-    
+
     /**
      * Implementation of codetracingList method
      *
-     * @param array $applicationIds List of application IDs
-     * @param integer $limit Row limit to retrieve
-     * @param integer $offset Page offset to be displayed
-     * @param string $orderBy Column to sort the result by (Id,Date,Url,CreatedBy,FileSize)
-     * @param string $direction Direction to sort, default to Desc
+     * @param  array                                $applicationIds List of application IDs
+     * @param  integer                              $limit          Row limit to retrieve
+     * @param  integer                              $offset         Page offset to be displayed
+     * @param  string                               $orderBy        Column to sort the result by (Id,Date,Url,CreatedBy,FileSize)
+     * @param  string                               $direction      Direction to sort, default to Desc
      * @return \ZendServerAPI\DataTypes\CodeTracing
      */
     public function codetracingList($applicationIds = array(), $limit = null, $offset = null, $orderBy = null, $direction = null)
     {
         $this->request->setAction($this->apiFactory->factory('codetracingList', $applicationIds, $limit, $offset, $orderBy, $direction));
-    
+
         return $this->request->send();
     }
-    
+
 }

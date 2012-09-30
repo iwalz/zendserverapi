@@ -8,14 +8,14 @@ class CodetracingList extends \ZendServerAPI\Method
     protected $offset = null;
     protected $orderBy = null;
     protected $direction = null;
-    
+
     /**
      * Constructor for CodetracingList method
      */
     public function __construct($applicationIds = array(), $limit = null, $offset = null, $orderBy = null, $direction = null)
     {
         parent::__construct();
-        
+
         $this->applicationIds = $applicationIds;
         $this->limit = $limit;
         $this->offset = $offset;
@@ -43,17 +43,17 @@ class CodetracingList extends \ZendServerAPI\Method
         $this->setFunctionPath('/ZendServerManager/Api/codetracingList');
         $this->setParser(new \ZendServerAPI\Mapper\DumpParser());
     }
-    
+
     public function getLink()
     {
         $link = parent::getLink();
-        
+
         $link .= '?offset='.$this->offset;
         $link .= '&limit='.$this->limit;
         $link .= '&orderBy='.$this->orderBy;
         $link .= '&'.$this->buildParameterArray('applicationIds', $this->applicationIds);
         $link .= '&direction='.$this->direction;
-        
+
         return $link;
     }
 }

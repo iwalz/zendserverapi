@@ -55,7 +55,7 @@ class ClusterGetServerStatus  extends \ZendServerAPI\Method
             $link .= "?";
 
         $link .= $this->buildParameterArray('servers', $this->servers);
-        
+
         return $link;
     }
 

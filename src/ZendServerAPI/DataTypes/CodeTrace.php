@@ -33,13 +33,13 @@ class CodeTrace
      * @var integer
      */
     protected $applicationId = null;
-    
+
     public function __construct()
     {
 
     }
-    
-	/**
+
+    /**
      * @return the $id
      */
     public function getId ()
@@ -47,7 +47,7 @@ class CodeTrace
         return $this->id;
     }
 
-	/**
+    /**
      * @return the $date
      */
     public function getDate ()
@@ -55,7 +55,7 @@ class CodeTrace
         return $this->date;
     }
 
-	/**
+    /**
      * @return the $url
      */
     public function getUrl ()
@@ -63,7 +63,7 @@ class CodeTrace
         return $this->url;
     }
 
-	/**
+    /**
      * @return the $createdBy
      */
     public function getCreatedBy ()
@@ -71,7 +71,7 @@ class CodeTrace
         return $this->createdBy;
     }
 
-	/**
+    /**
      * @return the $fileSize
      */
     public function getFileSize ()
@@ -79,7 +79,7 @@ class CodeTrace
         return $this->fileSize;
     }
 
-	/**
+    /**
      * @return the $applicationId
      */
     public function getApplicationId ()
@@ -87,7 +87,7 @@ class CodeTrace
         return $this->applicationId;
     }
 
-	/**
+    /**
      * @param string $id
      */
     public function setId ($id)
@@ -95,7 +95,7 @@ class CodeTrace
         $this->id = $id;
     }
 
-	/**
+    /**
      * @param DateTime $date
      */
     public function setDate ($date)
@@ -103,7 +103,7 @@ class CodeTrace
         $this->date = $date;
     }
 
-	/**
+    /**
      * @param string $url
      */
     public function setUrl ($url)
@@ -111,7 +111,7 @@ class CodeTrace
         $this->url = $url;
     }
 
-	/**
+    /**
      * @param string $createdBy
      */
     public function setCreatedBy ($createdBy)
@@ -119,7 +119,7 @@ class CodeTrace
         $this->createdBy = $createdBy;
     }
 
-	/**
+    /**
      * @param number $fileSize
      */
     public function setFileSize ($fileSize)
@@ -127,7 +127,7 @@ class CodeTrace
         $this->fileSize = $fileSize;
     }
 
-	/**
+    /**
      * @param number $applicationId
      */
     public function setApplicationId ($applicationId)

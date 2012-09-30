@@ -4,10 +4,7 @@ php:
   - "5.4"
 
 before_install:
- - pyrus . channel-discover packages.zendframework.com
- - pyrus . install zf2/zend_log
- - curl -s https://getcomposer.org/installer | php -- --quiet
- - php composer.phar install --dev
+ - composer.phar install --dev
  - phpenv rehash
 
 script:

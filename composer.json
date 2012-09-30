@@ -7,6 +7,12 @@
         "zend server",
         "api"
     ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://packages.zendframework.com/"
+        }
+    ],
     "homepage": "https://github.com/iwalz/zendserverapi",
     "authors": [
         {
@@ -17,14 +23,14 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "guzzle/guzzle": "*"
+        "guzzle/guzzle": "*",
+        "zendframework/zend-log": "2.0.*"
     },
     "minimum-stability": "dev",
     "autoload": {
         "psr-0": {
             "ZendServerAPI": "src/",
-            "ZendServerAPITest": "tests/",
-            "Zend": "php/"
+            "ZendServerAPITest": "tests/"
         }
     }
 }

@@ -9,16 +9,17 @@ class CodetracingTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        if(DISABLE_REAL_INTERFACE === true)
-            $this->markTestSkipped();
+//         if(DISABLE_REAL_INTERFACE === true)
+//             $this->markTestSkipped();
     }
     
     public function testCodetracingEnableDisable()
     {
-//         \ZendServerAPI\Startup::enableLogging();
+        \ZendServerAPI\Startup::enableLogging();
         $codetracing = new \ZendServerAPI\Codetracing("example62");
         $status = $codetracing->codetracingDisable();
-//         \ZendServerAPI\Startup::disableLogging();
+        var_dump($status);
+        \ZendServerAPI\Startup::disableLogging();
     }
 }
 

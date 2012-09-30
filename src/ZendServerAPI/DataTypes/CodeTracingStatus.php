@@ -10,20 +10,25 @@ class CodeTracingStatus
     protected $componentStatus = null;
     /**
      * Current always_dump directive value (On|Off)
-     * @var string
+     * @var boolean
      */
     protected $alwaysDump = null;
     /**
      * Current trace_enabled directive value (On|Off)
-     * @var string
+     * @var boolean
      */
     protected $traceEnabled = null;
     /**
      * If true, ZendServer is waiting for a restart
      * which may effect these setting
-     * @var string
+     * @var boolean
      */
     protected $awaitsRestart = null;
+    /**
+     * Undocumented parameter
+     * @var boolean
+     */
+    protected $developerMode = null;
 
     public function __construct()
     {
@@ -92,5 +97,21 @@ class CodeTracingStatus
     {
         $this->awaitsRestart = $awaitsRestart;
     }
+	/**
+     * @return the $developerMode
+     */
+    public function getDeveloperMode ()
+    {
+        return $this->developerMode;
+    }
+
+	/**
+     * @param boolean $developerMode
+     */
+    public function setDeveloperMode ($developerMode)
+    {
+        $this->developerMode = $developerMode;
+    }
+
 
 }

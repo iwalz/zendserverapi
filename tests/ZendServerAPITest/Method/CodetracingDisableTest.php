@@ -16,9 +16,9 @@ class CodetracingDisableTest extends \PHPUnit_Framework_TestCase
         $result = $method->parseResponse(self::getResponse());
         
         $this->assertEquals($result->getComponentStatus(), 'Inactive');
-        $this->assertEquals($result->getAlwaysDump(), 'Off');
-        $this->assertEquals($result->getTraceEnabled(), 'Off');
-        $this->assertEquals($result->getAwaitsRestart(), '0');
+        $this->assertTrue($result->getAlwaysDump());
+        $this->assertTrue($result->getTraceEnabled());
+        $this->assertFalse($result->getAwaitsRestart());
     }
     
     public function testDefaultRestartNow()

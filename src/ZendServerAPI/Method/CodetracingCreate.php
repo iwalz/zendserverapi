@@ -38,7 +38,7 @@ class CodetracingCreate extends \ZendServerAPI\Method
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/codetracingCreate');
-        $this->setParser(new \ZendServerAPI\Mapper\DumpParser());
+        $this->setParser(new \ZendServerAPI\Mapper\Codetrace());
     }
 
     /**

@@ -18,6 +18,7 @@ class CodetracingTest extends PHPUnit_Framework_TestCase
         \ZendServerAPI\Startup::enableLogging();
         $codetracing = new \ZendServerAPI\Codetracing("example62");
         $status = $codetracing->codetracingCreate("http://hp.local");
+        echo $status->getId();
         \ZendServerAPI\Startup::disableLogging();
     }
 }

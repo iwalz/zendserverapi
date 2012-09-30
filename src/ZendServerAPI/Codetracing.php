@@ -54,4 +54,17 @@ class Codetracing extends BaseAPI
         return $this->request->send();
     }
     
+    /**
+     * Implementation of codetracingDelete method
+     *
+     * @param integer $id Trace file ID
+     * @return \ZendServerAPI\DataTypes\CodeTracing
+     */
+    public function codetracingDelete($id)
+    {
+        $this->request->setAction($this->apiFactory->factory('codetracingDelete', $id));
+    
+        return $this->request->send();
+    }
+    
 }

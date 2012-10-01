@@ -41,7 +41,7 @@ class CodetracingList extends \ZendServerAPI\Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/codetracingList');
-        $this->setParser(new \ZendServerAPI\Mapper\DumpParser());
+        $this->setParser(new \ZendServerAPI\Mapper\CodetracingList());
     }
 
     public function getLink()

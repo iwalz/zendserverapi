@@ -8,7 +8,7 @@ class CodetracingList
      * @var array
      */
     protected $codetracing = array();
-    
+
     /**
      * Add codetracing to container
      *
@@ -18,7 +18,7 @@ class CodetracingList
     {
         $this->codetracing[] = $codetrace;
     }
-    
+
     /**
      * Get codetrace array
      *
@@ -29,5 +29,3 @@ class CodetracingList
         return $this->codetracing;
     }
 }
-
-?>

@@ -3,16 +3,12 @@ namespace ZendServerAPI\Method;
 
 use ZendServerAPI\Mapper\CodetracingDownloadTraceFile as CodetracingDownloadTraceFileMapper;
 
-use ZendServerAPI\Mapper\DumpParser;
-
-use ZendServerAPI\Mapper\ConfigurationExport as ConfigExportMapper;
-
 class CodetracingDownloadTraceFile extends \ZendServerAPI\Method
 {
-    protected $traceFile = null; 
+    protected $traceFile = null;
     protected $fileName = null;
     protected $exportDirectory = null;
-    
+
     /**
      *
      * @param string $traceFile
@@ -21,7 +17,6 @@ class CodetracingDownloadTraceFile extends \ZendServerAPI\Method
     {
         parent::__construct();
 
-        
         $this->traceFile = $traceFile;
         $this->setExportDirectory($exportDirectory);
         $this->setFileName($fileName);
@@ -33,12 +28,12 @@ class CodetracingDownloadTraceFile extends \ZendServerAPI\Method
         $this->setMethod('GET');
         $this->setParser(new CodetracingDownloadTraceFileMapper());
     }
-    
-    public function getLink() 
+
+    public function getLink()
     {
         $link = parent::getLink();
         $link .= '?traceFile='.$this->traceFile;
-        
+
         return $link;
     }
 
@@ -51,17 +46,17 @@ class CodetracingDownloadTraceFile extends \ZendServerAPI\Method
     {
         return $this->getParser()->getExportDirectory();
     }
-    
+
     public function setExportDirectory($exportDirectory)
     {
         $this->getParser()->setExportDirectory($exportDirectory);
     }
-    
+
     public function setFileName($fileName)
     {
         $this->getParser()->setFileName($fileName);
     }
-    
+
     public function getFileName()
     {
         return $this->getParser()->getFileName();

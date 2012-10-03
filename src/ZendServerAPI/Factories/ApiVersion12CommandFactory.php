@@ -41,10 +41,10 @@ class ApiVersion12CommandFactory extends ApiVersion11CommandFactory
                 break;
             case 'codetracingDownloadTraceFile':
                 $reflect  = new \ReflectionClass('\ZendServerAPI\Method\CodetracingDownloadTraceFile');
-            
+
                 return $reflect->newInstanceArgs($args);
                 break;
-            
+
             default:
                 return call_user_func_array('parent::factory', array_merge(array($name), $args));
         }

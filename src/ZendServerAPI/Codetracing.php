@@ -84,4 +84,17 @@ class Codetracing extends BaseAPI
         return $this->request->send();
     }
 
+    /**
+     * Implementation of codetracingDownloadTraceFile method
+     *
+     * @param  string                               $traceFile      Trace file identifier
+     * @param  string                               $fileName       Filename to save tracefile to
+     * @return \ZendServerAPI\DataTypes\CodeTracing
+     */
+    public function codetracingDownloadTraceFile($traceFile, $fileName = null, $exportDirectory = null)
+    {
+        $this->request->setAction($this->apiFactory->factory('codetracingDownloadTraceFile', $traceFile, $fileName, $exportDirectory));
+    
+        return $this->request->send();
+    }
 }

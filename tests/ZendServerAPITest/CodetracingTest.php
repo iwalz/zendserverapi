@@ -17,7 +17,7 @@ class CodetracingTest extends PHPUnit_Framework_TestCase
     {
         \ZendServerAPI\Startup::enableLogging();
         $codetracing = new \ZendServerAPI\Codetracing("example62");
-        $status = $codetracing->codetracingList(array('-1'), null, null, 'Date', 'Asc');
+        $status = $codetracing->codetracingDownloadTraceFile("0.8581.1", "foo.amf", __DIR__.'/../../downloads');
         \ZendServerAPI\Startup::disableLogging();
     }
 }

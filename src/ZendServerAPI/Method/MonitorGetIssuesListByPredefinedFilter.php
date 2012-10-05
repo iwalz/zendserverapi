@@ -65,18 +65,13 @@ class MonitorGetIssuesListByPredefinedFilter extends \ZendServerAPI\Method
     public function configure ()
     {
         $this->setMethod('GET');
-        $this->setFunctionPath('/ZendServerManager/Api/monitorGetIssuesListByPredefinedFilter');
-        $this->setParser(new \ZendServerAPI\Mapper\DumpParser());
+        $this->setFunctionPath('/ZendServerManager/Api/monitorIssuesListByPredefinedFilter');
+        $this->setParser(new \ZendServerAPI\Adapter\DumpParser());
     }
     
     public function getAcceptHeader()
     {
-        return "application/vnd.zend.serverapi+xml;version=1.2";
-    }
-    
-    public function getContentType()
-    {
-        return "application/vnd.zend.serverapi+xml;version=1.2";
+        return "application/vnd.zend.serverapi+xml;version=1.1";
     }
 
     /**

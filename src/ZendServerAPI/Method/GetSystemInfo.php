@@ -14,6 +14,6 @@ class GetSystemInfo extends \ZendServerAPI\Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/getSystemInfo');
-        $this->setParser(new \ZendServerAPI\Mapper\SystemInfo());
+        $this->setParser(new \ZendServerAPI\Adapter\SystemInfo());
     }
 }

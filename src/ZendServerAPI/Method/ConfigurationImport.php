@@ -1,7 +1,7 @@
 <?php
 namespace ZendServerAPI\Method;
 
-use ZendServerAPI\Mapper\ServersList;
+use ZendServerAPI\Adapter\ServersList;
 
 class ConfigurationImport extends \ZendServerAPI\Method
 {

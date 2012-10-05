@@ -1,7 +1,7 @@
 <?php
 namespace ZendServerAPI\Method;
 
-use ZendServerAPI\Mapper\CodetracingDownloadTraceFile as CodetracingDownloadTraceFileMapper;
+use ZendServerAPI\Adapter\CodetracingDownloadTraceFile as CodetracingDownloadTraceFileAdapter;
 
 class CodetracingDownloadTraceFile extends \ZendServerAPI\Method
 {
@@ -26,7 +26,7 @@ class CodetracingDownloadTraceFile extends \ZendServerAPI\Method
     {
         $this->setFunctionPath('/ZendServerManager/Api/codetracingDownloadTraceFile');
         $this->setMethod('GET');
-        $this->setParser(new CodetracingDownloadTraceFileMapper());
+        $this->setParser(new CodetracingDownloadTraceFileAdapter());
     }
 
     public function getLink()

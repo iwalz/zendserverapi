@@ -39,7 +39,7 @@ class ApplicationSynchronize extends \ZendServerAPI\Method
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/applicationSynchronize');
-        $this->setParser(new \ZendServerAPI\Mapper\ApplicationInfo());
+        $this->setParser(new \ZendServerAPI\Adapter\ApplicationInfo());
     }
 
     /**

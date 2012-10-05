@@ -1,14 +1,14 @@
 <?php
-namespace ZendServerAPI\Mapper;
+namespace ZendServerAPI\Adapter;
 
 use ZendServerAPI\DataTypes\ServerInfo as ServerInfoData,
     ZendServerAPI\DataTypes\MessageList,
     ZendServerAPI\DataTypes\ServersList as ServersListData;
 
-class ServersList extends Mapper
+class ServersList extends Adapter
 {
     /**
-     * @see \ZendServerAPI\Mapper\Mapper::parse()
+     * @see \ZendServerAPI\Adapter\Adapter::parse()
      */
     public function parse($xml = null)
     {

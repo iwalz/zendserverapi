@@ -4,11 +4,11 @@ namespace ZendServerAPITest;
 /**
  * test case.
  */
-class ApplicationInfoMapperTest extends \PHPUnit_Framework_TestCase
+class ApplicationInfoAdapterTest extends \PHPUnit_Framework_TestCase
 {
-    public function testMapper()
+    public function testAdapter()
     {
-        $applicationGetStatus = new \ZendServerAPI\Mapper\ApplicationList();
+        $applicationGetStatus = new \ZendServerAPI\Adapter\ApplicationList();
         $result = $applicationGetStatus->parse(file_get_contents(__DIR__.'/../DataTypes/TestAsset/applicationlist.xml'));
         
         $applicationList = new \ZendServerAPI\DataTypes\ApplicationList();
@@ -77,7 +77,7 @@ class ApplicationInfoMapperTest extends \PHPUnit_Framework_TestCase
     
     public function testDataTypes()
     {
-        $applicationGetStatus = new \ZendServerAPI\Mapper\ApplicationList();
+        $applicationGetStatus = new \ZendServerAPI\Adapter\ApplicationList();
         $result = $applicationGetStatus->parse(file_get_contents(__DIR__.'/../DataTypes/TestAsset/applicationlist.xml'));
         
         foreach($result->getApplicationInfos() as $applicationInfo)

@@ -1,14 +1,14 @@
 <?php
-namespace ZendServerAPI\Mapper;
+namespace ZendServerAPI\Adapter;
 
 use \ZendServerAPI\DataTypes\LicenseInfo,
     \ZendServerAPI\DataTypes\MessageList as MessageListData,
     \ZendServerAPI\DataTypes\SystemInfo as SystemInfoData;
 
-class SystemInfo extends Mapper
+class SystemInfo extends Adapter
 {
     /**
-     * @see \ZendServerAPI\Mapper\Mapper::parse()
+     * @see \ZendServerAPI\Adapter\Adapter::parse()
      */
     public function parse($xml = null)
     {
@@ -39,8 +39,8 @@ class SystemInfo extends Mapper
         $managerLicenseInfo->setServerLimit((string) $xml->responseData->systemInfo->managerLicenseInfo->serverLimit);
         $systemInfo->setManagerLicenseInfo($managerLicenseInfo);
 
-        $messageListMapper = new \ZendServerAPI\Mapper\MessageList();
-        $messageList = $messageListMapper->parse((string) $xml->responseData->messageList);
+        $messageListAdapter = new \ZendServerAPI\Adapter\MessageList();
+        $messageList = $messageListAdapter->parse((string) $xml->responseData->messageList);
         $systemInfo->setMessageList($messageList);
 
         return $systemInfo;

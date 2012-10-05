@@ -33,7 +33,7 @@ class RestartPHP extends \ZendServerAPI\Method
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/restartPhp');
-        $this->setParser(new \ZendServerAPI\Mapper\ServersList());
+        $this->setParser(new \ZendServerAPI\Adapter\ServersList());
     }
 
     /**

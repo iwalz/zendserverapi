@@ -1,13 +1,13 @@
 <?php
-namespace ZendServerAPI\Mapper;
+namespace ZendServerAPI\Adapter;
 
-class CodetracingDownloadTraceFile extends Mapper
+class CodetracingDownloadTraceFile extends Adapter
 {
     private $fileName = null;
     private $exportDirectory = null;
 
     /*
-     * @see \ZendServerAPI\Mapper\Mapper::parse()
+     * @see \ZendServerAPI\Adapter\Adapter::parse()
      */
     public function parse ()
     {

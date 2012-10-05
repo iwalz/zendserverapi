@@ -1,7 +1,7 @@
 <?php
 namespace ZendServerAPI\Method;
 
-use ZendServerAPI\Mapper\ConfigurationExport as ConfigExportMapper;
+use ZendServerAPI\Adapter\ConfigurationExport as ConfigExportAdapter;
 
 class ConfigurationExport extends \ZendServerAPI\Method
 {
@@ -24,7 +24,7 @@ class ConfigurationExport extends \ZendServerAPI\Method
     {
         $this->setFunctionPath('/ZendServerManager/Api/configurationExport');
         $this->setMethod('GET');
-        $this->setParser(new ConfigExportMapper());
+        $this->setParser(new ConfigExportAdapter());
     }
 
     public function getAcceptHeader()

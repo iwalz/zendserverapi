@@ -1,10 +1,10 @@
 <?php
-namespace ZendServerAPI\Mapper;
+namespace ZendServerAPI\Adapter;
 
-class DumpParser extends \ZendServerAPI\Mapper\Mapper
+class DumpParser extends \ZendServerAPI\Adapter\Adapter
 {
     /*
-     * @see \ZendServerAPI\Mapper\Mapper::parse()
+     * @see \ZendServerAPI\Adapter\Adapter::parse()
      */
     public function parse ()
     {

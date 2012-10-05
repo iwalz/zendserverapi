@@ -1,7 +1,7 @@
 <?php
-namespace ZendServerAPI\Mapper;
+namespace ZendServerAPI\Adapter;
 
-abstract class Mapper
+abstract class Adapter
 {
     /**
      * The Guzzle response object

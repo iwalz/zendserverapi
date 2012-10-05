@@ -1,10 +1,10 @@
 <?php
-namespace ZendServerAPI\Mapper;
+namespace ZendServerAPI\Adapter;
 
-class ApplicationList extends Mapper
+class ApplicationList extends Adapter
 {
     /**
-     * @see \ZendServerAPI\Mapper\Mapper::parse()
+     * @see \ZendServerAPI\Adapter\Adapter::parse()
      */
     public function parse ($xml = null)
     {
@@ -36,11 +36,11 @@ class ApplicationList extends Mapper
                 $applicationInfo->addDeployedVersions($deployedVersions);
             }
 
-            $messageListMapper = new \ZendServerAPI\Mapper\MessageList();
+            $messageListAdapter = new \ZendServerAPI\Adapter\MessageList();
             $xmlMessageList = (string) $xmlAppInfo->messageList;
 
             if(!empty($xmlMessageList))
-                $applicationInfo->setMessageList($messageListMapper->parse($xmlMessageList));
+                $applicationInfo->setMessageList($messageListAdapter->parse($xmlMessageList));
 
             $applicationList->addApplicationInfo($applicationInfo);
         }

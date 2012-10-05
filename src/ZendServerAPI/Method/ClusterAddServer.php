@@ -55,7 +55,7 @@ class ClusterAddServer extends \ZendServerAPI\Method
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/clusterAddServer');
-        $this->setParser(new \ZendServerAPI\Mapper\ServerInfo());
+        $this->setParser(new \ZendServerAPI\Adapter\ServerInfo());
     }
 
     /**

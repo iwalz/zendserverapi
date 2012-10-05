@@ -27,7 +27,7 @@ class ClusterDisableServer extends \ZendServerAPI\Method
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/clusterDisableServer');
-        $this->setParser(new \ZendServerAPI\Mapper\ServerInfo());
+        $this->setParser(new \ZendServerAPI\Adapter\ServerInfo());
     }
 
     /**

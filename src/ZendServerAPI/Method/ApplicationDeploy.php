@@ -72,8 +72,8 @@ class ApplicationDeploy extends \ZendServerAPI\Method
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/applicationDeploy');
-        $this->setParser(new \ZendServerAPI\Mapper\ApplicationInfo());
-//         $this->setParser(new \ZendServerAPI\Mapper\DumpParser());
+        $this->setParser(new \ZendServerAPI\Adapter\ApplicationInfo());
+//         $this->setParser(new \ZendServerAPI\Adapter\DumpParser());
     }
 
     /**

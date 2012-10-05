@@ -1,16 +1,16 @@
 <?php
 namespace ZendServerAPITest;
 
-use ZendServerAPI\Mapper\ServersList;
+use ZendServerAPI\Adapter\ServersList;
 
 /**
  * test case.
  */
-class ServersListMapperTest extends \PHPUnit_Framework_TestCase
+class ServersListAdapterTest extends \PHPUnit_Framework_TestCase
 {
     public function testSuperClass()
     {
-        $this->assertInstanceOf("\ZendServerAPI\Mapper\Mapper", new ServersList());
+        $this->assertInstanceOf("\ZendServerAPI\Adapter\Adapter", new ServersList());
     }
 }
 

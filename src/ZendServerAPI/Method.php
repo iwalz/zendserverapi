@@ -15,8 +15,8 @@ abstract class Method
      */
     protected $functionPath = null;
     /**
-     * Mapper for the result
-     * @var \ZendServerAPI\Mapper\Mapper
+     * Adapter for the result
+     * @var \ZendServerAPI\Adapter\Adapter
      */
     protected $parser = null;
 
@@ -61,9 +61,9 @@ abstract class Method
     /**
      * Set the implementation for the result mapping
      *
-     * @param \ZendServerAPI\Mapper\Mapper $parser for result mapping
+     * @param \ZendServerAPI\Adapter\Adapter $parser for result mapping
      */
-    public function setParser(\ZendServerAPI\Mapper\Mapper $parser)
+    public function setParser(\ZendServerAPI\Adapter\Adapter $parser)
     {
         $this->parser = $parser;
     }
@@ -71,7 +71,7 @@ abstract class Method
     /**
      * Get class for result mapping
      *
-     * @return \ZendServerAPI\Mapper\Mapper
+     * @return \ZendServerAPI\Adapter\Adapter
      */
     public function getParser()
     {

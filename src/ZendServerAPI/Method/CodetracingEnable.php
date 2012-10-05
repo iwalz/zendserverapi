@@ -38,7 +38,7 @@ class CodetracingEnable extends \ZendServerAPI\Method
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/codetracingEnable');
-        $this->setParser(new \ZendServerAPI\Mapper\CodetracingStatus());
+        $this->setParser(new \ZendServerAPI\Adapter\CodetracingStatus());
     }
 
     /**

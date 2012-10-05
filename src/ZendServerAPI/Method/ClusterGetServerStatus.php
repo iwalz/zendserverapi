@@ -30,7 +30,7 @@ class ClusterGetServerStatus  extends \ZendServerAPI\Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/clusterGetServerStatus');
-        $this->setParser(new \ZendServerAPI\Mapper\ServersList());
+        $this->setParser(new \ZendServerAPI\Adapter\ServersList());
     }
 
     /**

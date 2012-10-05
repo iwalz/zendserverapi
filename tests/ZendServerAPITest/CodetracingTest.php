@@ -13,12 +13,17 @@ class CodetracingTest extends PHPUnit_Framework_TestCase
             $this->markTestSkipped();
     }
     
-    public function testCodetracingEnableDisable()
+    public function testCodetracing()
     {
-        \ZendServerAPI\Startup::enableLogging();
         $codetracing = new \ZendServerAPI\Codetracing("example62");
-        $status = $codetracing->codetracingDownloadTraceFile("0.8581.1", "foo.amf", __DIR__.'/../../downloads');
-        \ZendServerAPI\Startup::disableLogging();
+        $status = $codetracing->codetracingCreate("http://hp.local");
+        $fileinfo = $codetracing->codetracingDownloadTraceFile($status->getId(), "foo.amf", __DIR__.'/../../downloads');
+        $this->assertFileExists($fileinfo->getPathName());
+        unlink($fileinfo->getPathName());
+        $id = $status->getId();
+        $codetracing->codetracingDelete($id);
+        $list = $codetracing->codetracingList();
+        $this->assertContainsOnly($status, $list->getCodetracing());
     }
 }
 

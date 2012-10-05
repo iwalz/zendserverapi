@@ -36,17 +36,17 @@ class MonitorGetIssuesListByPredefinedFilter extends \ZendServerAPI\Method
 
     /**
      * Constructor of method MonitorGetIssuesListByPredefinedFilter
-     * 
-     * Retrieve a list of monitor issues according to a preset filter identifier. 
-     * The filter identifier is shared with the UI's predefined filters. 
+     *
+     * Retrieve a list of monitor issues according to a preset filter identifier.
+     * The filter identifier is shared with the UI's predefined filters.
      * This WebAPI method may also accept ordering details and paging limits.
      * The response is a list of issue elements with their general details and event-groups identifiers.
      *
-     * @param string $filterId The predefined filter's id
-     * @param Integer|null $limit The number of rows to retrieve
-     * @param Integer|null $offset A paging offset to begin the issues list from
-     * @param string|null $order Column identifier for sorting the result set
-     * @param string|null $direction Sorting direction: Ascending or Descending
+     * @param  string                                                       $filterId  The predefined filter's id
+     * @param  Integer|null                                                 $limit     The number of rows to retrieve
+     * @param  Integer|null                                                 $offset    A paging offset to begin the issues list from
+     * @param  string|null                                                  $order     Column identifier for sorting the result set
+     * @param  string|null                                                  $direction Sorting direction: Ascending or Descending
      * @return \ZendServerAPI\Method\MonitorGetIssuesListByPredefinedFilter
      */
     public function __construct($filterId, $limit = null, $offset = null, $order = null, $direction = null)
@@ -68,7 +68,7 @@ class MonitorGetIssuesListByPredefinedFilter extends \ZendServerAPI\Method
         $this->setFunctionPath('/ZendServerManager/Api/monitorIssuesListByPredefinedFilter');
         $this->setParser(new \ZendServerAPI\Adapter\DumpParser());
     }
-    
+
     public function getAcceptHeader()
     {
         return "application/vnd.zend.serverapi+xml;version=1.1";
@@ -89,4 +89,3 @@ class MonitorGetIssuesListByPredefinedFilter extends \ZendServerAPI\Method
         return $link;
     }
 }
-

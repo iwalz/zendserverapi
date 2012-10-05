@@ -9,7 +9,6 @@ class MonitorGetRequestSummary extends \ZendServerAPI\Method
      */
     private $requestUid = null;
 
-
     /**
      * Constructor of method ApplicationGetStatus
      *

@@ -16,7 +16,7 @@ class MonitorTest extends \PHPUnit_Framework_TestCase
     {
         \ZendServerAPI\Startup::enableLogging();
         $monitor = new \ZendServerAPI\Monitor("example62");
-        $foo = $monitor->monitorGetIssuesListByPredefinedFilter("1");
+        $issueList = $monitor->monitorGetIssuesListByPredefinedFilter("All Events");
         \ZendServerAPI\Startup::disableLogging();
     }
 }

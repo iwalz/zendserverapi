@@ -5,7 +5,7 @@ class Codetracing extends BaseAPI
 {
     /**
      * Implementation of codetracingEnable method
-     * 
+     *
      * This method will cause the Zend Server to enable the
      * developerMode. This mode causes the Zend Server to create a
      * dump on every request. Do not use it in production
@@ -22,9 +22,9 @@ class Codetracing extends BaseAPI
 
     /**
      * Implementation of codetracingDisable method
-     * 
+     *
      * This method will cause the Zend Server to disable the
-     * developerMode. This mode causes the Zend Server to create a 
+     * developerMode. This mode causes the Zend Server to create a
      * dump on every request. Do not use it in production
      *
      * @param  boolean                                    $restartNow Restart after method call
@@ -39,9 +39,9 @@ class Codetracing extends BaseAPI
 
     /**
      * Implementation of codetracingIsEnabled method
-     * 
+     *
      * This method returns true if developerMode is enabled.
-     * The developerMode will cause the Zend Server to create a trace 
+     * The developerMode will cause the Zend Server to create a trace
      * on every request. Do not use it in production
      *
      * @access public
@@ -56,9 +56,9 @@ class Codetracing extends BaseAPI
 
     /**
      * Implementation of codetracingCreate method
-     * 
+     *
      * This method will generate a codetrace of the given URL.
-     * The URL needs to be a fully encoded and has to start with 
+     * The URL needs to be a fully encoded and has to start with
      * the protocoll.
      *
      * @param  string                               $url the url to trace
@@ -73,7 +73,7 @@ class Codetracing extends BaseAPI
 
     /**
      * Implementation of codetracingDelete method
-     * 
+     *
      * This method will delete the codetrace file from the zend server.
      *
      * @param  integer                              $id Trace file ID
@@ -88,7 +88,7 @@ class Codetracing extends BaseAPI
 
     /**
      * Implementation of codetracingList method
-     * 
+     *
      * This method will give you a list of all codetraces from the zend server.
      *
      * @param  array                                $applicationIds List of application IDs
@@ -107,8 +107,8 @@ class Codetracing extends BaseAPI
 
     /**
      * Implementation of codetracingDownloadTraceFile method
-     * 
-     * This method will download the expected tracefile (if existing) 
+     *
+     * This method will download the expected tracefile (if existing)
      * and store it locally.
      *
      * @param  string                               $traceFile Trace file identifier

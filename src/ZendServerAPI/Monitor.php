@@ -34,7 +34,7 @@ class Monitor extends BaseAPI
      * @param  Integer|null                                                 $offset    A paging offset to begin the issues list from
      * @param  string|null                                                  $order     Column identifier for sorting the result set
      * @param  string|null                                                  $direction Sorting direction: Ascending or Descending
-     * @return \ZendServerAPI\Method\MonitorGetIssuesListByPredefinedFilter
+     * @return \ZendServerAPI\DataTypes\IssueList
      */
     public function monitorGetIssuesListByPredefinedFilter($filterId, $limit = null, $offset = null, $order = null, $direction = null)
     {

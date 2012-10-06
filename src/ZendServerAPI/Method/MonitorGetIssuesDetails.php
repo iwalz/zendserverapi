@@ -31,7 +31,7 @@ class MonitorGetIssuesDetails extends \ZendServerAPI\Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/monitorGetIssueDetails');
-        $this->setParser(new \ZendServerAPI\Adapter\DumpParser());
+        $this->setParser(new \ZendServerAPI\Adapter\IssueDetails());
     }
 
     public function getAcceptHeader()

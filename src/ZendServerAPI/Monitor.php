@@ -51,7 +51,7 @@ class Monitor extends BaseAPI
      * one of the standard filters. 
      *
      * @param  string                                                       $issueId  The issue ID
-     * @return \ZendServerAPI\DataTypes\Issue
+     * @return \ZendServerAPI\DataTypes\IssueDetails
      */
     public function monitorGetIssueDetails($issueId)
     {

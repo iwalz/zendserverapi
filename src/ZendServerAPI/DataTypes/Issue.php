@@ -9,7 +9,7 @@ class Issue
     protected $lastOccurance = null;
     protected $severity = null;
     protected $status = null;
-    protected $generalDetails = array();
+    protected $generalDetails = null;
     protected $routeDetails = array();
 
     public function __construct()
@@ -139,8 +139,8 @@ class Issue
     /**
      * @param \ZendServerAPI\DataTypes\RouteDetails $generalDetails
      */
-    public function setRouteDetails (\ZendServerAPI\DataTypes\RouteDetails $routeDetails)
+    public function addRouteDetails (\ZendServerAPI\DataTypes\RouteDetails $routeDetails)
     {
-        $this->routeDetails = $routeDetails;
+        $this->routeDetails[] = $routeDetails;
     }
 }

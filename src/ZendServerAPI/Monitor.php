@@ -59,4 +59,22 @@ class Monitor extends BaseAPI
     
         return $this->request->send();
     }
+    
+    /**
+     * Method MonitorGetEventGroupDetails
+     *
+     * Retrieves the details for the given issue ID.
+     * The issue ID can be found dynamically with monitorGetIssuesListByPredefinedFilter and
+     * one of the standard filters.
+     *
+     * @param  string                                                       $issueId  The issue ID
+     * @param  Integer                                                      $eventsGroupId The events group id
+     * @return \ZendServerAPI\DataTypes\IssueDetails
+     */
+    public function monitorGetEventGroupDetails($issueId, $eventsGroupId)
+    {
+        $this->request->setAction($this->apiFactory->factory('monitorGetEventGroupDetails', $issueId, $eventsGroupId));
+    
+        return $this->request->send();
+    }
 }

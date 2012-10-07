@@ -24,6 +24,8 @@ class Configuration extends BaseAPI
     {
         if($exportDirectory !== null)
             $this->exportDirectory = $exportDirectory;
+        else 
+            $this->exportDirectory = getcwd();
 
         $this->request->setAction($this->apiFactory->factory('configurationExport', $this->exportDirectory, $fileName));
 

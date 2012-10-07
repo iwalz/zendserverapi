@@ -9,12 +9,12 @@ class Step
     protected $function = null;
     protected $file = null;
     protected $line = null;
-    
+
     public function __construct()
     {
 
     }
-	/**
+    /**
      * @return the $number
      */
     public function getNumber ()
@@ -22,7 +22,7 @@ class Step
         return $this->number;
     }
 
-	/**
+    /**
      * @return the $object
      */
     public function getObject ()
@@ -30,7 +30,7 @@ class Step
         return $this->object;
     }
 
-	/**
+    /**
      * @return the $class
      */
     public function getClass ()
@@ -38,7 +38,7 @@ class Step
         return $this->class;
     }
 
-	/**
+    /**
      * @return the $function
      */
     public function getFunction ()
@@ -46,7 +46,7 @@ class Step
         return $this->function;
     }
 
-	/**
+    /**
      * @return the $file
      */
     public function getFile ()
@@ -54,7 +54,7 @@ class Step
         return $this->file;
     }
 
-	/**
+    /**
      * @return the $line
      */
     public function getLine ()
@@ -62,7 +62,7 @@ class Step
         return $this->line;
     }
 
-	/**
+    /**
      * @param NULL $number
      */
     public function setNumber ($number)
@@ -70,7 +70,7 @@ class Step
         $this->number = $number;
     }
 
-	/**
+    /**
      * @param NULL $object
      */
     public function setObject ($object)
@@ -78,7 +78,7 @@ class Step
         $this->object = $object;
     }
 
-	/**
+    /**
      * @param NULL $class
      */
     public function setClass ($class)
@@ -86,7 +86,7 @@ class Step
         $this->class = $class;
     }
 
-	/**
+    /**
      * @param NULL $function
      */
     public function setFunction ($function)
@@ -94,7 +94,7 @@ class Step
         $this->function = $function;
     }
 
-	/**
+    /**
      * @param NULL $file
      */
     public function setFile ($file)
@@ -102,7 +102,7 @@ class Step
         $this->file = $file;
     }
 
-	/**
+    /**
      * @param NULL $line
      */
     public function setLine ($line)

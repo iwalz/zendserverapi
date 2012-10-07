@@ -40,12 +40,12 @@ class Event
      * @var Integer
      */
     protected $eventsGroupId = null;
-    
+
     public function __construct()
     {
 
     }
-	/**
+    /**
      * @return the $type
      */
     public function getType ()
@@ -53,7 +53,7 @@ class Event
         return $this->type;
     }
 
-	/**
+    /**
      * @return the $description
      */
     public function getDescription ()
@@ -61,7 +61,7 @@ class Event
         return $this->description;
     }
 
-	/**
+    /**
      * @return the $superglobals
      */
     public function getSuperglobals ()
@@ -69,7 +69,7 @@ class Event
         return $this->superglobals;
     }
 
-	/**
+    /**
      * @return the $debugUrl
      */
     public function getDebugUrl ()
@@ -77,7 +77,7 @@ class Event
         return $this->debugUrl;
     }
 
-	/**
+    /**
      * @return the $severity
      */
     public function getSeverity ()
@@ -85,7 +85,7 @@ class Event
         return $this->severity;
     }
 
-	/**
+    /**
      * @return the $backtraces
      */
     public function getBacktraces ()
@@ -93,7 +93,7 @@ class Event
         return $this->backtraces;
     }
 
-	/**
+    /**
      * @param string $type
      */
     public function setType ($type)
@@ -101,7 +101,7 @@ class Event
         $this->type = $type;
     }
 
-	/**
+    /**
      * @param string $description
      */
     public function setDescription ($description)
@@ -109,7 +109,7 @@ class Event
         $this->description = $description;
     }
 
-	/**
+    /**
      * @param \ZendServerAPI\DataTypes\SuperGlobals $superglobals
      */
     public function setSuperglobals (\ZendServerAPI\DataTypes\SuperGlobals $superglobals)
@@ -117,7 +117,7 @@ class Event
         $this->superglobals = $superglobals;
     }
 
-	/**
+    /**
      * @param string $debugUrl
      */
     public function setDebugUrl ($debugUrl)
@@ -125,7 +125,7 @@ class Event
         $this->debugUrl = $debugUrl;
     }
 
-	/**
+    /**
      * @param string $severity
      */
     public function setSeverity ($severity)
@@ -133,14 +133,14 @@ class Event
         $this->severity = $severity;
     }
 
-	/**
+    /**
      * @param multitype: $backtraces
      */
     public function addStep (\ZendServerAPI\DataTypes\Step $step)
     {
         $this->backtraces[] = $step;
     }
-	/**
+    /**
      * @return the $eventsGroupId
      */
     public function getEventsGroupId ()
@@ -148,13 +148,12 @@ class Event
         return $this->eventsGroupId;
     }
 
-	/**
+    /**
      * @param number $eventsGroupId
      */
     public function setEventsGroupId ($eventsGroupId)
     {
         $this->eventsGroupId = $eventsGroupId;
     }
-
 
 }

@@ -23,12 +23,12 @@ class EventsGroupDetails
      * @var string
      */
     protected $codeTracing = null;
-    
+
     public function __construct()
     {
 
     }
-	/**
+    /**
      * @return the $issueId
      */
     public function getIssueId ()
@@ -36,7 +36,7 @@ class EventsGroupDetails
         return $this->issueId;
     }
 
-	/**
+    /**
      * @return the $eventsGroup
      */
     public function getEventsGroup ()
@@ -44,7 +44,7 @@ class EventsGroupDetails
         return $this->eventsGroup;
     }
 
-	/**
+    /**
      * @return the $event
      */
     public function getEvent ()
@@ -52,7 +52,7 @@ class EventsGroupDetails
         return $this->event;
     }
 
-	/**
+    /**
      * @return the $codeTracing
      */
     public function getCodeTracing ()
@@ -60,7 +60,7 @@ class EventsGroupDetails
         return $this->codeTracing;
     }
 
-	/**
+    /**
      * @param NULL $issueId
      */
     public function setIssueId ($issueId)
@@ -68,7 +68,7 @@ class EventsGroupDetails
         $this->issueId = $issueId;
     }
 
-	/**
+    /**
      * @param NULL $eventsGroup
      */
     public function setEventsGroup (\ZendServerAPI\DataTypes\EventsGroup $eventsGroup)
@@ -76,7 +76,7 @@ class EventsGroupDetails
         $this->eventsGroup = $eventsGroup;
     }
 
-	/**
+    /**
      * @param NULL $event
      */
     public function setEvent (\ZendServerAPI\DataTypes\Event $event)
@@ -84,7 +84,7 @@ class EventsGroupDetails
         $this->event = $event;
     }
 
-	/**
+    /**
      * @param NULL $codeTracing
      */
     public function setCodeTracing ($codeTracing)

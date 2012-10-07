@@ -13,12 +13,12 @@ class IssueDetails
      * @var array
      */
     protected $eventsGroups = array();
-    
+
     public function __construct()
     {
 
     }
-	/**
+    /**
      * @return the $issue
      */
     public function getIssue ()
@@ -26,7 +26,7 @@ class IssueDetails
         return $this->issue;
     }
 
-	/**
+    /**
      * @return the $eventsGroups
      */
     public function getEventsGroups ()
@@ -34,7 +34,7 @@ class IssueDetails
         return $this->eventsGroups;
     }
 
-	/**
+    /**
      * @param \ZendServerAPI\DataTypes\Issue $issue
      */
     public function setIssue (\ZendServerAPI\DataTypes\Issue $issue)
@@ -42,7 +42,7 @@ class IssueDetails
         $this->issue = $issue;
     }
 
-	/**
+    /**
      * @param \ZendServerAPI\DataTypes\EventsGroup $eventsGroup
      */
     public function addEventsGroup (\ZendServerAPI\DataTypes\EventsGroup $eventsGroup)

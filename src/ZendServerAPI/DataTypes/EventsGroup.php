@@ -16,12 +16,12 @@ class EventsGroup
     protected $avgMemUsage = null;
     protected $avgOutputSize = null;
     protected $load = null;
-    
+
     public function __construct()
     {
 
     }
-	/**
+    /**
      * @return the $eventsGroupId
      */
     public function getEventsGroupId ()
@@ -29,7 +29,7 @@ class EventsGroup
         return $this->eventsGroupId;
     }
 
-	/**
+    /**
      * @return the $eventsCount
      */
     public function getEventsCount ()
@@ -37,7 +37,7 @@ class EventsGroup
         return $this->eventsCount;
     }
 
-	/**
+    /**
      * @return the $startTime
      */
     public function getStartTime ()
@@ -45,7 +45,7 @@ class EventsGroup
         return $this->startTime;
     }
 
-	/**
+    /**
      * @return the $serverId
      */
     public function getServerId ()
@@ -53,7 +53,7 @@ class EventsGroup
         return $this->serverId;
     }
 
-	/**
+    /**
      * @return the $class
      */
     public function getClass ()
@@ -61,7 +61,7 @@ class EventsGroup
         return $this->class;
     }
 
-	/**
+    /**
      * @return the $userData
      */
     public function getUserData ()
@@ -69,7 +69,7 @@ class EventsGroup
         return $this->userData;
     }
 
-	/**
+    /**
      * @return the $javaBacktrace
      */
     public function getJavaBacktrace ()
@@ -77,7 +77,7 @@ class EventsGroup
         return $this->javaBacktrace;
     }
 
-	/**
+    /**
      * @return the $execTime
      */
     public function getExecTime ()
@@ -85,7 +85,7 @@ class EventsGroup
         return $this->execTime;
     }
 
-	/**
+    /**
      * @return the $avgExecTime
      */
     public function getAvgExecTime ()
@@ -93,7 +93,7 @@ class EventsGroup
         return $this->avgExecTime;
     }
 
-	/**
+    /**
      * @return the $memUsage
      */
     public function getMemUsage ()
@@ -101,7 +101,7 @@ class EventsGroup
         return $this->memUsage;
     }
 
-	/**
+    /**
      * @return the $avgMemUsage
      */
     public function getAvgMemUsage ()
@@ -109,7 +109,7 @@ class EventsGroup
         return $this->avgMemUsage;
     }
 
-	/**
+    /**
      * @return the $avgOutputSize
      */
     public function getAvgOutputSize ()
@@ -117,7 +117,7 @@ class EventsGroup
         return $this->avgOutputSize;
     }
 
-	/**
+    /**
      * @return the $load
      */
     public function getLoad ()
@@ -125,7 +125,7 @@ class EventsGroup
         return $this->load;
     }
 
-	/**
+    /**
      * @param NULL $eventsGroupId
      */
     public function setEventsGroupId ($eventsGroupId)
@@ -133,7 +133,7 @@ class EventsGroup
         $this->eventsGroupId = $eventsGroupId;
     }
 
-	/**
+    /**
      * @param NULL $eventsCount
      */
     public function setEventsCount ($eventsCount)
@@ -141,7 +141,7 @@ class EventsGroup
         $this->eventsCount = $eventsCount;
     }
 
-	/**
+    /**
      * @param NULL $startTime
      */
     public function setStartTime ($startTime)
@@ -149,7 +149,7 @@ class EventsGroup
         $this->startTime = $startTime;
     }
 
-	/**
+    /**
      * @param NULL $serverId
      */
     public function setServerId ($serverId)
@@ -157,7 +157,7 @@ class EventsGroup
         $this->serverId = $serverId;
     }
 
-	/**
+    /**
      * @param NULL $class
      */
     public function setClass ($class)
@@ -165,7 +165,7 @@ class EventsGroup
         $this->class = $class;
     }
 
-	/**
+    /**
      * @param NULL $userData
      */
     public function setUserData ($userData)
@@ -173,7 +173,7 @@ class EventsGroup
         $this->userData = $userData;
     }
 
-	/**
+    /**
      * @param NULL $javaBacktrace
      */
     public function setJavaBacktrace ($javaBacktrace)
@@ -181,7 +181,7 @@ class EventsGroup
         $this->javaBacktrace = $javaBacktrace;
     }
 
-	/**
+    /**
      * @param NULL $execTime
      */
     public function setExecTime ($execTime)
@@ -189,7 +189,7 @@ class EventsGroup
         $this->execTime = $execTime;
     }
 
-	/**
+    /**
      * @param NULL $avgExecTime
      */
     public function setAvgExecTime ($avgExecTime)
@@ -197,7 +197,7 @@ class EventsGroup
         $this->avgExecTime = $avgExecTime;
     }
 
-	/**
+    /**
      * @param NULL $memUsage
      */
     public function setMemUsage ($memUsage)
@@ -205,7 +205,7 @@ class EventsGroup
         $this->memUsage = $memUsage;
     }
 
-	/**
+    /**
      * @param NULL $avgMemUsage
      */
     public function setAvgMemUsage ($avgMemUsage)
@@ -213,7 +213,7 @@ class EventsGroup
         $this->avgMemUsage = $avgMemUsage;
     }
 
-	/**
+    /**
      * @param NULL $avgOutputSize
      */
     public function setAvgOutputSize ($avgOutputSize)
@@ -221,7 +221,7 @@ class EventsGroup
         $this->avgOutputSize = $avgOutputSize;
     }
 
-	/**
+    /**
      * @param NULL $load
      */
     public function setLoad ($load)

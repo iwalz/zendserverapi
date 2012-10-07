@@ -29,11 +29,11 @@ class Monitor extends BaseAPI
      * This WebAPI method may also accept ordering details and paging limits.
      * The response is a list of issue elements with their general details and event-groups identifiers.
      *
-     * @param  string                                                       $filterId  The predefined filter's id
-     * @param  Integer|null                                                 $limit     The number of rows to retrieve
-     * @param  Integer|null                                                 $offset    A paging offset to begin the issues list from
-     * @param  string|null                                                  $order     Column identifier for sorting the result set
-     * @param  string|null                                                  $direction Sorting direction: Ascending or Descending
+     * @param  string                             $filterId  The predefined filter's id
+     * @param  Integer|null                       $limit     The number of rows to retrieve
+     * @param  Integer|null                       $offset    A paging offset to begin the issues list from
+     * @param  string|null                        $order     Column identifier for sorting the result set
+     * @param  string|null                        $direction Sorting direction: Ascending or Descending
      * @return \ZendServerAPI\DataTypes\IssueList
      */
     public function monitorGetIssuesListByPredefinedFilter($filterId, $limit = null, $offset = null, $order = null, $direction = null)
@@ -47,19 +47,19 @@ class Monitor extends BaseAPI
      * Method MonitorGetIssuesDetails
      *
      * Retrieves the details for the given issue ID.
-     * The issue ID can be found dynamically with monitorGetIssuesListByPredefinedFilter and 
-     * one of the standard filters. 
+     * The issue ID can be found dynamically with monitorGetIssuesListByPredefinedFilter and
+     * one of the standard filters.
      *
-     * @param  string                                                       $issueId  The issue ID
+     * @param  string                                $issueId The issue ID
      * @return \ZendServerAPI\DataTypes\IssueDetails
      */
     public function monitorGetIssueDetails($issueId)
     {
         $this->request->setAction($this->apiFactory->factory('monitorGetIssuesDetails', $issueId));
-    
+
         return $this->request->send();
     }
-    
+
     /**
      * Method MonitorGetEventGroupDetails
      *
@@ -68,23 +68,23 @@ class Monitor extends BaseAPI
      * one of the standard filters. If you run that action without the eventsGroupId parameter
      * it will perform a monitorGetIssueDetails call before and pick the first id
      *
-     * @param  string                                                       $issueId  The issue ID
-     * @param  Integer                                                      $eventsGroupId The events group id
+     * @param  string                                $issueId       The issue ID
+     * @param  Integer                               $eventsGroupId The events group id
      * @return \ZendServerAPI\DataTypes\IssueDetails
      */
     public function monitorGetEventGroupDetails($issueId, $eventsGroupId = null)
     {
-        if($eventsGroupId === null) {
+        if ($eventsGroupId === null) {
             $this->request->setAction($this->apiFactory->factory('monitorGetIssuesDetails', $issueId));
             $event = $this->request->send();
             $eventsGroups = $event->getEventsGroups();
             $eventsGroupId = $eventsGroups[0]->getEventsGroupId();
-            
+
             // Reset request
             $this->request = Startup::getRequest($this->name);
         }
         $this->request->setAction($this->apiFactory->factory('monitorGetEventGroupDetails', $issueId, $eventsGroupId));
-    
+
         return $this->request->send();
     }
 }

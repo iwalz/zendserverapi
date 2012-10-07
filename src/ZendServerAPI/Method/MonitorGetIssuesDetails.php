@@ -10,12 +10,12 @@ class MonitorGetIssuesDetails extends \ZendServerAPI\Method
     protected $issueId = null;
 
     /**
-     * Constructor of method MonitorGetIssuesDetails 
+     * Constructor of method MonitorGetIssuesDetails
      *
      * Retrieves the details of the given issue id.
      *
-     * @param  string                                                       $issueId  The issue ID
-     * @param  Integer|95                                                   $eventGroupId  The event group identifier
+     * @param  string                                        $issueId      The issue ID
+     * @param  Integer|95                                    $eventGroupId The event group identifier
      * @return \ZendServerAPI\Method\MonitorGetIssuesDetails
      */
     public function __construct($issueId)

@@ -3,6 +3,8 @@ namespace ZendServerAPI;
 
 class Monitor extends BaseAPI
 {
+    protected $exportDirectory = null;
+    
     /**
      * The monitorGetRequestSummary Method
      *
@@ -105,4 +107,42 @@ class Monitor extends BaseAPI
     
         return $this->request->send();
     }
+    
+    /**
+     * Method MonitorExportIssueByEventsGroup
+     *
+     * Export an issue, identified the given eventsgroup id.
+     * Return the SplFileInfo of the downloaded file
+     *
+     * @param  string                                $eventsGroupId The event group ID
+     * @return \SplFileInfo
+     */
+        
+    public function monitorExportIssueByEventsGroup($eventsGroupId, $exportDirectory = null, $fileName = null)
+    {
+        if($exportDirectory !== null)
+            $this->exportDirectory = $exportDirectory;
+        else
+            $this->exportDirectory = getcwd();
+        
+        $this->request->setAction($this->apiFactory->factory('monitorExportIssueByEventsGroup', $eventsGroupId, $this->exportDirectory, $fileName));
+    
+        return $this->request->send();
+    }
+	/**
+     * @return the $exportDirectory
+     */
+    public function getExportDirectory ()
+    {
+        return $this->exportDirectory;
+    }
+
+	/**
+     * @param NULL $exportDirectory
+     */
+    public function setExportDirectory ($exportDirectory)
+    {
+        $this->exportDirectory = $exportDirectory;
+    }
+
 }

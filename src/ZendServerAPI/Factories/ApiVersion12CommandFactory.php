@@ -69,7 +69,12 @@ class ApiVersion12CommandFactory extends ApiVersion11CommandFactory
             
                 return $reflect->newInstanceArgs($args);
                 break;
-        
+            case 'monitorExportIssueByEventsGroup':
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\MonitorExportIssueByEventsGroup');
+            
+                return $reflect->newInstanceArgs($args);
+                break;
+                        
             default:
                 return call_user_func_array('parent::factory', array_merge(array($name), $args));
         }

@@ -87,4 +87,22 @@ class Monitor extends BaseAPI
 
         return $this->request->send();
     }
+    
+    /**
+     * Method MonitorChangeIssueStatus
+     *
+     * Retrieves the details for the given issue ID.
+     * The issue ID can be found dynamically with monitorGetIssuesListByPredefinedFilter and
+     * one of the standard filters.
+     *
+     * @param  string                                $issueId The issue ID
+     * @param  string                                $newStatus The new status, Open | Closed | Ignored
+     * @return \ZendServerAPI\DataTypes\IssueDetails
+     */
+    public function monitorChangeIssueStatus($issueId, $newStatus)
+    {
+        $this->request->setAction($this->apiFactory->factory('monitorChangeIssueStatus', $issueId, $newStatus));
+    
+        return $this->request->send();
+    }
 }

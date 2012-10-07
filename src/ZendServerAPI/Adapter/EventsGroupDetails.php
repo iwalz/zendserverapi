@@ -29,6 +29,7 @@ class EventsGroupDetails extends Adapter
         $eventsGroup->setMemUsage((string) $xml->responseData->eventsGroupDetails->eventsGroup->memUsage);
         $eventsGroup->setAvgMemUsage((string) $xml->responseData->eventsGroupDetails->eventsGroup->avgMemUsage);
         $eventsGroup->setAvgOutputSize((string) $xml->responseData->eventsGroupDetails->eventsGroup->avgOutputSize);
+        $eventsGroup->setLoad((string) $xml->responseData->eventsGroupDetails->eventsGroup->load);
 
         $eventsGroupDetails->setEventsGroup($eventsGroup);
 

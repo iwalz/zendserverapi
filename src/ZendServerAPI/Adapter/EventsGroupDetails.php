@@ -82,38 +82,20 @@ class EventsGroupDetails extends Adapter
         $event->setSeverity((string)$xml->responseData->eventsGroupDetails->event->severity);
         $eventsGroupDetails->setEvent($event);
         
-        /*foreach ($xml->responseData->issueDetails->issue as $xmlIssue) {
-            $issue = new \ZendServerAPI\DataTypes\EventsGroupDetails();
-            $issue->setId((string) $xmlIssue->id);
-            $issue->setRule((string) $xmlIssue->rule);
-            $issue->setCount((string) $xmlIssue->count);
-            $issue->setLastOccurance((string) $xmlIssue->lastOccurance);
-            $issue->setSeverity((string) $xmlIssue->severity);
-            $issue->setStatus((string) $xmlIssue->status);
-
-            $generalDetail = new \ZendServerAPI\DataTypes\GeneralDetails();
-            $generalDetail->setUrl((string) $xmlIssue->generalDetails->url);
-            $generalDetail->setSourceFile((string) $xmlIssue->generalDetails->sourceFile);
-            $generalDetail->setSourceLine((string) $xmlIssue->generalDetails->sourceLine);
-            $generalDetail->setFunction((string) $xmlIssue->generalDetails->function);
-            $generalDetail->setAggregationHint((string) $xmlIssue->generalDetails->aggregationHint);
-            $generalDetail->setErrorString((string) $xmlIssue->generalDetails->errorString);
-            $generalDetail->setErrorType((string) $xmlIssue->generalDetails->errorType);
-
-            $issue->setGeneralDetails($generalDetail);
+        foreach($xml->responseData->eventsGroupDetails->event->backtrace->step as $xmlStep)
+        {
+            $step = new \ZendServerAPI\DataTypes\Step();
+            $step->setClass(trim((string)$xmlStep->class));
+            $step->setFile(trim((string)$xmlStep->file));
+            $step->setFunction(trim((string)$xmlStep->function));
+            $step->setLine(trim((string)$xmlStep->line));
+            $step->setNumber(trim((string)$xmlStep->number));
+            $step->setObject(trim((string)$xmlStep->object));
+            $event->addStep($step);
+        }
+        
+        $eventsGroupDetails->setCodeTracing((string)$xml->responseData->eventsGroupDetails->event->codeTracing);
             
-            foreach($xmlIssue->generalDetails as $xmlGeneralDetails)
-            {
-                $routeDetail = new \ZendServerAPI\DataTypes\RouteDetail();
-                $routeDetail->setKey((string) $$xmlGeneralDetails->generalDetail->key);
-                $routeDetail->setValue((string) $$xmlGeneralDetails->generalDetail->value);
-                
-                $issue->addRouteDetail($routeDetail);
-            }
-
-            $issueList->addIssue($issue);
-        }*/
-
         return $eventsGroupDetails;
     }
 }

@@ -78,116 +78,43 @@ EOF;
         
         $expectedEvent->setSuperglobals($expectedSuperglobals);
         
+        $expectedStep = new \ZendServerAPI\DataTypes\Step();
+        $expectedStep->setClass('Application\Controller\IndexController');
+        $expectedStep->setFile('/var/www/website/module/Application/src/Application/Controller/IndexController.php');
+        $expectedStep->setFunction('indexAction');
+        $expectedStep->setLine('67');
+        $expectedStep->setObject('Application\Controller\IndexController');
+        $expectedStep->setNumber('1');
+        $expectedEvent->addStep($expectedStep);
+        
+        $expectedStep = new \ZendServerAPI\DataTypes\Step();
+        $expectedStep->setClass('Zend\Mvc\Controller\AbstractActionController');
+        $expectedStep->setFile('/var/www/website/vendor/zendframework/zendframework/library/Zend/Mvc/Controller/AbstractActionController.php');
+        $expectedStep->setFunction('execute');
+        $expectedStep->setLine('137');
+        $expectedStep->setObject('Application\Controller\IndexController');
+        $expectedStep->setNumber('2');
+        $expectedEvent->addStep($expectedStep);
+        
+        $expectedStep = new \ZendServerAPI\DataTypes\Step();
+        $expectedStep->setClass('Zend\Mvc\Controller\AbstractActionController');
+        $expectedStep->setFile('');
+        $expectedStep->setFunction('execute');
+        $expectedStep->setLine('0');
+        $expectedStep->setObject('Application\Controller\IndexController');
+        $expectedStep->setNumber('3');
+        $expectedEvent->addStep($expectedStep);
+        
+        $expectedStep = new \ZendServerAPI\DataTypes\Step();
+        $expectedStep->setClass('Zend\EventManager\EventManager');
+        $expectedStep->setFile('/var/www/website/vendor/zendframework/zendframework/library/Zend/EventManager/EventManager.php');
+        $expectedStep->setFunction('Zend\EventManager\EventManager::triggerListeners');
+        $expectedStep->setLine('453');
+        $expectedStep->setObject('');
+        $expectedStep->setNumber('4');
+        $expectedEvent->addStep($expectedStep);
+        
         $this->assertEquals($expectedEvent, $result->getEvent());
-
-        /*$expectedStep = new \ZendServerAPI\DataTypes\Step();
-        $expectedStep->setClass();
-        $expectedStep->setFile();
-        $expectedStep->setFunction();
-        $expectedStep->setLine();
-        $expectedStep->setObject();
-        $expectedStep->setNumber();
-        $expectedEvent->addStep($expectedStep);
-        
-        $expectedStep = new \ZendServerAPI\DataTypes\Step();
-        $expectedStep->setClass();
-        $expectedStep->setFile();
-        $expectedStep->setFunction();
-        $expectedStep->setLine();
-        $expectedStep->setObject();
-        $expectedStep->setNumber();
-        $expectedEvent->addStep($expectedStep);
-        
-        $expectedStep = new \ZendServerAPI\DataTypes\Step();
-        $expectedStep->setClass();
-        $expectedStep->setFile();
-        $expectedStep->setFunction();
-        $expectedStep->setLine();
-        $expectedStep->setObject();
-        $expectedStep->setNumber();
-        $expectedEvent->addStep($expectedStep);
-        
-        $expectedStep = new \ZendServerAPI\DataTypes\Step();
-        $expectedStep->setClass();
-        $expectedStep->setFile();
-        $expectedStep->setFunction();
-        $expectedStep->setLine();
-        $expectedStep->setObject();
-        $expectedStep->setNumber();
-        $expectedEvent->addStep($expectedStep);
-        
-        $expectedStep = new \ZendServerAPI\DataTypes\Step();
-        $expectedStep->setClass();
-        $expectedStep->setFile();
-        $expectedStep->setFunction();
-        $expectedStep->setLine();
-        $expectedStep->setObject();
-        $expectedStep->setNumber();
-        $expectedEvent->addStep($expectedStep);
-        
-        $expectedStep = new \ZendServerAPI\DataTypes\Step();
-        $expectedStep->setClass();
-        $expectedStep->setFile();
-        $expectedStep->setFunction();
-        $expectedStep->setLine();
-        $expectedStep->setObject();
-        $expectedStep->setNumber();
-        $expectedEvent->addStep($expectedStep);
-        
-        $expectedStep = new \ZendServerAPI\DataTypes\Step();
-        $expectedStep->setClass();
-        $expectedStep->setFile();
-        $expectedStep->setFunction();
-        $expectedStep->setLine();
-        $expectedStep->setObject();
-        $expectedStep->setNumber();
-        $expectedEvent->addStep($expectedStep);
-        
-        $expectedStep = new \ZendServerAPI\DataTypes\Step();
-        $expectedStep->setClass();
-        $expectedStep->setFile();
-        $expectedStep->setFunction();
-        $expectedStep->setLine();
-        $expectedStep->setObject();
-        $expectedStep->setNumber();
-        $expectedEvent->addStep($expectedStep);
-        
-        $expectedStep = new \ZendServerAPI\DataTypes\Step();
-        $expectedStep->setClass();
-        $expectedStep->setFile();
-        $expectedStep->setFunction();
-        $expectedStep->setLine();
-        $expectedStep->setObject();
-        $expectedStep->setNumber();
-        $expectedEvent->addStep($expectedStep);
-        
-        $expectedStep = new \ZendServerAPI\DataTypes\Step();
-        $expectedStep->setClass();
-        $expectedStep->setFile();
-        $expectedStep->setFunction();
-        $expectedStep->setLine();
-        $expectedStep->setObject();
-        $expectedStep->setNumber();
-        $expectedEvent->addStep($expectedStep);
-        
-        $expectedStep = new \ZendServerAPI\DataTypes\Step();
-        $expectedStep->setClass();
-        $expectedStep->setFile();
-        $expectedStep->setFunction();
-        $expectedStep->setLine();
-        $expectedStep->setObject();
-        $expectedStep->setNumber();
-        $expectedEvent->addStep($expectedStep);
-        
-        $expectedStep = new \ZendServerAPI\DataTypes\Step();
-        $expectedStep->setClass();
-        $expectedStep->setFile();
-        $expectedStep->setFunction();
-        $expectedStep->setLine();
-        $expectedStep->setObject();
-        $expectedStep->setNumber();
-        $expectedEvent->addStep($expectedStep);*/
-        
     }
 }
 

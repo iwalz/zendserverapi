@@ -34,7 +34,7 @@ class MonitorGetEventGroupDetails extends \ZendServerAPI\Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/monitorGetEventGroupDetails');
-        $this->setParser(new \ZendServerAPI\Adapter\DumpParser());
+        $this->setParser(new \ZendServerAPI\Adapter\EventsGroupDetails());
     }
 
     public function getAcceptHeader()

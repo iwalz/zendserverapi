@@ -32,6 +32,56 @@ class EventsGroupDetails extends Adapter
         
         $eventsGroupDetails->setEventsGroup($eventsGroup);
         
+        $event = new \ZendServerAPI\DataTypes\Event();
+        $event->setEventsGroupId((string)$xml->responseData->eventsGroupDetails->event->eventsGroupId);
+        $event->setType((string)$xml->responseData->eventsGroupDetails->event->type);
+        $event->setDescription((string)$xml->responseData->eventsGroupDetails->event->description);
+        
+        $superglobal = new \ZendServerAPI\DataTypes\SuperGlobals();
+        if(isset($xml->responseData->eventsGroupDetails->event->superGlobals->cookie->parameter))
+        {
+            foreach($xml->responseData->eventsGroupDetails->event->superGlobals->cookie->parameter as $cookie)
+            {
+                $superglobal->addCookieParameter(trim((string)$cookie->name), trim((string)$cookie->value));    
+            }
+        }
+        
+        if(isset($xml->responseData->eventsGroupDetails->event->superGlobals->server->parameter))
+        {
+            foreach($xml->responseData->eventsGroupDetails->event->superGlobals->server->parameter as $server)
+            {
+                $superglobal->addServerParameter(trim((string)$server->name), trim((string)$server->value));
+            }
+        }
+        
+        if(isset($xml->responseData->eventsGroupDetails->event->superGlobals->get->parameter))
+        {
+            foreach($xml->responseData->eventsGroupDetails->event->superGlobals->get->parameter as $get)
+            {
+                $superglobal->addGetParameter(trim((string)$get->name), trim((string)$get->value));
+            }
+        }
+        
+        if(isset($xml->responseData->eventsGroupDetails->event->superGlobals->post->parameter))
+        {
+            foreach($xml->responseData->eventsGroupDetails->event->superGlobals->post->parameter as $post)
+            {
+                $superglobal->addPostParameter(trim((string)$post->name), trim((string)$post->value));
+            }
+        }
+        
+        if(isset($xml->responseData->eventsGroupDetails->event->superGlobals->session->parameter))
+        {
+            foreach($xml->responseData->eventsGroupDetails->event->superGlobals->session->parameter as $session)
+            {
+                $superglobal->addSessionParameter(trim((string)$session->name), trim((string)$session->value));
+            }
+        }
+        
+        $event->setSuperglobals($superglobal);
+        $event->setSeverity((string)$xml->responseData->eventsGroupDetails->event->severity);
+        $eventsGroupDetails->setEvent($event);
+        
         /*foreach ($xml->responseData->issueDetails->issue as $xmlIssue) {
             $issue = new \ZendServerAPI\DataTypes\EventsGroupDetails();
             $issue->setId((string) $xmlIssue->id);

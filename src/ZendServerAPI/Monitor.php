@@ -129,6 +129,28 @@ class Monitor extends BaseAPI
     
         return $this->request->send();
     }
+    
+    /**
+     * Method monitorDownloadTraceFile
+     *
+     * Download a trace file. Alias for Codetracing::downloadTraceFile
+     *
+     * @param  string                                $eventsGroupId The event group ID
+     * @return \SplFileInfo
+     */
+    
+    public function monitorDownloadTraceFile($traceFile, $exportDirectory = null, $fileName = null)
+    {
+        if($exportDirectory !== null)
+            $this->exportDirectory = $exportDirectory;
+        else
+            $this->exportDirectory = getcwd();
+    
+        $this->request->setAction($this->apiFactory->factory('codetracingDownloadTraceFile', $traceFile, $fileName, $this->exportDirectory));
+    
+        return $this->request->send();
+    }
+    
 	/**
      * @return the $exportDirectory
      */

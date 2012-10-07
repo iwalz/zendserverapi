@@ -3,6 +3,8 @@ namespace ZendServerAPI;
 
 class Codetracing extends BaseAPI
 {
+    protected $exportDirectory = null;
+    
     /**
      * Implementation of codetracingEnable method
      *
@@ -117,7 +119,12 @@ class Codetracing extends BaseAPI
      */
     public function codetracingDownloadTraceFile($traceFile, $fileName = null, $exportDirectory = null)
     {
-        $this->request->setAction($this->apiFactory->factory('codetracingDownloadTraceFile', $traceFile, $fileName, $exportDirectory));
+        if($exportDirectory !== null)
+            $this->exportDirectory = $exportDirectory;
+        else
+            $this->exportDirectory = getcwd();
+        
+        $this->request->setAction($this->apiFactory->factory('codetracingDownloadTraceFile', $traceFile, $fileName, $this->exportDirectory));
 
         return $this->request->send();
     }

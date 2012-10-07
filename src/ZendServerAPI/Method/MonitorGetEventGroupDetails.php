@@ -22,6 +22,7 @@ class MonitorGetEventGroupDetails extends \ZendServerAPI\Method
     public function __construct($issueId, $eventsGroupId)
     {
         $this->issueId = $issueId;
+        
         $this->eventsGroupId = $eventsGroupId;
         parent::__construct();
     }

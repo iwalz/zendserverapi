@@ -35,6 +35,11 @@ class Event
      * @var array
      */
     protected $backtraces = array();
+    /**
+     * The events group identifier
+     * @var Integer
+     */
+    protected $eventsGroupId = null;
     
     public function __construct()
     {
@@ -131,9 +136,25 @@ class Event
 	/**
      * @param multitype: $backtraces
      */
-    public function setBacktraces ($backtraces)
+    public function addStep (\ZendServerAPI\DataTypes\Step $step)
     {
-        $this->backtraces = $backtraces;
+        $this->backtraces[] = $step;
     }
+	/**
+     * @return the $eventsGroupId
+     */
+    public function getEventsGroupId ()
+    {
+        return $this->eventsGroupId;
+    }
+
+	/**
+     * @param number $eventsGroupId
+     */
+    public function setEventsGroupId ($eventsGroupId)
+    {
+        $this->eventsGroupId = $eventsGroupId;
+    }
+
 
 }

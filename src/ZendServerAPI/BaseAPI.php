@@ -14,6 +14,9 @@ class BaseAPI
      * @var Factories\CommandFactory
      */
     protected $apiFactory = null;
+    
+    protected $name = null;
+    
     /**
      * Base constructor for all method implementations
      * @param string $name Name of the config
@@ -25,7 +28,8 @@ class BaseAPI
         } else {
             $this->request = Startup::getRequest($name);
         }
-
+        $this->name = $name;
+        
         $webApiVersionFactory = new Factories\WebApiVersionFactory();
         $webApiVersionFactory->setConfig($this->request->getConfig());
         $this->apiFactory = $webApiVersionFactory->getCommandFactory();

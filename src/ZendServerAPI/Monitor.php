@@ -72,7 +72,7 @@ class Monitor extends BaseAPI
      *
      * @param  string                                $issueId       The issue ID
      * @param  Integer                               $eventsGroupId The events group id
-     * @return \ZendServerAPI\DataTypes\IssueDetails
+     * @return \ZendServerAPI\DataTypes\EventsGroupDetails
      */
     public function monitorGetEventGroupDetails($issueId, $eventsGroupId = null)
     {

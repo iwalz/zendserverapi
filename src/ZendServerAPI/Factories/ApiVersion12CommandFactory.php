@@ -74,6 +74,16 @@ class ApiVersion12CommandFactory extends ApiVersion11CommandFactory
             
                 return $reflect->newInstanceArgs($args);
                 break;
+            case 'studioStartDebug':
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\StudioStartDebug');
+            
+                return $reflect->newInstanceArgs($args);
+                break;
+            case 'studioStartProfile':
+                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\StudioStartProfile');
+            
+                return $reflect->newInstanceArgs($args);
+                break;
                         
             default:
                 return call_user_func_array('parent::factory', array_merge(array($name), $args));

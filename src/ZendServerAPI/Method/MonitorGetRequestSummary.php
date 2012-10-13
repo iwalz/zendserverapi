@@ -27,7 +27,7 @@ class MonitorGetRequestSummary extends \ZendServerAPI\Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/monitorGetRequestSummary');
-        $this->setParser(new \ZendServerAPI\Adapter\DumpParser());
+        $this->setParser(new \ZendServerAPI\Adapter\RequestSummary());
     }
 
     /**

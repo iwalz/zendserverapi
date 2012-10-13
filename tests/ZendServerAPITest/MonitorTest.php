@@ -15,10 +15,13 @@ class MonitorTest extends \PHPUnit_Framework_TestCase
     public function testMonitor()
     {
         \ZendServerAPI\Startup::enableLogging();
+        $studio = new \ZendServerAPI\Studio("example62");
         $monitor = new \ZendServerAPI\Monitor("example62");
-        $issueList = $monitor->monitorGetEventGroupDetails("226");
-        var_dump($issueList);
+        $details = $monitor->monitorGetEventGroupDetails("247");
+        $debugRequest = $studio->studioStartProfile($details->getEventsGroup()->getEventsGroupId());
+        var_dump($debugRequest);
         \ZendServerAPI\Startup::disableLogging();
+        
     }
 }
 

@@ -1,6 +1,8 @@
 <?php
 namespace ZendServerAPITest\Method;
 
+use ZendServerAPI\Method\MonitorGetRequestSummary;
+
 use \ZendServerAPI\Method\GetSystemInfo,
     \ZendServerAPI\Method\ClusterAddServer,
     \ZendServerAPI\Method\ClusterRemoveServer,
@@ -88,7 +90,12 @@ class MethodImplementationTest extends \PHPUnit_Framework_TestCase {
 	                    new ClusterEnableServer(ClusterEnableServerTest::getParameter()),
 	                    ClusterEnableServerTest::$ClusterEnableServerResponse,
 	                    ClusterEnableServerTest::getClusterEnableServer(),
-	            )
+	            ),
+	            array(
+	                    new MonitorGetRequestSummary(MonitorGetRequestSummaryTest::getParameter()),
+                        MonitorGetRequestSummaryTest::$MonitorGetRequestSummaryResponse,
+                        MonitorGetRequestSummaryTest::getMonitorRequestSummary(),
+                )
 	    );
 	}
 }

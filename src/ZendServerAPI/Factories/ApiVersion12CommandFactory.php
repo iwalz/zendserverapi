@@ -1,4 +1,20 @@
 <?php
+/*
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * <http://www.rubber-duckling.net>
+ */
+
 namespace ZendServerAPI\Factories;
 
 class ApiVersion12CommandFactory extends ApiVersion11CommandFactory
@@ -66,25 +82,25 @@ class ApiVersion12CommandFactory extends ApiVersion11CommandFactory
                 break;
             case 'monitorChangeIssueStatus':
                 $reflect  = new \ReflectionClass('\ZendServerAPI\Method\MonitorChangeIssueStatus');
-            
+
                 return $reflect->newInstanceArgs($args);
                 break;
             case 'monitorExportIssueByEventsGroup':
                 $reflect  = new \ReflectionClass('\ZendServerAPI\Method\MonitorExportIssueByEventsGroup');
-            
+
                 return $reflect->newInstanceArgs($args);
                 break;
             case 'studioStartDebug':
                 $reflect  = new \ReflectionClass('\ZendServerAPI\Method\StudioStartDebug');
-            
+
                 return $reflect->newInstanceArgs($args);
                 break;
             case 'studioStartProfile':
                 $reflect  = new \ReflectionClass('\ZendServerAPI\Method\StudioStartProfile');
-            
+
                 return $reflect->newInstanceArgs($args);
                 break;
-                        
+
             default:
                 return call_user_func_array('parent::factory', array_merge(array($name), $args));
         }

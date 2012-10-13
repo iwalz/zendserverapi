@@ -1,10 +1,26 @@
 <?php
+/*
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * <http://www.rubber-duckling.net>
+ */
+
 namespace ZendServerAPI;
 
 class Monitor extends BaseAPI
 {
     protected $exportDirectory = null;
-    
+
     /**
      * The monitorGetRequestSummary Method
      *
@@ -70,8 +86,8 @@ class Monitor extends BaseAPI
      * one of the standard filters. If you run that action without the eventsGroupId parameter
      * it will perform a monitorGetIssueDetails call before and pick the first id
      *
-     * @param  string                                $issueId       The issue ID
-     * @param  Integer                               $eventsGroupId The events group id
+     * @param  string                                      $issueId       The issue ID
+     * @param  Integer                                     $eventsGroupId The events group id
      * @return \ZendServerAPI\DataTypes\EventsGroupDetails
      */
     public function monitorGetEventGroupDetails($issueId, $eventsGroupId = null)
@@ -89,7 +105,7 @@ class Monitor extends BaseAPI
 
         return $this->request->send();
     }
-    
+
     /**
      * Method MonitorChangeIssueStatus
      *
@@ -97,61 +113,61 @@ class Monitor extends BaseAPI
      * The issue ID can be found dynamically with monitorGetIssuesListByPredefinedFilter and
      * one of the standard filters.
      *
-     * @param  string                                $issueId The issue ID
+     * @param  string                                $issueId   The issue ID
      * @param  string                                $newStatus The new status, Open | Closed | Ignored
      * @return \ZendServerAPI\DataTypes\IssueDetails
      */
     public function monitorChangeIssueStatus($issueId, $newStatus)
     {
         $this->request->setAction($this->apiFactory->factory('monitorChangeIssueStatus', $issueId, $newStatus));
-    
+
         return $this->request->send();
     }
-    
+
     /**
      * Method MonitorExportIssueByEventsGroup
      *
      * Export an issue, identified the given eventsgroup id.
      * Return the SplFileInfo of the downloaded file
      *
-     * @param  string                                $eventsGroupId The event group ID
+     * @param  string       $eventsGroupId The event group ID
      * @return \SplFileInfo
      */
-        
+
     public function monitorExportIssueByEventsGroup($eventsGroupId, $exportDirectory = null, $fileName = null)
     {
         if($exportDirectory !== null)
             $this->exportDirectory = $exportDirectory;
         else
             $this->exportDirectory = getcwd();
-        
+
         $this->request->setAction($this->apiFactory->factory('monitorExportIssueByEventsGroup', $eventsGroupId, $this->exportDirectory, $fileName));
-    
+
         return $this->request->send();
     }
-    
+
     /**
      * Method monitorDownloadTraceFile
      *
      * Download a trace file. Alias for Codetracing::downloadTraceFile
      *
-     * @param  string                                $eventsGroupId The event group ID
+     * @param  string       $eventsGroupId The event group ID
      * @return \SplFileInfo
      */
-    
+
     public function monitorDownloadTraceFile($traceFile, $exportDirectory = null, $fileName = null)
     {
         if($exportDirectory !== null)
             $this->exportDirectory = $exportDirectory;
         else
             $this->exportDirectory = getcwd();
-    
+
         $this->request->setAction($this->apiFactory->factory('codetracingDownloadTraceFile', $traceFile, $fileName, $this->exportDirectory));
-    
+
         return $this->request->send();
     }
-    
-	/**
+
+    /**
      * @return the $exportDirectory
      */
     public function getExportDirectory ()
@@ -159,7 +175,7 @@ class Monitor extends BaseAPI
         return $this->exportDirectory;
     }
 
-	/**
+    /**
      * @param NULL $exportDirectory
      */
     public function setExportDirectory ($exportDirectory)

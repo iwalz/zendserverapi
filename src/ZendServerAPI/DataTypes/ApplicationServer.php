@@ -77,18 +77,18 @@ class ApplicationServer
     /**
      * Set the server's ID
      *
-     * @param int $id
+     * @param  int  $id
      * @return void
      */
     public function setId ($id)
     {
-        $this->id = (int)$id;
+        $this->id = (int) $id;
     }
 
     /**
      * Set the latest deployed Version
      *
-     * @param string $deployedVersion
+     * @param  string $deployedVersion
      * @return void
      */
     public function setDeployedVersion ($deployedVersion)
@@ -99,7 +99,7 @@ class ApplicationServer
     /**
      * Set the application's status
      *
-     * @param string $status
+     * @param  string $status
      * @return void
      */
     public function setStatus ($status)

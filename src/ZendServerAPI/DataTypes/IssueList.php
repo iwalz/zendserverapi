@@ -44,7 +44,7 @@ class IssueList implements \Countable, \IteratorAggregate
     {
         return $this->issues;
     }
-    
+
     /**
      * @see IteratorAggregate::getIterator()
      */
@@ -52,7 +52,7 @@ class IssueList implements \Countable, \IteratorAggregate
     {
         return new \ArrayIterator($this->issues);
     }
-    
+
     /**
      * @see Countable::count()
      */

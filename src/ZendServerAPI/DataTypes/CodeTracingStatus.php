@@ -17,6 +17,13 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * CodeTracingStatus model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class CodeTracingStatus
 {
     /**
@@ -46,12 +53,11 @@ class CodeTracingStatus
      */
     protected $developerMode = null;
 
-    public function __construct()
-    {
-
-    }
     /**
-     * @return the $componentStatus
+     * Get the current activity status of the component:
+     * Active | Inactive
+     *
+     * @return string
      */
     public function getComponentStatus ()
     {
@@ -59,7 +65,9 @@ class CodeTracingStatus
     }
 
     /**
-     * @return the $alwaysDump
+     * Get the current always_dump directive value (On|Off)
+     *
+     * @return string
      */
     public function getAlwaysDump ()
     {
@@ -67,7 +75,10 @@ class CodeTracingStatus
     }
 
     /**
-     * @return the $traceEnabled
+     * Get the trace enabled directive value
+     * ( On | Off )
+     *
+     * @return string
      */
     public function getTraceEnabled ()
     {
@@ -75,7 +86,10 @@ class CodeTracingStatus
     }
 
     /**
-     * @return the $awaitsRestart
+     * If "true", ZendServer is waiting for a restart which may
+     * affect these settings
+     *
+     * @return string
      */
     public function getAwaitsRestart ()
     {
@@ -83,7 +97,10 @@ class CodeTracingStatus
     }
 
     /**
-     * @param NULL $componentStatus
+     * Set the component status
+     *
+     * @param  string $componentStatus
+     * @return void
      */
     public function setComponentStatus ($componentStatus)
     {
@@ -91,7 +108,10 @@ class CodeTracingStatus
     }
 
     /**
-     * @param NULL $alwaysDump
+     * Set the always dump setting
+     *
+     * @param  string $alwaysDump
+     * @return void
      */
     public function setAlwaysDump ($alwaysDump)
     {
@@ -99,7 +119,10 @@ class CodeTracingStatus
     }
 
     /**
-     * @param NULL $traceEnabled
+     * Set the trace enabled setting
+     *
+     * @param  string $traceEnabled
+     * @return void
      */
     public function setTraceEnabled ($traceEnabled)
     {
@@ -107,14 +130,20 @@ class CodeTracingStatus
     }
 
     /**
-     * @param NULL $awaitsRestart
+     * Set the awaits restart setting
+     *
+     * @param  string $awaitsRestart
+     * @return void
      */
     public function setAwaitsRestart ($awaitsRestart)
     {
         $this->awaitsRestart = $awaitsRestart;
     }
+
     /**
-     * @return the $developerMode
+     * Get the developerMode
+     *
+     * @return string
      */
     public function getDeveloperMode ()
     {
@@ -122,7 +151,10 @@ class CodeTracingStatus
     }
 
     /**
-     * @param boolean $developerMode
+     * Set the developermode
+     *
+     * @param  string $developerMode
+     * @return void
      */
     public function setDeveloperMode ($developerMode)
     {

@@ -195,18 +195,18 @@ class ApplicationInfo
     /**
      * Set the application's ID
      *
-     * @param integer $id
+     * @param  integer $id
      * @return void
      */
     public function setId ($id)
     {
-        $this->id = (int)$id;
+        $this->id = (int) $id;
     }
 
     /**
      * Set the application's base Url
      *
-     * @param string $baseUrl
+     * @param  string $baseUrl
      * @return void
      */
     public function setBaseUrl ($baseUrl)
@@ -217,7 +217,7 @@ class ApplicationInfo
     /**
      * Set the application's name
      *
-     * @param string $appName
+     * @param  string $appName
      * @return void
      */
     public function setAppName ($appName)
@@ -228,7 +228,7 @@ class ApplicationInfo
     /**
      * Set free text
      *
-     * @param string $userAppName
+     * @param  string $userAppName
      * @return void
      */
     public function setUserAppName ($userAppName)
@@ -238,7 +238,7 @@ class ApplicationInfo
 
     /**
      * Set some messages
-     * @param \ZendServerAPI\DataTypes\MessageList $messageList
+     * @param  \ZendServerAPI\DataTypes\MessageList $messageList
      * @return void
      */
     public function setMessageList(\ZendServerAPI\DataTypes\MessageList $messageList)
@@ -249,7 +249,7 @@ class ApplicationInfo
     /**
      * Set path of the application
      *
-     * @param string $installedlocation
+     * @param  string $installedlocation
      * @return void
      */
     public function setInstalledlocation ($installedlocation)
@@ -275,7 +275,7 @@ class ApplicationInfo
      * - partially deployed (available for Zend Server Cluster Manager only)
      * - notExists
      *
-     * @param string $status
+     * @param  string $status
      * @return void
      */
     public function setStatus ($status)
@@ -297,7 +297,7 @@ class ApplicationInfo
     /**
      * Set a list of messages, related to the application
      *
-     * @param \ZendServerAPI\DataTypes\DeployedVersions $deployedVersions
+     * @param  \ZendServerAPI\DataTypes\DeployedVersions $deployedVersions
      * @return void
      */
     public function addDeployedVersions (\ZendServerAPI\DataTypes\DeployedVersions $deployedVersions)
@@ -308,7 +308,7 @@ class ApplicationInfo
     /**
      * Set a list of messages, related to the application
      *
-     * @param array $deployedVersions
+     * @param  array $deployedVersions
      * @return void
      */
     public function setDeployedVersions (array $deployedVersions)

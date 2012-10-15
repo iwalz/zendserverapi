@@ -27,8 +27,8 @@ class RouteDetails implements \Countable, \IteratorAggregate
 
     /**
      * Add a route detail to the list
-     * 
-     * @param \ZendServerAPI\DataTypes\RouteDetail $routeDetail
+     *
+     * @param  \ZendServerAPI\DataTypes\RouteDetail $routeDetail
      * @return void
      */
     public function addRouteDetails(\ZendServerAPI\DataTypes\RouteDetail $routeDetail)
@@ -38,7 +38,7 @@ class RouteDetails implements \Countable, \IteratorAggregate
 
     /**
      * Get the internal route detail list array
-     * 
+     *
      * @return array
      */
     public function getRouteDetails()
@@ -53,7 +53,7 @@ class RouteDetails implements \Countable, \IteratorAggregate
     {
         return new \ArrayIterator($this->routeDetails);
     }
-    
+
     /**
      * @see Countable::count()
      */

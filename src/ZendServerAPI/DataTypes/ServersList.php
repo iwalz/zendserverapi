@@ -101,7 +101,7 @@ class ServersList implements \Countable, \IteratorAggregate
 
        return $this->serverInfos[0];
     }
-    
+
     /**
      * @see IteratorAggregate::getIterator()
      */
@@ -109,7 +109,7 @@ class ServersList implements \Countable, \IteratorAggregate
     {
         return new \ArrayIterator($this->serverInfos);
     }
-    
+
     /**
      * @see Countable::count()
      */

@@ -27,8 +27,8 @@ class EventsGroups implements \Countable, \IteratorAggregate
 
     /**
      * Add an event group to the list
-     * 
-     * @param \ZendServerAPI\DataTypes\EventsGroup $eventGroup
+     *
+     * @param  \ZendServerAPI\DataTypes\EventsGroup $eventGroup
      * @return void
      */
     public function addEventGroup(\ZendServerAPI\DataTypes\EventsGroup $eventGroup)
@@ -38,7 +38,7 @@ class EventsGroups implements \Countable, \IteratorAggregate
 
     /**
      * Get the internal event group array
-     * 
+     *
      * @return array
      */
     public function getEventGroups()
@@ -53,7 +53,7 @@ class EventsGroups implements \Countable, \IteratorAggregate
     {
         return new \ArrayIterator($this->eventGroups);
     }
-    
+
     /**
      * @see Countable::count()
      */

@@ -35,7 +35,7 @@ class ApplicationList implements \Countable, \IteratorAggregate
     /**
      * Add application info object to container
      *
-     * @param \ZendServerAPI\DataTypes\ApplicationInfo $applicationInfo
+     * @param  \ZendServerAPI\DataTypes\ApplicationInfo $applicationInfo
      * @return void
      */
     public function addApplicationInfo(\ZendServerAPI\DataTypes\ApplicationInfo $applicationInfo)
@@ -52,8 +52,8 @@ class ApplicationList implements \Countable, \IteratorAggregate
     {
         return $this->applicationInfos;
     }
-    
-	/**
+
+    /**
      * @see IteratorAggregate::getIterator()
      */
     public function getIterator ()
@@ -61,7 +61,7 @@ class ApplicationList implements \Countable, \IteratorAggregate
         return new \ArrayIterator($this->applicationInfos);
     }
 
-	/**
+    /**
      * @see Countable::count()
      */
     public function count ()

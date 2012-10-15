@@ -34,7 +34,7 @@ class CodetracingList implements \Countable, \IteratorAggregate
     /**
      * Add codetracing to container
      *
-     * @param \ZendServerAPI\DataTypes\CodeTrace $codetrace
+     * @param  \ZendServerAPI\DataTypes\CodeTrace $codetrace
      * @return void
      */
     public function addCodeTrace(\ZendServerAPI\DataTypes\CodeTrace $codetrace)
@@ -51,7 +51,7 @@ class CodetracingList implements \Countable, \IteratorAggregate
     {
         return $this->codetracing;
     }
-    
+
     /**
      * @see IteratorAggregate::getIterator()
      */
@@ -59,7 +59,7 @@ class CodetracingList implements \Countable, \IteratorAggregate
     {
         return new \ArrayIterator($this->codetracing);
     }
-    
+
     /**
      * @see Countable::count()
      */
@@ -67,5 +67,5 @@ class CodetracingList implements \Countable, \IteratorAggregate
     {
         return count($this->getIterator());
     }
-    
+
 }

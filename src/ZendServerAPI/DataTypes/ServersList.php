@@ -17,7 +17,7 @@
 
 namespace ZendServerAPI\DataTypes;
 
-class ServersList
+class ServersList implements \Countable, \IteratorAggregate
 {
     /**
      * Internal container for ServerInfo storage
@@ -100,5 +100,21 @@ class ServersList
            throw new \Exception("No server in list");
 
        return $this->serverInfos[0];
+    }
+    
+    /**
+     * @see IteratorAggregate::getIterator()
+     */
+    public function getIterator ()
+    {
+        return new \ArrayIterator($this->serverInfos);
+    }
+    
+    /**
+     * @see Countable::count()
+     */
+    public function count ()
+    {
+        return count($this->getIterator());
     }
 }

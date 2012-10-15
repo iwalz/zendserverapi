@@ -17,22 +17,48 @@
 
 namespace ZendServerAPI\DataTypes;
 
-class RouteDetails
+class RouteDetails implements \Countable, \IteratorAggregate
 {
+    /**
+     * Internal route detail array
+     * @var array
+     */
     protected $routeDetails = array();
 
+    /**
+     * Add a route detail to the list
+     * 
+     * @param \ZendServerAPI\DataTypes\RouteDetail $routeDetail
+     * @return void
+     */
     public function addRouteDetails(\ZendServerAPI\DataTypes\RouteDetail $routeDetail)
     {
         $this->routeDetails[] = $routeDetail;
     }
 
+    /**
+     * Get the internal route detail list array
+     * 
+     * @return array
+     */
     public function getRouteDetails()
     {
         return $this->routeDetails;
     }
 
-    public function __construct()
+    /**
+     * @see IteratorAggregate::getIterator()
+     */
+    public function getIterator ()
     {
-
+        return new \ArrayIterator($this->routeDetails);
+    }
+    
+    /**
+     * @see Countable::count()
+     */
+    public function count ()
+    {
+        return count($this->getIterator());
     }
 }

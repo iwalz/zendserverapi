@@ -17,22 +17,48 @@
 
 namespace ZendServerAPI\DataTypes;
 
-class EventsGroups
+class EventsGroups implements \Countable, \IteratorAggregate
 {
+    /**
+     * Internal event group array
+     * @var array
+     */
     protected $eventGroups = array();
 
+    /**
+     * Add an event group to the list
+     * 
+     * @param \ZendServerAPI\DataTypes\EventsGroup $eventGroup
+     * @return void
+     */
     public function addEventGroup(\ZendServerAPI\DataTypes\EventsGroup $eventGroup)
     {
         $this->eventGroups[] = $eventGroup;
     }
 
+    /**
+     * Get the internal event group array
+     * 
+     * @return array
+     */
     public function getEventGroups()
     {
         return $this->eventGroups;
     }
 
-    public function __construct()
+    /**
+     * @see IteratorAggregate::getIterator()
+     */
+    public function getIterator ()
     {
-
+        return new \ArrayIterator($this->eventGroups);
+    }
+    
+    /**
+     * @see Countable::count()
+     */
+    public function count ()
+    {
+        return count($this->getIterator());
     }
 }

@@ -16,8 +16,14 @@
  */
 
 namespace ZendServerAPI\DataTypes;
-
-class CodetracingList
+/**
+ * CodetracingList model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
+class CodetracingList implements \Countable, \IteratorAggregate
 {
     /**
      * Internal codetracing storage
@@ -29,6 +35,7 @@ class CodetracingList
      * Add codetracing to container
      *
      * @param \ZendServerAPI\DataTypes\CodeTrace $codetrace
+     * @return void
      */
     public function addCodeTrace(\ZendServerAPI\DataTypes\CodeTrace $codetrace)
     {
@@ -44,4 +51,21 @@ class CodetracingList
     {
         return $this->codetracing;
     }
+    
+    /**
+     * @see IteratorAggregate::getIterator()
+     */
+    public function getIterator ()
+    {
+        return new \ArrayIterator($this->codetracing);
+    }
+    
+    /**
+     * @see Countable::count()
+     */
+    public function count ()
+    {
+        return count($this->getIterator());
+    }
+    
 }

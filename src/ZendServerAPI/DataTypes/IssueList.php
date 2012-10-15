@@ -17,7 +17,7 @@
 
 namespace ZendServerAPI\DataTypes;
 
-class IssueList
+class IssueList implements \Countable, \IteratorAggregate
 {
     /**
      * Internal issue storage
@@ -43,5 +43,21 @@ class IssueList
     public function getIssues()
     {
         return $this->issues;
+    }
+    
+    /**
+     * @see IteratorAggregate::getIterator()
+     */
+    public function getIterator ()
+    {
+        return new \ArrayIterator($this->issues);
+    }
+    
+    /**
+     * @see Countable::count()
+     */
+    public function count ()
+    {
+        return count($this->getIterator());
     }
 }

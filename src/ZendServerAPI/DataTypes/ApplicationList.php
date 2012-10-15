@@ -17,7 +17,14 @@
 
 namespace ZendServerAPI\DataTypes;
 
-class ApplicationList
+/**
+ * ApplicationList model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
+class ApplicationList implements \Countable, \IteratorAggregate
 {
     /**
      * Internal application info storage
@@ -29,6 +36,7 @@ class ApplicationList
      * Add application info object to container
      *
      * @param \ZendServerAPI\DataTypes\ApplicationInfo $applicationInfo
+     * @return void
      */
     public function addApplicationInfo(\ZendServerAPI\DataTypes\ApplicationInfo $applicationInfo)
     {
@@ -44,4 +52,21 @@ class ApplicationList
     {
         return $this->applicationInfos;
     }
+    
+	/**
+     * @see IteratorAggregate::getIterator()
+     */
+    public function getIterator ()
+    {
+        return new \ArrayIterator($this->applicationInfos);
+    }
+
+	/**
+     * @see Countable::count()
+     */
+    public function count ()
+    {
+        return count($this->getIterator());
+    }
+
 }

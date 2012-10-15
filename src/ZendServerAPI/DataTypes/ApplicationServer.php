@@ -17,6 +17,13 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * ApplicationServer model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ApplicationServer
 {
     /**
@@ -32,7 +39,6 @@ class ApplicationServer
     protected $deployedVersion = null;
     /**
      * The deployedVersion's status
-     * @see \ZendServerAPI\DataTypes\ApplicationInfo::$status
      * @var string
      */
     protected $status = null;
@@ -40,7 +46,7 @@ class ApplicationServer
     /**
      * Get the server's ID
      *
-     * @return integer
+     * @return int
      */
     public function getId ()
     {
@@ -71,17 +77,19 @@ class ApplicationServer
     /**
      * Set the server's ID
      *
-     * @param integer $id
+     * @param int $id
+     * @return void
      */
     public function setId ($id)
     {
-        $this->id = $id;
+        $this->id = (int)$id;
     }
 
     /**
      * Set the latest deployed Version
      *
      * @param string $deployedVersion
+     * @return void
      */
     public function setDeployedVersion ($deployedVersion)
     {
@@ -91,8 +99,8 @@ class ApplicationServer
     /**
      * Set the application's status
      *
-     * @see * @see \ZendServerAPI\DataTypes\ApplicationInfo::setStatus
      * @param string $status
+     * @return void
      */
     public function setStatus ($status)
     {

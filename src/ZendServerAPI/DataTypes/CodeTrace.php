@@ -41,7 +41,7 @@ class CodeTrace
     protected $createdBy = null;
     /**
      * File size in bytes
-     * @var int
+     * @var integer
      */
     protected $fileSize = null;
     /**
@@ -50,13 +50,10 @@ class CodeTrace
      */
     protected $applicationId = null;
 
-    public function __construct()
-    {
-
-    }
-
     /**
-     * @return the $id
+     * Get the codeTrace id
+     * 
+     * @return int
      */
     public function getId ()
     {
@@ -64,7 +61,9 @@ class CodeTrace
     }
 
     /**
-     * @return the $date
+     * Get the creation timestamp
+     * 
+     * @return \DateTime
      */
     public function getDate ()
     {
@@ -72,7 +71,9 @@ class CodeTrace
     }
 
     /**
-     * @return the $url
+     * Get the URL string that created the trace
+     * 
+     * @return string
      */
     public function getUrl ()
     {
@@ -80,7 +81,10 @@ class CodeTrace
     }
 
     /**
-     * @return the $createdBy
+     * Get the method of creation
+     * (Code Request, Manual Request, Monitor Request)
+     * 
+     * @return string
      */
     public function getCreatedBy ()
     {
@@ -88,7 +92,9 @@ class CodeTrace
     }
 
     /**
-     * @return the $fileSize
+     * Get the file size in bytes
+     * 
+     * @return int
      */
     public function getFileSize ()
     {
@@ -96,7 +102,9 @@ class CodeTrace
     }
 
     /**
-     * @return the $applicationId
+     * Get the application id
+     * 
+     * @return int
      */
     public function getApplicationId ()
     {
@@ -104,23 +112,43 @@ class CodeTrace
     }
 
     /**
-     * @param string $id
+     * Set the codeTrace id
+     * 
+     * @param int $id
+     * @return void
      */
     public function setId ($id)
     {
-        $this->id = $id;
+        $this->id = (int)$id;
     }
 
     /**
-     * @param DateTime $date
+     * Creation timestamp, will end up as a \DateTime
+     * 
+     * @param \DateTime|int|string $date
+     * @throws \RuntimeException
+     * @return void
      */
     public function setDate ($date)
     {
-        $this->date = $date;
+        if(is_int($date)) {
+            $this->date = new \DateTime();
+            $this->date->setTimestamp($date);
+        } elseif(is_string($date)) {
+            $this->date = new \DateTime();
+            $this->date->setTimestamp((int)$date);
+        } elseif($date instanceof \DateTime) {
+            $this->date = $date;
+        } else {
+            throw new \RuntimeException("Invalid data type");
+        }
     }
 
     /**
+     * URL string that created the trace
+     * 
      * @param string $url
+     * @return void
      */
     public function setUrl ($url)
     {
@@ -128,7 +156,11 @@ class CodeTrace
     }
 
     /**
+     * Set the method of creation (Code Request, 
+     * Manual Request, Monitor Event)
+     * 
      * @param string $createdBy
+     * @return void
      */
     public function setCreatedBy ($createdBy)
     {
@@ -136,19 +168,25 @@ class CodeTrace
     }
 
     /**
-     * @param number $fileSize
+     * Set the file size in bytes
+     * 
+     * @param float $fileSize
+     * @return void
      */
     public function setFileSize ($fileSize)
     {
-        $this->fileSize = $fileSize;
+        $this->fileSize = (float)$fileSize;
     }
 
     /**
-     * @param number $applicationId
+     * Set the application id
+     * 
+     * @param int $applicationId
+     * @return void
      */
     public function setApplicationId ($applicationId)
     {
-        $this->applicationId = $applicationId;
+        $this->applicationId = (int)$applicationId;
     }
 
 }

@@ -17,6 +17,13 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * ApplicationInfo model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ApplicationInfo
 {
     /**
@@ -189,16 +196,18 @@ class ApplicationInfo
      * Set the application's ID
      *
      * @param integer $id
+     * @return void
      */
     public function setId ($id)
     {
-        $this->id = $id;
+        $this->id = (int)$id;
     }
 
     /**
      * Set the application's base Url
      *
      * @param string $baseUrl
+     * @return void
      */
     public function setBaseUrl ($baseUrl)
     {
@@ -209,6 +218,7 @@ class ApplicationInfo
      * Set the application's name
      *
      * @param string $appName
+     * @return void
      */
     public function setAppName ($appName)
     {
@@ -219,6 +229,7 @@ class ApplicationInfo
      * Set free text
      *
      * @param string $userAppName
+     * @return void
      */
     public function setUserAppName ($userAppName)
     {
@@ -228,6 +239,7 @@ class ApplicationInfo
     /**
      * Set some messages
      * @param \ZendServerAPI\DataTypes\MessageList $messageList
+     * @return void
      */
     public function setMessageList(\ZendServerAPI\DataTypes\MessageList $messageList)
     {
@@ -238,6 +250,7 @@ class ApplicationInfo
      * Set path of the application
      *
      * @param string $installedlocation
+     * @return void
      */
     public function setInstalledlocation ($installedlocation)
     {
@@ -263,6 +276,7 @@ class ApplicationInfo
      * - notExists
      *
      * @param string $status
+     * @return void
      */
     public function setStatus ($status)
     {
@@ -273,6 +287,7 @@ class ApplicationInfo
      * Set the application's servers
      *
      * @param array \ZendServerAPI\DataTypes\ApplicationServer
+     * @return void
      */
     public function setServers ($servers)
     {
@@ -283,6 +298,7 @@ class ApplicationInfo
      * Set a list of messages, related to the application
      *
      * @param \ZendServerAPI\DataTypes\DeployedVersions $deployedVersions
+     * @return void
      */
     public function addDeployedVersions (\ZendServerAPI\DataTypes\DeployedVersions $deployedVersions)
     {
@@ -293,6 +309,7 @@ class ApplicationInfo
      * Set a list of messages, related to the application
      *
      * @param array $deployedVersions
+     * @return void
      */
     public function setDeployedVersions (array $deployedVersions)
     {
@@ -303,6 +320,7 @@ class ApplicationInfo
      * Add a server
      *
      * @param \ZendServerAPI\DataTypes\ApplicationServer
+     * @return void
      */
     public function addServer(\ZendServerAPI\DataTypes\ApplicationServer $server)
     {

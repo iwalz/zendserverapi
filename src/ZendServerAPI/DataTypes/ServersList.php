@@ -17,6 +17,13 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * ServersList model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ServersList implements \Countable, \IteratorAggregate
 {
     /**
@@ -38,7 +45,8 @@ class ServersList implements \Countable, \IteratorAggregate
     /**
      * Set ServerInfo container
      *
-     * @param array $serverInfos
+     * @param  array $serverInfos
+     * @return void
      */
     public function setServerInfos(array $serverInfos)
     {
@@ -48,9 +56,10 @@ class ServersList implements \Countable, \IteratorAggregate
     /**
      * Add ServerInfo to container
      *
-     * @param ServerInfo $serverInfo
+     * @param  ServerInfo $serverInfo
+     * @return void
      */
-    public function addServerInfo(ServerInfo $serverInfo)
+    public function addServerInfo(\ZendServerAPI\DataTypes\ServerInfo $serverInfo)
     {
         $this->serverInfos[] = $serverInfo;
     }
@@ -104,6 +113,7 @@ class ServersList implements \Countable, \IteratorAggregate
 
     /**
      * @see IteratorAggregate::getIterator()
+     * @return \ArrayIterator
      */
     public function getIterator ()
     {
@@ -112,6 +122,7 @@ class ServersList implements \Countable, \IteratorAggregate
 
     /**
      * @see Countable::count()
+     * @return void
      */
     public function count ()
     {

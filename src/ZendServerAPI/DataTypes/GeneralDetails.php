@@ -17,18 +17,57 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * GeneralDetails model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class GeneralDetails
 {
+    /**
+     * Issue's creating URL string
+     * @var string
+     */
     protected $url = null;
+    /**
+     * Path to the file where the issue manifested
+     * @var string
+     */
     protected $sourceFile = null;
+    /**
+     * Line number where the issue manifests
+     * within the SourceFile
+     * @var int
+     */
     protected $sourceLine = null;
+    /**
+     * Name of the function that caused the issue to manifest
+     * @var string
+     */
     protected $function = null;
+    /**
+     * A unique identifier that groups all
+     * events under this issue
+     * @var int
+     */
     protected $aggregationHint = null;
+    /**
+     * The error string generated for the events
+     * @var string
+     */
     protected $errorString = null;
+    /**
+     * PHP Error type created for the event
+     * @var string
+     */
     protected $errorType = null;
 
     /**
-     * @return the $url
+     * Get the issue's creating URL string
+     *
+     * @return string
      */
     public function getUrl ()
     {
@@ -36,7 +75,9 @@ class GeneralDetails
     }
 
     /**
-     * @return the $sourceFile
+     * Get the path to the file where the issue manifested
+     *
+     * @return string
      */
     public function getSourceFile ()
     {
@@ -44,7 +85,9 @@ class GeneralDetails
     }
 
     /**
-     * @return the $sourceLine
+     * Line number where the issue manifests within the SourceFile
+     *
+     * @return int
      */
     public function getSourceLine ()
     {
@@ -52,7 +95,9 @@ class GeneralDetails
     }
 
     /**
-     * @return the $function
+     * Get the name of the function that caused the issue to manifest
+     *
+     * @return string
      */
     public function getFunction ()
     {
@@ -60,7 +105,9 @@ class GeneralDetails
     }
 
     /**
-     * @return the $aggregationHint
+     * Get the unique identifier that groups all events under this issue
+     *
+     * @return int
      */
     public function getAggregationHint ()
     {
@@ -68,7 +115,9 @@ class GeneralDetails
     }
 
     /**
-     * @return the $errorString
+     * Get the error string generated for the events
+     *
+     * @return string
      */
     public function getErrorString ()
     {
@@ -76,7 +125,9 @@ class GeneralDetails
     }
 
     /**
-     * @return the $errorType
+     * Get the PHP Error type created for the event
+     *
+     * @return string
      */
     public function getErrorType ()
     {
@@ -84,7 +135,9 @@ class GeneralDetails
     }
 
     /**
-     * @param NULL $url
+     * Set the issue's creating URL string
+     *
+     * @param string $url
      */
     public function setUrl ($url)
     {
@@ -92,7 +145,10 @@ class GeneralDetails
     }
 
     /**
-     * @param NULL $sourceFile
+     * Set the path to the file where the issue manifested
+     *
+     * @param  string $sourceFile
+     * @return void
      */
     public function setSourceFile ($sourceFile)
     {
@@ -100,15 +156,22 @@ class GeneralDetails
     }
 
     /**
-     * @param NULL $sourceLine
+     * Set the line number where the issue manifests within
+     * the SourceFile
+     *
+     * @param  int  $sourceLine
+     * @return void
      */
     public function setSourceLine ($sourceLine)
     {
-        $this->sourceLine = $sourceLine;
+        $this->sourceLine = (int) $sourceLine;
     }
 
     /**
-     * @param NULL $function
+     * Set the name of the function that caused the issue to manifest
+     *
+     * @param  string $function
+     * @return void
      */
     public function setFunction ($function)
     {
@@ -116,7 +179,10 @@ class GeneralDetails
     }
 
     /**
-     * @param NULL $aggregationHint
+     * Set the unique identifier that groups all events under this issue
+     *
+     * @param  string $aggregationHint
+     * @return void
      */
     public function setAggregationHint ($aggregationHint)
     {
@@ -124,7 +190,10 @@ class GeneralDetails
     }
 
     /**
-     * @param NULL $errorString
+     * Set the error string generated for the events
+     *
+     * @param  string $errorString
+     * @return void
      */
     public function setErrorString ($errorString)
     {
@@ -132,7 +201,10 @@ class GeneralDetails
     }
 
     /**
-     * @param NULL $errorType
+     * Set the PHP Error type created for the event
+     *
+     * @param  string $errorType
+     * @return void
      */
     public function setErrorType ($errorType)
     {

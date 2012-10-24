@@ -54,6 +54,7 @@ class CodetracingList implements \Countable, \IteratorAggregate
 
     /**
      * @see IteratorAggregate::getIterator()
+     * @return \ArrayIterator
      */
     public function getIterator ()
     {
@@ -62,6 +63,7 @@ class CodetracingList implements \Countable, \IteratorAggregate
 
     /**
      * @see Countable::count()
+     * @return int
      */
     public function count ()
     {

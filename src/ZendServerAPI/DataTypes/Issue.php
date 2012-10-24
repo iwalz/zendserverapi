@@ -17,23 +17,60 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * Issue model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class Issue
 {
+    /**
+     * Issue identifier
+     * @var int
+     */
     protected $id = null;
+    /**
+     * Issue's rule name
+     * @var string
+     */
     protected $rule = null;
+    /**
+     * Number of event occurance
+     * @var int
+     */
     protected $count = null;
+    /**
+     * Issue's last time of manifestation
+     * @var int
+     */
     protected $lastOccurance = null;
+    /**
+     * Issue's severity( Warning | Error)
+     * @var string
+     */
     protected $severity = null;
+    /**
+     * Issue's current status
+     * @var string
+     */
     protected $status = null;
+    /**
+     * General details (not an own datatype in the doc)
+     * @var \ZendServerAPI\DataTypes\GeneralDetails
+     */
     protected $generalDetails = null;
+    /**
+     * Route details for the issue and the request that created it
+     * @var array
+     */
     protected $routeDetails = array();
 
-    public function __construct()
-    {
-
-    }
     /**
-     * @return the $id
+     * Get the issue identifier
+     *
+     * @return int
      */
     public function getId ()
     {
@@ -41,7 +78,9 @@ class Issue
     }
 
     /**
-     * @return the $rule
+     * Get the issue's rule name
+     *
+     * @return string
      */
     public function getRule ()
     {
@@ -49,7 +88,9 @@ class Issue
     }
 
     /**
-     * @return the $count
+     * Get the number of occurance
+     *
+     * @return int
      */
     public function getCount ()
     {
@@ -57,7 +98,10 @@ class Issue
     }
 
     /**
-     * @return the $lastOccurance
+     * Get the issue's last time of manifestation
+     * (as timestamp)
+     *
+     * @return int
      */
     public function getLastOccurance ()
     {
@@ -65,7 +109,9 @@ class Issue
     }
 
     /**
-     * @return the $severity
+     * Get the issue's severity( Warning | Error)
+     *
+     * @return string
      */
     public function getSeverity ()
     {
@@ -73,7 +119,9 @@ class Issue
     }
 
     /**
-     * @return the $status
+     * Get the issue's current status
+     *
+     * @return string
      */
     public function getStatus ()
     {
@@ -81,7 +129,10 @@ class Issue
     }
 
     /**
-     * @return the $generalDetails
+     * Get the general details
+     * (Not an own datatype within Zend Server - but should)
+     *
+     * @return \ZendServerAPI\DataTypes\GeneralDetails
      */
     public function getGeneralDetails ()
     {
@@ -89,6 +140,8 @@ class Issue
     }
 
     /**
+     * Get the route details for the issue and the request that created
+     *
      * @return array
      */
     public function getRouteDetails()
@@ -97,15 +150,21 @@ class Issue
     }
 
     /**
-     * @param NULL $id
+     * Set the issue identifier
+     *
+     * @param  int  $id
+     * @return void
      */
     public function setId ($id)
     {
-        $this->id = $id;
+        $this->id = (int) $id;
     }
 
     /**
-     * @param NULL $rule
+     * Set the issue's rule name
+     *
+     * @param  string $rule
+     * @return void
      */
     public function setRule ($rule)
     {
@@ -113,23 +172,33 @@ class Issue
     }
 
     /**
-     * @param NULL $count
+     * Set the number of event occurance
+     *
+     * @param  int  $count
+     * @return void
      */
     public function setCount ($count)
     {
-        $this->count = $count;
+        $this->count = (int) $count;
     }
 
     /**
-     * @param NULL $lastOccurance
+     * Set the issue's last time of manifestation
+     * (as timestamp)
+     *
+     * @param  int  $lastOccurance
+     * @return void
      */
     public function setLastOccurance ($lastOccurance)
     {
-        $this->lastOccurance = $lastOccurance;
+        $this->lastOccurance = (int) $lastOccurance;
     }
 
     /**
-     * @param NULL $severity
+     * Set the issue's severity( Warning | Error)
+     *
+     * @param  string $severity
+     * @return void
      */
     public function setSeverity ($severity)
     {
@@ -137,7 +206,10 @@ class Issue
     }
 
     /**
-     * @param NULL $status
+     * Set the issue's current status
+     *
+     * @param  string $status
+     * @return void
      */
     public function setStatus ($status)
     {
@@ -145,7 +217,11 @@ class Issue
     }
 
     /**
-     * @param \ZendServerAPI\DataTypes\GeneralDetails $generalDetails
+     * Set the general details
+     * (Not an own datatype within Zend Server)
+     *
+     * @param  \ZendServerAPI\DataTypes\GeneralDetails $generalDetails
+     * @return void
      */
     public function setGeneralDetails (\ZendServerAPI\DataTypes\GeneralDetails $generalDetails)
     {
@@ -153,7 +229,10 @@ class Issue
     }
 
     /**
-     * @param \ZendServerAPI\DataTypes\RouteDetails $generalDetails
+     * Add a route detail
+     *
+     * @param  \ZendServerAPI\DataTypes\RouteDetails $generalDetails
+     * @return void
      */
     public function addRouteDetails (\ZendServerAPI\DataTypes\RouteDetails $routeDetails)
     {

@@ -17,6 +17,13 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * IssueList model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class IssueList implements \Countable, \IteratorAggregate
 {
     /**
@@ -28,7 +35,8 @@ class IssueList implements \Countable, \IteratorAggregate
     /**
      * Add Issue to container
      *
-     * @param \ZendServerAPI\DataTypes\Issue $issue
+     * @param  \ZendServerAPI\DataTypes\Issue $issue
+     * @return void
      */
     public function addIssue(\ZendServerAPI\DataTypes\Issue $issue)
     {
@@ -47,6 +55,7 @@ class IssueList implements \Countable, \IteratorAggregate
 
     /**
      * @see IteratorAggregate::getIterator()
+     * @return \ArrayIterator
      */
     public function getIterator ()
     {
@@ -55,6 +64,7 @@ class IssueList implements \Countable, \IteratorAggregate
 
     /**
      * @see Countable::count()
+     * @return int
      */
     public function count ()
     {

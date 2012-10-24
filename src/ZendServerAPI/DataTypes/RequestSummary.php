@@ -17,18 +17,35 @@
 
 namespace ZendServerAPI\DataTypes;
 
-class RequestSummary
+/**
+ * RequestSummary model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
+class RequestSummary implements \IteratorAggregate, \Countable
 {
+    /**
+     * Number of event occurance
+     * @var int
+     */
     protected $eventsCount = null;
+    /**
+     * CodeTrace identifier
+     * @var string
+     */
     protected $codeTracing = null;
+    /**
+     * Internal event storage
+     * @var array
+     */
     protected $events = array();
 
-    public function __construct()
-    {
-
-    }
     /**
-     * @return the $eventsCount
+     * Get the number of event occurance
+     *
+     * @return int
      */
     public function getEventsCount ()
     {
@@ -36,7 +53,9 @@ class RequestSummary
     }
 
     /**
-     * @return the $codeTracing
+     * Get the CodeTrace identifier
+     *
+     * @return string
      */
     public function getCodeTracing ()
     {
@@ -44,7 +63,9 @@ class RequestSummary
     }
 
     /**
-     * @return the $events
+     * Get the internal events
+     *
+     * @return array
      */
     public function getEvents ()
     {
@@ -52,7 +73,10 @@ class RequestSummary
     }
 
     /**
-     * @param NULL $eventsCount
+     * Set the number of event occurance
+     *
+     * @param  int  $eventsCount
+     * @return void
      */
     public function setEventsCount ($eventsCount)
     {
@@ -60,7 +84,10 @@ class RequestSummary
     }
 
     /**
-     * @param NULL $codeTracing
+     * Set the CodeTrace identifier
+     *
+     * @param  string $codeTracing
+     * @return void
      */
     public function setCodeTracing ($codeTracing)
     {
@@ -68,11 +95,32 @@ class RequestSummary
     }
 
     /**
-     * @param multitype: $events
+     * Add event to the internal list storage
+     *
+     * @param  \ZendServerAPI\DataTypes\Event $events
+     * @return void
      */
-    public function addEvents ($events)
+    public function addEvents (\ZendServerAPI\DataTypes\Event $event)
     {
-        $this->events[] = $events;
+        $this->events[] = $event;
+    }
+
+    /**
+     * @see IteratorAggregate::getIterator()
+     * @return \ArrayIterator
+     */
+    public function getIterator ()
+    {
+        return new \ArrayIterator($this->events);
+    }
+
+    /**
+     * @see Countable::count()
+     * @return int
+     */
+    public function count ()
+    {
+        return count($this->getIterator());
     }
 
 }

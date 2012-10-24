@@ -17,24 +17,60 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * SuperGlobals model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class SuperGlobals
 {
+    /**
+     * Internal get array
+     * @var array
+     */
     protected $get = array();
+    /**
+     * Internal post array
+     * @var array
+     */
     protected $post = array();
+    /**
+     * Internal cookie array
+     * @var array
+     */
     protected $cookie = array();
+    /**
+     * Internal server array
+     * @var array
+     */
     protected $server = array();
+    /**
+     * Internal session array
+     * @var array
+     */
     protected $session = array();
 
-    public function __construct()
-    {
-
-    }
-
+    /**
+     * Add a get parameter key/value pair
+     *
+     * @param  string $key
+     * @param  string $value
+     * @return void
+     */
     public function addGetParameter($key, $value)
     {
         $this->get[$key] = $value;
     }
 
+    /**
+     * Get the get parameter array or value by key
+     * if parameter is given
+     *
+     * @param  string|null  $key
+     * @return string|array
+     */
     public function getGetParameter($key = null)
     {
         if ($key === null) {
@@ -46,11 +82,25 @@ class SuperGlobals
         }
     }
 
+    /**
+     * Add a post parameter key/value pair
+     *
+     * @param  string $key
+     * @param  string $value
+     * @return void
+     */
     public function addPostParameter($key, $value)
     {
         $this->post[$key] = $value;
     }
 
+    /**
+     * Get the post parameter array or value by key
+     * if parameter is given
+     *
+     * @param  string|null  $key
+     * @return string|array
+     */
     public function getPostParameter($key = null)
     {
         if ($key === null) {
@@ -62,11 +112,25 @@ class SuperGlobals
         }
     }
 
+    /**
+     * Add a cookie parameter key/value pair
+     *
+     * @param  string $key
+     * @param  string $value
+     * @return void
+     */
     public function addCookieParameter($key, $value)
     {
         $this->cookie[$key] = $value;
     }
 
+    /**
+     * Get the cookie parameter array or value by key
+     * if parameter is given
+     *
+     * @param  string|null  $key
+     * @return string|array
+     */
     public function getCookieParameter($key = null)
     {
         if ($key === null) {
@@ -78,11 +142,25 @@ class SuperGlobals
         }
     }
 
+    /**
+     * Add a session parameter key/value pair
+     *
+     * @param  string $key
+     * @param  string $value
+     * @return void
+     */
     public function addSessionParameter($key, $value)
     {
         $this->session[$key] = $value;
     }
 
+    /**
+     * Get the session parameter array or value by key
+     * if parameter is given
+     *
+     * @param  string|null  $key
+     * @return string|array
+     */
     public function getSessionParameter($key = null)
     {
         if ($key === null) {
@@ -94,11 +172,25 @@ class SuperGlobals
         }
     }
 
+    /**
+     * Add a server parameter key/value pair
+     *
+     * @param  string $key
+     * @param  string $value
+     * @return void
+     */
     public function addServerParameter($key, $value)
     {
         $this->server[$key] = $value;
     }
 
+    /**
+     * Get the server parameter array or value by key
+     * if parameter is given
+     *
+     * @param  string|null  $key
+     * @return string|array
+     */
     public function getServerParameter($key = null)
     {
         if ($key === null) {

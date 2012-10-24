@@ -17,15 +17,52 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * IssueList model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class LicenseInfo
 {
+    /**
+     * The licensing status, which can be one of the following:
+     * notRequired - This edition does not require this license type.
+     * OK - The server/cluster is licensed and working.
+     * invalid - The license is invalid.
+     * expired - The license has expired.
+     * serverLimitExceeded - The Zend Server Cluster Manager server limit has been exceeded.
+     * @var string
+     */
     private $status = null;
+    /**
+     * The license order number, which is empty if there is no license.
+     * @var string
+     */
     private $orderNumber = null;
+    /**
+     * The license expiration date, which is empty if there is no license (timestamp)
+     * @var int
+     */
     private $validUntil = null;
+    /**
+     * For a Zend Server Cluster Manager license, this is the
+     * number of servers allowed by the license. For a license
+     * other than Zend Server Cluster Manager, the value is always 0.
+     * @var int
+     */
     private $serverLimit = null;
 
     /**
-     * @return the $status
+     * Get the licensing status, which can be one of the following:
+     * notRequired - This edition does not require this license type.
+     * OK - The server/cluster is licensed and working.
+     * invalid - The license is invalid.
+     * expired - The license has expired.
+     * serverLimitExceeded - The Zend Server Cluster Manager server limit has been exceeded.
+     *
+     * @return string
      */
     public function getStatus()
     {
@@ -33,7 +70,9 @@ class LicenseInfo
     }
 
     /**
-     * @return the $orderNumber
+     * Get the license order number, which is empty if there is no license.
+     *
+     * @return string
      */
     public function getOrderNumber()
     {
@@ -41,7 +80,9 @@ class LicenseInfo
     }
 
     /**
-     * @return the $validUntil
+     * Get the license expiration date, which is empty if there is no license (timestamp)
+     *
+     * @return int
      */
     public function getValidUntil()
     {
@@ -49,7 +90,11 @@ class LicenseInfo
     }
 
     /**
-     * @return the $serverLimit
+     * Get the server limit - for a Zend Server Cluster Manager license, this is the
+     * number of servers allowed by the license. For a license other than
+     * Zend Server Cluster Manager, the value is always 0.
+     *
+     * @return int
      */
     public function getServerLimit()
     {
@@ -57,7 +102,15 @@ class LicenseInfo
     }
 
     /**
-     * @param NULL $status
+     * Set the licensing status, which can be one of the following:
+     * notRequired - This edition does not require this license type.
+     * OK - The server/cluster is licensed and working.
+     * invalid - The license is invalid.
+     * expired - The license has expired.
+     * serverLimitExceeded - The Zend Server Cluster Manager server limit has been exceeded.
+     *
+     * @param  string $status
+     * @return void
      */
     public function setStatus($status)
     {
@@ -65,7 +118,10 @@ class LicenseInfo
     }
 
     /**
-     * @param NULL $orderNumber
+     * Set the license order number, which is empty if there is no license.
+     *
+     * @param  string $orderNumber
+     * @return void
      */
     public function setOrderNumber($orderNumber)
     {
@@ -73,18 +129,26 @@ class LicenseInfo
     }
 
     /**
-     * @param NULL $validUntil
+     * Set the license expiration date, which is empty if there is no license (timestamp)
+     *
+     * @param  int  $validUntil
+     * @return void
      */
     public function setValidUntil($validUntil)
     {
-        $this->validUntil = $validUntil;
+        $this->validUntil = (int) $validUntil;
     }
 
     /**
-     * @param NULL $serverLimit
+     * Set the server limit - For a Zend Server Cluster Manager license, this is the
+     * number of servers allowed by the license. For a license
+     * other than Zend Server Cluster Manager, the value is always 0.
+     *
+     * @param  int  $serverLimit
+     * @return void
      */
     public function setServerLimit($serverLimit)
     {
-        $this->serverLimit = $serverLimit;
+        $this->serverLimit = (int) $serverLimit;
     }
 }

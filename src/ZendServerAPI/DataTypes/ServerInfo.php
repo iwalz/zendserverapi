@@ -17,31 +17,58 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * ServerInfo model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ServerInfo
 {
     /**
-     * @var Integer
+     * The server ID
+     * @var int
      */
     private $id = null;
     /**
+     * The server name
      * @var string
      */
     private $name = null;
     /**
+     * The server address as an HTTP URL
      * @var string
      */
     private $address = null;
     /**
+     * The server status, which may be one of the following values:
+     * - pendingRestart
+     * - restarting
+     * - misconfigured
+     * - extensionMismatch
+     * - daemonMismatch
+     * - notResponding
+     * - disabled
+     * - removed
+     * - startingUp
+     * - shuttingDown
+     * - OK
+     * - unknown
      * @var string
      */
     private $status = null;
     /**
+     * A list of messages reported by this server, which can be
+     * empty if there are no messages to show.
      * @var \ZendServerAPI\DataTypes\MessageList
      */
     private $messageList = null;
 
     /**
-     * @return the $id
+     * Get the server ID
+     *
+     * @return int
      */
     public function getId ()
     {
@@ -49,7 +76,9 @@ class ServerInfo
     }
 
     /**
-     * @return the $name
+     * Get the server name
+     *
+     * @return string
      */
     public function getName ()
     {
@@ -57,7 +86,9 @@ class ServerInfo
     }
 
     /**
-     * @return the $address
+     * Get the server address as an HTTP URL
+     *
+     * @return string
      */
     public function getAddress ()
     {
@@ -65,7 +96,21 @@ class ServerInfo
     }
 
     /**
-     * @return the $status
+     * The server status, which may be one of the following values:
+     * - pendingRestart
+     * - restarting
+     * - misconfigured
+     * - extensionMismatch
+     * - daemonMismatch
+     * - notResponding
+     * - disabled
+     * - removed
+     * - startingUp
+     * - shuttingDown
+     * - OK
+     * - unknown
+     *
+     * @return string
      */
     public function getStatus ()
     {
@@ -73,7 +118,9 @@ class ServerInfo
     }
 
     /**
-     * @return the $messageList
+     * Get the messsage list
+     *
+     * @return \ZendServerAPI\DataTypes\MessageList
      */
     public function getMessageList ()
     {
@@ -81,7 +128,10 @@ class ServerInfo
     }
 
     /**
-     * @param Integer $id
+     * Set the ID
+     *
+     * @param  int  $id
+     * @return void
      */
     public function setId ($id)
     {
@@ -89,7 +139,10 @@ class ServerInfo
     }
 
     /**
-     * @param string $name
+     * Set the server name
+     *
+     * @param  string $name
+     * @return void
      */
     public function setName ($name)
     {
@@ -97,7 +150,10 @@ class ServerInfo
     }
 
     /**
-     * @param string $address
+     * Set the server address as an HTTP URL
+     *
+     * @param  string $address
+     * @return void
      */
     public function setAddress ($address)
     {
@@ -105,7 +161,22 @@ class ServerInfo
     }
 
     /**
-     * @param string $status
+     * The server status, which may be one of the following values:
+     * - pendingRestart
+     * - restarting
+     * - misconfigured
+     * - extensionMismatch
+     * - daemonMismatch
+     * - notResponding
+     * - disabled
+     * - removed
+     * - startingUp
+     * - shuttingDown
+     * - OK
+     * - unknown
+     *
+     * @param  string $status
+     * @return void
      */
     public function setStatus ($status)
     {
@@ -113,9 +184,12 @@ class ServerInfo
     }
 
     /**
-     * @param \ZendServerAPI\MessageList $messageList
+     * Set the message list
+     *
+     * @param  \ZendServerAPI\DataTypes\MessageList $messageList
+     * @return void
      */
-    public function setMessageList ($messageList)
+    public function setMessageList (\ZendServerAPI\DataTypes\MessageList $messageList)
     {
         $this->messageList = $messageList;
     }

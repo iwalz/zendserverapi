@@ -17,28 +17,87 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * EventsGroup model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class EventsGroup
 {
+    /**
+     * Event Group's identifier
+     * @var string
+     */
     protected $eventsGroupId = null;
+    /**
+     * The number of events in the
+     * current event group
+     * @var int
+     */
     protected $eventsCount = null;
+    /**
+     * Timestamp for the first event in the current event-group
+     * @var int
+     */
     protected $startTime = null;
+    /**
+     * Identifier of the cluster-member where the event took
+     * place. This field will be empty if no serverID is applicable
+     * @var int
+     */
     protected $serverId = null;
+    /**
+     * The class in which the event occured
+     * @var string
+     */
     protected $class = null;
+    /**
+     * User specific data (Cookies etc)
+     * @var string
+     */
     protected $userData = null;
+    /**
+     * Backtrace if happened with the java bridge
+     * @var string
+     */
     protected $javaBacktrace = null;
+    /**
+     * Execution time
+     * @var int
+     */
     protected $execTime = null;
+    /**
+     * Average execution time
+     * @var int
+     */
     protected $avgExecTime = null;
+    /**
+     * Memory usage
+     * @var int
+     */
     protected $memUsage = null;
+    /**
+     * Average memory usage
+     * @var int
+     */
     protected $avgMemUsage = null;
+    /**
+     * Average output size
+     * @var int
+     */
     protected $avgOutputSize = null;
+    /**
+     * Load
+     * @var string
+     */
     protected $load = null;
 
-    public function __construct()
-    {
-
-    }
     /**
-     * @return the $eventsGroupId
+     * Get the event group's id
+     *
+     * @return string
      */
     public function getEventsGroupId ()
     {
@@ -46,7 +105,10 @@ class EventsGroup
     }
 
     /**
-     * @return the $eventsCount
+     * Get the number of events in the current
+     * event group
+     *
+     * @return int
      */
     public function getEventsCount ()
     {
@@ -54,7 +116,9 @@ class EventsGroup
     }
 
     /**
-     * @return the $startTime
+     * Get the timestamp for the first event in the current event-group
+     *
+     * @return int
      */
     public function getStartTime ()
     {
@@ -62,7 +126,10 @@ class EventsGroup
     }
 
     /**
-     * @return the $serverId
+     * Get the identifier of the cluster-member where the event took
+     * place. This field will be empty if no serverID is applicable
+     *
+     * @return int
      */
     public function getServerId ()
     {
@@ -70,7 +137,9 @@ class EventsGroup
     }
 
     /**
-     * @return the $class
+     * Get the class in which the event occured
+     *
+     * @return string
      */
     public function getClass ()
     {
@@ -78,7 +147,9 @@ class EventsGroup
     }
 
     /**
-     * @return the $userData
+     * Get the user specific data (Cookies etc)
+     *
+     * @return string
      */
     public function getUserData ()
     {
@@ -86,7 +157,9 @@ class EventsGroup
     }
 
     /**
-     * @return the $javaBacktrace
+     * Get the backtrace if happened with the java bridge
+     *
+     * @return string
      */
     public function getJavaBacktrace ()
     {
@@ -94,7 +167,9 @@ class EventsGroup
     }
 
     /**
-     * @return the $execTime
+     * Get the execution time
+     *
+     * @return int
      */
     public function getExecTime ()
     {
@@ -102,7 +177,9 @@ class EventsGroup
     }
 
     /**
-     * @return the $avgExecTime
+     * Get the average execution time
+     *
+     * @return int
      */
     public function getAvgExecTime ()
     {
@@ -110,7 +187,9 @@ class EventsGroup
     }
 
     /**
-     * @return the $memUsage
+     * Get the memory usage
+     *
+     * @return int
      */
     public function getMemUsage ()
     {
@@ -118,7 +197,9 @@ class EventsGroup
     }
 
     /**
-     * @return the $avgMemUsage
+     * Get the average memory usage
+     *
+     * @return int
      */
     public function getAvgMemUsage ()
     {
@@ -126,7 +207,9 @@ class EventsGroup
     }
 
     /**
-     * @return the $avgOutputSize
+     * Get the average output size
+     *
+     * @return int
      */
     public function getAvgOutputSize ()
     {
@@ -134,7 +217,9 @@ class EventsGroup
     }
 
     /**
-     * @return the $load
+     * Get the load
+     *
+     * @return string
      */
     public function getLoad ()
     {
@@ -142,7 +227,10 @@ class EventsGroup
     }
 
     /**
-     * @param NULL $eventsGroupId
+     * Set the event group's id
+     *
+     * @param  string $eventsGroupId
+     * @return void
      */
     public function setEventsGroupId ($eventsGroupId)
     {
@@ -150,31 +238,44 @@ class EventsGroup
     }
 
     /**
-     * @param NULL $eventsCount
+     * Set the number of events in the current event-group
+     *
+     * @param  int  $eventsCount
+     * @return void
      */
     public function setEventsCount ($eventsCount)
     {
-        $this->eventsCount = $eventsCount;
+        $this->eventsCount = (int) $eventsCount;
     }
 
     /**
-     * @param NULL $startTime
+     * Set the start time
+     *
+     * @param  int  $startTime
+     * @return void
      */
     public function setStartTime ($startTime)
     {
-        $this->startTime = $startTime;
+        $this->startTime = (int) $startTime;
     }
 
     /**
-     * @param NULL $serverId
+     * Set the identifier of the cluster-member where the event took
+     * place. This field will be empty if no serverID is applicable
+     *
+     * @param  int  $serverId
+     * @return void
      */
     public function setServerId ($serverId)
     {
-        $this->serverId = $serverId;
+        $this->serverId = (int) $serverId;
     }
 
     /**
-     * @param NULL $class
+     * Set the class in which the event occured
+     *
+     * @param  string $class
+     * @return void
      */
     public function setClass ($class)
     {
@@ -182,7 +283,10 @@ class EventsGroup
     }
 
     /**
-     * @param NULL $userData
+     * Set the user specific data (Cookies etc)
+     *
+     * @param  string $userData
+     * @return void
      */
     public function setUserData ($userData)
     {
@@ -190,7 +294,10 @@ class EventsGroup
     }
 
     /**
-     * @param NULL $javaBacktrace
+     * Set the backtrace if happened with the java bridge
+     *
+     * @param  string $javaBacktrace
+     * @return void
      */
     public function setJavaBacktrace ($javaBacktrace)
     {
@@ -198,47 +305,65 @@ class EventsGroup
     }
 
     /**
-     * @param NULL $execTime
+     * Set the execution time
+     *
+     * @param  int  $execTime
+     * @return void
      */
     public function setExecTime ($execTime)
     {
-        $this->execTime = $execTime;
+        $this->execTime = (int) $execTime;
     }
 
     /**
-     * @param NULL $avgExecTime
+     * Set the average execution time
+     *
+     * @param  int  $avgExecTime
+     * @return void
      */
     public function setAvgExecTime ($avgExecTime)
     {
-        $this->avgExecTime = $avgExecTime;
+        $this->avgExecTime = (int) $avgExecTime;
     }
 
     /**
-     * @param NULL $memUsage
+     * Set the memory usage
+     *
+     * @param  int  $memUsage
+     * @return void
      */
     public function setMemUsage ($memUsage)
     {
-        $this->memUsage = $memUsage;
+        $this->memUsage = (int) $memUsage;
     }
 
     /**
-     * @param NULL $avgMemUsage
+     * Set the average memory usage
+     *
+     * @param  int  $avgMemUsage
+     * @return void
      */
     public function setAvgMemUsage ($avgMemUsage)
     {
-        $this->avgMemUsage = $avgMemUsage;
+        $this->avgMemUsage = (int) $avgMemUsage;
     }
 
     /**
-     * @param NULL $avgOutputSize
+     * Set the average output size
+     *
+     * @param  int  $avgOutputSize
+     * @return void
      */
     public function setAvgOutputSize ($avgOutputSize)
     {
-        $this->avgOutputSize = $avgOutputSize;
+        $this->avgOutputSize = (int) $avgOutputSize;
     }
 
     /**
-     * @param NULL $load
+     * Set the load
+     *
+     * @param  string $load
+     * @return void
      */
     public function setLoad ($load)
     {

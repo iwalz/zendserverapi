@@ -17,29 +17,101 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * SystemInfo model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class SystemInfo
 {
-    private $status = null;
-    private $edition = null;
-    private $zendServerVersion = null;
-    private $supportedApiVersions = null;
-    private $phpVersion = null;
-    private $operatingSystem = null;
-    private $deploymentVersion = null;
-    private $serverLincenseInfo = null;
-    private $managerLicenseInfo = null;
-    private $messageList = null;
-
     /**
-     * @return the $xml
+     * The global status information, which can be one of the following:
+     * OK
+     *     The system is operational.
+     * notLicensed
+     *     The system is not licensed.
+     *     In Zend Server Cluster Manager, this
+     *     means the Zend Server Cluster Manager
+     *     is not licensed, but the nodes may be
+     *     licensed and operating.
+     * pendingRestart
+     *     The system is pending a PHP restart. In Zend Server Cluster
+     *     Manager this will never be set.
+     * @var string
      */
-    public function getXml ()
-    {
-        return $this->xml;
-    }
+    protected $status = null;
+    /**
+     * The Zend Server edition, which can be one of the following:
+     * - ZendServer
+     * - ZendServerClusterManager
+     * - ZendServerCommunityEdition
+     * @var string
+     */
+    protected $edition = null;
+    /**
+     * The full version of Zend Server (e.g. “5.0.4”).
+     * @var string
+     */
+    protected $zendServerVersion = null;
+    /**
+     * A comma-separated list of the supported content
+     * types/versions of the Zend Server Web API.
+     * @var string
+     */
+    protected $supportedApiVersions = null;
+    /**
+     * The full PHP version (e.g. “5.3.3”).
+     * @var string
+     */
+    protected $phpVersion = null;
+    /**
+     * A string identifying the operating system.
+     * @var string
+     */
+    protected $operatingSystem = null;
+    /**
+     * A string representing the schema
+     * version of the deployment feature.
+     * @var string
+     */
+    protected $deploymentVersion = null;
+    /**
+     * Information about the Zend Server license.
+     * If it is running in a cluster, it will
+     * contain the node license information
+     * @var \ZendServerAPI\DataTypes\LicenseInfo
+     */
+    protected $serverLincenseInfo = null;
+    /**
+     * Information about the Zend Server
+     * Cluster Manager license.
+     * @var \ZendServerAPI\DataTypes\LicenseInfo
+     */
+    protected $managerLicenseInfo = null;
+    /**
+     * A list of messages reported by this server,
+     * which is empty if there are no messages to show.
+     * @var \ZendServerAPI\DataTypes\MessageList
+     */
+    protected $messageList = null;
 
     /**
-     * @return the $status
+     * Get the global status information, which can be one of the following:
+     * OK
+     *     The system is operational.
+     * notLicensed
+     *     The system is not licensed.
+     *     In Zend Server Cluster Manager, this
+     *     means the Zend Server Cluster Manager
+     *     is not licensed, but the nodes may be
+     *     licensed and operating.
+     * pendingRestart
+     *     The system is pending a PHP restart. In Zend Server Cluster
+     *     Manager this will never be set.
+     *
+     * @return string
      */
     public function getStatus ()
     {
@@ -47,7 +119,12 @@ class SystemInfo
     }
 
     /**
-     * @return the $edition
+     * The Zend Server edition, which can be one of the following:
+     * - ZendServer
+     * - ZendServerClusterManager
+     * - ZendServerCommunityEdition
+     *
+     * @return string
      */
     public function getEdition ()
     {
@@ -55,7 +132,9 @@ class SystemInfo
     }
 
     /**
-     * @return the $zendServerVersion
+     * Get the full version of Zend Server (e.g. “5.0.4”).
+     *
+     * @return string
      */
     public function getZendServerVersion ()
     {
@@ -63,7 +142,10 @@ class SystemInfo
     }
 
     /**
-     * @return the $supportedApiVersions
+     * Get a comma-separated list of the supported content
+     * types/versions of the Zend Server Web API.
+     *
+     * @return string
      */
     public function getSupportedApiVersions ()
     {
@@ -71,7 +153,9 @@ class SystemInfo
     }
 
     /**
-     * @return the $phpVersion
+     * Get the full PHP version (e.g. “5.3.3”).
+     *
+     * @return string
      */
     public function getPhpVersion ()
     {
@@ -79,7 +163,9 @@ class SystemInfo
     }
 
     /**
-     * @return the $operatingSystem
+     * Get a string identifying the operating system.
+     *
+     * @return string
      */
     public function getOperatingSystem ()
     {
@@ -87,7 +173,10 @@ class SystemInfo
     }
 
     /**
-     * @return the $deploymentVersion
+     * Get a string representing the schema
+     * version of the deployment feature.
+     *
+     * @return string
      */
     public function getDeploymentVersion ()
     {
@@ -95,7 +184,11 @@ class SystemInfo
     }
 
     /**
-     * @return the $serverLincenseInfo
+     * Get the information about the Zend Server license.
+     * If it is running in a cluster, it will
+     * contain the node license information
+     *
+     * @return \ZendServerAPI\DataTypes\LicenseInfo
      */
     public function getServerLincenseInfo ()
     {
@@ -103,7 +196,10 @@ class SystemInfo
     }
 
     /**
-     * @return the $managerLicenseInfo
+     * Get the information about the Zend Server
+     * Cluster Manager license.
+     *
+     * @return \ZendServerAPI\DataTypes\LicenseInfo
      */
     public function getManagerLicenseInfo ()
     {
@@ -111,7 +207,10 @@ class SystemInfo
     }
 
     /**
-     * @return the $messageList
+     * Get a list of messages reported by this server,
+     * which is empty if there are no messages to show.
+     *
+     * @return \ZendServerAPI\DataTypes\MessageList
      */
     public function getMessageList ()
     {
@@ -119,15 +218,21 @@ class SystemInfo
     }
 
     /**
-     * @param NULL $xml
-     */
-    public function setXml ($xml)
-    {
-        $this->xml = $xml;
-    }
-
-    /**
-     * @param NULL $status
+     * Set the global status information, which can be one of the following:
+     * OK
+     *     The system is operational.
+     * notLicensed
+     *     The system is not licensed.
+     *     In Zend Server Cluster Manager, this
+     *     means the Zend Server Cluster Manager
+     *     is not licensed, but the nodes may be
+     *     licensed and operating.
+     * pendingRestart
+     *     The system is pending a PHP restart. In Zend Server Cluster
+     *     Manager this will never be set.
+     *
+     * @param  string $status
+     * @return void
      */
     public function setStatus ($status)
     {
@@ -135,7 +240,13 @@ class SystemInfo
     }
 
     /**
-     * @param NULL $edition
+     * Set the Zend Server edition, which can be one of the following:
+     * - ZendServer
+     * - ZendServerClusterManager
+     * - ZendServerCommunityEdition
+     *
+     * @param  string $edition
+     * @return void
      */
     public function setEdition ($edition)
     {
@@ -143,7 +254,10 @@ class SystemInfo
     }
 
     /**
-     * @param NULL $zendServerVersion
+     * Set the full version of Zend Server (e.g. “5.0.4”).
+     *
+     * @param  string $zendServerVersion
+     * @return void
      */
     public function setZendServerVersion ($zendServerVersion)
     {
@@ -151,7 +265,11 @@ class SystemInfo
     }
 
     /**
-     * @param NULL $supportedApiVersions
+     * Set a comma-separated list of the supported content
+     * types/versions of the Zend Server Web API.
+     *
+     * @param  string $supportedApiVersions
+     * @return void
      */
     public function setSupportedApiVersions ($supportedApiVersions)
     {
@@ -159,7 +277,10 @@ class SystemInfo
     }
 
     /**
-     * @param NULL $phpVersion
+     * Set the full PHP version (e.g. “5.3.3”).
+     *
+     * @param  string $phpVersion
+     * @return void
      */
     public function setPhpVersion ($phpVersion)
     {
@@ -167,7 +288,10 @@ class SystemInfo
     }
 
     /**
-     * @param NULL $operatingSystem
+     * Set a string identifying the operating system.
+     *
+     * @param  string $operatingSystem
+     * @return void
      */
     public function setOperatingSystem ($operatingSystem)
     {
@@ -175,7 +299,11 @@ class SystemInfo
     }
 
     /**
-     * @param NULL $deploymentVersion
+     * Set a string representing the schema
+     * version of the deployment feature.
+     *
+     * @param  string $deploymentVersion
+     * @return void
      */
     public function setDeploymentVersion ($deploymentVersion)
     {
@@ -183,15 +311,23 @@ class SystemInfo
     }
 
     /**
-     * @param NULL $serverLincenseInfo
+     * Set the information about the Zend Server license.
+     * If it is running in a cluster, it will
+     * contain the node license information
+     *
+     * @return \ZendServerAPI\DataTypes\LicenseInfo
      */
-    public function setServerLincenseInfo ($serverLincenseInfo)
+    public function setServerLincenseInfo (\ZendServerAPI\DataTypes\LicenseInfo $serverLincenseInfo)
     {
         $this->serverLincenseInfo = $serverLincenseInfo;
     }
 
     /**
-     * @param NULL $managerLicenseInfo
+     * Set the information about the Zend Server
+     * Cluster Manager license.
+     *
+     * @param  \ZendServerAPI\DataTypes\LicenseInfo $managerLicenseInfo
+     * @return void
      */
     public function setManagerLicenseInfo ($managerLicenseInfo)
     {
@@ -199,9 +335,13 @@ class SystemInfo
     }
 
     /**
-     * @param NULL $messageList
+     * Set a list of messages reported by this server,
+     * which is empty if there are no messages to show.
+     *
+     * @param  \ZendServerAPI\DataTypes\MessageList $messageList
+     * @return void
      */
-    public function setMessageList ($messageList)
+    public function setMessageList (\ZendServerAPI\DataTypes\MessageList $messageList)
     {
         $this->messageList = $messageList;
     }

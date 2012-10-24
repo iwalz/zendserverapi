@@ -17,11 +17,18 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * EventsGroupDetails model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class EventsGroupDetails
 {
     /**
      * The issue ID
-     * @var Integer
+     * @var int
      */
     protected $issueId = null;
     /**
@@ -40,12 +47,10 @@ class EventsGroupDetails
      */
     protected $codeTracing = null;
 
-    public function __construct()
-    {
-
-    }
     /**
-     * @return the $issueId
+     * Get the issue ID
+     *
+     * @return int
      */
     public function getIssueId ()
     {
@@ -53,7 +58,9 @@ class EventsGroupDetails
     }
 
     /**
-     * @return the $eventsGroup
+     * Get the basic detail about the events group
+     *
+     * @return \ZendServerAPI\DataTypes\EventsGroup
      */
     public function getEventsGroup ()
     {
@@ -61,7 +68,9 @@ class EventsGroupDetails
     }
 
     /**
-     * @return the $event
+     * Get the details about the event group
+     *
+     * @return \ZendServerAPI\DataTypes\Event
      */
     public function getEvent ()
     {
@@ -69,7 +78,9 @@ class EventsGroupDetails
     }
 
     /**
-     * @return the $codeTracing
+     * Get the associated code tracing identifier
+     *
+     * @return string
      */
     public function getCodeTracing ()
     {
@@ -77,15 +88,21 @@ class EventsGroupDetails
     }
 
     /**
-     * @param NULL $issueId
+     * Set the issue ID
+     *
+     * @param int
+     * @return void
      */
     public function setIssueId ($issueId)
     {
-        $this->issueId = $issueId;
+        $this->issueId = (int) $issueId;
     }
 
     /**
-     * @param NULL $eventsGroup
+     * Set the basic detail about the events group
+     *
+     * @param  \ZendServerAPI\DataTypes\EventsGroup $eventsGroup
+     * @return void
      */
     public function setEventsGroup (\ZendServerAPI\DataTypes\EventsGroup $eventsGroup)
     {
@@ -93,7 +110,10 @@ class EventsGroupDetails
     }
 
     /**
-     * @param NULL $event
+     * Set the details about the event group
+     *
+     * @param  \ZendServerAPI\DataTypes\Event $event
+     * @return void
      */
     public function setEvent (\ZendServerAPI\DataTypes\Event $event)
     {
@@ -101,7 +121,10 @@ class EventsGroupDetails
     }
 
     /**
-     * @param NULL $codeTracing
+     * Set the associated code tracing identifier
+     *
+     * @param  string $codeTracing
+     * @return void
      */
     public function setCodeTracing ($codeTracing)
     {

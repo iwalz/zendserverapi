@@ -17,12 +17,38 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * MessageList model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class MessageList
 {
-    private $info = null;
-    private $warning = null;
-    private $error = null;
+    /**
+     * Info severity message
+     * @var string
+     */
+    protected $info = null;
+    /**
+     * Warning severity message
+     * @var string
+     */
+    protected $warning = null;
+    /**
+     * Error severity message
+     * @var string
+     */
+    protected $error = null;
 
+    /**
+     * Constructor for MessageList DataType.
+     * XML data can be provided here for parsing
+     *
+     * @param  string                               $xmlData
+     * @return \ZendServerAPI\DataTypes\MessageList
+     */
     public function __construct($xmlData = null)
     {
         if ($xmlData !== null) {
@@ -35,7 +61,9 @@ class MessageList
     }
 
     /**
-     * @return the $info
+     * Get the info severity message
+     *
+     * @return string
      */
     public function getInfo ()
     {
@@ -43,7 +71,9 @@ class MessageList
     }
 
     /**
-     * @return the $warning
+     * Get the warning severity message
+     *
+     * @return string
      */
     public function getWarning ()
     {
@@ -51,7 +81,9 @@ class MessageList
     }
 
     /**
-     * @return the $error
+     * Get the error severity message
+     *
+     * @return string
      */
     public function getError ()
     {
@@ -59,7 +91,10 @@ class MessageList
     }
 
     /**
-     * @param NULL $info
+     * Set the severity info message
+     *
+     * @param  string $info
+     * @return void
      */
     public function setInfo ($info)
     {
@@ -67,7 +102,10 @@ class MessageList
     }
 
     /**
-     * @param NULL $warning
+     * Set the warning severity message
+     *
+     * @param  string $warning
+     * @return void
      */
     public function setWarning ($warning)
     {
@@ -75,7 +113,10 @@ class MessageList
     }
 
     /**
-     * @param NULL $error
+     * Set the error severity message
+     *
+     * @param  string $error
+     * @return void
      */
     public function setError ($error)
     {

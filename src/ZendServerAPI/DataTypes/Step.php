@@ -17,21 +17,50 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * Step model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class Step
 {
+    /**
+     * Sequential numbering of the backtrace steps
+     * @var int
+     */
     protected $number = null;
+    /**
+     * Object identifier
+     * @var string
+     */
     protected $object = null;
+    /**
+     * Object class identifer
+     * @var string
+     */
     protected $class = null;
+    /**
+     * Function or method name
+     * @var string
+     */
     protected $function = null;
+    /**
+     * Filepath
+     * @var string
+     */
     protected $file = null;
+    /**
+     * Line number in the file
+     * @var int
+     */
     protected $line = null;
 
-    public function __construct()
-    {
-
-    }
     /**
-     * @return the $number
+     * Get the sequential numbering of the backtrace steps
+     *
+     * @return int
      */
     public function getNumber ()
     {
@@ -39,7 +68,9 @@ class Step
     }
 
     /**
-     * @return the $object
+     * Get the object identifier
+     *
+     * @return string
      */
     public function getObject ()
     {
@@ -47,7 +78,9 @@ class Step
     }
 
     /**
-     * @return the $class
+     * Object class identifer
+     *
+     * @return string
      */
     public function getClass ()
     {
@@ -55,7 +88,9 @@ class Step
     }
 
     /**
-     * @return the $function
+     * Get the function or method name
+     *
+     * @return string
      */
     public function getFunction ()
     {
@@ -63,7 +98,9 @@ class Step
     }
 
     /**
-     * @return the $file
+     * Get the Filepath
+     *
+     * @return string
      */
     public function getFile ()
     {
@@ -71,7 +108,9 @@ class Step
     }
 
     /**
-     * @return the $line
+     * Get the line number in the file
+     *
+     * @return int
      */
     public function getLine ()
     {
@@ -79,15 +118,21 @@ class Step
     }
 
     /**
-     * @param NULL $number
+     * Set the sequential numbering of the backtrace steps
+     *
+     * @param  int  $number
+     * @return void
      */
     public function setNumber ($number)
     {
-        $this->number = $number;
+        $this->number = (int) $number;
     }
 
     /**
-     * @param NULL $object
+     * Set the object identifier
+     *
+     * @param  string $object
+     * @return void
      */
     public function setObject ($object)
     {
@@ -95,7 +140,10 @@ class Step
     }
 
     /**
-     * @param NULL $class
+     * Set the object class identifer
+     *
+     * @param  string $class
+     * @return void
      */
     public function setClass ($class)
     {
@@ -103,7 +151,10 @@ class Step
     }
 
     /**
-     * @param NULL $function
+     * Set the function or method name
+     *
+     * @param  string $function
+     * @return void
      */
     public function setFunction ($function)
     {
@@ -111,7 +162,10 @@ class Step
     }
 
     /**
-     * @param NULL $file
+     * Set the Filepath
+     *
+     * @param  string $file
+     * @return void
      */
     public function setFile ($file)
     {
@@ -119,11 +173,14 @@ class Step
     }
 
     /**
-     * @param NULL $line
+     * Set the line number in the file
+     *
+     * @param  int  $line
+     * @return void
      */
     public function setLine ($line)
     {
-        $this->line = $line;
+        $this->line = (int) $line;
     }
 
 }

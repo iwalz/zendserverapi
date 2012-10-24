@@ -17,17 +17,30 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * RouteDetail model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class RouteDetail
 {
+    /**
+     * Route detail piece's key name
+     * @var string
+     */
     protected $key = null;
+    /**
+     * Route detail piece's value
+     * @var string
+     */
     protected $value = null;
 
-    public function __construct()
-    {
-
-    }
     /**
-     * @return the $key
+     * Get the route detail piece's key name
+     *
+     * @return string
      */
     public function getKey ()
     {
@@ -35,7 +48,9 @@ class RouteDetail
     }
 
     /**
-     * @return the $value
+     * Get the route detail piece's value
+     *
+     * @return string
      */
     public function getValue ()
     {
@@ -43,7 +58,10 @@ class RouteDetail
     }
 
     /**
-     * @param NULL $key
+     * Set the route detail piece's key name
+     *
+     * @param  string $key
+     * @return void
      */
     public function setKey ($key)
     {
@@ -51,7 +69,10 @@ class RouteDetail
     }
 
     /**
-     * @param NULL $value
+     * Set the route detail piece's value
+     *
+     * @param  string $value
+     * @return void
      */
     public function setValue ($value)
     {

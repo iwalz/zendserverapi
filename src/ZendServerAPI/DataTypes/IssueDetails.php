@@ -17,6 +17,13 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * IssueDetails model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class IssueDetails
 {
     /**
@@ -25,17 +32,15 @@ class IssueDetails
      */
     protected $issue = null;
     /**
-     * The event Group
+     * The event groups
      * @var array
      */
     protected $eventsGroups = array();
 
-    public function __construct()
-    {
-
-    }
     /**
-     * @return the $issue
+     * Get the issue
+     *
+     * @return \ZendServerAPI\DataTypes\Issue
      */
     public function getIssue ()
     {
@@ -43,7 +48,9 @@ class IssueDetails
     }
 
     /**
-     * @return the $eventsGroups
+     * Get the event groups
+     *
+     * @return array
      */
     public function getEventsGroups ()
     {
@@ -51,7 +58,10 @@ class IssueDetails
     }
 
     /**
-     * @param \ZendServerAPI\DataTypes\Issue $issue
+     * Set the issue
+     *
+     * @param  \ZendServerAPI\DataTypes\Issue $issue
+     * @return void
      */
     public function setIssue (\ZendServerAPI\DataTypes\Issue $issue)
     {
@@ -59,7 +69,10 @@ class IssueDetails
     }
 
     /**
-     * @param \ZendServerAPI\DataTypes\EventsGroup $eventsGroup
+     * Add an event group
+     *
+     * @param  \ZendServerAPI\DataTypes\EventsGroup $eventsGroup
+     * @return void
      */
     public function addEventsGroup (\ZendServerAPI\DataTypes\EventsGroup $eventsGroup)
     {

@@ -17,6 +17,13 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * EventsGroupDetails model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class EventsGroups implements \Countable, \IteratorAggregate
 {
     /**
@@ -48,6 +55,7 @@ class EventsGroups implements \Countable, \IteratorAggregate
 
     /**
      * @see IteratorAggregate::getIterator()
+     * @return \ArrayIterator
      */
     public function getIterator ()
     {
@@ -56,6 +64,7 @@ class EventsGroups implements \Countable, \IteratorAggregate
 
     /**
      * @see Countable::count()
+     * @return int
      */
     public function count ()
     {

@@ -17,10 +17,19 @@
 
 namespace ZendServerAPI\Adapter;
 
+/**
+ * Adapter implementation to debug the response (useful for doc errors)
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class DumpParser extends \ZendServerAPI\Adapter\Adapter
 {
-    /*
-     * @see \ZendServerAPI\Adapter\Adapter::parse()
+    /**
+     * Displays a var_dump to stdout
+     *
+     * @return string
      */
     public function parse ()
     {

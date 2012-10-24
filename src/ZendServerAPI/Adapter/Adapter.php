@@ -17,6 +17,13 @@
 
 namespace ZendServerAPI\Adapter;
 
+/**
+ * Base adapter implementation
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 abstract class Adapter
 {
     /**
@@ -36,6 +43,7 @@ abstract class Adapter
      * Set the Guzzle Response
      *
      * @param \Guzzle\Http\Message\Response
+     * @return void
      */
     public function setResponse(\Guzzle\Http\Message\Response $response)
     {

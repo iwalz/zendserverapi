@@ -17,10 +17,18 @@
 
 namespace ZendServerAPI\Adapter;
 
+/**
+ * DebugRequest datatype adapter implementation
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class DebugRequest extends Adapter
 {
     /**
      * @see \ZendServerAPI\Adapter\Adapter::parse()
+     * @return \ZendServerAPI\DataTypes\DebugRequest
      */
     public function parse ($xml = null)
     {

@@ -17,10 +17,18 @@
 
 namespace ZendServerAPI\Adapter;
 
+/**
+ * RequestSummary datatype adapter implementation
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class RequestSummary extends Adapter
 {
     /**
      * @see \ZendServerAPI\Adapter\Adapter::parse()
+     * @return \ZendServerAPI\DataTypes\RequestSummary
      */
     public function parse ($xml = null)
     {

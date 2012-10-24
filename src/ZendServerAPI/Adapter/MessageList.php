@@ -21,10 +21,18 @@ use \ZendServerAPI\DataTypes\LicenseInfo,
     \ZendServerAPI\DataTypes\MessageList as MessageListData,
     \ZendServerAPI\DataTypes\SystemInfo as SystemInfoData;
 
+/**
+ * MessageList datatype adapter implementation
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class MessageList extends Adapter
 {
     /**
      * @see \ZendServerAPI\Adapter\Adapter::parse()
+     * @return \ZendServerAPI\DataTypes\MessageList
      */
     public function parse($xml = null)
     {

@@ -17,13 +17,29 @@
 
 namespace ZendServerAPI\Adapter;
 
+/**
+ * ConfigurationExport datatype adapter implementation
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ConfigurationExport extends Adapter
 {
+    /**
+     * Filename to save file locally
+     * @var string
+     */
     private $fileName = null;
+    /**
+     * Directory where to export the downloaded files
+     * @var string
+     */
     private $exportDirectory = null;
 
-    /*
+    /**
      * @see \ZendServerAPI\Adapter\Adapter::parse()
+     * @return \SplFileInfo
      */
     public function parse ()
     {
@@ -39,26 +55,55 @@ class ConfigurationExport extends Adapter
         return new \SplFileInfo($fileName);
     }
 
+    /**
+     * Get the directory, where to save the downloaded files to
+     *
+     * @return string
+     */
     public function getExportDirectory()
     {
         return $this->exportDirectory;
     }
 
+    /**
+     * Set the directory, where to save the downloaded files to
+     *
+     * @param  string $exportDirectory
+     * @return void
+     */
     public function setExportDirectory($exportDirectory)
     {
         $this->exportDirectory = $this->checkPermission($exportDirectory);
     }
 
+    /**
+     * Set the filename where to save the file to (locally)
+     *
+     * @param  string $fileName
+     * @return void
+     */
     public function setFileName($fileName)
     {
         $this->fileName = $fileName;
     }
 
+    /**
+     * Get the filename where to save the file to (locally)
+     *
+     * @return string
+     */
     public function getFileName()
     {
         return $this->fileName;
     }
 
+    /**
+     * Check the permissions and returns the realpath for the directory
+     *
+     * @param  string                    $directory
+     * @throws \InvalidArgumentException
+     * @return string
+     */
     private function checkPermission($directory)
     {
         $directoryRealpath = realpath($directory);

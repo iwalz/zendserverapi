@@ -17,10 +17,18 @@
 
 namespace ZendServerAPI\Adapter;
 
+/**
+ * CodetracingList datatype adapter implementation
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class CodetracingList extends Adapter
 {
     /**
      * @see \ZendServerAPI\Adapter\Adapter::parse()
+     * @return \ZendServerAPI\DataTypes\CodetracingList
      */
     public function parse ($xml = null)
     {

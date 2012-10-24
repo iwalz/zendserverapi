@@ -21,10 +21,18 @@ use ZendServerAPI\DataTypes\ServerInfo as ServerInfoData,
     ZendServerAPI\DataTypes\MessageList,
     ZendServerAPI\DataTypes\ServersList as ServersListData;
 
+/**
+ * ServersList datatype adapter implementation
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ServersList extends Adapter
 {
     /**
      * @see \ZendServerAPI\Adapter\Adapter::parse()
+     * @return \ZendServerAPI\DataTypes\ServersList
      */
     public function parse($xml = null)
     {

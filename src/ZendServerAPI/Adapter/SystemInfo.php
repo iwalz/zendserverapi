@@ -21,10 +21,18 @@ use \ZendServerAPI\DataTypes\LicenseInfo,
     \ZendServerAPI\DataTypes\MessageList as MessageListData,
     \ZendServerAPI\DataTypes\SystemInfo as SystemInfoData;
 
+/**
+ * SystemInfo datatype adapter implementation
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class SystemInfo extends Adapter
 {
     /**
      * @see \ZendServerAPI\Adapter\Adapter::parse()
+     * @return \ZendServerAPI\DataTypes\SystemInfo
      */
     public function parse($xml = null)
     {

@@ -17,13 +17,30 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * DebugRequest model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class DebugRequest
 {
+    /**
+     * 1 if success
+     * @var int
+     */
     protected $success = null;
+    /**
+     * Return message
+     * @var string
+     */
     protected $message = null;
 
     /**
-     * @return the $success
+     * Get if debugrequest was successful
+     *
+     * @return int
      */
     public function getSuccess ()
     {
@@ -31,7 +48,9 @@ class DebugRequest
     }
 
     /**
-     * @return the $message
+     * Get the returned message
+     *
+     * @return string
      */
     public function getMessage ()
     {
@@ -39,15 +58,21 @@ class DebugRequest
     }
 
     /**
-     * @param NULL $success
+     * Set the success property
+     *
+     * @param  int  $success
+     * @return void
      */
     public function setSuccess ($success)
     {
-        $this->success = $success;
+        $this->success = (int) $success;
     }
 
     /**
-     * @param NULL $message
+     * Set the message
+     *
+     * @param  string $message
+     * @return void
      */
     public function setMessage ($message)
     {

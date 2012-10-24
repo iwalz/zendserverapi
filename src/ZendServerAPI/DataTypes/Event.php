@@ -17,6 +17,13 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * Event model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class Event
 {
     /**
@@ -57,12 +64,10 @@ class Event
      */
     protected $eventsGroupId = null;
 
-    public function __construct()
-    {
-
-    }
     /**
-     * @return the $type
+     * Get the type
+     *
+     * @return string
      */
     public function getType ()
     {
@@ -70,7 +75,10 @@ class Event
     }
 
     /**
-     * @return the $description
+     * Get the free form text field with
+     * details about the issue
+     *
+     * @return string
      */
     public function getDescription ()
     {
@@ -78,7 +86,9 @@ class Event
     }
 
     /**
-     * @return the $superglobals
+     * Get the superglobals
+     *
+     * @return \ZendServerAPI\DataTypes\SuperGlobals
      */
     public function getSuperglobals ()
     {
@@ -86,7 +96,9 @@ class Event
     }
 
     /**
-     * @return the $debugUrl
+     * Get the URL for debugging event
+     *
+     * @return string
      */
     public function getDebugUrl ()
     {
@@ -94,7 +106,9 @@ class Event
     }
 
     /**
-     * @return the $severity
+     * Get the severity
+     *
+     * @return string
      */
     public function getSeverity ()
     {
@@ -102,7 +116,10 @@ class Event
     }
 
     /**
-     * @return the $backtraces
+     * Get an array of \ZendServerAPI\DataTypes\Step
+     * objects
+     *
+     * @return array
      */
     public function getBacktraces ()
     {
@@ -110,7 +127,10 @@ class Event
     }
 
     /**
-     * @param string $type
+     * Set the issue type name
+     *
+     * @param string
+     * @return void
      */
     public function setType ($type)
     {
@@ -118,7 +138,10 @@ class Event
     }
 
     /**
-     * @param string $description
+     * Set the description
+     *
+     * @param string
+     * @return void
      */
     public function setDescription ($description)
     {
@@ -126,7 +149,10 @@ class Event
     }
 
     /**
-     * @param \ZendServerAPI\DataTypes\SuperGlobals $superglobals
+     * Set the superglobals
+     *
+     * @param  \ZendServerAPI\DataTypes\SuperGlobals $superglobals
+     * @return void
      */
     public function setSuperglobals (\ZendServerAPI\DataTypes\SuperGlobals $superglobals)
     {
@@ -134,7 +160,10 @@ class Event
     }
 
     /**
-     * @param string $debugUrl
+     * Set the URL of the debug event
+     *
+     * @param  string $debugUrl
+     * @return void
      */
     public function setDebugUrl ($debugUrl)
     {
@@ -142,7 +171,10 @@ class Event
     }
 
     /**
-     * @param string $severity
+     * Set the severity
+     *
+     * @param  string $severity
+     * @return void
      */
     public function setSeverity ($severity)
     {
@@ -150,14 +182,20 @@ class Event
     }
 
     /**
-     * @param multitype: $backtraces
+     * Add a step to the $backtraces array
+     *
+     * @param \ZendServerAPI\DataTypes\Step
+     * @return void
      */
     public function addStep (\ZendServerAPI\DataTypes\Step $step)
     {
         $this->backtraces[] = $step;
     }
+
     /**
-     * @return the $eventsGroupId
+     * Get the events group identifier
+     *
+     * @return int
      */
     public function getEventsGroupId ()
     {
@@ -165,11 +203,14 @@ class Event
     }
 
     /**
-     * @param number $eventsGroupId
+     * Set the events group identifier
+     *
+     * @param  int  $eventsGroupId
+     * @return void
      */
     public function setEventsGroupId ($eventsGroupId)
     {
-        $this->eventsGroupId = $eventsGroupId;
+        $this->eventsGroupId = (int) $eventsGroupId;
     }
 
 }

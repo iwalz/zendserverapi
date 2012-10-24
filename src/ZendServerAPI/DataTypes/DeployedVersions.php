@@ -17,6 +17,13 @@
 
 namespace ZendServerAPI\DataTypes;
 
+/**
+ * DeployedVersions model implementation.
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class DeployedVersions
 {
     /**
@@ -27,7 +34,9 @@ class DeployedVersions
 
     /**
      * Set the version number
-     * @param string $version
+     *
+     * @param  string $version
+     * @return void
      */
     public function setVersion($version)
     {

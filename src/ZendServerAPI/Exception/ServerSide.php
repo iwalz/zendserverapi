@@ -17,6 +17,14 @@
 
 namespace ZendServerAPI\Exception;
 
+/**
+ * Exception to handle errors, that are flagged by the
+ * Zend Server as "Server Side"
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ServerSide extends \Exception
 {
     /**

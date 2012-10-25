@@ -17,8 +17,24 @@
 
 namespace ZendServerAPI\Factories;
 
+/**
+ * A factory, that retrieves commands from the webapi version 1.0.
+ * Used for the intruduced Zend Server version 5.1
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ApiVersion10CommandFactory implements CommandFactory
 {
+    /**
+     * Retrieves the command object and throws an error if
+     * the command is not supported via this factory (and the Zend Server/webapi version).
+     *
+     * @throws \RuntimeException
+     * @param  string                $name
+     * @return \ZendServerAPI\Method
+     */
     public function factory($name)
     {
         $args = func_get_args();

@@ -17,7 +17,22 @@
 
 namespace ZendServerAPI\Factories;
 
+/**
+ * Base interface for the command factory
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 interface CommandFactory
 {
+    /**
+     * Retrieves the command object and throws an error if
+     * the command is not supported via this factory (and the Zend Server/webapi version).
+     *
+     * @throws \RuntimeException
+     * @param  string                $name
+     * @return \ZendServerAPI\Method
+     */
     public function factory($name);
 }

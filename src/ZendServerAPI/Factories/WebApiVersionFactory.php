@@ -17,10 +17,29 @@
 
 namespace ZendServerAPI\Factories;
 
+/**
+ * Factory for the WebApiVersionFactories.
+ * Gets a config object injected to identify the version
+ * and returns the correct factory for this version
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class WebApiVersionFactory
 {
+    /**
+     * Config object for that request
+     * @var \ZendServerAPI\Config
+     */
     protected $config = null;
 
+    /**
+     * Get the Command factory for the corrent webapi version.
+     * If config object is null, it will return the first version 1.0
+     *
+     * @return \ZendServerAPI\Factories\CommandFactory
+     */
     public function getCommandFactory()
     {
         if($this->config === null ||
@@ -33,11 +52,22 @@ class WebApiVersionFactory
         }
     }
 
-    public function setConfig($config)
+    /**
+     * Set the config
+     *
+     * @param  \ZendServerAPI\Config $config
+     * @return void
+     */
+    public function setConfig(\ZendServerAPI\Config $config)
     {
         $this->config = $config;
     }
 
+    /**
+     * Get the config
+     *
+     * @return \ZendServerAPI\Config
+     */
     public function getConfig()
     {
         return $this->config;

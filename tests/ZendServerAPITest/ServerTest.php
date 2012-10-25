@@ -35,6 +35,7 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	public function testConstructorInjection()
 	{
 	    $tmpRequest = new Request();
+	    $tmpRequest->setConfig(new \ZendServerAPI\Config());
 	    $server = new Server("general", $tmpRequest);
 	    $serverRequest = $server->getRequest();
 	    

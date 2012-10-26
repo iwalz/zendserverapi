@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -97,7 +97,7 @@ class RequestSummary implements \IteratorAggregate, \Countable
     /**
      * Add event to the internal list storage
      *
-     * @param  \ZendServerAPI\DataTypes\Event $events
+     * @param  \ZendServerAPI\DataTypes\Event $event
      * @return void
      */
     public function addEvents (\ZendServerAPI\DataTypes\Event $event)
@@ -106,6 +106,8 @@ class RequestSummary implements \IteratorAggregate, \Countable
     }
 
     /**
+     * Implementation for traversable
+     * 
      * @see IteratorAggregate::getIterator()
      * @return \ArrayIterator
      */
@@ -115,6 +117,8 @@ class RequestSummary implements \IteratorAggregate, \Countable
     }
 
     /**
+     * Implementation for countable
+     * 
      * @see Countable::count()
      * @return int
      */

@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -319,7 +319,7 @@ class ApplicationInfo
     /**
      * Add a server
      *
-     * @param \ZendServerAPI\DataTypes\ApplicationServer
+     * @param \ZendServerAPI\DataTypes\ApplicationServer $server
      * @return void
      */
     public function addServer(\ZendServerAPI\DataTypes\ApplicationServer $server)

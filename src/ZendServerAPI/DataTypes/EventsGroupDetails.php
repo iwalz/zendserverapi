@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -18,7 +18,9 @@
 namespace ZendServerAPI\DataTypes;
 
 /**
- * EventsGroupDetails model implementation.
+ * eventsGroupDetails 
+ * 
+ * Details about an issue's eventsGroup, including the actual event data.
  *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi

@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -16,6 +16,7 @@
  */
 
 namespace ZendServerAPI\DataTypes;
+
 /**
  * CodetracingList model implementation.
  *
@@ -53,6 +54,8 @@ class CodetracingList implements \Countable, \IteratorAggregate
     }
 
     /**
+     * Implementation for traversable
+     * 
      * @see IteratorAggregate::getIterator()
      * @return \ArrayIterator
      */
@@ -62,6 +65,8 @@ class CodetracingList implements \Countable, \IteratorAggregate
     }
 
     /**
+     * Implementation for countable
+     * 
      * @see Countable::count()
      * @return int
      */

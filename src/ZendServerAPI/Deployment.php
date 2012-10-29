@@ -36,23 +36,29 @@ class Deployment extends BaseAPI
     }
 
     /**
-     * Implementation of 'applicationDeploy' method
+     * <b>The applicationDeploy Method</b>
      *
-     * @access public
+     * <pre>Deploy a new application to the server or cluster.
+     * This process is asynchronous, meaning the initial request will wait until the application is uploaded and verified,
+     * and the initial response will show information about the application being deployed.
+     * However, the staging and activation process will proceed after the response is returned.
+     * You must continue checking the application status using the applicationGetStatus method until the deployment process is complete.</pre>
+     *
+     *
      * @param
-     *            string File object of ZPK file
+     *            string $file <p>File object of ZPK file</p>
      * @param
-     *            string The baseurl to which the application will be deployed
+     *            string $baseUrl <p>The baseurl to which the application will be deployed</p>
      * @param
-     *            boolean create VHost
+     *            boolean $createVhost[optional]=false <p>create VHost</p>
      * @param
-     *            boolean Deploy the application on the default server
+     *            boolean $defaultServer[optional]=false <p>Deploy the application on the default server</p>
      * @param
-     *            string Free text for user defined application identifier
+     *            string $userAppName[optional]=null <p>Free text for user defined application identifier</p>
      * @param
-     *            boolean ignore errors during staging on some servers
+     *            boolean $ignoreFailures[optional]=false <p>ignore errors during staging on some servers</p>
      * @param
-     *            array Set values for user parameters defined in package
+     *            array $userParams[optional]=array() <p>Set values for user parameters defined in package</p>
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function applicationDeploy ($file, $baseUrl, $createVhost = false,

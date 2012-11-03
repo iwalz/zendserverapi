@@ -41,7 +41,6 @@ abstract class DataType
             $value = $this->$key;
             if (is_array($value)) {
                 foreach ($value as $single) {
-                    var_dump($single->getArray());
                     if ($single instanceof DataType) {
                         $subKey = lcfirst(
                                 str_replace("ZendServerAPI\\DataTypes\\", "", 

@@ -23,8 +23,7 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "guzzle/guzzle": "3.0.2",
-        "zendframework/zend-log": "2.0.*"
+        "guzzle/guzzle": "3.0.2"
     },
     "minimum-stability": "dev",
     "autoload": {

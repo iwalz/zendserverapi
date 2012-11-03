@@ -24,7 +24,7 @@ namespace ZendServerAPI\DataTypes;
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  */
-class ApplicationServer
+class ApplicationServer extends DataType
 {
     /**
      * The server ID

@@ -24,7 +24,7 @@ namespace ZendServerAPI\DataTypes;
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  */
-class EventsGroup
+class EventsGroup extends DataType
 {
     /**
      * Event Group's identifier

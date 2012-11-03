@@ -24,7 +24,7 @@ namespace ZendServerAPI\DataTypes;
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  */
-class RouteDetails implements \Countable, \IteratorAggregate
+class RouteDetails extends DataType implements \Countable, \IteratorAggregate
 {
     /**
      * Internal route detail array

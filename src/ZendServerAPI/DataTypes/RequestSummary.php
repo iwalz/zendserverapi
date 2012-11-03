@@ -24,7 +24,7 @@ namespace ZendServerAPI\DataTypes;
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  */
-class RequestSummary implements \IteratorAggregate, \Countable
+class RequestSummary extends DataType implements \IteratorAggregate, \Countable
 {
     /**
      * Number of event occurance

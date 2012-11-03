@@ -24,7 +24,7 @@ namespace ZendServerAPI\DataTypes;
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  */
-class ApplicationList implements \Countable, \IteratorAggregate
+class ApplicationList extends DataType implements \Countable, \IteratorAggregate
 {
     /**
      * Internal application info storage

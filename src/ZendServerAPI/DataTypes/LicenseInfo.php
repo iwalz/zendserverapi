@@ -24,7 +24,7 @@ namespace ZendServerAPI\DataTypes;
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  */
-class LicenseInfo
+class LicenseInfo extends DataType
 {
     /**
      * The licensing status, which can be one of the following:

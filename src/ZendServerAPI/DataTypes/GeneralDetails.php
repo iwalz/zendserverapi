@@ -24,7 +24,7 @@ namespace ZendServerAPI\DataTypes;
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  */
-class GeneralDetails
+class GeneralDetails extends DataType
 {
     /**
      * Issue's creating URL string

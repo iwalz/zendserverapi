@@ -24,7 +24,7 @@ namespace ZendServerAPI\DataTypes;
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  */
-class ServersList implements \Countable, \IteratorAggregate
+class ServersList extends DataType implements \Countable, \IteratorAggregate
 {
     /**
      * Internal container for ServerInfo storage

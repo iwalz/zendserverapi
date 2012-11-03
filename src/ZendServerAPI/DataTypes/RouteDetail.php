@@ -24,7 +24,7 @@ namespace ZendServerAPI\DataTypes;
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  */
-class RouteDetail
+class RouteDetail extends DataType
 {
     /**
      * Route detail piece's key name

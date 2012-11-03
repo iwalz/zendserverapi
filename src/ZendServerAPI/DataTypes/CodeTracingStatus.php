@@ -24,7 +24,7 @@ namespace ZendServerAPI\DataTypes;
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  */
-class CodeTracingStatus
+class CodeTracingStatus extends DataType
 {
     /**
      * Current activity status

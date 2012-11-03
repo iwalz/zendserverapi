@@ -24,7 +24,7 @@ namespace ZendServerAPI\DataTypes;
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  */
-class EventsGroups implements \Countable, \IteratorAggregate
+class EventsGroups extends DataType implements \Countable, \IteratorAggregate
 {
     /**
      * Internal event group array

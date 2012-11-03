@@ -24,7 +24,7 @@ namespace ZendServerAPI\DataTypes;
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  */
-class IssueList implements \Countable, \IteratorAggregate
+class IssueList extends DataType implements \Countable, \IteratorAggregate
 {
     /**
      * Internal issue storage

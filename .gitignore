@@ -10,3 +10,4 @@ downloads/
 .pear2registry
 export/
 logs/
+composer.lock

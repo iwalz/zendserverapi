@@ -36,28 +36,46 @@ abstract class DataType
     {
         $returnArray = array();
 
+        // Get members from parent class
         $classVars = get_class_vars(get_called_class());
+
+        // Iterate through members to generate key => value pairs
         foreach ($classVars as $key => $value) {
             $value = $this->$key;
+
+            // If value is an array
             if (is_array($value)) {
-                foreach ($value as $single) {
+                // Iterate through them and call that function recursivly if DataType
+                foreach ($value as $subKey => $single) {
                     if ($single instanceof DataType) {
                         $subKey = lcfirst(
                                 str_replace("ZendServerAPI\\DataTypes\\", "",
                                         get_class($single)));
                         $subValue = $single->getArray();
-                        if (count($subValue) > 1) {
-                            $returnArray[$subKey][] = $subValue;
-                        } else {
-                            $returnArray[$subKey] = $subValue;
-                        }
+                        $returnArray[$subKey][] = $subValue;
+                    // If regular value, add to the array
+                    } else {
+                        $returnArray[$subKey][] = $single;
                     }
                 }
+            // Value is not array
             } else {
-                $returnArray[$key] = $value;
+                // and value is DataType
+                if ($value instanceof DataType) {
+                    $subKey = lcfirst(
+                            str_replace("ZendServerAPI\\DataTypes\\", "",
+                                    get_class($value)));
+                    // Call recursion again
+                    $subValue = $value->getArray();
+                    $returnArray[$key] = $subValue;
+                // Otherwise simply add
+                } else {
+                    $returnArray[$key] = $value;
+                }
             }
         }
 
         return $returnArray;
     }
+
 }

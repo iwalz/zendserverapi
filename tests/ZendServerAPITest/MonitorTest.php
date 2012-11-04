@@ -19,9 +19,7 @@ class MonitorTest extends \PHPUnit_Framework_TestCase
         $monitor = new \ZendServerAPI\Monitor("example62");
         $details = $monitor->monitorGetEventGroupDetails("247");
         $debugRequest = $studio->studioStartProfile($details->getEventsGroup()->getEventsGroupId());
-        var_dump($debugRequest);
         \ZendServerAPI\Startup::disableLogging();
-        
     }
 }
 

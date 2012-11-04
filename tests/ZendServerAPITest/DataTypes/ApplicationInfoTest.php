@@ -1,6 +1,8 @@
 <?php
 namespace ZendServerAPITest\DataTypes;
 
+use ZendServerAPI\DataTypes\ApplicationServer;
+
 /**
  * test case.
  */
@@ -40,6 +42,19 @@ class ApplicationInfoTest extends \PHPUnit_Framework_TestCase
         $deployedVersions[] = $deployedVersion;
         $applicationInfo->setDeployedVersions($deployedVersions);
         
+        $server1 = new ApplicationServer();
+        $server1->setDeployedVersion($deployedVersion);
+        $server1->setStatus("OK");
+        $server1->setId(1);
+        
+        $server2 = new ApplicationServer();
+        $server2->setDeployedVersion($deployedVersion);
+        $server2->setStatus("OK");
+        $server2->setId(2);
+        
+        $applicationInfo->addServer($server1);
+        $applicationInfo->addServer($server2);
+        
         $applicationInfoArray = array();
         $applicationInfoArray['id'] = 62;
         $applicationInfoArray['status'] = NULL;
@@ -49,7 +64,14 @@ class ApplicationInfoTest extends \PHPUnit_Framework_TestCase
         $applicationInfoArray['appName'] = 'example';
         $applicationInfoArray['baseUrl'] = "http://www.example.com";
         $applicationInfoArray['messageList'] = NULL;
-        $applicationInfoArray['deployedVersions']['version'] = '1.2';
+        $applicationInfoArray['deployedVersions'][0]['version'] = '1.2';
+        $applicationInfoArray['applicationServer'][0]['deployedVersion']['version'] = '1.2';
+        $applicationInfoArray['applicationServer'][1]['deployedVersion']['version'] = '1.2';
+        $applicationInfoArray['applicationServer'][0]['status'] = 'OK';
+        $applicationInfoArray['applicationServer'][1]['status'] = 'OK';
+        $applicationInfoArray['applicationServer'][0]['id'] = 1;
+        $applicationInfoArray['applicationServer'][1]['id'] = 2;
+
         $this->assertEquals($applicationInfoArray, $applicationInfo->getArray());
     }
 

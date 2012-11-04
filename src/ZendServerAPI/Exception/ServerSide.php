@@ -36,11 +36,11 @@ class ServerSide extends \Exception
     public function __construct($error, $code = null)
     {
         $xml = simplexml_load_string($error);
-        
+
         if($code === null)
             $code = 500;
-        
-        if(!$xml || !isset($xml->errorData->errorCode) || !isset($xml->errorData->errorMessage)) {
+
+        if (!$xml || !isset($xml->errorData->errorCode) || !isset($xml->errorData->errorMessage)) {
             parent::__construct($error, $code);
         } else {
             $errorCode = (string) $xml->errorData->errorCode;

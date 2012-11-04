@@ -9,7 +9,7 @@ return array(
     	"general" => array(
     		"version" => \ZendServerAPI\Version::ZS56,
     		"apiName" => "api",
-    		"fullApiKey" => "058b82f191d934a7bfe17d12060dd3320869f132d3428fa19d35463903673eee",
+    		"fullApiKey" => "bee698dde6a95de71932d65cb655c31fc4ea04c1fabaf6f0a1b852617eac32ac",
     		"readApiKey" => "",
     		"host" => "127.0.0.1",
     		"port" => "10081"
@@ -33,7 +33,7 @@ return array(
     	# Contains a valid key
     	"example62" => array(
     		"version" => \ZendServerAPI\Version::ZSCM56,
-    		"fullApiKey" => "058b82f191d934a7bfe17d12060dd3320869f132d3428fa19d35463903673eee",
+    		"fullApiKey" => "bee698dde6a95de71932d65cb655c31fc4ea04c1fabaf6f0a1b852617eac32ac",
     		"apiName" => "api",
     		"host" => "localhost",
     		"port" => "10081"

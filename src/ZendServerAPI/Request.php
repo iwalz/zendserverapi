@@ -229,8 +229,11 @@ class Request
 
             $this->getAction()->setResponse($response);
         } catch (\Guzzle\Http\Exception\CurlException $exception) {
+            $this->getLogger()->err($exception->getMessage());
             throw $exception;
         } catch (\Guzzle\Http\Exception\BadResponseException $exception) {
+            $this->getLogger()->err($exception->getMessage());
+
             if ($exception->getResponse() !== null) {
                 $statusCode = $exception->getResponse()->getStatusCode();
                 if($statusCode >= 400 && $statusCode <= 499)

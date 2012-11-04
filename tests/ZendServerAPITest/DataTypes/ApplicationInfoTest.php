@@ -27,6 +27,31 @@ class ApplicationInfoTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("example", $applicationInfo->getAppName());
         $this->assertEquals("http://www.example.com", $applicationInfo->getBaseUrl());
     }
+    
+    public function testDataTypeToArray() 
+    {
+        $applicationInfo = new \ZendServerAPI\DataTypes\ApplicationInfo();
+        $applicationInfo->setId(62);
+        $applicationInfo->setAppName("example");
+        $applicationInfo->setBaseUrl("http://www.example.com");
+        $deployedVersions = array();
+        $deployedVersion = new \ZendServerAPI\DataTypes\DeployedVersions();
+        $deployedVersion->setVersion("1.2");
+        $deployedVersions[] = $deployedVersion;
+        $applicationInfo->setDeployedVersions($deployedVersions);
+        
+        $applicationInfoArray = array();
+        $applicationInfoArray['id'] = 62;
+        $applicationInfoArray['status'] = NULL;
+        $applicationInfoArray['userAppName'] = NULL;
+        $applicationInfoArray['installedlocation'] = NULL;
+        $applicationInfoArray['status'] = NULL;
+        $applicationInfoArray['appName'] = 'example';
+        $applicationInfoArray['baseUrl'] = "http://www.example.com";
+        $applicationInfoArray['messageList'] = NULL;
+        $applicationInfoArray['deployedVersions']['version'] = '1.2';
+        $this->assertEquals($applicationInfoArray, $applicationInfo->getArray());
+    }
 
 }
 

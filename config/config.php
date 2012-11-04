@@ -4,11 +4,12 @@ return array(
 	"servers" => array (
         # Contains a valid default config
 	    "general" => array(
+            "version" => \ZendServerAPI\Version::ZS56,
 		    "clusterManager" => true,
 		    "apiName" => "",
 		    "fullApiKey" => "",
 		    "readApiKey" => "",
-		    "host" => "",
+		    "host" => "localhost",
 		    "port" => "10081"
 	    )
     ),

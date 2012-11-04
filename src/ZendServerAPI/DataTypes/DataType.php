@@ -29,13 +29,13 @@ abstract class DataType
 
     /**
      * Get an associative array based on the model information
-     * 
+     *
      * @return array
      */
     public function getArray ()
     {
         $returnArray = array();
-        
+
         $classVars = get_class_vars(get_called_class());
         foreach ($classVars as $key => $value) {
             $value = $this->$key;
@@ -43,18 +43,21 @@ abstract class DataType
                 foreach ($value as $single) {
                     if ($single instanceof DataType) {
                         $subKey = lcfirst(
-                                str_replace("ZendServerAPI\\DataTypes\\", "", 
+                                str_replace("ZendServerAPI\\DataTypes\\", "",
                                         get_class($single)));
-                        $returnArray[$subKey] = $single->getArray();
+                        $subValue = $single->getArray();
+                        if (count($subValue) > 1) {
+                            $returnArray[$subKey][] = $subValue;
+                        } else {
+                            $returnArray[$subKey] = $subValue;
+                        }
                     }
                 }
             } else {
                 $returnArray[$key] = $value;
             }
         }
-        
+
         return $returnArray;
     }
 }
-
-?>

@@ -184,7 +184,7 @@ class Event extends DataType
     /**
      * Add a step to the $backtraces array
      *
-     * @param \ZendServerAPI\DataTypes\Step $step
+     * @param  \ZendServerAPI\DataTypes\Step $step
      * @return void
      */
     public function addStep (\ZendServerAPI\DataTypes\Step $step)

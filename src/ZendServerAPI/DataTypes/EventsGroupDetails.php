@@ -18,8 +18,8 @@
 namespace ZendServerAPI\DataTypes;
 
 /**
- * eventsGroupDetails 
- * 
+ * eventsGroupDetails
+ *
  * Details about an issue's eventsGroup, including the actual event data.
  *
  * @license     MIT

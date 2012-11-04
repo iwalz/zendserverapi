@@ -315,7 +315,7 @@ class SystemInfo extends DataType
      * If it is running in a cluster, it will
      * contain the node license information
      *
-     * @param \ZendServerAPI\DataTypes\LicenseInfo $serverLincenseInfo
+     * @param  \ZendServerAPI\DataTypes\LicenseInfo $serverLincenseInfo
      * @return void
      */
     public function setServerLincenseInfo (\ZendServerAPI\DataTypes\LicenseInfo $serverLincenseInfo)

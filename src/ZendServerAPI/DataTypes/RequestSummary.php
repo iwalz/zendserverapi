@@ -107,7 +107,7 @@ class RequestSummary extends DataType implements \IteratorAggregate, \Countable
 
     /**
      * Implementation for traversable
-     * 
+     *
      * @see IteratorAggregate::getIterator()
      * @return \ArrayIterator
      */
@@ -118,7 +118,7 @@ class RequestSummary extends DataType implements \IteratorAggregate, \Countable
 
     /**
      * Implementation for countable
-     * 
+     *
      * @see Countable::count()
      * @return int
      */

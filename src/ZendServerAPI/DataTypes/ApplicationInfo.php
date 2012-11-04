@@ -319,7 +319,7 @@ class ApplicationInfo extends DataType
     /**
      * Add a server
      *
-     * @param \ZendServerAPI\DataTypes\ApplicationServer $server
+     * @param  \ZendServerAPI\DataTypes\ApplicationServer $server
      * @return void
      */
     public function addServer(\ZendServerAPI\DataTypes\ApplicationServer $server)

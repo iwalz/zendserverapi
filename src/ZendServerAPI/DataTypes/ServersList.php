@@ -113,7 +113,7 @@ class ServersList extends DataType implements \Countable, \IteratorAggregate
 
     /**
      * Implementation for traversable
-     * 
+     *
      * @see IteratorAggregate::getIterator()
      * @return \ArrayIterator
      */
@@ -124,7 +124,7 @@ class ServersList extends DataType implements \Countable, \IteratorAggregate
 
     /**
      * Implementation for countable
-     * 
+     *
      * @see Countable::count()
      * @return void
      */

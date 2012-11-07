@@ -57,6 +57,7 @@ class Startup
         $request = new Request();
 
         self::configureApiKey($name, $request);
+        self::configureProxy($request);
         self::setUpLogger($request);
 
         return $request;
@@ -67,7 +68,7 @@ class Startup
      *
      * @param \ZendServerAPI\Request $request
      */
-    private static function setUpLogger(&$request)
+    private static function setUpLogger(\ZendServerAPI\Request $request)
     {
         if(!is_dir(__DIR__.'/../../logs'))
             mkdir(__DIR__.'/../../logs');
@@ -95,7 +96,7 @@ class Startup
      * @param string                 $name
      * @param \ZendServerAPI\Request $request
      */
-    private static function configureApiKey($name, &$request)
+    private static function configureApiKey($name, \ZendServerAPI\Request $request)
     {
         if(null === $name)
             self::$name = "general";
@@ -114,6 +115,17 @@ class Startup
 
         $request->setConfig($config);
 
+    }
+
+    private static function configureProxy(\ZendServerAPI\Request $request)
+    {
+        $validator = new ConfigValidator(self::getConfigPath());
+        $conf = $validator->getSettings();
+        if (isset($conf['proxyHost'])) {
+            $port = isset($conf['proxyPort']) ? $conf['proxyPort'] : 8080;
+            $request->getConfig()->setProxyHost($conf['proxyHost']);
+            $request->getConfig()->setProxyPort($port);
+        }
     }
 
     /**

@@ -174,11 +174,20 @@ class Request
     public function send()
     {
         if (!$this->client) {
-            $this->client = new Client(
-                    'http://{host}:{port}',
-                    array(
+            $options = array(
                             'host' => $this->config->getHost(),
-                            'port' => $this->config->getPort())
+                            'port' => $this->config->getPort());
+
+            if ($this->config->getProxyHost() !== null) {
+                $options = array_merge(
+                    	array('curl.options' =>
+                    	        array(CURLOPT_PROXY => 'http://'.$this->config->getProxyHost().':'.$this->config->getProxyPort())
+                    	), $options
+                );
+            }
+
+            $this->client = new Client(
+                    'http://{host}:{port}', $options
             );
         }
 
@@ -220,6 +229,7 @@ class Request
         $requests->setHeader('lookInCupboard', 'true');
         $requests->setHeader('Date', $this->getDate());
         $requests->setHeader('User-Agent', $this->userAgent);
+        $requests->setHeader('Expect', '');
 
         $this->getLogger()->debug($requests);
 

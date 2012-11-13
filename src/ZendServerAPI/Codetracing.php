@@ -17,18 +17,44 @@
 
 namespace ZendServerAPI;
 
+/**
+ * <b>Codetracing Methods</b>
+ *
+ * The following is a list of methods available for the Codetracing feature:
+ *
+ * <ul>
+ * <li>codetracingDisable</li>
+ * <li>codetracingEnable</li>
+ * <li>codetracingIsEnabled</li>
+ * <li>codetracingCreate</li>
+ * <li>codetracingDelete</li>
+ * <li>codetracingList</li>
+ * <li>codetracingDownloadTraceFile</li>
+ * </ul>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class Codetracing extends BaseAPI
 {
+    /**
+     * The directory where to store the codetrace files
+     * @var string
+     */
     protected $exportDirectory = null;
 
     /**
-     * Implementation of codetracingEnable method
+     * <b>The codetracingEnable Method</b>
      *
-     * This method will cause the Zend Server to enable the
+     * <pre>Enable code-tracing component and two directives necessary
+     * for creating tracing dumps
+     *
+     * This method will force the Zend Server to enable the
      * developerMode. This mode causes the Zend Server to create a
-     * dump on every request. Do not use it in production
+     * dump on every request. <b>Do not use it in production!</b></pre>
      *
-     * @param  boolean                                    $restartNow Restart after method call
+     * @param  boolean                                    $restartNow <p>Restart after method call</p>
      * @return \ZendServerAPI\DataTypes\CodeTracingStatus
      */
     public function codetracingEnable($restartNow = true)
@@ -39,13 +65,16 @@ class Codetracing extends BaseAPI
     }
 
     /**
-     * Implementation of codetracingDisable method
+     * <b>The codetracingDisable Method</b>
      *
-     * This method will cause the Zend Server to disable the
+     * <pre>Disable the code-tracing directive two directives necessary
+     * for creating tracing dumps, this action does not disable the code-tracing component.
+     *
+     * This method will force the Zend Server to disable the
      * developerMode. This mode causes the Zend Server to create a
-     * dump on every request. Do not use it in production
+     * dump on every request. <b>Do not use it in production!</b></pre>
      *
-     * @param  boolean                                    $restartNow Restart after method call
+     * @param  boolean                                    $restartNow <p>Restart after method call</p>
      * @return \ZendServerAPI\DataTypes\CodeTracingStatus
      */
     public function codetracingDisable($restartNow = true)
@@ -56,13 +85,16 @@ class Codetracing extends BaseAPI
     }
 
     /**
-     * Implementation of codetracingIsEnabled method
+     * <b>The codetracingIsEnabled Method</b>
+     *
+     * <pre>Check if the directives zend_codetracing.always_dump and
+     * zend_codetracing.trace_enabled are set, and if the code-tracing
+     * component is active.
      *
      * This method returns true if developerMode is enabled.
      * The developerMode will cause the Zend Server to create a trace
-     * on every request. Do not use it in production
+     * on every request. Do not use it in production</pre>
      *
-     * @access public
      * @return \ZendServerAPI\DataTypes\CodeTracingStatus
      */
     public function codetracingIsEnabled()
@@ -73,13 +105,15 @@ class Codetracing extends BaseAPI
     }
 
     /**
-     * Implementation of codetracingCreate method
+     * <b>The codetracingCreate Method</b>
+     *
+     * <pre>Create a new code-tracing entry.
      *
      * This method will generate a codetrace of the given URL.
      * The URL needs to be a fully encoded and has to start with
-     * the protocoll.
+     * the protocoll.</pre>
      *
-     * @param  string                               $url the url to trace
+     * @param  string                               $url <p>the url to trace</p>
      * @return \ZendServerAPI\DataTypes\CodeTracing
      */
     public function codetracingCreate($url)
@@ -90,11 +124,11 @@ class Codetracing extends BaseAPI
     }
 
     /**
-     * Implementation of codetracingDelete method
+     * <b>The codetracingDelete Method</b>
      *
-     * This method will delete the codetrace file from the zend server.
+     * <pre>Delete a code-tracing file entry.</pre>
      *
-     * @param  integer                              $id Trace file ID
+     * @param  integer                              $id <p>Trace file ID</p>
      * @return \ZendServerAPI\DataTypes\CodeTracing
      */
     public function codetracingDelete($id)
@@ -105,15 +139,15 @@ class Codetracing extends BaseAPI
     }
 
     /**
-     * Implementation of codetracingList method
+     * <b>The codetracingList Method</b>
      *
-     * This method will give you a list of all codetraces from the zend server.
+     * <pre>Retrieve a list of code-tracing files available for download using codetracingDownloadTraceFile.</pre>
      *
-     * @param  array                                $applicationIds List of application IDs
-     * @param  integer                              $limit          Row limit to retrieve
-     * @param  integer                              $offset         Page offset to be displayed
-     * @param  string                               $orderBy        Column to sort the result by (Id,Date,Url,CreatedBy,FileSize)
-     * @param  string                               $direction      Direction to sort, default to Desc
+     * @param  array                                $applicationIds <p>List of application IDs</p>
+     * @param  int                                  $limit          <p>Row limit to retrieve</p>
+     * @param  int                                  $offset         <p>Page offset to be displayed</p>
+     * @param  string                               $orderBy        <p>Column to sort the result by (Id,Date,Url,CreatedBy,FileSize)</p>
+     * @param  string                               $direction      <p>Direction to sort, default to Desc</p>
      * @return \ZendServerAPI\DataTypes\CodeTracing
      */
     public function codetracingList($applicationIds = array(), $limit = null, $offset = null, $orderBy = null, $direction = null)
@@ -124,13 +158,12 @@ class Codetracing extends BaseAPI
     }
 
     /**
-     * Implementation of codetracingDownloadTraceFile method
+     * <b>The codetracingDownloadTraceFile Method</b>
      *
-     * This method will download the expected tracefile (if existing)
-     * and store it locally.
+     * <pre>Download the amf file specified by the codetracing identifier.</pre>
      *
-     * @param  string                               $traceFile Trace file identifier
-     * @param  string                               $fileName  Filename to save tracefile to
+     * @param  string                               $traceFile <p>Trace file identifier</p>
+     * @param  string                               $fileName  <p>Filename to save tracefile to</p>
      * @return \ZendServerAPI\DataTypes\CodeTracing
      */
     public function codetracingDownloadTraceFile($traceFile, $fileName = null, $exportDirectory = null)

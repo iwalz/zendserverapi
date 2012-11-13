@@ -50,7 +50,6 @@ class Config
      */
     protected $proxyPort = null;
 
-
     /**
      * Construct for ZendServerAPI\Config
      */
@@ -139,7 +138,7 @@ class Config
         return $this->apiKey;
     }
 
-	/**
+    /**
      * @return the $proxyHost
      */
     public function getProxyHost()
@@ -147,7 +146,7 @@ class Config
         return $this->proxyHost;
     }
 
-	/**
+    /**
      * @return the $proxyPort
      */
     public function getProxyPort()
@@ -155,7 +154,7 @@ class Config
         return $this->proxyPort;
     }
 
-	/**
+    /**
      * @param string $proxyHost
      */
     public function setProxyHost($proxyHost)
@@ -163,14 +162,12 @@ class Config
         $this->proxyHost = $proxyHost;
     }
 
-	/**
+    /**
      * @param number $proxyPort
      */
     public function setProxyPort($proxyPort)
     {
         $this->proxyPort = $proxyPort;
     }
-
-
 
 }

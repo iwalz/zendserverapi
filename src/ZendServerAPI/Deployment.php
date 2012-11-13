@@ -17,11 +17,50 @@
 
 namespace ZendServerAPI;
 
+/**
+ * <b>Deployment Methods</b>
+ *
+ * The following is a list of methods available for the deployment feature:
+ * <ul>
+ * <li>The applicationGetStatus Method</li>
+ * <li>The applicationDeploy Method</li>
+ * <li>The applicationUpdate Method</li>
+ * <li>The applicationRemove Method</li>
+ * <li>The applicationSynchronize Method</li>
+ * <li>The applicationRollback Method</li>
+ * </ul>
+ *
+ * <b>Possible Deployment Action Specific Error Codes:</b>
+ * <table><tr>
+ * <td><b>HTTP Code</b></td>
+ * <td><b>Error Code</b></td>
+ * <td><b>Description</b></td>
+ * </tr><tr>
+ * <td><b>500</b></td>
+ * <td><b>serverVersionMismatch</b></td>
+ * <td><b>One or more servers in the cluster
+ * is a Zend Server that does not support the deployment
+ * feature.</b></td>
+ * </tr></table>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class Deployment extends BaseAPI
 {
-
     /**
-     * Implementation of 'applicationGetStatus' method
+     * Break loops for wait methods after this number of tries
+     * @var int
+     */
+    const DEFAULT_WAITINTERVAL = 5;
+    /**
+     * <b>The applicationGetStatus Method</b>
+     *
+     * <pre>Get the list of applications currently deployed (or staged) on the server or the cluster and information
+     * about each application. If application IDs are specified, this method will return information about the
+     * specified applications. If no IDs are specified, this method will return information about all applications on
+     * the server or cluster.</pre>
      *
      * @access public
      * @param
@@ -73,17 +112,25 @@ class Deployment extends BaseAPI
     }
 
     /**
-     * Implementation of 'applicationUpdate' method
+     * <b>The applicationUpdate Method</b>
+     *
+     * <pre>This method allows you to update an existing application. The package you provide must contain the
+     * same application. Additionally, any new parameters or new values for existing parameters must be
+     * provided. This process is asynchronous, meaning the initial request will wait until the package is uploaded
+     * and verified, and the initial response will show information about the new version being deployed.
+     * However, the staging and activation process will proceed after the response is returned. You must
+     * continue checking the application status using the applicationGetStatus method until the deployment
+     * process is complete.</pre>
      *
      * @access public
      * @param
-     *            Integer The application's ID
+     *            int $appId <p>The application's ID</p>
      * @param
-     *            string The application's package
+     *            string $package <p>The application's package</p>
      * @param
-     *            s boolean Ignore failures during staging on some servers
+     *            boolean $ignoreFailures <p>Ignore failures during staging on some servers</p>
      * @param
-     *            s array Set values for user parameters defined in package
+     *            array $userParams <p>Set values for user parameters defined in package</p>
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function applicationUpdate ($appId, $package,
@@ -95,10 +142,17 @@ class Deployment extends BaseAPI
     }
 
     /**
-     * Implementation of 'applicationRemove' method
+     * <b>The applicationRemove Method</b>
+     *
+     * <pre>This method allows you to remove an existing application. This process is asynchronous, meaning the
+     * initial request will start the removal process and the initial response will show information about the
+     * application being removed. However, the removal process will proceed after the response is returned.
+     * You must continue checking the application status using the applicationGetStatus method until the
+     * removal process is complete. Once applicationGetStatus contains no information about the application, it
+     * has been completely removed</pre>
      *
      * @access public
-     * @param  id                                       $appId
+     * @param  int                                      $appId <p>The application's ID</p>
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function applicationRemove ($appId)
@@ -109,10 +163,15 @@ class Deployment extends BaseAPI
     }
 
     /**
-     * Implementation of 'applicationRollback' method
+     * <b>The applicationRollback Method</b>
+     *
+     * <pre>Rollback an existing application to its previous version. This process is asynchronous, meaning the initial
+     * request will start the rollback process and the initial response will show information about the application
+     * being rolled back. You must continue checking the application status using the applicationGetStatus
+     * method until the process is complete.</pre>
      *
      * @access public
-     * @param  id                                       $appId
+     * @param  int                                      $appId <p>The application's ID</p>
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function applicationRollback ($appId)
@@ -123,15 +182,21 @@ class Deployment extends BaseAPI
     }
 
     /**
-     * Implementation of 'applicationSynchronize' method
+     * <b>The applicationSynchronize Method</b>
+     *
+     * <pre>Synchronizing an existing application, whether in order to fix a problem or to reset an installation. This
+     * process is asynchronous, meaning the initial request will start the synchronize process and the initial
+     * response will show information about the application being synchronized. However, the synchronize
+     * process will proceed after the response is returned. You must continue checking the application status
+     * using the applicationGetStatus method until the process is complete.</pre>
      *
      * @access public
      * @param
-     *            integer The application's id
+     *            int $appId <p>The application's id</p>
      * @param
-     *            array Array of server IDs to perform action on
+     *            array $servers <p>Array of server IDs to perform action on</p>
      * @param
-     *            boolean Ignore failures during staging on some servers
+     *            boolean  $ignoreFailures <p>Ignore failures during staging on some servers</p>
      * @return \ZendServerAPI\DataTypes\ApplicationList
      */
     public function applicationSynchronize ($appId, array $servers = array(),
@@ -146,9 +211,9 @@ class Deployment extends BaseAPI
      * Wait for status = deployed on the application, check every $interval seconds
      *
      * @param int $applicationId
-     *            The application's ID
+     *            <p>The application's ID</p>
      * @param int $interval
-     *            Seconds to repeat test
+     *            <p>Seconds to repeat test</p>
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function waitForStableState ($applicationId, $interval = 5)
@@ -162,7 +227,7 @@ class Deployment extends BaseAPI
             $applicationInfos = $applicationList->getApplicationInfos();
             $applicationInfo = $applicationInfos[0];
 
-            if($i++ == 5)
+            if($i++ == self::DEFAULT_WAITINTERVAL)
                 break;
         } while ($applicationInfo->getStatus() !== "deployed");
 
@@ -173,9 +238,9 @@ class Deployment extends BaseAPI
      * Wait for application not beeing in the list
      *
      * @param int $applicationId
-     *            The application's ID
+     *            <p>The application's ID</p>
      * @param int $interval
-     *            Seconds to repeat test
+     *            <p>Seconds to repeat test</p>
      * @return boolean
      */
     public function waitForRemoved ($applicationId, $interval = 5)
@@ -190,7 +255,7 @@ class Deployment extends BaseAPI
             $applicationList = $this->applicationGetStatus(array($applicationId));
             $applicationInfos = $applicationList->getApplicationInfos();
 
-            if ($i++ == 5) {
+            if ($i++ == self::DEFAULT_WAITINTERVAL) {
                 $retVal = false;
                 break;
             }

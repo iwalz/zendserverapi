@@ -17,16 +17,33 @@
 
 namespace ZendServerAPI;
 
+/**
+ * <b>Studio-Integration Methods</b>
+ *
+ * The following is a list of methods available for the Studio-Integration feature:
+ *
+ * <ul>
+ * <li>studioStartDebug</li>
+ * <li>studioStartProfile</li>
+ * </ul>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class Studio extends BaseAPI
 {
     /**
-     * The studioStartDebug Method
+     * <b>The studioStartDebug Method</b>
      *
-     * Start a debug session for a specific issue
+     * <pre>Start a debug session for a specific issue</pre>
      *
-     * @param  string                                $eventsGroupId Events group ID
-     * @param  string                                $noRemote      Use server's own local files for debug display
-     * @param  string                                $overrideHost  Override the host address sent to Zend Server
+     * @param string $eventsGroupId <p>The issue event group identifier</p>
+     * @param string $noRemote      <p>Use server's own local files for debug display.
+     * Default: true. Setting to false will use local files from studio if available</p>
+     * @param string $overrideHost <p>Override the host address sent to Zend Server for
+     * initiating a Debug session. This is used to point Zend Server at the right address
+     * where Studio is executed</p>
      * @return \ZendServerAPI\DataTypes\DebugRequest
      */
     public function studioStartDebug($eventsGroupId, $noRemote = null, $overrideHost = null)
@@ -37,13 +54,15 @@ class Studio extends BaseAPI
     }
 
     /**
-     * The studioStartProfile Method
+     * <b>The studioStartProfile Method</b>
      *
-     * Start a profiling session with Zend Studio's integration
-     * using an events group identifier
+     * <pre>Start a profiling session with Zend Studio's integration
+     * using an events group identifier</pre>
      *
-     * @param  string                                $eventsGroupId Events group ID
-     * @param  string                                $overrideHost  Override the host address sent to Zend Server
+     * @param string $eventsGroupId <p>The issue event group identifier</p>
+     * @param string $overrideHost  <p>Override the host address sent to
+     * Zend Server for initiating a Debug session. This is used to point Zend Server
+     * at the right address where Studio is executed</p>
      * @return \ZendServerAPI\DataTypes\DebugRequest
      */
     public function studioStartProfile($eventsGroupId, $overrideHost = null)

@@ -17,6 +17,21 @@
 
 namespace ZendServerAPI;
 
+/**
+ * <b>Configuration Management Methods</b>
+ *
+ * The following is a list of the available methods used to manage your
+ * Zend Server or Zend Server ClusterManager configuration:
+ *
+ * <ul>
+ * <li>The configurationExport Method</li>
+ * <li>The configurationImport Method</li>
+ * </ul>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class Configuration extends BaseAPI
 {
     /**
@@ -31,9 +46,11 @@ class Configuration extends BaseAPI
     protected $exportDirectory = null;
 
     /**
-     * Export the configuration and store locally
+     * <b>The configurationExport Method</b>
      *
-     * @param  string       $exportDirectory Directory where to save the exported configs
+     * <pre>Export the current server/cluster configuration into a file.</pre>
+     *
+     * @param  string       $exportDirectory <p>Directory where to save the exported configs</p>
      * @return \SplFileInfo
      */
     public function configurationExport($exportDirectory = null, $fileName = null)
@@ -49,9 +66,11 @@ class Configuration extends BaseAPI
     }
 
     /**
-     * Import a local config file
+     * <b>The configurationImport Method</b>
      *
-     * @param  string                               $importFile File to import
+     * <pre>Import a saved configuration snapshot into the server.</pre>
+     *
+     * @param  string                               $importFile <p>File to import</p>
      * @return \ZendServerAPI\DataTypes\ServersList
      */
     public function configurationImport($importFile = null)
@@ -77,7 +96,8 @@ class Configuration extends BaseAPI
     /**
      * Set the import config file
      *
-     * @param string $importFile Full path to file
+     * @param  string $importFile <p>Full path to file</p>
+     * @return void
      */
     public function setImportFile($importFile)
     {
@@ -97,7 +117,8 @@ class Configuration extends BaseAPI
     /**
      * Directory for exported config files
      *
-     * @param string $exportDirectory
+     * @param  string $exportDirectory <p>Set the directory, where to export the config files to</p>
+     * @return void
      */
     public function setExportDirectory($exportDirectory)
     {

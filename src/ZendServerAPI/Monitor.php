@@ -17,41 +17,79 @@
 
 namespace ZendServerAPI;
 
+/**
+ * <b>Monitor Methods</b>
+ *
+ * The following is a list of methods available for the Monitoring feature:
+ *
+ * <ul>
+ * <li>monitorGetRequestSummary</li>
+ * <li>monitorDownloadTraceFile(codetracingDownloadTraceFile)</li>
+ * <li>monitorStartDebug(studioStartDebug)</li>
+ * <li>monitorGetIssuesListByPredefinedFilter</li>
+ * <li>monitorGetIssuesDetails</li>
+ * <li>monitorGetEventGroupDetails</li>
+ * <li>monitorExportIssueByEventsGroup</li>
+ * <li>monitorChangeIssueStatus</li>
+ * </ul>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class Monitor extends BaseAPI
 {
+    /**
+     * Directory where to save files to
+     * @var string
+     */
     protected $exportDirectory = null;
 
     /**
-     * The monitorGetRequestSummary Method
+     * <b>The monitorGetRequestSummary Method</b>
+     *
+     * <pre><b>This method is not implemented - the functionality was not testable</b>
      *
      * Retrieve information about a particular request's events and code tracing.
      * The requestUid identifier is provided in a cookie that is set in the response
      * to the particular request.
-     * This API action is designed to be used with the new Zend Studio browser toolbar.
+     * This API action is designed to be used with the new Zend Studio browser toolbar.</pre>
      *
-     * @param  string       $requestUid Request identifier, obtained from response cookie
+     * @param string $requestUid <p>Request identifier, obtained from
+     * response cookie</p>
      * @return \SplFileInfo
      */
     public function monitorGetRequestSummary($requestUid)
     {
-        $this->request->setAction($this->apiFactory->factory('monitorGetRequestSummary', $requestUid));
+        throw new \RuntimeException("Method 'monitorGetRequestSummary' is not implemented!");
 
-        return $this->request->send();
+        //$this->request->setAction($this->apiFactory->factory('monitorGetRequestSummary', $requestUid));
+        //return $this->request->send();
     }
 
     /**
-     * Method MonitorGetIssuesListByPredefinedFilter
+     * <b>The monitorGetIssuesListByPredefinedFilter Method</b>
      *
-     * Retrieve a list of monitor issues according to a preset filter identifier.
+     * <pre>Retrieve a list of monitor issues according to a preset filter identifier.
      * The filter identifier is shared with the UI's predefined filters.
      * This WebAPI method may also accept ordering details and paging limits.
-     * The response is a list of issue elements with their general details and event-groups identifiers.
+     * The response is a list of issue elements with their general details and event-groups identifiers.</pre>
      *
-     * @param  string                             $filterId  The predefined filter's id
-     * @param  Integer|null                       $limit     The number of rows to retrieve
-     * @param  Integer|null                       $offset    A paging offset to begin the issues list from
-     * @param  string|null                        $order     Column identifier for sorting the result set
-     * @param  string|null                        $direction Sorting direction: Ascending or Descending
+     * @param string $filterId
+     * <p>The predefined filter's id. Can be the filter's “name” or the
+     * actual identifier randomly created by the system.
+     * This parameter is case-sensitive</p>
+     * @param int|null $limit
+     * <p>The number of rows to retrieve. Default lists
+     * all events up to an arbitrary limit set by the system</p>
+     * @param int|null $offset
+     * <p>A paging offset to begin the issues list from. Default is 0</p>
+     * @param string|null $order
+     * <p>Column identifier for sorting the result set
+     * (id, repeats, date, eventType, fullUrl, severity, status).
+     * Default is date</p>
+     * @param string|null $direction
+     * <p>Sorting direction: Ascending or Descending. Default is Descending</p>
      * @return \ZendServerAPI\DataTypes\IssueList
      */
     public function monitorGetIssuesListByPredefinedFilter($filterId, $limit = null, $offset = null, $order = null, $direction = null)
@@ -62,13 +100,16 @@ class Monitor extends BaseAPI
     }
 
     /**
-     * Method MonitorGetIssuesDetails
+     * <b>The monitorGetIssuesDetails Method</b>
      *
-     * Retrieves the details for the given issue ID.
+     * <pre>Retrieves the details for the given issue ID.
      * The issue ID can be found dynamically with monitorGetIssuesListByPredefinedFilter and
-     * one of the standard filters.
+     * one of the standard filters.</pre>
      *
-     * @param  string                                $issueId The issue ID
+     * @param string $issueId
+     * <p>The predefined filter's id. Can be the filter's “name” or the actual
+     * identifier randomly created by the system.
+     * This parameter is case-sensitive</p>
      * @return \ZendServerAPI\DataTypes\IssueDetails
      */
     public function monitorGetIssueDetails($issueId)
@@ -79,15 +120,17 @@ class Monitor extends BaseAPI
     }
 
     /**
-     * Method MonitorGetEventGroupDetails
+     * <b>The monitorGetEventGroupDetails Method</b>
      *
-     * Retrieves the details for the given issue ID.
+     * <pre>Retrieves the details for the given issue ID.
      * The issue ID can be found dynamically with monitorGetIssuesListByPredefinedFilter and
      * one of the standard filters. If you run that action without the eventsGroupId parameter
-     * it will perform a monitorGetIssueDetails call before and pick the first id
+     * it will perform a monitorGetIssueDetails call before and pick the first id</pre>
      *
-     * @param  string                                      $issueId       The issue ID
-     * @param  Integer                                     $eventsGroupId The events group id
+     * @param string $issueId
+     * <p>Issue identifier, provided in the issue element</p>
+     * @param int $eventsGroupId
+     * <p>Event group identifier, provided in the issue element</p>
      * @return \ZendServerAPI\DataTypes\EventsGroupDetails
      */
     public function monitorGetEventGroupDetails($issueId, $eventsGroupId = null)
@@ -107,33 +150,39 @@ class Monitor extends BaseAPI
     }
 
     /**
-     * Method MonitorChangeIssueStatus
+     * <b>The monitorChangeIssueStatus Method</b>
      *
-     * Retrieves the details for the given issue ID.
-     * The issue ID can be found dynamically with monitorGetIssuesListByPredefinedFilter and
-     * one of the standard filters.
+     * <pre>Modify an Issue's status code based on an Issue's
+     * Id and a status code.</pre>
      *
-     * @param  string                                $issueId   The issue ID
-     * @param  string                                $newStatus The new status, Open | Closed | Ignored
+     * @param  string                                $issueId   <p>The issue ID</p>
+     * @param  string                                $newStatus <p>The new status, Open | Closed | Ignored</p>
      * @return \ZendServerAPI\DataTypes\IssueDetails
      */
     public function monitorChangeIssueStatus($issueId, $newStatus)
     {
-        $this->request->setAction($this->apiFactory->factory('monitorChangeIssueStatus', $issueId, $newStatus));
+        $this->request->setAction($this->apiFactory->factory(
+                'monitorChangeIssueStatus', $issueId, $newStatus
+        ));
 
         return $this->request->send();
     }
 
     /**
-     * Method MonitorExportIssueByEventsGroup
+     * <b>The monitorExportIssueByEventsGroup Method</b>
      *
-     * Export an issue, identified the given eventsgroup id.
-     * Return the SplFileInfo of the downloaded file
+     * <pre>Export an archive containing all of the issue's information,
+     * event groups and code tracing if available, ready for consumption
+     * by Zend Studio. The response is a binary payload.</pre>
      *
-     * @param  string       $eventsGroupId The event group ID
+     * @param string $eventsGroupId   <p>The issue event group identifier</p>
+     * @param string $exportDirectory
+     * <p>The directory where to export the issue. Default is getcwd()</p>
+     * @param string $fileName
+     * <p>The filename where to save the exported issue to.
+     * Default is the given name from Zend Server</p>
      * @return \SplFileInfo
      */
-
     public function monitorExportIssueByEventsGroup($eventsGroupId, $exportDirectory = null, $fileName = null)
     {
         if($exportDirectory !== null)
@@ -147,14 +196,20 @@ class Monitor extends BaseAPI
     }
 
     /**
-     * Method monitorDownloadTraceFile
+     * <b>The monitorDownloadTraceFile Method</b>
      *
-     * Download a trace file. Alias for Codetracing::downloadTraceFile
+     * <pre>Download a trace file. Alias for Codetracing::downloadTraceFile</pre>
      *
-     * @param  string       $eventsGroupId The event group ID
+     * @param string $traceFile
+     * <p>Trace file identifier. Note that a codetracing identifier is provided
+     * as part of the monitorGetRequestSummary xml response</p>
+     * @param string $exportDirectory
+     * <p>The directory where to export the tracefile to. Default is getcwd()</p>
+     * @param string $fileName
+     * <p>The filename where to save the exported issue to.
+     * Default is the given name from Zend Server</p>
      * @return \SplFileInfo
      */
-
     public function monitorDownloadTraceFile($traceFile, $exportDirectory = null, $fileName = null)
     {
         if($exportDirectory !== null)
@@ -168,7 +223,10 @@ class Monitor extends BaseAPI
     }
 
     /**
-     * @return the $exportDirectory
+     * <pre>Get the global directory setting for all
+     * methods that export files in this class</pre>
+     *
+     * @return string
      */
     public function getExportDirectory ()
     {
@@ -176,7 +234,13 @@ class Monitor extends BaseAPI
     }
 
     /**
-     * @param NULL $exportDirectory
+     * <pre>Set the global setting for the export directory.
+     * All files will be saved here unless something else
+     * passed to the methods</pre>
+     *
+     * @param string $exportDirectory <p>The directory where
+     * to save the files to.Can be set globally here</p>
+     * @return void
      */
     public function setExportDirectory ($exportDirectory)
     {

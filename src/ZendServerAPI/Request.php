@@ -180,9 +180,9 @@ class Request
 
             if ($this->config->getProxyHost() !== null) {
                 $options = array_merge(
-                    	array('curl.options' =>
-                    	        array(CURLOPT_PROXY => 'http://'.$this->config->getProxyHost().':'.$this->config->getProxyPort())
-                    	), $options
+                        array('curl.options' =>
+                                array(CURLOPT_PROXY => 'http://'.$this->config->getProxyHost().':'.$this->config->getProxyPort())
+                        ), $options
                 );
             }
 

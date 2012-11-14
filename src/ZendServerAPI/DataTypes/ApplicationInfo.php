@@ -78,12 +78,12 @@ class ApplicationInfo extends DataType
      */
     protected $servers = array();
     /**
-     * Some messages
+     * List of messages, related to the application
      * @var \ZendServerAPI\DataTypes\MessageList
      */
     protected $messageList = null;
     /**
-     * A list of messages related to the application
+     * A list of versions for this application
      * @var array \ZendServerAPI\DataTypes\DeployedVersions
      */
     protected $deployedVersions = array();
@@ -129,7 +129,8 @@ class ApplicationInfo extends DataType
     }
 
     /**
-     * Some messages
+     * Get the list of messages, related to the application
+     *
      * @return \ZendServerAPI\DataTypes\MessageList
      */
     public function getMessageList()
@@ -183,7 +184,7 @@ class ApplicationInfo extends DataType
     }
 
     /**
-     * Get the list of messages, related to the application
+     * Get the list of versions for this application
      *
      * @return array
      */
@@ -295,7 +296,7 @@ class ApplicationInfo extends DataType
     }
 
     /**
-     * Set a list of messages, related to the application
+     * Add a version for this application
      *
      * @param  \ZendServerAPI\DataTypes\DeployedVersions $deployedVersions
      * @return void
@@ -306,7 +307,7 @@ class ApplicationInfo extends DataType
     }
 
     /**
-     * Set a list of messages, related to the application
+     * Set a list of versions for this application
      *
      * @param  array $deployedVersions
      * @return void

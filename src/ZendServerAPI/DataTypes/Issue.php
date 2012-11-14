@@ -115,7 +115,7 @@ class Issue extends DataType
      */
     public function getSeverity ()
     {
-        return $this->serverity;
+        return $this->severity;
     }
 
     /**

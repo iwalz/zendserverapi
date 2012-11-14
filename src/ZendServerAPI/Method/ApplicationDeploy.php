@@ -127,6 +127,7 @@ class ApplicationDeploy extends \ZendServerAPI\Method
         $contentArray = array(
             'baseUrl' => $this->baseUrl,
             'userParams' => $this->getUserParams(),
+            'userAppName' => $this->getUserAppName(),
             'createVhost' => ($this->createVhost === true ? 'TRUE' : 'FALSE'),
             'defaultServer' => ($this->defaultServer === true ? 'TRUE' : 'FALSE'),
             'ignoreFailures' => ($this->ignoreFailures === true ? 'TRUE' : 'FALSE')

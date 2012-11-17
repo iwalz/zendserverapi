@@ -193,7 +193,7 @@ class Request
             $options = array(
                             'host' => $this->config->getHost(),
                             'port' => $this->config->getPort(),
-                            'protocol' => $this->config->getPort());
+                            'protocol' => $this->config->getProtocol());
 
             if ($this->config->getProxyHost() !== null) {
                 $options = array_merge(

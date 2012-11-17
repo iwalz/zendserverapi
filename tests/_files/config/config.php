@@ -36,7 +36,7 @@ return array(
     		"fullApiKey" => "bee698dde6a95de71932d65cb655c31fc4ea04c1fabaf6f0a1b852617eac32ac",
     		"apiName" => "api",
     		"host" => "localhost",
-    		"port" => "10081"
+    		"port" => 10081
     	),
     	# Invalid character
     	"example92" => array(

@@ -130,6 +130,10 @@ class Startup
         $config->setPort($conf['port']);
         $config->setApiVersion($conf['version']);
         $config->setApiKey($apiKey);
+        if(isset($conf['protocol']))
+            $config->setProtocol($conf['protocol']);
+        else 
+            $config->setProtocol($config->getPort() === 10082 ? 'https' : 'http');
 
         $request->setConfig($config);
 

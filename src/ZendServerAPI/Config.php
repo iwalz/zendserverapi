@@ -64,6 +64,11 @@ class Config
      * @var int
      */
     protected $proxyPort = null;
+    /**
+     * Protocol (http/https)
+     * @var string
+     */
+    protected $protocol = null;
 
     /**
      * Set the API Version
@@ -112,7 +117,7 @@ class Config
      */
     public function setPort($port)
     {
-        $this->port = $port;
+        $this->port = (int)$port;
     }
 
     /**
@@ -164,6 +169,16 @@ class Config
     {
         return $this->proxyPort;
     }
+    
+    /**
+     * Get the protocol (http/https)
+     * 
+     * @return string
+     */
+    public function getProtocol()
+    {
+        return $this->protocol;
+    }
 
     /**
      * Set the host to proxy the requests
@@ -185,5 +200,17 @@ class Config
     {
         $this->proxyPort = (int) $proxyPort;
     }
+    
+    /**
+     * Set the protocol (http/https)
+     * 
+     * @param string
+     * @return void
+     */
+    public function setProtocol($protocol)
+    {
+        $this->protocol = $protocol;
+    }
+    
 
 }

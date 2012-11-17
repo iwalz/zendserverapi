@@ -62,6 +62,29 @@ return array(
             "host" => "127.0.0.1",
             "port" => "11111"
         ),
+        "httpsByPort" => array(
+                "version" => \ZendServerAPI\Version::ZSCM56,
+                "fullApiKey" => "bee698dde6a95de71932d65cb655c31fc4ea04c1fabaf6f0a1b852617eac32ac",
+                "apiName" => "api",
+                "host" => "localhost",
+                "port" => "10082"
+        ),
+        "httpsBySetting" => array(
+                "version" => \ZendServerAPI\Version::ZSCM56,
+                "fullApiKey" => "bee698dde6a95de71932d65cb655c31fc4ea04c1fabaf6f0a1b852617eac32ac",
+                "apiName" => "api",
+                "host" => "localhost",
+                "protocol" => "https",
+                "port" => "10081"
+        ),
+        "protocolError" => array(
+                "version" => \ZendServerAPI\Version::ZSCM56,
+                "fullApiKey" => "bee698dde6a95de71932d65cb655c31fc4ea04c1fabaf6f0a1b852617eac32ac",
+                "apiName" => "api",
+                "host" => "localhost",
+                "protocol" => "foo",
+                "port" => "10081"
+        ),
         "documentation" => array(
             "version" => \ZendServerAPI\Version::ZSCM56,
             "fullApiKey" => "9dc7f8c5ac43bb2ab36120861b4aeda8f9bb6c521e124360fd5821ef279fd9c7",

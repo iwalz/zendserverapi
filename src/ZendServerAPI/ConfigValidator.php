@@ -162,6 +162,14 @@ class ConfigValidator
                  !$this->config['servers'][$name]['host']
          )
              throw new \InvalidArgumentException("host not specified in " . $name);
+         
+         if(
+                 isset($this->config['servers'][$name]['protocol']) &&
+                 !(strtolower($this->config['servers'][$name]['protocol']) == "http" ||
+                 strtolower($this->config['servers'][$name]['protocol']) == "https")
+        ) 
+             throw new \InvalidArgumentException("Protocol must be either http or https");
+        
     }
 
     /**

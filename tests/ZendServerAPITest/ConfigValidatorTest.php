@@ -80,6 +80,20 @@ class ConfigValidatorTest extends PHPUnit_Framework_TestCase
         $settings = $configValidator->getSettings();
     }
     
+    /**
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Protocol must be either http or https
+     */
+    public function testConfigWithErrorInProtocol()
+    {
+        $request = \ZendServerAPI\Startup::getRequest("protocolError");
+    }
+    
+    public function testProtocolFromDefaultHttpsPort()
+    {
+        
+    }
+    
     public function testDefaultLoglevelConfig()
     {
         $configValidator = new \ZendServerAPI\ConfigValidator(__DIR__.'/../_files/config/testdefaultloglevelconfig.php');

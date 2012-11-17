@@ -192,7 +192,8 @@ class Request
         if (!$this->client) {
             $options = array(
                             'host' => $this->config->getHost(),
-                            'port' => $this->config->getPort());
+                            'port' => $this->config->getPort(),
+                            'protocol' => $this->config->getPort());
 
             if ($this->config->getProxyHost() !== null) {
                 $options = array_merge(
@@ -203,7 +204,7 @@ class Request
             }
 
             $this->client = new Client(
-                    'http://{host}:{port}', $options
+                    '{protocol}://{host}:{port}', $options
             );
         }
 

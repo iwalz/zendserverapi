@@ -49,7 +49,7 @@ class Issue extends DataType
     protected $count = null;
     /**
      * Issue's last time of manifestation
-     * @var int
+     * @var string
      */
     protected $lastOccurance = null;
     /**
@@ -107,7 +107,7 @@ class Issue extends DataType
      * Get the issue's last time of manifestation
      * (as timestamp)
      *
-     * @return int
+     * @return string
      */
     public function getLastOccurance ()
     {
@@ -192,12 +192,12 @@ class Issue extends DataType
      * Set the issue's last time of manifestation
      * (as timestamp)
      *
-     * @param  int  $lastOccurance
+     * @param  string $lastOccurance
      * @return void
      */
     public function setLastOccurance ($lastOccurance)
     {
-        $this->lastOccurance = (int) $lastOccurance;
+        $this->lastOccurance = $lastOccurance;
     }
 
     /**

@@ -51,7 +51,7 @@ class IssueList extends Adapter
             $issue->setId((string) $xmlIssue->id);
             $issue->setRule((string) $xmlIssue->rule);
             $issue->setCount((string) $xmlIssue->count);
-            $issue->setLastOccurance((string) $xmlIssue->lastOccurance);
+            $issue->setLastOccurance((string)$xmlIssue->lastOccurance);
             $issue->setSeverity((string) $xmlIssue->severity);
             $issue->setStatus((string) $xmlIssue->status);
 

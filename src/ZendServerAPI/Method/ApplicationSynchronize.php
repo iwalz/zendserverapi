@@ -17,6 +17,21 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The applicationSynchronize Method</b>
+ *
+ * <pre>Synchronizing an existing application, whether in order to fix a problem 
+ * or to reset an installation. This process is asynchronous, meaning the initial 
+ * request will start the synchronize process and the initial response will show 
+ * information about the application being synchronized. However, the synchronize 
+ * process will proceed after the response is returned. You must continue checking 
+ * the application status using the applicationGetStatus method until the process 
+ * is complete.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ApplicationSynchronize extends \ZendServerAPI\Method
 {
     /**
@@ -39,6 +54,15 @@ class ApplicationSynchronize extends \ZendServerAPI\Method
      * Constructor for ApplicationRemove method
      *
      * @param int $applicationId ApplicationId to remove
+     * @param array $servers 
+     * <p>A List of server ID's. If defined, the action will be done 
+     * only on the servers whose ID's are specified and which
+     * are currently members of the cluster.</p>
+     * @param bool $ignoreFailures 
+     * <p>Ignore failures during staging or activation if only some 
+     * servers report failures. If all servers report failures the 
+     * operation will fail in any case. The default value is FALSE, 
+     * meaning any failure will return an error.</p>
      */
     public function __construct($applicationId, array $servers = array(), $ignoreFailures = false)
     {
@@ -49,7 +73,9 @@ class ApplicationSynchronize extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure ()
     {

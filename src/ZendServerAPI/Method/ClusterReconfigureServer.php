@@ -17,6 +17,17 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The clusterReconfigureServer Method</b>
+ *
+ * <pre>Re-configure a cluster member to match the cluster's profile. 
+ * This operation will fail on a Zend Server Cluster Manager with 
+ * no valid license.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ClusterReconfigureServer extends \ZendServerAPI\Method
 {
     /**
@@ -54,7 +65,9 @@ class ClusterReconfigureServer extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     * 
+     * @return void
      */
     public function configure ()
     {

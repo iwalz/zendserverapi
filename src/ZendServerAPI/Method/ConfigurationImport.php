@@ -19,17 +19,41 @@ namespace ZendServerAPI\Method;
 
 use ZendServerAPI\Adapter\ServersList;
 
+/**
+ * <b>The configurationImport Method</b>
+ *
+ * <pre>Import a saved configuration snapshot into the server.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ConfigurationImport extends \ZendServerAPI\Method
 {
+    /**
+     * File to import
+     * @var string
+     */
     private $file = null;
 
+    /**
+     * Constructor for ConfigurationImport
+     * 
+     * @param string $file The file to import
+     */
     public function __construct($file = null)
     {
         parent::__construct();
 
-        $this->file = $file;
+        if($file !== null)
+            $this->file = $file;
     }
 
+    /**
+     * Configures all needed information for the method implementation
+     *
+     * @return void
+     */
     public function configure()
     {
         $this->setFunctionPath('/ZendServerManager/Api/configurationImport');
@@ -37,26 +61,52 @@ class ConfigurationImport extends \ZendServerAPI\Method
         $this->setParser(new ServersList());
     }
 
+    /**
+     * Returns the content type
+     *
+     * @return string
+     */
     public function getContentType()
     {
         return 'application/x-www-form-urlencoded';
     }
 
+    /**
+     * Get the files to post
+     * 
+     * @return array
+     */
     public function getPostFiles()
     {
         return array('configFile' => array('fileName' => $this->file, 'contentType' => 'application/vnd.zend.serverconfig'));
     }
 
+    /**
+     * Returns the content
+     *
+     * @return string
+     */
     public function getContent()
     {
         return "";
     }
 
+    /**
+     * Get the fileName which file needs to be imported
+     *
+     * @return string
+     */
     public function getImportFile()
     {
         return $this->file;
     }
 
+    /**
+     * Set the fileName which file needs to be imported
+     *
+     * @param string $importFile
+     * @return void
+     */
     public function setImportFile($importFile)
     {
         $this->file = $importFile;

@@ -20,10 +20,24 @@ namespace ZendServerAPI\Method;
 use ZendServerAPI\DataTypes\LicenseInfo,
     ZendServerAPI\DataTypes\MessageList;
 
+/**
+ * <b>The getSystemInfo Method</b>
+ *
+ * <pre>Use this method to get information about the system, including 
+ * the Zend Server edition and version, PHP version, licensing information, 
+ * etc. This method produces similar output on all Zend Server systems, and
+ * is future compatible.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class GetSystemInfo extends \ZendServerAPI\Method
 {
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure()
     {

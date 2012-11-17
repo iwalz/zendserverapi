@@ -27,7 +27,9 @@ namespace ZendServerAPI\Adapter;
 class Issue extends Adapter
 {
     /**
-     * @see \ZendServerAPI\Adapter\Adapter::parse()
+     * Parse the xml response in object mappings
+     *
+     * @param string $xml
      * @return \ZendServerAPI\DataTypes\Issue
      */
     public function parse ($xml = null)

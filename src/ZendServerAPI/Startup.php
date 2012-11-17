@@ -17,6 +17,16 @@
 
 namespace ZendServerAPI;
 
+/**
+ * <b>Zend Server API 'bootstrap'</b>
+ *
+ * <pre>This class is generating a request object based on the
+ * configuration.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class Startup
 {
     /**
@@ -49,8 +59,8 @@ class Startup
     /**
      * Configure request object
      *
-     * @param  string                 $name
-     * @return \ZendServerAPI\Request
+     * @param  string  $name
+     * @return Request
      */
     private static function setUpRequest($name = null)
     {
@@ -66,9 +76,10 @@ class Startup
     /**
      * Configure request logger
      *
-     * @param \ZendServerAPI\Request $request
+     * @param  Request $request
+     * @return void
      */
-    private static function setUpLogger(\ZendServerAPI\Request $request)
+    private static function setUpLogger(Request $request)
     {
         if(!is_dir(__DIR__.'/../../logs'))
             mkdir(__DIR__.'/../../logs');
@@ -93,8 +104,9 @@ class Startup
     /**
      * Configure the api key for the request
      *
-     * @param string                 $name
-     * @param \ZendServerAPI\Request $request
+     * @param  string                 $name
+     * @param  \ZendServerAPI\Request $request
+     * @return void
      */
     private static function configureApiKey($name, \ZendServerAPI\Request $request)
     {
@@ -117,7 +129,13 @@ class Startup
 
     }
 
-    private static function configureProxy(\ZendServerAPI\Request $request)
+    /**
+     * Configure the proxy for the request
+     *
+     * @param  Request $request
+     * @return void
+     */
+    private static function configureProxy(Request $request)
     {
         $validator = new ConfigValidator(self::getConfigPath());
         $conf = $validator->getSettings();
@@ -131,7 +149,8 @@ class Startup
     /**
      * Set the config path
      *
-     * @param string $configPath
+     * @param  string $configPath
+     * @return void
      */
     public static function setConfigPath($configPath)
     {
@@ -153,6 +172,8 @@ class Startup
 
     /**
      * Disable logging
+     *
+     * @return void
      */
     public static function disableLogging()
     {
@@ -161,6 +182,8 @@ class Startup
 
     /**
      * Enable logging
+     *
+     * @return void
      */
     public static function enableLogging()
     {

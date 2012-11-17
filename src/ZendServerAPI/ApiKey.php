@@ -17,6 +17,13 @@
 
 namespace ZendServerAPI;
 
+/**
+ * ApiKey model implementation
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ApiKey
 {
     /**

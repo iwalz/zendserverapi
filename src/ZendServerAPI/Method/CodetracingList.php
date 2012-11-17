@@ -17,16 +17,56 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The codetracingList Method</b>
+ *
+ * <pre>Retrieve a list of code-tracing files available for download 
+ * using codetracingDownloadTraceFile.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class CodetracingList extends \ZendServerAPI\Method
 {
+    /**
+     * List of application IDs. If specified, code-tracing 
+     * entries will be returned for these applications only. 
+     * Default: all applications
+     * @var array
+     */
     protected $applicationIds = null;
+    /**
+     * Row limit to retrieve, defaults to value defined in 
+     * zend-user-user.ini
+     * @var int
+     */
     protected $limit = null;
+    /**
+     * The page offset to be displayed, defaults to 0
+     * @var int
+     */
     protected $offset = null;
+    /**
+     * Column to sort the result by (Id, Date, Url, CreatedBy, 
+     * Filesize), defaults to Date
+     * @var string
+     */
     protected $orderBy = null;
+    /**
+     * Sorting direction , defaults to Desc
+     * @var string
+     */
     protected $direction = null;
 
     /**
      * Constructor for CodetracingList method
+     * 
+     * @param array $applicationIds Application ID
+     * @param int $limit Limit to retrieve
+     * @param int $offset Page offset
+     * @param string $orderBy Column to sort
+     * @param string $direction ASC or DESC
      */
     public function __construct($applicationIds = array(), $limit = null, $offset = null, $orderBy = null, $direction = null)
     {
@@ -51,7 +91,9 @@ class CodetracingList extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure ()
     {
@@ -60,6 +102,11 @@ class CodetracingList extends \ZendServerAPI\Method
         $this->setParser(new \ZendServerAPI\Adapter\CodetracingList());
     }
 
+    /**
+     * Get link for the method
+     *
+     * @return string
+     */
     public function getLink()
     {
         $link = parent::getLink();

@@ -27,7 +27,9 @@ namespace ZendServerAPI\Adapter;
 class Codetrace extends Adapter
 {
     /**
-     * @see \ZendServerAPI\Adapter\Adapter::parse()
+     * Parse the xml response in object mappings
+     *
+     * @param string $xml
      * @return \ZendServerAPI\DataTypes\CodeTrace
      */
     public function parse ($xml = null)

@@ -17,6 +17,19 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The monitorGetIssuesListByPredefinedFilter Method</b>
+ *
+ * <pre>Retrieve a list of monitor issues according to a preset filter identifier. 
+ * The filter identifier is shared with the UI's predefined filters. 
+ * This WebAPI method may also accept ordering details and paging limits. 
+ * 
+ * The response is a list of issue elements with their general details and event-groups identifiers.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class MonitorGetIssuesListByPredefinedFilter extends \ZendServerAPI\Method
 {
     /**
@@ -76,7 +89,9 @@ class MonitorGetIssuesListByPredefinedFilter extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure ()
     {
@@ -85,13 +100,20 @@ class MonitorGetIssuesListByPredefinedFilter extends \ZendServerAPI\Method
         $this->setParser(new \ZendServerAPI\Adapter\IssueList());
     }
 
+    /**
+     * Returns the accept header
+     *
+     * @return string
+     */
     public function getAcceptHeader()
     {
         return "application/vnd.zend.serverapi+xml;version=1.2";
     }
 
     /**
-     * @see \ZendServerAPI\Method::getLink()
+     * Get link for the method
+     *
+     * @return string
      */
     public function getLink()
     {

@@ -17,6 +17,16 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>Method studioStartProfile Method</b>
+ *
+ * <pre>Start a profiling session with Zend Studio's integration 
+ * using an event-group's identifier.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class StudioStartProfile extends \ZendServerAPI\Method
 {
     /**
@@ -50,7 +60,9 @@ class StudioStartProfile extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure ()
     {
@@ -59,6 +71,11 @@ class StudioStartProfile extends \ZendServerAPI\Method
         $this->setParser(new \ZendServerAPI\Adapter\DebugRequest());
     }
 
+    /**
+     * Returns the accept header
+     *
+     * @return string
+     */
     public function getAcceptHeader()
     {
         return "application/vnd.zend.serverapi+xml;version=1.2";

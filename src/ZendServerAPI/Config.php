@@ -17,6 +17,15 @@
 
 namespace ZendServerAPI;
 
+/**
+ * <b>Class for server configuration</b>
+ *
+ * <pre>This is the config model, that is parsed from config.php.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class Config
 {
     /**
@@ -31,7 +40,7 @@ class Config
     protected $port = '10081';
     /**
      * ApiKey for the current connection
-     * @var \ZendServerAPI\ApiKey
+     * @var ApiKey
      */
     protected $apiKey = null;
     /**
@@ -49,14 +58,6 @@ class Config
      * @var int
      */
     protected $proxyPort = null;
-
-    /**
-     * Construct for ZendServerAPI\Config
-     */
-    public function __construct()
-    {
-
-    }
 
     /**
      * Set the API Version
@@ -81,7 +82,7 @@ class Config
     /**
      * The api key for the current connection
      *
-     * @param \ZendServerAPI\ApiKey $apiKey
+     * @param ApiKey $apiKey
      */
     public function setApiKey(ApiKey $apiKey)
     {
@@ -131,7 +132,7 @@ class Config
     /**
      * Returns the api key
      *
-     * @return \ZendServerAPI\ApiKey
+     * @return ApiKey
      */
     public function getApiKey()
     {
@@ -139,7 +140,9 @@ class Config
     }
 
     /**
-     * @return the $proxyHost
+     * Return the host that is used to proxy the connection
+     *
+     * @return string
      */
     public function getProxyHost()
     {
@@ -147,7 +150,9 @@ class Config
     }
 
     /**
-     * @return the $proxyPort
+     * Set the proxy port
+     *
+     * @return int
      */
     public function getProxyPort()
     {
@@ -155,7 +160,10 @@ class Config
     }
 
     /**
-     * @param string $proxyHost
+     * Set the host to proxy the requests
+     *
+     * @param  string $proxyHost
+     * @return void
      */
     public function setProxyHost($proxyHost)
     {
@@ -163,11 +171,13 @@ class Config
     }
 
     /**
-     * @param number $proxyPort
+     * Set the proxy port
+     *
+     * @param int
      */
     public function setProxyPort($proxyPort)
     {
-        $this->proxyPort = $proxyPort;
+        $this->proxyPort = (int) $proxyPort;
     }
 
 }

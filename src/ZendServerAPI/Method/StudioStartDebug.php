@@ -17,6 +17,15 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The studioStartDebug Method</b>
+ *
+ * <pre>Start a debug session for a specific issue.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class StudioStartDebug extends \ZendServerAPI\Method
 {
     /**
@@ -59,7 +68,9 @@ class StudioStartDebug extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     * 
+     * @return void
      */
     public function configure ()
     {
@@ -68,6 +79,11 @@ class StudioStartDebug extends \ZendServerAPI\Method
         $this->setParser(new \ZendServerAPI\Adapter\DebugRequest());
     }
 
+    /**
+     * Returns the default accept header
+     *
+     * @return string
+     */
     public function getAcceptHeader()
     {
         return "application/vnd.zend.serverapi+xml;version=1.2";

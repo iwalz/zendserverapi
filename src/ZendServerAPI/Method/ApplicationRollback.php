@@ -17,6 +17,20 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The applicationRollback Method</b>
+ *
+ * <pre>Rollback an existing application to its previous version. 
+ * This process is asynchronous, meaning the initial request will 
+ * start the rollback process and the initial response will show 
+ * information about the application being rolled back. 
+ * You must continue checking the application status using the 
+ * applicationGetStatus method until the process is complete.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ApplicationRollback extends \ZendServerAPI\Method
 {
     /**
@@ -37,7 +51,9 @@ class ApplicationRollback extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure ()
     {

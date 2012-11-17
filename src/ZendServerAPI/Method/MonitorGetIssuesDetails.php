@@ -17,6 +17,16 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The monitorGetIssuesDetails Method</b>
+ *
+ * <pre>Retrieve an issue's details according to the issueId passed as a 
+ * parameter. Additional information about event groups is also displayed.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class MonitorGetIssuesDetails extends \ZendServerAPI\Method
 {
     /**
@@ -30,8 +40,7 @@ class MonitorGetIssuesDetails extends \ZendServerAPI\Method
      *
      * Retrieves the details of the given issue id.
      *
-     * @param  string                                        $issueId      The issue ID
-     * @param  Integer|95                                    $eventGroupId The event group identifier
+     * @param  string   $issueId      The issue ID
      * @return \ZendServerAPI\Method\MonitorGetIssuesDetails
      */
     public function __construct($issueId)
@@ -41,7 +50,9 @@ class MonitorGetIssuesDetails extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure ()
     {
@@ -50,13 +61,20 @@ class MonitorGetIssuesDetails extends \ZendServerAPI\Method
         $this->setParser(new \ZendServerAPI\Adapter\IssueDetails());
     }
 
+    /**
+     * Returns the accept header
+     *
+     * @return string
+     */
     public function getAcceptHeader()
     {
         return "application/vnd.zend.serverapi+xml;version=1.2";
     }
 
     /**
-     * @see \ZendServerAPI\Method::getLink()
+     * Get link for the method
+     *
+     * @return string
      */
     public function getLink()
     {

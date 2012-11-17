@@ -17,19 +17,33 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The monitorChangeIssueStatus Method</b>
+ *
+ * <pre>Modify an Issue's status code based on an Issue's Id and a status code.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class MonitorChangeIssueStatus extends \ZendServerAPI\Method
 {
     /**
-     * Issue IS
+     * Issue ID
      * @var int
      */
     protected $issueId = null;
+    /**
+     * The new status to set: Open | Closed | Ignored
+     * @var string
+     */
     protected $newStatus = null;
 
     /**
      * Constructor for ApplicationRemove method
      *
      * @param int $applicationId ApplicationId to remove
+     * @param string $newStatus The new status to set
      */
     public function __construct($applicationId, $newStatus)
     {
@@ -38,18 +52,30 @@ class MonitorChangeIssueStatus extends \ZendServerAPI\Method
         parent::__construct();
     }
 
+    /**
+     * Returns the content type
+     *
+     * @return string
+     */
     public function getContentType()
     {
         return "application/x-www-form-urlencoded";
     }
 
+    /**
+     * Returns the accept header
+     *
+     * @return string
+     */
     public function getAcceptHeader()
     {
         return "application/vnd.zend.serverapi+xml;version=1.2";
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure ()
     {

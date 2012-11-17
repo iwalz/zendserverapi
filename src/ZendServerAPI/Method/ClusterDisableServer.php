@@ -17,6 +17,19 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The clusterDisableServer Method</b>
+ *
+ * <pre>This method disables a cluster member. This process may be 
+ * asynchronous if Session Clustering is used. If this is the case, 
+ * the initial operation returns an HTTP 202 response. As long as the server is not 
+ * fully disabled, further calls to this method are idempotent. On a 
+ * Zend Server Cluster Manager with no valid license, this operation fails.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ClusterDisableServer extends \ZendServerAPI\Method
 {
     /**
@@ -28,7 +41,7 @@ class ClusterDisableServer extends \ZendServerAPI\Method
     /**
      * Constructor for ClusterDisableServer method
      *
-     * @param int $server Id of the server to disable
+     * @param int $serverId Id of the server to disable
      */
     public function __construct($serverId)
     {
@@ -37,7 +50,9 @@ class ClusterDisableServer extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure ()
     {

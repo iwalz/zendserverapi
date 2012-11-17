@@ -50,7 +50,8 @@ class Configuration extends BaseAPI
      *
      * <pre>Export the current server/cluster configuration into a file.</pre>
      *
-     * @param  string       $exportDirectory <p>Directory where to save the exported configs</p>
+     * @param  string  $exportDirectory <p>Directory where to save the exported configs</p>
+     * @param  string  $fileName <p>Filename to export config to</p>
      * @return \SplFileInfo
      */
     public function configurationExport($exportDirectory = null, $fileName = null)

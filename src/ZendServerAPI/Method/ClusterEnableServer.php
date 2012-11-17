@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -17,6 +17,20 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The clusterEnableServer Method</b>
+ *
+ * <pre>This method is used to re-enable a cluster member. 
+ * This process may be asynchronous if Session Clustering is used. 
+ * If this is the case, the initial operation will return an HTTP 202 response. 
+ * This action is idempotent, and running it on an enabled server will result 
+ * in a 200 OK response with no consequences. 
+ * On a Zend Server Cluster Manager with no valid license this operation fails.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ClusterEnableServer extends \ZendServerAPI\Method
 {
     /**
@@ -37,7 +51,9 @@ class ClusterEnableServer extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure ()
     {

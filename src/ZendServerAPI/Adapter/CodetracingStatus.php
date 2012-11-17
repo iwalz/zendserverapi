@@ -27,7 +27,9 @@ namespace ZendServerAPI\Adapter;
 class CodetracingStatus extends Adapter
 {
     /**
-     * @see \ZendServerAPI\Adapter\Adapter::parse()
+     * Parse the xml response in object mappings
+     *
+     * @param string $xml
      * @return \ZendServerAPI\DataTypes\CodeTracingStatus
      */
     public function parse ($xml = null)

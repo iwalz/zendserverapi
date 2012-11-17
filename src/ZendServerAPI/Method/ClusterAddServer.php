@@ -17,6 +17,16 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The clusterAddServer Method</b>
+ *
+ * <pre>Add a new server to the cluster. On a Zend Server Cluster Manager 
+ * with no valid license, this operation fails.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ClusterAddServer extends \ZendServerAPI\Method
 {
     /**
@@ -65,7 +75,9 @@ class ClusterAddServer extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure ()
     {

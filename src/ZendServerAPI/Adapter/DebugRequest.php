@@ -27,7 +27,9 @@ namespace ZendServerAPI\Adapter;
 class DebugRequest extends Adapter
 {
     /**
-     * @see \ZendServerAPI\Adapter\Adapter::parse()
+     * Parse the xml response in object mappings
+     *
+     * @param string $xml
      * @return \ZendServerAPI\DataTypes\DebugRequest
      */
     public function parse ($xml = null)

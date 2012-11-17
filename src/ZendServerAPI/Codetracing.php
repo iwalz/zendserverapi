@@ -162,8 +162,9 @@ class Codetracing extends BaseAPI
      *
      * <pre>Download the amf file specified by the codetracing identifier.</pre>
      *
-     * @param  string                               $traceFile <p>Trace file identifier</p>
-     * @param  string                               $fileName  <p>Filename to save tracefile to</p>
+     * @param  string  $traceFile <p>Trace file identifier</p>
+     * @param  string  $fileName  <p>Filename to save tracefile to</p>
+     * @param  string  $exportDirectory <p>Directory to export files to</p>
      * @return \ZendServerAPI\DataTypes\CodeTracing
      */
     public function codetracingDownloadTraceFile($traceFile, $fileName = null, $exportDirectory = null)

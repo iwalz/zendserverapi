@@ -54,6 +54,7 @@ class Deployment extends BaseAPI
      * @var int
      */
     const DEFAULT_WAITINTERVAL = 5;
+    
     /**
      * <b>The applicationGetStatus Method</b>
      *
@@ -62,7 +63,6 @@ class Deployment extends BaseAPI
      * specified applications. If no IDs are specified, this method will return information about all applications on
      * the server or cluster.</pre>
      *
-     * @access public
      * @param
      *            array Ids of application's
      * @return \ZendServerAPI\DataTypes\ApplicationList
@@ -89,24 +89,24 @@ class Deployment extends BaseAPI
      * @param
      *            string $baseUrl <p>The baseurl to which the application will be deployed</p>
      * @param
-     *            boolean $createVhost[optional]=false <p>create VHost</p>
+     *            boolean $createVhost <p>create VHost</p>
      * @param
-     *            boolean $defaultServer[optional]=false <p>Deploy the application on the default server</p>
+     *            boolean $defaultServer <p>Deploy the application on the default server</p>
      * @param
-     *            string $userAppName[optional]=null <p>Free text for user defined application identifier</p>
+     *            string $userAppName <p>Free text for user defined application identifier</p>
      * @param
-     *            boolean $ignoreFailures[optional]=false <p>ignore errors during staging on some servers</p>
+     *            bool $ignoreFailures <p>ignore errors during staging on some servers</p>
      * @param
-     *            array $userParams[optional]=array() <p>Set values for user parameters defined in package</p>
+     *            array $userParams <p>Set values for user parameters defined in package</p>
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function applicationDeploy ($file, $baseUrl, $createVhost = false,
-            $defaultServer = false, $userAppName = null, $igonreFailures = false,
+            $defaultServer = false, $userAppName = null, $ignoreFailures = false,
             $userParams = array())
     {
         $this->request->setAction($this->apiFactory->factory('applicationDeploy', $file, $baseUrl,
                         $createVhost, $defaultServer, $userAppName,
-                        $igonreFailures, $userParams));
+                        $ignoreFailures, $userParams));
 
         return $this->request->send();
     }
@@ -122,13 +122,12 @@ class Deployment extends BaseAPI
      * continue checking the application status using the applicationGetStatus method until the deployment
      * process is complete.</pre>
      *
-     * @access public
      * @param
      *            int $appId <p>The application's ID</p>
      * @param
      *            string $package <p>The application's package</p>
      * @param
-     *            boolean $ignoreFailures <p>Ignore failures during staging on some servers</p>
+     *            bool $ignoreFailures <p>Ignore failures during staging on some servers</p>
      * @param
      *            array $userParams <p>Set values for user parameters defined in package</p>
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
@@ -151,8 +150,7 @@ class Deployment extends BaseAPI
      * removal process is complete. Once applicationGetStatus contains no information about the application, it
      * has been completely removed</pre>
      *
-     * @access public
-     * @param  int                                      $appId <p>The application's ID</p>
+     * @param  int  $appId <p>The application's ID</p>
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function applicationRemove ($appId)
@@ -170,8 +168,7 @@ class Deployment extends BaseAPI
      * being rolled back. You must continue checking the application status using the applicationGetStatus
      * method until the process is complete.</pre>
      *
-     * @access public
-     * @param  int                                      $appId <p>The application's ID</p>
+     * @param  int  $appId <p>The application's ID</p>
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function applicationRollback ($appId)
@@ -190,13 +187,12 @@ class Deployment extends BaseAPI
      * process will proceed after the response is returned. You must continue checking the application status
      * using the applicationGetStatus method until the process is complete.</pre>
      *
-     * @access public
      * @param
      *            int $appId <p>The application's id</p>
      * @param
      *            array $servers <p>Array of server IDs to perform action on</p>
      * @param
-     *            boolean  $ignoreFailures <p>Ignore failures during staging on some servers</p>
+     *            bool  $ignoreFailures <p>Ignore failures during staging on some servers</p>
      * @return \ZendServerAPI\DataTypes\ApplicationList
      */
     public function applicationSynchronize ($appId, array $servers = array(),

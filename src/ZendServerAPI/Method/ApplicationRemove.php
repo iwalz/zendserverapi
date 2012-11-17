@@ -17,6 +17,22 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The applicationRemove Method</b>
+ *
+ * <pre>This method allows you to remove an existing application. 
+ * This process is asynchronous, meaning the initial request will start 
+ * the removal process and the initial response will show information about the
+ * application being removed. However, the removal process will proceed after the 
+ * response is returned. You must continue checking the application status using the 
+ * applicationGetStatus method until the removal process is complete. 
+ * Once applicationGetStatus contains no information about the application, 
+ * it has been completely removed</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ApplicationRemove extends \ZendServerAPI\Method
 {
     /**
@@ -37,7 +53,9 @@ class ApplicationRemove extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     * 
+     * @return void
      */
     public function configure ()
     {

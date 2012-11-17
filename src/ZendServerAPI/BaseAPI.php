@@ -17,25 +17,41 @@
 
 namespace ZendServerAPI;
 
+/**
+ * <b>Abstract class for the api sections</b>
+ *
+ * <pre>All by the end user provided api sections (deployment, codetracing,
+ * server,...) have to extend this class.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class BaseAPI
 {
     /**
      * Request for the methods
-     * @var \ZendServerAPI\Request
+     * @var Request
      */
     protected $request = null;
 
     /**
-     * Api Factory to fetch Method's from there
+     * Api Factory to fetch Method's from
      * @var Factories\CommandFactory
      */
     protected $apiFactory = null;
 
+    /**
+     * The 'server' name - key of the config
+     * @var string
+     */
     protected $name = null;
 
     /**
-     * Base constructor for all method implementations
-     * @param string $name Name of the config
+     * Base constructor for all API-method implementations
+     *
+     * @param string $name <p>Name of the config</p>
+     * @param Request $request <p>Request for internal usage</p>
      */
     public function __construct($name = null, Request $request = null)
     {
@@ -54,7 +70,7 @@ class BaseAPI
     /**
      * Returns the current request
      *
-     * @return \ZendServerAPI\Request
+     * @return Request
      */
     public function getRequest()
     {
@@ -64,7 +80,8 @@ class BaseAPI
     /**
      * Set the request for the current context
      *
-     * @param \ZendServerAPI\Request $request
+     * @param  Request $request
+     * @return void
      */
     public function setRequest(Request $request)
     {
@@ -74,7 +91,8 @@ class BaseAPI
     /**
      * Set the client. Most likly for testing
      *
-     * @param \Guzzle\Http\Client $client
+     * @param  \Guzzle\Http\Client $client
+     * @return void
      */
     public function setClient(\Guzzle\Http\Client $client)
     {
@@ -84,7 +102,7 @@ class BaseAPI
     /**
      * Check if connection is possible or not
      *
-     * @return boolean
+     * @return bool
      */
     public function canConnect()
     {

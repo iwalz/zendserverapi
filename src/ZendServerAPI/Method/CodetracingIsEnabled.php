@@ -17,6 +17,17 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The codetracingIsEnabled Method</b>
+ *
+ * <pre>Check if the directives zend_codetracing.always_dump and 
+ * zend_codetracing.trace_enabled are set, and if the code-tracing component 
+ * is active.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class CodetracingIsEnabled extends \ZendServerAPI\Method
 {
     /**
@@ -30,7 +41,6 @@ class CodetracingIsEnabled extends \ZendServerAPI\Method
     /**
      * Returns the codetracing accept header
      *
-     * @access public
      * @return string
      */
     public function getAcceptHeader()
@@ -39,7 +49,9 @@ class CodetracingIsEnabled extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure ()
     {

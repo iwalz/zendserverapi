@@ -17,6 +17,15 @@
 
 namespace ZendServerAPI;
 
+/**
+ * <b>Class for server configuration validation</b>
+ *
+ * <pre>This is used to validate the config.php settings</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ConfigValidator
 {
     /**
@@ -33,18 +42,21 @@ class ConfigValidator
     /**
      * Constructor for ConfigValidation
      *
-     * @param string $fileName
+     * @param  string            $fileName
+     * @throws \RuntimeException if config file is not found
      */
     public function __construct($fileName)
     {
         $this->fileName = $fileName;
+        if(!is_file($this->fileName))
+            throw new \RuntimeException($this->fileName . " not found");
         $this->config = include $fileName;
     }
 
     /**
      * Get the config array
      *
-     * @param  string $name Name for the current config
+     * @param  string $name <p>Name for the current config</p>
      * @return array
      */
     public function getConfig($name)
@@ -69,7 +81,9 @@ class ConfigValidator
     /**
      * Test for existing settings section and valid values
      *
+     * @param  array             $config Config array
      * @throws \RuntimeException If settings section is missing
+     * @return void
      */
     private function validateSettings(&$config)
     {
@@ -100,6 +114,7 @@ class ConfigValidator
      *
      * @param  string                    $name Name for the config section to use
      * @throws \InvalidArgumentException If error in config array
+     * @return void
      */
     private function validate($name)
     {
@@ -146,8 +161,9 @@ class ConfigValidator
     /**
      * api key value validation
      *
-     * @param  string                    $apiKey
+     * @param  string                    $apiKey The apikey to validate
      * @throws \InvalidArgumentException
+     * @return void
      */
     private function checkForValidAPIKey($apiKey)
     {

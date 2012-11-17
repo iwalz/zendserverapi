@@ -17,6 +17,15 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The codetracingCreate Method</b>
+ *
+ * <pre>Create a new code-tracing entry.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class CodetracingCreate extends \ZendServerAPI\Method
 {
     /**
@@ -48,7 +57,9 @@ class CodetracingCreate extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure ()
     {

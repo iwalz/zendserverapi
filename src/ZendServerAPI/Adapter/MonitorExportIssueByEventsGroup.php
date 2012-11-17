@@ -37,10 +37,11 @@ class MonitorExportIssueByEventsGroup extends Adapter
      */
     private $exportDirectory = null;
 
-   /**
-    * @see \ZendServerAPI\Adapter\Adapter::parse()
-    * @return \SplFileInfo
-    */
+    /**
+     * Parse the xml response in object mappings
+     *
+     * @return \SplFileInfo
+     */
     public function parse ()
     {
         if ($this->fileName === null) {

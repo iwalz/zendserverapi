@@ -17,6 +17,20 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The clusterRemoveServer Method</b>
+ *
+ * <pre>This method removes a server from the cluster. The removal 
+ * process may be asynchronous if Session Clustering is used. If this 
+ * is the case, the initial operation will return an HTTP 202 response. 
+ * As long as the server is not fully removed, further calls to remove 
+ * the same server should be idempotent. On a Zend Server Cluster Manager 
+ * with no valid license, this operation fails.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class ClusterRemoveServer extends \ZendServerAPI\Method
 {
     /**
@@ -26,7 +40,7 @@ class ClusterRemoveServer extends \ZendServerAPI\Method
     private $server = null;
     /**
      * Force remove
-     * @var boolean
+     * @var bool
      */
     private $force = null;
 
@@ -34,6 +48,7 @@ class ClusterRemoveServer extends \ZendServerAPI\Method
      * Constructor for ClusterRemoveServer method
      *
      * @param int $server ServerId to remove
+     * @param bool $force Force remove
      */
     public function __construct($server, $force = false)
     {
@@ -43,7 +58,9 @@ class ClusterRemoveServer extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure ()
     {

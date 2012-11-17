@@ -30,7 +30,9 @@ use \ZendServerAPI\DataTypes\MessageList,
 class ServerInfo extends \ZendServerAPI\Adapter\Adapter
 {
     /**
-     * @see \ZendServerAPI\Adapter\Adapter::parse()
+     * Parse the xml response in object mappings
+     *
+     * @param string $xml
      * @return \ZendServerAPI\DataTypes\ServerInfo
      */
     public function parse($xml = null)

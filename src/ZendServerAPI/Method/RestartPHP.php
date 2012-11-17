@@ -17,6 +17,17 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The restartPHP Method</b>
+ *
+ * <pre>This method restarts PHP on all servers or on specified servers in the cluster. 
+ * A 202 response in this case does not always indicate a successful restart of all servers. 
+ * Use the clusterGetServerStatus command to check the server(s) status again after a few seconds.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class RestartPHP extends \ZendServerAPI\Method
 {
     /**
@@ -34,6 +45,7 @@ class RestartPHP extends \ZendServerAPI\Method
      * Constructor for RestartPhp method
      *
      * @param array $servers ServerIds to restart
+     * @param bool $parallelRestart Restart all at the same time
      */
     public function __construct(array $servers = array(), $parallelRestart = false)
     {
@@ -43,7 +55,9 @@ class RestartPHP extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure ()
     {

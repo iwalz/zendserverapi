@@ -38,7 +38,8 @@ class CodetracingDownloadTraceFile extends Adapter
     private $exportDirectory = null;
 
     /**
-     * @see \ZendServerAPI\Adapter\Adapter::parse()
+     * Parse the xml response in object mappings
+     *
      * @return \SplFileInfo
      */
     public function parse ()

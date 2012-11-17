@@ -19,6 +19,16 @@ namespace ZendServerAPI;
 
 use Guzzle\Service\Client;
 
+/**
+ * <b>Request implementation</b>
+ *
+ * This class represents the guzzle request for the zend server api.
+ * Takes care of a method and builds the request from the given information.
+ * 
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class Request
 {
     /**

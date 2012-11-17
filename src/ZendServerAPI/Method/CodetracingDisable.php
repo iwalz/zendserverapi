@@ -17,6 +17,17 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The codetracingDisable Method</b>
+ *
+ * <pre>Disable the code-tracing directive two directives necessary 
+ * for creating tracing dumps, this action does not disable the 
+ * code-tracing component.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class CodetracingDisable extends \ZendServerAPI\Method
 {
     /**
@@ -48,7 +59,9 @@ class CodetracingDisable extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure ()
     {

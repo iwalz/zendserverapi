@@ -35,7 +35,7 @@ abstract class Adapter
     /**
      * Parse the xml response in object mappings
      *
-     * @param string $xml
+     * @return \ZendServerAPI\DataTypes\DataType
      */
     abstract public function parse();
 

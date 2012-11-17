@@ -17,6 +17,18 @@
 
 namespace ZendServerAPI;
 
+use ZendServerAPI\DataTypes\DataType;
+
+/**
+ * <b>Abstract class method implementations</b>
+ *
+ * <pre>All method implementations has to follow this
+ * interface definition.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 abstract class Method
 {
     /**
@@ -76,9 +88,10 @@ abstract class Method
     /**
      * Set the implementation for the result mapping
      *
-     * @param \ZendServerAPI\Adapter\Adapter $parser for result mapping
+     * @param  Adapter\Adapter $parser <p>for result mapping</p>
+     * @return void
      */
-    public function setParser(\ZendServerAPI\Adapter\Adapter $parser)
+    public function setParser(Adapter\Adapter $parser)
     {
         $this->parser = $parser;
     }
@@ -96,7 +109,8 @@ abstract class Method
     /**
      * Setter for the function path
      *
-     * @param string $functionPath e.g. /ZendServerManager/Api/Foo
+     * @param  string $functionPath <p>e.g. /ZendServerManager/Api/Foo</p>
+     * @return void
      */
     public function setFunctionPath($functionPath)
     {
@@ -107,6 +121,7 @@ abstract class Method
      * Set the Guzzle Response
      *
      * @param \Guzzle\Http\Message\Response
+     * @return void
      */
     public function setResponse(\Guzzle\Http\Message\Response $response)
     {
@@ -116,7 +131,7 @@ abstract class Method
     /**
      * Getter for the path to server method
      *
-     * @return string $functionPath
+     * @return string
      */
     public function getFunctionPath()
     {
@@ -126,7 +141,8 @@ abstract class Method
     /**
      * Get result from parser
      *
-     * @param string $xml
+     * @param string
+     * @return DataTypes\DataType
      */
     public function parseResponse($xml = null)
     {
@@ -146,7 +162,6 @@ abstract class Method
     /**
      * Returns the default accept header
      *
-     * @access public
      * @return string
      */
     public function getAcceptHeader()
@@ -157,7 +172,6 @@ abstract class Method
     /**
      * Returns the default content type
      *
-     * @access public
      * @return string
      */
     public function getContentType()
@@ -197,6 +211,8 @@ abstract class Method
 
     /**
      * Configures all needed information for the method implementation
+     * 
+     * @return void
      */
     abstract public function configure();
 }

@@ -17,6 +17,18 @@
 
 namespace ZendServerAPI\Method;
 
+/**
+ * <b>The monitorGetRequestSummary Method</b>
+ *
+ * <pre>Retrieve information about a particular request's events and code tracing. 
+ * The requestUid identifier is provided in a cookie that is set in the response 
+ * to the particular request. This API action is designed to be used with the 
+ * new Zend Studio browser toolbar.</pre>
+ *
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ */
 class MonitorGetRequestSummary extends \ZendServerAPI\Method
 {
     /**
@@ -37,7 +49,9 @@ class MonitorGetRequestSummary extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::configure()
+     * Configures all needed information for the method implementation
+     *
+     * @return void
      */
     public function configure ()
     {
@@ -47,7 +61,9 @@ class MonitorGetRequestSummary extends \ZendServerAPI\Method
     }
 
     /**
-     * @see \ZendServerAPI\Method::getLink()
+     * Get link for the method
+     *
+     * @return string
      */
     public function getLink()
     {

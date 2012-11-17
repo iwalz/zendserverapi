@@ -13,6 +13,11 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
+ * 
+ * @package ZendServerAPI\Method
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com> 
  */
 
 namespace ZendServerAPI\Method;
@@ -29,6 +34,7 @@ namespace ZendServerAPI\Method;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
+ * @package     ZendServerAPI\Method
  */
 class ApplicationGetStatus extends \ZendServerAPI\Method
 {

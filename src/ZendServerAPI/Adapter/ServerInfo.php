@@ -13,6 +13,11 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
+ * 
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ * @package     ZendServerAPI\Adapter
  */
 
 namespace ZendServerAPI\Adapter;
@@ -26,6 +31,7 @@ use \ZendServerAPI\DataTypes\MessageList,
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
+ * @package     ZendServerAPI\Adapter
  */
 class ServerInfo extends \ZendServerAPI\Adapter\Adapter
 {

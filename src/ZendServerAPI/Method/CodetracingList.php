@@ -13,6 +13,11 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
+ * 
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @package     ZendServerAPI\Method
  */
 
 namespace ZendServerAPI\Method;
@@ -26,6 +31,7 @@ namespace ZendServerAPI\Method;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
+ * @package ZendServerAPI\Method
  */
 class CodetracingList extends \ZendServerAPI\Method
 {
@@ -33,28 +39,33 @@ class CodetracingList extends \ZendServerAPI\Method
      * List of application IDs. If specified, code-tracing 
      * entries will be returned for these applications only. 
      * Default: all applications
+     * 
      * @var array
      */
     protected $applicationIds = null;
     /**
      * Row limit to retrieve, defaults to value defined in 
      * zend-user-user.ini
+     * 
      * @var int
      */
     protected $limit = null;
     /**
      * The page offset to be displayed, defaults to 0
+     * 
      * @var int
      */
     protected $offset = null;
     /**
      * Column to sort the result by (Id, Date, Url, CreatedBy, 
      * Filesize), defaults to Date
+     * 
      * @var string
      */
     protected $orderBy = null;
     /**
      * Sorting direction , defaults to Desc
+     * 
      * @var string
      */
     protected $direction = null;
@@ -82,7 +93,6 @@ class CodetracingList extends \ZendServerAPI\Method
     /**
      * Returns the codetracing accept header
      *
-     * @access public
      * @return string
      */
     public function getAcceptHeader()

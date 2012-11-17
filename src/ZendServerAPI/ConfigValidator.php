@@ -13,6 +13,11 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
+ * 
+ * @license     MIT
+ * @link        http://github.com/iwalz/zendserverapi
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
+ * @package     ZendServerAPI
  */
 
 namespace ZendServerAPI;
@@ -25,6 +30,7 @@ namespace ZendServerAPI;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
+ * @package     ZendServerAPI
  */
 class ConfigValidator
 {

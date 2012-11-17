@@ -50,37 +50,13 @@ class ApiVersion11CommandFactory extends ApiVersion10CommandFactory
 
         switch ($name) {
             case 'clusterReconfigureServer':
-                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ClusterReconfigureServer');
-
-                return $reflect->newInstanceArgs($args);
-                break;
             case 'applicationGetStatus':
-                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ApplicationGetStatus');
-
-                return $reflect->newInstanceArgs($args);
-                break;
             case 'applicationDeploy':
-                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ApplicationDeploy');
-
-                return $reflect->newInstanceArgs($args);
-                break;
             case 'applicationRemove':
-                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ApplicationRemove');
-
-                return $reflect->newInstanceArgs($args);
-                break;
             case 'applicationRollback':
-                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ApplicationRollback');
-
-                return $reflect->newInstanceArgs($args);
-                break;
             case 'applicationSynchronize':
-                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ApplicationSynchronize');
-
-                return $reflect->newInstanceArgs($args);
-                break;
             case 'applicationUpdate':
-                $reflect  = new \ReflectionClass('\ZendServerAPI\Method\ApplicationUpdate');
+                $reflect  = new \ReflectionClass("\\ZendServerAPI\\Method\\" . ucfirst($name));
 
                 return $reflect->newInstanceArgs($args);
                 break;

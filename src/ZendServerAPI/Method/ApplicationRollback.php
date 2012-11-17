@@ -37,7 +37,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class ApplicationRollback extends \ZendServerAPI\Method
+class ApplicationRollback extends Method
 {
     /**
      * Application ID to rollback

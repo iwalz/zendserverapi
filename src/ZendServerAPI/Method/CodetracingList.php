@@ -33,7 +33,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class CodetracingList extends \ZendServerAPI\Method
+class CodetracingList extends Method
 {
     /**
      * List of application IDs. If specified, code-tracing

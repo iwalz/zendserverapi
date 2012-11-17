@@ -41,7 +41,7 @@ use ZendServerAPI\DataTypes\ServersList,
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class ClusterGetServerStatus  extends \ZendServerAPI\Method
+class ClusterGetServerStatus  extends Method
 {
     /**
      * Servers to get the status for

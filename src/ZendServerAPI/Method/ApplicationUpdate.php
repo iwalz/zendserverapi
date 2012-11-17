@@ -40,7 +40,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class ApplicationUpdate extends \ZendServerAPI\Method
+class ApplicationUpdate extends Method
 {
     /**
      * The application's ID to update

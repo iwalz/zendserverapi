@@ -34,7 +34,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class CodetracingDelete extends \ZendServerAPI\Method
+class CodetracingDelete extends Method
 {
     /**
      * Trace file ID to delete

@@ -34,7 +34,7 @@ use ZendServerAPI\Adapter\ConfigurationExport as ConfigExportAdapter;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class ConfigurationExport extends \ZendServerAPI\Method
+class ConfigurationExport extends Method
 {
     /**
      * The constructor for ConfigurationExport

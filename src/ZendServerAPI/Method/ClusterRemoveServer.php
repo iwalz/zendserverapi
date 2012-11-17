@@ -37,7 +37,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class ClusterRemoveServer extends \ZendServerAPI\Method
+class ClusterRemoveServer extends Method
 {
     /**
      * ServerId to remove

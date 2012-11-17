@@ -38,7 +38,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class ApplicationSynchronize extends \ZendServerAPI\Method
+class ApplicationSynchronize extends Method
 {
     /**
      * ApplicationId to sync

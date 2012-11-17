@@ -34,7 +34,7 @@ use ZendServerAPI\Adapter\ServersList;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class ConfigurationImport extends \ZendServerAPI\Method
+class ConfigurationImport extends Method
 {
     /**
      * File to import

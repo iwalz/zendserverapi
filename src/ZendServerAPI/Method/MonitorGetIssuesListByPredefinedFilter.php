@@ -36,7 +36,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class MonitorGetIssuesListByPredefinedFilter extends \ZendServerAPI\Method
+class MonitorGetIssuesListByPredefinedFilter extends Method
 {
     /**
      * The predefined filter's id. Can be the filter's “name” or the

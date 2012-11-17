@@ -39,7 +39,7 @@ class Request
 {
     /**
      * Method class for the request
-     * @var \ZendServerAPI\Method
+     * @var \ZendServerAPI\Method\Method
      */
     private $action = null;
     /**
@@ -64,20 +64,12 @@ class Request
     private $logger = null;
 
     /**
-     * Constructor for the request class
-     */
-    public function __construct()
-    {
-
-    }
-
-    /**
      * Set method implementation object
      *
-     * @param  \ZendServerAPI\Method  $action
+     * @param  \ZendServerAPI\Method\Method  $action
      * @return \ZendServerAPI\Request
      */
-    public function setAction(\ZendServerAPI\Method $action)
+    public function setAction(\ZendServerAPI\Method\Method $action)
     {
         $this->action = $action;
 
@@ -117,7 +109,7 @@ class Request
     /**
      * Return the current action object
      *
-     * @return \ZendServerAPI\Method
+     * @return \ZendServerAPI\Method\Method
      */
     public function getAction()
     {

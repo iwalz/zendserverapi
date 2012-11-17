@@ -34,7 +34,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class RestartPHP extends \ZendServerAPI\Method
+class RestartPHP extends Method
 {
     /**
      * ServerIds to restart

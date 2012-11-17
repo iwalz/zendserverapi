@@ -33,7 +33,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class StudioStartProfile extends \ZendServerAPI\Method
+class StudioStartProfile extends Method
 {
     /**
      * Events group identifier

@@ -37,7 +37,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class ClusterEnableServer extends \ZendServerAPI\Method
+class ClusterEnableServer extends Method
 {
     /**
      * Id of server to enable

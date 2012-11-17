@@ -36,7 +36,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
-class ApplicationGetStatus extends \ZendServerAPI\Method
+class ApplicationGetStatus extends Method
 {
     /**
      * Application ID's to get status for

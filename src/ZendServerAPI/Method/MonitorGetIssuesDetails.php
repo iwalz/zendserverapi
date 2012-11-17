@@ -33,7 +33,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class MonitorGetIssuesDetails extends \ZendServerAPI\Method
+class MonitorGetIssuesDetails extends Method
 {
     /**
      * The issue ID of the issue to get the details for

@@ -34,7 +34,7 @@ use ZendServerAPI\Adapter\CodetracingDownloadTraceFile as CodetracingDownloadTra
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class CodetracingDownloadTraceFile extends \ZendServerAPI\Method
+class CodetracingDownloadTraceFile extends Method
 {
     /**
      * Trace file identifier

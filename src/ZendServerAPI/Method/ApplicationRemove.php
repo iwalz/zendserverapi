@@ -39,7 +39,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class ApplicationRemove extends \ZendServerAPI\Method
+class ApplicationRemove extends Method
 {
     /**
      * ApplicationId to remove

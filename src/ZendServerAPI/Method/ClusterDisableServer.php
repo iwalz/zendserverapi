@@ -36,7 +36,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class ClusterDisableServer extends \ZendServerAPI\Method
+class ClusterDisableServer extends Method
 {
     /**
      * Parameter for ClusterDisableServer method

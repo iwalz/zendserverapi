@@ -33,7 +33,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class ClusterAddServer extends \ZendServerAPI\Method
+class ClusterAddServer extends Method
 {
     /**
      * Name of server to add

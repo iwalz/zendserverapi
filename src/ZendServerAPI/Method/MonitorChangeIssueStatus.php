@@ -32,7 +32,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class MonitorChangeIssueStatus extends \ZendServerAPI\Method
+class MonitorChangeIssueStatus extends Method
 {
     /**
      * Issue ID

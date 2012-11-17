@@ -34,7 +34,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package ZendServerAPI\Method
  */
-class CodetracingIsEnabled extends \ZendServerAPI\Method
+class CodetracingIsEnabled extends Method
 {
     /**
      * Constructor for CodetracingIsEnabled method

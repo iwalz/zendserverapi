@@ -17,10 +17,10 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendServerAPI\Method
  */
 
-namespace ZendServerAPI;
+namespace ZendServerAPI\Method;
 
 use ZendServerAPI\DataTypes\DataType;
 
@@ -33,7 +33,7 @@ use ZendServerAPI\DataTypes\DataType;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendServerAPI\Method
  */
 abstract class Method
 {
@@ -94,10 +94,10 @@ abstract class Method
     /**
      * Set the implementation for the result mapping
      *
-     * @param  Adapter\Adapter $parser <p>for result mapping</p>
+     * @param  \ZendServerAPI\Adapter\Adapter $parser <p>for result mapping</p>
      * @return void
      */
-    public function setParser(Adapter\Adapter $parser)
+    public function setParser(\ZendServerAPI\Adapter\Adapter $parser)
     {
         $this->parser = $parser;
     }

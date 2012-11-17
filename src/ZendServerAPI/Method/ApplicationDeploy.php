@@ -36,7 +36,7 @@ namespace ZendServerAPI\Method;
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
-class ApplicationDeploy extends \ZendServerAPI\Method
+class ApplicationDeploy extends Method
 {
     /**
      * The application package file

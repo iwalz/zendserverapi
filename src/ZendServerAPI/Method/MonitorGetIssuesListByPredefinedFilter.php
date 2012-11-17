@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -25,10 +25,10 @@ namespace ZendServerAPI\Method;
 /**
  * <b>The monitorGetIssuesListByPredefinedFilter Method</b>
  *
- * <pre>Retrieve a list of monitor issues according to a preset filter identifier. 
- * The filter identifier is shared with the UI's predefined filters. 
- * This WebAPI method may also accept ordering details and paging limits. 
- * 
+ * <pre>Retrieve a list of monitor issues according to a preset filter identifier.
+ * The filter identifier is shared with the UI's predefined filters.
+ * This WebAPI method may also accept ordering details and paging limits.
+ *
  * The response is a list of issue elements with their general details and event-groups identifiers.</pre>
  *
  * @license     MIT

@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -25,13 +25,13 @@ namespace ZendServerAPI\Method;
 /**
  * <b>The applicationRemove Method</b>
  *
- * <pre>This method allows you to remove an existing application. 
- * This process is asynchronous, meaning the initial request will start 
+ * <pre>This method allows you to remove an existing application.
+ * This process is asynchronous, meaning the initial request will start
  * the removal process and the initial response will show information about the
- * application being removed. However, the removal process will proceed after the 
- * response is returned. You must continue checking the application status using the 
- * applicationGetStatus method until the removal process is complete. 
- * Once applicationGetStatus contains no information about the application, 
+ * application being removed. However, the removal process will proceed after the
+ * response is returned. You must continue checking the application status using the
+ * applicationGetStatus method until the removal process is complete.
+ * Once applicationGetStatus contains no information about the application,
  * it has been completely removed</pre>
  *
  * @license     MIT
@@ -60,7 +60,7 @@ class ApplicationRemove extends \ZendServerAPI\Method
 
     /**
      * Configures all needed information for the method implementation
-     * 
+     *
      * @return void
      */
     public function configure ()

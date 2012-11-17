@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -40,7 +40,7 @@ class ConfigurationExport extends \ZendServerAPI\Method
      * The constructor for ConfigurationExport
      *
      * @param string $exportDirectory The directory where to export the files
-     * @param string $fileName The fileName where to export to
+     * @param string $fileName        The fileName where to export to
      */
     public function __construct($exportDirectory = null, $fileName = null)
     {
@@ -78,7 +78,7 @@ class ConfigurationExport extends \ZendServerAPI\Method
     /**
      * Get the directory where to export the files to
      * Proxy for the export directory in the adapter
-     * 
+     *
      * @return string
      */
     public function getExportDirectory()
@@ -88,9 +88,9 @@ class ConfigurationExport extends \ZendServerAPI\Method
 
     /**
      * Set the directory where to export the files to.
-     * Proxy for the adapter 
-     * 
-     * @param string $exportDirectory
+     * Proxy for the adapter
+     *
+     * @param  string $exportDirectory
      * @return void
      */
     public function setExportDirectory($exportDirectory)
@@ -101,8 +101,8 @@ class ConfigurationExport extends \ZendServerAPI\Method
     /**
      * Set the fileName where to export the file to
      * Proxy to the adapter
-     * 
-     * @param string $fileName
+     *
+     * @param  string $fileName
      * @return void
      */
     public function setFileName($fileName)
@@ -113,7 +113,7 @@ class ConfigurationExport extends \ZendServerAPI\Method
     /**
      * Get the filename where to export the file to
      * Proxy to the adapter
-     * 
+     *
      * @return string
      */
     public function getFileName()

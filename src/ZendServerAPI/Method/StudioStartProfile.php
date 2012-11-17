@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -25,7 +25,7 @@ namespace ZendServerAPI\Method;
 /**
  * <b>Method studioStartProfile Method</b>
  *
- * <pre>Start a profiling session with Zend Studio's integration 
+ * <pre>Start a profiling session with Zend Studio's integration
  * using an event-group's identifier.</pre>
  *
  * @license     MIT

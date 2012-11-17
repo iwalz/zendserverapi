@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -25,7 +25,7 @@ namespace ZendServerAPI\Method;
 /**
  * <b>The monitorGetIssuesDetails Method</b>
  *
- * <pre>Retrieve an issue's details according to the issueId passed as a 
+ * <pre>Retrieve an issue's details according to the issueId passed as a
  * parameter. Additional information about event groups is also displayed.</pre>
  *
  * @license     MIT
@@ -46,7 +46,7 @@ class MonitorGetIssuesDetails extends \ZendServerAPI\Method
      *
      * Retrieves the details of the given issue id.
      *
-     * @param  string   $issueId      The issue ID
+     * @param  string                                        $issueId The issue ID
      * @return \ZendServerAPI\Method\MonitorGetIssuesDetails
      */
     public function __construct($issueId)

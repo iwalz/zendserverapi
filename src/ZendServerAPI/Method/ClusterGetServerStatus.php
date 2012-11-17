@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -28,12 +28,12 @@ use ZendServerAPI\DataTypes\ServersList,
 /**
  * <b>The clusterGetServerStatus Method</b>
  *
- * <pre>Use this method to get the list of servers in the cluster and 
- * the status of each one. On a Zend Server Cluster Manager with no valid license, 
- * this operation fails. This operation causes Zend Server Cluster Manager to 
- * check the status of servers and return fresh, non-cached information. 
- * This is different from the Servers List tab in the GUI, which may present 
- * cached information. Users interested in reducing load by caching this 
+ * <pre>Use this method to get the list of servers in the cluster and
+ * the status of each one. On a Zend Server Cluster Manager with no valid license,
+ * this operation fails. This operation causes Zend Server Cluster Manager to
+ * check the status of servers and return fresh, non-cached information.
+ * This is different from the Servers List tab in the GUI, which may present
+ * cached information. Users interested in reducing load by caching this
  * information should do it in their own code.</pre>
  *
  * @license     MIT

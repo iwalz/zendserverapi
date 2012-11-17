@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -25,9 +25,9 @@ namespace ZendServerAPI\Method;
 /**
  * <b>The monitorGetRequestSummary Method</b>
  *
- * <pre>Retrieve information about a particular request's events and code tracing. 
- * The requestUid identifier is provided in a cookie that is set in the response 
- * to the particular request. This API action is designed to be used with the 
+ * <pre>Retrieve information about a particular request's events and code tracing.
+ * The requestUid identifier is provided in a cookie that is set in the response
+ * to the particular request. This API action is designed to be used with the
  * new Zend Studio browser toolbar.</pre>
  *
  * @license     MIT

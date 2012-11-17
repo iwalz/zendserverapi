@@ -13,7 +13,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
@@ -60,7 +60,7 @@ class Deployment extends BaseAPI
      * @var int
      */
     const DEFAULT_WAITINTERVAL = 5;
-    
+
     /**
      * <b>The applicationGetStatus Method</b>
      *
@@ -156,7 +156,7 @@ class Deployment extends BaseAPI
      * removal process is complete. Once applicationGetStatus contains no information about the application, it
      * has been completely removed</pre>
      *
-     * @param  int  $appId <p>The application's ID</p>
+     * @param  int                                      $appId <p>The application's ID</p>
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function applicationRemove ($appId)
@@ -174,7 +174,7 @@ class Deployment extends BaseAPI
      * being rolled back. You must continue checking the application status using the applicationGetStatus
      * method until the process is complete.</pre>
      *
-     * @param  int  $appId <p>The application's ID</p>
+     * @param  int                                      $appId <p>The application's ID</p>
      * @return \ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function applicationRollback ($appId)

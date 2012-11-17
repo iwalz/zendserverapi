@@ -13,7 +13,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
@@ -38,7 +38,7 @@ class ServerInfo extends \ZendServerAPI\Adapter\Adapter
     /**
      * Parse the xml response in object mappings
      *
-     * @param string $xml
+     * @param  string                              $xml
      * @return \ZendServerAPI\DataTypes\ServerInfo
      */
     public function parse($xml = null)

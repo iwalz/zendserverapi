@@ -13,7 +13,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
@@ -130,10 +130,10 @@ class Startup
         $config->setPort($conf['port']);
         $config->setApiVersion($conf['version']);
         $config->setApiKey($apiKey);
-        
+
         if(isset($conf['protocol']))
             $config->setProtocol($conf['protocol']);
-        else 
+        else
             $config->setProtocol(($config->getPort() === 10082) ? 'https' : 'http');
 
         $request->setConfig($config);

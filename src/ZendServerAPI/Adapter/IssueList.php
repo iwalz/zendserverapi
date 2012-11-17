@@ -13,7 +13,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
@@ -35,7 +35,7 @@ class IssueList extends Adapter
     /**
      * Parse the xml response in object mappings
      *
-     * @param string $xml
+     * @param  string                             $xml
      * @return \ZendServerAPI\DataTypes\IssueList
      */
     public function parse ($xml = null)
@@ -51,7 +51,7 @@ class IssueList extends Adapter
             $issue->setId((string) $xmlIssue->id);
             $issue->setRule((string) $xmlIssue->rule);
             $issue->setCount((string) $xmlIssue->count);
-            $issue->setLastOccurance((string)$xmlIssue->lastOccurance);
+            $issue->setLastOccurance((string) $xmlIssue->lastOccurance);
             $issue->setSeverity((string) $xmlIssue->severity);
             $issue->setStatus((string) $xmlIssue->status);
 

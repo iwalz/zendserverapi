@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -55,8 +55,8 @@ class CodetracingDownloadTraceFile extends \ZendServerAPI\Method
     /**
      * Constructor for CodetracingDownloadTraceFile
      *
-     * @param string $traceFile Trace file identifier
-     * @param string $fileName Filename where to export data to
+     * @param string $traceFile       Trace file identifier
+     * @param string $fileName        Filename where to export data to
      * @param string $exportDirectory Directory where to export file to
      */
     public function __construct($traceFile, $fileName = null, $exportDirectory = null)
@@ -118,7 +118,7 @@ class CodetracingDownloadTraceFile extends \ZendServerAPI\Method
      * Set the directory where to export the files to.
      * Proxy for the adapter
      *
-     * @param string $exportDirectory
+     * @param  string $exportDirectory
      * @return void
      */
     public function setExportDirectory($exportDirectory)
@@ -130,7 +130,7 @@ class CodetracingDownloadTraceFile extends \ZendServerAPI\Method
      * Set the fileName where to export the file to
      * Proxy to the adapter
      *
-     * @param string $fileName
+     * @param  string $fileName
      * @return void
      */
     public function setFileName($fileName)

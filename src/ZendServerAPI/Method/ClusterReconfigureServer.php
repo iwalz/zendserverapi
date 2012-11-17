@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -25,8 +25,8 @@ namespace ZendServerAPI\Method;
 /**
  * <b>The clusterReconfigureServer Method</b>
  *
- * <pre>Re-configure a cluster member to match the cluster's profile. 
- * This operation will fail on a Zend Server Cluster Manager with 
+ * <pre>Re-configure a cluster member to match the cluster's profile.
+ * This operation will fail on a Zend Server Cluster Manager with
  * no valid license.</pre>
  *
  * @license     MIT
@@ -72,7 +72,7 @@ class ClusterReconfigureServer extends \ZendServerAPI\Method
 
     /**
      * Configures all needed information for the method implementation
-     * 
+     *
      * @return void
      */
     public function configure ()

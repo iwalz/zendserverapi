@@ -13,7 +13,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
@@ -26,7 +26,7 @@ namespace ZendServerAPI;
  * <b>Version information</b>
  *
  * <pre>Static version information for webapi version selection</pre>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>

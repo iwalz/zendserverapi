@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -25,14 +25,14 @@ namespace ZendServerAPI\Method;
 /**
  * <b>The applicationUpdate Method</b>
  *
- * <pre>This method allows you to update an existing application. 
- * The package you provide must contain the same application. Additionally, 
- * any new parameters or new values for existing parameters must be provided. 
- * This process is asynchronous, meaning the initial request will wait until 
- * the package is uploaded and verified, and the initial response will show 
- * information about the new version being deployed. However, the staging and 
- * activation process will proceed after the response is returned. You must 
- * continue checking the application status using the applicationGetStatus 
+ * <pre>This method allows you to update an existing application.
+ * The package you provide must contain the same application. Additionally,
+ * any new parameters or new values for existing parameters must be provided.
+ * This process is asynchronous, meaning the initial request will wait until
+ * the package is uploaded and verified, and the initial response will show
+ * information about the new version being deployed. However, the staging and
+ * activation process will proceed after the response is returned. You must
+ * continue checking the application status using the applicationGetStatus
  * method until the deployment process is complete.</pre>
  *
  * @license     MIT
@@ -66,12 +66,12 @@ class ApplicationUpdate extends \ZendServerAPI\Method
     /**
      * Method implementation of 'ApplicationUpdate' call
      *
-     * @param int $appId
+     * @param int    $appId
      * @param string $appPackage
-     * @param bool $ignoreFailure
-     * @param array   $userParams
+     * @param bool   $ignoreFailure
+     * @param array  $userParams
      */
-    public function __construct ($appId, $appPackage, 
+    public function __construct ($appId, $appPackage,
             $ignoreFailure = false, array $userParams = array())
     {
         $this->appId = $appId;
@@ -96,7 +96,7 @@ class ApplicationUpdate extends \ZendServerAPI\Method
 
     /**
      * Get the content for the post request
-     * 
+     *
      * @return string
      */
     public function getContent()
@@ -106,7 +106,7 @@ class ApplicationUpdate extends \ZendServerAPI\Method
 
     /**
      * Get post parameter payload
-     * 
+     *
      * @return array
      */
     public function getContentValues()
@@ -132,7 +132,7 @@ class ApplicationUpdate extends \ZendServerAPI\Method
 
     /**
      * Get the files to post
-     * 
+     *
      * @return array
      */
     public function getPostFiles()

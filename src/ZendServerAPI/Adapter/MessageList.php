@@ -13,7 +13,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
@@ -39,7 +39,7 @@ class MessageList extends Adapter
     /**
      * Parse the xml response in object mappings
      *
-     * @param string $xml
+     * @param  string                               $xml
      * @return \ZendServerAPI\DataTypes\MessageList
      */
     public function parse($xml = null)

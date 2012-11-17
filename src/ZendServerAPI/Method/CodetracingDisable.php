@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -25,8 +25,8 @@ namespace ZendServerAPI\Method;
 /**
  * <b>The codetracingDisable Method</b>
  *
- * <pre>Disable the code-tracing directive two directives necessary 
- * for creating tracing dumps, this action does not disable the 
+ * <pre>Disable the code-tracing directive two directives necessary
+ * for creating tracing dumps, this action does not disable the
  * code-tracing component.</pre>
  *
  * @license     MIT

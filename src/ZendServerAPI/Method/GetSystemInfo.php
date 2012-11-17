@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -28,8 +28,8 @@ use ZendServerAPI\DataTypes\LicenseInfo,
 /**
  * <b>The getSystemInfo Method</b>
  *
- * <pre>Use this method to get information about the system, including 
- * the Zend Server edition and version, PHP version, licensing information, 
+ * <pre>Use this method to get information about the system, including
+ * the Zend Server edition and version, PHP version, licensing information,
  * etc. This method produces similar output on all Zend Server systems, and
  * is future compatible.</pre>
  *

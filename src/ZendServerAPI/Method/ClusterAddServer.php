@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -25,7 +25,7 @@ namespace ZendServerAPI\Method;
 /**
  * <b>The clusterAddServer Method</b>
  *
- * <pre>Add a new server to the cluster. On a Zend Server Cluster Manager 
+ * <pre>Add a new server to the cluster. On a Zend Server Cluster Manager
  * with no valid license, this operation fails.</pre>
  *
  * @license     MIT

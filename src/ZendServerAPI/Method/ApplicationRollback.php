@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -25,11 +25,11 @@ namespace ZendServerAPI\Method;
 /**
  * <b>The applicationRollback Method</b>
  *
- * <pre>Rollback an existing application to its previous version. 
- * This process is asynchronous, meaning the initial request will 
- * start the rollback process and the initial response will show 
- * information about the application being rolled back. 
- * You must continue checking the application status using the 
+ * <pre>Rollback an existing application to its previous version.
+ * This process is asynchronous, meaning the initial request will
+ * start the rollback process and the initial response will show
+ * information about the application being rolled back.
+ * You must continue checking the application status using the
  * applicationGetStatus method until the process is complete.</pre>
  *
  * @license     MIT

@@ -15,7 +15,7 @@
  * <http://www.rubber-duckling.net>
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI
  */
 
@@ -55,7 +55,7 @@ class BaseAPI
     /**
      * Base constructor for all API-method implementations
      *
-     * @param string $name <p>Name of the config</p>
+     * @param string  $name    <p>Name of the config</p>
      * @param Request $request <p>Request for internal usage</p>
      */
     public function __construct($name = null, Request $request = null)

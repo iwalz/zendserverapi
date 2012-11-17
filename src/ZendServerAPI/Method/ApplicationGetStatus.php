@@ -13,11 +13,11 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @package ZendServerAPI\Method
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  */
 
 namespace ZendServerAPI\Method;
@@ -25,10 +25,10 @@ namespace ZendServerAPI\Method;
 /**
  * <b>The applicationGetStatus Method</b>
  *
- * <pre>Get the list of applications currently deployed (or staged) 
- * on the server or the cluster and information about each application. 
+ * <pre>Get the list of applications currently deployed (or staged)
+ * on the server or the cluster and information about each application.
  * If application IDs are specified, this method will return information about the
- * specified applications. If no IDs are specified, this method will return 
+ * specified applications. If no IDs are specified, this method will return
  * information about all applications on the server or cluster.</pre>
  *
  * @license     MIT

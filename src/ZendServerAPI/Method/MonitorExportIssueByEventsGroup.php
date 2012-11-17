@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -25,7 +25,7 @@ namespace ZendServerAPI\Method;
 /**
  * <b>The monitorExportIssueByEventsGroup Method</b>
  *
- * <pre>Export an archive containing all of the issue's information, 
+ * <pre>Export an archive containing all of the issue's information,
  * event groups and code tracing if available, ready for consumption by Zend Studio.
  * The response is a binary payload.</pre>
  *
@@ -44,10 +44,10 @@ class MonitorExportIssueByEventsGroup extends \ZendServerAPI\Method
 
     /**
      * Constructor for MonitorExportIssueByEventsGroup
-     * 
-     * @param int $eventsGroupId the events group identifier
+     *
+     * @param int    $eventsGroupId   the events group identifier
      * @param string $exportDirectory the directory where to export files to
-     * @param string $fileName the file where to export the data to
+     * @param string $fileName        the file where to export the data to
      */
     public function __construct($eventsGroupId, $exportDirectory = null, $fileName = null)
     {
@@ -112,7 +112,7 @@ class MonitorExportIssueByEventsGroup extends \ZendServerAPI\Method
      * Set the directory where to export the files to.
      * Proxy for the adapter
      *
-     * @param string $exportDirectory
+     * @param  string $exportDirectory
      * @return void
      */
     public function setExportDirectory($exportDirectory)
@@ -124,7 +124,7 @@ class MonitorExportIssueByEventsGroup extends \ZendServerAPI\Method
      * Set the fileName where to export the file to
      * Proxy to the adapter
      *
-     * @param string $fileName
+     * @param  string $fileName
      * @return void
      */
     public function setFileName($fileName)

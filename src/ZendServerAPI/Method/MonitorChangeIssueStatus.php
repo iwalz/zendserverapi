@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -48,8 +48,8 @@ class MonitorChangeIssueStatus extends \ZendServerAPI\Method
     /**
      * Constructor for ApplicationRemove method
      *
-     * @param int $applicationId ApplicationId to remove
-     * @param string $newStatus The new status to set
+     * @param int    $applicationId ApplicationId to remove
+     * @param string $newStatus     The new status to set
      */
     public function __construct($applicationId, $newStatus)
     {

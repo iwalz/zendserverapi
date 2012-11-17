@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -25,10 +25,10 @@ namespace ZendServerAPI\Method;
 /**
  * <b>The clusterDisableServer Method</b>
  *
- * <pre>This method disables a cluster member. This process may be 
- * asynchronous if Session Clustering is used. If this is the case, 
- * the initial operation returns an HTTP 202 response. As long as the server is not 
- * fully disabled, further calls to this method are idempotent. On a 
+ * <pre>This method disables a cluster member. This process may be
+ * asynchronous if Session Clustering is used. If this is the case,
+ * the initial operation returns an HTTP 202 response. As long as the server is not
+ * fully disabled, further calls to this method are idempotent. On a
  * Zend Server Cluster Manager with no valid license, this operation fails.</pre>
  *
  * @license     MIT

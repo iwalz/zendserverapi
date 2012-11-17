@@ -13,7 +13,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
@@ -117,7 +117,7 @@ class Config
      */
     public function setPort($port)
     {
-        $this->port = (int)$port;
+        $this->port = (int) $port;
     }
 
     /**
@@ -169,10 +169,10 @@ class Config
     {
         return $this->proxyPort;
     }
-    
+
     /**
      * Get the protocol (http/https)
-     * 
+     *
      * @return string
      */
     public function getProtocol()
@@ -200,10 +200,10 @@ class Config
     {
         $this->proxyPort = (int) $proxyPort;
     }
-    
+
     /**
      * Set the protocol (http/https)
-     * 
+     *
      * @param string
      * @return void
      */
@@ -211,6 +211,5 @@ class Config
     {
         $this->protocol = $protocol;
     }
-    
 
 }

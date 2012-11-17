@@ -13,10 +13,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com> 
+ * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @package     ZendServerAPI\Method
  */
 
@@ -25,7 +25,7 @@ namespace ZendServerAPI\Method;
 /**
  * <b>The monitorGetEventGroupDetails Method</b>
  *
- * <pre>Retrieve an events list object identified by an events-group identifier. 
+ * <pre>Retrieve an events list object identified by an events-group identifier.
  * The events-group identifier is retrieved from an Issue element's data.</pre>
  *
  * @license     MIT
@@ -51,8 +51,8 @@ class MonitorGetEventGroupDetails extends \ZendServerAPI\Method
      *
      * Retrieves the details of the given issue id.
      *
-     * @param  string  $issueId     The issue ID
-     * @param  int  $eventsGroupId  The event group identifier
+     * @param  string                                            $issueId       The issue ID
+     * @param  int                                               $eventsGroupId The event group identifier
      * @return \ZendServerAPI\Method\MonitorGetEventGroupDetails
      */
     public function __construct($issueId, $eventsGroupId)

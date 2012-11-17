@@ -13,7 +13,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * <http://www.rubber-duckling.net>
- * 
+ *
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
@@ -56,8 +56,8 @@ class Configuration extends BaseAPI
      *
      * <pre>Export the current server/cluster configuration into a file.</pre>
      *
-     * @param  string  $exportDirectory <p>Directory where to save the exported configs</p>
-     * @param  string  $fileName <p>Filename to export config to</p>
+     * @param  string       $exportDirectory <p>Directory where to save the exported configs</p>
+     * @param  string       $fileName        <p>Filename to export config to</p>
      * @return \SplFileInfo
      */
     public function configurationExport($exportDirectory = null, $fileName = null)

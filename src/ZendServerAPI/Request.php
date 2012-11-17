@@ -66,7 +66,7 @@ class Request
     /**
      * Set method implementation object
      *
-     * @param  \ZendServerAPI\Method\Method  $action
+     * @param  \ZendServerAPI\Method\Method $action
      * @return \ZendServerAPI\Request
      */
     public function setAction(\ZendServerAPI\Method\Method $action)

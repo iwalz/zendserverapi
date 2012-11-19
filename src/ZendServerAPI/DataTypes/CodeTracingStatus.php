@@ -38,11 +38,6 @@ class CodeTracingStatus extends DataType
      */
     protected $componentStatus = null;
     /**
-     * Current always_dump directive value (On|Off)
-     * @var boolean
-     */
-    protected $alwaysDump = null;
-    /**
      * Current trace_enabled directive value (On|Off)
      * @var boolean
      */
@@ -68,16 +63,6 @@ class CodeTracingStatus extends DataType
     public function getComponentStatus ()
     {
         return $this->componentStatus;
-    }
-
-    /**
-     * Get the current always_dump directive value (On|Off)
-     *
-     * @return string
-     */
-    public function getAlwaysDump ()
-    {
-        return $this->alwaysDump;
     }
 
     /**
@@ -111,17 +96,6 @@ class CodeTracingStatus extends DataType
     public function setComponentStatus ($componentStatus)
     {
         $this->componentStatus = $componentStatus;
-    }
-
-    /**
-     * Set the always dump setting
-     *
-     * @param  string $alwaysDump
-     * @return void
-     */
-    public function setAlwaysDump ($alwaysDump)
-    {
-        $this->alwaysDump = $alwaysDump;
     }
 
     /**

@@ -239,7 +239,9 @@ class Request
         $requests->removeHeader('Expect');
 
         $this->getLogger()->debug($requests);
-        $this->getLogger()->debug($requests->getPostFields());
+        foreach($this->getAction()->getContentValues() as $key => $value) {
+            $this->getLogger()->debug($key . ': ' . $value);
+        }
 
         try {
             $response = $this->client->send($requests);

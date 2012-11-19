@@ -23,7 +23,7 @@
 namespace ZendServerAPI\Adapter;
 
 use ZendServerAPI\DataTypes\ServerInfo as ServerInfoData,
-    ZendServerAPI\DataTypes\MessageList,
+    ZendServerAPI\DataTypes\MessageList as MessageListType,
     ZendServerAPI\DataTypes\ServersList as ServersListData;
 
 /**
@@ -39,7 +39,7 @@ class ServersList extends Adapter
     /**
      * Parse the xml response in object mappings
      *
-     * @param  string                               $xml
+     * @param  string $xml
      * @return \ZendServerAPI\DataTypes\ServersList
      */
     public function parse($xml = null)
@@ -58,7 +58,7 @@ class ServersList extends Adapter
             $server->setAddress((string) $serverInfo->address);
             $server->setStatus((string) $serverInfo->status);
 
-            $messageList = new MessageList();
+            $messageList = new MessageListType();
             $messageList->setError((string) $serverInfo->messageList->error);
             $messageList->setInfo((string) $serverInfo->messageList->info);
             $messageList->setWarning((string) $serverInfo->messageList->warning);

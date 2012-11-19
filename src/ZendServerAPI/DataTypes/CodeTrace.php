@@ -66,7 +66,7 @@ class CodeTrace extends DataType
     /**
      * Get the codeTrace id
      *
-     * @return int
+     * @return string
      */
     public function getId ()
     {
@@ -127,12 +127,12 @@ class CodeTrace extends DataType
     /**
      * Set the codeTrace id
      *
-     * @param  int  $id
+     * @param  string  $id
      * @return void
      */
     public function setId ($id)
     {
-        $this->id = (int) $id;
+        $this->id = $id;
     }
 
     /**

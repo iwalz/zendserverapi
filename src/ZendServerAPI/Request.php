@@ -230,17 +230,16 @@ class Request
                 $requests->addPostFields($contentValues);
         }
 
-        /*
-         * @var \Guzzle\Http\Message\Request $requests
-         */
+        /* @var \Guzzle\Http\Message\Request $requests */
         $requests->setHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
         $requests->setHeader('Accept', $this->action->getAcceptHeader());
         $requests->setHeader('lookInCupboard', 'true');
         $requests->setHeader('Date', $this->getDate());
         $requests->setHeader('User-Agent', $this->userAgent);
-        $requests->setHeader('Expect', '');
+        $requests->removeHeader('Expect');
 
         $this->getLogger()->debug($requests);
+        $this->getLogger()->debug($requests->getPostFields());
 
         try {
             $response = $this->client->send($requests);

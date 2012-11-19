@@ -46,7 +46,7 @@ class CodetracingStatus extends Adapter
         $xml = simplexml_load_string($xml);
         $codetracingStatus = new \ZendServerAPI\DataTypes\CodeTracingStatus();
         $codetracingStatus->setComponentStatus((string) $xml->responseData->codeTracingStatus->componentStatus);
-        $codetracingStatus->setAlwaysDump(((string) $xml->responseData->codeTracingStatus->alwaysDump) == '0' ? false : true);
+//         $codetracingStatus->setAlwaysDump(((string) $xml->responseData->codeTracingStatus->alwaysDump) == '0' ? false : true);
         $codetracingStatus->setTraceEnabled(((string) $xml->responseData->codeTracingStatus->traceEnabled) == '0' ? false : true);
         $codetracingStatus->setAwaitsRestart(((string) $xml->responseData->codeTracingStatus->awaitsRestart) == '0' ? false : true);
         $codetracingStatus->setDeveloperMode(((string) $xml->responseData->codeTracingStatus->developerMode) == '0' ? false : true);

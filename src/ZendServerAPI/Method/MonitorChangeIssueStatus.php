@@ -46,14 +46,14 @@ class MonitorChangeIssueStatus extends Method
     protected $newStatus = null;
 
     /**
-     * Constructor for ApplicationRemove method
+     * Constructor for MonitorChangeIssueStatus method
      *
-     * @param int    $applicationId ApplicationId to remove
+     * @param int    $issueId 		IssueId to change
      * @param string $newStatus     The new status to set
      */
-    public function __construct($applicationId, $newStatus)
+    public function __construct($issueId, $newStatus)
     {
-        $this->applicationId = $applicationId;
+        $this->issueId = $issueId;
         $this->newStatus = $newStatus;
         parent::__construct();
     }
@@ -97,7 +97,7 @@ class MonitorChangeIssueStatus extends Method
      */
     public function getContent()
     {
-        return ("issueId=".$this->applicationId
+        return ("issueId=".$this->issueId
                ."&newStatus=".$this->newStatus);
     }
 }

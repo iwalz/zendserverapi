@@ -113,9 +113,7 @@ class Monitor extends BaseAPI
      * one of the standard filters.</pre>
      *
      * @param string $issueId
-     * <p>The predefined filter's id. Can be the filter's “name” or the actual
-     * identifier randomly created by the system.
-     * This parameter is case-sensitive</p>
+     * <p>The Issue id.</p>
      * @return \ZendServerAPI\DataTypes\IssueDetails
      */
     public function monitorGetIssueDetails($issueId)

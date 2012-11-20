@@ -63,8 +63,7 @@ class MonitorGetIssuesListByPredefinedFilter extends Method
      */
     protected $order = null;
     /**
-     * Sorting direction: Ascending or Descending. Default is
-     * Descending
+     * Sorting direction: ASC or DESC. Default is DESC
      * @var string
      */
     protected $direction = null;

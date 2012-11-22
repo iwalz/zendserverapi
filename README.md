@@ -1,4 +1,4 @@
-zendserverapi
+Zend Server API
 =============
 
 Master: [![Build Status](https://secure.travis-ci.org/iwalz/zendserverapi.png?branch=master)](http://travis-ci.org/iwalz/zendserverapi)
@@ -6,7 +6,7 @@ Master: [![Build Status](https://secure.travis-ci.org/iwalz/zendserverapi.png?br
 [PHP Doc](http://zs-apidoc.rubber-duckling.net) 
 
 ## Installation via composer 
-To install the Zend Server API phing integration, your <code>composer.json</code> file should look like this:
+To install the Zend Server API, your <code>composer.json</code> file should look like this:
 <pre>
 {
   "repositories": [
@@ -15,10 +15,10 @@ To install the Zend Server API phing integration, your <code>composer.json</code
 			"url": "http://packages.zendframework.com/"
 		}
 	],
-    "require": {
-        "zendserverapi/zendserverapi": "dev-master"
-    },
-    "minimum-stability": "dev"
+  "require": {
+  	"zendserverapi/zendserverapi": "dev-master"
+  },
+  "minimum-stability": "dev"
 }
 </pre>
 

@@ -140,13 +140,7 @@ class Monitor extends BaseAPI
     public function monitorGetEventGroupDetails($issueId, $eventsGroupId = null)
     {
         if ($eventsGroupId === null) {
-            $this->request->setAction($this->apiFactory->factory('monitorGetIssuesDetails', $issueId));
-            $event = $this->request->send();
-            $eventsGroups = $event->getEventsGroups();
-            $eventsGroupId = $eventsGroups[0]->getEventsGroupId();
-
-            // Reset request
-            $this->request = Startup::getRequest($this->name);
+            $eventsGroupId = $this->getFirstEventGroupsIdByIssueId($issueId);
         }
         $this->request->setAction($this->apiFactory->factory('monitorGetEventGroupDetails', $issueId, $eventsGroupId));
 
@@ -179,16 +173,21 @@ class Monitor extends BaseAPI
      * event groups and code tracing if available, ready for consumption
      * by Zend Studio. The response is a binary payload.</pre>
      *
+     * @param string $issueId   <p>The issue identifier</p>
      * @param string $eventsGroupId   <p>The issue event group identifier</p>
-     * @param string $exportDirectory
-     * <p>The directory where to export the issue. Default is getcwd()</p>
      * @param string $fileName
      * <p>The filename where to save the exported issue to.
      * Default is the given name from Zend Server</p>
+     * @param string $exportDirectory
+     * <p>The directory where to export the issue. Default is getcwd()</p>
      * @return \SplFileInfo
      */
-    public function monitorExportIssueByEventsGroup($eventsGroupId, $exportDirectory = null, $fileName = null)
+    public function monitorExportIssueByEventsGroup($issueId, $eventsGroupId = null, $fileName = null, $exportDirectory = null)
     {
+        if ($eventsGroupId === null) {
+            $eventsGroupId = $this->getFirstEventGroupsIdByIssueId($issueId);
+        }
+        
         if($exportDirectory !== null)
             $this->exportDirectory = $exportDirectory;
         else

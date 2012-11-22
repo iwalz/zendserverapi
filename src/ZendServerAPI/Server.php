@@ -139,7 +139,7 @@ class Server extends BaseAPI
      * further calls to this method are idempotent. On a Zend Server Cluster Manager
      * with no valid license, this operation fails.</pre>
      *
-     * @param  int                                 $serverId <p>The server ID</p>
+     * @param  int  $serverId <p>The server ID</p>
      * @return \ZendServerAPI\DataTypes\ServerInfo
      */
     public function clusterDisableServer($serverId)
@@ -159,7 +159,7 @@ class Server extends BaseAPI
      * no consequences. On a Zend Server Cluster Manager with no valid license
      * this operation fails.</pre>
      *
-     * @param  int                                 $serverId <p>The server ID</p>
+     * @param  int  $serverId <p>The server ID</p>
      * @return \ZendServerAPI\DataTypes\ServerInfo
      */
     public function clusterEnableServer($serverId)
@@ -212,8 +212,8 @@ class Server extends BaseAPI
     /**
      * <pre>Wait for status = OK on $server, check every $interval seconds</pre>
      *
-     * @param  string|int                          $server   <p>Servername or server id</p>
-     * @param  int                                 $interval <p>Seconds to repeat test</p>
+     * @param  string|int  $server   <p>Servername or server id</p>
+     * @param  int         $interval <p>Seconds to repeat test</p>
      * @return \ZendServerAPI\DataTypes\ServerInfo
      */
     public function waitForStableState($server, $interval = 5)

@@ -128,4 +128,25 @@ class BaseAPI
 
         return true;
     }
+    
+    /**
+     * Get the first event groups identifier by an given issue id.
+     * This will perform an monitorGetIssuesDetails action.
+     * 
+     * @param int $issueId
+     * @return int
+     */
+    protected function getFirstEventGroupsIdByIssueId($issueId) 
+    {
+        $this->request->setAction($this->apiFactory->factory('monitorGetIssuesDetails', $issueId));
+        $issuesDetail = $this->request->send();
+        
+        $eventsGroups = $issuesDetail->getEventsGroups();
+        $eventsGroupId = $eventsGroups[0]->getEventsGroupId();
+        
+        // Reset request
+        $this->request = Startup::getRequest($this->name);
+        
+        return $eventsGroupId;
+    }
 }

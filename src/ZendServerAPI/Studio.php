@@ -44,6 +44,7 @@ class Studio extends BaseAPI
      *
      * <pre>Start a debug session for a specific issue</pre>
      *
+     * @param string $issueId   <p>The issue identifier</p>
      * @param string $eventsGroupId <p>The issue event group identifier</p>
      * @param string $noRemote      <p>Use server's own local files for debug display.
      * Default: true. Setting to false will use local files from studio if available</p>
@@ -52,8 +53,12 @@ class Studio extends BaseAPI
      * where Studio is executed</p>
      * @return \ZendServerAPI\DataTypes\DebugRequest
      */
-    public function studioStartDebug($eventsGroupId, $noRemote = null, $overrideHost = null)
+    public function studioStartDebug($issueId, $eventsGroupId = null, $noRemote = null, $overrideHost = null)
     {
+        if ($eventsGroupId === null) {
+            $eventsGroupId = $this->getFirstEventGroupsIdByIssueId($issueId);
+        }
+        
         $this->request->setAction($this->apiFactory->factory('studioStartDebug', $eventsGroupId, $noRemote, $overrideHost));
 
         return $this->request->send();
@@ -65,14 +70,19 @@ class Studio extends BaseAPI
      * <pre>Start a profiling session with Zend Studio's integration
      * using an events group identifier</pre>
      *
+     * @param string $issueId   <p>The issue identifier</p>
      * @param string $eventsGroupId <p>The issue event group identifier</p>
      * @param string $overrideHost  <p>Override the host address sent to
      * Zend Server for initiating a Debug session. This is used to point Zend Server
      * at the right address where Studio is executed</p>
      * @return \ZendServerAPI\DataTypes\DebugRequest
      */
-    public function studioStartProfile($eventsGroupId, $overrideHost = null)
+    public function studioStartProfile($issueId, $eventsGroupId = null, $overrideHost = null)
     {
+        if ($eventsGroupId === null) {
+            $eventsGroupId = $this->getFirstEventGroupsIdByIssueId($issueId);
+        }
+        
         $this->request->setAction($this->apiFactory->factory('studioStartProfile', $eventsGroupId, $overrideHost));
 
         return $this->request->send();

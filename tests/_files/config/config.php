@@ -32,8 +32,8 @@ return array(
     	),
     	# Contains a valid key
     	"example62" => array(
-    		"version" => \ZendServerAPI\Version::ZSCM56,
-    		"fullApiKey" => "bee698dde6a95de71932d65cb655c31fc4ea04c1fabaf6f0a1b852617eac32ac",
+    		"version" => \ZendServerAPI\Version::ZS56,
+    		"fullApiKey" => "49727e37c6679ecfdab2003f8e0902f75a394926b5184920d4e25b324131bd80",
     		"apiName" => "api",
     		"host" => "localhost",
     		"port" => 10081

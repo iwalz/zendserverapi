@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
@@ -32,7 +32,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  */
 class CodetracingDelete extends Method
 {
@@ -73,7 +73,7 @@ class CodetracingDelete extends Method
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/codetracingDelete');
-        $this->setParser(new \ZendServerAPI\Adapter\Codetrace());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\Codetrace());
     }
 
     /**

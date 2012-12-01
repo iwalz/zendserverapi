@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 
 namespace ZendService\ZendServerAPI;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI
+ * @package ZendService\ZendServerAPI
  */
 class ApiKey
 {
@@ -93,7 +93,7 @@ class ApiKey
         if($state === self::READONLY || $state === self::FULL)
             $this->state = $state;
         else
-            throw new \InvalidArgumentException("State has to be \ZendServerAPI\ApiKey::READONLY or \ZendServerAPI\ApiKey::Full");
+            throw new \InvalidArgumentException("State has to be \ZendService\ZendServerAPI\ApiKey::READONLY or \ZendService\ZendServerAPI\ApiKey::Full");
     }
 
     /**

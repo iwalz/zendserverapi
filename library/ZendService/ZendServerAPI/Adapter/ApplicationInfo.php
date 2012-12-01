@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 
 namespace ZendService\ZendServerAPI\Adapter;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\Adapter;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 class ApplicationInfo extends Adapter
 {
@@ -36,7 +36,7 @@ class ApplicationInfo extends Adapter
      * Parse the xml response in object mappings
      *
      * @param  string                                   $xml
-     * @return \ZendServerAPI\DataTypes\ApplicationInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function parse ($xml = null)
     {
@@ -45,7 +45,7 @@ class ApplicationInfo extends Adapter
 
         $xml = simplexml_load_string($xml);
 
-        $applicationInfo = new \ZendServerAPI\DataTypes\ApplicationInfo();
+        $applicationInfo = new  \ZendService\ZendServerAPI\DataTypes\ApplicationInfo();
         $applicationInfo->setAppName((string) $xml->responseData->applicationInfo->appName);
         $applicationInfo->setId((string) $xml->responseData->applicationInfo->id);
         $applicationInfo->setBaseUrl((string) $xml->responseData->applicationInfo->baseUrl);
@@ -55,7 +55,7 @@ class ApplicationInfo extends Adapter
 
         if (isset($xml->responseData->applicationInfo->servers->applicationServer)) {
             foreach ($xml->responseData->applicationInfo->servers->applicationServer as $xmlServer) {
-                $server = new \ZendServerAPI\DataTypes\ApplicationServer();
+                $server = new  \ZendService\ZendServerAPI\DataTypes\ApplicationServer();
                 $server->setId((string) $xmlServer->id);
                 $server->setDeployedVersion((string) trim($xmlServer->deployedVersion));
                 $server->setStatus((string) $xmlServer->status);
@@ -64,13 +64,13 @@ class ApplicationInfo extends Adapter
         }
         if (isset($xml->responseData->applicationInfo->deployedVersions->deployedVersion)) {
             foreach ($xml->responseData->applicationInfo->deployedVersions->deployedVersion as $xmlDeployedVersions) {
-                $deployedVersions = new \ZendServerAPI\DataTypes\DeployedVersions();
+                $deployedVersions = new  \ZendService\ZendServerAPI\DataTypes\DeployedVersions();
                 $deployedVersions->setVersion((string) trim($xmlDeployedVersions));
                 $applicationInfo->addDeployedVersions($deployedVersions);
             }
         }
 
-        $messageListAdapter = new \ZendServerAPI\Adapter\MessageList();
+        $messageListAdapter = new  \ZendService\ZendServerAPI\Adapter\MessageList();
         $xmlMessageList = (string) $xml->responseData->applicationInfo->messageList;
 
         if(!empty($xmlMessageList))

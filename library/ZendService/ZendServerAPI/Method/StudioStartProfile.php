@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
@@ -31,7 +31,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  */
 class StudioStartProfile extends Method
 {
@@ -74,7 +74,7 @@ class StudioStartProfile extends Method
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/studioStartProfile');
-        $this->setParser(new \ZendServerAPI\Adapter\DebugRequest());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DebugRequest());
     }
 
     /**

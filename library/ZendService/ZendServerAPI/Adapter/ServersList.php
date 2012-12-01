@@ -17,14 +17,14 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 
 namespace ZendService\ZendServerAPI\Adapter;
 
-use ZendServerAPI\DataTypes\ServerInfo as ServerInfoData,
-    ZendServerAPI\DataTypes\MessageList as MessageListType,
-    ZendServerAPI\DataTypes\ServersList as ServersListData;
+use ZendService\ZendServerAPI\DataTypes\ServerInfo as ServerInfoData,
+    ZendService\ZendServerAPI\DataTypes\MessageList as MessageListType,
+    ZendService\ZendServerAPI\DataTypes\ServersList as ServersListData;
 
 /**
  * ServersList datatype adapter implementation
@@ -32,7 +32,7 @@ use ZendServerAPI\DataTypes\ServerInfo as ServerInfoData,
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 class ServersList extends Adapter
 {
@@ -40,7 +40,7 @@ class ServersList extends Adapter
      * Parse the xml response in object mappings
      *
      * @param  string $xml
-     * @return \ZendServerAPI\DataTypes\ServersList
+     * @return \ZendService\ZendServerAPI\DataTypes\ServersList
      */
     public function parse($xml = null)
     {

@@ -16,7 +16,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 
 namespace ZendService\ZendServerAPI;
@@ -39,7 +39,7 @@ namespace ZendService\ZendServerAPI;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 class Codetracing extends BaseAPI
 {
@@ -60,7 +60,7 @@ class Codetracing extends BaseAPI
      * dump on every request. <b>Do not use it in production!</b></pre>
      *
      * @param  boolean                                    $restartNow <p>Restart after method call</p>
-     * @return \ZendServerAPI\DataTypes\CodeTracingStatus
+     * @return \ZendService\ZendServerAPI\DataTypes\CodeTracingStatus
      */
     public function codetracingEnable($restartNow = true)
     {
@@ -80,7 +80,7 @@ class Codetracing extends BaseAPI
      * dump on every request. <b>Do not use it in production!</b></pre>
      *
      * @param  boolean                                    $restartNow <p>Restart after method call</p>
-     * @return \ZendServerAPI\DataTypes\CodeTracingStatus
+     * @return \ZendService\ZendServerAPI\DataTypes\CodeTracingStatus
      */
     public function codetracingDisable($restartNow = true)
     {
@@ -100,7 +100,7 @@ class Codetracing extends BaseAPI
      * The developerMode will cause the Zend Server to create a trace
      * on every request. Do not use it in production</pre>
      *
-     * @return \ZendServerAPI\DataTypes\CodeTracingStatus
+     * @return \ZendService\ZendServerAPI\DataTypes\CodeTracingStatus
      */
     public function codetracingIsEnabled()
     {
@@ -119,7 +119,7 @@ class Codetracing extends BaseAPI
      * the protocoll.</pre>
      *
      * @param  string                               $url <p>the url to trace</p>
-     * @return \ZendServerAPI\DataTypes\CodeTracing
+     * @return \ZendService\ZendServerAPI\DataTypes\CodeTracing
      */
     public function codetracingCreate($url)
     {
@@ -134,7 +134,7 @@ class Codetracing extends BaseAPI
      * <pre>Delete a code-tracing file entry.</pre>
      *
      * @param  integer                              $id <p>Trace file ID</p>
-     * @return \ZendServerAPI\DataTypes\CodeTracing
+     * @return \ZendService\ZendServerAPI\DataTypes\CodeTracing
      */
     public function codetracingDelete($id)
     {
@@ -153,7 +153,7 @@ class Codetracing extends BaseAPI
      * @param  int                                  $offset         <p>Page offset to be displayed</p>
      * @param  string                               $orderBy        <p>Column to sort the result by (Id,Date,Url,CreatedBy,FileSize)</p>
      * @param  string                               $direction      <p>Direction to sort, default to Desc</p>
-     * @return \ZendServerAPI\DataTypes\CodeTracing
+     * @return \ZendService\ZendServerAPI\DataTypes\CodeTracing
      */
     public function codetracingList($applicationIds = array(), $limit = null, $offset = null, $orderBy = null, $direction = null)
     {
@@ -170,7 +170,7 @@ class Codetracing extends BaseAPI
      * @param  string                               $traceFile       <p>Trace file identifier</p>
      * @param  string                               $fileName        <p>Filename to save tracefile to</p>
      * @param  string                               $exportDirectory <p>Directory to export files to</p>
-     * @return \ZendServerAPI\DataTypes\CodeTracing
+     * @return \ZendService\ZendServerAPI\DataTypes\CodeTracing
      */
     public function codetracingDownloadTraceFile($traceFile, $fileName = null, $exportDirectory = null)
     {

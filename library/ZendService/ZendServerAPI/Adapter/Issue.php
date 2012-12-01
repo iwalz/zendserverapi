@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 
 namespace ZendService\ZendServerAPI\Adapter;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\Adapter;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 class Issue extends Adapter
 {
@@ -36,7 +36,7 @@ class Issue extends Adapter
      * Parse the xml response in object mappings
      *
      * @param  string                         $xml
-     * @return \ZendServerAPI\DataTypes\Issue
+     * @return \ZendService\ZendServerAPI\DataTypes\Issue
      */
     public function parse ($xml = null)
     {
@@ -45,7 +45,7 @@ class Issue extends Adapter
 
         $xml = simplexml_load_string($xml);
 
-        $issue = new \ZendServerAPI\DataTypes\Issue();
+        $issue = new  \ZendService\ZendServerAPI\DataTypes\Issue();
         $issue->setId((string) $xml->responseData->issue->id);
         $issue->setRule((string) $xml->responseData->issue->rule);
         $issue->setCount((string) $xml->responseData->issue->count);
@@ -53,7 +53,7 @@ class Issue extends Adapter
         $issue->setSeverity((string) $xml->responseData->issue->severity);
         $issue->setStatus((string) $xml->responseData->issue->status);
 
-        $generalDetails = new \ZendServerAPI\DataTypes\GeneralDetails();
+        $generalDetails = new  \ZendService\ZendServerAPI\DataTypes\GeneralDetails();
         $generalDetails->setUrl((string) $xml->responseData->issue->generalDetails->url);
         $generalDetails->setSourceFile((string) $xml->responseData->issue->generalDetails->sourceFile);
         $generalDetails->setSourceLine((string) $xml->responseData->issue->generalDetails->sourceLine);
@@ -65,7 +65,7 @@ class Issue extends Adapter
 
         if (isset($xml->responseData->issue->routeDetails->routeDetail)) {
             foreach ($xml->responseData->issue->routeDetails->routeDetail as $xmlRouteDetail) {
-                $routeDetails = new \ZendServerAPI\DataTypes\RouteDetail();
+                $routeDetails = new  \ZendService\ZendServerAPI\DataTypes\RouteDetail();
                 $routeDetails->setKey($xmlRouteDetail->key);
                 $routeDetails->setValue($xmlRouteDetail->value);
                 $issue->addRouteDetails($routeDetails);

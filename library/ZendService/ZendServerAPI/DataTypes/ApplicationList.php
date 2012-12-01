@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 
 namespace ZendService\ZendServerAPI\DataTypes;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\DataTypes;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 class ApplicationList extends DataType implements \Countable, \IteratorAggregate
 {
@@ -41,10 +41,10 @@ class ApplicationList extends DataType implements \Countable, \IteratorAggregate
     /**
      * Add application info object to container
      *
-     * @param  \ZendServerAPI\DataTypes\ApplicationInfo $applicationInfo
+     * @param  \ZendService\ZendServerAPI\DataTypes\ApplicationInfo $applicationInfo
      * @return void
      */
-    public function addApplicationInfo(\ZendServerAPI\DataTypes\ApplicationInfo $applicationInfo)
+    public function addApplicationInfo(\ZendService\ZendServerAPI\DataTypes\ApplicationInfo $applicationInfo)
     {
         $this->applicationInfos[] = $applicationInfo;
     }

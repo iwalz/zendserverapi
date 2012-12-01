@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 
 namespace ZendService\ZendServerAPI;
@@ -30,7 +30,7 @@ namespace ZendService\ZendServerAPI;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 class Config
 {

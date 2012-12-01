@@ -1,9 +1,9 @@
 <?php
 namespace ZendServerAPITest;
 
-use ZendServerAPI\Request;
+use \ZendService\ZendServerAPI\Request;
 
-use ZendServerAPI\Deployment;
+use \ZendService\ZendServerAPI\Deployment;
 
 class DeploymentTest extends \PHPUnit_Framework_TestCase
 {
@@ -22,8 +22,8 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
         $deployment->setRequest($request);
         
         $this->assertSame($request, $deployment->getRequest());
-        $this->assertInstanceOf('\ZendServerAPI\Config', $deployment->getRequest()->getConfig());
-        $this->assertInstanceOf('\ZendServerAPI\ApiKey', $deployment->getRequest()->getConfig()->getApiKey());
+        $this->assertInstanceOf('\ZendService\ZendServerAPI\Config', $deployment->getRequest()->getConfig());
+        $this->assertInstanceOf('\ZendService\ZendServerAPI\ApiKey', $deployment->getRequest()->getConfig()->getApiKey());
     }
     
     public function testApplicationGetStatus()
@@ -35,10 +35,10 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
         $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
         $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
         
-        $deployment = new \ZendServerAPI\Deployment();
+        $deployment = new \ZendService\ZendServerAPI\Deployment();
         $deployment->setClient($clientStub);
         $result = $deployment->applicationGetStatus(array(1,2));
-        $this->assertInstanceOf('\ZendServerAPI\DataTypes\ApplicationList', $result);
+        $this->assertInstanceOf('\ZendService\ZendServerAPI\DataTypes\ApplicationList', $result);
     }
 
     public function testApplicationGetStatusAgainstProduction()
@@ -47,20 +47,20 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
             $this->markTestSkipped();
         
         try {
-            $deployment = new \ZendServerAPI\Deployment("example62");
+            $deployment = new \ZendService\ZendServerAPI\Deployment("example62");
             $deploymentStatus = $deployment->applicationGetStatus();
         } catch(\Exception $e) {
             $this->markTestSkipped();
         }
         
-        $this->assertInstanceOf('\ZendServerAPI\DataTypes\ApplicationList', $deploymentStatus);
+        $this->assertInstanceOf('\ZendService\ZendServerAPI\DataTypes\ApplicationList', $deploymentStatus);
     }
     
     public function testApplicationDeploy()
     {
         if(DISABLE_REAL_INTERFACE === true)
             $this->markTestSkipped();
-        $deployment = new \ZendServerAPI\Deployment("example62");
+        $deployment = new \ZendService\ZendServerAPI\Deployment("example62");
         if(!$deployment->canConnect())
             $this->markTestSkipped();
         
@@ -83,7 +83,7 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
                 )
         );
         $deployment->waitForStableState($deploy->getId());
-        $this->assertInstanceOf('\ZendServerAPI\DataTypes\ApplicationInfo', $deploy);
+        $this->assertInstanceOf('\ZendService\ZendServerAPI\DataTypes\ApplicationInfo', $deploy);
         $deployment->applicationRemove($deploy->getId());
         $deployment->waitForRemoved($deploy->getId());
             
@@ -93,7 +93,7 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
     {
         if(DISABLE_REAL_INTERFACE === true)
             $this->markTestSkipped();
-        $deployment = new \ZendServerAPI\Deployment("example62");
+        $deployment = new \ZendService\ZendServerAPI\Deployment("example62");
         if(!$deployment->canConnect())
             $this->markTestSkipped();
         
@@ -121,7 +121,7 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
     {
         if(DISABLE_REAL_INTERFACE === true)
             $this->markTestSkipped();
-        $deployment = new \ZendServerAPI\Deployment("example62");
+        $deployment = new \ZendService\ZendServerAPI\Deployment("example62");
         if(!$deployment->canConnect())
             $this->markTestSkipped();
         
@@ -143,7 +143,7 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
         $app = $deployment->waitForStableState($app->getId());
         
         $deployedVersions = $app->getDeployedVersions();
-        $deployedVersion = new \ZendServerAPI\DataTypes\DeployedVersions();
+        $deployedVersion = new \ZendService\ZendServerAPI\DataTypes\DeployedVersions();
         $deployedVersion->setVersion("0.2");
         $this->assertEquals($deployedVersions[0], $deployedVersion);
         
@@ -151,7 +151,7 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
         $app = $deployment->waitForStableState($app->getId());
         
         $deployedVersions = $app->getDeployedVersions();
-        $deployedVersion = new \ZendServerAPI\DataTypes\DeployedVersions();
+        $deployedVersion = new \ZendService\ZendServerAPI\DataTypes\DeployedVersions();
         $deployedVersion->setVersion("0.1");
         $this->assertEquals($deployedVersions[0], $deployedVersion);
         
@@ -161,7 +161,7 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
     {
         if(DISABLE_REAL_INTERFACE === true)
             $this->markTestSkipped();
-        $deployment = new \ZendServerAPI\Deployment("example62");
+        $deployment = new \ZendService\ZendServerAPI\Deployment("example62");
         if(!$deployment->canConnect())
             $this->markTestSkipped();
         
@@ -169,7 +169,7 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
         $applicationList = $applications->getApplicationInfos();
         $applicationInfo = $applicationList[0];
         $applicationInfo = $deployment->applicationSynchronize($applicationInfo->getId(), array(0));
-        $this->assertInstanceOf('\ZendServerAPI\DataTypes\ApplicationInfo', $applicationInfo);
+        $this->assertInstanceOf('\ZendService\ZendServerAPI\DataTypes\ApplicationInfo', $applicationInfo);
         $this->assertNotEquals('deployed', $applicationInfo->getStatus());
     }
 }

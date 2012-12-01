@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Factories
+ * @package     ZendService\ZendServerAPI\Factories
  */
 
 namespace ZendService\ZendServerAPI\Factories;
@@ -29,7 +29,7 @@ namespace ZendService\ZendServerAPI\Factories;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Factories
+ * @package     ZendService\ZendServerAPI\Factories
  */
 class ApiVersion10CommandFactory implements CommandFactory
 {
@@ -39,7 +39,7 @@ class ApiVersion10CommandFactory implements CommandFactory
      *
      * @throws \RuntimeException
      * @param  string                $name
-     * @return \ZendServerAPI\Method
+     * @return \ZendService\ZendServerAPI\Method
      */
     public function factory($name)
     {
@@ -56,7 +56,7 @@ class ApiVersion10CommandFactory implements CommandFactory
             case 'getSystemInfo':
             case 'configurationImport':
             case 'configurationExport':
-                $reflect  = new \ReflectionClass("\\ZendServerAPI\\Method\\" . ucfirst($name));
+                $reflect  = new \ReflectionClass("\\ZendService\\ZendServerAPI\\Method\\" . ucfirst($name));
 
                 return $reflect->newInstanceArgs($args);
                 break;

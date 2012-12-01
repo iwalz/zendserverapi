@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 
 namespace ZendService\ZendServerAPI\Adapter;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\Adapter;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 class EventsGroupDetails extends Adapter
 {
@@ -36,7 +36,7 @@ class EventsGroupDetails extends Adapter
      * Parse the xml response in object mappings
      *
      * @param  string                                      $xml
-     * @return \ZendServerAPI\DataTypes\EventsGroupDetails
+     * @return \ZendService\ZendServerAPI\DataTypes\EventsGroupDetails
      */
     public function parse ($xml = null)
     {
@@ -45,10 +45,10 @@ class EventsGroupDetails extends Adapter
 
         $xml = simplexml_load_string($xml);
 
-        $eventsGroupDetails = new \ZendServerAPI\DataTypes\EventsGroupDetails();
+        $eventsGroupDetails = new  \ZendService\ZendServerAPI\DataTypes\EventsGroupDetails();
         $eventsGroupDetails->setIssueId((string) $xml->responseData->eventsGroupDetails->issueId);
 
-        $eventsGroup = new \ZendServerAPI\DataTypes\EventsGroup();
+        $eventsGroup = new  \ZendService\ZendServerAPI\DataTypes\EventsGroup();
         $eventsGroup->setEventsGroupId((string) $xml->responseData->eventsGroupDetails->eventsGroup->eventsGroupId);
         $eventsGroup->setEventsCount((string) $xml->responseData->eventsGroupDetails->eventsGroup->eventsCount);
         $eventsGroup->setStartTime((string) $xml->responseData->eventsGroupDetails->eventsGroup->startTime);
@@ -65,12 +65,12 @@ class EventsGroupDetails extends Adapter
 
         $eventsGroupDetails->setEventsGroup($eventsGroup);
 
-        $event = new \ZendServerAPI\DataTypes\Event();
+        $event = new  \ZendService\ZendServerAPI\DataTypes\Event();
         $event->setEventsGroupId((string) $xml->responseData->eventsGroupDetails->event->eventsGroupId);
         $event->setType((string) $xml->responseData->eventsGroupDetails->event->type);
         $event->setDescription((string) $xml->responseData->eventsGroupDetails->event->description);
 
-        $superglobal = new \ZendServerAPI\DataTypes\SuperGlobals();
+        $superglobal = new  \ZendService\ZendServerAPI\DataTypes\SuperGlobals();
         if (isset($xml->responseData->eventsGroupDetails->event->superGlobals->cookie->parameter)) {
             foreach ($xml->responseData->eventsGroupDetails->event->superGlobals->cookie->parameter as $cookie) {
                 $superglobal->addCookieParameter(trim((string) $cookie->name), trim((string) $cookie->value));
@@ -106,7 +106,7 @@ class EventsGroupDetails extends Adapter
         $eventsGroupDetails->setEvent($event);
 
         foreach ($xml->responseData->eventsGroupDetails->event->backtrace->step as $xmlStep) {
-            $step = new \ZendServerAPI\DataTypes\Step();
+            $step = new  \ZendService\ZendServerAPI\DataTypes\Step();
             $step->setClass(trim((string) $xmlStep->class));
             $step->setFile(trim((string) $xmlStep->file));
             $step->setFunction(trim((string) $xmlStep->function));

@@ -1,9 +1,9 @@
 <?php
 namespace ZendServerAPITest\Method;
 
-use ZendServerAPI\DataTypes\SystemInfo,
-    ZendServerAPI\DataTypes\LicenseInfo,
-    ZendServerAPI\DataTypes\MessageList;
+use \ZendService\ZendServerAPI\DataTypes\SystemInfo,
+    \ZendService\ZendServerAPI\DataTypes\LicenseInfo,
+    \ZendService\ZendServerAPI\DataTypes\MessageList;
 
 require_once 'PHPUnit/Framework/TestCase.php';
 
@@ -53,13 +53,13 @@ EOF;
     
     public function testParseResultSystemInfo()
     {
-        $action = new \ZendServerAPI\Method\GetSystemInfo();
+        $action = new \ZendService\ZendServerAPI\Method\GetSystemInfo();
         $systemInfo = $action->parseResponse(self::$GetSystemInfoResponse);
     
         $testSystemInfo = self::getSystemInfo();
         
-        $this->assertInstanceOf('\ZendServerAPI\DataTypes\LicenseInfo', $testSystemInfo->getServerLincenseInfo());
-        $this->assertInstanceOf('\ZendServerAPI\DataTypes\LicenseInfo', $testSystemInfo->getManagerLicenseInfo());
+        $this->assertInstanceOf('\ZendService\ZendServerAPI\DataTypes\LicenseInfo', $testSystemInfo->getServerLincenseInfo());
+        $this->assertInstanceOf('\ZendService\ZendServerAPI\DataTypes\LicenseInfo', $testSystemInfo->getManagerLicenseInfo());
 
         $this->assertEquals($testSystemInfo, $systemInfo);
     

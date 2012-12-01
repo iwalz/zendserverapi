@@ -17,12 +17,12 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
 
-use ZendServerAPI\Adapter\ServersList;
+use ZendService\ZendServerAPI\Adapter\ServersList;
 
 /**
  * <b>The configurationImport Method</b>
@@ -32,7 +32,7 @@ use ZendServerAPI\Adapter\ServersList;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  */
 class ConfigurationImport extends Method
 {

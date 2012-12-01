@@ -2,7 +2,7 @@
 namespace ZendServerAPITest;
 use Guzzle\Http\Exception\CurlException;
 
-use ZendServerAPI\Exception\ClientSide;
+use \ZendService\ZendServerAPI\Exception\ClientSide;
 
 /**
  * test case.
@@ -23,7 +23,7 @@ class ClientSideTest extends \PHPUnit_Framework_TestCase {
 EOF;
  
     /**
-     * @expectedException \ZendServerAPI\Exception\ClientSide
+     * @expectedException \ZendService\ZendServerAPI\Exception\ClientSide
      * @expectedExceptionCode 400
      * @expectedExceptionMessage authError: Incorrect signature 
      */
@@ -33,13 +33,13 @@ EOF;
 	}
 
 	/**
-	 * @expectedException \ZendServerAPI\Exception\ClientSide
+	 * @expectedException \ZendService\ZendServerAPI\Exception\ClientSide
 	 * @expectedExceptionCode 400
 	 * @expectedExceptionMessage missingParameter: This action requires the baseUrl parameter
 	 */
 	public function testExceptionParsingAgainstProduction()
 	{
-	    $deployment = new \ZendServerAPI\Deployment("example62");
+	    $deployment = new \ZendService\ZendServerAPI\Deployment("example62");
 	    if(!$deployment->canConnect())
 	        $this->markTestSkipped();
         $deployment->applicationDeploy(__DIR__.'/../../_files/example1.zpk', null);

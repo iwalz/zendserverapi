@@ -13,7 +13,7 @@ class SuperGlobalsTest extends PHPUnit_Framework_TestCase
      */
     public function testGettersAndSetters()
     {
-        $superglobals = new \ZendServerAPI\DataTypes\SuperGlobals();
+        $superglobals = new \ZendService\ZendServerAPI\DataTypes\SuperGlobals();
         
         $superglobals->addCookieParameter("foo", "bar");
         $superglobals->addServerParameter("bar", "foo");

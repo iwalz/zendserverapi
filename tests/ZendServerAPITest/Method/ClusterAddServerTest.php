@@ -1,12 +1,12 @@
 <?php
 namespace ZendServerAPITest\Method;
 
-use ZendServerAPI\Server;
+use \ZendService\ZendServerAPI\Server;
 
-use ZendServerAPI\DataTypes\MessageList;
+use \ZendService\ZendServerAPI\DataTypes\MessageList;
 
-use ZendServerAPI\Method\ClusterAddServer;
-use ZendServerAPI\DataTypes\ServerInfo;
+use \ZendService\ZendServerAPI\Method\ClusterAddServer;
+use \ZendService\ZendServerAPI\DataTypes\ServerInfo;
 
 /**
  * test case.
@@ -75,7 +75,7 @@ EOF;
     
     public function testRequestOfAction()
     {
-        $requestStub = $this->getMock('\ZendServerAPI\Request', array('setAction', 'send'));
+        $requestStub = $this->getMock('\ZendService\ZendServerAPI\Request', array('setAction', 'send'));
         $requestStub->expects($this->once())->method('setAction')->with(new ClusterAddServer(self::getServerName(), self::getServerUrl(), self::getGuiPassword()));
         $requestStub->expects($this->once())->method('send');
         

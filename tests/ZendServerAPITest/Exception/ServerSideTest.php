@@ -1,6 +1,6 @@
 <?php
 
-use ZendServerAPI\Exception\ServerSide;
+use \ZendService\ZendServerAPI\Exception\ServerSide;
 
 
 /**
@@ -22,7 +22,7 @@ class ServerSideTest extends \PHPUnit_Framework_TestCase {
 EOF;
     
     /**
-     * @expectedException \ZendServerAPI\Exception\ServerSide
+     * @expectedException \ZendService\ZendServerAPI\Exception\ServerSide
      * @expectedExceptionCode 500
      * @expectedExceptionMessage serverNotLicensed: Zend Server Cluster Manager is not licensed.
      */

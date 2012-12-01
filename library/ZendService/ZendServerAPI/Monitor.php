@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 
 namespace ZendService\ZendServerAPI;
@@ -41,7 +41,7 @@ namespace ZendService\ZendServerAPI;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 class Monitor extends BaseAPI
 {
@@ -96,7 +96,7 @@ class Monitor extends BaseAPI
      * Default is date</p>
      * @param string|null $direction
      * <p>Sorting direction: Ascending or Descending. Default is Descending</p>
-     * @return \ZendServerAPI\DataTypes\IssueList
+     * @return \ZendService\ZendServerAPI\DataTypes\IssueList
      */
     public function monitorGetIssuesListByPredefinedFilter($filterId, $limit = null, $offset = null, $order = null, $direction = null)
     {
@@ -114,7 +114,7 @@ class Monitor extends BaseAPI
      *
      * @param string $issueId
      * <p>The Issue id.</p>
-     * @return \ZendServerAPI\DataTypes\IssueDetails
+     * @return \ZendService\ZendServerAPI\DataTypes\IssueDetails
      */
     public function monitorGetIssueDetails($issueId)
     {
@@ -135,7 +135,7 @@ class Monitor extends BaseAPI
      * <p>Issue identifier, provided in the issue element</p>
      * @param int $eventsGroupId
      * <p>Event group identifier, provided in the issue element</p>
-     * @return \ZendServerAPI\DataTypes\EventsGroupDetails
+     * @return \ZendService\ZendServerAPI\DataTypes\EventsGroupDetails
      */
     public function monitorGetEventGroupDetails($issueId, $eventsGroupId = null)
     {
@@ -155,7 +155,7 @@ class Monitor extends BaseAPI
      *
      * @param  string                                $issueId   <p>The issue ID</p>
      * @param  string                                $newStatus <p>The new status, Open | Closed | Ignored</p>
-     * @return \ZendServerAPI\DataTypes\IssueDetails
+     * @return \ZendService\ZendServerAPI\DataTypes\IssueDetails
      */
     public function monitorChangeIssueStatus($issueId, $newStatus)
     {

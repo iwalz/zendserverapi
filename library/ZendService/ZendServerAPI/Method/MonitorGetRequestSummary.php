@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
@@ -33,7 +33,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  */
 class MonitorGetRequestSummary extends Method
 {
@@ -63,7 +63,7 @@ class MonitorGetRequestSummary extends Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/monitorGetRequestSummary');
-        $this->setParser(new \ZendServerAPI\Adapter\RequestSummary());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\RequestSummary());
     }
 
     /**

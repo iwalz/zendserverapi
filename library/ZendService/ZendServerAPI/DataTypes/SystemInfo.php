@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 
 namespace ZendService\ZendServerAPI\DataTypes;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\DataTypes;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 class SystemInfo extends DataType
 {
@@ -87,19 +87,19 @@ class SystemInfo extends DataType
      * Information about the Zend Server license.
      * If it is running in a cluster, it will
      * contain the node license information
-     * @var \ZendServerAPI\DataTypes\LicenseInfo
+     * @var \ZendService\ZendServerAPI\DataTypes\LicenseInfo
      */
     protected $serverLincenseInfo = null;
     /**
      * Information about the Zend Server
      * Cluster Manager license.
-     * @var \ZendServerAPI\DataTypes\LicenseInfo
+     * @var \ZendService\ZendServerAPI\DataTypes\LicenseInfo
      */
     protected $managerLicenseInfo = null;
     /**
      * A list of messages reported by this server,
      * which is empty if there are no messages to show.
-     * @var \ZendServerAPI\DataTypes\MessageList
+     * @var \ZendService\ZendServerAPI\DataTypes\MessageList
      */
     protected $messageList = null;
 
@@ -194,7 +194,7 @@ class SystemInfo extends DataType
      * If it is running in a cluster, it will
      * contain the node license information
      *
-     * @return \ZendServerAPI\DataTypes\LicenseInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\LicenseInfo
      */
     public function getServerLincenseInfo ()
     {
@@ -205,7 +205,7 @@ class SystemInfo extends DataType
      * Get the information about the Zend Server
      * Cluster Manager license.
      *
-     * @return \ZendServerAPI\DataTypes\LicenseInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\LicenseInfo
      */
     public function getManagerLicenseInfo ()
     {
@@ -216,7 +216,7 @@ class SystemInfo extends DataType
      * Get a list of messages reported by this server,
      * which is empty if there are no messages to show.
      *
-     * @return \ZendServerAPI\DataTypes\MessageList
+     * @return \ZendService\ZendServerAPI\DataTypes\MessageList
      */
     public function getMessageList ()
     {
@@ -321,10 +321,10 @@ class SystemInfo extends DataType
      * If it is running in a cluster, it will
      * contain the node license information
      *
-     * @param  \ZendServerAPI\DataTypes\LicenseInfo $serverLincenseInfo
+     * @param  \ZendService\ZendServerAPI\DataTypes\LicenseInfo $serverLincenseInfo
      * @return void
      */
-    public function setServerLincenseInfo (\ZendServerAPI\DataTypes\LicenseInfo $serverLincenseInfo)
+    public function setServerLincenseInfo (\ZendService\ZendServerAPI\DataTypes\LicenseInfo $serverLincenseInfo)
     {
         $this->serverLincenseInfo = $serverLincenseInfo;
     }
@@ -333,7 +333,7 @@ class SystemInfo extends DataType
      * Set the information about the Zend Server
      * Cluster Manager license.
      *
-     * @param  \ZendServerAPI\DataTypes\LicenseInfo $managerLicenseInfo
+     * @param  \ZendService\ZendServerAPI\DataTypes\LicenseInfo $managerLicenseInfo
      * @return void
      */
     public function setManagerLicenseInfo ($managerLicenseInfo)
@@ -345,10 +345,10 @@ class SystemInfo extends DataType
      * Set a list of messages reported by this server,
      * which is empty if there are no messages to show.
      *
-     * @param  \ZendServerAPI\DataTypes\MessageList $messageList
+     * @param  \ZendService\ZendServerAPI\DataTypes\MessageList $messageList
      * @return void
      */
-    public function setMessageList (\ZendServerAPI\DataTypes\MessageList $messageList)
+    public function setMessageList (\ZendService\ZendServerAPI\DataTypes\MessageList $messageList)
     {
         $this->messageList = $messageList;
     }

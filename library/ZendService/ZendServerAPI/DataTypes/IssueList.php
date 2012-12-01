@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 
 namespace ZendService\ZendServerAPI\DataTypes;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\DataTypes;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 class IssueList extends DataType implements \Countable, \IteratorAggregate
 {
@@ -41,10 +41,10 @@ class IssueList extends DataType implements \Countable, \IteratorAggregate
     /**
      * Add Issue to container
      *
-     * @param  \ZendServerAPI\DataTypes\Issue $issue
+     * @param  \ZendService\ZendServerAPI\DataTypes\Issue $issue
      * @return void
      */
-    public function addIssue(\ZendServerAPI\DataTypes\Issue $issue)
+    public function addIssue(\ZendService\ZendServerAPI\DataTypes\Issue $issue)
     {
         $this->issues[] = $issue;
     }

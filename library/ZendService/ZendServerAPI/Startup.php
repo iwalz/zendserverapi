@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 
 namespace ZendService\ZendServerAPI;
@@ -31,7 +31,7 @@ namespace ZendService\ZendServerAPI;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 class Startup
 {
@@ -55,7 +55,7 @@ class Startup
      * Generate base request based on a config section
      *
      * @param  string                 $name
-     * @return \ZendServerAPI\Request
+     * @return \ZendService\ZendServerAPI\Request
      */
     public static function getRequest($name = null)
     {
@@ -111,10 +111,10 @@ class Startup
      * Configure the api key for the request
      *
      * @param  string                 $name
-     * @param  \ZendServerAPI\Request $request
+     * @param  \ZendService\ZendServerAPI\Request $request
      * @return void
      */
-    private static function configureApiKey($name, \ZendServerAPI\Request $request)
+    private static function configureApiKey($name, \ZendService\ZendServerAPI\Request $request)
     {
         if(null === $name)
             self::$name = "general";

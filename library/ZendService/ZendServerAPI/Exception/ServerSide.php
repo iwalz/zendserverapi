@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Exception
+ * @package     ZendService\ZendServerAPI\Exception
  */
 
 namespace ZendService\ZendServerAPI\Exception;
@@ -29,7 +29,7 @@ namespace ZendService\ZendServerAPI\Exception;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Exception
+ * @package     ZendService\ZendServerAPI\Exception
  */
 class ServerSide extends \Exception
 {

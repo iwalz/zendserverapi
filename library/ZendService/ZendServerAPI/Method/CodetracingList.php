@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
@@ -31,7 +31,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  */
 class CodetracingList extends Method
 {
@@ -109,7 +109,7 @@ class CodetracingList extends Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/codetracingList');
-        $this->setParser(new \ZendServerAPI\Adapter\CodetracingList());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\CodetracingList());
     }
 
     /**

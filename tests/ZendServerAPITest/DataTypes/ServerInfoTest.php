@@ -1,8 +1,8 @@
 <?php
 
-use ZendServerAPI\DataTypes\MessageList;
+use \ZendService\ZendServerAPI\DataTypes\MessageList;
 
-use ZendServerAPI\DataTypes\ServerInfo;
+use \ZendService\ZendServerAPI\DataTypes\ServerInfo;
 
 require_once 'PHPUnit/Framework/TestCase.php';
 

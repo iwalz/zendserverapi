@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 
 namespace ZendService\ZendServerAPI\Adapter;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\Adapter;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 class CodetracingStatus extends Adapter
 {
@@ -36,7 +36,7 @@ class CodetracingStatus extends Adapter
      * Parse the xml response in object mappings
      *
      * @param  string                                     $xml
-     * @return \ZendServerAPI\DataTypes\CodeTracingStatus
+     * @return \ZendService\ZendServerAPI\DataTypes\CodeTracingStatus
      */
     public function parse ($xml = null)
     {
@@ -44,7 +44,7 @@ class CodetracingStatus extends Adapter
             $xml = $this->getResponse()->getBody();
 
         $xml = simplexml_load_string($xml);
-        $codetracingStatus = new \ZendServerAPI\DataTypes\CodeTracingStatus();
+        $codetracingStatus = new  \ZendService\ZendServerAPI\DataTypes\CodeTracingStatus();
         $codetracingStatus->setComponentStatus((string) $xml->responseData->codeTracingStatus->componentStatus);
         $codetracingStatus->setTraceEnabled(((string) $xml->responseData->codeTracingStatus->traceEnabled) == '0' ? false : true);
         $codetracingStatus->setAwaitsRestart(((string) $xml->responseData->codeTracingStatus->awaitsRestart) == '0' ? false : true);

@@ -16,14 +16,14 @@ EOF;
      */
     public function testEventsGroupDetailAdapter()
     {
-        $eventsGroupDetails = new \ZendServerAPI\Adapter\EventsGroupDetails();
+        $eventsGroupDetails = new \ZendService\ZendServerAPI\Adapter\EventsGroupDetails();
         $result = $eventsGroupDetails->parse(file_get_contents(__DIR__.'/TestAssets/eventsGroupDetail.xml'));
         
-        $this->assertInstanceOf('\ZendServerAPI\DataTypes\EventsGroupDetails', $result);
+        $this->assertInstanceOf('\ZendService\ZendServerAPI\DataTypes\EventsGroupDetails', $result);
         
         $this->assertEquals("72", $result->getIssueId());
         
-        $expectedEventsGroup = new \ZendServerAPI\DataTypes\EventsGroup();
+        $expectedEventsGroup = new \ZendService\ZendServerAPI\DataTypes\EventsGroup();
         $expectedEventsGroup->setEventsGroupId(101);
         $expectedEventsGroup->setEventsCount(1);
         $expectedEventsGroup->setStartTime("22-Jul-2012 19:15");
@@ -40,13 +40,13 @@ EOF;
         
         $this->assertEquals($expectedEventsGroup, $result->getEventsGroup());
         
-        $expectedEvent = new \ZendServerAPI\DataTypes\Event();
+        $expectedEvent = new \ZendService\ZendServerAPI\DataTypes\Event();
         $expectedEvent->setType('8');
         $expectedEvent->setDescription("Fatal PHP Error");
         $expectedEvent->setEventsGroupId('101');
         $expectedEvent->setSeverity('Critical>');
         
-        $expectedSuperglobals = new \ZendServerAPI\DataTypes\SuperGlobals();
+        $expectedSuperglobals = new \ZendService\ZendServerAPI\DataTypes\SuperGlobals();
         $expectedSuperglobals->addCookieParameter("ZDEDebuggerPresent", "php,phtml,php3");
         $expectedSuperglobals->addServerParameter("HTTP_HOST", "hp.local");
         $expectedSuperglobals->addServerParameter("HTTP_USER_AGENT", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:14.0) Gecko/20100101 Firefox/14.0.1");
@@ -78,7 +78,7 @@ EOF;
         
         $expectedEvent->setSuperglobals($expectedSuperglobals);
         
-        $expectedStep = new \ZendServerAPI\DataTypes\Step();
+        $expectedStep = new \ZendService\ZendServerAPI\DataTypes\Step();
         $expectedStep->setClass('Application\Controller\IndexController');
         $expectedStep->setFile('/var/www/website/module/Application/src/Application/Controller/IndexController.php');
         $expectedStep->setFunction('indexAction');
@@ -87,7 +87,7 @@ EOF;
         $expectedStep->setNumber('1');
         $expectedEvent->addStep($expectedStep);
         
-        $expectedStep = new \ZendServerAPI\DataTypes\Step();
+        $expectedStep = new \ZendService\ZendServerAPI\DataTypes\Step();
         $expectedStep->setClass('Zend\Mvc\Controller\AbstractActionController');
         $expectedStep->setFile('/var/www/website/vendor/zendframework/zendframework/library/Zend/Mvc/Controller/AbstractActionController.php');
         $expectedStep->setFunction('execute');
@@ -96,7 +96,7 @@ EOF;
         $expectedStep->setNumber('2');
         $expectedEvent->addStep($expectedStep);
         
-        $expectedStep = new \ZendServerAPI\DataTypes\Step();
+        $expectedStep = new \ZendService\ZendServerAPI\DataTypes\Step();
         $expectedStep->setClass('Zend\Mvc\Controller\AbstractActionController');
         $expectedStep->setFile('');
         $expectedStep->setFunction('execute');
@@ -105,7 +105,7 @@ EOF;
         $expectedStep->setNumber('3');
         $expectedEvent->addStep($expectedStep);
         
-        $expectedStep = new \ZendServerAPI\DataTypes\Step();
+        $expectedStep = new \ZendService\ZendServerAPI\DataTypes\Step();
         $expectedStep->setClass('Zend\EventManager\EventManager');
         $expectedStep->setFile('/var/www/website/vendor/zendframework/zendframework/library/Zend/EventManager/EventManager.php');
         $expectedStep->setFunction('Zend\EventManager\EventManager::triggerListeners');

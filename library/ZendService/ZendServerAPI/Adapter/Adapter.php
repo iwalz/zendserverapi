@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 
 namespace ZendService\ZendServerAPI\Adapter;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\Adapter;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 abstract class Adapter
 {
@@ -41,7 +41,7 @@ abstract class Adapter
     /**
      * Parse the xml response in object mappings
      *
-     * @return \ZendServerAPI\DataTypes\DataType
+     * @return \ZendService\ZendServerAPI\DataTypes\DataType
      */
     abstract public function parse();
 

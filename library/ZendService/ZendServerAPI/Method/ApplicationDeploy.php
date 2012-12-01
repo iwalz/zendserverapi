@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
@@ -34,7 +34,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 class ApplicationDeploy extends Method
 {
@@ -103,14 +103,14 @@ class ApplicationDeploy extends Method
     /**
      * Configure the action. Method, Path and Adapter
      *
-     * @see \ZendServerAPI\Method::configure()
+     * @see \ZendService\ZendServerAPI\Method::configure()
      * @return void
      */
     public function configure ()
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/applicationDeploy');
-        $this->setParser(new \ZendServerAPI\Adapter\ApplicationInfo());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ApplicationInfo());
     }
 
     /**
@@ -145,7 +145,7 @@ class ApplicationDeploy extends Method
     /**
      * Get the content type for this action
      *
-     * @see \ZendServerAPI\Method::getContentType()
+     * @see \ZendService\ZendServerAPI\Method::getContentType()
      * @return string
      */
     public function getContentType()
@@ -156,7 +156,7 @@ class ApplicationDeploy extends Method
     /**
      * Add post files for this action
      *
-     * @see \ZendServerAPI\Method::getPostFiles()
+     * @see \ZendService\ZendServerAPI\Method::getPostFiles()
      * @return array
      */
     public function getPostFiles()

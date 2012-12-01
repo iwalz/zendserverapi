@@ -1,7 +1,7 @@
 <?php
 namespace ZendServerAPITest\DataTypes;
 
-use ZendServerAPI\DataTypes\ApplicationServer;
+use \ZendService\ZendServerAPI\DataTypes\ApplicationServer;
 
 /**
  * test case.
@@ -16,11 +16,11 @@ class ApplicationInfoTest extends \PHPUnit_Framework_TestCase
     
     public function testGettersAndSetters()
     {
-        $applicationInfo = new \ZendServerAPI\DataTypes\ApplicationInfo();
+        $applicationInfo = new \ZendService\ZendServerAPI\DataTypes\ApplicationInfo();
         $applicationInfo->setAppName("example");
         $applicationInfo->setBaseUrl("http://www.example.com");
         $deployedVersions = array();
-        $deployedVersion = new \ZendServerAPI\DataTypes\DeployedVersions();
+        $deployedVersion = new \ZendService\ZendServerAPI\DataTypes\DeployedVersions();
         $deployedVersion->setVersion("1.2");
         $deployedVersions[] = $deployedVersion;
         $applicationInfo->setDeployedVersions($deployedVersions);
@@ -32,12 +32,12 @@ class ApplicationInfoTest extends \PHPUnit_Framework_TestCase
     
     public function testDataTypeToArray() 
     {
-        $applicationInfo = new \ZendServerAPI\DataTypes\ApplicationInfo();
+        $applicationInfo = new \ZendService\ZendServerAPI\DataTypes\ApplicationInfo();
         $applicationInfo->setId(62);
         $applicationInfo->setAppName("example");
         $applicationInfo->setBaseUrl("http://www.example.com");
         $deployedVersions = array();
-        $deployedVersion = new \ZendServerAPI\DataTypes\DeployedVersions();
+        $deployedVersion = new \ZendService\ZendServerAPI\DataTypes\DeployedVersions();
         $deployedVersion->setVersion("1.2");
         $deployedVersions[] = $deployedVersion;
         $applicationInfo->setDeployedVersions($deployedVersions);

@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
@@ -31,7 +31,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  */
 class MonitorGetIssuesDetails extends Method
 {
@@ -47,7 +47,7 @@ class MonitorGetIssuesDetails extends Method
      * Retrieves the details of the given issue id.
      *
      * @param  string                                        $issueId The issue ID
-     * @return \ZendServerAPI\Method\MonitorGetIssuesDetails
+     * @return \ZendService\ZendServerAPI\Method\MonitorGetIssuesDetails
      */
     public function __construct($issueId)
     {
@@ -64,7 +64,7 @@ class MonitorGetIssuesDetails extends Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/monitorGetIssueDetails');
-        $this->setParser(new \ZendServerAPI\Adapter\IssueDetails());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\IssueDetails());
     }
 
     /**

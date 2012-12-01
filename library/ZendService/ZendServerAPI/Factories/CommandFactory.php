@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Factories
+ * @package     ZendService\ZendServerAPI\Factories
  */
 
 namespace ZendService\ZendServerAPI\Factories;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\Factories;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Factories
+ * @package     ZendService\ZendServerAPI\Factories
  */
 interface CommandFactory
 {
@@ -38,7 +38,7 @@ interface CommandFactory
      *
      * @throws \RuntimeException
      * @param  string                $name
-     * @return \ZendServerAPI\Method
+     * @return \ZendService\ZendServerAPI\Method
      */
     public function factory($name);
 }

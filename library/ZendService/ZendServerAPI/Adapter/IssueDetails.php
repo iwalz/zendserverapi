@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 
 namespace ZendService\ZendServerAPI\Adapter;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\Adapter;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 class IssueDetails extends Adapter
 {
@@ -36,7 +36,7 @@ class IssueDetails extends Adapter
      * Parse the xml response in object mappings
      *
      * @param  string                                $xml
-     * @return \ZendServerAPI\DataTypes\IssueDetails
+     * @return \ZendService\ZendServerAPI\DataTypes\IssueDetails
      */
     public function parse ($xml = null)
     {
@@ -45,9 +45,9 @@ class IssueDetails extends Adapter
 
         $xml = simplexml_load_string($xml);
 
-        $issueDetails = new \ZendServerAPI\DataTypes\IssueDetails();
+        $issueDetails = new  \ZendService\ZendServerAPI\DataTypes\IssueDetails();
 
-        $issue = new \ZendServerAPI\DataTypes\Issue();
+        $issue = new  \ZendService\ZendServerAPI\DataTypes\Issue();
         $issue->setId((string) $xml->responseData->issueDetails->issue->id);
         $issue->setRule((string) $xml->responseData->issueDetails->issue->rule);
         $issue->setCount((string) $xml->responseData->issueDetails->issue->count);
@@ -55,7 +55,7 @@ class IssueDetails extends Adapter
         $issue->setSeverity((string) $xml->responseData->issueDetails->issue->severity);
         $issue->setStatus((string) $xml->responseData->issueDetails->issue->status);
 
-        $generalDetails = new \ZendServerAPI\DataTypes\GeneralDetails();
+        $generalDetails = new  \ZendService\ZendServerAPI\DataTypes\GeneralDetails();
         $generalDetails->setUrl((string) $xml->responseData->issueDetails->issue->generalDetails->url);
         $generalDetails->setSourceFile((string) $xml->responseData->issueDetails->issue->generalDetails->sourceFile);
         $generalDetails->setSourceLine((string) $xml->responseData->issueDetails->issue->generalDetails->sourceLine);
@@ -67,7 +67,7 @@ class IssueDetails extends Adapter
 
         if (isset($xml->responseData->issueDetails->issue->routeDetails->routeDetail)) {
             foreach ($xml->responseData->issueDetails->issue->routeDetails->routeDetail as $xmlRouteDetail) {
-                $routeDetails = new \ZendServerAPI\DataTypes\RouteDetail();
+                $routeDetails = new  \ZendService\ZendServerAPI\DataTypes\RouteDetail();
                 $routeDetails->setKey($xmlRouteDetail->key);
                 $routeDetails->setValue($xmlRouteDetail->value);
                 $issue->addRouteDetails($routeDetails);
@@ -77,7 +77,7 @@ class IssueDetails extends Adapter
 
         if (isset($xml->responseData->issueDetails->eventsGroups->eventsGroup)) {
             foreach ($xml->responseData->issueDetails->eventsGroups->eventsGroup as $xmlEventsGroup) {
-                $eventsGroup = new \ZendServerAPI\DataTypes\EventsGroup();
+                $eventsGroup = new  \ZendService\ZendServerAPI\DataTypes\EventsGroup();
                 $eventsGroup->setEventsGroupId((string) $xmlEventsGroup->eventsGroupId);
                 $eventsGroup->setEventsCount((string) $xmlEventsGroup->eventsCount);
                 $eventsGroup->setStartTime((string) $xmlEventsGroup->startTime);

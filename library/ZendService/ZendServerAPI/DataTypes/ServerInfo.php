@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 
 namespace ZendService\ZendServerAPI\DataTypes;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\DataTypes;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 class ServerInfo extends DataType
 {
@@ -67,7 +67,7 @@ class ServerInfo extends DataType
     /**
      * A list of messages reported by this server, which can be
      * empty if there are no messages to show.
-     * @var \ZendServerAPI\DataTypes\MessageList
+     * @var \ZendService\ZendServerAPI\DataTypes\MessageList
      */
     private $messageList = null;
 
@@ -126,7 +126,7 @@ class ServerInfo extends DataType
     /**
      * Get the messsage list
      *
-     * @return \ZendServerAPI\DataTypes\MessageList
+     * @return \ZendService\ZendServerAPI\DataTypes\MessageList
      */
     public function getMessageList ()
     {
@@ -192,10 +192,10 @@ class ServerInfo extends DataType
     /**
      * Set the message list
      *
-     * @param  \ZendServerAPI\DataTypes\MessageList $messageList
+     * @param  \ZendService\ZendServerAPI\DataTypes\MessageList $messageList
      * @return void
      */
-    public function setMessageList (\ZendServerAPI\DataTypes\MessageList $messageList)
+    public function setMessageList (\ZendService\ZendServerAPI\DataTypes\MessageList $messageList)
     {
         $this->messageList = $messageList;
     }

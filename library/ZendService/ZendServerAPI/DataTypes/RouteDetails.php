@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 
 namespace ZendService\ZendServerAPI\DataTypes;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\DataTypes;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 class RouteDetails extends DataType implements \Countable, \IteratorAggregate
 {
@@ -41,10 +41,10 @@ class RouteDetails extends DataType implements \Countable, \IteratorAggregate
     /**
      * Add a route detail to the list
      *
-     * @param  \ZendServerAPI\DataTypes\RouteDetail $routeDetail
+     * @param  \ZendService\ZendServerAPI\DataTypes\RouteDetail $routeDetail
      * @return void
      */
-    public function addRouteDetails(\ZendServerAPI\DataTypes\RouteDetail $routeDetail)
+    public function addRouteDetails(\ZendService\ZendServerAPI\DataTypes\RouteDetail $routeDetail)
     {
         $this->routeDetails[] = $routeDetail;
     }

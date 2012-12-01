@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 
 namespace ZendService\ZendServerAPI;
@@ -51,7 +51,7 @@ namespace ZendService\ZendServerAPI;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 class Deployment extends BaseAPI
 {
@@ -71,7 +71,7 @@ class Deployment extends BaseAPI
      *
      * @param
      *            array Ids of application's
-     * @return \ZendServerAPI\DataTypes\ApplicationList
+     * @return \ZendService\ZendServerAPI\DataTypes\ApplicationList
      */
     public function applicationGetStatus (array $applicationIds = array())
     {
@@ -104,7 +104,7 @@ class Deployment extends BaseAPI
      *            bool $ignoreFailures <p>ignore errors during staging on some servers</p>
      * @param
      *            array $userParams <p>Set values for user parameters defined in package</p>
-     * @return \ZendServerAPI\DataTypes\ApplicationInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function applicationDeploy ($file, $baseUrl, $createVhost = false,
             $defaultServer = false, $userAppName = null, $ignoreFailures = false,
@@ -136,7 +136,7 @@ class Deployment extends BaseAPI
      *            bool $ignoreFailures <p>Ignore failures during staging on some servers</p>
      * @param
      *            array $userParams <p>Set values for user parameters defined in package</p>
-     * @return \ZendServerAPI\DataTypes\ApplicationInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function applicationUpdate ($appId, $package,
             $ignoreFailures = false, array $userParams = array())
@@ -157,7 +157,7 @@ class Deployment extends BaseAPI
      * has been completely removed</pre>
      *
      * @param  int                                      $appId <p>The application's ID</p>
-     * @return \ZendServerAPI\DataTypes\ApplicationInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function applicationRemove ($appId)
     {
@@ -175,7 +175,7 @@ class Deployment extends BaseAPI
      * method until the process is complete.</pre>
      *
      * @param  int                                      $appId <p>The application's ID</p>
-     * @return \ZendServerAPI\DataTypes\ApplicationInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function applicationRollback ($appId)
     {
@@ -199,7 +199,7 @@ class Deployment extends BaseAPI
      *            array $servers <p>Array of server IDs to perform action on</p>
      * @param
      *            bool  $ignoreFailures <p>Ignore failures during staging on some servers</p>
-     * @return \ZendServerAPI\DataTypes\ApplicationList
+     * @return \ZendService\ZendServerAPI\DataTypes\ApplicationList
      */
     public function applicationSynchronize ($appId, array $servers = array(),
             $ignoreFailures = false)
@@ -216,7 +216,7 @@ class Deployment extends BaseAPI
      *            <p>The application's ID</p>
      * @param int $interval
      *            <p>Seconds to repeat test</p>
-     * @return \ZendServerAPI\DataTypes\ApplicationInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\ApplicationInfo
      */
     public function waitForStableState ($applicationId, $interval = 5)
     {

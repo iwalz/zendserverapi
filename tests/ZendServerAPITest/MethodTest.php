@@ -10,7 +10,7 @@ class MethodTest extends \PHPUnit_Framework_TestCase
     
     public function __construct ()
     {
-        $this->methodMock = $this->getMockForAbstractClass('\ZendServerAPI\Method\Method');
+        $this->methodMock = $this->getMockForAbstractClass('\ZendService\ZendServerAPI\Method\Method');
     }
     
     public function testBuildParameter()

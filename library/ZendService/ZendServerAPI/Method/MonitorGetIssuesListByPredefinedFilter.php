@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
@@ -34,7 +34,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  */
 class MonitorGetIssuesListByPredefinedFilter extends Method
 {
@@ -81,7 +81,7 @@ class MonitorGetIssuesListByPredefinedFilter extends Method
      * @param  Integer|null                                                 $offset    A paging offset to begin the issues list from
      * @param  string|null                                                  $order     Column identifier for sorting the result set
      * @param  string|null                                                  $direction Sorting direction: Ascending or Descending
-     * @return \ZendServerAPI\Method\MonitorGetIssuesListByPredefinedFilter
+     * @return \ZendService\ZendServerAPI\Method\MonitorGetIssuesListByPredefinedFilter
      */
     public function __construct($filterId, $limit = null, $offset = null, $order = null, $direction = null)
     {
@@ -102,7 +102,7 @@ class MonitorGetIssuesListByPredefinedFilter extends Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/monitorGetIssuesListPredefinedFilter');
-        $this->setParser(new \ZendServerAPI\Adapter\IssueList());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\IssueList());
     }
 
     /**

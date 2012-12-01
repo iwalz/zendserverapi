@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 
 namespace ZendService\ZendServerAPI;
@@ -33,13 +33,13 @@ use Guzzle\Service\Client;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 class Request
 {
     /**
      * Method class for the request
-     * @var \ZendServerAPI\Method\Method
+     * @var \ZendService\ZendServerAPI\Method\Method
      */
     private $action = null;
     /**
@@ -49,7 +49,7 @@ class Request
     private $userAgent = 'Guzzle';
     /**
      * Config for the connection
-     * @var \ZendServerAPI\Config
+     * @var \ZendService\ZendServerAPI\Config
      */
     private $config = null;
     /**
@@ -66,10 +66,10 @@ class Request
     /**
      * Set method implementation object
      *
-     * @param  \ZendServerAPI\Method\Method $action
-     * @return \ZendServerAPI\Request
+     * @param  \ZendService\ZendServerAPI\Method\Method $action
+     * @return \ZendService\ZendServerAPI\Request
      */
-    public function setAction(\ZendServerAPI\Method\Method $action)
+    public function setAction(\ZendService\ZendServerAPI\Method\Method $action)
     {
         $this->action = $action;
 
@@ -99,9 +99,9 @@ class Request
     /**
      * Get the used config object
      *
-     * @param \ZendServerAPI\Config $config
+     * @param \ZendService\ZendServerAPI\Config $config
      */
-    public function setConfig(\ZendServerAPI\Config $config)
+    public function setConfig(\ZendService\ZendServerAPI\Config $config)
     {
         $this->config = $config;
     }
@@ -109,7 +109,7 @@ class Request
     /**
      * Return the current action object
      *
-     * @return \ZendServerAPI\Method\Method
+     * @return \ZendService\ZendServerAPI\Method\Method
      */
     public function getAction()
     {
@@ -129,7 +129,7 @@ class Request
     /**
      * Returns the currently used config
      *
-     * @return \ZendServerAPI\Config
+     * @return \ZendService\ZendServerAPI\Config
      */
     public function getConfig()
     {
@@ -175,8 +175,8 @@ class Request
     /**
      * This method performs the real REST call
      *
-     * @throws \ZendServerAPI\Exception\ClientSide
-     * @throws \ZendServerAPI\Exception\ServerSide
+     * @throws \ZendService\ZendServerAPI\Exception\ClientSide
+     * @throws \ZendService\ZendServerAPI\Exception\ServerSide
      * @throws \Exception
      */
     public function send()

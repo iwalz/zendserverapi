@@ -1,10 +1,10 @@
 <?php
 namespace ZendServerAPITest\Method;
 
-use ZendServerAPI\DataTypes\MessageList;
-use ZendServerAPI\DataTypes\ServerInfo;
-use ZendServerAPI\DataTypes\ServersList;
-use ZendServerAPI\Method\RestartPHP;
+use \ZendService\ZendServerAPI\DataTypes\MessageList;
+use \ZendService\ZendServerAPI\DataTypes\ServerInfo;
+use \ZendService\ZendServerAPI\DataTypes\ServersList;
+use \ZendService\ZendServerAPI\Method\RestartPHP;
 
 /**
  * test case.
@@ -87,20 +87,20 @@ EOF;
 
     public function testLink()
     {
-        $action = new \ZendServerAPI\Method\RestartPHP(self::getParameter());
+        $action = new \ZendService\ZendServerAPI\Method\RestartPHP(self::getParameter());
     
         $this->assertEquals("/ZendServerManager/Api/restartPhp", $action->getLink());
     }
     
     public function testContent()
     {
-        $action = new \ZendServerAPI\Method\RestartPHP(self::getParameter());
+        $action = new \ZendService\ZendServerAPI\Method\RestartPHP(self::getParameter());
         $this->assertEquals("servers%5B0%5D=1&servers%5B1%5D=2&parallelRestart=FALSE", $action->getContent());
     }
     
     public function testContentWithParallelRestart()
     {
-        $action = new \ZendServerAPI\Method\RestartPHP(self::getParameter(), true);
+        $action = new \ZendService\ZendServerAPI\Method\RestartPHP(self::getParameter(), true);
         $this->assertEquals("servers%5B0%5D=1&servers%5B1%5D=2&parallelRestart=TRUE", $action->getContent());
     }
 }

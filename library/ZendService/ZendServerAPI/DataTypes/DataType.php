@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 
 namespace ZendService\ZendServerAPI\DataTypes;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\DataTypes;
  * @license MIT
  * @link http://github.com/iwalz/zendserverapi
  * @author Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 abstract class DataType
 {
@@ -55,7 +55,7 @@ abstract class DataType
                 foreach ($value as $subKey => $single) {
                     if ($single instanceof DataType) {
                         $subKey = lcfirst(
-                                str_replace("ZendServerAPI\\DataTypes\\", "",
+                                str_replace("ZendService\\ZendServerAPI\\DataTypes\\", "",
                                         get_class($single)));
                         $subValue = $single->getArray();
                         $returnArray[$subKey][] = $subValue;
@@ -69,7 +69,7 @@ abstract class DataType
                 // and value is DataType
                 if ($value instanceof DataType) {
                     $subKey = lcfirst(
-                            str_replace("ZendServerAPI\\DataTypes\\", "",
+                            str_replace("ZendService\\ZendServerAPI\\DataTypes\\", "",
                                     get_class($value)));
                     // Call recursion again
                     $subValue = $value->getArray();

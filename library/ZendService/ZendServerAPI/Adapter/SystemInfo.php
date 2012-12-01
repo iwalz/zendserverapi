@@ -17,14 +17,14 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 
 namespace ZendService\ZendServerAPI\Adapter;
 
-use \ZendServerAPI\DataTypes\LicenseInfo,
-    \ZendServerAPI\DataTypes\MessageList as MessageListData,
-    \ZendServerAPI\DataTypes\SystemInfo as SystemInfoData;
+use \ZendService\ZendServerAPI\DataTypes\LicenseInfo,
+    \ZendService\ZendServerAPI\DataTypes\MessageList as MessageListData,
+    \ZendService\ZendServerAPI\DataTypes\SystemInfo as SystemInfoData;
 
 /**
  * SystemInfo datatype adapter implementation
@@ -32,7 +32,7 @@ use \ZendServerAPI\DataTypes\LicenseInfo,
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 class SystemInfo extends Adapter
 {
@@ -40,7 +40,7 @@ class SystemInfo extends Adapter
      * Parse the xml response in object mappings
      *
      * @param  string                              $xml
-     * @return \ZendServerAPI\DataTypes\SystemInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\SystemInfo
      */
     public function parse($xml = null)
     {
@@ -71,7 +71,7 @@ class SystemInfo extends Adapter
         $managerLicenseInfo->setServerLimit((string) $xml->responseData->systemInfo->managerLicenseInfo->serverLimit);
         $systemInfo->setManagerLicenseInfo($managerLicenseInfo);
 
-        $messageListAdapter = new \ZendServerAPI\Adapter\MessageList();
+        $messageListAdapter = new  \ZendService\ZendServerAPI\Adapter\MessageList();
         $messageList = $messageListAdapter->parse((string) $xml->responseData->messageList);
         $systemInfo->setMessageList($messageList);
 

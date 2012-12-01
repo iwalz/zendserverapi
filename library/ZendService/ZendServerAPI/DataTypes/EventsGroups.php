@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 
 namespace ZendService\ZendServerAPI\DataTypes;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\DataTypes;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 class EventsGroups extends DataType implements \Countable, \IteratorAggregate
 {
@@ -41,10 +41,10 @@ class EventsGroups extends DataType implements \Countable, \IteratorAggregate
     /**
      * Add an event group to the list
      *
-     * @param  \ZendServerAPI\DataTypes\EventsGroup $eventGroup
+     * @param  \ZendService\ZendServerAPI\DataTypes\EventsGroup $eventGroup
      * @return void
      */
-    public function addEventGroup(\ZendServerAPI\DataTypes\EventsGroup $eventGroup)
+    public function addEventGroup(\ZendService\ZendServerAPI\DataTypes\EventsGroup $eventGroup)
     {
         $this->eventGroups[] = $eventGroup;
     }

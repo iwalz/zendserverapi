@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 
 namespace ZendService\ZendServerAPI\DataTypes;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\DataTypes;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 class Issue extends DataType
 {
@@ -64,7 +64,7 @@ class Issue extends DataType
     protected $status = null;
     /**
      * General details (not an own datatype in the doc)
-     * @var \ZendServerAPI\DataTypes\GeneralDetails
+     * @var \ZendService\ZendServerAPI\DataTypes\GeneralDetails
      */
     protected $generalDetails = null;
     /**
@@ -138,7 +138,7 @@ class Issue extends DataType
      * Get the general details
      * (Not an own datatype within Zend Server - but should)
      *
-     * @return \ZendServerAPI\DataTypes\GeneralDetails
+     * @return \ZendService\ZendServerAPI\DataTypes\GeneralDetails
      */
     public function getGeneralDetails ()
     {
@@ -226,10 +226,10 @@ class Issue extends DataType
      * Set the general details
      * (Not an own datatype within Zend Server)
      *
-     * @param  \ZendServerAPI\DataTypes\GeneralDetails $generalDetails
+     * @param  \ZendService\ZendServerAPI\DataTypes\GeneralDetails $generalDetails
      * @return void
      */
-    public function setGeneralDetails (\ZendServerAPI\DataTypes\GeneralDetails $generalDetails)
+    public function setGeneralDetails (\ZendService\ZendServerAPI\DataTypes\GeneralDetails $generalDetails)
     {
         $this->generalDetails = $generalDetails;
     }
@@ -237,10 +237,10 @@ class Issue extends DataType
     /**
      * Add a route detail
      *
-     * @param  \ZendServerAPI\DataTypes\RouteDetails $routeDetails
+     * @param  \ZendService\ZendServerAPI\DataTypes\RouteDetails $routeDetails
      * @return void
      */
-    public function addRouteDetails (\ZendServerAPI\DataTypes\RouteDetails $routeDetails)
+    public function addRouteDetails (\ZendService\ZendServerAPI\DataTypes\RouteDetails $routeDetails)
     {
         $this->routeDetails[] = $routeDetails;
     }

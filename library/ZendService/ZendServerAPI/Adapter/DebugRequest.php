@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 
 namespace ZendService\ZendServerAPI\Adapter;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\Adapter;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 class DebugRequest extends Adapter
 {
@@ -36,7 +36,7 @@ class DebugRequest extends Adapter
      * Parse the xml response in object mappings
      *
      * @param  string                                $xml
-     * @return \ZendServerAPI\DataTypes\DebugRequest
+     * @return \ZendService\ZendServerAPI\DataTypes\DebugRequest
      */
     public function parse ($xml = null)
     {
@@ -44,7 +44,7 @@ class DebugRequest extends Adapter
             $xml = $this->getResponse()->getBody();
 
         $xml = simplexml_load_string($xml);
-        $debugRequest = new \ZendServerAPI\DataTypes\DebugRequest();
+        $debugRequest = new  \ZendService\ZendServerAPI\DataTypes\DebugRequest();
         $debugRequest->setSuccess((string) $xml->responseData->debugRequest->success);
         $debugRequest->setMessage((string) $xml->responseData->debugRequest->message);
 

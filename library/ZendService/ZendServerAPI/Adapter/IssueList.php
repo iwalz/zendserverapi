@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 
 namespace ZendService\ZendServerAPI\Adapter;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\Adapter;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 class IssueList extends Adapter
 {
@@ -36,7 +36,7 @@ class IssueList extends Adapter
      * Parse the xml response in object mappings
      *
      * @param  string                             $xml
-     * @return \ZendServerAPI\DataTypes\IssueList
+     * @return \ZendService\ZendServerAPI\DataTypes\IssueList
      */
     public function parse ($xml = null)
     {
@@ -45,9 +45,9 @@ class IssueList extends Adapter
 
         $xml = simplexml_load_string($xml);
 
-        $issueList = new \ZendServerAPI\DataTypes\IssueList();
+        $issueList = new  \ZendService\ZendServerAPI\DataTypes\IssueList();
         foreach ($xml->responseData->issues->issue as $xmlIssue) {
-            $issue = new \ZendServerAPI\DataTypes\Issue();
+            $issue = new  \ZendService\ZendServerAPI\DataTypes\Issue();
             $issue->setId((string) $xmlIssue->id);
             $issue->setRule((string) $xmlIssue->rule);
             $issue->setCount((string) $xmlIssue->count);
@@ -55,7 +55,7 @@ class IssueList extends Adapter
             $issue->setSeverity((string) $xmlIssue->severity);
             $issue->setStatus((string) $xmlIssue->status);
 
-            $generalDetail = new \ZendServerAPI\DataTypes\GeneralDetails();
+            $generalDetail = new  \ZendService\ZendServerAPI\DataTypes\GeneralDetails();
             $generalDetail->setUrl((string) $xmlIssue->generalDetails->url);
             $generalDetail->setSourceFile((string) $xmlIssue->generalDetails->sourceFile);
             $generalDetail->setSourceLine((string) $xmlIssue->generalDetails->sourceLine);

@@ -1,13 +1,13 @@
 <?php
 namespace ZendServerAPITest\Method;
 
-use ZendServerAPI\DataTypes\MessageList;
+use \ZendService\ZendServerAPI\DataTypes\MessageList;
 
-use ZendServerAPI\DataTypes\ServerInfo;
+use \ZendService\ZendServerAPI\DataTypes\ServerInfo;
 
-use ZendServerAPI\DataTypes\ServersList;
+use \ZendService\ZendServerAPI\DataTypes\ServersList;
 
-use ZendServerAPI\Method\ClusterReconfigureServer;
+use \ZendService\ZendServerAPI\Method\ClusterReconfigureServer;
 
 /**
  * test case.

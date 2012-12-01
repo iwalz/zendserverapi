@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 
 namespace ZendService\ZendServerAPI\Adapter;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\Adapter;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 class RequestSummary extends Adapter
 {
@@ -36,7 +36,7 @@ class RequestSummary extends Adapter
      * Parse the xml response in object mappings
      *
      * @param  string                                  $xml
-     * @return \ZendServerAPI\DataTypes\RequestSummary
+     * @return \ZendService\ZendServerAPI\DataTypes\RequestSummary
      */
     public function parse ($xml = null)
     {
@@ -44,16 +44,16 @@ class RequestSummary extends Adapter
             $xml = $this->getResponse()->getBody();
 
         $xml = simplexml_load_string($xml);
-        $requestSummary = new \ZendServerAPI\DataTypes\RequestSummary();
+        $requestSummary = new  \ZendService\ZendServerAPI\DataTypes\RequestSummary();
         $requestSummary->setEventsCount((string) $xml->responseData->requestSummary->eventsCount);
         $requestSummary->setCodeTracing((string) $xml->responseData->requestSummary->codeTracing);
 
         foreach ($xml->responseData->requestSummary->events->event as $xmlEvent) {
-            $event = new \ZendServerAPI\DataTypes\Event();
+            $event = new  \ZendService\ZendServerAPI\DataTypes\Event();
             $event->setType((string) $xmlEvent->type);
             $event->setDescription((string) $xmlEvent->description);
 
-            $superglobal = new \ZendServerAPI\DataTypes\SuperGlobals();
+            $superglobal = new  \ZendService\ZendServerAPI\DataTypes\SuperGlobals();
             if (isset($xmlEvent->superGlobals->cookie->parameter)) {
                 foreach ($xmlEvent->superGlobals->cookie->parameter as $cookie) {
                     $superglobal->addCookieParameter(trim((string) $cookie->name), trim((string) $cookie->value));
@@ -89,7 +89,7 @@ class RequestSummary extends Adapter
             $event->setDebugUrl((string) $xmlEvent->debugUrl);
 
             foreach ($xmlEvent->backtrace->step as $xmlStep) {
-                $step = new \ZendServerAPI\DataTypes\Step();
+                $step = new  \ZendService\ZendServerAPI\DataTypes\Step();
                 $step->setNumber((string) $xmlStep->number);
                 $step->setObject((string) $xmlStep->object);
                 $step->setClass((string) $xmlStep->class);

@@ -16,7 +16,7 @@ class CodetracingTest extends PHPUnit_Framework_TestCase
     public function testCodetracing()
     {
         $this->markTestSkipped();
-        $codetracing = new \ZendServerAPI\Codetracing("example62");
+        $codetracing = new \ZendService\ZendServerAPI\Codetracing("example62");
         $status = $codetracing->codetracingCreate("http://hp.local");
         $fileinfo = $codetracing->codetracingDownloadTraceFile($status->getId(), "foo.amf", __DIR__.'/../../downloads');
         $this->assertFileExists($fileinfo->getPathName());

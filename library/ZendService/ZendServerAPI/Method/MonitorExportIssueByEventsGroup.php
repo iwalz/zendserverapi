@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
@@ -32,7 +32,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  */
 class MonitorExportIssueByEventsGroup extends Method
 {
@@ -71,7 +71,7 @@ class MonitorExportIssueByEventsGroup extends Method
     {
         $this->setFunctionPath('/ZendServerManager/Api/monitorExportIssueByEventsGroup');
         $this->setMethod('GET');
-        $this->setParser(new \ZendServerAPI\Adapter\MonitorExportIssueByEventsGroup());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\MonitorExportIssueByEventsGroup());
     }
 
     /**

@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Factories
+ * @package     ZendService\ZendServerAPI\Factories
  */
 
 namespace ZendService\ZendServerAPI\Factories;
@@ -30,13 +30,13 @@ namespace ZendService\ZendServerAPI\Factories;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Factories
+ * @package     ZendService\ZendServerAPI\Factories
  */
 class WebApiVersionFactory
 {
     /**
      * Config object for that request
-     * @var \ZendServerAPI\Config
+     * @var \ZendService\ZendServerAPI\Config
      */
     protected $config = null;
 
@@ -44,27 +44,27 @@ class WebApiVersionFactory
      * Get the Command factory for the corrent webapi version.
      * If config object is null, it will return the first version 1.0
      *
-     * @return \ZendServerAPI\Factories\CommandFactory
+     * @return \ZendService\ZendServerAPI\Factories\CommandFactory
      */
     public function getCommandFactory()
     {
         if($this->config === null ||
            $this->config->getApiVersion() == "1.0") {
-            return new \ZendServerAPI\Factories\ApiVersion10CommandFactory();
+            return new  \ZendService\ZendServerAPI\Factories\ApiVersion10CommandFactory();
         } elseif ($this->config->getApiVersion() == "1.1") {
-            return new \ZendServerAPI\Factories\ApiVersion11CommandFactory();
+            return new  \ZendService\ZendServerAPI\Factories\ApiVersion11CommandFactory();
         } elseif ($this->config->getApiVersion() == "1.2") {
-            return new \ZendServerAPI\Factories\ApiVersion12CommandFactory();
+            return new  \ZendService\ZendServerAPI\Factories\ApiVersion12CommandFactory();
         }
     }
 
     /**
      * Set the config
      *
-     * @param  \ZendServerAPI\Config $config
+     * @param  \ZendService\ZendServerAPI\Config $config
      * @return void
      */
-    public function setConfig(\ZendServerAPI\Config $config)
+    public function setConfig(\ZendService\ZendServerAPI\Config $config)
     {
         $this->config = $config;
     }
@@ -72,7 +72,7 @@ class WebApiVersionFactory
     /**
      * Get the config
      *
-     * @return \ZendServerAPI\Config
+     * @return \ZendService\ZendServerAPI\Config
      */
     public function getConfig()
     {

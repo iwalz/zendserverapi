@@ -8,7 +8,7 @@ class ApplicationDeployTest extends \PHPUnit_Framework_TestCase
 {
     public function testApplicationdeploy()
     {
-        $applicationDeploy = new \ZendServerAPI\Method\ApplicationDeploy(
+        $applicationDeploy = new \ZendService\ZendServerAPI\Method\ApplicationDeploy(
             new \SplFileInfo('../../_files/example1.zpk'), 
             'http://www.test.com',
             true,

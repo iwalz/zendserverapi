@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
@@ -31,7 +31,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  */
 class MonitorGetEventGroupDetails extends Method
 {
@@ -53,7 +53,7 @@ class MonitorGetEventGroupDetails extends Method
      *
      * @param  string                                            $issueId       The issue ID
      * @param  int                                               $eventsGroupId The event group identifier
-     * @return \ZendServerAPI\Method\MonitorGetEventGroupDetails
+     * @return \ZendService\ZendServerAPI\Method\MonitorGetEventGroupDetails
      */
     public function __construct($issueId, $eventsGroupId)
     {
@@ -72,7 +72,7 @@ class MonitorGetEventGroupDetails extends Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/monitorGetEventGroupDetails');
-        $this->setParser(new \ZendServerAPI\Adapter\EventsGroupDetails());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\EventsGroupDetails());
     }
 
     /**

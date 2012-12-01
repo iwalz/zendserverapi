@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
@@ -36,7 +36,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  */
 class ApplicationSynchronize extends Method
 {
@@ -87,7 +87,7 @@ class ApplicationSynchronize extends Method
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/applicationSynchronize');
-        $this->setParser(new \ZendServerAPI\Adapter\ApplicationInfo());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ApplicationInfo());
     }
 
     /**

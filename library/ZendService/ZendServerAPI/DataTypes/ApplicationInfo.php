@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 
 namespace ZendService\ZendServerAPI\DataTypes;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\DataTypes;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 class ApplicationInfo extends DataType
 {
@@ -80,17 +80,17 @@ class ApplicationInfo extends DataType
     protected $status = null;
     /**
      * Details of the application's status and version per server
-     * @var array \ZendServerAPI\DataTypes\ApplicationServer
+     * @var array \ZendService\ZendServerAPI\DataTypes\ApplicationServer
      */
     protected $servers = array();
     /**
      * List of messages, related to the application
-     * @var \ZendServerAPI\DataTypes\MessageList
+     * @var \ZendService\ZendServerAPI\DataTypes\MessageList
      */
     protected $messageList = null;
     /**
      * A list of deployed versions for this application
-     * @var array \ZendServerAPI\DataTypes\DeployedVersions
+     * @var array \ZendService\ZendServerAPI\DataTypes\DeployedVersions
      */
     protected $deployedVersions = array();
 
@@ -136,7 +136,7 @@ class ApplicationInfo extends DataType
 
     /**
      * Get the list of messages, related to the application
-     * @return \ZendServerAPI\DataTypes\MessageList
+     * @return \ZendService\ZendServerAPI\DataTypes\MessageList
      */
     public function getMessageList()
     {
@@ -181,7 +181,7 @@ class ApplicationInfo extends DataType
     /**
      * Get the list of servers with the application's status and version
      *
-     * @return array \ZendServerAPI\DataTypes\ApplicationServer
+     * @return array \ZendService\ZendServerAPI\DataTypes\ApplicationServer
      */
     public function getServers ()
     {
@@ -244,10 +244,10 @@ class ApplicationInfo extends DataType
 
     /**
      * Set a list of messages, related to the application
-     * @param  \ZendServerAPI\DataTypes\MessageList $messageList
+     * @param  \ZendService\ZendServerAPI\DataTypes\MessageList $messageList
      * @return void
      */
-    public function setMessageList(\ZendServerAPI\DataTypes\MessageList $messageList)
+    public function setMessageList(\ZendService\ZendServerAPI\DataTypes\MessageList $messageList)
     {
         $this->messageList = $messageList;
     }
@@ -292,7 +292,7 @@ class ApplicationInfo extends DataType
     /**
      * Set the application's servers
      *
-     * @param array \ZendServerAPI\DataTypes\ApplicationServer
+     * @param array \ZendService\ZendServerAPI\DataTypes\ApplicationServer
      * @return void
      */
     public function setServers ($servers)
@@ -303,10 +303,10 @@ class ApplicationInfo extends DataType
     /**
      * Set a list of messages, related to the application
      *
-     * @param  \ZendServerAPI\DataTypes\DeployedVersions $deployedVersions
+     * @param  \ZendService\ZendServerAPI\DataTypes\DeployedVersions $deployedVersions
      * @return void
      */
-    public function addDeployedVersions (\ZendServerAPI\DataTypes\DeployedVersions $deployedVersions)
+    public function addDeployedVersions (\ZendService\ZendServerAPI\DataTypes\DeployedVersions $deployedVersions)
     {
         $this->deployedVersions[] = $deployedVersions;
     }
@@ -325,10 +325,10 @@ class ApplicationInfo extends DataType
     /**
      * Add a server
      *
-     * @param  \ZendServerAPI\DataTypes\ApplicationServer $server
+     * @param  \ZendService\ZendServerAPI\DataTypes\ApplicationServer $server
      * @return void
      */
-    public function addServer(\ZendServerAPI\DataTypes\ApplicationServer $server)
+    public function addServer(\ZendService\ZendServerAPI\DataTypes\ApplicationServer $server)
     {
         $this->servers[] = $server;
     }

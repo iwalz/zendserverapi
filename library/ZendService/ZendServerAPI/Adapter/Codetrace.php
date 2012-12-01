@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 
 namespace ZendService\ZendServerAPI\Adapter;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\Adapter;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Adapter
+ * @package     ZendService\ZendServerAPI\Adapter
  */
 class Codetrace extends Adapter
 {
@@ -36,7 +36,7 @@ class Codetrace extends Adapter
      * Parse the xml response in object mappings
      *
      * @param  string                             $xml
-     * @return \ZendServerAPI\DataTypes\CodeTrace
+     * @return \ZendService\ZendServerAPI\DataTypes\CodeTrace
      */
     public function parse ($xml = null)
     {
@@ -44,7 +44,7 @@ class Codetrace extends Adapter
             $xml = $this->getResponse()->getBody();
 
         $xml = simplexml_load_string($xml);
-        $codetrace = new \ZendServerAPI\DataTypes\CodeTrace();
+        $codetrace = new  \ZendService\ZendServerAPI\DataTypes\CodeTrace();
         $codetrace->setId((string) $xml->responseData->codeTrace->id);
         $codetrace->setDate((string) $xml->responseData->codeTrace->date);
         $codetrace->setUrl((string) $xml->responseData->codeTrace->url);

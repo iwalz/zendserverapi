@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Factories
+ * @package     ZendService\ZendServerAPI\Factories
  */
 
 namespace ZendService\ZendServerAPI\Factories;
@@ -30,7 +30,7 @@ namespace ZendService\ZendServerAPI\Factories;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Factories
+ * @package     ZendService\ZendServerAPI\Factories
  */
 class ApiVersion11CommandFactory extends ApiVersion10CommandFactory
 {
@@ -41,7 +41,7 @@ class ApiVersion11CommandFactory extends ApiVersion10CommandFactory
      *
      * @throws \RuntimeException
      * @param  string                $name
-     * @return \ZendServerAPI\Method
+     * @return \ZendService\ZendServerAPI\Method
      */
     public function factory($name)
     {
@@ -56,7 +56,7 @@ class ApiVersion11CommandFactory extends ApiVersion10CommandFactory
             case 'applicationRollback':
             case 'applicationSynchronize':
             case 'applicationUpdate':
-                $reflect  = new \ReflectionClass("\\ZendServerAPI\\Method\\" . ucfirst($name));
+                $reflect  = new \ReflectionClass("\\ZendService\\ZendServerAPI\\Method\\" . ucfirst($name));
 
                 return $reflect->newInstanceArgs($args);
                 break;

@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 
 namespace ZendService\ZendServerAPI;
@@ -41,7 +41,7 @@ namespace ZendService\ZendServerAPI;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 class Server extends BaseAPI
 {
@@ -57,7 +57,7 @@ class Server extends BaseAPI
      * version, licensing information, etc. This method produces similar output on all Zend Server systems,
      * and is future compatible.</pre>
      *
-     * @return \ZendServerAPI\DataTypes\SystemInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\SystemInfo
      */
     public function getSystemInfo()
     {
@@ -79,7 +79,7 @@ class Server extends BaseAPI
      * @param array $parameters <p>A list of server IDs. If specified,
      * the status is returned for these servers only. If not specified,
      * the status of all the servers is returned.</p>
-     * @return \ZendServerAPI\DataTypes\ServersList
+     * @return \ZendService\ZendServerAPI\DataTypes\ServersList
      */
     public function clusterGetServerStatus(array $parameters = array())
     {
@@ -101,7 +101,7 @@ class Server extends BaseAPI
      * @param int     $serverId <p>The id of the server to remove</p>
      * @param boolean $force    <p>Force-remove the server, skipping
      * graceful shutdown process. Default is FALSE</p>
-     * @return \ZendServerAPI\DataTypes\ServerInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\ServerInfo
      */
     public function clusterRemoveServer($serverId, $force = false)
     {
@@ -121,7 +121,7 @@ class Server extends BaseAPI
      * @param string  $guiPassword       <p>The server GUI password.</p>
      * @param boolean $propagateSettings <p>Propagate this server’s current settings
      * to the rest of the cluster. The default value is "FALSE".</p>
-     * @return \ZendServerAPI\DataTypes\ServerInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\ServerInfo
      */
     public function clusterAddServer($serverName, $serverUrl, $guiPassword, $propagateSettings = false)
     {
@@ -140,7 +140,7 @@ class Server extends BaseAPI
      * with no valid license, this operation fails.</pre>
      *
      * @param  int  $serverId <p>The server ID</p>
-     * @return \ZendServerAPI\DataTypes\ServerInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\ServerInfo
      */
     public function clusterDisableServer($serverId)
     {
@@ -160,7 +160,7 @@ class Server extends BaseAPI
      * this operation fails.</pre>
      *
      * @param  int  $serverId <p>The server ID</p>
-     * @return \ZendServerAPI\DataTypes\ServerInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\ServerInfo
      */
     public function clusterEnableServer($serverId)
     {
@@ -181,7 +181,7 @@ class Server extends BaseAPI
      * this parameter is ignored.</p>
      * @param boolean $parallelRestart <p>Sends the restart command to all servers at the same time.
      * The default value is "FALSE".</p>
-     * @return \ZendServerAPI\DataTypes\ServersList
+     * @return \ZendService\ZendServerAPI\DataTypes\ServersList
      */
     public function restartPhp($serverIds = array(), $parallelRestart = false)
     {
@@ -200,7 +200,7 @@ class Server extends BaseAPI
      * @param boolean $doRestart <p><b>This parameter take no effect anymore</b>
      * Specify if the re-configured server should
      * be restarted after the re-configure action. The default is FALSE.</p>
-     * @return \ZendServerAPI\DataTypes\ServerInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\ServerInfo
      */
     public function clusterReconfigureServer($serverId, $doRestart = false)
     {
@@ -214,7 +214,7 @@ class Server extends BaseAPI
      *
      * @param  string|int  $server   <p>Servername or server id</p>
      * @param  int         $interval <p>Seconds to repeat test</p>
-     * @return \ZendServerAPI\DataTypes\ServerInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\ServerInfo
      */
     public function waitForStableState($server, $interval = 5)
     {

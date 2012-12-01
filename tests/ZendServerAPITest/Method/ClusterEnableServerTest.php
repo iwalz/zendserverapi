@@ -1,11 +1,11 @@
 <?php
 namespace ZendServerAPITest\Method;
 
-use ZendServerAPI\DataTypes\MessageList;
+use \ZendService\ZendServerAPI\DataTypes\MessageList;
 
-use ZendServerAPI\DataTypes\ServerInfo;
+use \ZendService\ZendServerAPI\DataTypes\ServerInfo;
 
-use ZendServerAPI\Method\ClusterEnableServer;
+use \ZendService\ZendServerAPI\Method\ClusterEnableServer;
 
 /**
  * test case.
@@ -62,14 +62,14 @@ EOF;
     
     public function testLink()
     {
-        $action = new \ZendServerAPI\Method\ClusterEnableServer(self::getParameter());
+        $action = new \ZendService\ZendServerAPI\Method\ClusterEnableServer(self::getParameter());
     
         $this->assertEquals("/ZendServerManager/Api/clusterEnableServer", $action->getLink());
     }
     
     public function testRequestBody()
     {
-        $action = new \ZendServerAPI\Method\ClusterEnableServer(self::getParameter());
+        $action = new \ZendService\ZendServerAPI\Method\ClusterEnableServer(self::getParameter());
         $this->assertEquals('serverId=5', $action->getContent());
     }
 }

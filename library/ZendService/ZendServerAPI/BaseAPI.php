@@ -16,7 +16,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 
 namespace ZendService\ZendServerAPI;
@@ -30,7 +30,7 @@ namespace ZendService\ZendServerAPI;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 class BaseAPI
 {
@@ -112,7 +112,7 @@ class BaseAPI
     public function canConnect()
     {
         $previousAction = $this->request->getAction();
-        $action = new \ZendServerAPI\Method\GetSystemInfo();
+        $action = new  \ZendService\ZendServerAPI\Method\GetSystemInfo();
         $this->request->setAction($action);
         try {
             $response = $this->request->send();

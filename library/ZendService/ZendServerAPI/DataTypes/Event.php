@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 
 namespace ZendService\ZendServerAPI\DataTypes;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\DataTypes;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 class Event extends DataType
 {
@@ -45,7 +45,7 @@ class Event extends DataType
     /**
      * Super globals array and their values:
      * get,post,cookie,session,server
-     * @var \ZendServerAPI\DataTypes\SuperGlobals
+     * @var \ZendService\ZendServerAPI\DataTypes\SuperGlobals
      */
     protected $superglobals = null;
     /**
@@ -94,7 +94,7 @@ class Event extends DataType
     /**
      * Get the superglobals
      *
-     * @return \ZendServerAPI\DataTypes\SuperGlobals
+     * @return \ZendService\ZendServerAPI\DataTypes\SuperGlobals
      */
     public function getSuperglobals ()
     {
@@ -122,7 +122,7 @@ class Event extends DataType
     }
 
     /**
-     * Get an array of \ZendServerAPI\DataTypes\Step
+     * Get an array of \ZendService\ZendServerAPI\DataTypes\Step
      * objects
      *
      * @return array
@@ -157,10 +157,10 @@ class Event extends DataType
     /**
      * Set the superglobals
      *
-     * @param  \ZendServerAPI\DataTypes\SuperGlobals $superglobals
+     * @param  \ZendService\ZendServerAPI\DataTypes\SuperGlobals $superglobals
      * @return void
      */
-    public function setSuperglobals (\ZendServerAPI\DataTypes\SuperGlobals $superglobals)
+    public function setSuperglobals (\ZendService\ZendServerAPI\DataTypes\SuperGlobals $superglobals)
     {
         $this->superglobals = $superglobals;
     }
@@ -190,10 +190,10 @@ class Event extends DataType
     /**
      * Add a step to the $backtraces array
      *
-     * @param  \ZendServerAPI\DataTypes\Step $step
+     * @param  \ZendService\ZendServerAPI\DataTypes\Step $step
      * @return void
      */
-    public function addStep (\ZendServerAPI\DataTypes\Step $step)
+    public function addStep (\ZendService\ZendServerAPI\DataTypes\Step $step)
     {
         $this->backtraces[] = $step;
     }

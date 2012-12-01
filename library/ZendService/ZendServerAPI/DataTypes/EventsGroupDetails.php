@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 
 namespace ZendService\ZendServerAPI\DataTypes;
@@ -30,7 +30,7 @@ namespace ZendService\ZendServerAPI\DataTypes;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 class EventsGroupDetails extends DataType
 {
@@ -41,12 +41,12 @@ class EventsGroupDetails extends DataType
     protected $issueId = null;
     /**
      * Basic detail about the events group
-     * @var \ZendServerAPI\DataTypes\EventsGroup
+     * @var \ZendService\ZendServerAPI\DataTypes\EventsGroup
      */
     protected $eventsGroup = null;
     /**
      * Basic detail about the event group
-     * @var \ZendServerAPI\DataTypes\Event
+     * @var \ZendService\ZendServerAPI\DataTypes\Event
      */
     protected $event = null;
     /**
@@ -68,7 +68,7 @@ class EventsGroupDetails extends DataType
     /**
      * Get the basic detail about the events group
      *
-     * @return \ZendServerAPI\DataTypes\EventsGroup
+     * @return \ZendService\ZendServerAPI\DataTypes\EventsGroup
      */
     public function getEventsGroup ()
     {
@@ -78,7 +78,7 @@ class EventsGroupDetails extends DataType
     /**
      * Get the details about the event group
      *
-     * @return \ZendServerAPI\DataTypes\Event
+     * @return \ZendService\ZendServerAPI\DataTypes\Event
      */
     public function getEvent ()
     {
@@ -109,10 +109,10 @@ class EventsGroupDetails extends DataType
     /**
      * Set the basic detail about the events group
      *
-     * @param  \ZendServerAPI\DataTypes\EventsGroup $eventsGroup
+     * @param  \ZendService\ZendServerAPI\DataTypes\EventsGroup $eventsGroup
      * @return void
      */
-    public function setEventsGroup (\ZendServerAPI\DataTypes\EventsGroup $eventsGroup)
+    public function setEventsGroup (\ZendService\ZendServerAPI\DataTypes\EventsGroup $eventsGroup)
     {
         $this->eventsGroup = $eventsGroup;
     }
@@ -120,10 +120,10 @@ class EventsGroupDetails extends DataType
     /**
      * Set the details about the event group
      *
-     * @param  \ZendServerAPI\DataTypes\Event $event
+     * @param  \ZendService\ZendServerAPI\DataTypes\Event $event
      * @return void
      */
-    public function setEvent (\ZendServerAPI\DataTypes\Event $event)
+    public function setEvent (\ZendService\ZendServerAPI\DataTypes\Event $event)
     {
         $this->event = $event;
     }

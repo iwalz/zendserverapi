@@ -1,11 +1,11 @@
 <?php
 namespace ZendServerAPITest\Method;
 
-use ZendServerAPI\DataTypes\MessageList;
+use \ZendService\ZendServerAPI\DataTypes\MessageList;
 
-use ZendServerAPI\DataTypes\ServerInfo;
+use \ZendService\ZendServerAPI\DataTypes\ServerInfo;
 
-use ZendServerAPI\Method\ClusterRemoveServer;
+use \ZendService\ZendServerAPI\Method\ClusterRemoveServer;
 
 /**
  * test case.
@@ -61,20 +61,20 @@ EOF;
     
     public function testLink()
     {
-        $action = new \ZendServerAPI\Method\ClusterRemoveServer(self::getParameter());
+        $action = new \ZendService\ZendServerAPI\Method\ClusterRemoveServer(self::getParameter());
     
         $this->assertEquals("/ZendServerManager/Api/clusterRemoveServer", $action->getLink());
     }
     
     public function testContent()
     {
-        $action = new \ZendServerAPI\Method\ClusterRemoveServer(self::getParameter());
+        $action = new \ZendService\ZendServerAPI\Method\ClusterRemoveServer(self::getParameter());
         $this->assertEquals('serverId=5&force=FALSE', $action->getContent());
     }
     
     public function testContentWithForce()
     {
-        $action = new \ZendServerAPI\Method\ClusterRemoveServer(self::getParameter(), true);
+        $action = new \ZendService\ZendServerAPI\Method\ClusterRemoveServer(self::getParameter(), true);
         $this->assertEquals('serverId=5&force=TRUE', $action->getContent());
     }
 }

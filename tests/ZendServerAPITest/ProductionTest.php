@@ -9,7 +9,7 @@ class ProductionTest extends PHPUnit_Framework_TestCase
     {
         if(DISABLE_REAL_INTERFACE === true)
             $this->markTestSkipped();
-        $server = new \ZendServerAPI\Server("prod");
+        $server = new \ZendService\ZendServerAPI\Server("prod");
         try {
             $server->clusterGetServerStatus();
         } catch(\Exception $e) {
@@ -19,7 +19,7 @@ class ProductionTest extends PHPUnit_Framework_TestCase
     
     public function testAddRemoveServer()
     {
-        $server = new \ZendServerAPI\Server("prod");
+        $server = new \ZendService\ZendServerAPI\Server("prod");
         $serversList = $server->clusterGetServerStatus();
         foreach($serversList->getServerInfos() as $serverInfo)
         {
@@ -37,7 +37,7 @@ class ProductionTest extends PHPUnit_Framework_TestCase
     
     public function testEnableDisableServer()
     {
-        $server = new \ZendServerAPI\Server("prod");
+        $server = new \ZendService\ZendServerAPI\Server("prod");
         $serversList = $server->clusterGetServerStatus();
         if($serversList->getServerInfos() === array())
             $this->markTestSkipped("No servers in the cluster - skipped enable/disable test");
@@ -55,7 +55,7 @@ class ProductionTest extends PHPUnit_Framework_TestCase
     
     public function testProdConfigurationExport()
     {
-        $configuration = new \ZendServerAPI\Configuration("example62");
+        $configuration = new \ZendService\ZendServerAPI\Configuration("example62");
         $fileInfo = $configuration->configurationExport('/var/www/zendserverapi/export');
         
         $date = gmdate('Ymd', time());
@@ -77,10 +77,10 @@ class ProductionTest extends PHPUnit_Framework_TestCase
     
     public function testProdConfigImport()
     {
-        $configuration = new \ZendServerAPI\Configuration("prod");
+        $configuration = new \ZendService\ZendServerAPI\Configuration("prod");
         $serversListImport = $configuration->configurationImport('/var/www/zendserverapi/export/Test1.zcfg');
         
-        $server = new \ZendServerAPI\Server("prod");
+        $server = new \ZendService\ZendServerAPI\Server("prod");
         $server->restartPhp();
         $serversList = $server->clusterGetServerStatus();
         $serverInfo = $serversList->getFirst();

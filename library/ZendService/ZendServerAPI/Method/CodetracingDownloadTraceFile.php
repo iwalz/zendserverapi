@@ -17,12 +17,12 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
 
-use ZendServerAPI\Adapter\CodetracingDownloadTraceFile as CodetracingDownloadTraceFileAdapter;
+use ZendService\ZendServerAPI\Adapter\CodetracingDownloadTraceFile as CodetracingDownloadTraceFileAdapter;
 
 /**
  * <b>The codetracingDownloadTraceFile Method</b>
@@ -32,7 +32,7 @@ use ZendServerAPI\Adapter\CodetracingDownloadTraceFile as CodetracingDownloadTra
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  */
 class CodetracingDownloadTraceFile extends Method
 {

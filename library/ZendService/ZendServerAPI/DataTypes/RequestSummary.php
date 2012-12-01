@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 
 namespace ZendService\ZendServerAPI\DataTypes;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\DataTypes;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 class RequestSummary extends DataType implements \IteratorAggregate, \Countable
 {
@@ -103,10 +103,10 @@ class RequestSummary extends DataType implements \IteratorAggregate, \Countable
     /**
      * Add event to the internal list storage
      *
-     * @param  \ZendServerAPI\DataTypes\Event $event
+     * @param  \ZendService\ZendServerAPI\DataTypes\Event $event
      * @return void
      */
-    public function addEvents (\ZendServerAPI\DataTypes\Event $event)
+    public function addEvents (\ZendService\ZendServerAPI\DataTypes\Event $event)
     {
         $this->events[] = $event;
     }

@@ -14,7 +14,7 @@
  *
  * <http://www.rubber-duckling.net>
  *
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
@@ -34,7 +34,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 class ApplicationGetStatus extends Method
 {
@@ -65,7 +65,7 @@ class ApplicationGetStatus extends Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/applicationGetStatus');
-        $this->setParser(new \ZendServerAPI\Adapter\ApplicationList());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ApplicationList());
     }
 
     /**

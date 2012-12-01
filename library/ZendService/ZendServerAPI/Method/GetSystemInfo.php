@@ -17,13 +17,13 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
 
-use ZendServerAPI\DataTypes\LicenseInfo,
-    ZendServerAPI\DataTypes\MessageList;
+use ZendService\ZendServerAPI\DataTypes\LicenseInfo,
+    ZendService\ZendServerAPI\DataTypes\MessageList;
 
 /**
  * <b>The getSystemInfo Method</b>
@@ -36,7 +36,7 @@ use ZendServerAPI\DataTypes\LicenseInfo,
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  */
 class GetSystemInfo extends Method
 {
@@ -49,6 +49,6 @@ class GetSystemInfo extends Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/getSystemInfo');
-        $this->setParser(new \ZendServerAPI\Adapter\SystemInfo());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\SystemInfo());
     }
 }

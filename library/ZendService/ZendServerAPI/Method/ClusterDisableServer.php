@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
@@ -34,7 +34,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  */
 class ClusterDisableServer extends Method
 {
@@ -64,7 +64,7 @@ class ClusterDisableServer extends Method
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/clusterDisableServer');
-        $this->setParser(new \ZendServerAPI\Adapter\ServerInfo());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ServerInfo());
     }
 
     /**

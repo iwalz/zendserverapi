@@ -17,12 +17,12 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
 
-use ZendServerAPI\DataTypes\DataType;
+use ZendService\ZendServerAPI\DataTypes\DataType;
 
 /**
  * <b>Abstract class method implementations</b>
@@ -33,7 +33,7 @@ use ZendServerAPI\DataTypes\DataType;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 abstract class Method
 {
@@ -49,7 +49,7 @@ abstract class Method
     protected $functionPath = null;
     /**
      * Adapter for the result
-     * @var \ZendServerAPI\Adapter\Adapter
+     * @var \ZendService\ZendServerAPI\Adapter\Adapter
      */
     protected $parser = null;
 
@@ -94,10 +94,10 @@ abstract class Method
     /**
      * Set the implementation for the result mapping
      *
-     * @param  \ZendServerAPI\Adapter\Adapter $parser <p>for result mapping</p>
+     * @param  \ZendService\ZendServerAPI\Adapter\Adapter $parser <p>for result mapping</p>
      * @return void
      */
-    public function setParser(\ZendServerAPI\Adapter\Adapter $parser)
+    public function setParser(\ZendService\ZendServerAPI\Adapter\Adapter $parser)
     {
         $this->parser = $parser;
     }
@@ -105,7 +105,7 @@ abstract class Method
     /**
      * Get class for result mapping
      *
-     * @return \ZendServerAPI\Adapter\Adapter
+     * @return \ZendService\ZendServerAPI\Adapter\Adapter
      */
     public function getParser()
     {

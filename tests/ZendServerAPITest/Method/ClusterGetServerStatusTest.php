@@ -1,10 +1,7 @@
 <?php
 namespace ZendServerAPITest\Method;
 
-use ZendServerAPI\DataTypes\ServerInfo,
-ZendServerAPI\DataTypes\LicenseInfo,
-ZendServerAPI\DataTypes\MessageList,
-ZendServerAPI\DataTypes\ServersList;
+use \ZendService\ZendServerAPI\DataTypes\ServerInfo, \ZendService\ZendServerAPI\DataTypes\LicenseInfo, \ZendService\ZendServerAPI\DataTypes\MessageList, \ZendService\ZendServerAPI\DataTypes\ServersList;
 
 /**
  * test case.
@@ -43,7 +40,7 @@ EOF;
     
     public function testParseResult()
     {
-        $action = new \ZendServerAPI\Method\ClusterGetServerStatus(self::getParameters());
+        $action = new \ZendService\ZendServerAPI\Method\ClusterGetServerStatus(self::getParameters());
         $clusterGetServerStatus = $action->parseResponse(self::$ClusterGetServerStatusResponse);
 
         $testClusterGetServerStatus = self::getClusterGetServerStatus();
@@ -87,7 +84,7 @@ EOF;
     
     public function testLink()
     {
-        $action = new \ZendServerAPI\Method\ClusterGetServerStatus(self::getParameters());
+        $action = new \ZendService\ZendServerAPI\Method\ClusterGetServerStatus(self::getParameters());
         
         $this->assertEquals("/ZendServerManager/Api/clusterGetServerStatus?servers%5B0%5D=12&servers%5B1%5D=15", $action->getLink());
     }

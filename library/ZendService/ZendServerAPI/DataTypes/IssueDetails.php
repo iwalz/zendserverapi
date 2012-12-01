@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 
 namespace ZendService\ZendServerAPI\DataTypes;
@@ -28,13 +28,13 @@ namespace ZendService\ZendServerAPI\DataTypes;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 class IssueDetails extends DataType
 {
     /**
      * The issue
-     * @var \ZendServerAPI\DataTypes\Issue
+     * @var \ZendService\ZendServerAPI\DataTypes\Issue
      */
     protected $issue = null;
     /**
@@ -46,7 +46,7 @@ class IssueDetails extends DataType
     /**
      * Get the issue
      *
-     * @return \ZendServerAPI\DataTypes\Issue
+     * @return \ZendService\ZendServerAPI\DataTypes\Issue
      */
     public function getIssue ()
     {
@@ -66,10 +66,10 @@ class IssueDetails extends DataType
     /**
      * Set the issue
      *
-     * @param  \ZendServerAPI\DataTypes\Issue $issue
+     * @param  \ZendService\ZendServerAPI\DataTypes\Issue $issue
      * @return void
      */
-    public function setIssue (\ZendServerAPI\DataTypes\Issue $issue)
+    public function setIssue (\ZendService\ZendServerAPI\DataTypes\Issue $issue)
     {
         $this->issue = $issue;
     }
@@ -77,10 +77,10 @@ class IssueDetails extends DataType
     /**
      * Add an event group
      *
-     * @param  \ZendServerAPI\DataTypes\EventsGroup $eventsGroup
+     * @param  \ZendService\ZendServerAPI\DataTypes\EventsGroup $eventsGroup
      * @return void
      */
-    public function addEventsGroup (\ZendServerAPI\DataTypes\EventsGroup $eventsGroup)
+    public function addEventsGroup (\ZendService\ZendServerAPI\DataTypes\EventsGroup $eventsGroup)
     {
         $this->eventsGroups[] = $eventsGroup;
     }

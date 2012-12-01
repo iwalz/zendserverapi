@@ -1,10 +1,10 @@
 <?php
 namespace ZendServerAPITest;
-use ZendServerAPI\DataTypes\SystemInfo;
+use \ZendService\ZendServerAPI\DataTypes\SystemInfo;
 
-use ZendServerAPI\DataTypes\MessageList;
+use \ZendService\ZendServerAPI\DataTypes\MessageList;
 
-use ZendServerAPI\DataTypes\LicenseInfo;
+use \ZendService\ZendServerAPI\DataTypes\LicenseInfo;
 /**
  * test case.
  */

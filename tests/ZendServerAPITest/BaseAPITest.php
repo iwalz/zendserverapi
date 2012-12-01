@@ -1,8 +1,8 @@
 <?php
 
-use ZendServerAPI\Request;
+use \ZendService\ZendServerAPI\Request;
 
-use ZendServerAPI\BaseAPI;
+use \ZendService\ZendServerAPI\BaseAPI;
 
 require_once 'PHPUnit/Framework/TestCase.php';
 
@@ -23,7 +23,7 @@ class BaseAPITest extends PHPUnit_Framework_TestCase
     
     public function testFirstEventGroupsIdByIssueId()
     {
-        $monitor = new \ZendServerAPI\Monitor("example62");
+        $monitor = new \ZendService\ZendServerAPI\Monitor("example62");
         if(!$monitor->canConnect())
             $this->markTestSkipped("Can't connect to server");
     
@@ -31,7 +31,7 @@ class BaseAPITest extends PHPUnit_Framework_TestCase
         $issue = $list->getIterator()->current();
     
         $detail = $monitor->monitorGetEventGroupDetails($issue->getId());
-        $this->assertTrue($detail instanceof \ZendServerAPI\DataTypes\EventsGroupDetails);
+        $this->assertTrue($detail instanceof \ZendService\ZendServerAPI\DataTypes\EventsGroupDetails);
     }
 }
 

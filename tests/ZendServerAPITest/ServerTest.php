@@ -1,32 +1,26 @@
 <?php
 namespace ZendServerAPITest;
 
-use ZendServerAPITest\Method\ClusterRemoveServerTest;
+use \ZendServerAPITest\Method\ClusterRemoveServerTest;
+use \ZendServerAPITest\Method\ClusterGetServerStatusTest;
+use \ZendServerAPITest\Method\ClusterReconfigureServerTest;
+use \ZendServerAPITest\Method\RestartTest;
+use \ZendServerAPITest\Method\ClusterEnableServerTest;
+use \ZendServerAPITest\Method\ClusterDisableServerTest;
+use \ZendServerAPITest\Method\GetSystemInfoTest;
 
-use ZendServerAPITest\Method\ClusterGetServerStatusTest;
+use \ZendService\ZendServerAPI\Method\ClusterEnableServer,
+    \ZendService\ZendServerAPI\Method\RestartPHP,
+    \ZendService\ZendServerAPI\Method\ClusterReconfigureServer,
+    \ZendService\ZendServerAPI\Method\ClusterAddServer,
+    \ZendService\ZendServerAPI\Method\ClusterRemoveServer,
+    \ZendService\ZendServerAPI\Method\ClusterDisableServer,
+    \ZendService\ZendServerAPI\Method\GetSystemInfo,
+    \ZendService\ZendServerAPI\Method\ClusterGetServerStatus;
 
-use ZendServerAPITest\Method\ClusterReconfigureServerTest;
-
-use ZendServerAPITest\Method\RestartTest;
-
-use ZendServerAPITest\Method\ClusterEnableServerTest;
-
-use ZendServerAPITest\Method\ClusterDisableServerTest;
-
-use ZendServerAPITest\Method\GetSystemInfoTest;
-
-use ZendServerAPI\Method\ClusterEnableServer,
-    ZendServerAPI\Method\RestartPHP,
-    ZendServerAPI\Method\ClusterReconfigureServer,
-    ZendServerAPI\Method\ClusterAddServer,
-    ZendServerAPI\Method\ClusterRemoveServer,
-    ZendServerAPI\Method\ClusterDisableServer,
-    ZendServerAPI\Method\GetSystemInfo,
-    ZendServerAPI\Method\ClusterGetServerStatus;
-
-use ZendServerAPI\Server,
-    ZendServerAPI\Startup,
-    ZendServerAPI\Request;
+use \ZendService\ZendServerAPI\Server,
+    \ZendService\ZendServerAPI\Startup,
+    \ZendService\ZendServerAPI\Request;
 /**
  * test case.
  */
@@ -35,7 +29,7 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	public function testConstructorInjection()
 	{
 	    $tmpRequest = new Request();
-	    $tmpRequest->setConfig(new \ZendServerAPI\Config());
+	    $tmpRequest->setConfig(new \ZendService\ZendServerAPI\Config());
 	    $server = new Server("general", $tmpRequest);
 	    $serverRequest = $server->getRequest();
 	    
@@ -96,10 +90,10 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	    $this->assertNotSame($server1, $server2);
 	    
 	    $apiKey1 = $server1->getRequest()->getConfig()->getApiKey();
-	    $this->assertInstanceOf("\ZendServerAPI\ApiKey", $apiKey1);
+	    $this->assertInstanceOf("\ZendService\ZendServerAPI\ApiKey", $apiKey1);
 	    
 	    $apiKey2 = $server2->getRequest()->getConfig()->getApiKey();
-	    $this->assertInstanceOf("\ZendServerAPI\ApiKey", $apiKey1);
+	    $this->assertInstanceOf("\ZendService\ZendServerAPI\ApiKey", $apiKey1);
 	    
 	    $this->assertEquals($apiKey1->getName(), 'api');
 	    $this->assertEquals($apiKey2->getName(), 'api');

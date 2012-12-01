@@ -13,8 +13,8 @@ class ApplicationListTest extends \PHPUnit_Framework_TestCase
 
     public function testGettersAndSetters()
     {
-        $applicationList = new \ZendServerAPI\DataTypes\ApplicationList();
-        $applicationInfo = new \ZendServerAPI\DataTypes\ApplicationInfo();
+        $applicationList = new \ZendService\ZendServerAPI\DataTypes\ApplicationList();
+        $applicationInfo = new \ZendService\ZendServerAPI\DataTypes\ApplicationInfo();
         $applicationInfo->setAppName("example");
         $applicationList->addApplicationInfo($applicationInfo);
         

@@ -17,13 +17,13 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
-use ZendServerAPI\DataTypes\ServersList,
-    ZendServerAPI\DataTypes\ServerInfo,
-    ZendServerAPI\DataTypes\MessageList;
+use ZendService\ZendServerAPI\DataTypes\ServersList,
+    ZendService\ZendServerAPI\DataTypes\ServerInfo,
+    ZendService\ZendServerAPI\DataTypes\MessageList;
 
 /**
  * <b>The clusterGetServerStatus Method</b>
@@ -39,7 +39,7 @@ use ZendServerAPI\DataTypes\ServersList,
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  */
 class ClusterGetServerStatus  extends Method
 {
@@ -69,7 +69,7 @@ class ClusterGetServerStatus  extends Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServerManager/Api/clusterGetServerStatus');
-        $this->setParser(new \ZendServerAPI\Adapter\ServersList());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ServersList());
     }
 
     /**

@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 
 namespace ZendService\ZendServerAPI\DataTypes;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\DataTypes;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 class CodetracingList extends DataType implements \Countable, \IteratorAggregate
 {
@@ -41,10 +41,10 @@ class CodetracingList extends DataType implements \Countable, \IteratorAggregate
     /**
      * Add codetracing to container
      *
-     * @param  \ZendServerAPI\DataTypes\CodeTrace $codetrace
+     * @param  \ZendService\ZendServerAPI\DataTypes\CodeTrace $codetrace
      * @return void
      */
-    public function addCodeTrace(\ZendServerAPI\DataTypes\CodeTrace $codetrace)
+    public function addCodeTrace(\ZendService\ZendServerAPI\DataTypes\CodeTrace $codetrace)
     {
         $this->codetracing[] = $codetrace;
     }

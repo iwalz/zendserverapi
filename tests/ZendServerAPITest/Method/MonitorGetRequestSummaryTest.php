@@ -1,13 +1,13 @@
 <?php
 namespace ZendServerAPITest\Method;
 
-use ZendServerAPI\DataTypes\Step;
+use \ZendService\ZendServerAPI\DataTypes\Step;
 
-use ZendServerAPI\DataTypes\SuperGlobals;
+use \ZendService\ZendServerAPI\DataTypes\SuperGlobals;
 
-use ZendServerAPI\DataTypes\Event;
+use \ZendService\ZendServerAPI\DataTypes\Event;
 
-use ZendServerAPI\DataTypes\RequestSummary;
+use \ZendService\ZendServerAPI\DataTypes\RequestSummary;
 
 /**
  * test case.

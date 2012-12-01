@@ -1,10 +1,10 @@
 <?php
 
-use ZendServerAPI\DataTypes\MessageList;
+use \ZendService\ZendServerAPI\DataTypes\MessageList;
 
-use ZendServerAPI\DataTypes\ServerInfo;
+use \ZendService\ZendServerAPI\DataTypes\ServerInfo;
 
-use ZendServerAPI\DataTypes\ServersList;
+use \ZendService\ZendServerAPI\DataTypes\ServersList;
 
 /**
  *  test case.

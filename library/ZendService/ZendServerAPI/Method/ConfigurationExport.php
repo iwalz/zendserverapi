@@ -17,12 +17,12 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
 
-use ZendServerAPI\Adapter\ConfigurationExport as ConfigExportAdapter;
+use ZendService\ZendServerAPI\Adapter\ConfigurationExport as ConfigExportAdapter;
 
 /**
  * <b>The configurationExport Method</b>
@@ -32,7 +32,7 @@ use ZendServerAPI\Adapter\ConfigurationExport as ConfigExportAdapter;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  */
 class ConfigurationExport extends Method
 {

@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 
 namespace ZendService\ZendServerAPI\DataTypes;
@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\DataTypes;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\DataTypes
+ * @package     ZendService\ZendServerAPI\DataTypes
  */
 class ServersList extends DataType implements \Countable, \IteratorAggregate
 {
@@ -65,7 +65,7 @@ class ServersList extends DataType implements \Countable, \IteratorAggregate
      * @param  ServerInfo $serverInfo
      * @return void
      */
-    public function addServerInfo(\ZendServerAPI\DataTypes\ServerInfo $serverInfo)
+    public function addServerInfo(\ZendService\ZendServerAPI\DataTypes\ServerInfo $serverInfo)
     {
         $this->serverInfos[] = $serverInfo;
     }
@@ -74,7 +74,7 @@ class ServersList extends DataType implements \Countable, \IteratorAggregate
      * Returns the ServerInfo by a given Zend Server ID
      *
      * @param  int                                       $serverId
-     * @return \ZendServerAPI\DataTypes\ServerInfo|false
+     * @return \ZendService\ZendServerAPI\DataTypes\ServerInfo|false
      */
     public function getServerStatusById($serverId)
     {
@@ -91,7 +91,7 @@ class ServersList extends DataType implements \Countable, \IteratorAggregate
      * Returns the ServerInfo by a given Zend Server Name
      *
      * @param  string                                    $serverName
-     * @return \ZendServerAPI\DataTypes\ServerInfo|false
+     * @return \ZendService\ZendServerAPI\DataTypes\ServerInfo|false
      */
     public function getServerStatusByName($serverName)
     {
@@ -107,7 +107,7 @@ class ServersList extends DataType implements \Countable, \IteratorAggregate
     /**
      * Returns the first ServerInfo object
      *
-     * @return \ZendServerAPI\DataTypes\ServerInfo
+     * @return \ZendService\ZendServerAPI\DataTypes\ServerInfo
      */
     public function getFirst()
     {

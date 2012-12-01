@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI\Method
+ * @package     ZendService\ZendServerAPI\Method
  */
 
 namespace ZendService\ZendServerAPI\Method;
@@ -32,7 +32,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package ZendServerAPI\Method
+ * @package ZendService\ZendServerAPI\Method
  */
 class ClusterReconfigureServer extends Method
 {
@@ -79,7 +79,7 @@ class ClusterReconfigureServer extends Method
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServerManager/Api/clusterReconfigureServer');
-        $this->setParser(new \ZendServerAPI\Adapter\ServerInfo());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ServerInfo());
     }
 
 }

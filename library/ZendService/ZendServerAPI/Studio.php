@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 
 namespace ZendService\ZendServerAPI;
@@ -35,7 +35,7 @@ namespace ZendService\ZendServerAPI;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 class Studio extends BaseAPI
 {
@@ -51,7 +51,7 @@ class Studio extends BaseAPI
      * @param string $overrideHost <p>Override the host address sent to Zend Server for
      * initiating a Debug session. This is used to point Zend Server at the right address
      * where Studio is executed</p>
-     * @return \ZendServerAPI\DataTypes\DebugRequest
+     * @return \ZendService\ZendServerAPI\DataTypes\DebugRequest
      */
     public function studioStartDebug($issueId, $eventsGroupId = null, $noRemote = null, $overrideHost = null)
     {
@@ -75,7 +75,7 @@ class Studio extends BaseAPI
      * @param string $overrideHost  <p>Override the host address sent to
      * Zend Server for initiating a Debug session. This is used to point Zend Server
      * at the right address where Studio is executed</p>
-     * @return \ZendServerAPI\DataTypes\DebugRequest
+     * @return \ZendService\ZendServerAPI\DataTypes\DebugRequest
      */
     public function studioStartProfile($issueId, $eventsGroupId = null, $overrideHost = null)
     {

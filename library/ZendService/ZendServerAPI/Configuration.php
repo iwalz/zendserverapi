@@ -17,7 +17,7 @@
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 
 namespace ZendService\ZendServerAPI;
@@ -36,7 +36,7 @@ namespace ZendService\ZendServerAPI;
  * @license     MIT
  * @link        http://github.com/iwalz/zendserverapi
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendServerAPI
+ * @package     ZendService\ZendServerAPI
  */
 class Configuration extends BaseAPI
 {
@@ -78,7 +78,7 @@ class Configuration extends BaseAPI
      * <pre>Import a saved configuration snapshot into the server.</pre>
      *
      * @param  string                               $importFile <p>File to import</p>
-     * @return \ZendServerAPI\DataTypes\ServersList
+     * @return \ZendService\ZendServerAPI\DataTypes\ServersList
      */
     public function configurationImport($importFile = null)
     {

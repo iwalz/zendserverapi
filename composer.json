@@ -29,7 +29,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-0": {
-            "ZendServerAPI": "src/",
+            "ZendService": "library/",
             "ZendServerAPITest": "tests/"
         }
     }

@@ -1,23 +1,11 @@
 <?php
 /**
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * Zend Framework (http://framework.zend.com/)
  *
- * <http://www.rubber-duckling.net>
- *
- * @license     MIT
- * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendService\ZendServerAPI
+ * @link 		http://github.com/zendframework/zf2 for the canonical source repository
+ * @copyright 	Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license 	http://framework.zend.com/license/new-bsd New BSD License
+ * @package 	Zend_Service
  */
 
 namespace ZendService\ZendServerAPI;
@@ -38,10 +26,12 @@ namespace ZendService\ZendServerAPI;
  * <li>monitorChangeIssueStatus</li>
  * </ul>
  *
- * @license     MIT
- * @link        http://github.com/iwalz/zendserverapi
+ * @license	http://framework.zend.com/license/new-bsd New BSD License
+ * @link		http://github.com/zendframework/zf2 for the canonical source repository
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendService\ZendServerAPI
+ * @category	Zend
+ * @package	Zend_Service
+ * @subpackage	ZendServerAPI
  */
 class Monitor extends BaseAPI
 {
@@ -153,8 +143,8 @@ class Monitor extends BaseAPI
      * <pre>Modify an Issue's status code based on an Issue's
      * Id and a status code.</pre>
      *
-     * @param  string                                $issueId   <p>The issue ID</p>
-     * @param  string                                $newStatus <p>The new status, Open | Closed | Ignored</p>
+     * @param  string                                            $issueId   <p>The issue ID</p>
+     * @param  string                                            $newStatus <p>The new status, Open | Closed | Ignored</p>
      * @return \ZendService\ZendServerAPI\DataTypes\IssueDetails
      */
     public function monitorChangeIssueStatus($issueId, $newStatus)
@@ -173,8 +163,8 @@ class Monitor extends BaseAPI
      * event groups and code tracing if available, ready for consumption
      * by Zend Studio. The response is a binary payload.</pre>
      *
-     * @param string $issueId   <p>The issue identifier</p>
-     * @param string $eventsGroupId   <p>The issue event group identifier</p>
+     * @param string $issueId       <p>The issue identifier</p>
+     * @param string $eventsGroupId <p>The issue event group identifier</p>
      * @param string $fileName
      * <p>The filename where to save the exported issue to.
      * Default is the given name from Zend Server</p>
@@ -187,7 +177,7 @@ class Monitor extends BaseAPI
         if ($eventsGroupId === null) {
             $eventsGroupId = $this->getFirstEventGroupsIdByIssueId($issueId);
         }
-        
+
         if($exportDirectory !== null)
             $this->exportDirectory = $exportDirectory;
         else

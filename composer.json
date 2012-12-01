@@ -2,7 +2,7 @@
     "name": "zendserverapi/zendserverapi",
     "description": "Zend Server API Wrapper",
     "type": "library",
-    "license": "MIT",
+    "license": "BSD-3-Clause",
     "keywords": [
         "zend server",
         "api"

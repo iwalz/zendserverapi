@@ -1,22 +1,11 @@
 <?php
 /**
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * Zend Framework (http://framework.zend.com/)
  *
- * <http://www.rubber-duckling.net>
- * @license     MIT
- * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendService\ZendServerAPI
+ * @link 		http://github.com/zendframework/zf2 for the canonical source repository
+ * @copyright 	Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license 	http://framework.zend.com/license/new-bsd New BSD License
+ * @package 	Zend_Service
  */
 
 namespace ZendService\ZendServerAPI;
@@ -36,10 +25,12 @@ namespace ZendService\ZendServerAPI;
  * <li>codetracingDownloadTraceFile</li>
  * </ul>
  *
- * @license     MIT
- * @link        http://github.com/iwalz/zendserverapi
+ * @license	http://framework.zend.com/license/new-bsd New BSD License
+ * @link		http://github.com/zendframework/zf2 for the canonical source repository
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendService\ZendServerAPI
+ * @category	Zend
+ * @package	Zend_Service
+ * @subpackage	ZendServerAPI
  */
 class Codetracing extends BaseAPI
 {
@@ -59,7 +50,7 @@ class Codetracing extends BaseAPI
      * developerMode. This mode causes the Zend Server to create a
      * dump on every request. <b>Do not use it in production!</b></pre>
      *
-     * @param  boolean                                    $restartNow <p>Restart after method call</p>
+     * @param  boolean                                                $restartNow <p>Restart after method call</p>
      * @return \ZendService\ZendServerAPI\DataTypes\CodeTracingStatus
      */
     public function codetracingEnable($restartNow = true)
@@ -79,7 +70,7 @@ class Codetracing extends BaseAPI
      * developerMode. This mode causes the Zend Server to create a
      * dump on every request. <b>Do not use it in production!</b></pre>
      *
-     * @param  boolean                                    $restartNow <p>Restart after method call</p>
+     * @param  boolean                                                $restartNow <p>Restart after method call</p>
      * @return \ZendService\ZendServerAPI\DataTypes\CodeTracingStatus
      */
     public function codetracingDisable($restartNow = true)
@@ -118,7 +109,7 @@ class Codetracing extends BaseAPI
      * The URL needs to be a fully encoded and has to start with
      * the protocoll.</pre>
      *
-     * @param  string                               $url <p>the url to trace</p>
+     * @param  string                                           $url <p>the url to trace</p>
      * @return \ZendService\ZendServerAPI\DataTypes\CodeTracing
      */
     public function codetracingCreate($url)
@@ -133,7 +124,7 @@ class Codetracing extends BaseAPI
      *
      * <pre>Delete a code-tracing file entry.</pre>
      *
-     * @param  integer                              $id <p>Trace file ID</p>
+     * @param  integer                                          $id <p>Trace file ID</p>
      * @return \ZendService\ZendServerAPI\DataTypes\CodeTracing
      */
     public function codetracingDelete($id)
@@ -148,11 +139,11 @@ class Codetracing extends BaseAPI
      *
      * <pre>Retrieve a list of code-tracing files available for download using codetracingDownloadTraceFile.</pre>
      *
-     * @param  array                                $applicationIds <p>List of application IDs</p>
-     * @param  int                                  $limit          <p>Row limit to retrieve</p>
-     * @param  int                                  $offset         <p>Page offset to be displayed</p>
-     * @param  string                               $orderBy        <p>Column to sort the result by (Id,Date,Url,CreatedBy,FileSize)</p>
-     * @param  string                               $direction      <p>Direction to sort, default to Desc</p>
+     * @param  array                                            $applicationIds <p>List of application IDs</p>
+     * @param  int                                              $limit          <p>Row limit to retrieve</p>
+     * @param  int                                              $offset         <p>Page offset to be displayed</p>
+     * @param  string                                           $orderBy        <p>Column to sort the result by (Id,Date,Url,CreatedBy,FileSize)</p>
+     * @param  string                                           $direction      <p>Direction to sort, default to Desc</p>
      * @return \ZendService\ZendServerAPI\DataTypes\CodeTracing
      */
     public function codetracingList($applicationIds = array(), $limit = null, $offset = null, $orderBy = null, $direction = null)
@@ -167,9 +158,9 @@ class Codetracing extends BaseAPI
      *
      * <pre>Download the amf file specified by the codetracing identifier.</pre>
      *
-     * @param  string                               $traceFile       <p>Trace file identifier</p>
-     * @param  string                               $fileName        <p>Filename to save tracefile to</p>
-     * @param  string                               $exportDirectory <p>Directory to export files to</p>
+     * @param  string                                           $traceFile       <p>Trace file identifier</p>
+     * @param  string                                           $fileName        <p>Filename to save tracefile to</p>
+     * @param  string                                           $exportDirectory <p>Directory to export files to</p>
      * @return \ZendService\ZendServerAPI\DataTypes\CodeTracing
      */
     public function codetracingDownloadTraceFile($traceFile, $fileName = null, $exportDirectory = null)

@@ -1,23 +1,11 @@
 <?php
 /**
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * Zend Framework (http://framework.zend.com/)
  *
- * <http://www.rubber-duckling.net>
- *
- * @license     MIT
- * @link        http://github.com/iwalz/zendserverapi
- * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendService\ZendServerAPI
+ * @link 		http://github.com/zendframework/zf2 for the canonical source repository
+ * @copyright 	Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license 	http://framework.zend.com/license/new-bsd New BSD License
+ * @package 	Zend_Service
  */
 
 namespace ZendService\ZendServerAPI;
@@ -28,10 +16,12 @@ namespace ZendService\ZendServerAPI;
  * <pre>This class is generating a request object based on the
  * configuration.</pre>
  *
- * @license     MIT
- * @link        http://github.com/iwalz/zendserverapi
+ * @license	http://framework.zend.com/license/new-bsd New BSD License
+ * @link		http://github.com/zendframework/zf2 for the canonical source repository
  * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @package     ZendService\ZendServerAPI
+ * @category	Zend
+ * @package	Zend_Service
+ * @subpackage	ZendServerAPI
  */
 class Startup
 {
@@ -54,7 +44,7 @@ class Startup
     /**
      * Generate base request based on a config section
      *
-     * @param  string                 $name
+     * @param  string                             $name
      * @return \ZendService\ZendServerAPI\Request
      */
     public static function getRequest($name = null)
@@ -110,7 +100,7 @@ class Startup
     /**
      * Configure the api key for the request
      *
-     * @param  string                 $name
+     * @param  string                             $name
      * @param  \ZendService\ZendServerAPI\Request $request
      * @return void
      */

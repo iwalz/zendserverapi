@@ -87,8 +87,8 @@ class Startup
      */
     private static function setUpLogger(Request $request)
     {
-        if(!is_dir(__DIR__.'/../../logs'))
-            mkdir(__DIR__.'/../../logs');
+        if(!is_dir(__DIR__.'/../../../logs'))
+            mkdir(__DIR__.'/../../../logs');
 
         $validator = new ConfigValidator(self::getConfigPath());
         $conf = $validator->getSettings();
@@ -99,7 +99,7 @@ class Startup
         if (self::$disableLogging) {
             $logWriter = new \Zend\Log\Writer\Mock();
         } else {
-            $logWriter = new \Zend\Log\Writer\Stream(__DIR__.'/../../logs/request.log');
+            $logWriter = new \Zend\Log\Writer\Stream(__DIR__.'/../../../logs/request.log');
         }
         $logWriter->addFilter($filter);
         $logger->addWriter($logWriter);

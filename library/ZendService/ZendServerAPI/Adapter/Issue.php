@@ -20,7 +20,7 @@
  * @package     ZendServerAPI\Adapter
  */
 
-namespace ZendServerAPI\Adapter;
+namespace ZendService\ZendServerAPI\Adapter;
 
 /**
  * Issue datatype adapter implementation

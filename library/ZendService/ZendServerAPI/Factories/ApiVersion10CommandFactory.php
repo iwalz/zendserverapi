@@ -20,7 +20,7 @@
  * @package     ZendServerAPI\Factories
  */
 
-namespace ZendServerAPI\Factories;
+namespace ZendService\ZendServerAPI\Factories;
 
 /**
  * A factory, that retrieves commands from the webapi version 1.0.

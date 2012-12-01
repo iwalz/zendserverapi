@@ -20,7 +20,7 @@
  * @package     ZendServerAPI\Adapter
  */
 
-namespace ZendServerAPI\Adapter;
+namespace ZendService\ZendServerAPI\Adapter;
 
 use ZendServerAPI\DataTypes\ServerInfo as ServerInfoData,
     ZendServerAPI\DataTypes\MessageList as MessageListType,

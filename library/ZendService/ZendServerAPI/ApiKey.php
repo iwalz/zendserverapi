@@ -20,7 +20,7 @@
  * @package     ZendServerAPI
  */
 
-namespace ZendServerAPI;
+namespace ZendService\ZendServerAPI;
 
 /**
  * ApiKey model implementation

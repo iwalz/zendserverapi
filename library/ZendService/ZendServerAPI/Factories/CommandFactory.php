@@ -20,7 +20,7 @@
  * @package     ZendServerAPI\Factories
  */
 
-namespace ZendServerAPI\Factories;
+namespace ZendService\ZendServerAPI\Factories;
 
 /**
  * Base interface for the command factory

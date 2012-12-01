@@ -20,7 +20,7 @@
  * @package     ZendServerAPI
  */
 
-namespace ZendServerAPI;
+namespace ZendService\ZendServerAPI;
 
 /**
  * <b>Version information</b>

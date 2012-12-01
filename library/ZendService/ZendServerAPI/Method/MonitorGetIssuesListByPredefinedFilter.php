@@ -20,7 +20,7 @@
  * @package     ZendServerAPI\Method
  */
 
-namespace ZendServerAPI\Method;
+namespace ZendService\ZendServerAPI\Method;
 
 /**
  * <b>The monitorGetIssuesListByPredefinedFilter Method</b>

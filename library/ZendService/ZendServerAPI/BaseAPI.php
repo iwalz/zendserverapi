@@ -19,7 +19,7 @@
  * @package     ZendServerAPI
  */
 
-namespace ZendServerAPI;
+namespace ZendService\ZendServerAPI;
 
 /**
  * <b>Abstract class for the api sections</b>

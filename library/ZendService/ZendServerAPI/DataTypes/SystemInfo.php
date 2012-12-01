@@ -20,7 +20,7 @@
  * @package     ZendServerAPI\DataTypes
  */
 
-namespace ZendServerAPI\DataTypes;
+namespace ZendService\ZendServerAPI\DataTypes;
 
 /**
  * SystemInfo model implementation.

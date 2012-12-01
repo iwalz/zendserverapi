@@ -20,7 +20,7 @@
  * @package     ZendServerAPI\Exception
  */
 
-namespace ZendServerAPI\Exception;
+namespace ZendService\ZendServerAPI\Exception;
 
 /**
  * Exception to handle errors, that are flagged by the

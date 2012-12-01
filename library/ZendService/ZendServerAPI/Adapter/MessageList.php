@@ -20,7 +20,7 @@
  * @package     ZendServerAPI\Adapter
  */
 
-namespace ZendServerAPI\Adapter;
+namespace ZendService\ZendServerAPI\Adapter;
 
 use \ZendServerAPI\DataTypes\LicenseInfo,
     \ZendServerAPI\DataTypes\MessageList as MessageListData,

@@ -20,7 +20,7 @@
  * @package     ZendServerAPI
  */
 
-namespace ZendServerAPI;
+namespace ZendService\ZendServerAPI;
 
 /**
  * <b>Zend Server API 'bootstrap'</b>

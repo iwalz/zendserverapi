@@ -20,7 +20,7 @@
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  */
 
-namespace ZendServerAPI\Method;
+namespace ZendService\ZendServerAPI\Method;
 
 /**
  * <b>The applicationGetStatus Method</b>

@@ -20,7 +20,7 @@
  * @package     ZendServerAPI\Method
  */
 
-namespace ZendServerAPI\Method;
+namespace ZendService\ZendServerAPI\Method;
 
 use ZendServerAPI\DataTypes\LicenseInfo,
     ZendServerAPI\DataTypes\MessageList;

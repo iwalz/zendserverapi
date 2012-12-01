@@ -20,7 +20,7 @@
  * @package     ZendServerAPI\Factories
  */
 
-namespace ZendServerAPI\Factories;
+namespace ZendService\ZendServerAPI\Factories;
 
 /**
  * Factory for the WebApiVersionFactories.

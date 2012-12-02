@@ -15,11 +15,11 @@ namespace ZendService\ZendServerAPI\Method;
  *
  * <pre>Modify an Issue's status code based on an Issue's Id and a status code.</pre>
  *
- * @license	http://framework.zend.com/license/new-bsd New BSD License
+ * @license	    http://framework.zend.com/license/new-bsd New BSD License
  * @link		http://github.com/zendframework/zf2 for the canonical source repository
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @category	Zend
- * @package	Zend_Service
+ * @package	    Zend_Service
  * @subpackage	ZendServerAPI
  */
 class MonitorChangeIssueStatus extends Method

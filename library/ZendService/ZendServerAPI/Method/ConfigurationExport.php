@@ -17,11 +17,11 @@ use ZendService\ZendServerAPI\Adapter\ConfigurationExport as ConfigExportAdapter
  *
  * <pre>Export the current server/cluster configuration into a file.</pre>
  *
- * @license	http://framework.zend.com/license/new-bsd New BSD License
+ * @license	    http://framework.zend.com/license/new-bsd New BSD License
  * @link		http://github.com/zendframework/zf2 for the canonical source repository
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @category	Zend
- * @package	Zend_Service
+ * @package	    Zend_Service
  * @subpackage	ZendServerAPI
  */
 class ConfigurationExport extends Method

@@ -22,11 +22,11 @@ namespace ZendService\ZendServerAPI\Method;
  * Once applicationGetStatus contains no information about the application,
  * it has been completely removed</pre>
  *
- * @license	http://framework.zend.com/license/new-bsd New BSD License
+ * @license	    http://framework.zend.com/license/new-bsd New BSD License
  * @link		http://github.com/zendframework/zf2 for the canonical source repository
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @category	Zend
- * @package	Zend_Service
+ * @package	    Zend_Service
  * @subpackage	ZendServerAPI
  */
 class ApplicationRemove extends Method

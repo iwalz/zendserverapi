@@ -15,11 +15,11 @@ namespace ZendService\ZendServerAPI\Factories;
  * Used for the Zend Server version 5.6. Can also handle the commands from
  * 1.1 and 1.0
  *
- * @license	http://framework.zend.com/license/new-bsd New BSD License
+ * @license	    http://framework.zend.com/license/new-bsd New BSD License
  * @link		http://github.com/zendframework/zf2 for the canonical source repository
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @category	Zend
- * @package	Zend_Service
+ * @package	    Zend_Service
  * @subpackage	ZendServerAPI
  */
 class ApiVersion12CommandFactory extends ApiVersion11CommandFactory

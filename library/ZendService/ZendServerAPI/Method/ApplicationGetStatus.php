@@ -19,7 +19,7 @@ namespace ZendService\ZendServerAPI\Method;
  * specified applications. If no IDs are specified, this method will return
  * information about all applications on the server or cluster.</pre>
  *
- * @license	http://framework.zend.com/license/new-bsd New BSD License
+ * @license	    http://framework.zend.com/license/new-bsd New BSD License
  * @link		http://github.com/zendframework/zf2 for the canonical source repository
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @category	Zend

@@ -14,11 +14,11 @@ namespace ZendService\ZendServerAPI\Factories;
  * A factory, that retrieves commands from the webapi version 1.0.
  * Used for the intruduced Zend Server version 5.1
  *
- * @license	http://framework.zend.com/license/new-bsd New BSD License
+ * @license	    http://framework.zend.com/license/new-bsd New BSD License
  * @link		http://github.com/zendframework/zf2 for the canonical source repository
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @category	Zend
- * @package	Zend_Service
+ * @package	    Zend_Service
  * @subpackage	ZendServerAPI
  */
 class ApiVersion10CommandFactory implements CommandFactory

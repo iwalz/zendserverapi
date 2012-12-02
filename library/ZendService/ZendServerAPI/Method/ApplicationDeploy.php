@@ -19,11 +19,11 @@ namespace ZendService\ZendServerAPI\Method;
  * However, the staging and activation process will proceed after the response is returned.
  * You must continue checking the application status using the applicationGetStatus method until the deployment process is complete.
  *
- * @license	http://framework.zend.com/license/new-bsd New BSD License
+ * @license	    http://framework.zend.com/license/new-bsd New BSD License
  * @link		http://github.com/zendframework/zf2 for the canonical source repository
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @category	Zend
- * @package	Zend_Service
+ * @package	    Zend_Service
  * @subpackage	ZendServerAPI
  */
 class ApplicationDeploy extends Method

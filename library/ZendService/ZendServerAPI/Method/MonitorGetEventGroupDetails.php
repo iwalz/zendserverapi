@@ -16,11 +16,11 @@ namespace ZendService\ZendServerAPI\Method;
  * <pre>Retrieve an events list object identified by an events-group identifier.
  * The events-group identifier is retrieved from an Issue element's data.</pre>
  *
- * @license	http://framework.zend.com/license/new-bsd New BSD License
+ * @license	    http://framework.zend.com/license/new-bsd New BSD License
  * @link		http://github.com/zendframework/zf2 for the canonical source repository
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @category	Zend
- * @package	Zend_Service
+ * @package	    Zend_Service
  * @subpackage	ZendServerAPI
  */
 class MonitorGetEventGroupDetails extends Method

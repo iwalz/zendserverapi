@@ -20,11 +20,11 @@ namespace ZendService\ZendServerAPI\Method;
  * the same server should be idempotent. On a Zend Server Cluster Manager
  * with no valid license, this operation fails.</pre>
  *
- * @license	http://framework.zend.com/license/new-bsd New BSD License
+ * @license	    http://framework.zend.com/license/new-bsd New BSD License
  * @link		http://github.com/zendframework/zf2 for the canonical source repository
  * @author      Ingo Walz <ingo.walz@googlemail.com>
  * @category	Zend
- * @package	Zend_Service
+ * @package	    Zend_Service
  * @subpackage	ZendServerAPI
  */
 class ClusterRemoveServer extends Method

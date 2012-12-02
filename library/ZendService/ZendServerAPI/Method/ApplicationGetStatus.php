@@ -2,10 +2,10 @@
 /**
  * Zend Framework (http://framework.zend.com/)
  *
- * @link 		http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright 	Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license 	http://framework.zend.com/license/new-bsd New BSD License
- * @package 	Zend_Service
+ * @link           http://github.com/zendframework/zf2 for the canonical source repository
+ * @copyright      Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license        http://framework.zend.com/license/new-bsd New BSD License
+ * @package        Zend_Service
  */
 
 namespace ZendService\ZendServerAPI\Method;
@@ -19,12 +19,12 @@ namespace ZendService\ZendServerAPI\Method;
  * specified applications. If no IDs are specified, this method will return
  * information about all applications on the server or cluster.</pre>
  *
- * @license	    http://framework.zend.com/license/new-bsd New BSD License
- * @link		http://github.com/zendframework/zf2 for the canonical source repository
- * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @category	Zend
- * @package	    Zend_Service
- * @subpackage	ZendServerAPI
+ * @license        http://framework.zend.com/license/new-bsd New BSD License
+ * @link           http://github.com/zendframework/zf2 for the canonical source repository
+ * @author         Ingo Walz <ingo.walz@googlemail.com>
+ * @category       Zend
+ * @package        Zend_Service
+ * @subpackage     ZendServerAPI
  */
 class ApplicationGetStatus extends Method
 {

@@ -2,10 +2,10 @@
 /**
  * Zend Framework (http://framework.zend.com/)
  *
- * @link 		http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright 	Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license 	http://framework.zend.com/license/new-bsd New BSD License
- * @package 	Zend_Service
+ * @link           http://github.com/zendframework/zf2 for the canonical source repository
+ * @copyright      Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license        http://framework.zend.com/license/new-bsd New BSD License
+ * @package        Zend_Service
  */
 
 namespace ZendService\ZendServerAPI\Method;
@@ -17,12 +17,12 @@ namespace ZendService\ZendServerAPI\Method;
  * A 202 response in this case does not always indicate a successful restart of all servers.
  * Use the clusterGetServerStatus command to check the server(s) status again after a few seconds.</pre>
  *
- * @license	    http://framework.zend.com/license/new-bsd New BSD License
- * @link		http://github.com/zendframework/zf2 for the canonical source repository
- * @author      Ingo Walz <ingo.walz@googlemail.com>
- * @category	Zend
- * @package	    Zend_Service
- * @subpackage	ZendServerAPI
+ * @license        http://framework.zend.com/license/new-bsd New BSD License
+ * @link           http://github.com/zendframework/zf2 for the canonical source repository
+ * @author         Ingo Walz <ingo.walz@googlemail.com>
+ * @category       Zend
+ * @package        Zend_Service
+ * @subpackage     ZendServerAPI
  */
 class RestartPHP extends Method
 {

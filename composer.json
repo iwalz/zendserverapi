@@ -3,6 +3,7 @@
     "description": "Zend Server API Wrapper",
     "type": "library",
     "license": "BSD-3-Clause",
+    "version": "0.0.2",
     "keywords": [
         "zend server",
         "api"

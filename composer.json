@@ -3,6 +3,7 @@
     "description": "Zend Server API Wrapper",
     "type": "library",
     "license": "MIT",
+    "version": "0.0.1",
     "keywords": [
         "zend server",
         "api"

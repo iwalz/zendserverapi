@@ -1,6 +1,5 @@
 <?php
 namespace ZendServerAPITest;
-use Guzzle\Http\Exception\CurlException;
 
 use \ZendService\ZendServerAPI\Exception\ClientSide;
 

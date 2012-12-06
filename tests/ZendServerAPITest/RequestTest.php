@@ -111,7 +111,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
 	    $request->send();
 	}
 	
-	public function testSendWithGuzzleExceptionClientCode()
+	public function testSendWithExceptionClientCode()
 	{
 	    $this->setExpectedException("\ZendService\ZendServerAPI\Exception\ClientSide", "authError: Incorrect signature", 402);
 	    $request = new \ZendService\ZendServerAPI\Request();
@@ -128,7 +128,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
 	    $request->send();
 	}
 	
-	public function testSendWithGuzzleExceptionServerCode()
+	public function testSendWithExceptionServerCode()
 	{
 	    $this->setExpectedException("\ZendService\ZendServerAPI\Exception\ServerSide", "serverNotLicensed: Zend Server Cluster Manager is not licensed.", 502);
 	    $request = new \ZendService\ZendServerAPI\Request();
@@ -145,7 +145,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
 	    $request->send();
 	}
 	
-	public function testSendWithGuzzleExceptionCode()
+	public function testSendWithExceptionCode()
 	{
 	    $this->setExpectedException("\InvalidArgumentException", "Foo", 602);
 	    $request = new \ZendService\ZendServerAPI\Request();

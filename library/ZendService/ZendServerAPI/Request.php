@@ -248,7 +248,7 @@ class Request
                 if($statusCode >= 400 && $statusCode <= 499)
                     throw new Exception\ClientSide($exception->getMessage(), $exception->getCode());
                 elseif($statusCode >= 500 && $statusCode <= 599)
-                throw new Exception\ServerSide($exception->getMessage(), $exception->getCode());
+                    throw new Exception\ServerSide($exception->getMessage(), $exception->getCode());
                 else
                     throw new \InvalidArgumentException($exception->getMessage(), $exception->getCode());
             } else {

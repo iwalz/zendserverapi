@@ -111,7 +111,7 @@ class BaseAPI
             if($previousAction !== null)
                 $this->request->setAction($previousAction);
 
-            return true;
+            return false;
         }
 
         if($previousAction !== null)

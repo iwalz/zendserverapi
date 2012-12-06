@@ -114,12 +114,12 @@ abstract class Method
     }
 
     /**
-     * Set the Guzzle Response
+     * Set the Zend HTTP Response
      *
-     * @param \Guzzle\Http\Message\Response
+     * @param \Zend\Http\Response
      * @return void
      */
-    public function setResponse(\Guzzle\Http\Message\Response $response)
+    public function setResponse(\Zend\Http\Response $response)
     {
         $this->getParser()->setResponse($response);
     }

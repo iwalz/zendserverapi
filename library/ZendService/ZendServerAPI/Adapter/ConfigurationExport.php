@@ -41,7 +41,8 @@ class ConfigurationExport extends Adapter
     public function parse ()
     {
         if ($this->fileName === null) {
-            $contentDisposition = $this->getResponse()->getContentDisposition();
+            $header = $this->getResponse()->getHeaders();
+            $contentDisposition = $header->get('Content-Disposition')->value;
             $parts = explode("\"", $contentDisposition);
             $fileName = $this->exportDirectory . DIRECTORY_SEPARATOR . $parts[1];
         } else {

@@ -23,8 +23,8 @@ namespace ZendService\ZendServerAPI\Adapter;
 abstract class Adapter
 {
     /**
-     * The Guzzle response object
-     * @var \Guzzle\Http\Message\Response
+     * The Zend HTTP response object
+     * @var \Zend\Http\Response
      */
     protected $response = null;
 
@@ -36,20 +36,20 @@ abstract class Adapter
     abstract public function parse();
 
     /**
-     * Set the Guzzle Response
+     * Set the Zend Http Response
      *
-     * @param \Guzzle\Http\Message\Response
+     * @param \Zend\Http\Response
      * @return void
      */
-    public function setResponse(\Guzzle\Http\Message\Response $response)
+    public function setResponse(\Zend\Http\Response $response)
     {
         $this->response = $response;
     }
 
     /**
-     * Get the Guzzle Response
+     * Get the Zend HTTP Response
      *
-     * @return \Guzzle\Http\Message\Response
+     * @return \Zend\Http\Response
      */
     public function getResponse()
     {

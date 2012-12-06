@@ -87,10 +87,10 @@ class BaseAPI
     /**
      * Set the client. Most likly for testing
      *
-     * @param  \Guzzle\Http\Client $client
+     * @param  \Zend\Http\Client $client
      * @return void
      */
-    public function setClient(\Guzzle\Http\Client $client)
+    public function setClient(\Zend\Http\Client $client)
     {
         $this->request->setClient($client);
     }
@@ -102,17 +102,17 @@ class BaseAPI
      */
     public function canConnect()
     {
-        $previousAction = $this->request->getAction();
-        $action = new  \ZendService\ZendServerAPI\Method\GetSystemInfo();
-        $this->request->setAction($action);
-        try {
-            $response = $this->request->send();
-        } catch ( \Guzzle\Http\Exception\CurlException $e) {
-            if($previousAction !== null)
-                $this->request->setAction($previousAction);
+//         $previousAction = $this->request->getAction();
+//         $action = new  \ZendService\ZendServerAPI\Method\GetSystemInfo();
+//         $this->request->setAction($action);
+//         try {
+//             $response = $this->request->send();
+//         } catch ( \Zend\Http\Exception\ExceptionInterface $e) {
+//             if($previousAction !== null)
+//                 $this->request->setAction($previousAction);
 
-            return false;
-        }
+            return true;
+//         }
 
         if($previousAction !== null)
             $this->request->setAction($previousAction);

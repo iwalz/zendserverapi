@@ -101,10 +101,10 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testGetSystemInfo()
 	{
-	    $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200));
+	    $responseStub = $this->getMock('\Zend\Http\Response', array('getBody'));
 	    $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(GetSystemInfoTest::$GetSystemInfoResponse));
 	    
-	    $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
+	    $clientStub = $this->getMock('\Zend\Http\Client', array('send'));
 	    $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
 	    
 	    $server = new Server("example62");
@@ -114,10 +114,10 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testClusterDisableServer()
 	{
-	    $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200));
+	    $responseStub = $this->getMock('\Zend\Http\Response', array('getBody'));
 	    $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(ClusterDisableServerTest::$ClusterDisableServerResponse));
 	     
-	    $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
+	    $clientStub = $this->getMock('\Zend\Http\Client', array('send'));
 	    $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
 	     
 	    $server = new Server("example62");
@@ -127,10 +127,10 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testClusterEnableServer()
 	{
-	    $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200));
+	    $responseStub = $this->getMock('\Zend\Http\Response', array('getBody'));
 	    $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(ClusterEnableServerTest::$ClusterEnableServerResponse));
 	
-	    $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
+	    $clientStub = $this->getMock('\Zend\Http\Client', array('send'));
 	    $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
 	
 	    $server = new Server("example62");
@@ -140,10 +140,10 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testRestartPhp()
 	{
-	    $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200));
+	    $responseStub = $this->getMock('\Zend\Http\Response', array('getBody'));
 	    $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(RestartTest::$RestartPHPResponse));
 	
-	    $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
+	    $clientStub = $this->getMock('\Zend\Http\Client', array('send'));
 	    $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
 	
 	    $server = new Server("example62");
@@ -153,10 +153,10 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testClusterReconfigureServer()
 	{
-	    $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200));
+	    $responseStub = $this->getMock('\Zend\Http\Response', array('getBody'));
 	    $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(ClusterReconfigureServerTest::$ClusterReconfigureServerResponse));
 	
-	    $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
+	    $clientStub = $this->getMock('\Zend\Http\Client', array('send'));
 	    $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
 	
 	    $server = new Server("example62");
@@ -166,10 +166,10 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testClusterGetServerStatus()
 	{
-	    $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200));
+	    $responseStub = $this->getMock('\Zend\Http\Response', array('getBody'));
 	    $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(ClusterGetServerStatusTest::$ClusterGetServerStatusResponse));
 	
-	    $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
+	    $clientStub = $this->getMock('\Zend\Http\Client', array('send'));
 	    $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
 	
 	    $server = new Server("example62");
@@ -179,10 +179,10 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testClusterRemoveServer()
 	{
-	    $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200));
+	    $responseStub = $this->getMock('\Zend\Http\Response', array('getBody'));
 	    $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(ClusterRemoveServerTest::$ClusterRemoveServerResponse));
 	
-	    $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
+	    $clientStub = $this->getMock('\Zend\Http\Client', array('send'));
 	    $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
 	
 	    $server = new Server("example62");

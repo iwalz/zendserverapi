@@ -10,12 +10,10 @@
 
 namespace ZendService\ZendServerAPI;
 
-use Guzzle\Service\Client;
-
 /**
  * <b>Request implementation</b>
  *
- * This class represents the guzzle request for the zend server api.
+ * This class represents the http request for the zend server api.
  * Takes care of a method and builds the request from the given information.
  *
  * @license        http://framework.zend.com/license/new-bsd New BSD License
@@ -36,7 +34,7 @@ class Request
      * Useragent for the request
      * @var string
      */
-    private $userAgent = 'Guzzle';
+    private $userAgent = 'Zend HTTP';
     /**
      * Config for the connection
      * @var \ZendService\ZendServerAPI\Config
@@ -44,7 +42,7 @@ class Request
     private $config = null;
     /**
      * Client to use for real http requests
-     * @var \Guzzle\Http\Client
+     * @var \Zend\Http\Client
      */
     private $client = null;
     /**
@@ -145,7 +143,7 @@ class Request
     /**
      * Get HTTP client
      *
-     * @return \Guzzle\Http\Client
+     * @return \Zend\Http\Client
      */
     public function getClient()
     {
@@ -155,9 +153,9 @@ class Request
     /**
      * Set the client for requests
      *
-     * @param \Guzzle\Http\Client $client
+     * @param \Zend\Http\Client $client
      */
-    public function setClient(\Guzzle\Http\Client $client)
+    public function setClient(\Zend\Http\Client $client)
     {
         $this->client = $client;
     }
@@ -172,10 +170,6 @@ class Request
     public function send()
     {
         if (!$this->client) {
-            $options = array(
-                            'host' => $this->config->getHost(),
-                            'port' => $this->config->getPort(),
-                            'protocol' => $this->config->getProtocol());
 
             if ($this->config->getProxyHost() !== null) {
                 $options = array_merge(
@@ -185,25 +179,25 @@ class Request
                 );
             }
 
-            $this->client = new Client(
-                    '{protocol}://{host}:{port}', $options
-            );
+            $this->client = new \Zend\Http\Client();
         }
-
+        
+        $host = $this->config->getProtocol() . '://' . 
+            $this->config->getHost() . ':' . $this->config->getPort();
+        $request = $this->client->getRequest();
+        $request->setUri($host . $this->action->getLink());
+        $header = $request->getHeaders();
+        
         if ($this->action->getMethod() === 'GET') {
-            $requests = $this->client->get($this->action->getLink());
+            $request->setMethod('GET');
         } elseif ($this->action->getMethod() === 'POST') {
+            $request->setMethod('POST');
             $content = $this->action->getContent();
-
-            $requests = $this->client->post(
-                    $this->action->getLink(),
-                    array(
-                            'Content-length' => strlen($content),
-                            'Content-type' => $this->action->getContentType()
-                    ),
-                    $content
-            );
-
+            $request->setContent($content);
+            if(strlen($content) > 0) {
+                $header->addHeaderLine('Content-Type', $this->action->getContentType());
+                $header->addHeaderLine('Content-Length', strlen($this->action->getContent()));
+            }
         }
 
         $postFiles = $this->action->getPostFiles();
@@ -211,48 +205,51 @@ class Request
             foreach ($postFiles as $field => $postValue) {
                 $fileName = $postValue['fileName'];
                 $contentType = $postValue['contentType'];
-                $requests->addPostFile($field, $fileName, $contentType);
+                $this->client->setFileUpload($fileName, $field, file_get_contents($fileName), $contentType);
             }
         }
 
         $contentValues = $this->getAction()->getContentValues();
         if (count($contentValues) > 0) {
-                $requests->addPostFields($contentValues);
+            $this->client->setParameterPost($contentValues);
         }
+        
 
+        $header->addHeaderLine('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
+        $header->addHeaderLine('Accept', $this->action->getAcceptHeader());
+        $header->addHeaderLine('Date', $this->getDate());
+        $header->addHeaderLine('User-Agent', $this->userAgent);
+        $request->setHeaders($header);
+        
         /* @var \Guzzle\Http\Message\Request $requests */
-        $requests->setHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
-        $requests->setHeader('Accept', $this->action->getAcceptHeader());
-        $requests->setHeader('lookInCupboard', 'true');
-        $requests->setHeader('Date', $this->getDate());
-        $requests->setHeader('User-Agent', $this->userAgent);
-        $requests->removeHeader('Expect');
+//         $requests->setHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
+//         $requests->setHeader('Accept', $this->action->getAcceptHeader());
+//         $requests->setHeader('lookInCupboard', 'true');
+//         $requests->setHeader('Date', $this->getDate());
+//         $requests->setHeader('User-Agent', $this->userAgent);
+//         $requests->removeHeader('Expect');
 
-        $this->getLogger()->debug($requests);
+        $this->getLogger()->debug($request);
         foreach ($this->getAction()->getContentValues() as $key => $value) {
             $this->getLogger()->debug($key . ': ' . $value);
         }
 
         try {
-            $response = $this->client->send($requests);
+            $response = $this->client->send($request);
             $this->getLogger()->debug($response);
-
             $this->getAction()->setResponse($response);
-        } catch (\Guzzle\Http\Exception\CurlException $exception) {
+            
+            $statusCode = $response->getStatusCode();
+            if($statusCode >= 400 && $statusCode <= 499)
+                throw new Exception\ClientSide($response->getBody(), $statusCode);
+            elseif($statusCode >= 500 && $statusCode <= 599)
+                throw new Exception\ServerSide($response->getBody(), $statusCode);
+            
+        } catch (\Zend\Http\Exception\ExceptionInterface $exception) {
             $this->getLogger()->err($exception->getMessage());
-            throw $exception;
-        } catch (\Guzzle\Http\Exception\BadResponseException $exception) {
-            $this->getLogger()->err($exception->getMessage());
-
-            if ($exception->getResponse() !== null) {
-                $statusCode = $exception->getResponse()->getStatusCode();
-                if($statusCode >= 400 && $statusCode <= 499)
-                    throw new Exception\ClientSide($exception->getResponse()->getBody(), $statusCode);
-                elseif($statusCode >= 500 && $statusCode <= 599)
-                    throw new Exception\ServerSide($exception->getResponse()->getBody(), $statusCode);
-                else
-                    throw new \InvalidArgumentException($exception->getResponse()->getBody(), $statusCode);
-            } elseif ($exception->getMessage() !== null) {
+            var_dump($exception->getMessage());
+            /* @var \Zend\Http\Exception\ExceptionInterface $exception */
+            if ($exception->getMessage() !== null) {
                 $statusCode = $exception->getCode();
                 if($statusCode >= 400 && $statusCode <= 499)
                     throw new Exception\ClientSide($exception->getMessage(), $exception->getCode());

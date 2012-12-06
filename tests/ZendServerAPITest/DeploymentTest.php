@@ -28,11 +28,11 @@ class DeploymentTest extends \PHPUnit_Framework_TestCase
     
     public function testApplicationGetStatus()
     {
-        $responseStub = $this->getMock('\Guzzle\Http\Message\Response', array('getBody'), array(200));
+        $responseStub = $this->getMock('\Zend\Http\Response', array('getBody'));
         require_once 'ZendServerAPITest/Method/ApplicationGetStatusTest.php';
         $responseStub->expects($this->once())->method('getBody')->will($this->returnValue(ApplicationGetStatusTest::getResponse()));
         
-        $clientStub = $this->getMock('\Guzzle\Http\Client', array('send'));
+        $clientStub = $this->getMock('\Zend\Http\Client', array('send'));
         $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
         
         $deployment = new \ZendService\ZendServerAPI\Deployment();

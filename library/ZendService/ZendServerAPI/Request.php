@@ -171,15 +171,17 @@ class Request
     {
          if (!$this->client) {
 
-//             if ($this->config->getProxyHost() !== null) {
-//                 $options = array_merge(
-//                         array('curl.options' =>
-//                                 array(CURLOPT_PROXY => 'http://'.$this->config->getProxyHost().':'.$this->config->getProxyPort())
-//                         ), $options
-//                 );
-//             }
-
             $this->client = new \Zend\Http\Client();
+            if ($this->config->getProxyHost() !== null) {
+                $proxyAdapter = new \Zend\Http\Client\Adapter\Proxy();
+                $options = array(
+                    'proxy_host' => $this->config->getProxyHost(),
+                    'proxy_port' => $this->config->getProxyPort()        
+                );
+                $proxyAdapter->setOptions($options);
+                $this->client->setAdapter($proxyAdapter);
+            }
+
         } else {
             $this->client->resetParameters();
         }

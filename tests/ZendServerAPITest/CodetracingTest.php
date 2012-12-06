@@ -11,11 +11,13 @@ class CodetracingTest extends PHPUnit_Framework_TestCase
     {
         if(DISABLE_REAL_INTERFACE === true)
             $this->markTestSkipped();
+        $codetracing = new \ZendService\ZendServerAPI\Codetracing("example62");
+        if(!$codetracing->canConnect())
+            $this->markTestSkipped();
     }
     
     public function testCodetracing()
     {
-        $this->markTestSkipped();
         $codetracing = new \ZendService\ZendServerAPI\Codetracing("example62");
         $status = $codetracing->codetracingCreate("http://hp.local");
         $fileinfo = $codetracing->codetracingDownloadTraceFile($status->getId(), "foo.amf", __DIR__.'/../../downloads');

@@ -91,7 +91,7 @@ class ApplicationUpdate extends Method
      */
     public function getContent()
     {
-        return "";
+        return null;
     }
 
     /**

@@ -169,43 +169,46 @@ class Request
      */
     public function send()
     {
-        if (!$this->client) {
+         if (!$this->client) {
 
-            if ($this->config->getProxyHost() !== null) {
-                $options = array_merge(
-                        array('curl.options' =>
-                                array(CURLOPT_PROXY => 'http://'.$this->config->getProxyHost().':'.$this->config->getProxyPort())
-                        ), $options
-                );
-            }
+//             if ($this->config->getProxyHost() !== null) {
+//                 $options = array_merge(
+//                         array('curl.options' =>
+//                                 array(CURLOPT_PROXY => 'http://'.$this->config->getProxyHost().':'.$this->config->getProxyPort())
+//                         ), $options
+//                 );
+//             }
 
             $this->client = new \Zend\Http\Client();
+        } else {
+            $this->client->resetParameters();
         }
         
-        $host = $this->config->getProtocol() . '://' . 
-            $this->config->getHost() . ':' . $this->config->getPort();
         $request = $this->client->getRequest();
-        $request->setUri($host . $this->action->getLink());
+        $request->getUri()->setHost($this->config->getHost());
+        $request->getUri()->setPort($this->config->getPort());
+        $request->getUri()->setScheme($this->config->getProtocol());
+        $request->getUri()->setPath($this->action->getLink());
         $header = $request->getHeaders();
-        
+
         if ($this->action->getMethod() === 'GET') {
             $request->setMethod('GET');
         } elseif ($this->action->getMethod() === 'POST') {
             $request->setMethod('POST');
             $content = $this->action->getContent();
             $request->setContent($content);
-            if(strlen($content) > 0) {
-                $header->addHeaderLine('Content-Type', $this->action->getContentType());
-                $header->addHeaderLine('Content-Length', strlen($this->action->getContent()));
-            }
-        }
-
-        $postFiles = $this->action->getPostFiles();
-        if (count($postFiles) > 0) {
-            foreach ($postFiles as $field => $postValue) {
-                $fileName = $postValue['fileName'];
-                $contentType = $postValue['contentType'];
-                $this->client->setFileUpload($fileName, $field, file_get_contents($fileName), $contentType);
+            $postFiles = $this->action->getPostFiles();
+            
+            if (count($postFiles) > 0) {
+                foreach ($postFiles as $field => $postValue) {
+                    $fileName = $postValue['fileName'];
+                    $contentType = $postValue['contentType'];
+                    $this->client->setFileUpload($fileName, $field, file_get_contents($fileName), $contentType);
+                }
+                $this->client->setEncType($this->action->getContentType(), 'bla');
+                
+            } else {
+                $this->client->setEncType($this->action->getContentType());
             }
         }
 
@@ -214,28 +217,21 @@ class Request
             $this->client->setParameterPost($contentValues);
         }
         
-
+        $header->addHeaderLine('Host', $this->config->getHost() . ':' . $this->config->getPort());
         $header->addHeaderLine('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
         $header->addHeaderLine('Accept', $this->action->getAcceptHeader());
         $header->addHeaderLine('Date', $this->getDate());
         $header->addHeaderLine('User-Agent', $this->userAgent);
         $request->setHeaders($header);
         
-        /* @var \Guzzle\Http\Message\Request $requests */
-//         $requests->setHeader('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
-//         $requests->setHeader('Accept', $this->action->getAcceptHeader());
-//         $requests->setHeader('lookInCupboard', 'true');
-//         $requests->setHeader('Date', $this->getDate());
-//         $requests->setHeader('User-Agent', $this->userAgent);
-//         $requests->removeHeader('Expect');
-
         $this->getLogger()->debug($request);
         foreach ($this->getAction()->getContentValues() as $key => $value) {
             $this->getLogger()->debug($key . ': ' . $value);
         }
 
         try {
-            $response = $this->client->send($request);
+            $this->client->setRequest($request);
+            $response = $this->client->send();
             $this->getLogger()->debug($response);
             $this->getAction()->setResponse($response);
             
@@ -247,8 +243,6 @@ class Request
             
         } catch (\Zend\Http\Exception\ExceptionInterface $exception) {
             $this->getLogger()->err($exception->getMessage());
-            var_dump($exception->getMessage());
-            /* @var \Zend\Http\Exception\ExceptionInterface $exception */
             if ($exception->getMessage() !== null) {
                 $statusCode = $exception->getCode();
                 if($statusCode >= 400 && $statusCode <= 499)

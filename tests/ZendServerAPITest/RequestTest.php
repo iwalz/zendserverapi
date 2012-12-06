@@ -111,7 +111,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
 	    $request->send();
 	}
 	
-/*	public function testSendWithGuzzleExceptionClientCode()
+	public function testSendWithGuzzleExceptionClientCode()
 	{
 	    $this->setExpectedException("\ZendService\ZendServerAPI\Exception\ClientSide", "authError: Incorrect signature", 402);
 	    $request = new \ZendService\ZendServerAPI\Request();
@@ -160,6 +160,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
 	
 	    $request->setClient($clientStub);
 	    $request->send();
-	}*/
+	}
 }
 

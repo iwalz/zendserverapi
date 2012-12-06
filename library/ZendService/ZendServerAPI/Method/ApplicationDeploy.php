@@ -110,7 +110,7 @@ class ApplicationDeploy extends Method
      */
     public function getContent()
     {
-        return "";
+        return null;
     }
 
     /**

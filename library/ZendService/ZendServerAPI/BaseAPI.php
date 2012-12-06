@@ -102,17 +102,17 @@ class BaseAPI
      */
     public function canConnect()
     {
-//         $previousAction = $this->request->getAction();
-//         $action = new  \ZendService\ZendServerAPI\Method\GetSystemInfo();
-//         $this->request->setAction($action);
-//         try {
-//             $response = $this->request->send();
-//         } catch ( \Zend\Http\Exception\ExceptionInterface $e) {
-//             if($previousAction !== null)
-//                 $this->request->setAction($previousAction);
+        $previousAction = $this->request->getAction();
+        $action = new  \ZendService\ZendServerAPI\Method\GetSystemInfo();
+        $this->request->setAction($action);
+        try {
+            $response = $this->request->send();
+        } catch ( \Exception $e) {
+            if($previousAction !== null)
+                $this->request->setAction($previousAction);
 
             return true;
-//         }
+        }
 
         if($previousAction !== null)
             $this->request->setAction($previousAction);

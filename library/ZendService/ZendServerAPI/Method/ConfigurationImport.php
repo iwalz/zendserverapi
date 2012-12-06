@@ -84,7 +84,7 @@ class ConfigurationImport extends Method
      */
     public function getContent()
     {
-        return "";
+        return null;
     }
 
     /**

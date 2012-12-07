@@ -52,7 +52,7 @@ class SystemInfo extends Adapter
         $serverLicenseInfo->setOrderNumber((string) $xml->responseData->systemInfo->serverLicenseInfo->orderNumber);
         $serverLicenseInfo->setValidUntil((string) $xml->responseData->systemInfo->serverLicenseInfo->validUntil);
         $serverLicenseInfo->setServerLimit((string) $xml->responseData->systemInfo->serverLicenseInfo->serverLimit);
-        $systemInfo->setServerLincenseInfo($serverLicenseInfo);
+        $systemInfo->setServerLicenseInfo($serverLicenseInfo);
 
         $managerLicenseInfo = new LicenseInfo();
         $managerLicenseInfo->setStatus((string) $xml->responseData->systemInfo->managerLicenseInfo->status);

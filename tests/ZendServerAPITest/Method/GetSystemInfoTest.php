@@ -58,7 +58,7 @@ EOF;
     
         $testSystemInfo = self::getSystemInfo();
         
-        $this->assertInstanceOf('\ZendService\ZendServerAPI\DataTypes\LicenseInfo', $testSystemInfo->getServerLincenseInfo());
+        $this->assertInstanceOf('\ZendService\ZendServerAPI\DataTypes\LicenseInfo', $testSystemInfo->getServerLicenseInfo());
         $this->assertInstanceOf('\ZendService\ZendServerAPI\DataTypes\LicenseInfo', $testSystemInfo->getManagerLicenseInfo());
 
         $this->assertEquals($testSystemInfo, $systemInfo);
@@ -91,7 +91,7 @@ EOF;
         $testManagerLicenseInfo->setValidUntil("Sat, 31 Mar 2012 00:00:00 GMT");
         $testManagerLicenseInfo->setServerLimit("10");
     
-        $testSystemInfo->setServerLincenseInfo($testLicenseInfo);
+        $testSystemInfo->setServerLicenseInfo($testLicenseInfo);
     
         $testSystemInfo->setManagerLicenseInfo($testManagerLicenseInfo);
     

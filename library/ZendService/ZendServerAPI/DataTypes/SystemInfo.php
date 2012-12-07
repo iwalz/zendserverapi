@@ -79,7 +79,7 @@ class SystemInfo extends DataType
      * contain the node license information
      * @var \ZendService\ZendServerAPI\DataTypes\LicenseInfo
      */
-    protected $serverLincenseInfo = null;
+    protected $serverLicenseInfo = null;
     /**
      * Information about the Zend Server
      * Cluster Manager license.
@@ -186,9 +186,9 @@ class SystemInfo extends DataType
      *
      * @return \ZendService\ZendServerAPI\DataTypes\LicenseInfo
      */
-    public function getServerLincenseInfo ()
+    public function getServerLicenseInfo ()
     {
-        return $this->serverLincenseInfo;
+        return $this->serverLicenseInfo;
     }
 
     /**
@@ -311,12 +311,12 @@ class SystemInfo extends DataType
      * If it is running in a cluster, it will
      * contain the node license information
      *
-     * @param  \ZendService\ZendServerAPI\DataTypes\LicenseInfo $serverLincenseInfo
+     * @param  \ZendService\ZendServerAPI\DataTypes\LicenseInfo $serverLicenseInfo
      * @return void
      */
-    public function setServerLincenseInfo (\ZendService\ZendServerAPI\DataTypes\LicenseInfo $serverLincenseInfo)
+    public function setserverLicenseInfo (\ZendService\ZendServerAPI\DataTypes\LicenseInfo $serverLicenseInfo)
     {
-        $this->serverLincenseInfo = $serverLincenseInfo;
+        $this->serverLicenseInfo = $serverLicenseInfo;
     }
 
     /**

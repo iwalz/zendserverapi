@@ -1,0 +1,27 @@
+HTTP/1.1 200 OK
+X-Powered-By: PHP/5.2.17 ZendServer/5.0
+Set-Cookie: ZENDSERVERSESSID=4ubenp051g39r9duhhd30s5mk3; path=/ZendServerManager
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Content-Type: application/vnd.zend.serverapi+xml;version=1.1
+Date: Fri, 07 Dec 2012 13:32:53 GMT
+Server: lighttpd/1.4.26
+
+<?xml version="1.0" encoding="UTF-8"?><zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.1">
+        <requestData>
+                <apiKeyName><![CDATA[full]]></apiKeyName>
+                <method>clusterGetServerStatus</method>
+        </requestData>
+        <responseData>
+                <serversList>
+                        <serverInfo>
+                                <id>54</id>
+                                <name>zendserver2</name>
+                                <address>http://192.168.2.4:10081/ZendServer</address>
+                                <status>OK</status>
+                                <messageList />
+                        </serverInfo>
+                </serversList>
+        </responseData>
+</zendServerAPIResponse>

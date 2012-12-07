@@ -13,7 +13,7 @@ class ServerIntegrationTest extends \ZendServerAPITest\Integration\BaseAPIIntegr
     public function setUp() 
     {
         $this->mockObject = new \ZendService\ZendServerAPI\Server();
-        $this->localObject = new \ZendService\ZendServerAPI\Server(self::LOCAL);
+        $this->object = new \ZendService\ZendServerAPI\Server(self::LOCAL);
         parent::setUp();
     }
     
@@ -170,10 +170,11 @@ class ServerIntegrationTest extends \ZendServerAPITest\Integration\BaseAPIIntegr
         return static::$mockDataProvider;
     }   
     
-    public function localProvider()
+    public function productionProvider()
     {
         static::$localDataProvider = array(
-                array("getSystemInfo", array())
+                array("getSystemInfo", array(), self::LOCAL),
+                array("restartPhp", array(), self::LOCAL)
         );
          
         return static::$localDataProvider;

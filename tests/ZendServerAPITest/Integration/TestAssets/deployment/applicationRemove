@@ -1,0 +1,37 @@
+HTTP/1.1 202 Accepted
+X-Powered-By: PHP/5.3.14 ZendServer/5.0
+Set-Cookie: ZENDSERVERSESSID=qoiarpucf2cjb4jtt9f4us1m76; Path=/ZendServer
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Content-Type: application/vnd.zend.serverapi+xml;version=1.1
+Date: Fri, 07 Dec 2012 20:40:05 GMT
+Server: lighttpd/1.4.26
+
+<?xml version="1.0" encoding="UTF-8"?><zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.1">
+  <requestData>
+    <apiKeyName><![CDATA[api]]></apiKeyName>
+    <method>applicationRemove</method>
+  </requestData>
+  <responseData>
+        <applicationInfo>
+    <id><![CDATA[122]]></id>
+    <baseUrl><![CDATA[http://test.com]]></baseUrl>
+    <appName><![CDATA[example1]]></appName>
+    <userAppName><![CDATA[Simple test app]]></userAppName>
+    <installedLocation><![CDATA[/usr/local/zend/var/apps/http/test.com/80/0.1]]></installedLocation>
+    <status>deactivating</status>
+    <servers>
+        <applicationServer>
+        <id>0</id>
+        <deployedVersion>0.1</deployedVersion>
+        <status>deactivating</status>
+</applicationServer>
+</servers>
+    <deployedVersions>
+        <deployedVersion>0.1</deployedVersion>
+        
+</deployedVersions>
+    <messageList />
+</applicationInfo>  </responseData>
+</zendServerAPIResponse>

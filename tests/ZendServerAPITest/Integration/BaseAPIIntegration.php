@@ -2,6 +2,8 @@
 
 namespace ZendServerAPITest\Integration;
 
+use ZendService\ZendServerAPI\Server;
+
 abstract class BaseAPIIntegration extends \PHPUnit_Framework_TestCase
 {
     static $mockDataProvider = null;
@@ -19,7 +21,7 @@ abstract class BaseAPIIntegration extends \PHPUnit_Framework_TestCase
     /**
      * @var \ZendService\ZendServerAPI\Server
      */
-    protected $localObject = null;
+    protected $object = null;
     
     protected function setUp ()
     {
@@ -48,23 +50,29 @@ abstract class BaseAPIIntegration extends \PHPUnit_Framework_TestCase
     }
     
     /**
-     * @dataProvider localProvider
+     * @dataProvider productionProvider
      */
-    public function testAgainstLocalInstance($method, $params)
+    public function testAgainstRealInstance($method, $params, $serverKey)
     {
-        $this->skipIfLocalIsNotAvailable();
+        $server = new Server($serverKey);
+        if(!$server->canConnect())
+            $this->markTestSkipped("Instance " . $serverKey . " not available - skipped");
                 
-        $result = call_user_method_array($method, $this->localObject, $params);
-//         var_dump($this->localObject->getRequest()->getClient()->getResponse());
+        $reflect  = new \ReflectionClass("\\ZendService\\ZendServerAPI\\" . ucfirst($this->getSection()));
+        $this->object = $reflect->newInstanceArgs(array($serverKey));
+        
+        $reflection = new \ReflectionMethod(get_class($this->object), $method);
+        $returnValue = $reflection->invokeArgs($this->object, $params);
+        
     }
 
     abstract function mockProvider();
-    abstract function localProvider();
+    abstract function productionProvider();
     abstract function getSection();
     
     public function isLocalAvailable()
     {
-        return $this->localObject->canConnect();
+        return $this->object->canConnect();
     }
     
     public function skipIfLocalIsNotAvailable()

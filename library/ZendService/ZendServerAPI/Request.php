@@ -50,6 +50,11 @@ class Request
      * @var \Zend\Log\Logger
      */
     private $logger = null;
+    /**
+     * Adapter for testing
+     * @var \Zend\Http\Client\Adapter\AdapterInterface
+     */
+    private $adapter = null;
 
     /**
      * Set method implementation object
@@ -159,6 +164,28 @@ class Request
     {
         $this->client = $client;
     }
+    
+    /**
+     * Set an adapter to the Zend Http Client.
+     * Most likely for testing
+     * 
+     * @param \Zend\Http\Client\Adapter\AdapterInterface $adapter
+     * @return void
+     */
+    public function setClientAdapter(\Zend\Http\Client\Adapter\AdapterInterface $adapter)
+    {
+        $this->adapter = $adapter;
+    }
+    
+    /**
+     * Get the Zend Http Client adapter interface
+     * 
+     * @return \Client\Adapter\AdapterInterface|null
+     */
+    public function getClientAdapter()
+    {
+        return $this->adapter;
+    }
 
     /**
      * This method performs the real REST call
@@ -172,7 +199,10 @@ class Request
          if (!$this->client) {
 
             $this->client = new \Zend\Http\Client();
-            if ($this->config->getProxyHost() !== null) {
+            if (
+                $this->config->getProxyHost() !== null &&
+                $this->adapter === null
+            ) {
                 $proxyAdapter = new \Zend\Http\Client\Adapter\Proxy();
                 $options = array(
                     'proxy_host' => $this->config->getProxyHost(),
@@ -180,6 +210,10 @@ class Request
                 );
                 $proxyAdapter->setOptions($options);
                 $this->client->setAdapter($proxyAdapter);
+            } 
+            
+            if($this->adapter !== null) {
+                $this->client->setAdapter($this->adapter);
             }
 
         } else {

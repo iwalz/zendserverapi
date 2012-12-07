@@ -1,0 +1,43 @@
+HTTP/1.1 200 OK
+X-Powered-By: PHP/5.3.14 ZendServer/5.0
+Set-Cookie: ZENDSERVERSESSID=murk7ebo6gu997v33odcfha961; path=/ZendServer
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Content-Type: application/vnd.zend.serverapi+xml;version=1.1
+Date: Thu, 06 Dec 2012 23:50:17 GMT
+Server: lighttpd/1.4.26
+
+<?xml version="1.0" encoding="UTF-8"?><zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.1">
+        <requestData>
+                <apiKeyName><![CDATA[api]]></apiKeyName>
+                <method>getSystemInfo</method>
+        </requestData>
+        <responseData>
+                <systemInfo>
+                        <status>OK</status>
+                        <edition>ZendServer</edition>
+                        <zendServerVersion>5.6.0</zendServerVersion>
+                        <supportedApiVersions>
+                                application/vnd.zend.serverapi+xml;version=1.0,
+                                application/vnd.zend.serverapi+xml;version=1.1,
+                                application/vnd.zend.serverapi+xml;version=1.2
+                        </supportedApiVersions>
+                        <phpVersion>5.3.14</phpVersion>
+                        <operatingSystem>Linux</operatingSystem>
+                        <deploymentVersion>1.0</deploymentVersion>
+                        <serverLicenseInfo>
+                                <status>OK</status>
+                                <orderNumber>GR-00280-12</orderNumber>
+                                <validUntil>Do., 14 Nov 2013 23:00:00 GMT</validUntil>
+                                <nodeLimit>255</nodeLimit>
+                        </serverLicenseInfo>
+                        <managerLicenseInfo>
+                                <status>notRequired</status>
+                                <orderNumber></orderNumber>
+                                <validUntil></validUntil>
+                                <nodeLimit></nodeLimit>
+                        </managerLicenseInfo>
+                        <messageList></messageList>
+                </systemInfo>   </responseData>
+</zendServerAPIResponse>

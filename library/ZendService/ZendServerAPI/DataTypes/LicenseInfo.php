@@ -39,7 +39,7 @@ class LicenseInfo extends DataType
     private $orderNumber = null;
     /**
      * The license expiration date, which is empty if there is no license (timestamp)
-     * @var int
+     * @var string
      */
     private $validUntil = null;
     /**
@@ -76,9 +76,9 @@ class LicenseInfo extends DataType
     }
 
     /**
-     * Get the license expiration date, which is empty if there is no license (timestamp)
+     * Get the license expiration date, which is empty if there is no license
      *
-     * @return int
+     * @return string
      */
     public function getValidUntil()
     {
@@ -125,14 +125,14 @@ class LicenseInfo extends DataType
     }
 
     /**
-     * Set the license expiration date, which is empty if there is no license (timestamp)
+     * Set the license expiration date, which is empty if there is no license
      *
-     * @param  int  $validUntil
+     * @param  string  $validUntil
      * @return void
      */
     public function setValidUntil($validUntil)
     {
-        $this->validUntil = (int) $validUntil;
+        $this->validUntil = $validUntil;
     }
 
     /**

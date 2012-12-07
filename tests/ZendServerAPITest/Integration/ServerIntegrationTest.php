@@ -6,7 +6,8 @@ class ServerIntegrationTest extends \ZendServerAPITest\Integration\BaseAPIIntegr
 {
     public function setUp() 
     {
-        $this->state = 'cluster';
+        $this->mockObject = new \ZendService\ZendServerAPI\Server();
+        $this->localObject = new \ZendService\ZendServerAPI\Server(self::LOCAL);
         parent::setUp();
     }
     
@@ -27,19 +28,18 @@ class ServerIntegrationTest extends \ZendServerAPITest\Integration\BaseAPIIntegr
         $serverLicenseInfo = new \ZendService\ZendServerAPI\DataTypes\LicenseInfo();
         $serverLicenseInfo->setStatus("OK");
         $serverLicenseInfo->setOrderNumber("GR-00280-12");
-        $serverLicenseInfo->setValidUntil(0);
+        $serverLicenseInfo->setValidUntil('Do., 14 Nov 2013 23:00:00 GMT');
         $serverLicenseInfo->setServerLimit(0);
         $systemInfo->setServerLicenseInfo($serverLicenseInfo);
         
         $managerLicenseInfo = new \ZendService\ZendServerAPI\DataTypes\LicenseInfo();
         $managerLicenseInfo->setStatus("notRequired");
         $managerLicenseInfo->setOrderNumber("");
-        $managerLicenseInfo->setValidUntil(0);
+        $managerLicenseInfo->setValidUntil('');
         $managerLicenseInfo->setServerLimit(0);
         $systemInfo->setManagerLicenseInfo($managerLicenseInfo);
         
         $systemInfo->setMessageList(new \ZendService\ZendServerAPI\DataTypes\MessageList());
-        
         return $systemInfo;
     }
     
@@ -51,6 +51,19 @@ class ServerIntegrationTest extends \ZendServerAPITest\Integration\BaseAPIIntegr
                  
         return static::$mockDataProvider;
     }   
+    
+    public function localProvider()
+    {
+        static::$localDataProvider = array(
+                array("getSystemInfo", array())
+        );
+         
+        return static::$localDataProvider;
+    }
 
+    public function getSection()
+    {
+        return "server";
+    }
 }
 

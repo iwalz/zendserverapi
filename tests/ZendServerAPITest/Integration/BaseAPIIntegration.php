@@ -42,7 +42,7 @@ abstract class BaseAPIIntegration extends \PHPUnit_Framework_TestCase
         $this->mockObject->getRequest()->setClientAdapter($adapter);
         
         $reflection = new \ReflectionMethod(get_class($this->mockObject), $method);
-        $returnValue = $reflection->invoke($this->mockObject, $params);
+        $returnValue = $reflection->invokeArgs($this->mockObject, $params);
         
         $this->assertEquals($expectedObject, $returnValue);
     }

@@ -1,0 +1,77 @@
+HTTP/1.1 200 OK
+X-Powered-By: PHP/5.3.14 ZendServer/5.0
+Set-Cookie: ZENDSERVERSESSID=cun5s3i87m9f3g3dq41lhomun2; Path=/ZendServer
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Content-Type: application/vnd.zend.serverapi+xml;version=1.2
+Date: Fri, 07 Dec 2012 23:24:16 GMT
+Server: lighttpd/1.4.26
+
+<?xml version="1.0" encoding="UTF-8"?><zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.2">
+        <requestData>
+                <apiKeyName><![CDATA[api]]></apiKeyName>
+                <method>monitorGetIssuesListPredefinedFilter</method>
+        </requestData>
+        <responseData>
+                <issues>
+                        <issue>
+                                <id>1</id>
+                                <rule><![CDATA[Application Deployed Successfully]]></rule>
+                                <count>1</count>
+                                <lastOccurance>18-Nov-2012 22:23</lastOccurance>
+                                <severity>Info</severity>
+                                <status>Open</status>
+                                <generalDetails>
+                                        <url><![CDATA[http://zsapi.local]]></url>
+                                        <sourceFile><![CDATA[]]></sourceFile>
+                                        <sourceLine>4294967295</sourceLine>
+                                        <function><![CDATA[]]></function>
+                                        <aggregationHint></aggregationHint>
+                                        <errorString></errorString>
+                                        <errorType></errorType>
+                                </generalDetails>
+                                <routeDetails>
+                                </routeDetails>
+                        </issue>
+                        <issue>
+                                <id>26</id>
+                                <rule><![CDATA[Application Updated Successfully]]></rule>
+                                <count>1</count>
+                                <lastOccurance>06-Dec-2012 21:29</lastOccurance>
+                                <severity>Info</severity>
+                                <status>Open</status>
+                                <generalDetails>
+                                        <url><![CDATA[http://www.test.com]]></url>
+                                        <sourceFile><![CDATA[]]></sourceFile>
+                                        <sourceLine>4294967295</sourceLine>
+                                        <function><![CDATA[]]></function>
+                                        <aggregationHint></aggregationHint>
+                                        <errorString></errorString>
+                                        <errorType></errorType>
+                                </generalDetails>
+                                <routeDetails>
+                                </routeDetails>
+                        </issue>
+                        <issue>
+                                <id>28</id>
+                                <rule><![CDATA[Fatal PHP Error]]></rule>
+                                <count>1</count>
+                                <lastOccurance>08-Dec-2012 00:29</lastOccurance>
+                                <severity>Critical</severity>
+                                <status>Open</status>
+                                <generalDetails>
+                                        <url><![CDATA[http://hp.local/zend-server-api]]></url>
+                                        <sourceFile><![CDATA[/var/www/rubber-duckling.net/config/application.config.php]]></sourceFile>
+                                        <sourceLine>9</sourceLine>
+                                        <function><![CDATA[UNKNOWN]]></function>
+                                        <aggregationHint></aggregationHint>
+                                        <errorString><![CDATA[Call to undefined function array_merg()]]></errorString>
+                                        <errorType>E_ERROR</errorType>
+                                </generalDetails>
+                                <routeDetails>
+                                </routeDetails>
+                        </issue>
+                </issues>
+        </responseData>
+</zendServerAPIResponse>

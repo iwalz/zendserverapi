@@ -1,0 +1,167 @@
+HTTP/1.1 200 OK
+X-Powered-By: PHP/5.3.14 ZendServer/5.0
+Set-Cookie: ZENDSERVERSESSID=bpuamhkf7mrahn8pf47fbl4t77; Path=/ZendServer
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Content-Type: application/vnd.zend.serverapi+xml;version=1.2
+Date: Fri, 07 Dec 2012 23:36:04 GMT
+Server: lighttpd/1.4.26
+
+<?xml version="1.0" encoding="UTF-8"?><zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.2">
+        <requestData>
+                <apiKeyName><![CDATA[api]]></apiKeyName>
+                <method>monitorGetEventGroupDetails</method>
+        </requestData>
+        <responseData>
+                <eventsGroupDetails>
+                        <issueId>28</issueId>
+                        <eventsGroup>
+                                <eventsGroupId>283</eventsGroupId>
+                                <eventsCount>1</eventsCount>
+                                <startTime>08-Dec-2012 00:29</startTime>
+                                <serverId>0</serverId>
+                                <class></class>
+                                <userData></userData>
+                                <javaBacktrace></javaBacktrace>
+                                <execTime>0</execTime>
+                                <avgExecTime>0</avgExecTime>
+                                <memUsage>0</memUsage>
+                                <avgMemUsage>0</avgMemUsage>
+                                <avgOutputSize>0</avgOutputSize>
+                                <load>0</load>
+                        </eventsGroup>                  <event>
+                                <eventsGroupId>283</eventsGroupId>
+                                <type>8</type>
+                                <description><![CDATA[Fatal PHP Error]]></description>
+                                <superGlobals>
+                                        <get></get>
+                                        <post></post>
+                                        <cookie>                                <parameter>
+                                <name>ZDEDebuggerPresent</name>
+                                <value><![CDATA[php,phtml,php3]]></value>
+                                </parameter>                            <parameter>
+                                <name>PHPSESSID</name>
+                                <value><![CDATA[fsltesn2csfiouo772i2q9li62]]></value>
+                                </parameter></cookie>
+                                        <session></session>
+                                        <server>                                <parameter>
+                                <name>REDIRECT_ENVIRONMENT</name>
+                                <value><![CDATA[development]]></value>
+                                </parameter>                            <parameter>
+                                <name>REDIRECT_STATUS</name>
+                                <value><![CDATA[200]]></value>
+                                </parameter>                            <parameter>
+                                <name>ENVIRONMENT</name>
+                                <value><![CDATA[development]]></value>
+                                </parameter>                            <parameter>
+                                <name>HTTP_HOST</name>
+                                <value><![CDATA[hp.local]]></value>
+                                </parameter>                            <parameter>
+                                <name>HTTP_USER_AGENT</name>
+                                <value><![CDATA[Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:17.0) Gecko/20100101 Firefox/17.0]]></value>
+                                </parameter>                            <parameter>
+                                <name>HTTP_ACCEPT</name>
+                                <value><![CDATA[text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8]]></value>
+                                </parameter>                            <parameter>
+                                <name>HTTP_ACCEPT_LANGUAGE</name>
+                                <value><![CDATA[de-de,de;q=0.8,en-us;q=0.5,en;q=0.3]]></value>
+                                </parameter>                            <parameter>
+                                <name>HTTP_ACCEPT_ENCODING</name>
+                                <value><![CDATA[gzip, deflate]]></value>
+                                </parameter>                            <parameter>
+                                <name>HTTP_CONNECTION</name>
+                                <value><![CDATA[keep-alive]]></value>
+                                </parameter>                            <parameter>
+                                <name>HTTP_REFERER</name>
+                                <value><![CDATA[http://hp.local/blog]]></value>
+                                </parameter>                            <parameter>
+                                <name>HTTP_COOKIE</name>
+                                <value><![CDATA[ZDEDebuggerPresent=php,phtml,php3; PHPSESSID=fsltesn2csfiouo772i2q9li62]]></value>
+                                </parameter>                            <parameter>
+                                <name>HTTP_CACHE_CONTROL</name>
+                                <value><![CDATA[max-age=0]]></value>
+                                </parameter>                            <parameter>
+                                <name>PATH</name>
+                                <value><![CDATA[/usr/local/bin:/usr/bin:/bin]]></value>
+                                </parameter>                            <parameter>
+                                <name>SERVER_SIGNATURE</name>
+                                <value><![CDATA[<address>Apache/2.2.22 (Ubuntu) Server at hp.local Port 80</address>
+]]></value>
+                                </parameter>                            <parameter>
+                                <name>SERVER_SOFTWARE</name>
+                                <value><![CDATA[Apache/2.2.22 (Ubuntu)]]></value>
+                                </parameter>                            <parameter>
+                                <name>SERVER_NAME</name>
+                                <value><![CDATA[hp.local]]></value>
+                                </parameter>                            <parameter>
+                                <name>SERVER_ADDR</name>
+                                <value><![CDATA[127.0.0.1]]></value>
+                                </parameter>                            <parameter>
+                                <name>SERVER_PORT</name>
+                                <value><![CDATA[80]]></value>
+                                </parameter>                            <parameter>
+                                                                <name>REMOTE_ADDR</name>
+                                <value><![CDATA[127.0.0.1]]></value>
+                                </parameter>                            <parameter>
+                                <name>DOCUMENT_ROOT</name>
+                                <value><![CDATA[/var/www/rubber-duckling.net/public/]]></value>
+                                </parameter>                            <parameter>
+                                <name>SERVER_ADMIN</name>
+                                <value><![CDATA[[no address given]]]></value>
+                                </parameter>                            <parameter>
+                                <name>SCRIPT_FILENAME</name>
+                                <value><![CDATA[/var/www/rubber-duckling.net/public/index.php]]></value>
+                                </parameter>                            <parameter>
+                                <name>REMOTE_PORT</name>
+                                <value><![CDATA[38684]]></value>
+                                </parameter>                            <parameter>
+                                <name>REDIRECT_URL</name>
+                                <value><![CDATA[/zend-server-api]]></value>
+                                </parameter>                            <parameter>
+                                <name>GATEWAY_INTERFACE</name>
+                                <value><![CDATA[CGI/1.1]]></value>
+                                </parameter>                            <parameter>
+                                <name>SERVER_PROTOCOL</name>
+                                <value><![CDATA[HTTP/1.1]]></value>
+                                </parameter>                            <parameter>
+                                <name>REQUEST_METHOD</name>
+                                <value><![CDATA[GET]]></value>
+                                </parameter>                            <parameter>
+                                <name>QUERY_STRING</name>
+                                <value><![CDATA[]]></value>
+                                </parameter>                            <parameter>
+                                <name>REQUEST_URI</name>
+                                <value><![CDATA[/zend-server-api]]></value>
+                                </parameter>                            <parameter>
+                                <name>SCRIPT_NAME</name>
+                                <value><![CDATA[/index.php]]></value>
+                                </parameter>                            <parameter>
+                                <name>PHP_SELF</name>
+                                <value><![CDATA[/index.php]]></value>
+                                </parameter>                            <parameter>
+                                <name>REQUEST_TIME</name>
+                                <value><![CDATA[1354922947]]></value>
+                                </parameter></server>
+                                </superGlobals>
+                                <severity>Critical></severity>
+                                <backtrace><step>
+                        <number>1</number>
+                                                        <object></object>
+                        <class></class>
+                        <function>main</function>
+                        <file><![CDATA[/var/www/rubber-duckling.net/config/application.config.php]]></file>
+                        <line>9</line>
+                </step><step>
+                        <number>2</number>
+                        <object></object>
+                        <class></class>
+                        <function>main</function>
+                        <file><![CDATA[/var/www/rubber-duckling.net/public/index.php]]></file>
+                        <line>17</line>
+                </step></backtrace>
+                        </event>                        
+                        <codeTracing></codeTracing>
+                </eventsGroupDetails>
+        </responseData>
+</zendServerAPIResponse>

@@ -10,6 +10,8 @@
 
 namespace ZendService\ZendServerAPI;
 
+use Zend\ServiceManager\ServiceManager;
+
 /**
  * <b>Abstract class for the api sections</b>
  *
@@ -42,6 +44,12 @@ class BaseAPI
      * @var string
      */
     protected $name = null;
+    
+    /**
+     * The service manager
+     * @var \Zend\ServiceManager\ServiceManager
+     */
+    protected $sm = null;
 
     /**
      * Base constructor for all API-method implementations
@@ -61,6 +69,10 @@ class BaseAPI
         $webApiVersionFactory = new Factories\WebApiVersionFactory();
         $webApiVersionFactory->setConfig($this->request->getConfig());
         $this->apiFactory = $webApiVersionFactory->getCommandFactory();
+        
+        $this->sm = new \Zend\ServiceManager\ServiceManager();
+        $config = new ServiceManagerConfig();
+        $config->configureServiceManager($this->sm);
     }
 
     /**
@@ -93,6 +105,27 @@ class BaseAPI
     public function setClient(\Zend\Http\Client $client)
     {
         $this->request->setClient($client);
+    }
+    
+    /**
+     * Set the service manager
+     * 
+     * @param ServiceManager $sm
+     * @return void
+     */
+    public function setServiceManager(ServiceManager $sm)
+    {
+        $this->sm = $sm;
+    }
+    
+    /**
+     * Get the service manager
+     * 
+     * @return \Zend\ServiceManager\ServiceManager
+     */
+    public function getServiceManager()
+    {
+        return $this->sm;
     }
 
     /**

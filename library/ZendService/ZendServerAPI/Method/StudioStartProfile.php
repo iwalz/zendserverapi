@@ -53,6 +53,8 @@ class StudioStartProfile extends Method
             $this->overrideHost = $overrideHost;
 
         $this->configure();
+        
+        return $this;
     }
 
     /**

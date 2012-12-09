@@ -41,6 +41,7 @@ class ServiceManagerConfig implements ConfigInterface
 
         $serviceManager->setAllowOverride(true);
         
+        
         $serviceManager->addInitializer(function($instance, $serviceManager) {
             if($instance instanceof ConfigAwareInterface) {
                 $instance->setConfig($serviceManager->get("config"));
@@ -56,7 +57,6 @@ class ServiceManagerConfig implements ConfigInterface
         $config = $this;
         $serviceManager->setFactory("request", function() use($serviceManager, $config) {
             $request = new Request();
-            $config->registerAPIVersionFactories();
             return $request;
         });
         
@@ -164,31 +164,29 @@ class ServiceManagerConfig implements ConfigInterface
             }
             return $settings;
         });
-    }
-    
-    public function registerAPIVersionFactories()
-    {
-        $config = $this->sm->get("config");
+        
+        try {
+            $config = $this->sm->get("config");
+        } catch (\Zend\ServiceManager\Exception\ServiceNotCreatedException $e) {
+            return;
+        }
         $configNumber = str_replace(".", "", $config->getApiVersion());
         
         if($configNumber >= 10) {
-            var_dump("10");
             $this->sm->addAbstractFactory(
-                    '\ZendService\ZendServerAPI\Factories\ApiVersion10CommandFactory'
+                    '\ZendService\ZendServerAPI\Factories\ApiVersion10CommandFactory', true
             );
         }
         
         if($configNumber >= 11) {
-            var_dump("11");
             $this->sm->addAbstractFactory(
-                    '\ZendService\ZendServerAPI\Factories\ApiVersion11CommandFactory'
+                    '\ZendService\ZendServerAPI\Factories\ApiVersion11CommandFactory', true
             );
         }
         
         if($configNumber >= 12) {
-            var_dump("12");
             $this->sm->addAbstractFactory(
-                    '\ZendService\ZendServerAPI\Factories\ApiVersion12CommandFactory'
+                    '\ZendService\ZendServerAPI\Factories\ApiVersion12CommandFactory', true
             );
         }
         

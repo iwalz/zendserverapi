@@ -47,6 +47,8 @@ class ApplicationRemove extends Method
         $this->applicationId = $applicationId;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

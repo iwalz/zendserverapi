@@ -47,6 +47,8 @@ class MonitorChangeIssueStatus extends Method
         $this->newStatus = $newStatus;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

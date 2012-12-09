@@ -67,6 +67,8 @@ class ApplicationSynchronize extends Method
         $this->ignoreFailures = $ignoreFailures;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

@@ -45,6 +45,8 @@ class ClusterEnableServer extends Method
         $this->serverId = $serverId;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

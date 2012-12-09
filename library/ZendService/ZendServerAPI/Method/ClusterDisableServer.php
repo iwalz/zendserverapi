@@ -44,6 +44,8 @@ class ClusterDisableServer extends Method
         $this->serverId = $serverId;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

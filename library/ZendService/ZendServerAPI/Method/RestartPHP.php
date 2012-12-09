@@ -49,6 +49,8 @@ class RestartPHP extends Method
         $this->parallelRestart = $parallelRestart;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

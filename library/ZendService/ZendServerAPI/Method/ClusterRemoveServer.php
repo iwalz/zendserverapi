@@ -52,6 +52,8 @@ class ClusterRemoveServer extends Method
         $this->force = $force;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

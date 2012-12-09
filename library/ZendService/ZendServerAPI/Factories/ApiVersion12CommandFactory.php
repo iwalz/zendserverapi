@@ -81,7 +81,7 @@ class ApiVersion12CommandFactory implements CommandFactory, AbstractFactoryInter
             case 'studioStartProfile':
                 $reflect  = new \ReflectionClass("\\ZendService\\ZendServerAPI\\Method\\" . ucfirst($name));
 
-                return $reflect->newInstanceArgs($args);
+                return $reflect->newInstanceArgs();
                 break;
 
         }

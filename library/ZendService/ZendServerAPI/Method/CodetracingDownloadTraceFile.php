@@ -56,6 +56,8 @@ class CodetracingDownloadTraceFile extends Method
         $this->traceFile = $traceFile;
         $this->setExportDirectory($exportDirectory);
         $this->setFileName($fileName);
+        
+        return $this;
     }
 
     /**

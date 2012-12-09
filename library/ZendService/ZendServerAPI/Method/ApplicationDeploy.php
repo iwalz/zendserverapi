@@ -88,6 +88,8 @@ class ApplicationDeploy extends Method
         $this->userParams = $userParams;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

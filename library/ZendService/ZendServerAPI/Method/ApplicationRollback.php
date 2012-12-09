@@ -45,6 +45,8 @@ class ApplicationRollback extends Method
         $this->appId = $appId;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

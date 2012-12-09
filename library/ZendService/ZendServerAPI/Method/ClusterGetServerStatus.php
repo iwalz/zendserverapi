@@ -49,6 +49,8 @@ class ClusterGetServerStatus  extends Method
         $this->servers = $servers;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

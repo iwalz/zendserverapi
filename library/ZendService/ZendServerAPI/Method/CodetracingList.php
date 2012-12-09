@@ -78,6 +78,8 @@ class CodetracingList extends Method
         $this->offset = $offset;
         $this->orderBy = $orderBy;
         $this->direction = $direction;
+        
+        return $this;
     }
 
     /**

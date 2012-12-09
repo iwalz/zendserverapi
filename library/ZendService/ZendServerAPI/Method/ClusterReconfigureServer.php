@@ -49,6 +49,8 @@ class ClusterReconfigureServer extends Method
         $this->doRestart = $doRestart;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

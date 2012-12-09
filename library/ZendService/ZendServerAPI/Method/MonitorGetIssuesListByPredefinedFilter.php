@@ -82,6 +82,8 @@ class MonitorGetIssuesListByPredefinedFilter extends Method
         $this->direction = $direction;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

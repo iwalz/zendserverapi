@@ -76,7 +76,7 @@ class ApiVersion10CommandFactory implements CommandFactory, AbstractFactoryInter
             case 'configurationImport':
             case 'configurationExport':
                 $reflect  = new \ReflectionClass("\\ZendService\\ZendServerAPI\\Method\\" . ucfirst($name));
-
+                return $reflect->newInstanceArgs();
                 break;
             default:
                 throw new \RuntimeException('The method ' . $name . ' is not available');

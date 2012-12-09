@@ -41,6 +41,8 @@ class CodetracingEnable extends Method
         $this->restartNow = $restartNow;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

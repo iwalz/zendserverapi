@@ -40,6 +40,8 @@ class CodetracingCreate extends Method
         $this->url = $url;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

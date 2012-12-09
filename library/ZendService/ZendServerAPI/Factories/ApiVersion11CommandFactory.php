@@ -65,6 +65,7 @@ class ApiVersion11CommandFactory implements CommandFactory, AbstractFactoryInter
             case 'applicationSynchronize':
             case 'applicationUpdate':
                 $reflect  = new \ReflectionClass("\\ZendService\\ZendServerAPI\\Method\\" . ucfirst($name));
+                return $reflect->newInstanceArgs();
 
                 break;
         }

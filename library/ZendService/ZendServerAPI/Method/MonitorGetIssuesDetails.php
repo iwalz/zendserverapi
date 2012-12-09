@@ -44,6 +44,8 @@ class MonitorGetIssuesDetails extends Method
         $this->issueId = $issueId;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

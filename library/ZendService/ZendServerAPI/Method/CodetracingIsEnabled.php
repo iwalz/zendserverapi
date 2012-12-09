@@ -32,6 +32,8 @@ class CodetracingIsEnabled extends Method
     public function setArgs()
     {
         $this->configure();
+        
+        return $this;
     }
 
     /**

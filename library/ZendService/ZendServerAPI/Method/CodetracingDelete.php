@@ -42,6 +42,8 @@ class CodetracingDelete extends Method
         $this->id = $id;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

@@ -45,6 +45,8 @@ class ApplicationGetStatus extends Method
         $this->applications = $applications;
         
         $this->configure();
+        
+        return $this;
     }
 
     /**

@@ -90,9 +90,9 @@ class Monitor extends BaseAPI
      */
     public function monitorGetIssuesListByPredefinedFilter($filterId, $limit = null, $offset = null, $order = null, $direction = null)
     {
-        $this->request->setAction($this->apiFactory->factory('monitorGetIssuesListByPredefinedFilter', $filterId, $limit, $offset, $order, $direction));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction($this->sm->get('monitorGetIssuesListByPredefinedFilter')->setArgs($filterId, $limit, $offset, $order, $direction));
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -108,9 +108,9 @@ class Monitor extends BaseAPI
      */
     public function monitorGetIssueDetails($issueId)
     {
-        $this->request->setAction($this->apiFactory->factory('monitorGetIssuesDetails', $issueId));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction($this->sm->get('monitorGetIssuesDetails')->setArgs($issueId));
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -132,9 +132,9 @@ class Monitor extends BaseAPI
         if ($eventsGroupId === null) {
             $eventsGroupId = $this->getFirstEventGroupsIdByIssueId($issueId);
         }
-        $this->request->setAction($this->apiFactory->factory('monitorGetEventGroupDetails', $issueId, $eventsGroupId));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction($this->sm->get('monitorGetEventGroupDetails')->setArgs($issueId, $eventsGroupId));
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -149,11 +149,9 @@ class Monitor extends BaseAPI
      */
     public function monitorChangeIssueStatus($issueId, $newStatus)
     {
-        $this->request->setAction($this->apiFactory->factory(
-                'monitorChangeIssueStatus', $issueId, $newStatus
-        ));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction($this->sm->get('monitorChangeIssueStatus')->setArgs($issueId, $newStatus));
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -183,9 +181,9 @@ class Monitor extends BaseAPI
         else
             $this->exportDirectory = getcwd();
 
-        $this->request->setAction($this->apiFactory->factory('monitorExportIssueByEventsGroup', $eventsGroupId, $this->exportDirectory, $fileName));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction($this->sm->get('monitorExportIssueByEventsGroup')->setArgs($eventsGroupId, $this->exportDirectory, $fileName));
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -210,9 +208,9 @@ class Monitor extends BaseAPI
         else
             $this->exportDirectory = getcwd();
 
-        $this->request->setAction($this->apiFactory->factory('codetracingDownloadTraceFile', $traceFile, $fileName, $this->exportDirectory));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction($this->sm->get('codetracingDownloadTraceFile')->setArgs($traceFile, $fileName, $this->exportDirectory));
+        
+        return $this->sm->get('request')->send();
     }
 
     /**

@@ -180,7 +180,7 @@ class BaseAPI
      */
     protected function getFirstEventGroupsIdByIssueId($issueId)
     {
-        $this->sm->get("request")->setAction($this->apiFactory->factory('monitorGetIssuesDetails', $issueId));
+        $this->sm->get('request')->setAction($this->sm->get('monitorGetIssuesDetails')->setArgs($issueId));
         $issuesDetail = $this->sm->get("request")->send();
 
         $eventsGroups = $issuesDetail->getEventsGroups();

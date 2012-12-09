@@ -23,18 +23,21 @@ class CodetracingDisableTest extends \PHPUnit_Framework_TestCase
     public function testDefaultRestartNow()
     {
         $codetraceDisableMethod = new \ZendService\ZendServerAPI\Method\CodetracingDisable();
+        $codetraceDisableMethod->setArgs();
         $this->assertEquals('restartNow=TRUE', $codetraceDisableMethod->getContent());
     }
     
     public function testLink()
     {
         $codetraceDisableMethod = new \ZendService\ZendServerAPI\Method\CodetracingDisable();
+        $codetraceDisableMethod->setArgs();
         $this->assertEquals('/ZendServerManager/Api/codetracingDisable', $codetraceDisableMethod->getLink());
     }
     
     public function testMethod()
     {
         $codetraceDisableMethod = new \ZendService\ZendServerAPI\Method\CodetracingDisable();
+        $codetraceDisableMethod->setArgs();
         $this->assertEquals('POST', $codetraceDisableMethod->getMethod());
     }
     

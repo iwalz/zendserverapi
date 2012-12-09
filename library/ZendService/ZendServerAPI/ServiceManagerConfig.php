@@ -40,29 +40,15 @@ class ServiceManagerConfig implements ConfigInterface
         $name = $this->getName();
 
         $serviceManager->setAllowOverride(true);
+        $this->setConfigFile($configFile);
         
+        $this->enableLogging();
         
-        $serviceManager->addInitializer(function($instance, $serviceManager) {
-            if($instance instanceof ConfigAwareInterface) {
-                $instance->setConfig($serviceManager->get("config"));
-            }
-        });
-        
-        $serviceManager->addInitializer(function($instance, $serviceManager) {
-            if($instance instanceof LoggerAwareInterface) {
-                $instance->setLogger($serviceManager->get("logger"));
-            }
-        });
-        
-        $config = $this;
-        $serviceManager->setFactory("request", function() use($serviceManager, $config) {
+        $serviceManager->setFactory("request", function() use($serviceManager) {
             $request = new Request();
             return $request;
         });
         
-        $this->setConfigFile($configFile);
-        
-        $this->enableLogging();
     }    
     
     public function getConfigFile()
@@ -95,7 +81,13 @@ class ServiceManagerConfig implements ConfigInterface
         $serviceManager = $this->sm;
         $logFile = $this->getLogFile();
         $serviceManager->setFactory('logger', function() use($logFile, $serviceManager) {
-        
+            
+            $serviceManager->addInitializer(function($instance, $serviceManager) {
+                if($instance instanceof LoggerAwareInterface) {
+                    $instance->setLogger($serviceManager->get("logger"));
+                }
+            });
+            
             $config = $serviceManager->get('config');
             /**
              * @var \ZendService\ZendServerAPI\Config $config
@@ -119,7 +111,6 @@ class ServiceManagerConfig implements ConfigInterface
     {
         $serviceManager = $this->sm;
         $serviceManager->setFactory('logger', function() use($serviceManager) {
-        
             $logger = new \Zend\Log\Logger();
             $logWriter = new \Zend\Log\Writer\Mock();
             $logger->addWriter($logWriter);
@@ -134,7 +125,7 @@ class ServiceManagerConfig implements ConfigInterface
         $name = $this->getName();
         $validator = new ConfigValidator($configFile);
         $serviceManager = $this->sm;
-        $this->sm->setFactory("config", function() use($name, $validator) {
+        $this->sm->setFactory("config", function() use($name, $validator, $serviceManager) {
             $conf = $validator->getConfig($name);
         
             $apiKey = new ApiKey($conf['apiName'], $conf['key'], $conf['state']);
@@ -163,6 +154,12 @@ class ServiceManagerConfig implements ConfigInterface
                 $config->setProxyPort($port);
             }
             return $settings;
+        });
+        
+        $serviceManager->addInitializer(function($instance, $serviceManager) {
+            if($instance instanceof ConfigAwareInterface) {
+                $instance->setConfig($serviceManager->get("config"));
+            }
         });
         
         try {

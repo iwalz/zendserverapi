@@ -55,9 +55,9 @@ class Codetracing extends BaseAPI
      */
     public function codetracingEnable($restartNow = true)
     {
-        $this->request->setAction($this->apiFactory->factory('codetracingEnable', $restartNow));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction($this->sm->get('codetracingEnable')->setArgs($restartNow));
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -75,9 +75,9 @@ class Codetracing extends BaseAPI
      */
     public function codetracingDisable($restartNow = true)
     {
-        $this->request->setAction($this->apiFactory->factory('codetracingDisable', $restartNow));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction($this->sm->get('codetracingDisable')->setArgs($restartNow));
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -95,9 +95,9 @@ class Codetracing extends BaseAPI
      */
     public function codetracingIsEnabled()
     {
-        $this->request->setAction($this->apiFactory->factory('codetracingIsEnabled'));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction($this->sm->get('codetracingIsEnabled')->setArgs());
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -114,9 +114,9 @@ class Codetracing extends BaseAPI
      */
     public function codetracingCreate($url)
     {
-        $this->request->setAction($this->apiFactory->factory('codetracingCreate', $url));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction($this->sm->get('codetracingCreate')->setArgs($url));
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -129,9 +129,9 @@ class Codetracing extends BaseAPI
      */
     public function codetracingDelete($id)
     {
-        $this->request->setAction($this->apiFactory->factory('codetracingDelete', $id));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction($this->sm->get('codetracingDelete')->setArgs($id));
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -148,9 +148,9 @@ class Codetracing extends BaseAPI
      */
     public function codetracingList($applicationIds = array(), $limit = null, $offset = null, $orderBy = null, $direction = null)
     {
-        $this->request->setAction($this->apiFactory->factory('codetracingList', $applicationIds, $limit, $offset, $orderBy, $direction));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction($this->sm->get('codetracingList')->setArgs($applicationIds, $limit, $offset, $orderBy, $direction));
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -170,8 +170,8 @@ class Codetracing extends BaseAPI
         else
             $this->exportDirectory = getcwd();
 
-        $this->request->setAction($this->apiFactory->factory('codetracingDownloadTraceFile', $traceFile, $fileName, $this->exportDirectory));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction($this->sm->get('codetracingDownloadTraceFile')->setArgs($traceFile, $fileName, $this->exportDirectory));
+        
+        return $this->sm->get('request')->send();
     }
 }

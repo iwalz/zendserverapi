@@ -12,6 +12,11 @@ use \ZendService\ZendServerAPI\Startup;
  */
 class WebApiVersionFactoryTest extends \PHPUnit_Framework_TestCase
 {
+    public function setUp()
+    {
+        $this->markTestSkipped();
+    }
+    
     public function testWebApiVersionFactory()
     {
         $request = Startup::getRequest();

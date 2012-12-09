@@ -76,7 +76,9 @@ EOF;
     public function testRequestOfAction()
     {
         $requestStub = $this->getMock('\ZendService\ZendServerAPI\Request', array('setAction', 'send'));
-        $requestStub->expects($this->once())->method('setAction')->with(new ClusterAddServer(self::getServerName(), self::getServerUrl(), self::getGuiPassword()));
+        $action = new ClusterAddServer();
+        $action->setArgs(self::getServerName(), self::getServerUrl(), self::getGuiPassword());
+        $requestStub->expects($this->once())->method('setAction')->with($action);
         $requestStub->expects($this->once())->method('send');
         
         $server = new Server("documentation");
@@ -91,19 +93,22 @@ EOF;
     
     public function testContentWithDefaultSettings()
     {
-        $action = new ClusterAddServer('example72', 'http://127.0.0.1:10081/ZendServer', 'foo');
+        $action = new ClusterAddServer();
+        $action->setArgs('example72', 'http://127.0.0.1:10081/ZendServer', 'foo');
         $this->assertEquals('serverName=example72&serverUrl=http://127.0.0.1:10081/ZendServer&guiPassword=foo&propagateSettings=FALSE&doRestart=FALSE', $action->getContent());
     }
     
     public function testContentWithPropagate()
     {
-        $action = new ClusterAddServer('example72', 'http://127.0.0.1:10081/ZendServer', 'foo', true);
+        $action = new ClusterAddServer();
+        $action->setArgs('example72', 'http://127.0.0.1:10081/ZendServer', 'foo', true);
         $this->assertEquals('serverName=example72&serverUrl=http://127.0.0.1:10081/ZendServer&guiPassword=foo&propagateSettings=TRUE&doRestart=FALSE', $action->getContent());
     }
     
     public function testContentWithPropagateAndRestart()
     {
-        $action = new ClusterAddServer('example72', 'http://127.0.0.1:10081/ZendServer', 'foo', true, true);
+        $action = new ClusterAddServer();
+        $action->setArgs('example72', 'http://127.0.0.1:10081/ZendServer', 'foo', true, true);
         $this->assertEquals('serverName=example72&serverUrl=http://127.0.0.1:10081/ZendServer&guiPassword=foo&propagateSettings=TRUE&doRestart=TRUE', $action->getContent());
     }
 

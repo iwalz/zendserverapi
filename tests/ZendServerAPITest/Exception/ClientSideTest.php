@@ -33,14 +33,16 @@ EOF;
 
 	/**
 	 * @expectedException \ZendService\ZendServerAPI\Exception\ClientSide
-	 * @expectedExceptionCode 400
+	 * @expectedExceptionCode 400    
 	 * @expectedExceptionMessage missingParameter: This action requires the baseUrl parameter
 	 */
 	public function testExceptionParsingAgainstProduction()
 	{
 	    $deployment = new \ZendService\ZendServerAPI\Deployment("example62");
-	    if(!$deployment->canConnect())
-	        $this->markTestSkipped();
+// 	    var_dump($deployment->getServiceManager());die;
+        
+// 	    if(!$deployment->canConnect())
+// 	        $this->markTestSkipped();
         $deployment->applicationDeploy(__DIR__.'/../../_files/example1.zpk', null);
 	}
 	

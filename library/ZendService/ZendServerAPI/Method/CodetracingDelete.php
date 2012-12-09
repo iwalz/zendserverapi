@@ -33,14 +33,15 @@ class CodetracingDelete extends Method
     private $id = null;
 
     /**
-     * Constructor for codetracingDelete method
+     * Set arguments for codetracingDelete 
      *
      * @param integer $id Trace file ID
      */
-    public function __construct($id)
+    public function setArgs($id)
     {
         $this->id = $id;
-        parent::__construct();
+        
+        $this->configure();
     }
 
     /**

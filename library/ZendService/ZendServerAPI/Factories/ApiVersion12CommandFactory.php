@@ -10,6 +10,9 @@
 
 namespace ZendService\ZendServerAPI\Factories;
 
+use Zend\ServiceManager\AbstractFactoryInterface,
+    Zend\ServiceManager\ServiceLocatorInterface;
+
 /**
  * A factory, that retrieves commands from the webapi version 1.2.
  * Used for the Zend Server version 5.6. Can also handle the commands from
@@ -22,8 +25,30 @@ namespace ZendService\ZendServerAPI\Factories;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class ApiVersion12CommandFactory extends ApiVersion11CommandFactory
+class ApiVersion12CommandFactory implements CommandFactory, AbstractFactoryInterface
 {
+    private $availableCommands = null;
+    
+    public function __construct()
+    {
+        $this->availableCommands = array(
+            'codetracingDisable',
+            'codetracingEnable',
+            'codetracingIsEnabled',
+            'codetracingCreate',
+            'codetracingDelete',
+            'codetracingList',
+            'codetracingDownloadTraceFile',
+            'monitorGetRequestSummary',
+            'monitorGetIssuesListByPredefinedFilter',
+            'monitorGetIssuesDetails',
+            'monitorGetEventGroupDetails',
+            'monitorChangeIssueStatus',
+            'monitorExportIssueByEventsGroup',
+            'studioStartDebug',
+            'studioStartProfile'
+        );
+    }
     /**
      * Retrieves the command object and throws an error if
      * the command is not supported via this factory (and the Zend Server/webapi version).
@@ -59,8 +84,18 @@ class ApiVersion12CommandFactory extends ApiVersion11CommandFactory
                 return $reflect->newInstanceArgs($args);
                 break;
 
-            default:
-                return call_user_func_array('parent::factory', array_merge(array($name), $args));
         }
+    }
+    
+    public function canCreateServiceWithName (
+            ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    {
+        return in_array($requestedName, $this->availableCommands);
+    }
+    
+    public function createServiceWithName (
+            ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    {
+        return self::factory($requestedName);
     }
 }

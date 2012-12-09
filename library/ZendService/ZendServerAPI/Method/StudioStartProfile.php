@@ -39,12 +39,12 @@ class StudioStartProfile extends Method
     protected $overrideHost = null;
 
     /**
-     * Constructor for studioStartDebug method
+     * Set arguments for studioStartDebug 
      *
      * @param string      $eventsGroupId Events group ID
      * @param string|null $overrideHost  Override the host address sent to Zend Server
      */
-    public function __construct($eventsGroupId, $overrideHost = null)
+    public function setArgs($eventsGroupId, $overrideHost = null)
     {
         $this->eventsGroupId = $eventsGroupId;
         if($overrideHost === null)
@@ -52,7 +52,7 @@ class StudioStartProfile extends Method
         else
             $this->overrideHost = $overrideHost;
 
-        parent::__construct();
+        $this->configure();
     }
 
     /**

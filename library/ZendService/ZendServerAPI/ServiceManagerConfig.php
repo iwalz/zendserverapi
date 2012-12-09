@@ -169,22 +169,34 @@ class ServiceManagerConfig implements ConfigInterface
     public function registerAPIVersionFactories()
     {
         $config = $this->sm->get("config");
-        if($config === null ||
-                $config->getApiVersion() == "1.0") {
-            return new  \ZendService\ZendServerAPI\Factories\ApiVersion10CommandFactory();
-        } elseif ($config->getApiVersion() == "1.1") {
-            return new  \ZendService\ZendServerAPI\Factories\ApiVersion11CommandFactory();
-        } elseif ($config->getApiVersion() == "1.2") {
+        $configNumber = str_replace(".", "", $config->getApiVersion());
+        
+        if($configNumber >= 10) {
+            var_dump("10");
             $this->sm->addAbstractFactory(
                     '\ZendService\ZendServerAPI\Factories\ApiVersion10CommandFactory'
-            );            
-            
+            );
         }
+        
+        if($configNumber >= 11) {
+            var_dump("11");
+            $this->sm->addAbstractFactory(
+                    '\ZendService\ZendServerAPI\Factories\ApiVersion11CommandFactory'
+            );
+        }
+        
+        if($configNumber >= 12) {
+            var_dump("12");
+            $this->sm->addAbstractFactory(
+                    '\ZendService\ZendServerAPI\Factories\ApiVersion12CommandFactory'
+            );
+        }
+        
     }
     
     public function setRequest(Request $request)
     {
-        $this->sm->setFactory(function() use($request) {
+        $this->sm->setFactory("request", function() use($request) {
             return $request;
         });
     }

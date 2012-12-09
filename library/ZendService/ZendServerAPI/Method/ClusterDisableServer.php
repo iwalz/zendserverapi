@@ -35,14 +35,15 @@ class ClusterDisableServer extends Method
     private $serverId = null;
 
     /**
-     * Constructor for ClusterDisableServer method
+     * Set arguments for ClusterDisableServer
      *
      * @param int $serverId Id of the server to disable
      */
-    public function __construct($serverId)
+    public function setArgs($serverId)
     {
         $this->serverId = $serverId;
-        parent::__construct();
+        
+        $this->configure();
     }
 
     /**

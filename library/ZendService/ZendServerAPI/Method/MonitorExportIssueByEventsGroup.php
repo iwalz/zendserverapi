@@ -33,15 +33,15 @@ class MonitorExportIssueByEventsGroup extends Method
     protected $eventsGroupId = null;
 
     /**
-     * Constructor for MonitorExportIssueByEventsGroup
+     * Set arguments for MonitorExportIssueByEventsGroup
      *
      * @param int    $eventsGroupId   the events group identifier
      * @param string $exportDirectory the directory where to export files to
      * @param string $fileName        the file where to export the data to
      */
-    public function __construct($eventsGroupId, $exportDirectory = null, $fileName = null)
+    public function setArgs($eventsGroupId, $exportDirectory = null, $fileName = null)
     {
-        parent::__construct();
+        $this->configure();
 
         if($exportDirectory !== null)
             $this->setExportDirectory($exportDirectory);

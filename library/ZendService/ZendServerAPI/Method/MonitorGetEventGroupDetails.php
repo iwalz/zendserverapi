@@ -37,7 +37,7 @@ class MonitorGetEventGroupDetails extends Method
     protected $eventsGroupId = null;
 
     /**
-     * Constructor of method MonitorGetEventGroupDetails
+     * Set arguments for MonitorGetEventGroupDetails
      *
      * Retrieves the details of the given issue id.
      *
@@ -45,12 +45,13 @@ class MonitorGetEventGroupDetails extends Method
      * @param  int                                                           $eventsGroupId The event group identifier
      * @return \ZendService\ZendServerAPI\Method\MonitorGetEventGroupDetails
      */
-    public function __construct($issueId, $eventsGroupId)
+    public function setArgs($issueId, $eventsGroupId)
     {
         $this->issueId = $issueId;
 
         $this->eventsGroupId = $eventsGroupId;
-        parent::__construct();
+        
+        $this->configure();
     }
 
     /**

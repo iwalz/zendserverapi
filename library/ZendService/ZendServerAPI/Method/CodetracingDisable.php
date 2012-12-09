@@ -33,14 +33,15 @@ class CodetracingDisable extends Method
     private $restartNow = null;
 
     /**
-     * Constructor for CodetracingDisable method
+     * Set arguments for CodetracingDisable 
      *
      * @param boolean $restartNow restart directly after disable
      */
-    public function __construct($restartNow = true)
+    public function setArgs($restartNow = true)
     {
         $this->restartNow = $restartNow;
-        parent::__construct();
+        
+        $this->configure();
     }
 
     /**

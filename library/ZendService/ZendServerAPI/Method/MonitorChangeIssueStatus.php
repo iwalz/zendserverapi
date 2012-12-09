@@ -36,16 +36,17 @@ class MonitorChangeIssueStatus extends Method
     protected $newStatus = null;
 
     /**
-     * Constructor for MonitorChangeIssueStatus method
+     * Set arguments for MonitorChangeIssueStatus 
      *
      * @param int    $issueId   IssueId to change
      * @param string $newStatus The new status to set
      */
-    public function __construct($issueId, $newStatus)
+    public function setArgs($issueId, $newStatus)
     {
         $this->issueId = $issueId;
         $this->newStatus = $newStatus;
-        parent::__construct();
+        
+        $this->configure();
     }
 
     /**

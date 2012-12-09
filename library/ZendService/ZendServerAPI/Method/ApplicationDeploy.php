@@ -65,7 +65,7 @@ class ApplicationDeploy extends Method
     protected $userParams = null;
 
     /**
-     * Method implementation of 'ApplicationDeploy' call
+     * Set arguments for 'ApplicationDeploy'
      *
      * @param string  $appPackage
      * @param string  $baseUrl
@@ -75,7 +75,7 @@ class ApplicationDeploy extends Method
      * @param boolean $ignoreFailure
      * @param array   $userParams
      */
-    public function __construct ($appPackage, $baseUrl,
+    public function setArgs($appPackage, $baseUrl,
             $createVhost = false, $defaultServer = false, $userAppName = null,
             $ignoreFailure = false, array $userParams = array())
     {
@@ -86,8 +86,8 @@ class ApplicationDeploy extends Method
         $this->userAppName = $userAppName;
         $this->ignoreFailures = $ignoreFailure;
         $this->userParams = $userParams;
-
-        parent::__construct();
+        
+        $this->configure();
     }
 
     /**

@@ -41,16 +41,17 @@ class ClusterRemoveServer extends Method
     private $force = null;
 
     /**
-     * Constructor for ClusterRemoveServer method
+     * Set arguments for ClusterRemoveServer 
      *
      * @param int  $server ServerId to remove
      * @param bool $force  Force remove
      */
-    public function __construct($server, $force = false)
+    public function setArgs($server, $force = false)
     {
         $this->server = $server;
         $this->force = $force;
-        parent::__construct();
+        
+        $this->configure();
     }
 
     /**

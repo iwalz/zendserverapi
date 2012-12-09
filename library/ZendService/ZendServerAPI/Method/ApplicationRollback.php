@@ -36,14 +36,15 @@ class ApplicationRollback extends Method
     private $appId = null;
 
     /**
-     * Constructor for ApplicationRollback method
+     * Set arguments for ApplicationRollback
      *
      * @param int $appId ApplicationId to rollback
      */
-    public function __construct($appId)
+    public function setArgs($appId)
     {
         $this->appId = $appId;
-        parent::__construct();
+        
+        $this->configure();
     }
 
     /**

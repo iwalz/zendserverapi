@@ -100,11 +100,11 @@ class Deployment extends BaseAPI
             $defaultServer = false, $userAppName = null, $ignoreFailures = false,
             $userParams = array())
     {
-        $this->request->setAction($this->apiFactory->factory('applicationDeploy', $file, $baseUrl,
+        $this->sm->get('request')->setAction($this->sm->get('applicationDeploy')->setArgs($file, $baseUrl,
                         $createVhost, $defaultServer, $userAppName,
                         $ignoreFailures, $userParams));
-
-        return $this->request->send();
+        
+        return $this->sm->get('request')->send();
     }
 
     /**

@@ -36,14 +36,15 @@ class ApplicationGetStatus extends Method
 
 
     /**
-     * Constructor of method ApplicationGetStatus
+     * set arguments for ApplicationGetStatus
      *
      * @param array Applications to get status for
      */
-    public function __construct(array $applications = array())
+    public function setArgs(array $applications = array())
     {
         $this->applications = $applications;
-        parent::__construct();
+        
+        $this->configure();
     }
 
     /**

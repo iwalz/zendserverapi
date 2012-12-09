@@ -73,9 +73,9 @@ class Server extends BaseAPI
      */
     public function clusterGetServerStatus(array $parameters = array())
     {
-        $this->request->setAction($this->apiFactory->factory('clusterGetServerStatus', $parameters));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction($this->sm->get('clusterGetServerStatus')->setArgs($parameters));
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -95,9 +95,11 @@ class Server extends BaseAPI
      */
     public function clusterRemoveServer($serverId, $force = false)
     {
-        $this->request->setAction($this->apiFactory->factory('clusterRemoveServer', $serverId, $force));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction(
+                $this->sm->get('clusterRemoveServer')->setArgs($serverId, $force)
+        );
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -115,9 +117,11 @@ class Server extends BaseAPI
      */
     public function clusterAddServer($serverName, $serverUrl, $guiPassword, $propagateSettings = false)
     {
-        $this->request->setAction($this->apiFactory->factory('clusterAddServer', $serverName, $serverUrl, $guiPassword, $propagateSettings));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction(
+                $this->sm->get('clusterAddServer')->setArgs($serverName, $serverUrl, $guiPassword, $propagateSettings)
+        );
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -134,9 +138,11 @@ class Server extends BaseAPI
      */
     public function clusterDisableServer($serverId)
     {
-        $this->request->setAction($this->apiFactory->factory('clusterDisableServer', $serverId));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction(
+                $this->sm->get('clusterDisableServer')->setArgs($serverId)
+        );
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -154,9 +160,11 @@ class Server extends BaseAPI
      */
     public function clusterEnableServer($serverId)
     {
-        $this->request->setAction($this->apiFactory->factory('clusterEnableServer', $serverId));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction(
+                $this->sm->get('clusterEnableServer')->setArgs($serverId)
+        );
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -175,9 +183,11 @@ class Server extends BaseAPI
      */
     public function restartPhp($serverIds = array(), $parallelRestart = false)
     {
-        $this->request->setAction($this->apiFactory->factory('restartPHP', $serverIds, $parallelRestart));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction(
+                $this->sm->get('restartPHP')->setArgs($serverIds, $parallelRestart)
+        );
+        
+        return $this->sm->get('request')->send();
     }
 
     /**
@@ -194,9 +204,11 @@ class Server extends BaseAPI
      */
     public function clusterReconfigureServer($serverId, $doRestart = false)
     {
-        $this->request->setAction($this->apiFactory->factory('clusterReconfigureServer', $serverId, $doRestart));
-
-        return $this->request->send();
+        $this->sm->get('request')->setAction(
+                $this->sm->get('clusterReconfigureServer')->setArgs($serverId, $doRestart)
+        );
+        
+        return $this->sm->get('request')->send();
     }
 
     /**

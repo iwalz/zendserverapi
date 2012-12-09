@@ -45,13 +45,13 @@ class StudioStartDebug extends Method
     protected $overrideHost = null;
 
     /**
-     * Constructor for studioStartDebug method
+     * Set arguments for studioStartDebug
      *
      * @param string      $eventsGroupId Events group ID
      * @param string|null $noRemote      Use server's own local files for debug display
      * @param string|null $overrideHost  Override the host address sent to Zend Server
      */
-    public function __construct($eventsGroupId, $noRemote = false, $overrideHost = null)
+    public function setArgs($eventsGroupId, $noRemote = false, $overrideHost = null)
     {
         $this->eventsGroupId = $eventsGroupId;
         $this->noRemote = $noRemote;
@@ -60,7 +60,7 @@ class StudioStartDebug extends Method
         else
             $this->overrideHost = $overrideHost;
 
-        parent::__construct();
+        $this->configure();
     }
 
     /**

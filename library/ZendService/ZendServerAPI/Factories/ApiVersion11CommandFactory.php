@@ -10,6 +10,9 @@
 
 namespace ZendService\ZendServerAPI\Factories;
 
+use Zend\ServiceManager\AbstractFactoryInterface,
+    Zend\ServiceManager\ServiceLocatorInterface;
+
 /**
  * A factory, that retrieves commands from the webapi version 1.1.
  * Used for the Zend Server version 5.5. Can also handle the commands from
@@ -22,8 +25,23 @@ namespace ZendService\ZendServerAPI\Factories;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class ApiVersion11CommandFactory extends ApiVersion10CommandFactory
+class ApiVersion11CommandFactory implements CommandFactory, AbstractFactoryInterface
 {
+    private $availableCommands = null;
+    
+    public function __construct()
+    {
+        $this->availableCommands = array(
+            'clusterReconfigureServer',
+            'applicationGetStatus',
+            'applicationDeploy',
+            'applicationRemove',
+            'applicationRollback',
+            'applicationSynchronize',
+            'applicationUpdate'
+        );
+    }
+    
     /**
      * Retrieves the command object and throws an error if
      * the command is not supported via this factory (and the Zend Server/webapi version).
@@ -48,10 +66,20 @@ class ApiVersion11CommandFactory extends ApiVersion10CommandFactory
             case 'applicationUpdate':
                 $reflect  = new \ReflectionClass("\\ZendService\\ZendServerAPI\\Method\\" . ucfirst($name));
 
-                return $reflect->newInstanceArgs($args);
                 break;
-            default:
-                return call_user_func_array('parent::factory', array_merge(array($name), $args));
         }
     }
+    
+    public function canCreateServiceWithName (
+            ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    {
+        return in_array($requestedName, $this->availableCommands);
+    }
+    
+    public function createServiceWithName (
+            ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    {
+        return self::factory($requestedName);
+    }
+    
 }

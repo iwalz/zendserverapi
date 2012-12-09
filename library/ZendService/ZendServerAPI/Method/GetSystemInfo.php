@@ -30,6 +30,11 @@ use ZendService\ZendServerAPI\DataTypes\LicenseInfo,
  */
 class GetSystemInfo extends Method
 {
+    public function setArgs()
+    {
+        $this->configure();
+    }
+    
     /**
      * Configures all needed information for the method implementation
      *

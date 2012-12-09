@@ -32,17 +32,18 @@ class MonitorGetIssuesDetails extends Method
     protected $issueId = null;
 
     /**
-     * Constructor of method MonitorGetIssuesDetails
+     * Set arguments for MonitorGetIssuesDetails
      *
      * Retrieves the details of the given issue id.
      *
      * @param  string                                                    $issueId The issue ID
      * @return \ZendService\ZendServerAPI\Method\MonitorGetIssuesDetails
      */
-    public function __construct($issueId)
+    public function setArgs($issueId)
     {
         $this->issueId = $issueId;
-        parent::__construct();
+        
+        $this->configure();
     }
 
     /**

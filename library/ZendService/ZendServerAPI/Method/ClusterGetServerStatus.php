@@ -40,14 +40,15 @@ class ClusterGetServerStatus  extends Method
     private $servers = null;
 
     /**
-     * Constructor for ClusterGetServerStatus
+     * Set arguments for ClusterGetServerStatus
      *
      * @param array $servers Default returns all servers of the cluster
      */
-    public function __construct(array $servers = array())
+    public function setArgs(array $servers = array())
     {
         $this->servers = $servers;
-        parent::__construct();
+        
+        $this->configure();
     }
 
     /**

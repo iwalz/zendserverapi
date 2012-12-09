@@ -31,14 +31,15 @@ class CodetracingCreate extends Method
     private $url = null;
 
     /**
-     * Constructor for codetracingCreate method
+     * Set arguments for codetracingCreate 
      *
      * @param string $url URL to trace
      */
-    public function __construct($url)
+    public function setArgs($url)
     {
         $this->url = $url;
-        parent::__construct();
+        
+        $this->configure();
     }
 
     /**

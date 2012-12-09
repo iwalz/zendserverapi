@@ -51,9 +51,9 @@ class Server extends BaseAPI
      */
     public function getSystemInfo()
     {
-        $this->request->setAction($this->apiFactory->factory('getSystemInfo'));
+        $this->sm->get('request')->setAction($this->sm->get('getSystemInfo'));
 
-        return $this->request->send();
+        return $this->sm->get('request')->send();
     }
 
     /**

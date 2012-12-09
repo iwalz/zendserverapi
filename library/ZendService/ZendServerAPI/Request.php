@@ -10,6 +10,11 @@
 
 namespace ZendService\ZendServerAPI;
 
+use Zend\Log\LoggerAwareInterface;
+
+use Zend\ServiceManager\ServiceManagerAwareInterface,
+    Zend\ServiceManager\ServiceManager;
+
 /**
  * <b>Request implementation</b>
  *
@@ -23,7 +28,7 @@ namespace ZendService\ZendServerAPI;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class Request
+class Request implements ServiceManagerAwareInterface, ConfigAwareInterface, LoggerAwareInterface
 {
     /**
      * Method class for the request
@@ -55,6 +60,11 @@ class Request
      * @var \Zend\Http\Client\Adapter\AdapterInterface
      */
     private $adapter = null;
+    /**
+     * The service manager
+     * @var \Zend\ServiceManager\ServiceManager
+     */
+    private $sm = null;
 
     /**
      * Set method implementation object
@@ -74,7 +84,7 @@ class Request
      *
      * @param \Zend\Log\Logger $logger
      */
-    public function setLogger(\Zend\Log\Logger $logger)
+    public function setLogger(\Zend\Log\LoggerInterface $logger)
     {
         $this->logger = $logger;
     }
@@ -224,6 +234,7 @@ class Request
         $request->getUri()->setHost($this->config->getHost());
         $request->getUri()->setPort($this->config->getPort());
         $request->getUri()->setScheme($this->config->getProtocol());
+
         $request->getUri()->setPath($this->action->getLink());
         $header = $request->getHeaders();
 
@@ -253,6 +264,7 @@ class Request
             $this->client->setParameterPost($contentValues);
         }
         
+        // @TODO: Add config validation here
         $header->addHeaderLine('Host', $this->config->getHost() . ':' . $this->config->getPort());
         $header->addHeaderLine('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
         $header->addHeaderLine('Accept', $this->action->getAcceptHeader());
@@ -323,4 +335,10 @@ class Request
 
         return hash_hmac('sha256', $data, $this->config->getApiKey()->getKey());
     }
+    
+    public function setServiceManager (ServiceManager $serviceManager)
+    {
+        $this->sm = $serviceManager;
+    }
+
 }

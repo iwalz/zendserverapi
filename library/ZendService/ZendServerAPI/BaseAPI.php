@@ -50,6 +50,12 @@ class BaseAPI
      * @var \Zend\ServiceManager\ServiceManager
      */
     protected $sm = null;
+    
+    /**
+     * Service manager config
+     * @var ServiceManagerConfig
+     */
+    protected $smConfig = null;
 
     /**
      * Base constructor for all API-method implementations
@@ -59,22 +65,34 @@ class BaseAPI
      */
     public function __construct($name = null, Request $request = null)
     {
+        $this->sm = new ServiceManager();
+        $this->smConfig = new ServiceManagerConfig();
+        if($name !== null)
+            $this->smConfig->setName($name);
+        
+        $this->smConfig->configureServiceManager($this->sm);
+        
         if ($request !== null) {
-            $this->request = $request;
-        } else {
-            $this->request = Startup::getRequest($name);
-        }
+            $this->smConfig->setRequest($request);
+        } 
         $this->name = $name;
 
-        $webApiVersionFactory = new Factories\WebApiVersionFactory();
-        $webApiVersionFactory->setConfig($this->request->getConfig());
-        $this->apiFactory = $webApiVersionFactory->getCommandFactory();
+        /*$webApiVersionFactory = new Factories\WebApiVersionFactory();
+        $webApiVersionFactory->setConfig($this->sm->get("request")->getConfig());
+        $this->apiFactory = $webApiVersionFactory->getCommandFactory();*/
         
-        $this->sm = new \Zend\ServiceManager\ServiceManager();
-        $config = new ServiceManagerConfig();
-        $config->configureServiceManager($this->sm);
     }
 
+    /**
+     * Get the service manager config - be careful!
+     * 
+     * @return \ZendService\ZendServerAPI\ServiceManagerConfig
+     */
+    public function getServiceManagerConfig()
+    {
+        return $this->smConfig;
+    }
+    
     /**
      * Returns the current request
      *
@@ -82,7 +100,7 @@ class BaseAPI
      */
     public function getRequest()
     {
-        return $this->request;
+        return $this->sm->get("request");
     }
 
     /**
@@ -93,7 +111,7 @@ class BaseAPI
      */
     public function setRequest(Request $request)
     {
-        $this->request = $request;
+        $this->smConfig->setRequest($request);
     }
 
     /**
@@ -104,7 +122,7 @@ class BaseAPI
      */
     public function setClient(\Zend\Http\Client $client)
     {
-        $this->request->setClient($client);
+        $this->sm->get("request")->setClient($client);
     }
     
     /**
@@ -135,20 +153,20 @@ class BaseAPI
      */
     public function canConnect()
     {
-        $previousAction = $this->request->getAction();
+        $previousAction = $this->sm->get("request")->getAction();
         $action = new  \ZendService\ZendServerAPI\Method\GetSystemInfo();
-        $this->request->setAction($action);
+        $this->sm->get("request")->setAction($action);
         try {
-            $response = $this->request->send();
+            $response = $this->sm->get("request")->send();
         } catch ( \Exception $e) {
             if($previousAction !== null)
-                $this->request->setAction($previousAction);
+                $this->sm->get("request")->setAction($previousAction);
 
             return false;
         }
 
         if($previousAction !== null)
-            $this->request->setAction($previousAction);
+            $this->sm->get("request")->setAction($previousAction);
 
         return true;
     }
@@ -162,15 +180,30 @@ class BaseAPI
      */
     protected function getFirstEventGroupsIdByIssueId($issueId)
     {
-        $this->request->setAction($this->apiFactory->factory('monitorGetIssuesDetails', $issueId));
-        $issuesDetail = $this->request->send();
+        $this->sm->get("request")->setAction($this->apiFactory->factory('monitorGetIssuesDetails', $issueId));
+        $issuesDetail = $this->sm->get("request")->send();
 
         $eventsGroups = $issuesDetail->getEventsGroups();
         $eventsGroupId = $eventsGroups[0]->getEventsGroupId();
 
         // Reset request
-        $this->request = Startup::getRequest($this->name);
+//         $this->sm->get("request") = Startup::getRequest($this->name);
 
         return $eventsGroupId;
+    }
+    
+    public function setConfigFile($configFile)
+    {
+        $this->smConfig->setConfigFile($configFile);
+    }
+    
+    public function enableLogging()
+    {
+        $this->smConfig->enableLogging();
+    }
+    
+    public function disableLogging()
+    {
+        $this->smConfig->disableLogging();
     }
 }

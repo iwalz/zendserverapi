@@ -4,7 +4,7 @@ return array(
 	"servers" => array (
         # Contains a valid default config
 	    "general" => array(
-            "version" => \ZendServerAPI\Version::ZS56,
+            "version" => \ZendService\ZendServerAPI\Version::ZS56,
 		    "apiName" => "",
 		    "fullApiKey" => "",
 		    "readApiKey" => "",

@@ -39,10 +39,9 @@ EOF;
 	public function testExceptionParsingAgainstProduction()
 	{
 	    $deployment = new \ZendService\ZendServerAPI\Deployment("example62");
-// 	    var_dump($deployment->getServiceManager());die;
         
-// 	    if(!$deployment->canConnect())
-// 	        $this->markTestSkipped();
+	    if(!$deployment->canConnect())
+	        $this->markTestSkipped();
         $deployment->applicationDeploy(__DIR__.'/../../_files/example1.zpk', null);
 	}
 	

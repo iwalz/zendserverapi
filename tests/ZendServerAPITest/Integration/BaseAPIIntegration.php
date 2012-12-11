@@ -42,9 +42,9 @@ abstract class BaseAPIIntegration extends \PHPUnit_Framework_TestCase
         $response = file_get_contents(getcwd().'/ZendServerAPITest/Integration/TestAssets/'.$this->getSection().'/'.$method);
         $adapter->setResponse($response);
         $this->mockObject->getRequest()->setClientAdapter($adapter);
-        
+
         $reflection = new \ReflectionMethod(get_class($this->mockObject), $method);
-        $returnValue = $reflection->invokeArgs($this->mockObject, $params);
+        $returnValue = $reflection->invoke($this->mockObject, $params);
         
         $this->assertEquals($expectedObject, $returnValue);
     }

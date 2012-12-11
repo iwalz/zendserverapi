@@ -183,11 +183,7 @@ class DeploymentIntegrationTest extends \ZendServerAPITest\Integration\BaseAPIIn
                 true,
                 false,
                 'Simple test app',
-                false,
-                array(
-                    'locale' => 'GMT',
-                    'db_host' => 'localhost'
-                )
+                false
             )),
             array("applicationUpdate", $this->getApplicationUpdate(), array(122, __DIR__.'/TestAssets/example1-2.zpk')),
             array("applicationRollback", $this->getApplicationRollback(), array(122)),

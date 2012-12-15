@@ -67,20 +67,17 @@ class BaseAPI
     {
         $this->sm = new ServiceManager();
         $this->smConfig = new ServiceManagerConfig();
-        if($name !== null)
+        if($name !== null) {
             $this->smConfig->setName($name);
+            $this->name = $name;
+        }
         
         $this->smConfig->configureServiceManager($this->sm);
         
         if ($request !== null) {
             $this->smConfig->setRequest($request);
         } 
-        $this->name = $name;
 
-        /*$webApiVersionFactory = new Factories\WebApiVersionFactory();
-        $webApiVersionFactory->setConfig($this->sm->get("request")->getConfig());
-        $this->apiFactory = $webApiVersionFactory->getCommandFactory();*/
-        
     }
 
     /**

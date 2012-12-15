@@ -254,7 +254,8 @@ class Request implements ServiceManagerAwareInterface, ConfigAwareInterface, Log
         
         $this->getLogger()->debug($request);
         foreach ($this->getAction()->getContentValues() as $key => $value) {
-            $this->getLogger()->debug($key . ': ' . $value);
+            if(!is_array($value))
+                $this->getLogger()->debug($key . ': ' . $value);
         }
 
         try {

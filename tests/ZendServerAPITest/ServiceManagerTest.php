@@ -32,6 +32,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
     
     public function testForCorrectLoggerSetup()
     {
+        ServiceManagerConfig::enableCentralLogging();
         $server = new Server("example62");
         $server->setConfigFile(__DIR__.'/../_files/config/config.php');
         $sm = $server->getServiceManager();
@@ -41,6 +42,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($sm->get('logger')->getWriters()->current() instanceof \Zend\Log\Writer\Mock);
         $server->enableLogging();
         $this->assertTrue($sm->get('logger')->getWriters()->current() instanceof \Zend\Log\Writer\Stream);
+        ServiceManagerConfig::disableCentralLogging();
     }
     
     public function testDeploy()

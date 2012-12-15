@@ -49,7 +49,7 @@ class ServiceManagerConfig implements ConfigInterface
      * Disable/enable the logging
      * @var bool
      */
-    private $disableLogging = null;
+    private static $disableLogging = null;
     /**
      * The name of the used Zend Server config
      * @var string
@@ -67,7 +67,8 @@ class ServiceManagerConfig implements ConfigInterface
     public function __construct()
     {
         $this->logFile = __DIR__.'/../../../logs/request.log';
-        $this->disableLogging = false;
+        if(self::$disableLogging === null)
+            self::$disableLogging = false;
         
         if(self::$configFile === null)
             self::$configFile = __DIR__.'/../../../config/config.php';
@@ -89,7 +90,11 @@ class ServiceManagerConfig implements ConfigInterface
         $this->configureFactories($serviceManager);
         
         $this->setConfigFile(self::$configFile);
-        $this->enableLogging();
+        
+        if(self::$disableLogging)
+            $this->disableLogging();
+        else
+            $this->enableLogging();
     }    
     
     /**
@@ -150,6 +155,7 @@ class ServiceManagerConfig implements ConfigInterface
     private function configureInvokables(ServiceManager $serviceManager)
     {
         $serviceManager->setInvokableClass("request", '\ZendService\ZendServerAPI\Request');
+//         $serviceManager->setShared("request", false);
     }
     
     /**
@@ -266,6 +272,26 @@ class ServiceManagerConfig implements ConfigInterface
     public function disableLogging()
     {
         $this->sm->setService('logger', $this->sm->get('mock_log'));        
+    }
+    
+    /**
+     * Disable logging statically
+     * 
+     * @return void
+     */
+    public static function disableCentralLogging()
+    {
+        self::$disableLogging = true;
+    }
+    
+    /**
+     * Enable logging statically
+     * 
+     * @return void
+     */
+    public static function enableCentralLogging()
+    {
+        self::$disableLogging = false;
     }
     
     /**

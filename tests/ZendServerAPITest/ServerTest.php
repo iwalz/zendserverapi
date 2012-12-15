@@ -33,9 +33,10 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	    $server = new Server("general", $tmpRequest);
 	    $serverRequest = $server->getRequest();
 	    
-	    $request = Startup::getRequest();
+	    $server2 = new Server("example62");
+	    $request = $server->getRequest();
 	    
-	    $this->assertNotSame($serverRequest, $request);
+	    $this->assertSame($serverRequest, $request);
 	}
 	
 	public function testRequestObjectInDI()

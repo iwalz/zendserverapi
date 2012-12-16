@@ -28,7 +28,7 @@ class IssueDetails extends Adapter
      * @param  string                                            $xml
      * @return \ZendService\ZendServerAPI\DataTypes\IssueDetails
      */
-    public function parse ($xml = null)
+    public function parse($xml = null)
     {
         if($xml === null)
             $xml = $this->getResponse()->getBody();

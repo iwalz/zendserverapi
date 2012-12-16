@@ -65,17 +65,13 @@ class BaseAPI
      */
     public function __construct($name = null, Request $request = null)
     {
-//         $this->sm = new ServiceManager();
         $this->smConfig = new ServiceManagerConfig();
         $this->sm = new PluginManager($name, $this->smConfig);
         
-        $this->sm->setThrowExceptionInCreate(true);
         if($name !== null) {
-            $this->smConfig->setName($name);
+            $this->sm->setName($name);
             $this->name = $name;
         }
-        
-        $this->smConfig->configureServiceManager($this->sm);
         
         if ($request !== null) {
             $this->setRequest($request);

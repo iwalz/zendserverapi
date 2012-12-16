@@ -10,8 +10,6 @@
 
 namespace ZendService\ZendServerAPI;
 
-use Zend\ServiceManager\ServiceManagerAwareInterface;
-
 use Zend\Log\LoggerAwareInterface;
 use Zend\ServiceManager\ConfigInterface;
 use Zend\ServiceManager\ServiceManager;
@@ -41,20 +39,10 @@ class ServiceManagerConfig implements ConfigInterface
      */
     private $logger = null;
     /**
-     * The used config file
-     * @var string
-     */
-    public static $configFile = null;
-    /**
      * Disable/enable the logging
      * @var bool
      */
     private static $disableLogging = null;
-    /**
-     * The name of the used Zend Server config
-     * @var string
-     */
-    private $name = null;
     /**
      * The service manager
      * @var \Zend\ServiceManager\ServiceManager
@@ -69,11 +57,6 @@ class ServiceManagerConfig implements ConfigInterface
         $this->logFile = __DIR__.'/../../../logs/request.log';
         if(self::$disableLogging === null)
             self::$disableLogging = false;
-        
-        if(self::$configFile === null)
-            self::$configFile = __DIR__.'/../../../config/config.php';
-        
-        $this->name = "general";
     }
     
     /**
@@ -221,12 +204,6 @@ class ServiceManagerConfig implements ConfigInterface
                 $instance->setLogger($serviceManager->get("logger"));
             }
         });
-
-        $serviceManager->addInitializer(function($instance, $serviceManager) {
-            if($instance instanceof ServiceManagerAwareInterface) {
-                $instance->setServiceManager($serviceManager);
-            }
-        });
     }
     
     /**
@@ -273,27 +250,6 @@ class ServiceManagerConfig implements ConfigInterface
     public function getLogFile()
     {
         return $this->logFile;
-    }
-    
-    /**
-     * Set the name for a config section
-     * 
-     * @param string $name
-     * @return void
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-    
-    /**
-     * Get the name for the config section
-     * 
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
     
     /**

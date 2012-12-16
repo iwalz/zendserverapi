@@ -126,12 +126,10 @@ class PluginManager extends AbstractPluginManager
             
             $configNumber = str_replace(".", "", $config->getApiVersion());
             
-            // Add Web API 1.0 Factory if available
-            if($configNumber >= 10) {
-                $serviceManager->addAbstractFactory(
-                        '\ZendService\ZendServerAPI\Factories\ApiVersion10CommandFactory', true
-                );
-            }
+            // Add Web API 1.0 Factory 
+            $serviceManager->addAbstractFactory(
+                    '\ZendService\ZendServerAPI\Factories\ApiVersion10CommandFactory', true
+            );
             
             // Add Web API 1.1 Factory if available
             if($configNumber >= 11) {
@@ -163,14 +161,6 @@ class PluginManager extends AbstractPluginManager
             }
             return $settings;
         });
-
-//         // There is no config object, if the default file is not configured
-//         // Set it afterwards or get an error on send()
-//         try {
-//              $config = $this->get("config");
-//         } catch (\Zend\ServiceManager\Exception\ServiceNotCreatedException $e) {
-//             return;
-//         }
     }
     
 }

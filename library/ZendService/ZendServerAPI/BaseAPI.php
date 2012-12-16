@@ -78,7 +78,7 @@ class BaseAPI
         $this->smConfig->configureServiceManager($this->sm);
         
         if ($request !== null) {
-            $this->smConfig->setRequest($request);
+            $this->setRequest($request);
         } 
 
     }
@@ -111,7 +111,7 @@ class BaseAPI
      */
     public function setRequest(Request $request)
     {
-        $this->smConfig->setRequest($request);
+        $this->sm->setRequest($request);
     }
 
     /**

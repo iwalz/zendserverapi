@@ -87,6 +87,17 @@ class PluginManager extends AbstractPluginManager
     }
     
     /**
+     * Inject a costum request object
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function setRequest(Request $request)
+    {
+        $this->setService("request", $request);
+    }
+    
+    /**
      * Set a new config file
      *
      * @param string $configFile

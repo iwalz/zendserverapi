@@ -53,7 +53,7 @@ class ApiKey
      *
      * @param string $name Name of the api key
      * @param string $key  The api key value
-     * @param int State of the api key
+     * @param int $state State of the api key
      */
     public function __construct($name = null, $key = null, $state = self::READONLY)
     {
@@ -76,7 +76,7 @@ class ApiKey
      * Set READ or FULL state for API Key
      *
      * @param int 1 | 2
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function setState($state)
     {

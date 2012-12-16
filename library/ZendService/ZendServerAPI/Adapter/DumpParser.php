@@ -27,7 +27,7 @@ class DumpParser extends \ZendService\ZendServerAPI\Adapter\Adapter
      *
      * @return string
      */
-    public function parse ()
+    public function parse()
     {
         var_dump((string) $this->getResponse()->getBody());
 

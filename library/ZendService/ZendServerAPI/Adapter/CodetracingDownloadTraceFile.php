@@ -38,7 +38,7 @@ class CodetracingDownloadTraceFile extends Adapter
      *
      * @return \SplFileInfo
      */
-    public function parse ()
+    public function parse()
     {
         if ($this->fileName === null) {
             $contentDisposition = 

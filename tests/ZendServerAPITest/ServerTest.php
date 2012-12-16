@@ -148,6 +148,8 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	    $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
 	
 	    $server = new Server("example62");
+	    $sm = $server->getServiceManager();
+	    $sm->get("config"); // Lazy load config for factory init
 	    $server->setClient($clientStub);
 	    $this->assertEquals(RestartTest::getRestartPHP(), $server->restartPhp(RestartTest::getParameter()));
 	}

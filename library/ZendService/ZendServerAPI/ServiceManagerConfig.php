@@ -89,7 +89,7 @@ class ServiceManagerConfig implements ConfigInterface
         $this->configureInvokables($serviceManager);
         $this->configureFactories($serviceManager);
         
-        $this->setConfigFile(self::$configFile);
+//         $this->setConfigFile(self::$configFile);
         
         if(self::$disableLogging)
             $this->disableLogging();
@@ -119,6 +119,13 @@ class ServiceManagerConfig implements ConfigInterface
             $logger->addWriter($logWriter);
             
             return $logger;
+        });
+        
+        $serviceManager->setFactory("request", function($serviceManager) {
+            $request = new Request();
+            $request->setConfig($serviceManager->get("config"));
+            
+            return $request;
         });
         
         $serviceManager->setFactory("mock_log", function($serviceManager) {
@@ -154,56 +161,54 @@ class ServiceManagerConfig implements ConfigInterface
      */
     private function configureInvokables(ServiceManager $serviceManager)
     {
-        $serviceManager->setInvokableClass("request", '\ZendService\ZendServerAPI\Request');
-        
         // register adapters
-        $serviceManager->setInvokableClass('applicationinfo_adapter', '\ZendService\ZendServerAPI\Adapter\ApplicationInfo');
-        $serviceManager->setInvokableClass('applicationlist_adapter', '\ZendService\ZendServerAPI\Adapter\ApplicationList');
-        $serviceManager->setInvokableClass('codetrace_adapter', '\ZendService\ZendServerAPI\Adapter\Codetrace');
-        $serviceManager->setInvokableClass('codetracingdownloadtracefile_adapter', '\ZendService\ZendServerAPI\Adapter\CodetracingDownloadTraceFile');
-        $serviceManager->setInvokableClass('codetracinglist_adapter', '\ZendService\ZendServerAPI\Adapter\CodetracingList');
-        $serviceManager->setInvokableClass('codetracingstatus_adapter', '\ZendService\ZendServerAPI\Adapter\CodetracingStatus');
-        $serviceManager->setInvokableClass('configurationexport_adapter', '\ZendService\ZendServerAPI\Adapter\ConfigurationExport');
-        $serviceManager->setInvokableClass('debugrequest_adapter', '\ZendService\ZendServerAPI\Adapter\DebugRequest');
-        $serviceManager->setInvokableClass('dumpparser_adapter', '\ZendService\ZendServerAPI\Adapter\DumpParser');
-        $serviceManager->setInvokableClass('eventsgroupdetails_adapter', '\ZendService\ZendServerAPI\Adapter\EventsGroupDetails');
-        $serviceManager->setInvokableClass('issue_adapter', '\ZendService\ZendServerAPI\Adapter\Issue');
-        $serviceManager->setInvokableClass('issuedetails_adapter', '\ZendService\ZendServerAPI\Adapter\IssueDetails');
-        $serviceManager->setInvokableClass('issuelist_adapter', '\ZendService\ZendServerAPI\Adapter\IssueList');
-        $serviceManager->setInvokableClass('messagelist_adapter', '\ZendService\ZendServerAPI\Adapter\MessageList');
-        $serviceManager->setInvokableClass('monitorexportissuebyeventsgroup_adapter', '\ZendService\ZendServerAPI\Adapter\MonitorExportIssueByEventsGroup');
-        $serviceManager->setInvokableClass('requestsummary_adapter', '\ZendService\ZendServerAPI\Adapter\RequestSummary');
-        $serviceManager->setInvokableClass('serverinfo_adapter', '\ZendService\ZendServerAPI\Adapter\ServerInfo');
-        $serviceManager->setInvokableClass('serverslist_adapter', '\ZendService\ZendServerAPI\Adapter\ServersList');
-        $serviceManager->setInvokableClass('systeminfo_adapter', '\ZendService\ZendServerAPI\Adapter\SystemInfo');
+        $serviceManager->setInvokableClass('applicationinfo_adapter', 'ZendService\ZendServerAPI\Adapter\ApplicationInfo');
+        $serviceManager->setInvokableClass('applicationlist_adapter', 'ZendService\ZendServerAPI\Adapter\ApplicationList');
+        $serviceManager->setInvokableClass('codetrace_adapter', 'ZendService\ZendServerAPI\Adapter\Codetrace');
+        $serviceManager->setInvokableClass('codetracingdownloadtracefile_adapter', 'ZendService\ZendServerAPI\Adapter\CodetracingDownloadTraceFile');
+        $serviceManager->setInvokableClass('codetracinglist_adapter', 'ZendService\ZendServerAPI\Adapter\CodetracingList');
+        $serviceManager->setInvokableClass('codetracingstatus_adapter', 'ZendService\ZendServerAPI\Adapter\CodetracingStatus');
+        $serviceManager->setInvokableClass('configurationexport_adapter', 'ZendService\ZendServerAPI\Adapter\ConfigurationExport');
+        $serviceManager->setInvokableClass('debugrequest_adapter', 'ZendService\ZendServerAPI\Adapter\DebugRequest');
+        $serviceManager->setInvokableClass('dumpparser_adapter', 'ZendService\ZendServerAPI\Adapter\DumpParser');
+        $serviceManager->setInvokableClass('eventsgroupdetails_adapter', 'ZendService\ZendServerAPI\Adapter\EventsGroupDetails');
+        $serviceManager->setInvokableClass('issue_adapter', 'ZendService\ZendServerAPI\Adapter\Issue');
+        $serviceManager->setInvokableClass('issuedetails_adapter', 'ZendService\ZendServerAPI\Adapter\IssueDetails');
+        $serviceManager->setInvokableClass('issuelist_adapter', 'ZendService\ZendServerAPI\Adapter\IssueList');
+        $serviceManager->setInvokableClass('messagelist_adapter', 'ZendService\ZendServerAPI\Adapter\MessageList');
+        $serviceManager->setInvokableClass('monitorexportissuebyeventsgroup_adapter', 'ZendService\ZendServerAPI\Adapter\MonitorExportIssueByEventsGroup');
+        $serviceManager->setInvokableClass('requestsummary_adapter', 'ZendService\ZendServerAPI\Adapter\RequestSummary');
+        $serviceManager->setInvokableClass('serverinfo_adapter', 'ZendService\ZendServerAPI\Adapter\ServerInfo');
+        $serviceManager->setInvokableClass('serverslist_adapter', 'ZendService\ZendServerAPI\Adapter\ServersList');
+        $serviceManager->setInvokableClass('systeminfo_adapter', 'ZendService\ZendServerAPI\Adapter\SystemInfo');
         
         // register datatypes
-        $serviceManager->setInvokableClass('applicationinfo_datatype', '\ZendService\ZendServerAPI\DataTypes\ApplicationInfo');
-        $serviceManager->setInvokableClass('applicationlist_datatype', '\ZendService\ZendServerAPI\DataTypes\ApplicationList');
-        $serviceManager->setInvokableClass('applicationserver_datatype', '\ZendService\ZendServerAPI\DataTypes\ApplicationServer');
-        $serviceManager->setInvokableClass('codetrace_datatype', '\ZendService\ZendServerAPI\DataTypes\CodeTrace');
-        $serviceManager->setInvokableClass('codetracinglist_datatype', '\ZendService\ZendServerAPI\DataTypes\CodetracingList');
-        $serviceManager->setInvokableClass('codetracingstatus_datatype', '\ZendService\ZendServerAPI\DataTypes\CodeTracingStatus');
-        $serviceManager->setInvokableClass('debugrequest_datatype', '\ZendService\ZendServerAPI\DataTypes\DebugRequest');
-        $serviceManager->setInvokableClass('deployedversions_datatype', '\ZendService\ZendServerAPI\DataTypes\DeployedVersions');
-        $serviceManager->setInvokableClass('event_datatype', '\ZendService\ZendServerAPI\DataTypes\Event');
-        $serviceManager->setInvokableClass('eventsgroup_datatype', '\ZendService\ZendServerAPI\DataTypes\EventsGroup');
-        $serviceManager->setInvokableClass('eventsgroupdetails_datatype', '\ZendService\ZendServerAPI\DataTypes\EventsGroupDetails');
-        $serviceManager->setInvokableClass('eventsgroups_datatype', '\ZendService\ZendServerAPI\DataTypes\EventsGroups');
-        $serviceManager->setInvokableClass('generaldetails_datatype', '\ZendService\ZendServerAPI\DataTypes\GeneralDetails');
-        $serviceManager->setInvokableClass('issue_datatype', '\ZendService\ZendServerAPI\DataTypes\Issue');
-        $serviceManager->setInvokableClass('issuedetails_datatype', '\ZendService\ZendServerAPI\DataTypes\IssueDetails');
-        $serviceManager->setInvokableClass('issuelist_datatype', '\ZendService\ZendServerAPI\DataTypes\IssueList');
-        $serviceManager->setInvokableClass('licenseinfo_datatype', '\ZendService\ZendServerAPI\DataTypes\LicenseInfo');
-        $serviceManager->setInvokableClass('messagelist_datatype', '\ZendService\ZendServerAPI\DataTypes\MessageList');
-        $serviceManager->setInvokableClass('requestsummary_datatype', '\ZendService\ZendServerAPI\DataTypes\RequestSummary');
-        $serviceManager->setInvokableClass('routedetail_datatype', '\ZendService\ZendServerAPI\DataTypes\RouteDetail');
-        $serviceManager->setInvokableClass('routedetails_datatype', '\ZendService\ZendServerAPI\DataTypes\RouteDetails');
-        $serviceManager->setInvokableClass('serverinfo_datatype', '\ZendService\ZendServerAPI\DataTypes\ServerInfo');
-        $serviceManager->setInvokableClass('serverslist_datatype', '\ZendService\ZendServerAPI\DataTypes\ServersList');
-        $serviceManager->setInvokableClass('step_datatype', '\ZendService\ZendServerAPI\DataTypes\Step');
-        $serviceManager->setInvokableClass('superglobals_datatype', '\ZendService\ZendServerAPI\DataTypes\SuperGlobals');
-        $serviceManager->setInvokableClass('systeminfo_datatype', '\ZendService\ZendServerAPI\DataTypes\SystemInfo');
+        $serviceManager->setInvokableClass('applicationinfo_datatype', 'ZendService\ZendServerAPI\DataTypes\ApplicationInfo');
+        $serviceManager->setInvokableClass('applicationlist_datatype', 'ZendService\ZendServerAPI\DataTypes\ApplicationList');
+        $serviceManager->setInvokableClass('applicationserver_datatype', 'ZendService\ZendServerAPI\DataTypes\ApplicationServer');
+        $serviceManager->setInvokableClass('codetrace_datatype', 'ZendService\ZendServerAPI\DataTypes\CodeTrace');
+        $serviceManager->setInvokableClass('codetracinglist_datatype', 'ZendService\ZendServerAPI\DataTypes\CodetracingList');
+        $serviceManager->setInvokableClass('codetracingstatus_datatype', 'ZendService\ZendServerAPI\DataTypes\CodeTracingStatus');
+        $serviceManager->setInvokableClass('debugrequest_datatype', 'ZendService\ZendServerAPI\DataTypes\DebugRequest');
+        $serviceManager->setInvokableClass('deployedversions_datatype', 'ZendService\ZendServerAPI\DataTypes\DeployedVersions');
+        $serviceManager->setInvokableClass('event_datatype', 'ZendService\ZendServerAPI\DataTypes\Event');
+        $serviceManager->setInvokableClass('eventsgroup_datatype', 'ZendService\ZendServerAPI\DataTypes\EventsGroup');
+        $serviceManager->setInvokableClass('eventsgroupdetails_datatype', 'ZendService\ZendServerAPI\DataTypes\EventsGroupDetails');
+        $serviceManager->setInvokableClass('eventsgroups_datatype', 'ZendService\ZendServerAPI\DataTypes\EventsGroups');
+        $serviceManager->setInvokableClass('generaldetails_datatype', 'ZendService\ZendServerAPI\DataTypes\GeneralDetails');
+        $serviceManager->setInvokableClass('issue_datatype', 'ZendService\ZendServerAPI\DataTypes\Issue');
+        $serviceManager->setInvokableClass('issuedetails_datatype', 'ZendService\ZendServerAPI\DataTypes\IssueDetails');
+        $serviceManager->setInvokableClass('issuelist_datatype', 'ZendService\ZendServerAPI\DataTypes\IssueList');
+        $serviceManager->setInvokableClass('licenseinfo_datatype', 'ZendService\ZendServerAPI\DataTypes\LicenseInfo');
+        $serviceManager->setInvokableClass('messagelist_datatype', 'ZendService\ZendServerAPI\DataTypes\MessageList');
+        $serviceManager->setInvokableClass('requestsummary_datatype', 'ZendService\ZendServerAPI\DataTypes\RequestSummary');
+        $serviceManager->setInvokableClass('routedetail_datatype', 'ZendService\ZendServerAPI\DataTypes\RouteDetail');
+        $serviceManager->setInvokableClass('routedetails_datatype', 'ZendService\ZendServerAPI\DataTypes\RouteDetails');
+        $serviceManager->setInvokableClass('serverinfo_datatype', 'ZendService\ZendServerAPI\DataTypes\ServerInfo');
+        $serviceManager->setInvokableClass('serverslist_datatype', 'ZendService\ZendServerAPI\DataTypes\ServersList');
+        $serviceManager->setInvokableClass('step_datatype', 'ZendService\ZendServerAPI\DataTypes\Step');
+        $serviceManager->setInvokableClass('superglobals_datatype', 'ZendService\ZendServerAPI\DataTypes\SuperGlobals');
+        $serviceManager->setInvokableClass('systeminfo_datatype', 'ZendService\ZendServerAPI\DataTypes\SystemInfo');
     }
     
     /**
@@ -219,12 +224,6 @@ class ServiceManagerConfig implements ConfigInterface
             }
         });
 
-        $serviceManager->addInitializer(function($instance, $serviceManager) {
-            if($instance instanceof ConfigAwareInterface) {
-                $instance->setConfig($serviceManager->get("config"));
-            }
-        });
-        
         $serviceManager->addInitializer(function($instance, $serviceManager) {
             if($instance instanceof ServiceManagerAwareInterface) {
                 $instance->setServiceManager($serviceManager);
@@ -340,6 +339,11 @@ class ServiceManagerConfig implements ConfigInterface
     public static function enableCentralLogging()
     {
         self::$disableLogging = false;
+    }
+    
+    public static function setConfig($configFile)
+    {
+        self::$configFile = $configFile;
     }
     
     /**

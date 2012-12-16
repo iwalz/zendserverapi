@@ -28,7 +28,7 @@ use Zend\ServiceManager\ServiceManager;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class Request implements ServiceManagerAwareInterface, ConfigAwareInterface, LoggerAwareInterface
+class Request implements ServiceManagerAwareInterface, LoggerAwareInterface
 {
     /**
      * Method class for the request
@@ -136,6 +136,9 @@ class Request implements ServiceManagerAwareInterface, ConfigAwareInterface, Log
      */
     public function getConfig()
     {
+        if($this->config === null)
+            $this->config = $this->sm->get("config");
+        
         return $this->config;
     }
 
@@ -215,6 +218,9 @@ class Request implements ServiceManagerAwareInterface, ConfigAwareInterface, Log
         } else {
             $this->client->resetParameters();
         }
+        
+        if($this->config === null)
+            $this->config = $this->sm->get("config");
 
         // prepare the request & set headers
         $request = $this->client->getRequest();

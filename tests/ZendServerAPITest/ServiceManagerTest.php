@@ -26,6 +26,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
         $server = new Server("ZS51");
         $server->setConfigFile(__DIR__.'/../_files/config/config.php');
         $sm = $server->getServiceManager();
+        $sm->get("config"); // Lazy load config for factory init
         $this->assertTrue($sm->get('clusterGetServerStatus') instanceof ClusterGetServerStatus);
         $this->assertTrue($sm->get('clusterAddServer') instanceof ClusterAddServer);
     }
@@ -36,6 +37,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
         $server = new Server("example62");
         $server->setConfigFile(__DIR__.'/../_files/config/config.php');
         $sm = $server->getServiceManager();
+        $sm->get("config"); // Lazy load config for factory init
         
         $this->assertTrue($sm->get('logger')->getWriters()->current() instanceof \Zend\Log\Writer\Stream);
         $server->disableLogging();
@@ -151,6 +153,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
         $server = new Server("example62");
         $server->setConfigFile(__DIR__.'/../_files/config/config.php');
         $sm = $server->getServiceManager();
+        $sm->get("config"); // Lazy load config for factory init
         $this->assertTrue($sm->get('applicationGetStatus') instanceof ApplicationGetStatus);
     }
     

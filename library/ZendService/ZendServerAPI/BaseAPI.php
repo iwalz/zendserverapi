@@ -65,8 +65,11 @@ class BaseAPI
      */
     public function __construct($name = null, Request $request = null)
     {
-        $this->sm = new ServiceManager();
+//         $this->sm = new ServiceManager();
         $this->smConfig = new ServiceManagerConfig();
+        $this->sm = new PluginManager($name, $this->smConfig);
+        
+        $this->sm->setThrowExceptionInCreate(true);
         if($name !== null) {
             $this->smConfig->setName($name);
             $this->name = $name;
@@ -191,7 +194,7 @@ class BaseAPI
     
     public function setConfigFile($configFile)
     {
-        $this->smConfig->setConfigFile($configFile);
+        $this->sm->setConfigFile($configFile);
     }
     
     public function enableLogging()

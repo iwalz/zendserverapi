@@ -53,6 +53,6 @@ abstract class Adapter
      */
     public function getResponse()
     {
-        return $this->response ;
+        return $this->response;
     }
 }

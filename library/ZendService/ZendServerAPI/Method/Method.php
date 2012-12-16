@@ -190,6 +190,7 @@ abstract class Method
      *
      * @param string $index
      * @param array  $values
+     * @return string
      */
     public function buildParameterArray($index, array $values)
     {

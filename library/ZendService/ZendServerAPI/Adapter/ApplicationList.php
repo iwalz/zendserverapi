@@ -33,10 +33,13 @@ class ApplicationList extends Adapter
         if($xml === null)
             $xml = $this->getResponse()->getBody();
 
-        $xml = simplexml_load_string($xml);
-
+        $this->setContent($xml);
+        $xmlApplicationInfo = $this->getElements("//applicationInfo");
+        
         $applicationList = new  \ZendService\ZendServerAPI\DataTypes\ApplicationList();
-        foreach ($xml->responseData->applicationsList->applicationInfo as $xmlAppInfo) {
+        
+        foreach ($xmlApplicationInfo as $xmlAppInfo) {
+            
             $applicationInfo = new  \ZendService\ZendServerAPI\DataTypes\ApplicationInfo();
             $applicationInfo->setAppName((string) $xmlAppInfo->appName);
             $applicationInfo->setId((string) $xmlAppInfo->id);
@@ -46,23 +49,28 @@ class ApplicationList extends Adapter
             $applicationInfo->setStatus((string) $xmlAppInfo->status);
 
             foreach ($xmlAppInfo->servers->applicationServer as $xmlServer) {
+                
                 $server = new  \ZendService\ZendServerAPI\DataTypes\ApplicationServer();
                 $server->setId((string) $xmlServer->id);
                 $server->setDeployedVersion((string) trim($xmlServer->deployedVersion));
                 $server->setStatus((string) $xmlServer->status);
                 $applicationInfo->addServer($server);
+                
             }
             foreach ($xmlAppInfo->deployedVersions->deployedVersion as $xmlDeployedVersions) {
+                
                 $deployedVersions = new  \ZendService\ZendServerAPI\DataTypes\DeployedVersions();
                 $deployedVersions->setVersion((string) trim($xmlDeployedVersions));
                 $applicationInfo->addDeployedVersions($deployedVersions);
+                
             }
 
             $messageListAdapter = new  \ZendService\ZendServerAPI\Adapter\MessageList();
             $xmlMessageList = (string) $xmlAppInfo->messageList;
 
-            if(!empty($xmlMessageList))
+            if(!empty($xmlMessageList)) {
                 $applicationInfo->setMessageList($messageListAdapter->parse($xmlMessageList));
+            }
 
             $applicationList->addApplicationInfo($applicationInfo);
         }

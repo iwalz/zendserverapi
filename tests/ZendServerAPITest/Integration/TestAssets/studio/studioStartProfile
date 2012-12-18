@@ -1,0 +1,24 @@
+HTTP/1.1 200 OK
+X-Powered-By: PHP/5.3.14 ZendServer/5.0
+Set-Cookie: ZENDSERVERSESSID=sc84lun0u7n72kfpds3p7osin7; Path=/ZendServer
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Content-Type: application/vnd.zend.serverapi+xml;version=1.2
+Date: Sun, 16 Dec 2012 19:54:57 GMT
+Server: lighttpd/1.4.26
+
+196
+<?xml version="1.0" encoding="UTF-8"?><zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.2">
+        <requestData>
+                <apiKeyName><![CDATA[api]]></apiKeyName>
+                <method>monitorStartProfile</method>
+        </requestData>
+        <responseData>
+                <debugRequest>
+                        <success>1</success>
+                        <message>Profile session completed successfully</message>
+                </debugRequest>
+        </responseData>
+</zendServerAPIResponse>
+0

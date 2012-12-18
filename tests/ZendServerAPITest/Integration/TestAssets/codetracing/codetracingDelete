@@ -1,0 +1,27 @@
+HTTP/1.1 200 OK
+X-Powered-By: PHP/5.3.14 ZendServer/5.0
+Set-Cookie: ZENDSERVERSESSID=fn8ignpc9llmmmte0j511q94t5; Path=/ZendServer
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Content-Type: application/vnd.zend.serverapi+xml;version=1.2
+Date: Sun, 16 Dec 2012 20:02:03 GMT
+Server: lighttpd/1.4.26
+
+206
+<?xml version="1.0" encoding="UTF-8"?><zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.2">
+        <requestData>
+                <apiKeyName><![CDATA[api]]></apiKeyName>
+                <method>codetracingDelete</method>
+        </requestData>
+        <responseData>
+                <codeTrace>
+                        <id>0.16912.1</id>
+                        <date>1355687850</date>
+                        <url><![CDATA[http://hp.local/index.php]]></url>
+                        <createdBy>Monitor Event</createdBy>
+                        <fileSize>1169759</fileSize>
+                        <applicationId>-1</applicationId>
+                </codeTrace>    </responseData>
+</zendServerAPIResponse>
+0

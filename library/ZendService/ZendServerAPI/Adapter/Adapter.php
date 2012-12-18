@@ -124,9 +124,11 @@ abstract class Adapter
      */
     protected function executeXpath($pattern) 
     {
-        $prependPrefix = $namespace = true;
+        $prependPrefix = true;
         $prePattern = "/ns:zendServerAPIResponse/ns:responseData";
         $namespace = $this->content->getNamespaces(true);
+        $elements = explode("/", $pattern);
+        array_shift($elements);
         
         // Do not add prefix if starts with //
         if(substr($pattern, 0, 2) == "//") {
@@ -136,19 +138,12 @@ abstract class Adapter
         // If default namespace is not set, do not register
         if(isset($namespace[""])) {
             $this->content->registerXPathNamespace("ns", $namespace[""]);
-        } else {
-            $namespace = false;
-        }
-        
-        $elements = explode("/", $pattern);
-        array_shift($elements);
-        // If namespace is active, prepend ns key
-        if($namespace) {
             foreach($elements as $key => $value) {
                 if($value != "")
                     $elements[$key] = "ns:" . $value;
             }
-        }
+        } 
+        
         // Generate valid xPath, including namespace
         $xPath = ($prependPrefix ? $prePattern : '') . "/" . implode("/", $elements);
                 

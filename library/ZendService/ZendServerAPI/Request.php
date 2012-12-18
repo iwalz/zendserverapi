@@ -223,7 +223,15 @@ class Request
         $request = $this->client->getRequest();
         $request->getUri()->setHost($this->config->getHost());
         $request->getUri()->setPort($this->config->getPort());
-        $request->getUri()->setScheme($this->config->getProtocol());
+        $scheme = $this->config->getProtocol();
+        $request->getUri()->setScheme($scheme);
+        if($scheme == "https") {
+            $this->client->setOptions(array(
+                'adapter'      => 'Zend\Http\Client\Adapter\Socket',
+                'ssltransport' => 'tls',
+                'sslverify_peer' => false
+            ));
+        }
         $request->getUri()->setPath($this->action->getLink());
         $header = $request->getHeaders();
 

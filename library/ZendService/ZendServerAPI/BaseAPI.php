@@ -43,7 +43,7 @@ class BaseAPI implements PluginInterface
      * @param string  $name    <p>Name of the config</p>
      * @param Request $request <p>Request for internal usage</p>
      */
-    public function __construct($name = null, Request $request = null)
+    public function __construct($name = null)
     {
         $smConfig = new ServiceManagerConfig();
         $this->pluginManager = new PluginManager($name, $smConfig);
@@ -52,11 +52,6 @@ class BaseAPI implements PluginInterface
             $this->pluginManager->setName($name);
             $this->name = $name;
         }
-        
-        if ($request !== null) {
-            $this->setRequest($request);
-        } 
-
     }
 
     /**

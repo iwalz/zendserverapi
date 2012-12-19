@@ -45,9 +45,9 @@ class ServiceManagerConfig implements ConfigInterface
     private static $disableLogging = null;
     /**
      * The service manager
-     * @var \Zend\ServiceManager\ServiceManager
+     * @var \ZendService\ZendServerAPI\PluginManager
      */
-    private $sm = null;
+    private $pluginManager = null;
     
     /**
      * Constructor
@@ -65,7 +65,7 @@ class ServiceManagerConfig implements ConfigInterface
      */
     public function configureServiceManager (ServiceManager $serviceManager)
     {
-        $this->sm = $serviceManager;
+        $this->pluginManager = $serviceManager;
         $serviceManager->setAllowOverride(true);
         
         $this->configureInitializers($serviceManager);
@@ -237,8 +237,8 @@ class ServiceManagerConfig implements ConfigInterface
     {
         $this->logger = $logger;
         
-        if($this->sm->get('logger') !== $this->sm->get('mock_log')) {
-            $this->sm->setService("logger", $this->logger);
+        if($this->pluginManager->get('logger') !== $this->pluginManager->get('mock_log')) {
+            $this->pluginManager->setService("logger", $this->logger);
         }
     }
     
@@ -260,9 +260,9 @@ class ServiceManagerConfig implements ConfigInterface
     public function enableLogging()
     {
         if($this->logger === null)
-            $this->sm->setService('logger', $this->sm->get('default_log'));
+            $this->pluginManager->setService('logger', $this->pluginManager->get('default_log'));
         else
-            $this->sm->setService('logger', $this->logger);
+            $this->pluginManager->setService('logger', $this->logger);
     }
     
     /**
@@ -272,7 +272,7 @@ class ServiceManagerConfig implements ConfigInterface
      */
     public function disableLogging()
     {
-        $this->sm->setService('logger', $this->sm->get('mock_log'));        
+        $this->pluginManager->setService('logger', $this->pluginManager->get('mock_log'));        
     }
     
     /**
@@ -295,6 +295,11 @@ class ServiceManagerConfig implements ConfigInterface
         self::$disableLogging = false;
     }
     
+    /**
+     * Set the config file
+     * 
+     * @param string $configFile
+     */
     public static function setConfig($configFile)
     {
         self::$configFile = $configFile;

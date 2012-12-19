@@ -32,8 +32,8 @@ class BaseAPI implements PluginInterface
     protected $name = null;
     
     /**
-     * The service manager
-     * @var \Zend\ServiceManager\PluginManager
+     * The plugin manager
+     * @var \ZendService\ZendServerAPI\PluginManager
      */
     protected $pluginManager = null;
     

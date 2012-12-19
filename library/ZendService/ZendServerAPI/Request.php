@@ -82,7 +82,7 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
     /**
      * Set request logger
      *
-     * @param \Zend\Log\Logger $logger
+     * @param \Zend\Log\LoggerInterface $logger
      */
     public function setLogger(\Zend\Log\LoggerInterface $logger)
     {

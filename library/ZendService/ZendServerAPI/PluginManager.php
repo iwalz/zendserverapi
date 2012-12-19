@@ -43,6 +43,12 @@ class PluginManager extends AbstractPluginManager
      */
     private $config = null;
     
+    /**
+     * Constructor for the plugin manager
+     * 
+     * @param string $name
+     * @param ServiceManagerConfig $config
+     */
     public function __construct($name = null, ServiceManagerConfig $config = null)
     {
         if(static::$configFile === null)
@@ -93,6 +99,7 @@ class PluginManager extends AbstractPluginManager
      * Validates the plugins, managed by this component
      * 
      * @see \Zend\ServiceManager\AbstractPluginManager::validatePlugin()
+     * @param mixed the handled instances
      */
     public function validatePlugin ($plugin)
     {

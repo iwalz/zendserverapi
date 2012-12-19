@@ -60,8 +60,10 @@ class ServiceManagerConfig implements ConfigInterface
     }
     
     /**
-     * (non-PHPdoc)
+     * Configure the service manager
+     * 
      * @see \Zend\ServiceManager\ConfigInterface::configureServiceManager()
+     * @param \Zend\ServiceManager\ServiceManager
      */
     public function configureServiceManager (ServiceManager $serviceManager)
     {
@@ -81,7 +83,7 @@ class ServiceManagerConfig implements ConfigInterface
     /**
      * Configures SM factories
      * 
-     * @param ServiceManager $serviceManager
+     * @param \Zend\ServiceManager\ServiceManager $serviceManager
      */
     private function configureFactories(ServiceManager $serviceManager)
     {
@@ -137,7 +139,7 @@ class ServiceManagerConfig implements ConfigInterface
     /**
      * Configure invokables for the SM
      *
-     * @param \Zend\ServiceManager\ServiceManager
+     * @param \Zend\ServiceManager\ServiceManager $serviceManager
      * @return void
      */
     private function configureInvokables(ServiceManager $serviceManager)
@@ -195,6 +197,7 @@ class ServiceManagerConfig implements ConfigInterface
     /**
      * Configure initializers for the SM 
      * 
+     * @param \Zend\ServiceManager\ServiceManager $serviceManager
      * @return void
      */
     private function configureInitializers($serviceManager)

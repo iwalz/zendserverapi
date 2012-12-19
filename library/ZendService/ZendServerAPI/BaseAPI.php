@@ -41,7 +41,6 @@ class BaseAPI implements PluginInterface
      * Base constructor for all API-method implementations
      *
      * @param string  $name    <p>Name of the config</p>
-     * @param Request $request <p>Request for internal usage</p>
      */
     public function __construct($name = null)
     {

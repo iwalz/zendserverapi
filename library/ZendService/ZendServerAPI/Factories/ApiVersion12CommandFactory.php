@@ -28,8 +28,17 @@ use ZendService\ZendServerAPI\PluginInterface;
  */
 class ApiVersion12CommandFactory implements CommandFactory, AbstractFactoryInterface, PluginInterface
 {
+    /**
+     * Internal array with the available commands
+     * @var array
+     */
     private $availableCommands = null;
     
+    /**
+     * Constructor. Set's internal default values
+     *
+     * @return ApiVersion12CommandFactory
+     */
     public function __construct()
     {
         $this->availableCommands = array(
@@ -50,6 +59,7 @@ class ApiVersion12CommandFactory implements CommandFactory, AbstractFactoryInter
             'studioStartProfile'
         );
     }
+    
     /**
      * Retrieves the command object and throws an error if
      * the command is not supported via this factory (and the Zend Server/webapi version).
@@ -88,12 +98,28 @@ class ApiVersion12CommandFactory implements CommandFactory, AbstractFactoryInter
         }
     }
     
+    /**
+     * Check if the factory can create an instance by the given name
+     * 
+     * @see \Zend\ServiceManager\AbstractFactoryInterface::canCreateServiceWithName()
+     * @param \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @param string $name The real name
+     * @param string $requestedName The requested name (alias)
+     */
     public function canCreateServiceWithName (
             ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
         return in_array($requestedName, $this->availableCommands);
     }
     
+    /**
+     * Create an instance by the given name
+     *
+     * @see \Zend\ServiceManager\AbstractFactoryInterface::canCreateServiceWithName()
+     * @param \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @param string $name The real name
+     * @param string $requestedName The requested name (alias)
+     */
     public function createServiceWithName (
             ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {

@@ -10,9 +10,6 @@
 
 namespace ZendService\ZendServerAPI\Method;
 
-use ZendService\ZendServerAPI\DataTypes\LicenseInfo,
-    ZendService\ZendServerAPI\DataTypes\MessageList;
-
 /**
  * <b>The getSystemInfo Method</b>
  *
@@ -30,6 +27,11 @@ use ZendService\ZendServerAPI\DataTypes\LicenseInfo,
  */
 class GetSystemInfo extends Method
 {
+    /**
+     * Set the arguments and configures the method
+     * 
+     * @return \ZendService\ZendServerAPI\Method\GetSystemInfo
+     */
     public function setArgs()
     {
         $this->configure();

@@ -84,12 +84,28 @@ class ApiVersion10CommandFactory implements CommandFactory, AbstractFactoryInter
         }
     }
     
+    /**
+     * Check if the factory can create an instance by the given name
+     *
+     * @see \Zend\ServiceManager\AbstractFactoryInterface::canCreateServiceWithName()
+     * @param \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @param string $name The real name
+     * @param string $requestedName The requested name (alias)
+     */
     public function canCreateServiceWithName (
             ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
         return in_array($requestedName, $this->availableCommands);
     }
 
+    /**
+     * Create an instance by the given name
+     *
+     * @see \Zend\ServiceManager\AbstractFactoryInterface::canCreateServiceWithName()
+     * @param \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @param string $name The real name
+     * @param string $requestedName The requested name (alias)
+     */
     public function createServiceWithName (
             ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {

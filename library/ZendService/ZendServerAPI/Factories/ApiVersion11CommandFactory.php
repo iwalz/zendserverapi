@@ -28,8 +28,17 @@ use ZendService\ZendServerAPI\PluginInterface;
  */
 class ApiVersion11CommandFactory implements CommandFactory, AbstractFactoryInterface, PluginInterface
 {
+    /**
+     * Internal array with the available commands
+     * @var array
+     */
     private $availableCommands = null;
     
+    /**
+     * Constructor. Set's internal default values
+     *
+     * @return ApiVersion11CommandFactory
+     */
     public function __construct()
     {
         $this->availableCommands = array(
@@ -72,12 +81,28 @@ class ApiVersion11CommandFactory implements CommandFactory, AbstractFactoryInter
         }
     }
     
+    /**
+     * Check if the factory can create an instance by the given name
+     *
+     * @see \Zend\ServiceManager\AbstractFactoryInterface::canCreateServiceWithName()
+     * @param \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @param string $name The real name
+     * @param string $requestedName The requested name (alias)
+     */
     public function canCreateServiceWithName (
             ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
         return in_array($requestedName, $this->availableCommands);
     }
     
+    /**
+     * Create an instance by the given name
+     *
+     * @see \Zend\ServiceManager\AbstractFactoryInterface::canCreateServiceWithName()
+     * @param \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @param string $name The real name
+     * @param string $requestedName The requested name (alias)
+     */
     public function createServiceWithName (
             ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {

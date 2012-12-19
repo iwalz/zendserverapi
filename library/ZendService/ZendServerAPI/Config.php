@@ -22,7 +22,7 @@ namespace ZendService\ZendServerAPI;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class Config
+class Config implements PluginInterface
 {
     /**
      * Host for the server connection

@@ -12,6 +12,7 @@ namespace ZendService\ZendServerAPI\Factories;
 
 use Zend\ServiceManager\AbstractFactoryInterface,
     Zend\ServiceManager\ServiceLocatorInterface;
+use ZendService\ZendServerAPI\PluginInterface;
 
 /**
  * A factory, that retrieves commands from the webapi version 1.0.
@@ -24,7 +25,7 @@ use Zend\ServiceManager\AbstractFactoryInterface,
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class ApiVersion10CommandFactory implements CommandFactory, AbstractFactoryInterface
+class ApiVersion10CommandFactory implements CommandFactory, AbstractFactoryInterface, PluginInterface
 {
     /**
      * Internal array with the available commands

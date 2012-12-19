@@ -20,7 +20,7 @@ namespace ZendService\ZendServerAPI;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class ApiKey
+class ApiKey implements PluginInterface
 {
     /**
      * Name of the api key

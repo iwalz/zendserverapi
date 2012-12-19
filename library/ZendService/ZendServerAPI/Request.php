@@ -28,7 +28,7 @@ use Zend\ServiceManager\ServiceManager;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class Request implements ServiceManagerAwareInterface, LoggerAwareInterface
+class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, PluginInterface
 {
     /**
      * Method class for the request

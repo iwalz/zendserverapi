@@ -51,8 +51,8 @@ class Server extends BaseAPI
      */
     public function getSystemInfo()
     {
-        $request = $this->sm->get('request');
-        $request->setAction($this->sm->get('getSystemInfo'));
+        $request = $this->pluginManager->get('request');
+        $request->setAction($this->pluginManager->get('getSystemInfo'));
 
         return $request->send();
     }
@@ -74,9 +74,9 @@ class Server extends BaseAPI
      */
     public function clusterGetServerStatus(array $parameters = array())
     {
-        $this->sm->get('request')->setAction($this->sm->get('clusterGetServerStatus')->setArgs($parameters));
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('clusterGetServerStatus')->setArgs($parameters));
         
-        return $this->sm->get('request')->send();
+        return $this->pluginManager->get('request')->send();
     }
 
     /**
@@ -96,11 +96,11 @@ class Server extends BaseAPI
      */
     public function clusterRemoveServer($serverId, $force = false)
     {
-        $this->sm->get('request')->setAction(
-                $this->sm->get('clusterRemoveServer')->setArgs($serverId, $force)
+        $this->pluginManager->get('request')->setAction(
+                $this->pluginManager->get('clusterRemoveServer')->setArgs($serverId, $force)
         );
         
-        return $this->sm->get('request')->send();
+        return $this->pluginManager->get('request')->send();
     }
 
     /**
@@ -118,11 +118,11 @@ class Server extends BaseAPI
      */
     public function clusterAddServer($serverName, $serverUrl, $guiPassword, $propagateSettings = false)
     {
-        $this->sm->get('request')->setAction(
-                $this->sm->get('clusterAddServer')->setArgs($serverName, $serverUrl, $guiPassword, $propagateSettings)
+        $this->pluginManager->get('request')->setAction(
+                $this->pluginManager->get('clusterAddServer')->setArgs($serverName, $serverUrl, $guiPassword, $propagateSettings)
         );
         
-        return $this->sm->get('request')->send();
+        return $this->pluginManager->get('request')->send();
     }
 
     /**
@@ -139,11 +139,11 @@ class Server extends BaseAPI
      */
     public function clusterDisableServer($serverId)
     {
-        $this->sm->get('request')->setAction(
-                $this->sm->get('clusterDisableServer')->setArgs($serverId)
+        $this->pluginManager->get('request')->setAction(
+                $this->pluginManager->get('clusterDisableServer')->setArgs($serverId)
         );
         
-        return $this->sm->get('request')->send();
+        return $this->pluginManager->get('request')->send();
     }
 
     /**
@@ -161,11 +161,11 @@ class Server extends BaseAPI
      */
     public function clusterEnableServer($serverId)
     {
-        $this->sm->get('request')->setAction(
-                $this->sm->get('clusterEnableServer')->setArgs($serverId)
+        $this->pluginManager->get('request')->setAction(
+                $this->pluginManager->get('clusterEnableServer')->setArgs($serverId)
         );
         
-        return $this->sm->get('request')->send();
+        return $this->pluginManager->get('request')->send();
     }
 
     /**
@@ -184,11 +184,11 @@ class Server extends BaseAPI
      */
     public function restartPhp($serverIds = array(), $parallelRestart = false)
     {
-        $this->sm->get('request')->setAction(
-                $this->sm->get('restartPHP')->setArgs($serverIds, $parallelRestart)
+        $this->pluginManager->get('request')->setAction(
+                $this->pluginManager->get('restartPHP')->setArgs($serverIds, $parallelRestart)
         );
         
-        return $this->sm->get('request')->send();
+        return $this->pluginManager->get('request')->send();
     }
 
     /**
@@ -205,11 +205,11 @@ class Server extends BaseAPI
      */
     public function clusterReconfigureServer($serverId, $doRestart = false)
     {
-        $this->sm->get('request')->setAction(
-                $this->sm->get('clusterReconfigureServer')->setArgs($serverId, $doRestart)
+        $this->pluginManager->get('request')->setAction(
+                $this->pluginManager->get('clusterReconfigureServer')->setArgs($serverId, $doRestart)
         );
         
-        return $this->sm->get('request')->send();
+        return $this->pluginManager->get('request')->send();
     }
 
     /**

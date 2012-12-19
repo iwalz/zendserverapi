@@ -22,7 +22,7 @@ namespace ZendService\ZendServerAPI;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class ConfigValidator
+class ConfigValidator implements PluginInterface
 {
     /**
      * The config for the connections

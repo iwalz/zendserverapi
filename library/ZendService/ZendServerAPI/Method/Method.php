@@ -11,6 +11,7 @@
 namespace ZendService\ZendServerAPI\Method;
 
 use ZendService\ZendServerAPI\DataTypes\DataType;
+use ZendService\ZendServerAPI\PluginInterface;
 
 /**
  * <b>Abstract class method implementations</b>
@@ -25,7 +26,7 @@ use ZendService\ZendServerAPI\DataTypes\DataType;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-abstract class Method
+abstract class Method implements PluginInterface
 {
     /**
      * Method for the current action

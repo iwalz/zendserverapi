@@ -25,7 +25,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
     {
         $server = new Server("ZS51");
         $server->setConfigFile(__DIR__.'/../_files/config/config.php');
-        $sm = $server->getServiceManager();
+        $sm = $server->getPluginManager();
         $sm->get("config"); // Lazy load config for factory init
         $this->assertTrue($sm->get('clusterGetServerStatus') instanceof ClusterGetServerStatus);
         $this->assertTrue($sm->get('clusterAddServer') instanceof ClusterAddServer);
@@ -36,7 +36,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
         ServiceManagerConfig::enableCentralLogging();
         $server = new Server("example62");
         $server->setConfigFile(__DIR__.'/../_files/config/config.php');
-        $sm = $server->getServiceManager();
+        $sm = $server->getPluginManager();
         $sm->get("config"); // Lazy load config for factory init
         
         $this->assertTrue($sm->get('logger')->getWriters()->current() instanceof \Zend\Log\Writer\Stream);
@@ -50,7 +50,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
     public function testWebApiVersionFactory()
     {
         $server = new Server();
-        $sm = $server->getServiceManager();
+        $sm = $server->getPluginManager();
         $config = $sm->get("config");
     
         $this->assertEquals($config->getApiVersion(), \ZendService\ZendServerAPI\Version::ZS56);
@@ -77,7 +77,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
     public function testWebApi11VersionFactory()
     {
         $server = new Server("ZS55");
-        $sm = $server->getServiceManager();
+        $sm = $server->getPluginManager();
         $config = $sm->get("config");
     
         $this->assertEquals($config->getApiVersion(), \ZendService\ZendServerAPI\Version::ZS55);
@@ -108,7 +108,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
     public function testWebApiMethodFromNewerApiVersion()
     {
         $server = new Server("ZS51");
-        $sm = $server->getServiceManager();
+        $sm = $server->getPluginManager();
         $config = $sm->get("config");
     
         $this->assertEquals($config->getApiVersion(), \ZendService\ZendServerAPI\Version::ZS51);
@@ -124,7 +124,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
     public function testWebApiIncorrectCommandException()
     {
         $server = new Server();
-        $sm = $server->getServiceManager();
+        $sm = $server->getPluginManager();
         $config = $sm->get("config");
     
         $sm->get('test');
@@ -133,7 +133,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
     public function testWebApiVersion10Factory()
     {
         $server = new Server("ZS51");
-        $sm = $server->getServiceManager();
+        $sm = $server->getPluginManager();
         $config = $sm->get("config");
     
     }
@@ -141,7 +141,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
     public function testWebApiVersion11Factory()
     {
         $server = new Server("ZS55");
-        $sm = $server->getServiceManager();
+        $sm = $server->getPluginManager();
         $config = $sm->get("config");
     
         $this->assertEquals($config->getApiVersion(), \ZendService\ZendServerAPI\Version::ZS55);
@@ -152,7 +152,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
     {
         $server = new Server("example62");
         $server->setConfigFile(__DIR__.'/../_files/config/config.php');
-        $sm = $server->getServiceManager();
+        $sm = $server->getPluginManager();
         $sm->get("config"); // Lazy load config for factory init
         $this->assertTrue($sm->get('applicationGetStatus') instanceof ApplicationGetStatus);
     }

@@ -11,6 +11,8 @@
 namespace ZendService\ZendServerAPI;
 
 use Zend\ServiceManager\AbstractPluginManager;
+use Zend\Log\Logger;
+use Zend\Http\Client;
 
 /**
  * The PluginManager implementation of the Zend Server API.
@@ -35,6 +37,11 @@ class PluginManager extends AbstractPluginManager
      * @var string
      */
     private $name = null;
+    /**
+     * The servicemanager config
+     * @var \ZendService\ZendServerAPI\ServiceManagerConfig
+     */
+    private $config = null;
     
     public function __construct($name = null, ServiceManagerConfig $config = null)
     {
@@ -45,6 +52,7 @@ class PluginManager extends AbstractPluginManager
             $name = "general";
         
         $this->name = $name;
+        $this->config = $config;
         
         static::setConfigFile(static::$configFile);
         parent::__construct($config);
@@ -81,9 +89,28 @@ class PluginManager extends AbstractPluginManager
         return $this->name;
     }
     
+    /**
+     * Validates the plugins, managed by this component
+     * 
+     * @see \Zend\ServiceManager\AbstractPluginManager::validatePlugin()
+     */
     public function validatePlugin ($plugin)
     {
-        return;
+        if (
+            $plugin instanceof PluginInterface || 
+            $plugin instanceof Logger ||
+            $plugin instanceof Client ||
+            is_array($plugin)
+        ) {
+            // we're okay
+            return;
+        }
+        
+        throw new \Zend\ServiceManager\Exception\InvalidArgumentException(sprintf(
+                'Plugin of type %s is invalid; must implement %s\PluginInterface',
+                (is_object($plugin) ? get_class($plugin) : gettype($plugin)),
+                __NAMESPACE__
+        ));
     }
     
     /**
@@ -161,6 +188,26 @@ class PluginManager extends AbstractPluginManager
             }
             return $settings;
         });
+    }
+    
+    /**
+     * Enables the logging
+     *
+     * @return void
+     */
+    public function enableLogging()
+    {
+        $this->config->enableLogging();
+    }
+    
+    /**
+     * Disables the logging
+     *
+     * @return void
+     */
+    public function disableLogging()
+    {
+        $this->config->disableLogging();
     }
     
 }

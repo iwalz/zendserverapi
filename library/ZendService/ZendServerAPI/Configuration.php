@@ -57,9 +57,9 @@ class Configuration extends BaseAPI
         else
             $this->exportDirectory = getcwd();
 
-        $this->sm->get('request')->setAction($this->sm->get('configurationExport')->setArgs($this->exportDirectory, $fileName));
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('configurationExport')->setArgs($this->exportDirectory, $fileName));
         
-        return $this->sm->get('request')->send();
+        return $this->pluginManager->get('request')->send();
     }
 
     /**
@@ -75,9 +75,9 @@ class Configuration extends BaseAPI
         if($importFile !== null)
             $this->importFile = $importFile;
 
-        $this->sm->get('request')->setAction($this->sm->get('configurationImport')->setArgs($this->importFile));
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('configurationImport')->setArgs($this->importFile));
         
-        return $this->sm->get('request')->send();
+        return $this->pluginManager->get('request')->send();
     }
 
     /**

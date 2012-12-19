@@ -10,8 +10,6 @@
 
 namespace ZendService\ZendServerAPI;
 
-use Zend\ServiceManager\ServiceManager;
-
 /**
  * <b>Abstract class for the api sections</b>
  *
@@ -25,20 +23,8 @@ use Zend\ServiceManager\ServiceManager;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class BaseAPI
+class BaseAPI implements PluginInterface
 {
-    /**
-     * Request for the methods
-     * @var Request
-     */
-    protected $request = null;
-
-    /**
-     * Api Factory to fetch Method's from
-     * @var Factories\CommandFactory
-     */
-    protected $apiFactory = null;
-
     /**
      * The 'server' name - key of the config
      * @var string
@@ -47,16 +33,10 @@ class BaseAPI
     
     /**
      * The service manager
-     * @var \Zend\ServiceManager\ServiceManager
+     * @var \Zend\ServiceManager\PluginManager
      */
-    protected $sm = null;
+    protected $pluginManager = null;
     
-    /**
-     * Service manager config
-     * @var ServiceManagerConfig
-     */
-    protected $smConfig = null;
-
     /**
      * Base constructor for all API-method implementations
      *
@@ -65,11 +45,11 @@ class BaseAPI
      */
     public function __construct($name = null, Request $request = null)
     {
-        $this->smConfig = new ServiceManagerConfig();
-        $this->sm = new PluginManager($name, $this->smConfig);
+        $smConfig = new ServiceManagerConfig();
+        $this->pluginManager = new PluginManager($name, $smConfig);
         
         if($name !== null) {
-            $this->sm->setName($name);
+            $this->pluginManager->setName($name);
             $this->name = $name;
         }
         
@@ -80,23 +60,13 @@ class BaseAPI
     }
 
     /**
-     * Get the service manager config - be careful!
-     * 
-     * @return \ZendService\ZendServerAPI\ServiceManagerConfig
-     */
-    public function getServiceManagerConfig()
-    {
-        return $this->smConfig;
-    }
-    
-    /**
      * Returns the current request
      *
      * @return Request
      */
     public function getRequest()
     {
-        return $this->sm->get("request");
+        return $this->pluginManager->get("request");
     }
 
     /**
@@ -107,7 +77,7 @@ class BaseAPI
      */
     public function setRequest(Request $request)
     {
-        $this->sm->setRequest($request);
+        $this->pluginManager->setRequest($request);
     }
 
     /**
@@ -118,28 +88,18 @@ class BaseAPI
      */
     public function setClient(\Zend\Http\Client $client)
     {
-        $this->sm->get("request")->setClient($client);
+        $this->pluginManager->get("request")->setClient($client);
     }
     
-    /**
-     * Set the service manager
-     * 
-     * @param ServiceManager $sm
-     * @return void
-     */
-    public function setServiceManager(ServiceManager $sm)
-    {
-        $this->sm = $sm;
-    }
     
     /**
-     * Get the service manager
+     * Get the plugin manager
      * 
-     * @return \Zend\ServiceManager\ServiceManager
+     * @return \Zend\ServiceManager\PluginManager
      */
-    public function getServiceManager()
+    public function getPluginManager ()
     {
-        return $this->sm;
+        return $this->pluginManager;
     }
 
     /**
@@ -149,20 +109,20 @@ class BaseAPI
      */
     public function canConnect()
     {
-        $previousAction = $this->sm->get("request")->getAction();
-        $action = new  \ZendService\ZendServerAPI\Method\GetSystemInfo();
-        $this->sm->get("request")->setAction($action);
+        $previousAction = $this->pluginManager->get("request")->getAction();
+        $action = $this->pluginManager->get("getSystemInfo");
+        $this->pluginManager->get("request")->setAction($action);
         try {
-            $response = $this->sm->get("request")->send();
+            $response = $this->pluginManager->get("request")->send();
         } catch ( \Exception $e) {
             if($previousAction !== null)
-                $this->sm->get("request")->setAction($previousAction);
+                $this->pluginManager->get("request")->setAction($previousAction);
 
             return false;
         }
 
         if($previousAction !== null)
-            $this->sm->get("request")->setAction($previousAction);
+            $this->pluginManager->get("request")->setAction($previousAction);
 
         return true;
     }
@@ -176,30 +136,43 @@ class BaseAPI
      */
     protected function getFirstEventGroupsIdByIssueId($issueId)
     {
-        $this->sm->get('request')->setAction($this->sm->get('monitorGetIssuesDetails')->setArgs($issueId));
-        $issuesDetail = $this->sm->get("request")->send();
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('monitorGetIssuesDetails')->setArgs($issueId));
+        $issuesDetail = $this->pluginManager->get("request")->send();
 
         $eventsGroups = $issuesDetail->getEventsGroups();
         $eventsGroupId = $eventsGroups[0]->getEventsGroupId();
 
-        // Reset request
-//         $this->sm->get("request") = Startup::getRequest($this->name);
-
         return $eventsGroupId;
     }
-    
+
+    /**
+     * Set the config file. Proxy to the pluginmanager for initialization
+     * 
+     * @param string $configFile
+     * @return void
+     */
     public function setConfigFile($configFile)
     {
-        $this->sm->setConfigFile($configFile);
+        $this->pluginManager->setConfigFile($configFile);
     }
     
+    /**
+     * Enables the logging
+     * 
+     * @return void
+     */
     public function enableLogging()
     {
-        $this->smConfig->enableLogging();
+        $this->pluginManager->enableLogging();
     }
     
+    /**
+     * Disables the logging
+     * 
+     * @return void
+     */
     public function disableLogging()
     {
-        $this->smConfig->disableLogging();
+        $this->pluginManager->disableLogging();
     }
 }

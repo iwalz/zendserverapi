@@ -49,9 +49,9 @@ class Studio extends BaseAPI
             $eventsGroupId = $this->getFirstEventGroupsIdByIssueId($issueId);
         }
 
-        $this->sm->get('request')->setAction($this->sm->get('studioStartDebug')->setArgs($eventsGroupId, $noRemote, $overrideHost));
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('studioStartDebug')->setArgs($eventsGroupId, $noRemote, $overrideHost));
         
-        return $this->sm->get('request')->send();
+        return $this->pluginManager->get('request')->send();
     }
 
     /**
@@ -73,9 +73,9 @@ class Studio extends BaseAPI
             $eventsGroupId = $this->getFirstEventGroupsIdByIssueId($issueId);
         }
 
-        $this->sm->get('request')->setAction($this->sm->get('studioStartProfile')->setArgs($eventsGroupId, $overrideHost));
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('studioStartProfile')->setArgs($eventsGroupId, $overrideHost));
         
-        return $this->sm->get('request')->send();
+        return $this->pluginManager->get('request')->send();
     }
 
 }

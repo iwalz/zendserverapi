@@ -36,14 +36,17 @@ class ClusterEnableServer extends Method
     private $serverId = null;
 
     /**
-     * Constructor of ClusterEnableServer method
+     * Set arguments for ClusterEnableServer
      *
      * @param int $serverId
      */
-    public function __construct($serverId)
+    public function setArgs($serverId)
     {
         $this->serverId = $serverId;
-        parent::__construct();
+        
+        $this->configure();
+        
+        return $this;
     }
 
     /**

@@ -57,9 +57,9 @@ class Configuration extends BaseAPI
         else
             $this->exportDirectory = getcwd();
 
-        $this->request->setAction($this->apiFactory->factory('configurationExport', $this->exportDirectory, $fileName));
-
-        return $this->request->send();
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('configurationExport')->setArgs($this->exportDirectory, $fileName));
+        
+        return $this->pluginManager->get('request')->send();
     }
 
     /**
@@ -75,9 +75,9 @@ class Configuration extends BaseAPI
         if($importFile !== null)
             $this->importFile = $importFile;
 
-        $this->request->setAction($this->apiFactory->factory('configurationImport', $this->importFile));
-
-        return $this->request->send();
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('configurationImport')->setArgs($this->importFile));
+        
+        return $this->pluginManager->get('request')->send();
     }
 
     /**

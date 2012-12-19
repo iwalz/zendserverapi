@@ -23,44 +23,34 @@ namespace ZendService\ZendServerAPI;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class BaseAPI
+class BaseAPI implements PluginInterface
 {
-    /**
-     * Request for the methods
-     * @var Request
-     */
-    protected $request = null;
-
-    /**
-     * Api Factory to fetch Method's from
-     * @var Factories\CommandFactory
-     */
-    protected $apiFactory = null;
-
     /**
      * The 'server' name - key of the config
      * @var string
      */
     protected $name = null;
-
+    
+    /**
+     * The plugin manager
+     * @var \ZendService\ZendServerAPI\PluginManager
+     */
+    protected $pluginManager = null;
+    
     /**
      * Base constructor for all API-method implementations
      *
      * @param string  $name    <p>Name of the config</p>
-     * @param Request $request <p>Request for internal usage</p>
      */
-    public function __construct($name = null, Request $request = null)
+    public function __construct($name = null)
     {
-        if ($request !== null) {
-            $this->request = $request;
-        } else {
-            $this->request = Startup::getRequest($name);
+        $smConfig = new ServiceManagerConfig();
+        $this->pluginManager = new PluginManager($name, $smConfig);
+        
+        if($name !== null) {
+            $this->pluginManager->setName($name);
+            $this->name = $name;
         }
-        $this->name = $name;
-
-        $webApiVersionFactory = new Factories\WebApiVersionFactory();
-        $webApiVersionFactory->setConfig($this->request->getConfig());
-        $this->apiFactory = $webApiVersionFactory->getCommandFactory();
     }
 
     /**
@@ -70,7 +60,7 @@ class BaseAPI
      */
     public function getRequest()
     {
-        return $this->request;
+        return $this->pluginManager->get("request");
     }
 
     /**
@@ -81,7 +71,7 @@ class BaseAPI
      */
     public function setRequest(Request $request)
     {
-        $this->request = $request;
+        $this->pluginManager->setRequest($request);
     }
 
     /**
@@ -92,7 +82,18 @@ class BaseAPI
      */
     public function setClient(\Zend\Http\Client $client)
     {
-        $this->request->setClient($client);
+        $this->pluginManager->get("request")->setClient($client);
+    }
+    
+    
+    /**
+     * Get the plugin manager
+     * 
+     * @return \Zend\ServiceManager\PluginManager
+     */
+    public function getPluginManager ()
+    {
+        return $this->pluginManager;
     }
 
     /**
@@ -102,20 +103,20 @@ class BaseAPI
      */
     public function canConnect()
     {
-        $previousAction = $this->request->getAction();
-        $action = new  \ZendService\ZendServerAPI\Method\GetSystemInfo();
-        $this->request->setAction($action);
+        $previousAction = $this->pluginManager->get("request")->getAction();
+        $action = $this->pluginManager->get("getSystemInfo");
+        $this->pluginManager->get("request")->setAction($action);
         try {
-            $response = $this->request->send();
+            $response = $this->pluginManager->get("request")->send();
         } catch ( \Exception $e) {
             if($previousAction !== null)
-                $this->request->setAction($previousAction);
+                $this->pluginManager->get("request")->setAction($previousAction);
 
             return false;
         }
 
         if($previousAction !== null)
-            $this->request->setAction($previousAction);
+            $this->pluginManager->get("request")->setAction($previousAction);
 
         return true;
     }
@@ -129,15 +130,43 @@ class BaseAPI
      */
     protected function getFirstEventGroupsIdByIssueId($issueId)
     {
-        $this->request->setAction($this->apiFactory->factory('monitorGetIssuesDetails', $issueId));
-        $issuesDetail = $this->request->send();
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('monitorGetIssuesDetails')->setArgs($issueId));
+        $issuesDetail = $this->pluginManager->get("request")->send();
 
         $eventsGroups = $issuesDetail->getEventsGroups();
         $eventsGroupId = $eventsGroups[0]->getEventsGroupId();
 
-        // Reset request
-        $this->request = Startup::getRequest($this->name);
-
         return $eventsGroupId;
+    }
+
+    /**
+     * Set the config file. Proxy to the pluginmanager for initialization
+     * 
+     * @param string $configFile
+     * @return void
+     */
+    public function setConfigFile($configFile)
+    {
+        $this->pluginManager->setConfigFile($configFile);
+    }
+    
+    /**
+     * Enables the logging
+     * 
+     * @return void
+     */
+    public function enableLogging()
+    {
+        $this->pluginManager->enableLogging();
+    }
+    
+    /**
+     * Disables the logging
+     * 
+     * @return void
+     */
+    public function disableLogging()
+    {
+        $this->pluginManager->disableLogging();
     }
 }

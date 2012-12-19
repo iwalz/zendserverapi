@@ -22,7 +22,7 @@ namespace ZendService\ZendServerAPI;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class Config
+class Config implements PluginInterface
 {
     /**
      * Host for the server connection
@@ -59,6 +59,11 @@ class Config
      * @var string
      */
     protected $protocol = null;
+    /**
+     * Disable the logging
+     * @var bool
+     */
+    protected $disableLogging = null;
 
     /**
      * Set the API Version
@@ -78,6 +83,26 @@ class Config
     public function getApiVersion()
     {
         return $this->apiVersion;
+    }
+    
+    /**
+     * Get the logging state
+     * 
+     * @return boolean
+     */
+    public function getDisableLogging()
+    {
+        return $this->disableLogging;
+    }
+    
+    /**
+     * Enables/Disables logging
+     * 
+     * @param boolean $disableLogging
+     */
+    public function setDisableLogging($disableLogging)
+    {
+        $this->disableLogging = $disableLogging;
     }
 
     /**

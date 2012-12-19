@@ -61,7 +61,7 @@ class CodetracingList extends Method
     protected $direction = null;
 
     /**
-     * Constructor for CodetracingList method
+     * Set arguments for CodetracingList 
      *
      * @param array  $applicationIds Application ID
      * @param int    $limit          Limit to retrieve
@@ -69,15 +69,17 @@ class CodetracingList extends Method
      * @param string $orderBy        Column to sort
      * @param string $direction      ASC or DESC
      */
-    public function __construct($applicationIds = array(), $limit = null, $offset = null, $orderBy = null, $direction = null)
+    public function setArgs($applicationIds = array(), $limit = null, $offset = null, $orderBy = null, $direction = null)
     {
-        parent::__construct();
-
+        $this->configure();
+        
         $this->applicationIds = $applicationIds;
         $this->limit = $limit;
         $this->offset = $offset;
         $this->orderBy = $orderBy;
         $this->direction = $direction;
+        
+        return $this;
     }
 
     /**

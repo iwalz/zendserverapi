@@ -43,19 +43,21 @@ class CodetracingDownloadTraceFile extends Method
     protected $exportDirectory = null;
 
     /**
-     * Constructor for CodetracingDownloadTraceFile
+     * Set arguments for CodetracingDownloadTraceFile
      *
      * @param string $traceFile       Trace file identifier
      * @param string $fileName        Filename where to export data to
      * @param string $exportDirectory Directory where to export file to
      */
-    public function __construct($traceFile, $fileName = null, $exportDirectory = null)
+    public function setArgs($traceFile, $fileName = null, $exportDirectory = null)
     {
-        parent::__construct();
-
+        $this->configure();
+        
         $this->traceFile = $traceFile;
         $this->setExportDirectory($exportDirectory);
         $this->setFileName($fileName);
+        
+        return $this;
     }
 
     /**

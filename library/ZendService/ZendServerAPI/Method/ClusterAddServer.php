@@ -52,7 +52,7 @@ class ClusterAddServer extends Method
     private $doRestart = null;
 
     /**
-     * Constructor of method ClusterAddServer
+     * Set arguments for ClusterAddServer
      *
      * @param string  $serverName        Name of server to add
      * @param string  $serverUrl         Url of server e.g. http://192.168.1.5:10081/ZendServer
@@ -60,14 +60,17 @@ class ClusterAddServer extends Method
      * @param boolean $propagateSettings Propagate this servers config to the cluster
      * @param boolean $doRestart         Automatically restart after config changes during the add
      */
-    public function __construct($serverName, $serverUrl, $guiPassword, $propagateSettings = false, $doRestart = false)
+    public function setArgs($serverName, $serverUrl, $guiPassword, $propagateSettings = false, $doRestart = false)
     {
         $this->serverName = $serverName;
         $this->serverUrl = $serverUrl;
         $this->guiPassword = $guiPassword;
         $this->propagateSettings = $propagateSettings;
         $this->doRestart = $doRestart;
-        parent::__construct();
+        
+        $this->configure();
+        
+        return $this;
     }
 
     /**

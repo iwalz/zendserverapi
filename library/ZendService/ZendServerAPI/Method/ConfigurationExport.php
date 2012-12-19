@@ -32,15 +32,17 @@ class ConfigurationExport extends Method
      * @param string $exportDirectory The directory where to export the files
      * @param string $fileName        The fileName where to export to
      */
-    public function __construct($exportDirectory = null, $fileName = null)
+    public function setArgs($exportDirectory = null, $fileName = null)
     {
-        parent::__construct();
+        $this->configure();
 
         if($exportDirectory !== null)
             $this->setExportDirectory($exportDirectory);
 
         if($fileName !== null)
             $this->setFileName($fileName);
+        
+        return $this;
     }
 
     /**

@@ -38,14 +38,17 @@ class ApplicationRemove extends Method
     private $applicationId = null;
 
     /**
-     * Constructor for ApplicationRemove method
+     * Set arguments for ApplicationRemove
      *
      * @param int $applicationId ApplicationId to remove
      */
-    public function __construct($applicationId)
+    public function setArgs($applicationId)
     {
         $this->applicationId = $applicationId;
-        parent::__construct();
+        
+        $this->configure();
+        
+        return $this;
     }
 
     /**

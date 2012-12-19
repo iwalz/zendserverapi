@@ -33,16 +33,18 @@ class ConfigurationImport extends Method
     private $file = null;
 
     /**
-     * Constructor for ConfigurationImport
+     * Set arguments for ConfigurationImport
      *
      * @param string $file The file to import
      */
-    public function __construct($file = null)
+    public function setArgs($file = null)
     {
-        parent::__construct();
+        $this->configure();
 
         if($file !== null)
             $this->file = $file;
+        
+        return $this;
     }
 
     /**

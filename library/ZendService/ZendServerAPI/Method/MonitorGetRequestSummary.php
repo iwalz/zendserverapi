@@ -34,14 +34,17 @@ class MonitorGetRequestSummary extends Method
     private $requestUid = null;
 
     /**
-     * Constructor of method ApplicationGetStatus
+     * Set arguments for ApplicationGetStatus
      *
      * @param array Applications to get status for
      */
-    public function __construct($requestUid)
+    public function setArgs($requestUid)
     {
         $this->requestUid = $requestUid;
-        parent::__construct();
+
+        $this->configure();
+        
+        return $this;
     }
 
     /**

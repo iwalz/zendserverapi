@@ -10,6 +10,10 @@
 
 namespace ZendService\ZendServerAPI\Factories;
 
+use Zend\ServiceManager\AbstractFactoryInterface,
+    Zend\ServiceManager\ServiceLocatorInterface;
+use ZendService\ZendServerAPI\PluginInterface;
+
 /**
  * A factory, that retrieves commands from the webapi version 1.2.
  * Used for the Zend Server version 5.6. Can also handle the commands from
@@ -22,8 +26,40 @@ namespace ZendService\ZendServerAPI\Factories;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class ApiVersion12CommandFactory extends ApiVersion11CommandFactory
+class ApiVersion12CommandFactory implements CommandFactory, AbstractFactoryInterface, PluginInterface
 {
+    /**
+     * Internal array with the available commands
+     * @var array
+     */
+    private $availableCommands = null;
+    
+    /**
+     * Constructor. Set's internal default values
+     *
+     * @return ApiVersion12CommandFactory
+     */
+    public function __construct()
+    {
+        $this->availableCommands = array(
+            'codetracingDisable',
+            'codetracingEnable',
+            'codetracingIsEnabled',
+            'codetracingCreate',
+            'codetracingDelete',
+            'codetracingList',
+            'codetracingDownloadTraceFile',
+            'monitorGetRequestSummary',
+            'monitorGetIssuesListByPredefinedFilter',
+            'monitorGetIssuesDetails',
+            'monitorGetEventGroupDetails',
+            'monitorChangeIssueStatus',
+            'monitorExportIssueByEventsGroup',
+            'studioStartDebug',
+            'studioStartProfile'
+        );
+    }
+    
     /**
      * Retrieves the command object and throws an error if
      * the command is not supported via this factory (and the Zend Server/webapi version).
@@ -56,11 +92,37 @@ class ApiVersion12CommandFactory extends ApiVersion11CommandFactory
             case 'studioStartProfile':
                 $reflect  = new \ReflectionClass("\\ZendService\\ZendServerAPI\\Method\\" . ucfirst($name));
 
-                return $reflect->newInstanceArgs($args);
+                return $reflect->newInstanceArgs();
                 break;
 
-            default:
-                return call_user_func_array('parent::factory', array_merge(array($name), $args));
         }
+    }
+    
+    /**
+     * Check if the factory can create an instance by the given name
+     * 
+     * @see \Zend\ServiceManager\AbstractFactoryInterface::canCreateServiceWithName()
+     * @param \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @param string $name The real name
+     * @param string $requestedName The requested name (alias)
+     */
+    public function canCreateServiceWithName (
+            ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    {
+        return in_array($requestedName, $this->availableCommands);
+    }
+    
+    /**
+     * Create an instance by the given name
+     *
+     * @see \Zend\ServiceManager\AbstractFactoryInterface::canCreateServiceWithName()
+     * @param \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @param string $name The real name
+     * @param string $requestedName The requested name (alias)
+     */
+    public function createServiceWithName (
+            ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    {
+        return self::factory($requestedName);
     }
 }

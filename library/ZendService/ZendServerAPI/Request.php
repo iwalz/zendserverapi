@@ -10,6 +10,11 @@
 
 namespace ZendService\ZendServerAPI;
 
+use Zend\Http\Headers;
+use Zend\Log\LoggerAwareInterface;
+use Zend\ServiceManager\ServiceManagerAwareInterface;
+use Zend\ServiceManager\ServiceManager;
+
 /**
  * <b>Request implementation</b>
  *
@@ -23,7 +28,7 @@ namespace ZendService\ZendServerAPI;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class Request
+class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, PluginInterface
 {
     /**
      * Method class for the request
@@ -55,6 +60,11 @@ class Request
      * @var \Zend\Http\Client\Adapter\AdapterInterface
      */
     private $adapter = null;
+    /**
+     * The service manager
+     * @var \Zend\ServiceManager\ServiceManager
+     */
+    private $sm = null;
 
     /**
      * Set method implementation object
@@ -72,9 +82,9 @@ class Request
     /**
      * Set request logger
      *
-     * @param \Zend\Log\Logger $logger
+     * @param \Zend\Log\LoggerInterface $logger
      */
-    public function setLogger(\Zend\Log\Logger $logger)
+    public function setLogger(\Zend\Log\LoggerInterface $logger)
     {
         $this->logger = $logger;
     }
@@ -126,6 +136,9 @@ class Request
      */
     public function getConfig()
     {
+        if($this->config === null)
+            $this->config = $this->sm->get("config");
+        
         return $this->config;
     }
 
@@ -196,90 +209,70 @@ class Request
      */
     public function send()
     {
-         if (!$this->client) {
-
-            $this->client = new \Zend\Http\Client();
-            if (
-                $this->config->getProxyHost() !== null &&
-                $this->adapter === null
-            ) {
-                $proxyAdapter = new \Zend\Http\Client\Adapter\Proxy();
-                $options = array(
-                    'proxy_host' => $this->config->getProxyHost(),
-                    'proxy_port' => $this->config->getProxyPort()        
-                );
-                $proxyAdapter->setOptions($options);
-                $this->client->setAdapter($proxyAdapter);
-            } 
-            
+        if (!$this->client) {
+            $this->client = $this->sm->get("http_client");
+             
             if($this->adapter !== null) {
                 $this->client->setAdapter($this->adapter);
             }
-
         } else {
             $this->client->resetParameters();
         }
         
-        $request = $this->client->getRequest();
-        $request->getUri()->setHost($this->config->getHost());
-        $request->getUri()->setPort($this->config->getPort());
-        $scheme = $this->config->getProtocol();
-        $request->getUri()->setScheme($scheme);
-        if($scheme == "https") {
-            $this->client->setOptions(array(
-                'adapter'      => 'Zend\Http\Client\Adapter\Socket',
-                'ssltransport' => 'tls',
-                'sslverify_peer' => false
-            ));
-        }
-        $request->getUri()->setPath($this->action->getLink());
-        $header = $request->getHeaders();
+        if($this->config === null)
+            $this->config = $this->sm->get("config");
 
-        if ($this->action->getMethod() === 'GET') {
-            $request->setMethod('GET');
-        } elseif ($this->action->getMethod() === 'POST') {
+        // prepare the request & set headers
+        $request = $this->client->getRequest();
+        $this->prepareRequest($request);
+        $header = $request->getHeaders();
+        $request->setHeaders($this->addHeaders($header));
+        $request->setMethod($this->action->getMethod());
+        
+        if ($this->action->getMethod() === 'POST') {
+            
             $request->setMethod('POST');
             $content = $this->action->getContent();
             $request->setContent($content);
-            $postFiles = $this->action->getPostFiles();
             
+            // prepare statement for file upload
+            $postFiles = $this->action->getPostFiles();
             if (count($postFiles) > 0) {
                 foreach ($postFiles as $field => $postValue) {
                     $fileName = $postValue['fileName'];
                     $contentType = $postValue['contentType'];
-                    $this->client->setFileUpload($fileName, $field, file_get_contents($fileName), $contentType);
+                    $this->client->setFileUpload(
+                            $fileName, $field, file_get_contents($fileName), $contentType
+                    );
                 }
                 $this->client->setEncType($this->action->getContentType(), 'bla');
                 
             } else {
                 $this->client->setEncType($this->action->getContentType());
             }
+            
+            $contentValues = $this->getAction()->getContentValues();
+            if (count($contentValues) > 0) {
+                $this->client->setParameterPost($contentValues);
+            }
+            
         }
-
-        $contentValues = $this->getAction()->getContentValues();
-        if (count($contentValues) > 0) {
-            $this->client->setParameterPost($contentValues);
-        }
-        
-        $header->addHeaderLine('Host', $this->config->getHost() . ':' . $this->config->getPort());
-        $header->addHeaderLine('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
-        $header->addHeaderLine('Accept', $this->action->getAcceptHeader());
-        $header->addHeaderLine('Date', $this->getDate());
-        $header->addHeaderLine('User-Agent', $this->userAgent);
-        $request->setHeaders($header);
         
         $this->getLogger()->debug($request);
         foreach ($this->getAction()->getContentValues() as $key => $value) {
-            $this->getLogger()->debug($key . ': ' . $value);
+            if(!is_array($value))
+                $this->getLogger()->debug($key . ': ' . $value);
         }
 
         try {
+            // Perform the request and validate the response
             $this->client->setRequest($request);
             $response = $this->client->send();
             $this->getLogger()->debug($response);
             $this->getAction()->setResponse($response);
             
             $statusCode = $response->getStatusCode();
+            
             if($statusCode >= 400 && $statusCode <= 499)
                 throw new Exception\ClientSide($response->getBody(), $statusCode);
             elseif($statusCode >= 500 && $statusCode <= 599)
@@ -303,6 +296,48 @@ class Request
         return $this->getAction()->parseResponse();
     }
 
+    /**
+     * Prepare the request
+     * 
+     * @param \Zend\Http\Request $request
+     * @return \Zend\Http\Request
+     */
+    private function prepareRequest(\Zend\Http\Request $request)
+    {
+        $request->getUri()->setHost($this->config->getHost());
+        $request->getUri()->setPort($this->config->getPort());
+        $scheme = $this->config->getProtocol();
+        $request->getUri()->setScheme($scheme);
+        if($scheme == "https") {
+            $this->client->setOptions(array(
+                    'adapter'      => 'Zend\Http\Client\Adapter\Socket',
+                    'ssltransport' => 'tls',
+                    'sslverify_peer' => false
+            ));
+        }
+        $request->getUri()->setScheme($this->config->getProtocol());
+        $request->getUri()->setPath($this->action->getLink());
+        
+        return $request;
+    }
+    
+    /**
+     * Set the headers 
+     * 
+     * @param \Zend\Http\Headers $header
+     * @return \Zend\Http\Headers
+     */
+    private function addHeaders(Headers $header)
+    {
+        $header->addHeaderLine('Host', $this->config->getHost() . ':' . $this->config->getPort());
+        $header->addHeaderLine('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
+        $header->addHeaderLine('Accept', $this->action->getAcceptHeader());
+        $header->addHeaderLine('Date', $this->getDate());
+        $header->addHeaderLine('User-Agent', $this->userAgent);
+        
+        return $header;
+    }
+    
     /**
      * Get a special formatted date string, needed by the server api
      *
@@ -330,5 +365,16 @@ class Request
                 $date;
 
         return hash_hmac('sha256', $data, $this->config->getApiKey()->getKey());
+    }
+    
+    /**
+     * Set the service manager
+     * 
+     * @param \Zend\ServiceManager\ServiceManager
+     * @return void
+     */
+    public function setServiceManager (ServiceManager $serviceManager)
+    {
+        $this->sm = $serviceManager;
     }
 }

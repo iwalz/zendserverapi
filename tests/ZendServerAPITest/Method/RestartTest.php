@@ -87,20 +87,23 @@ EOF;
 
     public function testLink()
     {
-        $action = new \ZendService\ZendServerAPI\Method\RestartPHP(self::getParameter());
+        $action = new \ZendService\ZendServerAPI\Method\RestartPHP();
+        $action->setArgs(self::getParameter());
     
         $this->assertEquals("/ZendServerManager/Api/restartPhp", $action->getLink());
     }
     
     public function testContent()
     {
-        $action = new \ZendService\ZendServerAPI\Method\RestartPHP(self::getParameter());
+        $action = new \ZendService\ZendServerAPI\Method\RestartPHP();
+        $action->setArgs(self::getParameter());
         $this->assertEquals("servers%5B0%5D=1&servers%5B1%5D=2&parallelRestart=FALSE", $action->getContent());
     }
     
     public function testContentWithParallelRestart()
     {
-        $action = new \ZendService\ZendServerAPI\Method\RestartPHP(self::getParameter(), true);
+        $action = new \ZendService\ZendServerAPI\Method\RestartPHP();
+        $action->setArgs(self::getParameter(), true);
         $this->assertEquals("servers%5B0%5D=1&servers%5B1%5D=2&parallelRestart=TRUE", $action->getContent());
     }
 }

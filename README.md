@@ -37,7 +37,7 @@ return array(
   "servers" => array (
     # Contains a valid default config
     "general" => array(
-      "version" => \ZendServerAPI\Version::ZS56,
+      "version" => \ZendService\ZendServerAPI\Version::ZS56,
       "apiName" => "api",
       "fullApiKey" => "bee698dde6a95de71932d65cb655c31fc4ea04c1fabaf6f0a1b852617eac32ab",
       "readApiKey" => "",
@@ -61,7 +61,7 @@ return array(
   "servers" => array (
     # Contains a valid default config
     "general" => array(
-      "version" => \ZendServerAPI\Version::ZS56,
+      "version" => \ZendService\ZendServerAPI\Version::ZS56,
       "apiName" => "api",
       "fullApiKey" => "bee698dde6a95de71932d65cb655c31fc4ea04c1fabaf6f0a1b852617eac32ab",
       "readApiKey" => "",
@@ -69,7 +69,7 @@ return array(
       "port" => "10081"
     ),
     "production" => array(
-      "version" => \ZendServerAPI\Version::ZSCM56,
+      "version" => \ZendService\ZendServerAPI\Version::ZSCM56,
       "apiName" => "admin",
       "fullApiKey" => "f49c7cd904b631ed1de43727a7c9ccca7324688482b19140a778d9b5020ca369",
       "readApiKey" => "",
@@ -77,7 +77,7 @@ return array(
       "port" => "10081"
     ),
     "stage" => array(
-      "version" => \ZendServerAPI\Version::ZSCM56,
+      "version" => \ZendService\ZendServerAPI\Version::ZSCM56,
       "apiName" => "stageenvironment",
       "fullApiKey" => "71ce992da55734b0ad408264e721ca8cabfef4dba158ebeca3653eb290a49c00",
       "readApiKey" => "",

@@ -65,9 +65,9 @@ class Deployment extends BaseAPI
      */
     public function applicationGetStatus (array $applicationIds = array())
     {
-        $this->request->setAction($this->apiFactory->factory('applicationGetStatus', $applicationIds));
-
-        return $this->request->send();
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('applicationGetStatus')->setArgs($applicationIds));
+        
+        return $this->pluginManager->get('request')->send();
     }
 
     /**
@@ -100,11 +100,11 @@ class Deployment extends BaseAPI
             $defaultServer = false, $userAppName = null, $ignoreFailures = false,
             $userParams = array())
     {
-        $this->request->setAction($this->apiFactory->factory('applicationDeploy', $file, $baseUrl,
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('applicationDeploy')->setArgs($file, $baseUrl,
                         $createVhost, $defaultServer, $userAppName,
                         $ignoreFailures, $userParams));
-
-        return $this->request->send();
+        
+        return $this->pluginManager->get('request')->send();
     }
 
     /**
@@ -131,9 +131,9 @@ class Deployment extends BaseAPI
     public function applicationUpdate ($appId, $package,
             $ignoreFailures = false, array $userParams = array())
     {
-        $this->request->setAction($this->apiFactory->factory('applicationUpdate', $appId, $package, $ignoreFailures, $userParams));
-
-        return $this->request->send();
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('applicationUpdate')->setArgs($appId, $package, $ignoreFailures, $userParams));
+        
+        return $this->pluginManager->get('request')->send();
     }
 
     /**
@@ -151,9 +151,9 @@ class Deployment extends BaseAPI
      */
     public function applicationRemove ($appId)
     {
-        $this->request->setAction($this->apiFactory->factory('applicationRemove', $appId));
-
-        return $this->request->send();
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('applicationRemove')->setArgs($appId));
+        
+        return $this->pluginManager->get('request')->send();
     }
 
     /**
@@ -169,9 +169,9 @@ class Deployment extends BaseAPI
      */
     public function applicationRollback ($appId)
     {
-        $this->request->setAction($this->apiFactory->factory('applicationRollback', $appId));
-
-        return $this->request->send();
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('applicationRollback')->setArgs($appId));
+        
+        return $this->pluginManager->get('request')->send();
     }
 
     /**
@@ -194,9 +194,9 @@ class Deployment extends BaseAPI
     public function applicationSynchronize ($appId, array $servers = array(),
             $ignoreFailures = false)
     {
-        $this->request->setAction($this->apiFactory->factory('applicationSynchronize', $appId, $servers, $ignoreFailures));
-
-        return $this->request->send();
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('applicationSynchronize')->setArgs($appId, $servers, $ignoreFailures));
+        
+        return $this->pluginManager->get('request')->send();
     }
 
     /**

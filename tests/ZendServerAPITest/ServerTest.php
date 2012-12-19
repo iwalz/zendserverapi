@@ -33,9 +33,10 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	    $server = new Server("general", $tmpRequest);
 	    $serverRequest = $server->getRequest();
 	    
-	    $request = Startup::getRequest();
+	    $server2 = new Server("example62");
+	    $request = $server->getRequest();
 	    
-	    $this->assertNotSame($serverRequest, $request);
+	    $this->assertSame($serverRequest, $request);
 	}
 	
 	public function testRequestObjectInDI()
@@ -147,6 +148,8 @@ class ServerTest extends \PHPUnit_Framework_TestCase {
 	    $clientStub->expects($this->once())->method('send')->will($this->returnValue($responseStub));
 	
 	    $server = new Server("example62");
+	    $sm = $server->getPluginManager();
+	    $sm->get("config"); // Lazy load config for factory init
 	    $server->setClient($clientStub);
 	    $this->assertEquals(RestartTest::getRestartPHP(), $server->restartPhp(RestartTest::getParameter()));
 	}

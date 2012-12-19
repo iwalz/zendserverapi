@@ -38,16 +38,19 @@ class ClusterReconfigureServer extends Method
     private $doRestart = null;
 
     /**
-     * Constructor for ClusterReconfigureServer method
+     * Set arguments for ClusterReconfigureServer 
      *
      * @param int $server ServerId to reconfigure
      * @param boolean restart server after action
      */
-    public function __construct($server, $doRestart = false)
+    public function setArgs($server, $doRestart = false)
     {
         $this->server = $server;
         $this->doRestart = $doRestart;
-        parent::__construct();
+        
+        $this->configure();
+        
+        return $this;
     }
 
     /**

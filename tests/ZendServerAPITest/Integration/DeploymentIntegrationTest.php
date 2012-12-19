@@ -177,19 +177,18 @@ class DeploymentIntegrationTest extends \ZendServerAPITest\Integration\BaseAPIIn
     {
         static::$mockDataProvider = array(
             array("applicationGetStatus", $this->getApplicationGetStatus(), array()),
-            array("applicationDeploy", $this->getApplicationDeploy(), array(
-                __DIR__.'/TestAssets/example1.zpk',
-                "http://test.com",
-                true,
-                false,
-                'Simple test app',
-                false,
-                array(
-                    'locale' => 'GMT',
-                    'db_host' => 'localhost'
-                )
-            )),
             array("applicationUpdate", $this->getApplicationUpdate(), array(122, __DIR__.'/TestAssets/example1-2.zpk')),
+            array("applicationDeploy", $this->getApplicationDeploy(), 
+                array(
+                    __DIR__.'/TestAssets/example1.zpk',
+                    "http://test.com",
+                    true,
+                    false,
+                    'Simple test app',
+                    false,
+                    array()
+                )
+            ),
             array("applicationRollback", $this->getApplicationRollback(), array(122)),
             array("applicationRemove", $this->getApplicationRemove(), array(122)),
             array("applicationSynchronize", $this->getApplicationSynchronize(), array(123))

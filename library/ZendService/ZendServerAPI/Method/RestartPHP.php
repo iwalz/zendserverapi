@@ -38,16 +38,19 @@ class RestartPHP extends Method
     private $parallelRestart = null;
 
     /**
-     * Constructor for RestartPhp method
+     * Sert argument for RestartPhp 
      *
      * @param array $servers         ServerIds to restart
      * @param bool  $parallelRestart Restart all at the same time
      */
-    public function __construct(array $servers = array(), $parallelRestart = false)
+    public function setArgs(array $servers = array(), $parallelRestart = false)
     {
         $this->servers = $servers;
         $this->parallelRestart = $parallelRestart;
-        parent::__construct();
+        
+        $this->configure();
+        
+        return $this;
     }
 
     /**

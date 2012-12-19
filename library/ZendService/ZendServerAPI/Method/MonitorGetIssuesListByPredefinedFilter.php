@@ -59,7 +59,7 @@ class MonitorGetIssuesListByPredefinedFilter extends Method
     protected $direction = null;
 
     /**
-     * Constructor of method MonitorGetIssuesListByPredefinedFilter
+     * Set arguments MonitorGetIssuesListByPredefinedFilter
      *
      * Retrieve a list of monitor issues according to a preset filter identifier.
      * The filter identifier is shared with the UI's predefined filters.
@@ -73,14 +73,17 @@ class MonitorGetIssuesListByPredefinedFilter extends Method
      * @param  string|null                                                              $direction Sorting direction: Ascending or Descending
      * @return \ZendService\ZendServerAPI\Method\MonitorGetIssuesListByPredefinedFilter
      */
-    public function __construct($filterId, $limit = null, $offset = null, $order = null, $direction = null)
+    public function setArgs($filterId, $limit = null, $offset = null, $order = null, $direction = null)
     {
         $this->filterId = $filterId;
         $this->limit = $limit;
         $this->offset = $offset;
         $this->order = $order;
         $this->direction = $direction;
-        parent::__construct();
+        
+        $this->configure();
+        
+        return $this;
     }
 
     /**

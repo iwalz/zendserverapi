@@ -54,22 +54,24 @@ class ApplicationUpdate extends Method
     protected $userParams = null;
 
     /**
-     * Method implementation of 'ApplicationUpdate' call
+     * Set arguments for 'ApplicationUpdate'
      *
      * @param int    $appId
      * @param string $appPackage
      * @param bool   $ignoreFailure
      * @param array  $userParams
      */
-    public function __construct ($appId, $appPackage,
+    public function setArgs ($appId, $appPackage,
             $ignoreFailure = false, array $userParams = array())
     {
         $this->appId = $appId;
         $this->appPackage = $appPackage;
         $this->ignoreFailures = $ignoreFailure;
         $this->userParams = $userParams;
-
-        parent::__construct();
+        
+        $this->configure();
+        
+        return $this;
     }
 
     /**

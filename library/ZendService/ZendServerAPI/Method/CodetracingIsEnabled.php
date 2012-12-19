@@ -27,11 +27,13 @@ namespace ZendService\ZendServerAPI\Method;
 class CodetracingIsEnabled extends Method
 {
     /**
-     * Constructor for CodetracingIsEnabled method
+     * Set arguments for CodetracingIsEnabled
      */
-    public function __construct()
+    public function setArgs()
     {
-        parent::__construct();
+        $this->configure();
+        
+        return $this;
     }
 
     /**

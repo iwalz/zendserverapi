@@ -1,12 +1,18 @@
 <?php
 
+use ZendService\ZendServerAPI\PluginManager;
+
+use ZendService\ZendServerAPI\Server;
+
+use ZendService\ZendServerAPI\ServiceManagerConfig;
+
 use \ZendService\ZendServerAPI\Startup;
 
 class ConfigValidatorTest extends PHPUnit_Framework_TestCase
 {
     public function testConfigValidatorCorrectSettings()
     {
-        $configValidator = new \ZendService\ZendServerAPI\ConfigValidator(Startup::getConfigPath());
+        $configValidator = new \ZendService\ZendServerAPI\ConfigValidator(PluginManager::getConfigFile());
         $this->assertNotEquals($configValidator->getConfig("example62"), array());
         
         $this->assertEquals($configValidator->getConfig("example62"), 
@@ -28,7 +34,7 @@ class ConfigValidatorTest extends PHPUnit_Framework_TestCase
      */
     public function testInvalidExceptionWithMalformedApiKey()
     {
-        $configValidator = new \ZendService\ZendServerAPI\ConfigValidator(Startup::getConfigPath());
+        $configValidator = new \ZendService\ZendServerAPI\ConfigValidator(PluginManager::getConfigFile());
         $configValidator->getConfig("example92");
     }
     
@@ -38,7 +44,7 @@ class ConfigValidatorTest extends PHPUnit_Framework_TestCase
      */
     public function testInvalidExceptionWithTooShortApiKey()
     {
-        $configValidator = new \ZendService\ZendServerAPI\ConfigValidator(Startup::getConfigPath());
+        $configValidator = new \ZendService\ZendServerAPI\ConfigValidator(PluginManager::getConfigFile());
         $configValidator->getConfig("example72");
     }
     
@@ -48,13 +54,13 @@ class ConfigValidatorTest extends PHPUnit_Framework_TestCase
      */
     public function testInvalidExceptionWithMissingHost()
     {
-        $configValidator = new \ZendService\ZendServerAPI\ConfigValidator(Startup::getConfigPath());
+        $configValidator = new \ZendService\ZendServerAPI\ConfigValidator(PluginManager::getConfigFile());
         $configValidator->getConfig("example102");
     }
     
     public function testGetSettings()
     {
-        $configValidator = new \ZendService\ZendServerAPI\ConfigValidator(Startup::getConfigPath());
+        $configValidator = new \ZendService\ZendServerAPI\ConfigValidator(PluginManager::getConfigFile());
         $settings = $configValidator->getSettings();
         
         $this->assertEquals(array('loglevel' => \Zend\Log\Logger::DEBUG), $settings);
@@ -86,7 +92,8 @@ class ConfigValidatorTest extends PHPUnit_Framework_TestCase
      */
     public function testConfigWithErrorInProtocol()
     {
-        $request = \ZendService\ZendServerAPI\Startup::getRequest("protocolError");
+        $configValidator = new \ZendService\ZendServerAPI\ConfigValidator(PluginManager::getConfigFile());
+        $configValidator->getConfig("protocolError");
     }
     
     public function testProtocolFromDefaultHttpsPort()
@@ -104,14 +111,13 @@ class ConfigValidatorTest extends PHPUnit_Framework_TestCase
     
     public function testLoglevelFilterFromConfigToRequest()
     {
-        $request = Startup::getRequest("example62");
+        $server = new Server("example62");
+        $request = $server->getRequest();
         $logger = $request->getLogger();
         $this->assertInstanceOf('\Zend\Log\Logger', $logger);
         
-        $testFilter = new \Zend\Log\Filter\Priority(\Zend\Log\Logger::DEBUG);
         $testLogger = new \Zend\Log\Logger();
         $testLogWriter = new \Zend\Log\Writer\Mock();
-        $testLogWriter->addFilter($testFilter);
         $testLogger->addWriter($testLogWriter);
         
         $this->assertEquals($testLogger, $logger);
@@ -123,7 +129,8 @@ class ConfigValidatorTest extends PHPUnit_Framework_TestCase
     
     public function testLoglevelNegativesFromConfig()
     {
-        $request = Startup::getRequest("example62");
+        $server = new Server("example62");
+        $request = $server->getRequest();
         $logger = $request->getLogger();
         $this->assertInstanceOf('\Zend\Log\Logger', $logger);
         

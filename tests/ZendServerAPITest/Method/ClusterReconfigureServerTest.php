@@ -35,7 +35,8 @@ EOF;
     
     public function testParseResult()
     {
-        $action = new ClusterReconfigureServer(self::getParameter());
+        $action = new ClusterReconfigureServer();
+        $action->setArgs(self::getParameter());
         $clusterReconfigureServer = $action->parseResponse(self::$ClusterReconfigureServerResponse);
         
         $testClusterReconfigureServer = self::getClusterReconfigureServer();
@@ -65,19 +66,22 @@ EOF;
     
     public function testLink()
     {
-        $action = new ClusterReconfigureServer(self::getParameter());
+        $action = new ClusterReconfigureServer();
+        $action->setArgs(self::getParameter());
         $this->assertEquals('/ZendServerManager/Api/clusterReconfigureServer', $action->getLink());
     }
     
     public function testContent()
     {
-        $action = new ClusterReconfigureServer(self::getParameter());
+        $action = new ClusterReconfigureServer();
+        $action->setArgs(self::getParameter());
         $this->assertEquals('serverId=5&doRestart=FALSE', $action->getContent());
     }
     
     public function testContentWithDoRestart()
     {
-        $action = new ClusterReconfigureServer(self::getParameter(), true);
+        $action = new ClusterReconfigureServer();
+        $action->setArgs(self::getParameter(), true);
         $this->assertEquals('serverId=5&doRestart=TRUE', $action->getContent());
     }
 }

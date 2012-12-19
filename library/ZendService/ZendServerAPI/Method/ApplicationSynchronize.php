@@ -47,7 +47,7 @@ class ApplicationSynchronize extends Method
     protected $ignoreFailures = null;
 
     /**
-     * Constructor for ApplicationRemove method
+     * Set arguments for ApplicationRemove
      *
      * @param int   $applicationId ApplicationId to remove
      * @param array $servers
@@ -60,12 +60,15 @@ class ApplicationSynchronize extends Method
      * operation will fail in any case. The default value is FALSE,
      * meaning any failure will return an error.</p>
      */
-    public function __construct($applicationId, array $servers = array(), $ignoreFailures = false)
+    public function setArgs($applicationId, array $servers = array(), $ignoreFailures = false)
     {
         $this->applicationId = $applicationId;
         $this->servers = $servers;
         $this->ignoreFailures = $ignoreFailures;
-        parent::__construct();
+        
+        $this->configure();
+        
+        return $this;
     }
 
     /**

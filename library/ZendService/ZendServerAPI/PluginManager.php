@@ -179,6 +179,13 @@ class PluginManager extends AbstractPluginManager
                 );
             }
             
+            // Add Web API 1.3 Factory if available
+            if($configNumber >= 13) {
+                $serviceManager->addAbstractFactory(
+                        '\ZendService\ZendServerAPI\Factories\ApiVersion13CommandFactory', true
+                );
+            }
+            
     
             return $config;
         });

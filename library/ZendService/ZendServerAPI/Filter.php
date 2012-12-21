@@ -63,4 +63,19 @@ class Filter extends BaseAPI
     
         return $this->pluginManager->get('request')->send();
     }
+    
+    /**
+     * <b>The filterDelete Method </b>
+     *
+     * <pre>Deletes a filter.</pre>
+     *
+     * @param string $name       <p>Name of filter.</p>
+     * @return \ZendService\ZendServerAPI\DataTypes\DebugRequest
+     */
+    public function filterDelete($name)
+    {
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('filterDelete')->setArgs($name));
+    
+        return $this->pluginManager->get('request')->send();
+    }
 }

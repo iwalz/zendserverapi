@@ -11,9 +11,9 @@
 namespace ZendService\ZendServerAPI\Method;
 
 /**
- * <b>The filterSave Method</b>
+ * <b>The filterDelete Method</b>
  *
- * <pre>Save a filter.</pre>
+ * <pre>Delete a filter.</pre>
  *
  * @license        http://framework.zend.com/license/new-bsd New BSD License
  * @link           http://github.com/zendframework/zf2 for the canonical source repository
@@ -22,44 +22,23 @@ namespace ZendService\ZendServerAPI\Method;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class FilterSave extends Method
+class FilterDelete extends Method
 {
-    /**
-     * The type to filter (issue, job)
-     * @var string
-     */
-    protected $type = null;
     /**
      * Name of filter.
      * @var string
      */
     protected $name = null;
-    /**
-     * ID of a filter.
-     * @var int
-     */
-    protected $id = null;
-    /**
-     * Array of parameters to be saved.
-     * @var array
-     */
-    protected $data = array();
     
     /**
      * Set the arguments and configures the method
      * 
-     * @var string $type     <p>The type of the filter (job, issue)</p>
-     * @var string $name     <p>The name of the filter</p>
-     * @var int $id          <p>The ID of the filter</p>
-     * @var array $data      <p>Array of parameters to be saved</p>
+     * @var string $name
      * @return \ZendService\ZendServerAPI\Method\FilterGetByType
      */
-    public function setArgs($type, $name, $id = null, $data = array())
+    public function setArgs($name)
     {
-        $this->type = $type;
         $this->name = $name;
-        $this->id = $id;
-        $this->data = $data;
         $this->configure();
         
         return $this;
@@ -73,13 +52,13 @@ class FilterSave extends Method
     public function configure()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/filterSave');
+        $this->setFunctionPath('/ZendServer/Api/filterDelete');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
     
     /**
      * Returns the correct accept header for a specific version
-     *
+     * 
      * @see \ZendService\ZendServerAPI\Method\Method::getAcceptHeader()
      * @return string
      */
@@ -95,15 +74,8 @@ class FilterSave extends Method
      */
     public function getContent()
     {
-        $content = "type=" . $this->type;
-        $content .= "&name=" . $this->name;
+        $content = "name=" . $this->name;
         
-        if($this->data !== array())
-            $content .= "&data=" . json_encode($this->data);
-        
-        if($this->id !== null)
-            $content .= "&id=" . $this->id;
-    
         return $content;
     }
 }

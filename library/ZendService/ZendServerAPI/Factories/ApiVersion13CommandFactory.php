@@ -43,7 +43,8 @@ class ApiVersion13CommandFactory implements CommandFactory, AbstractFactoryInter
     {
         $this->availableCommands = array(
             'filterGetByType',
-            'filterSave'
+            'filterSave',
+            'filterDelete'
         );
     }
     

@@ -34,27 +34,30 @@ class Issue extends Adapter
             $xml = $this->getResponse()->getBody();
 
         $xml = simplexml_load_string($xml);
+        $this->setContent($xml);
+        
+        $xmlIssue = $this->getElement("//issue");
 
         $issue = new  \ZendService\ZendServerAPI\DataTypes\Issue();
-        $issue->setId((string) $xml->responseData->issue->id);
-        $issue->setRule((string) $xml->responseData->issue->rule);
-        $issue->setCount((string) $xml->responseData->issue->count);
-        $issue->setLastOccurance((string) $xml->responseData->issue->lastOccurance);
-        $issue->setSeverity((string) $xml->responseData->issue->severity);
-        $issue->setStatus((string) $xml->responseData->issue->status);
+        $issue->setId((string) $xmlIssue->id);
+        $issue->setRule((string) $xmlIssue->rule);
+        $issue->setCount((string) $xmlIssue->count);
+        $issue->setLastOccurance((string) $xmlIssue->lastOccurance);
+        $issue->setSeverity((string) $xmlIssue->severity);
+        $issue->setStatus((string) $xmlIssue->status);
 
         $generalDetails = new  \ZendService\ZendServerAPI\DataTypes\GeneralDetails();
-        $generalDetails->setUrl((string) $xml->responseData->issue->generalDetails->url);
-        $generalDetails->setSourceFile((string) $xml->responseData->issue->generalDetails->sourceFile);
-        $generalDetails->setSourceLine((string) $xml->responseData->issue->generalDetails->sourceLine);
-        $generalDetails->setFunction((string) $xml->responseData->issue->generalDetails->function);
-        $generalDetails->setAggregationHint((string) $xml->responseData->issue->generalDetails->aggregationHint);
-        $generalDetails->setErrorString((string) $xml->responseData->issue->generalDetails->errorString);
-        $generalDetails->setErrorType((string) $xml->responseData->issue->generalDetails->errorType);
+        $generalDetails->setUrl((string) $xmlIssue->generalDetails->url);
+        $generalDetails->setSourceFile((string) $xmlIssue->generalDetails->sourceFile);
+        $generalDetails->setSourceLine((string) $xmlIssue->generalDetails->sourceLine);
+        $generalDetails->setFunction((string) $xmlIssue->generalDetails->function);
+        $generalDetails->setAggregationHint((string) $xmlIssue->generalDetails->aggregationHint);
+        $generalDetails->setErrorString((string) $xmlIssue->generalDetails->errorString);
+        $generalDetails->setErrorType((string) $xmlIssue->generalDetails->errorType);
         $issue->setGeneralDetails($generalDetails);
 
-        if (isset($xml->responseData->issue->routeDetails->routeDetail)) {
-            foreach ($xml->responseData->issue->routeDetails->routeDetail as $xmlRouteDetail) {
+        if (isset($xmlIssue->routeDetails->routeDetail)) {
+            foreach ($xmlIssue->routeDetails->routeDetail as $xmlRouteDetail) {
                 $routeDetails = new  \ZendService\ZendServerAPI\DataTypes\RouteDetail();
                 $routeDetails->setKey($xmlRouteDetail->key);
                 $routeDetails->setValue($xmlRouteDetail->value);

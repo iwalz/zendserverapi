@@ -34,9 +34,12 @@ class IssueList extends Adapter
             $xml = $this->getResponse()->getBody();
 
         $xml = simplexml_load_string($xml);
+        $this->setContent($xml);
+        
+        $xmlIssueList = $this->getElements("//issue");
 
         $issueList = new  \ZendService\ZendServerAPI\DataTypes\IssueList();
-        foreach ($xml->responseData->issues->issue as $xmlIssue) {
+        foreach ($xmlIssueList as $xmlIssue) {
             $issue = new  \ZendService\ZendServerAPI\DataTypes\Issue();
             $issue->setId((string) $xmlIssue->id);
             $issue->setRule((string) $xmlIssue->rule);

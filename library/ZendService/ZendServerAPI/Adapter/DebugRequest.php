@@ -34,9 +34,13 @@ class DebugRequest extends Adapter
             $xml = $this->getResponse()->getBody();
 
         $xml = simplexml_load_string($xml);
+        $this->setContent($xml);
+        
+        $xmlDebugRequest = $this->getElement("//debugRequest");
+        
         $debugRequest = new  \ZendService\ZendServerAPI\DataTypes\DebugRequest();
-        $debugRequest->setSuccess((string) $xml->responseData->debugRequest->success);
-        $debugRequest->setMessage((string) $xml->responseData->debugRequest->message);
+        $debugRequest->setSuccess((string) $xmlDebugRequest->success);
+        $debugRequest->setMessage((string) $xmlDebugRequest->message);
 
         return $debugRequest;
     }

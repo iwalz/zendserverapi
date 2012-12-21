@@ -38,31 +38,35 @@ class SystemInfo extends Adapter
             $xml = $this->getResponse()->getBody();
 
         $xml = simplexml_load_string($xml);
+        $this->setContent($xml);
+        
+        $xmlSystemInfo = $this->getElement("//systemInfo");
+        
         $systemInfo = new SystemInfoData();
-        $systemInfo->setStatus((string) $xml->responseData->systemInfo->status);
-        $systemInfo->setEdition((string) $xml->responseData->systemInfo->edition);
-        $systemInfo->setZendServerVersion((string) $xml->responseData->systemInfo->zendServerVersion);
-        $systemInfo->setSupportedApiVersions((string) trim($xml->responseData->systemInfo->supportedApiVersions));
-        $systemInfo->setPhpVersion((string) $xml->responseData->systemInfo->phpVersion);
-        $systemInfo->setOperatingSystem((string) $xml->responseData->systemInfo->operatingSystem);
-        $systemInfo->setDeploymentVersion((string) $xml->responseData->systemInfo->deploymentVersion);
+        $systemInfo->setStatus((string) $xmlSystemInfo->status);
+        $systemInfo->setEdition((string) $xmlSystemInfo->edition);
+        $systemInfo->setZendServerVersion((string) $xmlSystemInfo->zendServerVersion);
+        $systemInfo->setSupportedApiVersions((string) trim($xmlSystemInfo->supportedApiVersions));
+        $systemInfo->setPhpVersion((string) $xmlSystemInfo->phpVersion);
+        $systemInfo->setOperatingSystem((string) $xmlSystemInfo->operatingSystem);
+        $systemInfo->setDeploymentVersion((string) $xmlSystemInfo->deploymentVersion);
 
         $serverLicenseInfo = new LicenseInfo();
-        $serverLicenseInfo->setStatus((string) $xml->responseData->systemInfo->serverLicenseInfo->status);
-        $serverLicenseInfo->setOrderNumber((string) $xml->responseData->systemInfo->serverLicenseInfo->orderNumber);
-        $serverLicenseInfo->setValidUntil((string) $xml->responseData->systemInfo->serverLicenseInfo->validUntil);
-        $serverLicenseInfo->setServerLimit((string) $xml->responseData->systemInfo->serverLicenseInfo->serverLimit);
+        $serverLicenseInfo->setStatus((string) $xmlSystemInfo->serverLicenseInfo->status);
+        $serverLicenseInfo->setOrderNumber((string) $xmlSystemInfo->serverLicenseInfo->orderNumber);
+        $serverLicenseInfo->setValidUntil((string) $xmlSystemInfo->serverLicenseInfo->validUntil);
+        $serverLicenseInfo->setServerLimit((string) $xmlSystemInfo->serverLicenseInfo->serverLimit);
         $systemInfo->setServerLicenseInfo($serverLicenseInfo);
 
         $managerLicenseInfo = new LicenseInfo();
-        $managerLicenseInfo->setStatus((string) $xml->responseData->systemInfo->managerLicenseInfo->status);
-        $managerLicenseInfo->setOrderNumber((string) $xml->responseData->systemInfo->managerLicenseInfo->orderNumber);
-        $managerLicenseInfo->setValidUntil((string) $xml->responseData->systemInfo->managerLicenseInfo->validUntil);
-        $managerLicenseInfo->setServerLimit((string) $xml->responseData->systemInfo->managerLicenseInfo->serverLimit);
+        $managerLicenseInfo->setStatus((string) $xmlSystemInfo->managerLicenseInfo->status);
+        $managerLicenseInfo->setOrderNumber((string) $xmlSystemInfo->managerLicenseInfo->orderNumber);
+        $managerLicenseInfo->setValidUntil((string) $xmlSystemInfo->managerLicenseInfo->validUntil);
+        $managerLicenseInfo->setServerLimit((string) $xmlSystemInfo->managerLicenseInfo->serverLimit);
         $systemInfo->setManagerLicenseInfo($managerLicenseInfo);
 
         $messageListAdapter = new  \ZendService\ZendServerAPI\Adapter\MessageList();
-        $messageList = $messageListAdapter->parse((string) $xml->responseData->messageList);
+        $messageList = $messageListAdapter->parse((string) $xmlSystemInfo->messageList);
         $systemInfo->setMessageList($messageList);
 
         return $systemInfo;

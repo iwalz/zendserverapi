@@ -34,68 +34,71 @@ class EventsGroupDetails extends Adapter
             $xml = $this->getResponse()->getBody();
 
         $xml = simplexml_load_string($xml);
+        $this->setContent($xml);
+        
+        $xmlEventsGroupDetails = $this->getElement("//eventsGroupDetails");
 
         $eventsGroupDetails = new  \ZendService\ZendServerAPI\DataTypes\EventsGroupDetails();
-        $eventsGroupDetails->setIssueId((string) $xml->responseData->eventsGroupDetails->issueId);
+        $eventsGroupDetails->setIssueId((string) $xmlEventsGroupDetails->issueId);
 
         $eventsGroup = new  \ZendService\ZendServerAPI\DataTypes\EventsGroup();
-        $eventsGroup->setEventsGroupId((string) $xml->responseData->eventsGroupDetails->eventsGroup->eventsGroupId);
-        $eventsGroup->setEventsCount((string) $xml->responseData->eventsGroupDetails->eventsGroup->eventsCount);
-        $eventsGroup->setStartTime((string) $xml->responseData->eventsGroupDetails->eventsGroup->startTime);
-        $eventsGroup->setServerId((string) $xml->responseData->eventsGroupDetails->eventsGroup->serverId);
-        $eventsGroup->setClass((string) $xml->responseData->eventsGroupDetails->eventsGroup->class);
-        $eventsGroup->setUserData((string) $xml->responseData->eventsGroupDetails->eventsGroup->userData);
-        $eventsGroup->setJavaBacktrace((string) $xml->responseData->eventsGroupDetails->eventsGroup->javaBacktrace);
-        $eventsGroup->setExecTime((string) $xml->responseData->eventsGroupDetails->eventsGroup->execTime);
-        $eventsGroup->setAvgExecTime((string) $xml->responseData->eventsGroupDetails->eventsGroup->avgExecTime);
-        $eventsGroup->setMemUsage((string) $xml->responseData->eventsGroupDetails->eventsGroup->memUsage);
-        $eventsGroup->setAvgMemUsage((string) $xml->responseData->eventsGroupDetails->eventsGroup->avgMemUsage);
-        $eventsGroup->setAvgOutputSize((string) $xml->responseData->eventsGroupDetails->eventsGroup->avgOutputSize);
-        $eventsGroup->setLoad((string) $xml->responseData->eventsGroupDetails->eventsGroup->load);
+        $eventsGroup->setEventsGroupId((string) $xmlEventsGroupDetails->eventsGroup->eventsGroupId);
+        $eventsGroup->setEventsCount((string) $xmlEventsGroupDetails->eventsGroup->eventsCount);
+        $eventsGroup->setStartTime((string) $xmlEventsGroupDetails->eventsGroup->startTime);
+        $eventsGroup->setServerId((string) $xmlEventsGroupDetails->eventsGroup->serverId);
+        $eventsGroup->setClass((string) $xmlEventsGroupDetails->eventsGroup->class);
+        $eventsGroup->setUserData((string) $xmlEventsGroupDetails->eventsGroup->userData);
+        $eventsGroup->setJavaBacktrace((string) $xmlEventsGroupDetails->eventsGroup->javaBacktrace);
+        $eventsGroup->setExecTime((string) $xmlEventsGroupDetails->eventsGroup->execTime);
+        $eventsGroup->setAvgExecTime((string) $xmlEventsGroupDetails->eventsGroup->avgExecTime);
+        $eventsGroup->setMemUsage((string) $xmlEventsGroupDetails->eventsGroup->memUsage);
+        $eventsGroup->setAvgMemUsage((string) $xmlEventsGroupDetails->eventsGroup->avgMemUsage);
+        $eventsGroup->setAvgOutputSize((string) $xmlEventsGroupDetails->eventsGroup->avgOutputSize);
+        $eventsGroup->setLoad((string) $xmlEventsGroupDetails->eventsGroup->load);
 
         $eventsGroupDetails->setEventsGroup($eventsGroup);
 
         $event = new  \ZendService\ZendServerAPI\DataTypes\Event();
-        $event->setEventsGroupId((string) $xml->responseData->eventsGroupDetails->event->eventsGroupId);
-        $event->setType((string) $xml->responseData->eventsGroupDetails->event->type);
-        $event->setDescription((string) $xml->responseData->eventsGroupDetails->event->description);
+        $event->setEventsGroupId((string) $xmlEventsGroupDetails->event->eventsGroupId);
+        $event->setType((string) $xmlEventsGroupDetails->event->type);
+        $event->setDescription((string) $xmlEventsGroupDetails->event->description);
 
         $superglobal = new  \ZendService\ZendServerAPI\DataTypes\SuperGlobals();
-        if (isset($xml->responseData->eventsGroupDetails->event->superGlobals->cookie->parameter)) {
-            foreach ($xml->responseData->eventsGroupDetails->event->superGlobals->cookie->parameter as $cookie) {
+        if (isset($xmlEventsGroupDetails->event->superGlobals->cookie->parameter)) {
+            foreach ($xmlEventsGroupDetails->event->superGlobals->cookie->parameter as $cookie) {
                 $superglobal->addCookieParameter(trim((string) $cookie->name), trim((string) $cookie->value));
             }
         }
 
-        if (isset($xml->responseData->eventsGroupDetails->event->superGlobals->server->parameter)) {
-            foreach ($xml->responseData->eventsGroupDetails->event->superGlobals->server->parameter as $server) {
+        if (isset($xmlEventsGroupDetails->event->superGlobals->server->parameter)) {
+            foreach ($xmlEventsGroupDetails->event->superGlobals->server->parameter as $server) {
                 $superglobal->addServerParameter(trim((string) $server->name), trim((string) $server->value));
             }
         }
 
-        if (isset($xml->responseData->eventsGroupDetails->event->superGlobals->get->parameter)) {
-            foreach ($xml->responseData->eventsGroupDetails->event->superGlobals->get->parameter as $get) {
+        if (isset($xmlEventsGroupDetails->event->superGlobals->get->parameter)) {
+            foreach ($xmlEventsGroupDetails->event->superGlobals->get->parameter as $get) {
                 $superglobal->addGetParameter(trim((string) $get->name), trim((string) $get->value));
             }
         }
 
-        if (isset($xml->responseData->eventsGroupDetails->event->superGlobals->post->parameter)) {
-            foreach ($xml->responseData->eventsGroupDetails->event->superGlobals->post->parameter as $post) {
+        if (isset($xmlEventsGroupDetails->event->superGlobals->post->parameter)) {
+            foreach ($xmlEventsGroupDetails->event->superGlobals->post->parameter as $post) {
                 $superglobal->addPostParameter(trim((string) $post->name), trim((string) $post->value));
             }
         }
 
-        if (isset($xml->responseData->eventsGroupDetails->event->superGlobals->session->parameter)) {
-            foreach ($xml->responseData->eventsGroupDetails->event->superGlobals->session->parameter as $session) {
+        if (isset($xmlEventsGroupDetails->event->superGlobals->session->parameter)) {
+            foreach ($xmlEventsGroupDetails->event->superGlobals->session->parameter as $session) {
                 $superglobal->addSessionParameter(trim((string) $session->name), trim((string) $session->value));
             }
         }
 
         $event->setSuperglobals($superglobal);
-        $event->setSeverity((string) $xml->responseData->eventsGroupDetails->event->severity);
+        $event->setSeverity((string) $xmlEventsGroupDetails->event->severity);
         $eventsGroupDetails->setEvent($event);
 
-        foreach ($xml->responseData->eventsGroupDetails->event->backtrace->step as $xmlStep) {
+        foreach ($xmlEventsGroupDetails->event->backtrace->step as $xmlStep) {
             $step = new  \ZendService\ZendServerAPI\DataTypes\Step();
             $step->setClass(trim((string) $xmlStep->class));
             $step->setFile(trim((string) $xmlStep->file));
@@ -106,7 +109,7 @@ class EventsGroupDetails extends Adapter
             $event->addStep($step);
         }
 
-        $eventsGroupDetails->setCodeTracing((string) $xml->responseData->eventsGroupDetails->event->codeTracing);
+        $eventsGroupDetails->setCodeTracing((string) $xmlEventsGroupDetails->event->codeTracing);
 
         return $eventsGroupDetails;
     }

@@ -1,15 +1,8 @@
 HTTP/1.1 200 OK
-X-Powered-By: PHP/5.3.19 ZendServer/5.0
-Set-Cookie: ZDEDebuggerPresent=php
-Set-Cookie: ZS6SESSID=f07g43pvlgqmb46of5vgshvnu6; Path=/
-Set-Cookie: phtml=
-Set-Cookie: php3=; Path=/
 Expires: Thu, 19 Nov 1981 08:52:00 GMT
 Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
 Pragma: no-cache
 Content-Type: application/vnd.zend.serverapi+xml;version=1.3
-Connection: close
-Transfer-Encoding: chunked
 Date: Fri, 21 Dec 2012 11:36:48 GMT
 Server: lighttpd/1.4.26
 

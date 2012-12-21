@@ -1,0 +1,41 @@
+HTTP/1.1 200 OK
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Content-Type: application/vnd.zend.serverapi+xml;version=1.3
+Date: Thu, 20 Dec 2012 23:26:17 GMT
+Server: lighttpd/1.4.26
+
+<zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.3">
+    <requestData>
+        <apiKeyName><![CDATA[Admin]]></apiKeyName>
+        <method>filterGetByType</method>
+    </requestData>
+<responseData>
+<filters>
+                        <filter>
+                                <id>1</id>
+                                <name><![CDATA[All Issues]]</name>
+                                <type>issue</type>
+                                <custom>0</custom>
+                                <data>[]</data>
+                        </filter>                       <filter>
+                                <id>3</id>
+                                <name><![CDATA[Errors Issues]]</name>
+                                <type>issue</type>
+                                <custom>0</custom>
+                                <data>{"eventTypes":["function-error","zend-error","java-exception","jq-job-exec-error","tracer-write-file-fail","jq-job-logical-failure","custom"]}</data>
+                        </filter>                       <filter>
+                                <id>2</id>
+                                <name><![CDATA[Performance Issues]]</name>
+                                <type>issue</type>
+                                <custom>0</custom>
+                                <data>{"eventTypes":["function-slow-exec","request-slow-exec"]}</data>
+                        </filter>                       <filter>
+                                <id>4</id>
+                                <name><![CDATA[Resources Issues]]</name>
+                                <type>issue</type>
+                                <custom>0</custom>
+                                <data>{"eventTypes":["request-large-mem-usage","request-relative-large-out-size","jq-job-exec-delay"]}</data>
+                        </filter></filters>
+</responseData></zendServerAPIResponse>

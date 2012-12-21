@@ -46,4 +46,21 @@ class Filter extends BaseAPI
         return $this->pluginManager->get('request')->send();
     }
 
+    /**
+     * <b>The filterSave Method </b>
+     *
+     * <pre>Save a filter.</pre>
+     *
+     * @param string $type       <p>The type of a filter (issue,job)</p>
+     * @param string $name       <p>Name of filter.</p>
+     * @param int $id            <p>ID of a filter.</p>
+     * @param array $data        <p>Array of parameters to be saved.</p>
+     * @return \ZendService\ZendServerAPI\DataTypes\DebugRequest
+     */
+    public function filterSave($type, $name, $id = null, $data = array())
+    {
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('filterSave')->setArgs($type, $name, $id, $data));
+    
+        return $this->pluginManager->get('request')->send();
+    }
 }

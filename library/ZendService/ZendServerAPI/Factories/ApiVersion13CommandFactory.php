@@ -42,7 +42,8 @@ class ApiVersion13CommandFactory implements CommandFactory, AbstractFactoryInter
     public function __construct()
     {
         $this->availableCommands = array(
-            'filterGetByType'
+            'filterGetByType',
+            'filterSave'
         );
     }
     

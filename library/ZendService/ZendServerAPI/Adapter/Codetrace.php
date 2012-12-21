@@ -34,13 +34,17 @@ class Codetrace extends Adapter
             $xml = $this->getResponse()->getBody();
 
         $xml = simplexml_load_string($xml);
+        $this->setContent($xml);
+        
+        $xmlTrace = $this->getElement("//codeTrace");
+        
         $codetrace = new  \ZendService\ZendServerAPI\DataTypes\CodeTrace();
-        $codetrace->setId((string) $xml->responseData->codeTrace->id);
-        $codetrace->setDate((string) $xml->responseData->codeTrace->date);
-        $codetrace->setUrl((string) $xml->responseData->codeTrace->url);
-        $codetrace->setCreatedBy((string) $xml->responseData->codeTrace->createdBy);
-        $codetrace->setFileSize((string) $xml->responseData->codeTrace->fileSize);
-        $codetrace->setApplicationId((string) $xml->responseData->codeTrace->applicationId);
+        $codetrace->setId((string) $xmlTrace->id);
+        $codetrace->setDate((string) $xmlTrace->date);
+        $codetrace->setUrl((string) $xmlTrace->url);
+        $codetrace->setCreatedBy((string) $xmlTrace->createdBy);
+        $codetrace->setFileSize((string) $xmlTrace->fileSize);
+        $codetrace->setApplicationId((string) $xmlTrace->applicationId);
 
         return $codetrace;
     }

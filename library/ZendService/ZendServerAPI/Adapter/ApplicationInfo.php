@@ -34,17 +34,20 @@ class ApplicationInfo extends Adapter
             $xml = $this->getResponse()->getBody();
 
         $xml = simplexml_load_string($xml);
+        $this->setContent($xml);
+        
+        $xmlAppInfo = $this->getElement("//applicationInfo");
 
         $applicationInfo = new  \ZendService\ZendServerAPI\DataTypes\ApplicationInfo();
-        $applicationInfo->setAppName((string) $xml->responseData->applicationInfo->appName);
-        $applicationInfo->setId((string) $xml->responseData->applicationInfo->id);
-        $applicationInfo->setBaseUrl((string) $xml->responseData->applicationInfo->baseUrl);
-        $applicationInfo->setUserAppName((string) $xml->responseData->applicationInfo->userAppName);
-        $applicationInfo->setInstalledlocation((string) trim($xml->responseData->applicationInfo->installedLocation));
-        $applicationInfo->setStatus((string) $xml->responseData->applicationInfo->status);
+        $applicationInfo->setAppName((string) $xmlAppInfo->appName);
+        $applicationInfo->setId((string) $xmlAppInfo->id);
+        $applicationInfo->setBaseUrl((string) $xmlAppInfo->baseUrl);
+        $applicationInfo->setUserAppName((string) $xmlAppInfo->userAppName);
+        $applicationInfo->setInstalledlocation((string) trim($xmlAppInfo->installedLocation));
+        $applicationInfo->setStatus((string) $xmlAppInfo->status);
 
-        if (isset($xml->responseData->applicationInfo->servers->applicationServer)) {
-            foreach ($xml->responseData->applicationInfo->servers->applicationServer as $xmlServer) {
+        if (isset($xmlAppInfo->servers->applicationServer)) {
+            foreach ($xmlAppInfo->servers->applicationServer as $xmlServer) {
                 $server = new  \ZendService\ZendServerAPI\DataTypes\ApplicationServer();
                 $server->setId((string) $xmlServer->id);
                 $server->setDeployedVersion((string) trim($xmlServer->deployedVersion));
@@ -52,8 +55,8 @@ class ApplicationInfo extends Adapter
                 $applicationInfo->addServer($server);
             }
         }
-        if (isset($xml->responseData->applicationInfo->deployedVersions->deployedVersion)) {
-            foreach ($xml->responseData->applicationInfo->deployedVersions->deployedVersion as $xmlDeployedVersions) {
+        if (isset($xmlAppInfo->deployedVersions->deployedVersion)) {
+            foreach ($xmlAppInfo->deployedVersions->deployedVersion as $xmlDeployedVersions) {
                 $deployedVersions = new  \ZendService\ZendServerAPI\DataTypes\DeployedVersions();
                 $deployedVersions->setVersion((string) trim($xmlDeployedVersions));
                 $applicationInfo->addDeployedVersions($deployedVersions);
@@ -61,7 +64,7 @@ class ApplicationInfo extends Adapter
         }
 
         $messageListAdapter = new  \ZendService\ZendServerAPI\Adapter\MessageList();
-        $xmlMessageList = (string) $xml->responseData->applicationInfo->messageList;
+        $xmlMessageList = (string) $xmlAppInfo->messageList;
 
         if(!empty($xmlMessageList))
             $applicationInfo->setMessageList($messageListAdapter->parse($xmlMessageList));

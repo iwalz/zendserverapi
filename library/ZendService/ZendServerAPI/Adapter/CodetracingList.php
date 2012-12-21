@@ -34,9 +34,12 @@ class CodetracingList extends Adapter
             $xml = $this->getResponse()->getBody();
 
         $xml = simplexml_load_string($xml);
+        $this->setContent($xml);
+        
+        $xmlTraceList = $this->getElements("//codeTrace");
 
         $codetracingList = new  \ZendService\ZendServerAPI\DataTypes\CodetracingList();
-        foreach ($xml->responseData->codeTracingList->codeTrace as $xmlCodetrace) {
+        foreach ($xmlTraceList as $xmlCodetrace) {
             $codetrace = new  \ZendService\ZendServerAPI\DataTypes\CodeTrace();
             $codetrace->setId((string) $xmlCodetrace->id);
             $codetrace->setDate((string) $xmlCodetrace->date);

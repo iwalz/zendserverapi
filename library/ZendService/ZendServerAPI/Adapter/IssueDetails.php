@@ -34,29 +34,32 @@ class IssueDetails extends Adapter
             $xml = $this->getResponse()->getBody();
 
         $xml = simplexml_load_string($xml);
+        $this->setContent($xml);
+        
+        $xmlIssueDetails = $this->getElement("//issueDetails");
 
         $issueDetails = new  \ZendService\ZendServerAPI\DataTypes\IssueDetails();
 
         $issue = new  \ZendService\ZendServerAPI\DataTypes\Issue();
-        $issue->setId((string) $xml->responseData->issueDetails->issue->id);
-        $issue->setRule((string) $xml->responseData->issueDetails->issue->rule);
-        $issue->setCount((string) $xml->responseData->issueDetails->issue->count);
-        $issue->setLastOccurance((string) $xml->responseData->issueDetails->issue->lastOccurance);
-        $issue->setSeverity((string) $xml->responseData->issueDetails->issue->severity);
-        $issue->setStatus((string) $xml->responseData->issueDetails->issue->status);
+        $issue->setId((string) $xmlIssueDetails->issue->id);
+        $issue->setRule((string) $xmlIssueDetails->issue->rule);
+        $issue->setCount((string) $xmlIssueDetails->issue->count);
+        $issue->setLastOccurance((string) $xmlIssueDetails->issue->lastOccurance);
+        $issue->setSeverity((string) $xmlIssueDetails->issue->severity);
+        $issue->setStatus((string) $xmlIssueDetails->issue->status);
 
         $generalDetails = new  \ZendService\ZendServerAPI\DataTypes\GeneralDetails();
-        $generalDetails->setUrl((string) $xml->responseData->issueDetails->issue->generalDetails->url);
-        $generalDetails->setSourceFile((string) $xml->responseData->issueDetails->issue->generalDetails->sourceFile);
-        $generalDetails->setSourceLine((string) $xml->responseData->issueDetails->issue->generalDetails->sourceLine);
-        $generalDetails->setFunction((string) $xml->responseData->issueDetails->issue->generalDetails->function);
-        $generalDetails->setAggregationHint((string) $xml->responseData->issueDetails->issue->generalDetails->aggregationHint);
-        $generalDetails->setErrorString((string) $xml->responseData->issueDetails->issue->generalDetails->errorString);
-        $generalDetails->setErrorType((string) $xml->responseData->issueDetails->issue->generalDetails->errorType);
+        $generalDetails->setUrl((string) $xmlIssueDetails->issue->generalDetails->url);
+        $generalDetails->setSourceFile((string) $xmlIssueDetails->issue->generalDetails->sourceFile);
+        $generalDetails->setSourceLine((string) $xmlIssueDetails->issue->generalDetails->sourceLine);
+        $generalDetails->setFunction((string) $xmlIssueDetails->issue->generalDetails->function);
+        $generalDetails->setAggregationHint((string) $xmlIssueDetails->issue->generalDetails->aggregationHint);
+        $generalDetails->setErrorString((string) $xmlIssueDetails->issue->generalDetails->errorString);
+        $generalDetails->setErrorType((string) $xmlIssueDetails->issue->generalDetails->errorType);
         $issue->setGeneralDetails($generalDetails);
 
-        if (isset($xml->responseData->issueDetails->issue->routeDetails->routeDetail)) {
-            foreach ($xml->responseData->issueDetails->issue->routeDetails->routeDetail as $xmlRouteDetail) {
+        if (isset($xmlIssueDetails->issue->routeDetails->routeDetail)) {
+            foreach ($xmlIssueDetails->issue->routeDetails->routeDetail as $xmlRouteDetail) {
                 $routeDetails = new  \ZendService\ZendServerAPI\DataTypes\RouteDetail();
                 $routeDetails->setKey($xmlRouteDetail->key);
                 $routeDetails->setValue($xmlRouteDetail->value);
@@ -65,8 +68,8 @@ class IssueDetails extends Adapter
         }
         $issueDetails->setIssue($issue);
 
-        if (isset($xml->responseData->issueDetails->eventsGroups->eventsGroup)) {
-            foreach ($xml->responseData->issueDetails->eventsGroups->eventsGroup as $xmlEventsGroup) {
+        if (isset($xmlIssueDetails->eventsGroups->eventsGroup)) {
+            foreach ($xmlIssueDetails->eventsGroups->eventsGroup as $xmlEventsGroup) {
                 $eventsGroup = new  \ZendService\ZendServerAPI\DataTypes\EventsGroup();
                 $eventsGroup->setEventsGroupId((string) $xmlEventsGroup->eventsGroupId);
                 $eventsGroup->setEventsCount((string) $xmlEventsGroup->eventsCount);

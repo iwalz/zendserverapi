@@ -37,22 +37,25 @@ class ServerInfo extends \ZendService\ZendServerAPI\Adapter\Adapter
             $xml = $this->getResponse()->getBody();
 
         $xml = simplexml_load_string($xml);
+        $this->setContent($xml);
+        
+        $xmlServerInfo = $this->getElement("//serverInfo");
 
         $server = new ServerInfoData();
-        $server->setId((int) $xml->responseData->serverInfo->id);
-        $server->setName((string) $xml->responseData->serverInfo->name);
-        $server->setAddress((string) $xml->responseData->serverInfo->address);
-        $server->setStatus((string) $xml->responseData->serverInfo->status);
+        $server->setId((int) $xmlServerInfo->id);
+        $server->setName((string) $xmlServerInfo->name);
+        $server->setAddress((string) $xmlServerInfo->address);
+        $server->setStatus((string) $xmlServerInfo->status);
 
         $messageList = new MessageList();
-        if (isset($xml->responseData->serverInfo->messageList->error)) {
-            $messageList->setError((string) $xml->responseData->serverInfo->messageList->error);
+        if (isset($xmlServerInfo->messageList->error)) {
+            $messageList->setError((string) $xmlServerInfo->messageList->error);
         }
-        if (isset($xml->responseData->serverInfo->messageList->info)) {
-            $messageList->setInfo((string) $xml->responseData->serverInfo->messageList->info);
+        if (isset($xmlServerInfo->messageList->info)) {
+            $messageList->setInfo((string) $xmlServerInfo->messageList->info);
         }
-        if (isset($xml->responseData->serverInfo->messageList->warning)) {
-            $messageList->setWarning((string) $xml->responseData->serverInfo->messageList->warning);
+        if (isset($xmlServerInfo->messageList->warning)) {
+            $messageList->setWarning((string) $xmlServerInfo->messageList->warning);
         }
         $server->setMessageList($messageList);
 

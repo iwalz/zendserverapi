@@ -38,10 +38,13 @@ class ServersList extends Adapter
             $xml = $this->getResponse()->getBody();
 
         $xml = simplexml_load_string($xml);
+        $this->setContent($xml);
+        
+        $xmlServersList = $this->getElements("//serverInfo");
 
         $serversList = new ServersListData();
 
-        foreach ($xml->responseData->serversList->serverInfo as $serverInfo) {
+        foreach ($xmlServersList as $serverInfo) {
             $server = new ServerInfoData();
             $server->setId((int) $serverInfo->id);
             $server->setName((string) $serverInfo->name);

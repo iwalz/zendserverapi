@@ -11,3 +11,5 @@ downloads/
 export/
 logs/
 composer.lock
+.pear2registry
+.idea/

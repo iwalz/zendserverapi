@@ -13,3 +13,4 @@ logs/
 composer.lock
 .pear2registry
 .idea/
+docs/_build/

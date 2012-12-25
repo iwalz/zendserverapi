@@ -67,6 +67,8 @@ Example
     $systemInfo = $server->getSystemInfo();
 
 
+.. _zendservice.server.methods.clusterGetServerStatus:
+
 The clusterGetServerStatus Method
 ---------------------------------
 
@@ -132,6 +134,8 @@ Example
         echo "Name: " . $server->getName() . PHP_EOL;
      }
 
+
+.. _zendservice.server.methods.clusterAddServer:
 
 The clusterAddServer Method
 ---------------------------
@@ -207,6 +211,8 @@ Example
     $propagateSettings = false;
     $serverInfo = $server->clusterAddServer($serverName, $serverUrl, $guiPassword, $propagateSettings);
 
+.. _zendservice.server.methods.clusterRemoveServer:
+
 The clusterRemoveServer Method
 ------------------------------
 
@@ -275,6 +281,8 @@ Example
         $server->clusterRemoveServer($server->getId());
     }
 
+.. _zendservice.server.methods.clusterEnableServer:
+
 The clusterEnableServer Method
 ------------------------------
 
@@ -338,6 +346,8 @@ Example
         $server->clusterEnableServer($server->getId());
     }
 
+.. _zendservice.server.methods.clusterDisableServer:
+
 The clusterDisableServer Method
 -------------------------------
 
@@ -399,6 +409,8 @@ Example
     foreach ($serversList as $server) {
         $server->clusterDisableServer($server->getId());
     }
+
+.. _zendservice.server.methods.clusterReconfigureServer:
 
 The clusterReconfigureServer Method
 -----------------------------------
@@ -465,6 +477,8 @@ Example
     foreach ($serversList as $server) {
         $server->clusterReconfigureServer($server->getId());
     }
+
+.. _zendservice.server.methods.restartPhp:
 
 The restartPhp Method
 ---------------------

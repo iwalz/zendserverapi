@@ -1,9 +1,10 @@
 Zend Server API
-=============
+===============
 
 Master: [![Build Status](https://secure.travis-ci.org/iwalz/zendserverapi.png?branch=master)](http://travis-ci.org/iwalz/zendserverapi)
 
 [PHP Doc](http://zs-apidoc.rubber-duckling.net)
+
 [Documentation](https://zend-server-api.readthedocs.org/en/latest/)
 
 ## Installation via composer 
@@ -23,7 +24,7 @@ To install the Zend Server API, your <code>composer.json</code> file should look
 }
 </pre>
 
-Run <code>composer.phar install</code> from your project root and you should be ready to go.
+Run <code>composer install</code> from your project root and you should be ready to go.
 
 <b>Please note:</b>You don't really need the repositories section in your <code>composer.json</code> - the side effect will be, that you've the whole zf2 framework installed via composer. The library still works as expected, but there will be an overhead during installation.
 

@@ -27,6 +27,8 @@ You can install the API with composer by adding the following lines to your ``co
         "minimum-stability": "dev"
     }
 
+Now you need to run ``composer install`` from your project root and you're ready to go.
+
 
 **Note:** There are a few dependencies to the Zend Framework 2 from inside the library.
 The ``repositories`` section will allow you to install only the required components and not the whole framework.

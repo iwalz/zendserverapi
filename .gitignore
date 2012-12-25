@@ -14,3 +14,4 @@ composer.lock
 .pear2registry
 .idea/
 docs/_build/
+config/config.php

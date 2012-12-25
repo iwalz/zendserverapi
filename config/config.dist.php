@@ -1,18 +1,18 @@
 <?php
 
 return array(
-	"servers" => array (
+    "servers" => array (
         # Contains a valid default config
-	    "general" => array(
+        "general" => array(
             "version" => \ZendService\ZendServerAPI\Version::ZS56,
-		    "apiName" => "",
-		    "fullApiKey" => "",
-		    "readApiKey" => "",
-		    "host" => "localhost",
-		    "port" => "10081"
-	    )
+            "apiName" => "",
+            "fullApiKey" => "",
+            "readApiKey" => "",
+            "host" => "localhost",
+            "port" => "10081"
+        )
     ),
     "settings" => array (
-        'loglevel' => \Zend\Log\Logger::DEBUG        
+        'loglevel' => \Zend\Log\Logger::DEBUG
     )
 );

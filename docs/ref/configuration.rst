@@ -8,10 +8,10 @@ Configuration
 
 This chapter explains the configuration possibilities of the Zend Server API ZendService.
 
+.. _zendservice.configuration.file:
+
 Configuration File
 ------------------
-
-.. _zendservice.configuration.file:
 
 The API is lookig for a configfile at ``vendor/zendserverapi/zendserverapi/config/config.php`` by default.
 This file is not included in the project, this will allow you to keep your project specific configuration on updates.
@@ -33,10 +33,10 @@ You can change the location of the configuration file by 2 different ways. Eithe
     $server = new \ZendService\ZendServerAPI\Server();
     $server->setConfig(__DIR__.'/_files/config/config.php');
 
+.. _zendservice.configuration.server:
+
 The Server configuration
 ------------------------
-
-.. _zendservice.configuration.server:
 
 This configuration file allows you to add as many (and different) Zend Servers as you want.
 
@@ -91,10 +91,10 @@ And to do the same locally this way:
 *Note*: If you use port 10082, https will be selected automatically. If you want to use http and port 10082, you've to set it explicit in the config.
 On every other port, http will be selected by default.
 
+.. _zendservice.configuration.settings:
+
 Configuration settings
 ----------------------
-
-.. _zendservice.configuration.settings:
 
 The settings allow you to set a proxy and to change the loglevel that is used for every request. I suggest to use ``\Zend\Log\Logger::DEBUG`` for development and ``\Zend\Log\Logger::INFO`` for production (for auditing purposes).
 ``\Zend\Log\Logger::DEBUG`` will give you the plain HTTP requests and the responses. This is causing a huge amount of data per request. ``\Zend\Log\Logger::INFO`` will simply tell you, which request was performt on which server and when.

@@ -147,7 +147,7 @@ class BaseAPI implements PluginInterface
      */
     public function setConfigFile($configFile)
     {
-        $this->pluginManager->setConfigFile($configFile);
+        $this->pluginManager->setConfig($configFile);
     }
     
     /**

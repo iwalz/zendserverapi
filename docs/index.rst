@@ -5,9 +5,11 @@ Zend Server API documentation - Table of contents
    :hidden:
 
    ref/installation
+   ref/configuration
 
 
 * :doc:`ref/installation`
+* :doc:`ref/configuration`
 
 :ref:`search`
 

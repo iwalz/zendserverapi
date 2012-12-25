@@ -3,7 +3,8 @@ Zend Server API
 
 Master: [![Build Status](https://secure.travis-ci.org/iwalz/zendserverapi.png?branch=master)](http://travis-ci.org/iwalz/zendserverapi)
 
-[PHP Doc](http://zs-apidoc.rubber-duckling.net) 
+[PHP Doc](http://zs-apidoc.rubber-duckling.net)
+[Documentation](https://zend-server-api.readthedocs.org/en/latest/)
 
 ## Installation via composer 
 To install the Zend Server API, your <code>composer.json</code> file should look like this:

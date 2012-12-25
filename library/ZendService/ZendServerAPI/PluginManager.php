@@ -31,7 +31,7 @@ class PluginManager extends AbstractPluginManager
      * The used config file
      * @var string
      */
-    public static $configFile = null;
+    private static $configFile = null;
     /**
      * The name of the used Zend Server config
      * @var string
@@ -60,7 +60,7 @@ class PluginManager extends AbstractPluginManager
         $this->name = $name;
         $this->config = $config;
         
-        static::setConfigFile(static::$configFile);
+        static::setConfig(static::$configFile);
         parent::__construct($config);
     }
     
@@ -72,6 +72,16 @@ class PluginManager extends AbstractPluginManager
     public static function getConfigFile()
     {
         return self::$configFile;
+    }
+
+    /**
+     * Set the config file
+     *
+     * @return string
+     */
+    public static function setConfigFile($configFile)
+    {
+        self::$configFile = $configFile;
     }
     
     /**
@@ -137,7 +147,7 @@ class PluginManager extends AbstractPluginManager
      * @param string $configFile
      * @return void
      */
-    public function setConfigFile($configFile)
+    public function setConfig($configFile)
     {
         $name = $this->name;
         $validator = new ConfigValidator($configFile);

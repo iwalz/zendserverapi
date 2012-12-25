@@ -43,24 +43,6 @@ class Version
      */
     const ZSCM56 = "1.2";
     /**
-     * Zend Server Community Edition 5.1
-     * API Version 1.0
-     * @var string
-     */
-    const ZSCE51 = "1.0";
-    /**
-     * Zend Server Community Edition 5.5
-     * API Version 1.1
-     * @var string
-     */
-    const ZSCE55 = "1.1";
-    /**
-     * Zend Server Community Edition 5.6
-     * API Version 1.2
-     * @var string
-     */
-    const ZSCE56 = "1.2";
-    /**
      * Zend Server 5.1
      * API Version 1.0
      * @var string

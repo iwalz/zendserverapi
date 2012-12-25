@@ -8,8 +8,7 @@ The official Zend Server API documentation
 
    ref/installation
    ref/configuration
+   ref/versioning
 
-
-:ref:`genindex`
 :ref:`search`
 

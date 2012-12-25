@@ -1,9 +1,12 @@
+.. highlight:: php
 .. _zendservice.configuration:
 
 
 *************
 Configuration
 *************
+
+This chapter explains the configuration possibilities of the Zend Server API ZendService.
 
 Configuration File
 ------------------
@@ -14,38 +17,19 @@ The API is lookig for a configfile at ``vendor/zendserverapi/zendserverapi/confi
 This file is not included in the project, this will allow you to keep your project specific configuration on updates.
 You can find such a skeleton at ``vendor/zendserverapi/zendserverapi/config/config.dist.php``:
 
-.. code-block:: php
-   :linenos:
+.. literalinclude:: ../../config/config.dist.php
 
-    <?php
-
-    return array(
-        "servers" => array (
-            # Contains a valid default config
-            "general" => array(
-                "version" => \ZendService\ZendServerAPI\Version::ZS56,
-                "apiName" => "",
-                "fullApiKey" => "",
-                "readApiKey" => "",
-                "host" => "localhost",
-                "port" => "10081"
-            )
-        ),
-        "settings" => array (
-            'loglevel' => \Zend\Log\Logger::DEBUG
-        )
-    );
 
 You can change the location of the configuration file by 2 different ways. Either statically, or on the BaseAPI object level.
 
 .. code-block:: php
-    :linenos:
 
+    <?php
     \ZendService\ZendServerAPI\PluginManager::setConfigFile(__DIR__.'/_files/config/config.php');
 
 .. code-block:: php
-    :linenos:
 
+    <?php
     $server = new \ZendService\ZendServerAPI\Server();
     $server->setConfig(__DIR__.'/_files/config/config.php');
 
@@ -60,7 +44,6 @@ The ``general`` section in the ``servers`` key is the default server. Every Base
 If none parameter is provided, the general section will be used.
 
 .. code-block:: php
-    :linenos:
 
     <?php
 
@@ -92,16 +75,16 @@ If none parameter is provided, the general section will be used.
 This configuration will give you the possibility, to connect to a remote Zend Server 5.6 Cluster Manager on port 10083 via https that way:
 
 .. code-block:: php
-    :linenos:
 
+    <?php
     $server = new \ZendService\ZendServerAPI\Server();
     $server->getSystemInfo();
 
 And to do the same locally this way:
 
 .. code-block:: php
-    :linenos:
 
+    <?php
     $server = new \ZendService\ZendServerAPI\Server('local');
     $server->getSystemInfo();
 
@@ -119,7 +102,6 @@ The settings allow you to set a proxy and to change the loglevel that is used fo
 The proxy setting looks like this:
 
 .. code-block:: php
-    :linenos:
 
     <?php
 

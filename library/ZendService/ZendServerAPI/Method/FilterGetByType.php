@@ -53,7 +53,7 @@ class FilterGetByType extends Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServer/Api/filterGetByType');
-        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\Filters());
     }
     
     public function getAcceptHeader()

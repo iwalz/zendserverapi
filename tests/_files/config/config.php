@@ -45,6 +45,13 @@ return array(
                 "host" => "localhost",
                 "port" => 10081
         ),
+        "local6" => array(
+            "version" => \ZendService\ZendServerAPI\Version::ZS6,
+            "fullApiKey" => "6bc7a935da179b4188f9c3db396db34e89cc71997e8ad99e151fd512abc9e133",
+            "apiName" => "admin",
+            "host" => "localhost",
+            "port" => 10081
+        ),
     	# Invalid character
     	"example92" => array(
     		"version" => \ZendService\ZendServerAPI\Version::ZSCM56,

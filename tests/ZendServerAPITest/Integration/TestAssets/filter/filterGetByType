@@ -15,25 +15,25 @@ Server: lighttpd/1.4.26
 <filters>
                         <filter>
                                 <id>1</id>
-                                <name><![CDATA[All Issues]]</name>
+                                <name><![CDATA[All Issues]]></name>
                                 <type>issue</type>
                                 <custom>0</custom>
                                 <data>[]</data>
                         </filter>                       <filter>
                                 <id>3</id>
-                                <name><![CDATA[Errors Issues]]</name>
+                                <name><![CDATA[Errors Issues]]></name>
                                 <type>issue</type>
                                 <custom>0</custom>
                                 <data>{"eventTypes":["function-error","zend-error","java-exception","jq-job-exec-error","tracer-write-file-fail","jq-job-logical-failure","custom"]}</data>
                         </filter>                       <filter>
                                 <id>2</id>
-                                <name><![CDATA[Performance Issues]]</name>
+                                <name><![CDATA[Performance Issues]]></name>
                                 <type>issue</type>
                                 <custom>0</custom>
                                 <data>{"eventTypes":["function-slow-exec","request-slow-exec"]}</data>
                         </filter>                       <filter>
                                 <id>4</id>
-                                <name><![CDATA[Resources Issues]]</name>
+                                <name><![CDATA[Resources Issues]]></name>
                                 <type>issue</type>
                                 <custom>0</custom>
                                 <data>{"eventTypes":["request-large-mem-usage","request-relative-large-out-size","jq-job-exec-delay"]}</data>

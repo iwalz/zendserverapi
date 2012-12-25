@@ -13,6 +13,7 @@ abstract class BaseAPIIntegration extends \PHPUnit_Framework_TestCase
     const LOCAL = 'local';
     const CLOUD = 'cloud';
     const CLUSTER = 'cluster';
+    const ZS6LOCAL = 'local6';
     
     /**
      * @var \ZendService\ZendServerAPI\Server

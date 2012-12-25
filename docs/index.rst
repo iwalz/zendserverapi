@@ -4,7 +4,7 @@ Zend Server API documentation
 The official Zend Server API documentation
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
 
    ref/installation
    ref/configuration

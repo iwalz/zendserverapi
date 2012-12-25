@@ -8,7 +8,7 @@ API Versioning
 .. _zendservice.versioning.configuration:
 
 Configure the version
----------------------
+=====================
 
 Reference: `Zend Server 5.6 Webapi Versioning`_
 
@@ -70,7 +70,7 @@ So take care, that you configure the correct API Version for your servers.
 .. _zendservice.versioning.methods:
 
 Web API Version methods
------------------------
+=======================
 
 **Web API 1.0**
 

@@ -8,7 +8,7 @@ Installation
 .. _zendservice.installation.composer:
 
 Via Composer
--------------
+============
 
 You can install the API with composer by adding the following lines to your ``composer.json`` file:
 

@@ -1,15 +1,15 @@
-Zend Server API documentation - Table of contents
-=================================================
+Zend Server API documentation
+=============================
+
+The official Zend Server API documentation
 
 .. toctree::
-   :hidden:
+   :maxdepth: 2
 
    ref/installation
    ref/configuration
 
 
-* :doc:`ref/installation`
-* :doc:`ref/configuration`
-
+:ref:`genindex`
 :ref:`search`
 

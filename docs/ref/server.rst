@@ -142,8 +142,8 @@ The clusterAddServer Method
 
 Add a new server to the cluster. On a Zend Server Cluster Manager with no valid license, this operation fails.
 
-Method definition
-^^^^^^^^^^^^^^^^^
+Method clusterAddServer definition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
@@ -221,8 +221,8 @@ If this is the case, the initial operation will return an HTTP 202 response. As 
 further calls to remove the same server should be idempotent. On a Zend Server Cluster Manager with no valid license,
 this operation fails.
 
-Method definition
-^^^^^^^^^^^^^^^^^
+Method clusterRemoveServer definition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
@@ -291,8 +291,8 @@ If this is the case, the initial operation will return an HTTP 202 response. Thi
 it on an enabled server will result in a 200 OK response with no consequences. On a Zend Server Cluster Manager with
 no valid license this operation fails.
 
-Method definition
-^^^^^^^^^^^^^^^^^
+Method clusterEnableServer definition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
@@ -355,8 +355,8 @@ This method disables a cluster member. This process may be asynchronous if Sessi
 the case, the initial operation returns an HTTP 202 response. As long as the server is not fully disabled, further
 calls to this method are idempotent. On a Zend Server Cluster Manager with no valid license, this operation fails.
 
-Method definition
-^^^^^^^^^^^^^^^^^
+Method clusterDisableServer definition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
@@ -417,8 +417,8 @@ The clusterReconfigureServer Method
 
 Re-configure a cluster member to match the cluster's profile. This operation will fail on a Zend Server Cluster Manager with no valid license.
 
-Method definition
-^^^^^^^^^^^^^^^^^
+Method clusterReconfigureServer definition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
@@ -486,8 +486,8 @@ The restartPhp Method
 This method restarts PHP on all servers or on specified servers in the cluster. A 202 response in this case does not
 always indicate a successful restart of all servers. Use the clusterGetServerStatus command to check the server(s) status again after a few seconds.
 
-Method definition
-^^^^^^^^^^^^^^^^^
+Method restartPhp definition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 

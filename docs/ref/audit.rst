@@ -18,7 +18,7 @@ The auditGetList Method
 
 Get a list of audit entries.
 
-.. _zendservice.filter.methods.auditGetList.definition:
+.. _zendservice.audit.methods.auditGetList.definition:
 
 Method auditGetList definition
 ------------------------------
@@ -83,7 +83,7 @@ Method auditGetList definition
        AUDIT_JOB_QUEUE_REQUEUE_JOBS, AUDIT_JOB_QUEUE_RESUME_RULES,AUDIT_JOB_QUEUE_DISABLE_RULES,
        AUDIT_JOB_QUEUE_RUN_NOW_RULE
 
-.. _zendservice.filter.methods.auditGetList.information:
+.. _zendservice.audit.methods.auditGetList.information:
 
 auditGetList information
 ------------------------
@@ -99,7 +99,7 @@ auditGetList information
    * - Available in Version
      - * 1.3
 
-.. _zendservice.filter.methods.auditGetList.example:
+.. _zendservice.audit.methods.auditGetList.example:
 
 Example
 -------
@@ -123,7 +123,7 @@ The auditGetDetails Method
 
 Get all details available on a particular audit item.
 
-.. _zendservice.filter.methods.auditGetDetails.definition:
+.. _zendservice.audit.methods.auditGetDetails.definition:
 
 Method auditGetDetails definition
 ---------------------------------
@@ -147,7 +147,7 @@ Method auditGetDetails definition
      - yes
      - Audit ID to get all details for
 
-.. _zendservice.filter.methods.auditGetDetails.information:
+.. _zendservice.audit.methods.auditGetDetails.information:
 
 auditGetDetails information
 ---------------------------
@@ -163,7 +163,7 @@ auditGetDetails information
    * - Available in Version
      - * 1.3
 
-.. _zendservice.filter.methods.auditGetDetails.example:
+.. _zendservice.audit.methods.auditGetDetails.example:
 
 Example
 -------
@@ -188,7 +188,7 @@ The auditSetSettings Method
 
 Get all details available on a particular audit item.
 
-.. _zendservice.filter.methods.auditSetSettings.definition:
+.. _zendservice.audit.methods.auditSetSettings.definition:
 
 Method auditSetSettings definition
 ----------------------------------
@@ -222,7 +222,7 @@ Method auditSetSettings definition
      - no
      - URL to send notification to
 
-.. _zendservice.filter.methods.auditSetSettings.information:
+.. _zendservice.audit.methods.auditSetSettings.information:
 
 auditSetSettings information
 ----------------------------
@@ -238,7 +238,7 @@ auditSetSettings information
    * - Available in Version
      - * 1.3
 
-.. _zendservice.filter.methods.auditSetSettings.example:
+.. _zendservice.audit.methods.auditSetSettings.example:
 
 Example
 -------

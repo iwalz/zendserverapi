@@ -99,7 +99,7 @@ class Audit extends BaseAPI
      * @param  array  $email   <p></p>
      * @return \ZendService\ZendServerAPI\DataTypes\DebugRequest
      */
-    public function auditSetSettings($history, $email = array(), $callbackUrl = array())
+    public function auditSetSettings($history, $email = null, $callbackUrl = null)
     {
         $this->pluginManager->get('request')->setAction(
             $this->pluginManager->get('auditSetSettings')->setArgs($history, $email, $callbackUrl)

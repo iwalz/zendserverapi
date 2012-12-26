@@ -11,6 +11,7 @@ The official Zend Server API documentation
    ref/versioning
    ref/server
    ref/filter
+   ref/audit
 
 :ref:`search`
 

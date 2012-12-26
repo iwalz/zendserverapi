@@ -53,7 +53,7 @@ class AuditGetDetails extends Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServer/Api/auditGetDetails');
-        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\AuditMessageDetails());
     }
 
     public function getAcceptHeader()

@@ -126,6 +126,29 @@ class AuditIntegrationTest extends \ZendServerAPITest\Integration\BaseAPIIntegra
         return $auditMessages;
     }
 
+    public function getAuditGetDetails()
+    {
+        $auditMessageDetails = new \ZendService\ZendServerAPI\DataTypes\AuditMessageDetails();
+
+        $auditMessage = new \ZendService\ZendServerAPI\DataTypes\AuditMessage();
+        $auditMessage->setId(4);
+        $auditMessage->setUsername("admin");
+        $auditMessage->setRequestInterface("INTERFACE_UI");
+        $auditMessage->setRemoteAddr("127.0.0.1");
+        $auditMessage->setAuditType("AUDIT_DIRECTIVES_MODIFIED");
+        $auditMessage->setAuditTypeTranslated("Directives Modified");
+        $auditMessage->setBaseUrl("");
+        $auditMessage->setCreationTime("2012-12-24T15:29:13+01:00");
+        $auditMessage->setCreationTimeTimestramp("1356359353");
+        $auditMessage->setExtraData(
+            array("Extension name: date, Directive: date.timezone, Old value: , New value: Europe/Berlin")
+        );
+
+        $auditMessageDetails->setAuditMessage($auditMessage);
+
+        return $auditMessageDetails;
+    }
+
     public function mockProvider()
     {
         static::$mockDataProvider = array(

@@ -10,6 +10,7 @@ The official Zend Server API documentation
    ref/configuration
    ref/versioning
    ref/server
+   ref/filter
 
 :ref:`search`
 

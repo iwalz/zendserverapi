@@ -57,7 +57,7 @@ class Filter extends BaseAPI
      * @param array $data        <p>Array of parameters to be saved.</p>
      * @return \ZendService\ZendServerAPI\DataTypes\DebugRequest
      */
-    public function filterSave($type, $name, $id = null, $data = array())
+    public function filterSave($type, $name, $data = array(), $id = null)
     {
         $this->pluginManager->get('request')->setAction($this->pluginManager->get('filterSave')->setArgs($type, $name, $id, $data));
     

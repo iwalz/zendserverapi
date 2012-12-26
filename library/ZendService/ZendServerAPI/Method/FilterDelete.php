@@ -53,7 +53,7 @@ class FilterDelete extends Method
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServer/Api/filterDelete');
-        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\Filter());
     }
     
     /**

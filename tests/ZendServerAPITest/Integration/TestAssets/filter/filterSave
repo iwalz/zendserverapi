@@ -14,7 +14,7 @@ Server: lighttpd/1.4.26
 <responseData>
                         <filter>
                                 <id>10</id>
-                                <name><![CDATA[test2]]</name>
+                                <name><![CDATA[test2]]></name>
                                 <type>issue</type>
                                 <custom>1</custom>
                                 <data>[]</data>

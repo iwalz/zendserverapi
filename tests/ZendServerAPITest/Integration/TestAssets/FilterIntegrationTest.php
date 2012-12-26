@@ -63,10 +63,32 @@ class FilterIntegrationTest extends \ZendServerAPITest\Integration\BaseAPIIntegr
         return $filters;
     }
 
+    public function getFilterSave()
+    {
+        $filter = new \ZendService\ZendServerAPI\DataTypes\Filter();
+        $filter->setId(10);
+        $filter->setName("test2");
+        $filter->setCustom(true);
+
+        return $filter;
+    }
+
+    public function getFilterDelete()
+    {
+        $filter = new \ZendService\ZendServerAPI\DataTypes\Filter();
+        $filter->setId(10);
+        $filter->setName("test2");
+        $filter->setCustom(true);
+
+        return $filter;
+    }
+
     public function mockProvider()
     {
         static::$mockDataProvider = array(
-            array("filterGetByType", $this->getFilterGetByType(), array("issue"))
+            array("filterGetByType", $this->getFilterGetByType(), array("issue")),
+            array("filterSave", $this->getFilterSave(), array("issue", "foo")),
+            array("filterDelete", $this->getFilterDelete(), array("foo"))
         );
 
         return static::$mockDataProvider;

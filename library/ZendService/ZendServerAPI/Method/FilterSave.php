@@ -74,7 +74,7 @@ class FilterSave extends Method
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServer/Api/filterSave');
-        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\Filter());
     }
     
     /**

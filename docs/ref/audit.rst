@@ -5,7 +5,7 @@
 Audit methods
 *************
 
-Filter API actions provide external actors with ways to query and manipulate filters and their definitions.
+Save settings of audit history and triggers.
 
     * auditGetList
     * auditGetDetails

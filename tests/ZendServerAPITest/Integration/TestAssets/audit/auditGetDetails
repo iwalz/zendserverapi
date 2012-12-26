@@ -1,0 +1,33 @@
+HTTP/1.1 200 OK
+X-Powered-By: PHP/5.3.19 ZendServer/5.0
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Content-Type: application/vnd.zend.serverapi+xml;version=1.3
+Date: Wed, 26 Dec 2012 12:57:58 GMT
+Server: lighttpd/1.4.26
+
+<zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.3">
+    <requestData>
+        <apiKeyName><![CDATA[Admin]]></apiKeyName>
+        <method>auditGetDetails</method>
+    </requestData>
+<responseData>
+        <auditMessageDetails>
+
+<auditMessage>
+                       <id>4</id>
+                       <username><![CDATA[admin]]></username>
+                       <requestInterface><![CDATA[INTERFACE_UI]]></requestInterface>
+                       <remoteAddr><![CDATA[127.0.0.1]]></remoteAddr>
+                       <auditType>AUDIT_DIRECTIVES_MODIFIED</auditType>
+                       <auditTypeTranslated><![CDATA[Directives Modified]]></auditTypeTranslated>
+                       <baseUrl><![CDATA[]]></baseUrl>
+                       <creationTime>2012-12-24T15:29:13+01:00</creationTime>
+                       <creationTimeTimestamp>1356359353</creationTimeTimestamp>
+                       <extraData><extraDataMessage><parameter><name>0</name><value><![CDATA[Extension name: date, Directive: date.timezone, Old value: , New value: Europe/Berlin]]></value></parameter></extraDataMessage></extraData>
+                       <outcome></outcome>
+</auditMessage>         <auditProgressList>
+                                </auditProgressList>
+        </auditMessageDetails>
+</responseData></zendServerAPIResponse>

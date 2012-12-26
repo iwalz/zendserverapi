@@ -44,7 +44,10 @@ class ApiVersion13CommandFactory implements CommandFactory, AbstractFactoryInter
         $this->availableCommands = array(
             'filterGetByType',
             'filterSave',
-            'filterDelete'
+            'filterDelete',
+            'auditGetList',
+            'auditGetDetails',
+            'auditSetSettings'
         );
     }
 
@@ -55,7 +58,7 @@ class ApiVersion13CommandFactory implements CommandFactory, AbstractFactoryInter
      *
      * @throws \RuntimeException
      * @param  string                            $name
-     * @return \ZendService\ZendServerAPI\Method
+     * @return \ZendService\ZendServerAPI\Method\Method
      */
     public function factory($name)
     {

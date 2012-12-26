@@ -61,7 +61,7 @@ class AuditGetList extends Method
     {
         $this->setMethod('GET');
         $this->setFunctionPath('/ZendServer/Api/auditGetList');
-        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\AuditMessages());
     }
 
     public function getAcceptHeader()

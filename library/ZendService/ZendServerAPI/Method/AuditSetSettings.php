@@ -65,7 +65,7 @@ class AuditSetSettings extends Method
     {
         $this->setMethod('POST');
         $this->setFunctionPath('/ZendServer/Api/auditSetSettings');
-        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
+        $this->setParser(new  \ZendService\ZendServerAPI\Adapter\AuditSettings());
     }
 
     public function getAcceptHeader()

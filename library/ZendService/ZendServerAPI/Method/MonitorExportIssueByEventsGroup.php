@@ -50,7 +50,7 @@ class MonitorExportIssueByEventsGroup extends Method
             $this->setFileName($fileName);
 
         $this->eventsGroupId = $eventsGroupId;
-        
+
         return $this;
     }
 

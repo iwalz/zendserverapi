@@ -38,7 +38,7 @@ class RestartPHP extends Method
     private $parallelRestart = null;
 
     /**
-     * Sert argument for RestartPhp 
+     * Sert argument for RestartPhp
      *
      * @param array $servers         ServerIds to restart
      * @param bool  $parallelRestart Restart all at the same time
@@ -47,9 +47,9 @@ class RestartPHP extends Method
     {
         $this->servers = $servers;
         $this->parallelRestart = $parallelRestart;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

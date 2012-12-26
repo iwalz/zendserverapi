@@ -86,9 +86,9 @@ class ApplicationDeploy extends Method
         $this->userAppName = $userAppName;
         $this->ignoreFailures = $ignoreFailure;
         $this->userParams = $userParams;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

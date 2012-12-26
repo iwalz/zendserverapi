@@ -84,20 +84,20 @@ class Config implements PluginInterface
     {
         return $this->apiVersion;
     }
-    
+
     /**
      * Get the logging state
-     * 
+     *
      * @return boolean
      */
     public function getDisableLogging()
     {
         return $this->disableLogging;
     }
-    
+
     /**
      * Enables/Disables logging
-     * 
+     *
      * @param boolean $disableLogging
      */
     public function setDisableLogging($disableLogging)

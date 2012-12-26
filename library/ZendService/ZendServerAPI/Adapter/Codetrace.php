@@ -35,9 +35,9 @@ class Codetrace extends Adapter
 
         $xml = simplexml_load_string($xml);
         $this->setContent($xml);
-        
+
         $xmlTrace = $this->getElement("//codeTrace");
-        
+
         $codetrace = new  \ZendService\ZendServerAPI\DataTypes\CodeTrace();
         $codetrace->setId((string) $xmlTrace->id);
         $codetrace->setDate((string) $xmlTrace->date);

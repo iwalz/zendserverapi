@@ -36,7 +36,7 @@ class MonitorChangeIssueStatus extends Method
     protected $newStatus = null;
 
     /**
-     * Set arguments for MonitorChangeIssueStatus 
+     * Set arguments for MonitorChangeIssueStatus
      *
      * @param int    $issueId   IssueId to change
      * @param string $newStatus The new status to set
@@ -45,9 +45,9 @@ class MonitorChangeIssueStatus extends Method
     {
         $this->issueId = $issueId;
         $this->newStatus = $newStatus;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

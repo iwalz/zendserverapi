@@ -65,9 +65,9 @@ class ApplicationSynchronize extends Method
         $this->applicationId = $applicationId;
         $this->servers = $servers;
         $this->ignoreFailures = $ignoreFailures;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

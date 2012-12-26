@@ -50,7 +50,7 @@ class Studio extends BaseAPI
         }
 
         $this->pluginManager->get('request')->setAction($this->pluginManager->get('studioStartDebug')->setArgs($eventsGroupId, $noRemote, $overrideHost));
-        
+
         return $this->pluginManager->get('request')->send();
     }
 
@@ -74,7 +74,7 @@ class Studio extends BaseAPI
         }
 
         $this->pluginManager->get('request')->setAction($this->pluginManager->get('studioStartProfile')->setArgs($eventsGroupId, $overrideHost));
-        
+
         return $this->pluginManager->get('request')->send();
     }
 

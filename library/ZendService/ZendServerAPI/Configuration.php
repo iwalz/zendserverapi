@@ -58,7 +58,7 @@ class Configuration extends BaseAPI
             $this->exportDirectory = getcwd();
 
         $this->pluginManager->get('request')->setAction($this->pluginManager->get('configurationExport')->setArgs($this->exportDirectory, $fileName));
-        
+
         return $this->pluginManager->get('request')->send();
     }
 
@@ -76,7 +76,7 @@ class Configuration extends BaseAPI
             $this->importFile = $importFile;
 
         $this->pluginManager->get('request')->setAction($this->pluginManager->get('configurationImport')->setArgs($this->importFile));
-        
+
         return $this->pluginManager->get('request')->send();
     }
 

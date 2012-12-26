@@ -52,11 +52,11 @@ class CodetracingDownloadTraceFile extends Method
     public function setArgs($traceFile, $fileName = null, $exportDirectory = null)
     {
         $this->configure();
-        
+
         $this->traceFile = $traceFile;
         $this->setExportDirectory($exportDirectory);
         $this->setFileName($fileName);
-        
+
         return $this;
     }
 

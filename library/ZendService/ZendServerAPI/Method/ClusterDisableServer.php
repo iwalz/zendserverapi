@@ -42,9 +42,9 @@ class ClusterDisableServer extends Method
     public function setArgs($serverId)
     {
         $this->serverId = $serverId;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

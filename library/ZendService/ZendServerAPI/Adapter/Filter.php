@@ -36,10 +36,10 @@ class Filter extends Adapter
         $xmlFilter = $this->getElement("//filter");
 
         $filter = new \ZendService\ZendServerAPI\DataTypes\Filter();
-        $filter->setData(!empty($xmlFilter->data) ? (array)json_decode($xmlFilter->data) : array());
-        $filter->setName(trim((string)$xmlFilter->name));
-        $filter->setId((int)$xmlFilter->id);
-        $filter->setCustom((string)$xmlFilter->custom == "1" ? true : false);
+        $filter->setData(!empty($xmlFilter->data) ? (array) json_decode($xmlFilter->data) : array());
+        $filter->setName(trim((string) $xmlFilter->name));
+        $filter->setId((int) $xmlFilter->id);
+        $filter->setCustom((string) $xmlFilter->custom == "1" ? true : false);
 
         return $filter;
     }

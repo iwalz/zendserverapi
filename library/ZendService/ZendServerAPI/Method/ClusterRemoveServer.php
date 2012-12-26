@@ -41,7 +41,7 @@ class ClusterRemoveServer extends Method
     private $force = null;
 
     /**
-     * Set arguments for ClusterRemoveServer 
+     * Set arguments for ClusterRemoveServer
      *
      * @param int  $server ServerId to remove
      * @param bool $force  Force remove
@@ -50,9 +50,9 @@ class ClusterRemoveServer extends Method
     {
         $this->server = $server;
         $this->force = $force;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

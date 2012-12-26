@@ -68,9 +68,9 @@ class ApplicationUpdate extends Method
         $this->appPackage = $appPackage;
         $this->ignoreFailures = $ignoreFailure;
         $this->userParams = $userParams;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

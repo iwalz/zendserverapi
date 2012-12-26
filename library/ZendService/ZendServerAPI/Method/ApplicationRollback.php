@@ -43,9 +43,9 @@ class ApplicationRollback extends Method
     public function setArgs($appId)
     {
         $this->appId = $appId;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

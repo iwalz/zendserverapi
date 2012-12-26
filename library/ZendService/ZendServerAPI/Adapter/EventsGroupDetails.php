@@ -35,7 +35,7 @@ class EventsGroupDetails extends Adapter
 
         $xml = simplexml_load_string($xml);
         $this->setContent($xml);
-        
+
         $xmlEventsGroupDetails = $this->getElement("//eventsGroupDetails");
 
         $eventsGroupDetails = new  \ZendService\ZendServerAPI\DataTypes\EventsGroupDetails();

@@ -43,7 +43,7 @@ class MonitorGetRequestSummary extends Method
         $this->requestUid = $requestUid;
 
         $this->configure();
-        
+
         return $this;
     }
 

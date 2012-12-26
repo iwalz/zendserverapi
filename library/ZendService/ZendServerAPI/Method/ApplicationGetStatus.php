@@ -43,9 +43,9 @@ class ApplicationGetStatus extends Method
     public function setArgs(array $applications = array())
     {
         $this->applications = $applications;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

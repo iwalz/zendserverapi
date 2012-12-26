@@ -35,7 +35,7 @@ class ApplicationInfo extends Adapter
 
         $xml = simplexml_load_string($xml);
         $this->setContent($xml);
-        
+
         $xmlAppInfo = $this->getElement("//applicationInfo");
 
         $applicationInfo = new  \ZendService\ZendServerAPI\DataTypes\ApplicationInfo();

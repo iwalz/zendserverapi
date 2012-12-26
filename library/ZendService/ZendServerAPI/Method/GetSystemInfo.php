@@ -29,16 +29,16 @@ class GetSystemInfo extends Method
 {
     /**
      * Set the arguments and configures the method
-     * 
+     *
      * @return \ZendService\ZendServerAPI\Method\GetSystemInfo
      */
     public function setArgs()
     {
         $this->configure();
-        
+
         return $this;
     }
-    
+
     /**
      * Configures all needed information for the method implementation
      *

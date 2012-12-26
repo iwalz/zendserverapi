@@ -50,9 +50,9 @@ class MonitorGetEventGroupDetails extends Method
         $this->issueId = $issueId;
 
         $this->eventsGroupId = $eventsGroupId;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

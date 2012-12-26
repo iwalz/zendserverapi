@@ -39,7 +39,7 @@ class ServersList extends Adapter
 
         $xml = simplexml_load_string($xml);
         $this->setContent($xml);
-        
+
         $xmlServersList = $this->getElements("//serverInfo");
 
         $serversList = new ServersListData();

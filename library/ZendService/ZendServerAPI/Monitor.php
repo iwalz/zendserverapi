@@ -91,7 +91,7 @@ class Monitor extends BaseAPI
     public function monitorGetIssuesListByPredefinedFilter($filterId, $limit = null, $offset = null, $order = null, $direction = null)
     {
         $this->pluginManager->get('request')->setAction($this->pluginManager->get('monitorGetIssuesListByPredefinedFilter')->setArgs($filterId, $limit, $offset, $order, $direction));
-        
+
         return $this->pluginManager->get('request')->send();
     }
 
@@ -109,7 +109,7 @@ class Monitor extends BaseAPI
     public function monitorGetIssueDetails($issueId)
     {
         $this->pluginManager->get('request')->setAction($this->pluginManager->get('monitorGetIssuesDetails')->setArgs($issueId));
-        
+
         return $this->pluginManager->get('request')->send();
     }
 
@@ -133,7 +133,7 @@ class Monitor extends BaseAPI
             $eventsGroupId = $this->getFirstEventGroupsIdByIssueId($issueId);
         }
         $this->pluginManager->get('request')->setAction($this->pluginManager->get('monitorGetEventGroupDetails')->setArgs($issueId, $eventsGroupId));
-        
+
         return $this->pluginManager->get('request')->send();
     }
 
@@ -150,7 +150,7 @@ class Monitor extends BaseAPI
     public function monitorChangeIssueStatus($issueId, $newStatus)
     {
         $this->pluginManager->get('request')->setAction($this->pluginManager->get('monitorChangeIssueStatus')->setArgs($issueId, $newStatus));
-        
+
         return $this->pluginManager->get('request')->send();
     }
 
@@ -182,7 +182,7 @@ class Monitor extends BaseAPI
             $this->exportDirectory = getcwd();
 
         $this->pluginManager->get('request')->setAction($this->pluginManager->get('monitorExportIssueByEventsGroup')->setArgs($eventsGroupId, $this->exportDirectory, $fileName));
-        
+
         return $this->pluginManager->get('request')->send();
     }
 
@@ -209,7 +209,7 @@ class Monitor extends BaseAPI
             $this->exportDirectory = getcwd();
 
         $this->pluginManager->get('request')->setAction($this->pluginManager->get('codetracingDownloadTraceFile')->setArgs($traceFile, $fileName, $this->exportDirectory));
-        
+
         return $this->pluginManager->get('request')->send();
     }
 

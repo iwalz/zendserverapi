@@ -60,93 +60,93 @@ abstract class Adapter
     {
         return $this->response;
     }
-    
+
     /**
-     * Get the XML content as SimpleXMLElement 
-     * 
+     * Get the XML content as SimpleXMLElement
+     *
      * @return SimpleXMLElement
      */
     public function getContent()
     {
         return $this->content;
     }
-    
+
     /**
      * Set the XML content
-     * 
-     * @param string|SimpleXMLElement $content
+     *
+     * @param  string|SimpleXMLElement   $content
      * @throws \InvalidArgumentException
      */
     public function setContent($content)
     {
-        if(is_string($content)) {
+        if (is_string($content)) {
             $this->content = new \SimpleXMLElement($content);
-        } elseif($content instanceof \SimpleXMLElement) {
+        } elseif ($content instanceof \SimpleXMLElement) {
             $this->content = $content;
         } else {
             throw new \InvalidArgumentException("The content needs to be a string or a SimpleXMLElement");
         }
     }
-    
+
     /**
      * Returns a single element, automatically adds namespaces, if namespace[""] is set
-     * 
-     * @param string $pattern
+     *
+     * @param  string                 $pattern
      * @return \SimpleXMLElement|null
      */
     public function getElement($pattern)
     {
         $returnValue = $this->executeXpath($pattern);
-        
+
         return $returnValue[0];
     }
-    
+
     /**
      * Returns an array of \SimpleXMLElement, based on a xPath query.
      * Namespaces are automatically added, if namespace[""] is set in the XML document
-     * 
-     * @param string $pattern
+     *
+     * @param  string     $pattern
      * @return array|null
      */
-    public function getElements($pattern) 
+    public function getElements($pattern)
     {
         $returnValue = $this->executeXpath($pattern);
-        
+
         return $returnValue;
     }
-    
+
     /**
      * Transform a "pseudo" xPath query to a real query,
      * automatically adds namespace and prepend levels up to responseData
-     * 
-     * @param string $pattern
+     *
+     * @param  string     $pattern
      * @return array|null
      */
-    protected function executeXpath($pattern) 
+    protected function executeXpath($pattern)
     {
         $prependPrefix = true;
         $prePattern = "/ns:zendServerAPIResponse/ns:responseData";
         $namespace = $this->content->getNamespaces(true);
         $elements = explode("/", $pattern);
         array_shift($elements);
-        
+
         // Do not add prefix if starts with //
-        if(substr($pattern, 0, 2) == "//") {
+        if (substr($pattern, 0, 2) == "//") {
             $prependPrefix = false;
         }
 
         // If default namespace is not set, do not register
-        if(isset($namespace[""])) {
+        if (isset($namespace[""])) {
             $this->content->registerXPathNamespace("ns", $namespace[""]);
-            foreach($elements as $key => $value) {
+            foreach ($elements as $key => $value) {
                 if($value != "")
                     $elements[$key] = "ns:" . $value;
             }
-        } 
-        
+        }
+
         // Generate valid xPath, including namespace
         $xPath = ($prependPrefix ? $prePattern : '') . "/" . implode("/", $elements);
-                
+
         return $this->content->xpath($xPath);
     }
 }

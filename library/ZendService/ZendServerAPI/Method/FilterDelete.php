@@ -29,10 +29,10 @@ class FilterDelete extends Method
      * @var string
      */
     protected $name = null;
-    
+
     /**
      * Set the arguments and configures the method
-     * 
+     *
      * @var string $name
      * @return \ZendService\ZendServerAPI\Method\FilterGetByType
      */
@@ -40,10 +40,10 @@ class FilterDelete extends Method
     {
         $this->name = $name;
         $this->configure();
-        
+
         return $this;
     }
-    
+
     /**
      * Configures all needed information for the method implementation
      *
@@ -55,10 +55,10 @@ class FilterDelete extends Method
         $this->setFunctionPath('/ZendServer/Api/filterDelete');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\Filter());
     }
-    
+
     /**
      * Returns the correct accept header for a specific version
-     * 
+     *
      * @see \ZendService\ZendServerAPI\Method\Method::getAcceptHeader()
      * @return string
      */
@@ -66,7 +66,7 @@ class FilterDelete extends Method
     {
         return "application/vnd.zend.serverapi+xml;version=1.3";
     }
-    
+
     /**
      * Get post content
      *
@@ -75,7 +75,7 @@ class FilterDelete extends Method
     public function getContent()
     {
         $content = "name=" . $this->name;
-        
+
         return $content;
     }
 }

@@ -24,8 +24,8 @@ The filterGetByType Method
 Retrieve and display a list of filters.
 
 
-Method definition
-^^^^^^^^^^^^^^^^^
+Method filterGetByType definition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
@@ -84,8 +84,8 @@ The filterSave Method
 
 Save a filter.
 
-Method definition
-^^^^^^^^^^^^^^^^^
+Method filterSave definition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
@@ -156,8 +156,8 @@ The filterDelete Method
 
 Deletes a filter.
 
-Method definition
-^^^^^^^^^^^^^^^^^
+Method filterDelete definition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 

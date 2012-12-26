@@ -44,10 +44,10 @@ class FilterSave extends Method
      * @var array
      */
     protected $data = array();
-    
+
     /**
      * Set the arguments and configures the method
-     * 
+     *
      * @var string $type     <p>The type of the filter (job, issue)</p>
      * @var string $name     <p>The name of the filter</p>
      * @var int $id          <p>The ID of the filter</p>
@@ -61,10 +61,10 @@ class FilterSave extends Method
         $this->id = $id;
         $this->data = $data;
         $this->configure();
-        
+
         return $this;
     }
-    
+
     /**
      * Configures all needed information for the method implementation
      *
@@ -76,7 +76,7 @@ class FilterSave extends Method
         $this->setFunctionPath('/ZendServer/Api/filterSave');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\Filter());
     }
-    
+
     /**
      * Returns the correct accept header for a specific version
      *
@@ -87,7 +87,7 @@ class FilterSave extends Method
     {
         return "application/vnd.zend.serverapi+xml;version=1.3";
     }
-    
+
     /**
      * Get post content
      *
@@ -97,13 +97,13 @@ class FilterSave extends Method
     {
         $content = "type=" . $this->type;
         $content .= "&name=" . $this->name;
-        
+
         if($this->data !== array())
             $content .= "&data=" . json_encode($this->data);
-        
+
         if($this->id !== null)
             $content .= "&id=" . $this->id;
-    
+
         return $content;
     }
 }

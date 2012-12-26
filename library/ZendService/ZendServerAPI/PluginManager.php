@@ -42,11 +42,11 @@ class PluginManager extends AbstractPluginManager
      * @var \ZendService\ZendServerAPI\ServiceManagerConfig
      */
     private $config = null;
-    
+
     /**
      * Constructor for the plugin manager
-     * 
-     * @param string $name
+     *
+     * @param string               $name
      * @param ServiceManagerConfig $config
      */
     public function __construct($name = null, ServiceManagerConfig $config = null)
@@ -56,14 +56,14 @@ class PluginManager extends AbstractPluginManager
 
         if($name === null)
             $name = "general";
-        
+
         $this->name = $name;
         $this->config = $config;
-        
+
         static::setConfig(static::$configFile);
         parent::__construct($config);
     }
-    
+
     /**
      * Get the config file
      *
@@ -83,18 +83,18 @@ class PluginManager extends AbstractPluginManager
     {
         self::$configFile = $configFile;
     }
-    
+
     /**
      * Set the name for a config section
      *
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function setName($name)
     {
         $this->name = $name;
     }
-    
+
     /**
      * Get the name for the config section
      *
@@ -104,17 +104,17 @@ class PluginManager extends AbstractPluginManager
     {
         return $this->name;
     }
-    
+
     /**
      * Validates the plugins, managed by this component
-     * 
+     *
      * @see \Zend\ServiceManager\AbstractPluginManager::validatePlugin()
      * @param mixed the handled instances
      */
     public function validatePlugin ($plugin)
     {
         if (
-            $plugin instanceof PluginInterface || 
+            $plugin instanceof PluginInterface ||
             $plugin instanceof Logger ||
             $plugin instanceof Client ||
             is_array($plugin)
@@ -122,86 +122,85 @@ class PluginManager extends AbstractPluginManager
             // we're okay
             return;
         }
-        
+
         throw new \Zend\ServiceManager\Exception\InvalidArgumentException(sprintf(
                 'Plugin of type %s is invalid; must implement %s\PluginInterface',
                 (is_object($plugin) ? get_class($plugin) : gettype($plugin)),
                 __NAMESPACE__
         ));
     }
-    
+
     /**
      * Inject a costum request object
      *
-     * @param Request $request
+     * @param  Request $request
      * @return void
      */
     public function setRequest(Request $request)
     {
         $this->setService("request", $request);
     }
-    
+
     /**
      * Set a new config file
      *
-     * @param string $configFile
+     * @param  string $configFile
      * @return void
      */
     public function setConfig($configFile)
     {
         $name = $this->name;
         $validator = new ConfigValidator($configFile);
-    
+
         // Initialize the config
-        $this->setFactory("config", function($serviceManager) use($name, $validator) {
+        $this->setFactory("config", function($serviceManager) use ($name, $validator) {
             $conf = $validator->getConfig($name);
-    
+
             $apiKey = new ApiKey($conf['apiName'], $conf['key'], $conf['state']);
             $config = new Config();
             $config->setHost($conf['host']);
             $config->setPort($conf['port']);
             $config->setApiVersion($conf['version']);
             $config->setApiKey($apiKey);
-    
+
             if(isset($conf['protocol']))
                 $config->setProtocol($conf['protocol']);
             else
                 $config->setProtocol(($config->getPort() === 10082) ? 'https' : 'http');
-            
+
             $configNumber = str_replace(".", "", $config->getApiVersion());
-            
-            // Add Web API 1.0 Factory 
+
+            // Add Web API 1.0 Factory
             $serviceManager->addAbstractFactory(
                     '\ZendService\ZendServerAPI\Factories\ApiVersion10CommandFactory', true
             );
-            
+
             // Add Web API 1.1 Factory if available
-            if($configNumber >= 11) {
+            if ($configNumber >= 11) {
                 $serviceManager->addAbstractFactory(
                         '\ZendService\ZendServerAPI\Factories\ApiVersion11CommandFactory', true
                 );
             }
-            
+
             // Add Web API 1.2 Factory if available
-            if($configNumber >= 12) {
+            if ($configNumber >= 12) {
                 $serviceManager->addAbstractFactory(
                         '\ZendService\ZendServerAPI\Factories\ApiVersion12CommandFactory', true
                 );
             }
-            
+
             // Add Web API 1.3 Factory if available
-            if($configNumber >= 13) {
+            if ($configNumber >= 13) {
                 $serviceManager->addAbstractFactory(
                         '\ZendService\ZendServerAPI\Factories\ApiVersion13CommandFactory', true
                 );
             }
-            
-    
+
             return $config;
         });
-    
+
         // Initialize the settings
-        $this->setFactory("settings", function($serviceManager) use($validator) {
+        $this->setFactory("settings", function($serviceManager) use ($validator) {
             $config = $serviceManager->get("config");
 
             $settings = $validator->getSettings();
@@ -210,10 +209,11 @@ class PluginManager extends AbstractPluginManager
                 $config->setProxyHost($settings['proxyHost']);
                 $config->setProxyPort($port);
             }
+
             return $settings;
         });
     }
-    
+
     /**
      * Enables the logging
      *
@@ -223,7 +223,7 @@ class PluginManager extends AbstractPluginManager
     {
         $this->config->enableLogging();
     }
-    
+
     /**
      * Disables the logging
      *
@@ -233,6 +233,5 @@ class PluginManager extends AbstractPluginManager
     {
         $this->config->disableLogging();
     }
-    
-}
 
+}

@@ -64,7 +64,7 @@ class SuperGlobals extends DataType
      * Get the get parameter array or value by key
      * if parameter is given
      *
-     * @param  string|null  $key
+     * @param  string|null       $key
      * @return string|array|null
      */
     public function getGetParameter($key = null)
@@ -94,7 +94,7 @@ class SuperGlobals extends DataType
      * Get the post parameter array or value by key
      * if parameter is given
      *
-     * @param  string|null  $key
+     * @param  string|null       $key
      * @return string|array|null
      */
     public function getPostParameter($key = null)
@@ -124,7 +124,7 @@ class SuperGlobals extends DataType
      * Get the cookie parameter array or value by key
      * if parameter is given
      *
-     * @param  string|null  $key
+     * @param  string|null       $key
      * @return string|array|null
      */
     public function getCookieParameter($key = null)
@@ -154,7 +154,7 @@ class SuperGlobals extends DataType
      * Get the session parameter array or value by key
      * if parameter is given
      *
-     * @param  string|null  $key
+     * @param  string|null       $key
      * @return string|array|null
      */
     public function getSessionParameter($key = null)
@@ -184,7 +184,7 @@ class SuperGlobals extends DataType
      * Get the server parameter array or value by key
      * if parameter is given
      *
-     * @param  string|null  $key
+     * @param  string|null       $key
      * @return string|array|null
      */
     public function getServerParameter($key = null)

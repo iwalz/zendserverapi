@@ -33,7 +33,7 @@ class ApiVersion11CommandFactory implements CommandFactory, AbstractFactoryInter
      * @var array
      */
     private $availableCommands = null;
-    
+
     /**
      * Constructor. Set's internal default values
      *
@@ -51,7 +51,7 @@ class ApiVersion11CommandFactory implements CommandFactory, AbstractFactoryInter
             'applicationUpdate'
         );
     }
-    
+
     /**
      * Retrieves the command object and throws an error if
      * the command is not supported via this factory (and the Zend Server/webapi version).
@@ -75,38 +75,39 @@ class ApiVersion11CommandFactory implements CommandFactory, AbstractFactoryInter
             case 'applicationSynchronize':
             case 'applicationUpdate':
                 $reflect  = new \ReflectionClass("\\ZendService\\ZendServerAPI\\Method\\" . ucfirst($name));
+
                 return $reflect->newInstanceArgs();
 
                 break;
         }
     }
-    
+
     /**
      * Check if the factory can create an instance by the given name
      *
      * @see \Zend\ServiceManager\AbstractFactoryInterface::canCreateServiceWithName()
      * @param \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @param string $name The real name
-     * @param string $requestedName The requested name (alias)
+     * @param string                                       $name           The real name
+     * @param string                                       $requestedName  The requested name (alias)
      */
     public function canCreateServiceWithName (
             ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
         return in_array($requestedName, $this->availableCommands);
     }
-    
+
     /**
      * Create an instance by the given name
      *
      * @see \Zend\ServiceManager\AbstractFactoryInterface::canCreateServiceWithName()
      * @param \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @param string $name The real name
-     * @param string $requestedName The requested name (alias)
+     * @param string                                       $name           The real name
+     * @param string                                       $requestedName  The requested name (alias)
      */
     public function createServiceWithName (
             ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
         return self::factory($requestedName);
     }
-    
+
 }

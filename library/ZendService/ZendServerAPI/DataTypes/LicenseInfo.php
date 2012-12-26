@@ -127,7 +127,7 @@ class LicenseInfo extends DataType
     /**
      * Set the license expiration date, which is empty if there is no license
      *
-     * @param  string  $validUntil
+     * @param  string $validUntil
      * @return void
      */
     public function setValidUntil($validUntil)

@@ -43,7 +43,7 @@ class ConfigurationImport extends Method
 
         if($file !== null)
             $this->file = $file;
-        
+
         return $this;
     }
 

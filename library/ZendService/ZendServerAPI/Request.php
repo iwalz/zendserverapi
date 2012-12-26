@@ -138,7 +138,7 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
     {
         if($this->config === null)
             $this->config = $this->sm->get("config");
-        
+
         return $this->config;
     }
 
@@ -177,22 +177,22 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
     {
         $this->client = $client;
     }
-    
+
     /**
      * Set an adapter to the Zend Http Client.
      * Most likely for testing
-     * 
-     * @param \Zend\Http\Client\Adapter\AdapterInterface $adapter
+     *
+     * @param  \Zend\Http\Client\Adapter\AdapterInterface $adapter
      * @return void
      */
     public function setClientAdapter(\Zend\Http\Client\Adapter\AdapterInterface $adapter)
     {
         $this->adapter = $adapter;
     }
-    
+
     /**
      * Get the Zend Http Client adapter interface
-     * 
+     *
      * @return \Client\Adapter\AdapterInterface|null
      */
     public function getClientAdapter()
@@ -211,14 +211,14 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
     {
         if (!$this->client) {
             $this->client = $this->sm->get("http_client");
-             
-            if($this->adapter !== null) {
+
+            if ($this->adapter !== null) {
                 $this->client->setAdapter($this->adapter);
             }
         } else {
             $this->client->resetParameters();
         }
-        
+
         if($this->config === null)
             $this->config = $this->sm->get("config");
 
@@ -228,13 +228,13 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
         $header = $request->getHeaders();
         $request->setHeaders($this->addHeaders($header));
         $request->setMethod($this->action->getMethod());
-        
+
         if ($this->action->getMethod() === 'POST') {
-            
+
             $request->setMethod('POST');
             $content = $this->action->getContent();
             $request->setContent($content);
-            
+
             // prepare statement for file upload
             $postFiles = $this->action->getPostFiles();
             if (count($postFiles) > 0) {
@@ -246,18 +246,18 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
                     );
                 }
                 $this->client->setEncType($this->action->getContentType(), 'bla');
-                
+
             } else {
                 $this->client->setEncType($this->action->getContentType());
             }
-            
+
             $contentValues = $this->getAction()->getContentValues();
             if (count($contentValues) > 0) {
                 $this->client->setParameterPost($contentValues);
             }
-            
+
         }
-        
+
         $this->getLogger()->debug($request);
         foreach ($this->getAction()->getContentValues() as $key => $value) {
             if(!is_array($value))
@@ -270,14 +270,14 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
             $response = $this->client->send();
             $this->getLogger()->debug($response);
             $this->getAction()->setResponse($response);
-            
+
             $statusCode = $response->getStatusCode();
-            
+
             if($statusCode >= 400 && $statusCode <= 499)
                 throw new Exception\ClientSide($response->getBody(), $statusCode);
             elseif($statusCode >= 500 && $statusCode <= 599)
                 throw new Exception\ServerSide($response->getBody(), $statusCode);
-            
+
         } catch (\Zend\Http\Exception\ExceptionInterface $exception) {
             $this->getLogger()->err($exception->getMessage());
             if ($exception->getMessage() !== null) {
@@ -298,8 +298,8 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
 
     /**
      * Prepare the request
-     * 
-     * @param \Zend\Http\Request $request
+     *
+     * @param  \Zend\Http\Request $request
      * @return \Zend\Http\Request
      */
     private function prepareRequest(\Zend\Http\Request $request)
@@ -308,7 +308,7 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
         $request->getUri()->setPort($this->config->getPort());
         $scheme = $this->config->getProtocol();
         $request->getUri()->setScheme($scheme);
-        if($scheme == "https") {
+        if ($scheme == "https") {
             $this->client->setOptions(array(
                     'adapter'      => 'Zend\Http\Client\Adapter\Socket',
                     'ssltransport' => 'tls',
@@ -317,14 +317,14 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
         }
         $request->getUri()->setScheme($this->config->getProtocol());
         $request->getUri()->setPath($this->action->getLink());
-        
+
         return $request;
     }
-    
+
     /**
-     * Set the headers 
-     * 
-     * @param \Zend\Http\Headers $header
+     * Set the headers
+     *
+     * @param  \Zend\Http\Headers $header
      * @return \Zend\Http\Headers
      */
     private function addHeaders(Headers $header)
@@ -334,10 +334,10 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
         $header->addHeaderLine('Accept', $this->action->getAcceptHeader());
         $header->addHeaderLine('Date', $this->getDate());
         $header->addHeaderLine('User-Agent', $this->userAgent);
-        
+
         return $header;
     }
-    
+
     /**
      * Get a special formatted date string, needed by the server api
      *
@@ -366,10 +366,10 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
 
         return hash_hmac('sha256', $data, $this->config->getApiKey()->getKey());
     }
-    
+
     /**
      * Set the service manager
-     * 
+     *
      * @param \Zend\ServiceManager\ServiceManager
      * @return void
      */

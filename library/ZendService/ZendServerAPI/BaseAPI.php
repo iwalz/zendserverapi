@@ -30,24 +30,24 @@ class BaseAPI implements PluginInterface
      * @var string
      */
     protected $name = null;
-    
+
     /**
      * The plugin manager
      * @var \ZendService\ZendServerAPI\PluginManager
      */
     protected $pluginManager = null;
-    
+
     /**
      * Base constructor for all API-method implementations
      *
-     * @param string  $name    <p>Name of the config</p>
+     * @param string $name <p>Name of the config</p>
      */
     public function __construct($name = null)
     {
         $smConfig = new ServiceManagerConfig();
         $this->pluginManager = new PluginManager($name, $smConfig);
-        
-        if($name !== null) {
+
+        if ($name !== null) {
             $this->pluginManager->setName($name);
             $this->name = $name;
         }
@@ -84,11 +84,10 @@ class BaseAPI implements PluginInterface
     {
         $this->pluginManager->get("request")->setClient($client);
     }
-    
-    
+
     /**
      * Get the plugin manager
-     * 
+     *
      * @return \Zend\ServiceManager\PluginManager
      */
     public function getPluginManager ()
@@ -141,28 +140,28 @@ class BaseAPI implements PluginInterface
 
     /**
      * Set the config file. Proxy to the pluginmanager for initialization
-     * 
-     * @param string $configFile
+     *
+     * @param  string $configFile
      * @return void
      */
     public function setConfigFile($configFile)
     {
         $this->pluginManager->setConfig($configFile);
     }
-    
+
     /**
      * Enables the logging
-     * 
+     *
      * @return void
      */
     public function enableLogging()
     {
         $this->pluginManager->enableLogging();
     }
-    
+
     /**
      * Disables the logging
-     * 
+     *
      * @return void
      */
     public function disableLogging()

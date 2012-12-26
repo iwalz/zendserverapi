@@ -31,16 +31,16 @@ class CodetracingCreate extends Method
     private $url = null;
 
     /**
-     * Set arguments for codetracingCreate 
+     * Set arguments for codetracingCreate
      *
      * @param string $url URL to trace
      */
     public function setArgs($url)
     {
         $this->url = $url;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

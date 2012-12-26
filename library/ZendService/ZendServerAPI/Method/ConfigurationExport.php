@@ -41,7 +41,7 @@ class ConfigurationExport extends Method
 
         if($fileName !== null)
             $this->setFileName($fileName);
-        
+
         return $this;
     }
 

@@ -51,9 +51,9 @@ class ApiKey implements PluginInterface
     /**
      * Constructor for ApiKey model class
      *
-     * @param string $name Name of the api key
-     * @param string $key  The api key value
-     * @param int $state State of the api key
+     * @param string $name  Name of the api key
+     * @param string $key   The api key value
+     * @param int    $state State of the api key
      */
     public function __construct($name = null, $key = null, $state = self::READONLY)
     {

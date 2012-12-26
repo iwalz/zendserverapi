@@ -75,7 +75,7 @@ class Server extends BaseAPI
     public function clusterGetServerStatus(array $parameters = array())
     {
         $this->pluginManager->get('request')->setAction($this->pluginManager->get('clusterGetServerStatus')->setArgs($parameters));
-        
+
         return $this->pluginManager->get('request')->send();
     }
 
@@ -99,7 +99,7 @@ class Server extends BaseAPI
         $this->pluginManager->get('request')->setAction(
                 $this->pluginManager->get('clusterRemoveServer')->setArgs($serverId, $force)
         );
-        
+
         return $this->pluginManager->get('request')->send();
     }
 
@@ -121,7 +121,7 @@ class Server extends BaseAPI
         $this->pluginManager->get('request')->setAction(
                 $this->pluginManager->get('clusterAddServer')->setArgs($serverName, $serverUrl, $guiPassword, $propagateSettings)
         );
-        
+
         return $this->pluginManager->get('request')->send();
     }
 
@@ -142,7 +142,7 @@ class Server extends BaseAPI
         $this->pluginManager->get('request')->setAction(
                 $this->pluginManager->get('clusterDisableServer')->setArgs($serverId)
         );
-        
+
         return $this->pluginManager->get('request')->send();
     }
 
@@ -164,7 +164,7 @@ class Server extends BaseAPI
         $this->pluginManager->get('request')->setAction(
                 $this->pluginManager->get('clusterEnableServer')->setArgs($serverId)
         );
-        
+
         return $this->pluginManager->get('request')->send();
     }
 
@@ -187,7 +187,7 @@ class Server extends BaseAPI
         $this->pluginManager->get('request')->setAction(
                 $this->pluginManager->get('restartPHP')->setArgs($serverIds, $parallelRestart)
         );
-        
+
         return $this->pluginManager->get('request')->send();
     }
 
@@ -208,7 +208,7 @@ class Server extends BaseAPI
         $this->pluginManager->get('request')->setAction(
                 $this->pluginManager->get('clusterReconfigureServer')->setArgs($serverId, $doRestart)
         );
-        
+
         return $this->pluginManager->get('request')->send();
     }
 

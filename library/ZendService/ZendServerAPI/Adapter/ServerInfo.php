@@ -38,7 +38,7 @@ class ServerInfo extends \ZendService\ZendServerAPI\Adapter\Adapter
 
         $xml = simplexml_load_string($xml);
         $this->setContent($xml);
-        
+
         $xmlServerInfo = $this->getElement("//serverInfo");
 
         $server = new ServerInfoData();

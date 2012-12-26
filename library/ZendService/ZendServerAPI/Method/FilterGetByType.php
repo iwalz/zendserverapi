@@ -29,10 +29,10 @@ class FilterGetByType extends Method
      * @var string
      */
     protected $type = null;
-    
+
     /**
      * Set the arguments and configures the method
-     * 
+     *
      * @var string $type
      * @return \ZendService\ZendServerAPI\Method\FilterGetByType
      */
@@ -40,10 +40,10 @@ class FilterGetByType extends Method
     {
         $this->type = $type;
         $this->configure();
-        
+
         return $this;
     }
-    
+
     /**
      * Configures all needed information for the method implementation
      *
@@ -55,12 +55,12 @@ class FilterGetByType extends Method
         $this->setFunctionPath('/ZendServer/Api/filterGetByType');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\Filters());
     }
-    
+
     public function getAcceptHeader()
     {
         return "application/vnd.zend.serverapi+xml;version=1.3";
     }
-    
+
     /**
      * Get link for the method
      *
@@ -70,7 +70,7 @@ class FilterGetByType extends Method
     {
         $link = $this->getFunctionPath();
         $link .= "?type=".$this->type;
-    
+
         return $link;
     }
 }

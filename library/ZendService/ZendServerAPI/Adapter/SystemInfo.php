@@ -39,9 +39,9 @@ class SystemInfo extends Adapter
 
         $xml = simplexml_load_string($xml);
         $this->setContent($xml);
-        
+
         $xmlSystemInfo = $this->getElement("//systemInfo");
-        
+
         $systemInfo = new SystemInfoData();
         $systemInfo->setStatus((string) $xmlSystemInfo->status);
         $systemInfo->setEdition((string) $xmlSystemInfo->edition);

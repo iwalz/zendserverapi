@@ -189,8 +189,8 @@ abstract class Method implements PluginInterface
     /**
      * Returns the parameter array for index $index
      *
-     * @param string $index
-     * @param array  $values
+     * @param  string $index
+     * @param  array  $values
      * @return string
      */
     public function buildParameterArray($index, array $values)

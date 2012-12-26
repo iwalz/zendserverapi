@@ -61,7 +61,7 @@ class CodetracingList extends Method
     protected $direction = null;
 
     /**
-     * Set arguments for CodetracingList 
+     * Set arguments for CodetracingList
      *
      * @param array  $applicationIds Application ID
      * @param int    $limit          Limit to retrieve
@@ -72,13 +72,13 @@ class CodetracingList extends Method
     public function setArgs($applicationIds = array(), $limit = null, $offset = null, $orderBy = null, $direction = null)
     {
         $this->configure();
-        
+
         $this->applicationIds = $applicationIds;
         $this->limit = $limit;
         $this->offset = $offset;
         $this->orderBy = $orderBy;
         $this->direction = $direction;
-        
+
         return $this;
     }
 

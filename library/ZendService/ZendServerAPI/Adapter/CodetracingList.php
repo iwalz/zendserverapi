@@ -35,7 +35,7 @@ class CodetracingList extends Adapter
 
         $xml = simplexml_load_string($xml);
         $this->setContent($xml);
-        
+
         $xmlTraceList = $this->getElements("//codeTrace");
 
         $codetracingList = new  \ZendService\ZendServerAPI\DataTypes\CodetracingList();

@@ -35,7 +35,7 @@ class IssueDetails extends Adapter
 
         $xml = simplexml_load_string($xml);
         $this->setContent($xml);
-        
+
         $xmlIssueDetails = $this->getElement("//issueDetails");
 
         $issueDetails = new  \ZendService\ZendServerAPI\DataTypes\IssueDetails();

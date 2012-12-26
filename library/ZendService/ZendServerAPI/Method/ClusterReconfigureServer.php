@@ -38,7 +38,7 @@ class ClusterReconfigureServer extends Method
     private $doRestart = null;
 
     /**
-     * Set arguments for ClusterReconfigureServer 
+     * Set arguments for ClusterReconfigureServer
      *
      * @param int $server ServerId to reconfigure
      * @param boolean restart server after action
@@ -47,9 +47,9 @@ class ClusterReconfigureServer extends Method
     {
         $this->server = $server;
         $this->doRestart = $doRestart;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

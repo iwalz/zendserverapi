@@ -35,9 +35,9 @@ class CodetracingStatus extends Adapter
 
         $xml = simplexml_load_string($xml);
         $this->setContent($xml);
-        
+
         $xmlTraceStatus = $this->getElement("//codeTracingStatus");
-        
+
         $codetracingStatus = new  \ZendService\ZendServerAPI\DataTypes\CodeTracingStatus();
         $codetracingStatus->setComponentStatus((string) $xmlTraceStatus->componentStatus);
         $codetracingStatus->setTraceEnabled(((string) $xmlTraceStatus->traceEnabled) == '0' ? false : true);

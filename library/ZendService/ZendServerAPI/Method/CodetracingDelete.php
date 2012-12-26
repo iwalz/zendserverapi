@@ -33,16 +33,16 @@ class CodetracingDelete extends Method
     private $id = null;
 
     /**
-     * Set arguments for codetracingDelete 
+     * Set arguments for codetracingDelete
      *
      * @param integer $id Trace file ID
      */
     public function setArgs($id)
     {
         $this->id = $id;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

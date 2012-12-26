@@ -32,10 +32,10 @@ class ApiVersion10CommandFactory implements CommandFactory, AbstractFactoryInter
      * @var array
      */
     private $availableCommands = null;
-    
+
     /**
      * Constructor. Set's internal default values
-     * 
+     *
      * @return ApiVersion10CommandFactory
      */
     public function __construct()
@@ -52,7 +52,7 @@ class ApiVersion10CommandFactory implements CommandFactory, AbstractFactoryInter
             'configurationExport'
         );
     }
-    
+
     /**
      * Retrieves the command object and throws an error if
      * the command is not supported via this factory (and the Zend Server/webapi version).
@@ -77,20 +77,21 @@ class ApiVersion10CommandFactory implements CommandFactory, AbstractFactoryInter
             case 'configurationImport':
             case 'configurationExport':
                 $reflect  = new \ReflectionClass("\\ZendService\\ZendServerAPI\\Method\\" . ucfirst($name));
+
                 return $reflect->newInstanceArgs();
                 break;
             default:
                 throw new \RuntimeException('The method ' . $name . ' is not available');
         }
     }
-    
+
     /**
      * Check if the factory can create an instance by the given name
      *
      * @see \Zend\ServiceManager\AbstractFactoryInterface::canCreateServiceWithName()
      * @param \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @param string $name The real name
-     * @param string $requestedName The requested name (alias)
+     * @param string                                       $name           The real name
+     * @param string                                       $requestedName  The requested name (alias)
      */
     public function canCreateServiceWithName (
             ServiceLocatorInterface $serviceLocator, $name, $requestedName)
@@ -103,8 +104,8 @@ class ApiVersion10CommandFactory implements CommandFactory, AbstractFactoryInter
      *
      * @see \Zend\ServiceManager\AbstractFactoryInterface::canCreateServiceWithName()
      * @param \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @param string $name The real name
-     * @param string $requestedName The requested name (alias)
+     * @param string                                       $name           The real name
+     * @param string                                       $requestedName  The requested name (alias)
      */
     public function createServiceWithName (
             ServiceLocatorInterface $serviceLocator, $name, $requestedName)

@@ -47,9 +47,9 @@ class ClusterGetServerStatus  extends Method
     public function setArgs(array $servers = array())
     {
         $this->servers = $servers;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

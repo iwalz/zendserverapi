@@ -10,7 +10,7 @@
 namespace ZendService\ZendServerAPI;
 
 /**
- * Interface to identify component internals and allow them to 
+ * Interface to identify component internals and allow them to
  * be managed by the PluginManager
  *
  * @license        http://framework.zend.com/license/new-bsd New BSD License
@@ -22,4 +22,3 @@ namespace ZendService\ZendServerAPI;
  */
 interface PluginInterface
 { }
-

@@ -39,10 +39,10 @@ class Filters extends Adapter
 
         foreach ($xmlFilter as $xmlFilterElement) {
             $filter = new \ZendService\ZendServerAPI\DataTypes\Filter();
-            $filter->setData(!empty($xmlFilterElement->data) ? (array)json_decode($xmlFilterElement->data) : array());
-            $filter->setName(trim((string)$xmlFilterElement->name));
-            $filter->setId((int)$xmlFilterElement->id);
-            $filter->setCustom((string)$xmlFilterElement->custom == "1" ? true : false);
+            $filter->setData(!empty($xmlFilterElement->data) ? (array) json_decode($xmlFilterElement->data) : array());
+            $filter->setName(trim((string) $xmlFilterElement->name));
+            $filter->setId((int) $xmlFilterElement->id);
+            $filter->setCustom((string) $xmlFilterElement->custom == "1" ? true : false);
 
             $filters->addFilter($filter);
         }

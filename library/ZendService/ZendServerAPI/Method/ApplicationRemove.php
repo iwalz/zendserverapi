@@ -45,9 +45,9 @@ class ApplicationRemove extends Method
     public function setArgs($applicationId)
     {
         $this->applicationId = $applicationId;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

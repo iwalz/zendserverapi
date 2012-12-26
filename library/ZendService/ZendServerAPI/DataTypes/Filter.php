@@ -124,4 +124,3 @@ class Filter extends DataType
         return $this->type;
     }
 }
-

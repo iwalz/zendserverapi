@@ -67,9 +67,9 @@ class ClusterAddServer extends Method
         $this->guiPassword = $guiPassword;
         $this->propagateSettings = $propagateSettings;
         $this->doRestart = $doRestart;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

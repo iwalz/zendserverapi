@@ -17,7 +17,7 @@ use Zend\ServiceManager\ServiceManager;
 /**
  * The Servicemanager configuration.
  * This class should be the only one, manipulating instances within the SM inside the API.
- * Changes from outside are proxied to this class. 
+ * Changes from outside are proxied to this class.
  *
  * @license        http://framework.zend.com/license/new-bsd New BSD License
  * @link           http://github.com/zendframework/zf2 for the canonical source repository
@@ -48,7 +48,7 @@ class ServiceManagerConfig implements ConfigInterface
      * @var \ZendService\ZendServerAPI\PluginManager
      */
     private $pluginManager = null;
-    
+
     /**
      * Constructor
      */
@@ -58,10 +58,10 @@ class ServiceManagerConfig implements ConfigInterface
         if(self::$disableLogging === null)
             self::$disableLogging = false;
     }
-    
+
     /**
      * Configure the service manager
-     * 
+     *
      * @see \Zend\ServiceManager\ConfigInterface::configureServiceManager()
      * @param \Zend\ServiceManager\ServiceManager
      */
@@ -69,56 +69,56 @@ class ServiceManagerConfig implements ConfigInterface
     {
         $this->pluginManager = $serviceManager;
         $serviceManager->setAllowOverride(true);
-        
+
         $this->configureInitializers($serviceManager);
         $this->configureInvokables($serviceManager);
         $this->configureFactories($serviceManager);
-        
+
         if(self::$disableLogging)
             $this->disableLogging();
         else
             $this->enableLogging();
-    }    
-    
+    }
+
     /**
      * Configures SM factories
-     * 
+     *
      * @param \Zend\ServiceManager\ServiceManager $serviceManager
      */
     private function configureFactories(ServiceManager $serviceManager)
     {
         $logFile = $this->getLogFile();
-        
-        $serviceManager->setFactory("default_log", function($serviceManager) use($logFile) {
+
+        $serviceManager->setFactory("default_log", function($serviceManager) use ($logFile) {
             $settings = $serviceManager->get('settings');
             $filter = new \Zend\Log\Filter\Priority($settings['loglevel']);
             $logger = new \Zend\Log\Logger();
-            
+
             if(!is_dir(dirname($logFile)))
                 mkdir(dirname($logFile));
             $logWriter = new \Zend\Log\Writer\Stream($logFile);
-            
+
             $logWriter->addFilter($filter);
             $logger->addWriter($logWriter);
-            
+
             return $logger;
         });
-        
+
         $serviceManager->setFactory("request", function($serviceManager) {
             $request = new Request();
             $request->setConfig($serviceManager->get("config"));
-            
+
             return $request;
         });
-        
+
         $serviceManager->setFactory("mock_log", function($serviceManager) {
             $logger = new \Zend\Log\Logger();
             $logWriter = new \Zend\Log\Writer\Mock();
             $logger->addWriter($logWriter);
-            
+
             return $logger;
         });
-        
+
         $serviceManager->setFactory("http_client", function($serviceManager) {
             $config = $serviceManager->get("config");
             $client = new \Zend\Http\Client();
@@ -131,15 +131,15 @@ class ServiceManagerConfig implements ConfigInterface
                 $proxyAdapter->setOptions($options);
                 $client->setAdapter($proxyAdapter);
             }
-            
+
             return $client;
         });
     }
-    
+
     /**
      * Configure invokables for the SM
      *
-     * @param \Zend\ServiceManager\ServiceManager $serviceManager
+     * @param  \Zend\ServiceManager\ServiceManager $serviceManager
      * @return void
      */
     private function configureInvokables(ServiceManager $serviceManager)
@@ -164,7 +164,7 @@ class ServiceManagerConfig implements ConfigInterface
         $serviceManager->setInvokableClass('serverinfo_adapter', 'ZendService\ZendServerAPI\Adapter\ServerInfo');
         $serviceManager->setInvokableClass('serverslist_adapter', 'ZendService\ZendServerAPI\Adapter\ServersList');
         $serviceManager->setInvokableClass('systeminfo_adapter', 'ZendService\ZendServerAPI\Adapter\SystemInfo');
-        
+
         // register datatypes
         $serviceManager->setInvokableClass('applicationinfo_datatype', 'ZendService\ZendServerAPI\DataTypes\ApplicationInfo');
         $serviceManager->setInvokableClass('applicationlist_datatype', 'ZendService\ZendServerAPI\DataTypes\ApplicationList');
@@ -193,71 +193,71 @@ class ServiceManagerConfig implements ConfigInterface
         $serviceManager->setInvokableClass('superglobals_datatype', 'ZendService\ZendServerAPI\DataTypes\SuperGlobals');
         $serviceManager->setInvokableClass('systeminfo_datatype', 'ZendService\ZendServerAPI\DataTypes\SystemInfo');
     }
-    
+
     /**
-     * Configure initializers for the SM 
-     * 
-     * @param \Zend\ServiceManager\ServiceManager $serviceManager
+     * Configure initializers for the SM
+     *
+     * @param  \Zend\ServiceManager\ServiceManager $serviceManager
      * @return void
      */
     private function configureInitializers($serviceManager)
     {
         $serviceManager->addInitializer(function($instance, $serviceManager) {
-            if($instance instanceof LoggerAwareInterface) {
+            if ($instance instanceof LoggerAwareInterface) {
                 $instance->setLogger($serviceManager->get("logger"));
             }
         });
     }
-    
+
     /**
      * Get the config file
-     * 
+     *
      * @return string
      */
     public static function getConfigFile()
     {
         return self::$configFile;
     }
-    
+
     /**
      * Set the log file
-     * 
-     * @param string $logFile
+     *
+     * @param  string $logFile
      * @return void
      */
     public function setLogFile($logFile)
     {
         $this->logFile = $logFile;
     }
-    
+
     /**
      * Set a costum logger
-     * 
-     * @param \Zend\Log\LoggerInterface $logger
+     *
+     * @param  \Zend\Log\LoggerInterface $logger
      * @return void
      */
     public function setLogger(\Zend\Log\LoggerInterface $logger)
     {
         $this->logger = $logger;
-        
-        if($this->pluginManager->get('logger') !== $this->pluginManager->get('mock_log')) {
+
+        if ($this->pluginManager->get('logger') !== $this->pluginManager->get('mock_log')) {
             $this->pluginManager->setService("logger", $this->logger);
         }
     }
-    
+
     /**
      * Get the log file
-     * 
+     *
      * @return string
      */
     public function getLogFile()
     {
         return $this->logFile;
     }
-    
+
     /**
      * Set a real logger, the default or a costum
-     * 
+     *
      * @return void
      */
     public function enableLogging()
@@ -267,40 +267,40 @@ class ServiceManagerConfig implements ConfigInterface
         else
             $this->pluginManager->setService('logger', $this->logger);
     }
-    
+
     /**
      * Set the mock writer to the SM
-     * 
+     *
      * @return void
      */
     public function disableLogging()
     {
-        $this->pluginManager->setService('logger', $this->pluginManager->get('mock_log'));        
+        $this->pluginManager->setService('logger', $this->pluginManager->get('mock_log'));
     }
-    
+
     /**
      * Disable logging statically
-     * 
+     *
      * @return void
      */
     public static function disableCentralLogging()
     {
         self::$disableLogging = true;
     }
-    
+
     /**
      * Enable logging statically
-     * 
+     *
      * @return void
      */
     public static function enableCentralLogging()
     {
         self::$disableLogging = false;
     }
-    
+
     /**
      * Set the config file
-     * 
+     *
      * @param string $configFile
      */
     public static function setConfig($configFile)
@@ -308,4 +308,3 @@ class ServiceManagerConfig implements ConfigInterface
         self::$configFile = $configFile;
     }
 }
-

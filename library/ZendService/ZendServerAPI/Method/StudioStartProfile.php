@@ -39,7 +39,7 @@ class StudioStartProfile extends Method
     protected $overrideHost = null;
 
     /**
-     * Set arguments for studioStartDebug 
+     * Set arguments for studioStartDebug
      *
      * @param string      $eventsGroupId Events group ID
      * @param string|null $overrideHost  Override the host address sent to Zend Server
@@ -53,7 +53,7 @@ class StudioStartProfile extends Method
             $this->overrideHost = $overrideHost;
 
         $this->configure();
-        
+
         return $this;
     }
 

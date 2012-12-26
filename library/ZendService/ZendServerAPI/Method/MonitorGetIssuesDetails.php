@@ -42,9 +42,9 @@ class MonitorGetIssuesDetails extends Method
     public function setArgs($issueId)
     {
         $this->issueId = $issueId;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

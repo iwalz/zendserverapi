@@ -80,9 +80,9 @@ class MonitorGetIssuesListByPredefinedFilter extends Method
         $this->offset = $offset;
         $this->order = $order;
         $this->direction = $direction;
-        
+
         $this->configure();
-        
+
         return $this;
     }
 

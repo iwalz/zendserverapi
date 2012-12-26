@@ -171,6 +171,8 @@ htmlhelp_basename = 'ZendServerAPIdoc'
 # -- Options for LaTeX output --------------------------------------------------
 
 latex_elements = {
+'classoptions': ',oneside',
+'hyperref': '\\usepackage[bookmarks,colorlinks,plainpages=false]{hyperref}'
 # The paper size ('letterpaper' or 'a4paper').
 #'papersize': 'letterpaper',
 

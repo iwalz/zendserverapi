@@ -7,10 +7,6 @@ Server and Cluster Management methods
 
 The following is a list and documentation of the available methods used to manage your server and/or cluster.
 
-.. _zendservice.server.methods:
-
-Methods
-=======
 
     * getSystemInfo
     * clusterGetServerStatus
@@ -24,22 +20,25 @@ Methods
 .. _zendservice.server.methods.getsysteminfo:
 
 The getSystemInfo Method
-------------------------
+========================
 
 Use this method to get information about the system, including the Zend Server edition and version, PHP version, licensing information, etc. This method produces similar output on all Zend Server systems, and is future compatible.
 
+.. _zendservice.server.methods.getsysteminfo.definition:
 
 Method definition
-^^^^^^^^^^^^^^^^^
+-----------------
 
 .. code-block:: php
 
     <?php
     public function getSystemInfo() { }
 
+.. _zendservice.server.methods.getsysteminfo.information:
+
 
 getSystemInfo information
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
 .. list-table::
    :widths: 5 10
@@ -55,8 +54,10 @@ getSystemInfo information
        * 1.2
        * 1.3
 
+.. _zendservice.server.methods.getsysteminfo.example:
+
 Example
-^^^^^^^
+-------
 
 .. code-block:: php
 
@@ -70,15 +71,17 @@ Example
 .. _zendservice.server.methods.clusterGetServerStatus:
 
 The clusterGetServerStatus Method
----------------------------------
+=================================
 
 Use this method to get the list of servers in the cluster and the status of each one. On a Zend Server Cluster Manager
 with no valid license, this operation fails. This operation causes Zend Server Cluster Manager to check the status of
 servers and return fresh, non-cached information. This is different from the Servers List tab in the GUI, which may
 present cached information. Users interested in reducing load by caching this information should do it in their own code.
 
+.. _zendservice.server.methods.clusterGetServerStatus.definition:
+
 Method definition
-^^^^^^^^^^^^^^^^^
+-----------------
 
 .. code-block:: php
 
@@ -100,8 +103,10 @@ Method definition
      - A list of server IDs. If specified, the status is returned for these servers only. If not specified,
        the status of all the servers is returned.
 
+.. _zendservice.server.methods.clusterGetServerStatus.information:
+
 clusterGetServerStatus information
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------
 
 .. list-table::
    :widths: 5 10
@@ -117,8 +122,10 @@ clusterGetServerStatus information
        * 1.2
        * 1.3
 
+.. _zendservice.server.methods.clusterGetServerStatus.example:
+
 Example
-^^^^^^^
+-------
 
 .. code-block:: php
 
@@ -138,12 +145,14 @@ Example
 .. _zendservice.server.methods.clusterAddServer:
 
 The clusterAddServer Method
----------------------------
+===========================
 
 Add a new server to the cluster. On a Zend Server Cluster Manager with no valid license, this operation fails.
 
+.. _zendservice.server.methods.clusterAddServer.definition:
+
 Method clusterAddServer definition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------
 
 .. code-block:: php
 
@@ -179,8 +188,10 @@ Method clusterAddServer definition
      - no
      - Propagate this server’s current settings to the rest of the cluster.
 
+.. _zendservice.server.methods.clusterAddServer.information:
+
 clusterAddServer information
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------
 
 .. list-table::
    :widths: 5 10
@@ -196,8 +207,10 @@ clusterAddServer information
        * 1.2
        * 1.3
 
+.. _zendservice.server.methods.clusterAddServer.example:
+
 Example
-^^^^^^^
+-------
 
 .. code-block:: php
 
@@ -214,15 +227,17 @@ Example
 .. _zendservice.server.methods.clusterRemoveServer:
 
 The clusterRemoveServer Method
-------------------------------
+==============================
 
 This method removes a server from the cluster. The removal process may be asynchronous if Session Clustering is used.
 If this is the case, the initial operation will return an HTTP 202 response. As long as the server is not fully removed,
 further calls to remove the same server should be idempotent. On a Zend Server Cluster Manager with no valid license,
 this operation fails.
 
+.. _zendservice.server.methods.clusterRemoveServer.definition:
+
 Method clusterRemoveServer definition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------
 
 .. code-block:: php
 
@@ -248,8 +263,10 @@ Method clusterRemoveServer definition
      - no
      - Force-remove the server, skipping graceful shutdown process.
 
+.. _zendservice.server.methods.clusterRemoveServer.information:
+
 clusterRemoveServer information
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------
 
 .. list-table::
    :widths: 5 10
@@ -265,8 +282,10 @@ clusterRemoveServer information
        * 1.2
        * 1.3
 
+.. _zendservice.server.methods.clusterRemoveServer.example:
+
 Example
-^^^^^^^
+-------
 
 .. code-block:: php
 
@@ -284,15 +303,17 @@ Example
 .. _zendservice.server.methods.clusterEnableServer:
 
 The clusterEnableServer Method
-------------------------------
+==============================
 
 This method is used to re-enable a cluster member. This process may be asynchronous if Session Clustering is used.
 If this is the case, the initial operation will return an HTTP 202 response. This action is idempotent, and running
 it on an enabled server will result in a 200 OK response with no consequences. On a Zend Server Cluster Manager with
 no valid license this operation fails.
 
+.. _zendservice.server.methods.clusterEnableServer.definition:
+
 Method clusterEnableServer definition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------
 
 .. code-block:: php
 
@@ -313,8 +334,10 @@ Method clusterEnableServer definition
      - yes
      - The server id
 
+.. _zendservice.server.methods.clusterEnableServer.information:
+
 clusterEnableServer information
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------
 
 .. list-table::
    :widths: 5 10
@@ -330,8 +353,10 @@ clusterEnableServer information
        * 1.2
        * 1.3
 
+.. _zendservice.server.methods.clusterEnableServer.example:
+
 Example
-^^^^^^^
+-------
 
 .. code-block:: php
 
@@ -349,14 +374,16 @@ Example
 .. _zendservice.server.methods.clusterDisableServer:
 
 The clusterDisableServer Method
--------------------------------
+===============================
 
 This method disables a cluster member. This process may be asynchronous if Session Clustering is used. If this is
 the case, the initial operation returns an HTTP 202 response. As long as the server is not fully disabled, further
 calls to this method are idempotent. On a Zend Server Cluster Manager with no valid license, this operation fails.
 
+.. _zendservice.server.methods.clusterDisableServer.definition:
+
 Method clusterDisableServer definition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------
 
 .. code-block:: php
 
@@ -377,8 +404,10 @@ Method clusterDisableServer definition
      - yes
      - The server id
 
+.. _zendservice.server.methods.clusterDisableServer.information:
+
 clusterDisableServer information
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------
 
 .. list-table::
    :widths: 5 10
@@ -394,8 +423,10 @@ clusterDisableServer information
        * 1.2
        * 1.3
 
+.. _zendservice.server.methods.clusterDisableServer.example:
+
 Example
-^^^^^^^
+-------
 
 .. code-block:: php
 
@@ -413,12 +444,14 @@ Example
 .. _zendservice.server.methods.clusterReconfigureServer:
 
 The clusterReconfigureServer Method
------------------------------------
+===================================
 
 Re-configure a cluster member to match the cluster's profile. This operation will fail on a Zend Server Cluster Manager with no valid license.
 
+.. _zendservice.server.methods.clusterReconfigureServer.definition:
+
 Method clusterReconfigureServer definition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------------
 
 .. code-block:: php
 
@@ -446,8 +479,10 @@ Method clusterReconfigureServer definition
 
 *Note*: Because of the Zend Deployment Deamon (zdd), since Zend Server 5.5, there is an implicit restart on this method anyways.
 
+.. _zendservice.server.methods.clusterReconfigureServer.information:
+
 clusterReconfigureServer information
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 
 .. list-table::
    :widths: 5 10
@@ -462,8 +497,10 @@ clusterReconfigureServer information
        * 1.2
        * 1.3
 
+.. _zendservice.server.methods.clusterReconfigureServer.example:
+
 Example
-^^^^^^^
+-------
 
 .. code-block:: php
 
@@ -481,13 +518,15 @@ Example
 .. _zendservice.server.methods.restartPhp:
 
 The restartPhp Method
----------------------
+=====================
 
 This method restarts PHP on all servers or on specified servers in the cluster. A 202 response in this case does not
 always indicate a successful restart of all servers. Use the clusterGetServerStatus command to check the server(s) status again after a few seconds.
 
+.. _zendservice.server.methods.restartPhp.definition:
+
 Method restartPhp definition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------
 
 .. code-block:: php
 
@@ -515,8 +554,10 @@ Method restartPhp definition
      - Sends the restart command to all servers at the same time.
 
 
+.. _zendservice.server.methods.restartPhp.information:
+
 restartPhp information
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 .. list-table::
    :widths: 5 10
@@ -532,8 +573,10 @@ restartPhp information
        * 1.2
        * 1.3
 
+.. _zendservice.server.methods.restartPhp.example:
+
 Example
-^^^^^^^
+-------
 
 .. code-block:: php
 

@@ -7,11 +7,6 @@ Filter methods
 
 Filter API actions provide external actors with ways to query and manipulate filters and their definitions.
 
-.. _zendservice.filter.methods:
-
-Methods
-=======
-
     * filterGetByType
     * filterSave
     * filtersDelete
@@ -19,13 +14,14 @@ Methods
 .. _zendservice.filter.methods.filterGetByType:
 
 The filterGetByType Method
---------------------------
+==========================
 
 Retrieve and display a list of filters.
 
+.. _zendservice.filter.methods.filterGetByType.definition:
 
 Method filterGetByType definition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------
 
 .. code-block:: php
 
@@ -46,9 +42,10 @@ Method filterGetByType definition
      - yes
      - Type of a filter (issue,job)
 
+.. _zendservice.filter.methods.filterGetByType.information:
 
 filterGetByType information
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
 .. list-table::
    :widths: 5 10
@@ -61,8 +58,10 @@ filterGetByType information
    * - Available in Version
      - * 1.3
 
+.. _zendservice.filter.methods.filterGetByType.example:
+
 Example
-^^^^^^^
+-------
 
 .. code-block:: php
 
@@ -80,12 +79,14 @@ Example
 .. _zendservice.filter.methods.filterSave:
 
 The filterSave Method
----------------------
+=====================
 
 Save a filter.
 
+.. _zendservice.filter.methods.filterSave.definition:
+
 Method filterSave definition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------
 
 .. code-block:: php
 
@@ -121,9 +122,10 @@ Method filterSave definition
      - no
      - Array of parameters to be saved.
 
+.. _zendservice.filter.methods.filterSave.information:
 
 filterSave information
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 .. list-table::
    :widths: 5 10
@@ -136,8 +138,10 @@ filterSave information
    * - Available in Version
      - * 1.3
 
+.. _zendservice.filter.methods.filterSave.example:
+
 Example
-^^^^^^^
+-------
 
 .. code-block:: php
 
@@ -152,12 +156,14 @@ Example
 .. _zendservice.filter.methods.filterDelete:
 
 The filterDelete Method
------------------------
+=======================
 
 Deletes a filter.
 
+.. _zendservice.filter.methods.filterDelete.definition:
+
 Method filterDelete definition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------
 
 .. code-block:: php
 
@@ -178,10 +184,10 @@ Method filterDelete definition
      - yes
      - Name of filter.
 
-
+.. _zendservice.filter.methods.filterDelete.information:
 
 filterDelete information
-^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------
 
 .. list-table::
    :widths: 5 10
@@ -194,8 +200,10 @@ filterDelete information
    * - Available in Version
      - * 1.3
 
+.. _zendservice.filter.methods.filterDelete.example:
+
 Example
-^^^^^^^
+-------
 
 .. code-block:: php
 

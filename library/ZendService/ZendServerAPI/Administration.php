@@ -108,11 +108,11 @@ class Administration extends BaseAPI
     }
 
     /**
-     * <b>The  Method </b>
+     * <b>The apiKeysGetList Method </b>
      *
-     * <pre></pre>
+     * <pre>Get a list of api keys.</pre>
      *
-     * @return \ZendService\ZendServerAPI\DataTypes\DebugRequest
+     * @return \ZendService\ZendServerAPI\DataTypes\ApiKeys
      */
     public function apiKeysGetList()
     {

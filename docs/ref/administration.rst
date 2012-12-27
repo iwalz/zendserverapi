@@ -270,8 +270,56 @@ Example
     $administration = new Administration();
     $administration->setPassword("oldpassword", "newpassword", "newpassword");
 
+.. _zendservice.administration.methods.apiKeysGetList:
+
+The ApiKeysGetList Method
+=========================
+
+Get a list of api keys.
+
+.. _zendservice.administration.methods.apiKeysGetList.definition:
+
+Method apiKeysGetList definition
+--------------------------------
+
+.. code-block:: php
+
+    <?php
+    public function apiKeysGetList() { }
+
+.. _zendservice.administration.methods.apiKeysGetList.information:
+
+apiKeysGetList information
+--------------------------
+
+.. list-table::
+   :widths: 5 10
+   :header-rows: 0
+
+   * - Return value
+     - \\ZendService\\ZendServerAPI\\DataTypes\\UserInfo (`ApiKeys api doc`_)
+   * - Online reference
+     - `apiKeysGetList online reference`_
+   * - Available in Version
+     - * 1.3
+
+.. _zendservice.administration.methods.apiKeysGetList.example:
+
+Example
+-------
+
+.. code-block:: php
+
+    <?php
+    use ZendService\ZendServerAPI\Administration;
+
+    $administration = new Administration();
+    $administration->apiKeysGetList();
+
 .. _userAuthenticateSettings online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_userauthenticatesettings_method.htm
 .. _AuthenticationType api doc: http://zs-apidoc.rubber-duckling.net/classes/ZendService.ZendServerAPI.DataTypes.AuthenticationType.html
 .. _userSetPassword online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_usersetpassword_method.htm
 .. _UserInfo api doc: http://zs-apidoc.rubber-duckling.net/classes/ZendService.ZendServerAPI.DataTypes.UserInfo.html
 .. _setPassword online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_setpassword_method.htm
+.. _ApiKeys api doc: http://zs-apidoc.rubber-duckling.net/classes/ZendService.ZendServerAPI.DataTypes.ApiKeys.html
+.. _apiKeysGetList online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_apikeysgetlist_method.htm

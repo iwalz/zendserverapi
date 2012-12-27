@@ -37,11 +37,24 @@ namespace ZendService\ZendServerAPI;
 class Administration extends BaseAPI
 {
     /**
-     * <b>The  Method </b>
+     * <b>The userAuthenticateSettings Method </b>
      *
-     * <pre></pre>
+     * <pre>Modify current authentication settings, allowing the user to switch between simple and extended authentication and authorization schemes.</pre>
      *
-     * @return \ZendService\ZendServerAPI\DataTypes\DebugRequest
+     * @param string $type <p>One of : simple, extended</p>
+     * @param array  $ldap <p>Array of ldap properties:
+     * host: host, ip or location of the active directory
+     * port: port part of the URL above
+     * encryption:
+     * ssl - use SSL to secure communications
+     * tls - start TLS to secure communications
+     * none - no encryption is used
+     * username: directory username, broken to CN and DC parts for use in querying the active directory
+     * password: matching password for the above username
+     * baseDn: DN broken down to CN and DC parts for using during user authentication</p>
+     * @param string $password <p>Current user’s password for authentication</p>
+     * @param string $confirmNewPassword <p>Confirmation of new password</p>
+     * @return \ZendService\ZendServerAPI\DataTypes\AuthenticationType
      */
     public function userAuthenticateSettings($type, $password, $confirmNewPassword, $ldap = array())
     {
@@ -51,11 +64,17 @@ class Administration extends BaseAPI
     }
 
     /**
-     * <b>The  Method </b>
+     * <b>The userSetPassword Method </b>
      *
-     * <pre></pre>
+     * <pre> Modify a specific user password. This action changes any user password and is an administrative action.
+     * Note that a separate action exists for the user to modify his own password and has a lower permission level.</pre>
      *
-     * @return \ZendService\ZendServerAPI\DataTypes\DebugRequest
+     * @param string $username            <p>admin (for Administrator)
+     * testuser (for Developer)</p>
+     * @param string $password            <p>Current password.</p>
+     * @param string $newPassword         <p>New password.</p>
+     * @param string $confirmNewPassword  <p>Confirmation of new password.</p>
+     * @return \ZendService\ZendServerAPI\DataTypes\UserInfo
      */
     public function userSetPassword($username, $password, $newPassword, $confirmNewPassword)
     {
@@ -72,15 +91,18 @@ class Administration extends BaseAPI
     }
 
     /**
-     * <b>The  Method </b>
+     * <b>The setPassword Method </b>
      *
-     * <pre></pre>
+     * <pre>Modify a current user password.</pre>
      *
-     * @return \ZendService\ZendServerAPI\DataTypes\DebugRequest
+     * @param string $password            <p>Current password.</p>
+     * @param string $newPassword         <p>New password.</p>
+     * @param string $confirmNewPassword  <p>Confirmation of new password.</p>
+     * @return \ZendService\ZendServerAPI\DataTypes\UserInfo
      */
-    public function setPassword()
+    public function setPassword($password, $newPassword, $confirmNewPassword)
     {
-        $this->pluginManager->get('request')->setAction($this->pluginManager->get('setPassword')->setArgs());
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('setPassword')->setArgs($password, $newPassword, $confirmNewPassword));
 
         return $this->pluginManager->get('request')->send();
     }

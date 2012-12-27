@@ -449,4 +449,4 @@ Example
 .. _ApiKeys api doc: http://zs-apidoc.rubber-duckling.net/classes/ZendService.ZendServerAPI.DataTypes.ApiKeys.html
 .. _apiKeysGetList online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_apikeysgetlist_method.htm
 .. _apiKeysAddKey online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_apikeysaddkey_method.htm
-.. _apiKeysRemoveKey online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_apikeysremovekey_method.htm
+.. _apiKeysRemoveKey online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_apikeyremove_method.htm

@@ -1,0 +1,25 @@
+HTTP/1.1 200 OK
+X-Powered-By: PHP/5.3.19 ZendServer/5.0
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Content-Type: application/vnd.zend.serverapi+xml;version=1.3
+Date: Thu, 27 Dec 2012 02:38:13 GMT
+Server: lighttpd/1.4.26
+
+<zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.3">
+    <requestData>
+        <apiKeyName><![CDATA[Admin]]></apiKeyName>
+        <method>apiKeysAddKey</method>
+    </requestData>
+<responseData>
+        <apiKeys>
+
+<apiKey>
+                    <id>3</id>
+                    <username>admin</username>
+                    <name><![CDATA[foo]]></name>
+                    <hash><![CDATA[4fceada7c3e642c121465edb40739142efff66b43509cd6de23b11f5e917008b]]></hash>
+                        <creationTime>2012-12-27T03:38:13+01:00</creationTime>
+</apiKey>       </apiKeys>
+</responseData></zendServerAPIResponse>

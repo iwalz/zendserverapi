@@ -314,7 +314,72 @@ Example
     use ZendService\ZendServerAPI\Administration;
 
     $administration = new Administration();
-    $administration->apiKeysGetList();
+    $apiKeys = $administration->apiKeysGetList();
+
+.. _zendservice.administration.methods.apiKeysAddKey:
+
+The apiKeysAddKey Method
+========================
+
+Add a WebAPI Key.
+
+.. _zendservice.administration.methods.apiKeysAddKey.definition:
+
+Method apiKeysAddKey definition
+-------------------------------
+
+.. code-block:: php
+
+    <?php
+    public function apiKeysAddKey($name, $username) { }
+
+.. list-table:: **Parameter**
+   :header-rows: 1
+
+   * - Parameter
+     - Data Type
+     - Default value
+     - Required
+     - Description
+   * - $name
+     - string
+     -
+     - yes
+     - The name of the key
+   * - $username
+     - string
+     -
+     - yes
+     - Any username supplied for retrieving ACL information
+
+.. _zendservice.administration.methods.apiKeysAddKey.information:
+
+apiKeysAddKey information
+-------------------------
+
+.. list-table::
+   :widths: 5 10
+   :header-rows: 0
+
+   * - Return value
+     - \\ZendService\\ZendServerAPI\\DataTypes\\ApiKeys (`ApiKeys api doc`_)
+   * - Online reference
+     - `apiKeysAddKey online reference`_
+   * - Available in Version
+     - * 1.3
+
+.. _zendservice.administration.methods.apiKeysAddKey.example:
+
+Example
+-------
+
+.. code-block:: php
+
+    <?php
+    use ZendService\ZendServerAPI\Administration;
+
+    $administration = new Administration();
+    $apiKeys = $administration->apiKeysAddKey("foo", "admin");
 
 .. _userAuthenticateSettings online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_userauthenticatesettings_method.htm
 .. _AuthenticationType api doc: http://zs-apidoc.rubber-duckling.net/classes/ZendService.ZendServerAPI.DataTypes.AuthenticationType.html
@@ -323,3 +388,4 @@ Example
 .. _setPassword online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_setpassword_method.htm
 .. _ApiKeys api doc: http://zs-apidoc.rubber-duckling.net/classes/ZendService.ZendServerAPI.DataTypes.ApiKeys.html
 .. _apiKeysGetList online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_apikeysgetlist_method.htm
+.. _apiKeysAddKey online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_apikeysaddkey_method.htm

@@ -122,15 +122,19 @@ class Administration extends BaseAPI
     }
 
     /**
-     * <b>The  Method </b>
+     * <b>The apiKeysAddKey Method </b>
      *
-     * <pre></pre>
+     * <pre>Add a WebAPI Key.</pre>
      *
+     * @param string $name <p>The name of the key</p>
+     * @param string $username <p>Any username supplied for retrieving ACL information (admin/develop/..)</p>
      * @return \ZendService\ZendServerAPI\DataTypes\DebugRequest
      */
-    public function apiKeysAddKey()
+    public function apiKeysAddKey($name, $username)
     {
-        $this->pluginManager->get('request')->setAction($this->pluginManager->get('apiKeysAddKey')->setArgs());
+        $this->pluginManager->get('request')->setAction(
+            $this->pluginManager->get('apiKeysAddKey')->setArgs($name, $username)
+        );
 
         return $this->pluginManager->get('request')->send();
     }

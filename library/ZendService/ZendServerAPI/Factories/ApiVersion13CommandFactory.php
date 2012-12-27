@@ -47,7 +47,16 @@ class ApiVersion13CommandFactory implements CommandFactory, AbstractFactoryInter
             'filterDelete',
             'auditGetList',
             'auditGetDetails',
-            'auditSetSettings'
+            'auditSetSettings',
+            'userAuthenticateSettings',
+            'userSetPassword',
+            'setPassword',
+            'apiKeysGetList',
+            'apiKeysAddKey',
+            'apiKeyRemove',
+            'serverValidateLicense',
+            'aclSetGroups',
+            'bootstrapSingleServer'
         );
     }
 

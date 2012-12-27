@@ -12,6 +12,7 @@ The official Zend Server API documentation
    ref/server
    ref/filter
    ref/audit
+   ref/administration
 
 :ref:`search`
 

@@ -156,13 +156,17 @@ class Administration extends BaseAPI
     /**
      * <b>The serverValidateLicense Method </b>
      *
-     * <pre></pre>
+     * <pre>Validate a Zend Server license.</pre>
      *
+     * @param string $licenseName <p>The name of the license</p>
+     * @param string $licenseValue <p>The value of the license</p>
      * @return \ZendService\ZendServerAPI\DataTypes\DebugRequest
      */
-    public function serverValidateLicense()
+    public function serverValidateLicense($licenseName, $licenseValue)
     {
-        $this->pluginManager->get('request')->setAction($this->pluginManager->get('serverValidateLicense')->setArgs());
+        $this->pluginManager->get('request')->setAction(
+            $this->pluginManager->get('serverValidateLicense')->setArgs($licenseName, $licenseValue)
+        );
 
         return $this->pluginManager->get('request')->send();
     }

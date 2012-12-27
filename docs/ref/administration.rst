@@ -441,6 +441,71 @@ Example
     $administration = new Administration();
     $apiKeys = $administration->apiKeysRemoveKey(array(5, 6, 7));
 
+.. _zendservice.administration.methods.serverValidateLicense:
+
+The serverValidateLicense Method
+================================
+
+Validate a Zend Server license.
+
+.. _zendservice.administration.methods.serverValidateLicense.definition:
+
+Method serverValidateLicense definition
+---------------------------------------
+
+.. code-block:: php
+
+    <?php
+    public function serverValidateLicense($licenseName, $licenseValue) { }
+
+.. list-table:: **Parameter**
+   :header-rows: 1
+
+   * - Parameter
+     - Data Type
+     - Default value
+     - Required
+     - Description
+   * - $licenseName
+     - string
+     -
+     - yes
+     - The name of the license
+   * - $licenseValue
+     - string
+     -
+     - yes
+     - The value of the license
+
+.. _zendservice.administration.methods.serverValidateLicense.information:
+
+serverValidateLicense information
+---------------------------------
+
+.. list-table::
+   :widths: 5 10
+   :header-rows: 0
+
+   * - Return value
+     - \\ZendService\\ZendServerAPI\\DataTypes\\LicenseValidated (`LicenseValidated api doc`_)
+   * - Online reference
+     - `serverValidateLicense online reference`_
+   * - Available in Version
+     - * 1.3
+
+.. _zendservice.administration.methods.serverValidateLicense.example:
+
+Example
+-------
+
+.. code-block:: php
+
+    <?php
+    use ZendService\ZendServerAPI\Administration;
+
+    $administration = new Administration();
+    $licenseValidated = $administration->serverValidateLicense("TRIAL-1795-69", "V1Q26G1VUK185031C5ACF7165686C91B");
+
 .. _userAuthenticateSettings online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_userauthenticatesettings_method.htm
 .. _AuthenticationType api doc: http://zs-apidoc.rubber-duckling.net/classes/ZendService.ZendServerAPI.DataTypes.AuthenticationType.html
 .. _userSetPassword online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_usersetpassword_method.htm
@@ -450,3 +515,5 @@ Example
 .. _apiKeysGetList online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_apikeysgetlist_method.htm
 .. _apiKeysAddKey online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_apikeysaddkey_method.htm
 .. _apiKeysRemoveKey online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_apikeyremove_method.htm
+.. _serverValidateLicense online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_servervalidatelicense_method.htm
+.. _LicenseValidated api doc: http://zs-apidoc.rubber-duckling.net/classes/ZendService.ZendServerAPI.DataTypes.LicenseValidated.html

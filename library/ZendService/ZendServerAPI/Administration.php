@@ -57,9 +57,16 @@ class Administration extends BaseAPI
      *
      * @return \ZendService\ZendServerAPI\DataTypes\DebugRequest
      */
-    public function userSetPassword()
+    public function userSetPassword($username, $password, $newPassword, $confirmNewPassword)
     {
-        $this->pluginManager->get('request')->setAction($this->pluginManager->get('userSetPassword')->setArgs());
+        $this->pluginManager->get('request')->setAction(
+            $this->pluginManager->get('userSetPassword')->setArgs(
+                $username,
+                $password,
+                $newPassword,
+                $confirmNewPassword
+            )
+        );
 
         return $this->pluginManager->get('request')->send();
     }

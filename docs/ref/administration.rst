@@ -120,6 +120,88 @@ Example
         )
     );
 
+.. _zendservice.administration.methods.userSetPassword:
+
+The userSetPassword Method
+==========================
+
+ Modify a specific user password. This action changes any user password and is an administrative action.
+ Note that a separate action exists for the user to modify his own password and has a lower permission level.
+
+.. _zendservice.administration.methods.userSetPassword.definition:
+
+Method userSetPassword definition
+---------------------------------
+
+.. code-block:: php
+
+    <?php
+    public function userSetPassword($username, $password, $newPassword, $confirmNewPassword) { }
+
+.. list-table:: **Parameter**
+   :header-rows: 1
+
+   * - Parameter
+     - Data Type
+     - Default value
+     - Required
+     - Description
+   * - $username
+     - string
+     -
+     - yes
+     - admin (for Administrator)
+
+       testuser (for Developer)
+   * - $password
+     - string
+     -
+     - yes
+     - Current password
+   * - $newPassword
+     - string
+     -
+     - yes
+     - New password
+   * - $confirmNewPassword
+     - string
+     -
+     - yes
+     - Confirmation of new password
+
+
+.. _zendservice.administration.methods.userSetPassword.information:
+
+userSetPassword information
+---------------------------
+
+.. list-table::
+   :widths: 5 10
+   :header-rows: 0
+
+   * - Return value
+     - \\ZendService\\ZendServerAPI\\DataTypes\\UserInfo (`UserInfo api doc`_)
+   * - Online reference
+     - `userSetPassword online reference`_
+   * - Available in Version
+     - * 1.3
+
+.. _zendservice.administration.methods.userSetPassword.example:
+
+Example
+-------
+
+.. code-block:: php
+
+    <?php
+    use ZendService\ZendServerAPI\Administration;
+
+    $administration = new Administration();
+    $administration->userSetPassword("admin", "oldpassword", "newpassword", "newpassword");
+
+
 .. _userAuthenticateSettings online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_userauthenticatesettings_method.htm
 .. _AuthenticationType api doc: http://zs-apidoc.rubber-duckling.net/classes/ZendService.ZendServerAPI.DataTypes.AuthenticationType.html
+.. _userSetPassword online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_usersetpassword_method.htm
+.. _UserInfo api doc: http://zs-apidoc.rubber-duckling.net/classes/ZendService.ZendServerAPI.DataTypes.UserInfo.html
 

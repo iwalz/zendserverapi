@@ -381,6 +381,66 @@ Example
     $administration = new Administration();
     $apiKeys = $administration->apiKeysAddKey("foo", "admin");
 
+.. _zendservice.administration.methods.apiKeysRemoveKey:
+
+The apiKeysRemoveKey Method
+===========================
+
+Remove a WebAPI Key.
+
+.. _zendservice.administration.methods.apiKeysRemoveKey.definition:
+
+Method apiKeysRemoveKey definition
+----------------------------------
+
+.. code-block:: php
+
+    <?php
+    public function apiKeysRemoveKey($ids) { }
+
+.. list-table:: **Parameter**
+   :header-rows: 1
+
+   * - Parameter
+     - Data Type
+     - Default value
+     - Required
+     - Description
+   * - $ids
+     - array
+     -
+     - yes
+     - array of api key ids to remove
+
+.. _zendservice.administration.methods.apiKeysRemoveKey.information:
+
+apiKeysRemoveKey information
+----------------------------
+
+.. list-table::
+   :widths: 5 10
+   :header-rows: 0
+
+   * - Return value
+     - \\ZendService\\ZendServerAPI\\DataTypes\\ApiKeys (`ApiKeys api doc`_)
+   * - Online reference
+     - `apiKeysRemoveKey online reference`_
+   * - Available in Version
+     - * 1.3
+
+.. _zendservice.administration.methods.apiKeysRemoveKey.example:
+
+Example
+-------
+
+.. code-block:: php
+
+    <?php
+    use ZendService\ZendServerAPI\Administration;
+
+    $administration = new Administration();
+    $apiKeys = $administration->apiKeysRemoveKey(array(5, 6, 7));
+
 .. _userAuthenticateSettings online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_userauthenticatesettings_method.htm
 .. _AuthenticationType api doc: http://zs-apidoc.rubber-duckling.net/classes/ZendService.ZendServerAPI.DataTypes.AuthenticationType.html
 .. _userSetPassword online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_usersetpassword_method.htm
@@ -389,3 +449,4 @@ Example
 .. _ApiKeys api doc: http://zs-apidoc.rubber-duckling.net/classes/ZendService.ZendServerAPI.DataTypes.ApiKeys.html
 .. _apiKeysGetList online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_apikeysgetlist_method.htm
 .. _apiKeysAddKey online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_apikeysaddkey_method.htm
+.. _apiKeysRemoveKey online reference: http://files.zend.com/help/Beta/Zend-Server-6/zend-server.htm#the_apikeysremovekey_method.htm

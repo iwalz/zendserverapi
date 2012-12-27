@@ -140,15 +140,15 @@ class Administration extends BaseAPI
     }
 
     /**
-     * <b>The apiKeyRemove Method </b>
+     * <b>The apiKeysRemove Method </b>
      *
-     * <pre></pre>
+     * <pre>Remove an api key</pre>
      *
      * @return \ZendService\ZendServerAPI\DataTypes\DebugRequest
      */
-    public function apiKeyRemove()
+    public function apiKeysRemove($ids)
     {
-        $this->pluginManager->get('request')->setAction($this->pluginManager->get('apiKeyRemove')->setArgs());
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('apiKeysRemove')->setArgs($ids));
 
         return $this->pluginManager->get('request')->send();
     }

@@ -55,6 +55,7 @@ class ApiVersion13CommandFactory implements CommandFactory, AbstractFactoryInter
             'apiKeysAddKey',
             'apiKeysRemove',
             'serverValidateLicense',
+            'serverStoreLicense',
             'aclSetGroups',
             'bootstrapSingleServer'
         );

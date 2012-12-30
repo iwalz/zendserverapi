@@ -506,6 +506,71 @@ Example
     $administration = new Administration();
     $licenseValidated = $administration->serverValidateLicense("TRIAL-1795-69", "V1Q26G1VUK185031C5ACF7165686C91B");
 
+.. _zendservice.administration.methods.serverStoreLicense:
+
+The serverStoreLicense Method
+=============================
+
+Stores a Zend Server license.
+
+.. _zendservice.administration.methods.serverStoreLicense.definition:
+
+Method serverStoreLicense definition
+------------------------------------
+
+.. code-block:: php
+
+    <?php
+    public function serverStoreLicense($licenseName, $licenseValue) { }
+
+.. list-table:: **Parameter**
+   :header-rows: 1
+
+   * - Parameter
+     - Data Type
+     - Default value
+     - Required
+     - Description
+   * - $licenseName
+     - string
+     -
+     - yes
+     - The name of the license
+   * - $licenseValue
+     - string
+     -
+     - yes
+     - The value of the license
+
+.. _zendservice.administration.methods.serverStoreLicense.information:
+
+serverStoreLicense information
+------------------------------
+
+.. list-table::
+   :widths: 5 10
+   :header-rows: 0
+
+   * - Return value
+     - \\ZendService\\ZendServerAPI\\DataTypes\\LicenseValidated (`LicenseValidated api doc`_)
+   * - Online reference
+     - `serverValidateLicense online reference`_
+   * - Available in Version
+     - * 1.3
+
+.. _zendservice.administration.methods.serverStoreLicense.example:
+
+Example
+-------
+
+.. code-block:: php
+
+    <?php
+    use ZendService\ZendServerAPI\Administration;
+
+    $administration = new Administration();
+    $licenseValidated = $administration->serverStoreLicense("TRIAL-1795-69", "V1Q26G1VUK185031C5ACF7165686C91B");
+
 .. _zendservice.administration.methods.aclSetGroups:
 
 The aclSetGroups Method

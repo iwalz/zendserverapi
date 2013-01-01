@@ -39,6 +39,17 @@ class JobqueueJobInfo extends Method
     }
 
     /**
+     * Returns the correct accept header for a specific version
+     *
+     * @see \ZendService\ZendServerAPI\Method\Method::getAcceptHeader()
+     * @return string
+     */
+    public function getAcceptHeader()
+    {
+        return "application/vnd.zend.serverapi+xml;version=1.3";
+    }
+
+    /**
      * Configures all needed information for the method implementation
      *
      * @return void

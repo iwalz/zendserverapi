@@ -52,6 +52,17 @@ class JobqueueResumeRules extends Method
     }
 
     /**
+     * Returns the correct accept header for a specific version
+     *
+     * @see \ZendService\ZendServerAPI\Method\Method::getAcceptHeader()
+     * @return string
+     */
+    public function getAcceptHeader()
+    {
+        return "application/vnd.zend.serverapi+xml;version=1.3";
+    }
+
+    /**
      * Get content for post body
      *
      * @return string

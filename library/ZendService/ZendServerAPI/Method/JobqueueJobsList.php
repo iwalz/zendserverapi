@@ -54,8 +54,19 @@ class JobqueueJobsList extends Method
     public function configure ()
     {
         $this->setMethod('GET');
-        $this->setFunctionPath('/ZendServerManager/Api/jobqueueJobsList');
+        $this->setFunctionPath('/ZendServer/Api/jobqueueJobsList');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
+    }
+
+    /**
+     * Returns the correct accept header for a specific version
+     *
+     * @see \ZendService\ZendServerAPI\Method\Method::getAcceptHeader()
+     * @return string
+     */
+    public function getAcceptHeader()
+    {
+        return "application/vnd.zend.serverapi+xml;version=1.3";
     }
 
     /**
@@ -66,11 +77,21 @@ class JobqueueJobsList extends Method
     public function getLink()
     {
         $link = $this->getFunctionPath();
-        $link .= "?limit=" . $this->limit;
-        $link .= "&offset=" . $this->offset;
-        $link .= "&orderBy=" . $this->orderBy;
-        $link .= "&direction=" . $this->direction;
-        $link .= $this->buildParameterArray('filter', $this->filter);
+        if ($this->limit) {
+            $link .= ($link == $this->getFunctionPath() ? "?" : "&") . "limit=" . $this->limit;
+        }
+        if ($this->offset) {
+            $link .= ($link == $this->getFunctionPath() ? "?" : "&") . "offset=" . $this->offset;
+        }
+        if ($this->orderBy) {
+            $link .= ($link == $this->getFunctionPath() ? "?" : "&") . "orderBy=" . $this->orderBy;
+        }
+        if ($this->direction) {
+            $link .= ($link == $this->getFunctionPath() ? "?" : "&") . "direction=" . $this->direction;
+        }
+        if ($this->filter) {
+            $link .= ($link == $this->getFunctionPath() ? "?" : "&") . $this->buildParameterArray('filter', $this->filter);
+        }
 
         return $link;
     }

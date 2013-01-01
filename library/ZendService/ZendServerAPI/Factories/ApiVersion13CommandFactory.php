@@ -59,7 +59,7 @@ class ApiVersion13CommandFactory implements CommandFactory, AbstractFactoryInter
             'aclSetGroups',
             'bootstrapSingleServer',
             'jobqueueStatistics',
-            'jobqueueListJobs',
+            'jobqueueJobsList',
             'jobqueueJobInfo',
             'jobqueueDeleteJob',
             'jobqueueRequeueJob',

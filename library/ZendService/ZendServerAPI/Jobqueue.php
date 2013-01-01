@@ -51,10 +51,10 @@ class Jobqueue extends BaseAPI
      * @param  string   $direction <p></p>
      * @return \ZendService\ZendServerAPI\DataTypes\
      */
-    public function jobqueueListJobs($limit = null, $offset = null, $orderBy = null, $direction = null)
+    public function jobqueueJobsList($limit = null, $offset = null, $orderBy = null, $direction = null, $filter = null)
     {
         $this->pluginManager->get('request')->setAction(
-            $this->pluginManager->get('jobqueueListJobs')->setArgs($limit, $offset, $orderBy, $direction)
+            $this->pluginManager->get('jobqueueJobsList')->setArgs($limit, $offset, $orderBy, $direction, $filter)
         );
 
         return $this->pluginManager->get('request')->send();

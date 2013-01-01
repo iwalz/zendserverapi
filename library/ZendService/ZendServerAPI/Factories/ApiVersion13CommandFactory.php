@@ -57,7 +57,19 @@ class ApiVersion13CommandFactory implements CommandFactory, AbstractFactoryInter
             'serverValidateLicense',
             'serverStoreLicense',
             'aclSetGroups',
-            'bootstrapSingleServer'
+            'bootstrapSingleServer',
+            'jobqueueStatistics',
+            'jobqueueListJobs',
+            'jobqueueJobInfo',
+            'jobqueueDeleteJob',
+            'jobqueueRequeueJob',
+            'jobqueueListRules',
+            'jobqueueRuleInfo',
+            'jobqueueSaveRule',
+            'jobqueueSuspendRules',
+            'jobqueueResumeRules',
+            'jobqueueDeleteRules',
+            'jobqueueRunNowRule'
         );
     }
 

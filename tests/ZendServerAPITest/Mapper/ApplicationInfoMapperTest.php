@@ -83,7 +83,7 @@ class ApplicationInfoAdapterTest extends \PHPUnit_Framework_TestCase
         foreach($result->getApplicationInfos() as $applicationInfo)
         {
             $this->assertNull($applicationInfo->getMessageList());
-            foreach($applicationInfo->getServers() as $server)
+            foreach($applicationInfo->getApplicationServer() as $server)
             {
                 $this->assertInstanceOf('\ZendService\ZendServerAPI\DataTypes\ApplicationServer', $server);
             }

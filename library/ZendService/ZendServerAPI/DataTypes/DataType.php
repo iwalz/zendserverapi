@@ -10,6 +10,8 @@
 
 namespace ZendService\ZendServerAPI\DataTypes;
 
+use Zend\Stdlib\Hydrator\ClassMethods;
+
 /**
  * Base DataType implementation.
  *
@@ -28,50 +30,30 @@ abstract class DataType
      *
      * @return array
      */
-    public function getArray ()
+    public function extract ($object = null)
     {
-        $returnArray = array();
+        $hydrator = new ClassMethods(false);
+        if($object === null) {
+            $retval = $hydrator->extract($this);
+        } else {
+            $retval = $hydrator->extract($object);
+        }
 
-        // Get members from parent class
-        $classVars = get_class_vars(get_called_class());
-
-        // Iterate through members to generate key => value pairs
-        foreach ($classVars as $key => $value) {
-            $value = $this->$key;
-
-            // If value is an array
+        // Iterate through members to extract recursivly
+        foreach ($retval as $key => $value) {
             if (is_array($value)) {
-                // Iterate through them and call that function recursivly if DataType
-                foreach ($value as $subKey => $single) {
-                    if ($single instanceof DataType) {
-                        $subKey = lcfirst(
-                                str_replace("ZendService\\ZendServerAPI\\DataTypes\\", "",
-                                        get_class($single)));
-                        $subValue = $single->getArray();
-                        $returnArray[$subKey][] = $subValue;
-                    // If regular value, add to the array
-                    } else {
-                        $returnArray[$subKey][] = $single;
+                foreach($value as $subKey => $subValue) {
+                    if ($subValue instanceof DataType) {
+                        $retval[$key][$subKey] = $this->extract($subValue);
                     }
                 }
-            // Value is not array
-            } else {
-                // and value is DataType
-                if ($value instanceof DataType) {
-                    $subKey = lcfirst(
-                            str_replace("ZendService\\ZendServerAPI\\DataTypes\\", "",
-                                    get_class($value)));
-                    // Call recursion again
-                    $subValue = $value->getArray();
-                    $returnArray[$key] = $subValue;
-                // Otherwise simply add
-                } else {
-                    $returnArray[$key] = $value;
-                }
+            }
+            if ($value instanceof DataType) {
+                $retval[$key] = $this->extract($value);
             }
         }
 
-        return $returnArray;
+        return $retval;
     }
 
 }

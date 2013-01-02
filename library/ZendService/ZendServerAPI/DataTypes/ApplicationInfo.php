@@ -173,7 +173,7 @@ class ApplicationInfo extends DataType
      *
      * @return array \ZendService\ZendServerAPI\DataTypes\ApplicationServer
      */
-    public function getServers ()
+    public function getApplicationServer ()
     {
         return $this->servers;
     }

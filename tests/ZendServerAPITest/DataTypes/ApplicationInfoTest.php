@@ -72,7 +72,7 @@ class ApplicationInfoTest extends \PHPUnit_Framework_TestCase
         $applicationInfoArray['applicationServer'][0]['id'] = 1;
         $applicationInfoArray['applicationServer'][1]['id'] = 2;
 
-        $this->assertEquals($applicationInfoArray, $applicationInfo->getArray());
+        $this->assertEquals($applicationInfoArray, $applicationInfo->extract());
     }
 
 }

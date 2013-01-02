@@ -39,16 +39,16 @@ abstract class DataType
             $retval = $hydrator->extract($object);
         }
 
-        // Iterate through members to extract recursivly
+        // Iterate through members to extract recursivly (including arrays)
         foreach ($retval as $key => $value) {
-            if (is_array($value)) {
+            if (is_array($value) || $value instanceof \Traversable) {
                 foreach($value as $subKey => $subValue) {
-                    if ($subValue instanceof DataType) {
+                    if (is_object($subValue)) {
                         $retval[$key][$subKey] = $this->extract($subValue);
                     }
                 }
             }
-            if ($value instanceof DataType) {
+            if (is_object($value)) {
                 $retval[$key] = $this->extract($value);
             }
         }

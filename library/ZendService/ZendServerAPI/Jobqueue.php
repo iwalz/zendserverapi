@@ -118,10 +118,10 @@ class Jobqueue extends BaseAPI
      * @param  array   $jobs <p>Array of Job ids</p>
      * @return \ZendService\ZendServerAPI\DataTypes\
      */
-    public function jobqueueRequeueJob($jobs)
+    public function jobqueueRequeueJobs($jobs)
     {
         $this->pluginManager->get('request')->setAction(
-            $this->pluginManager->get('jobqueueRequeueJob')->setArgs($jobs)
+            $this->pluginManager->get('jobqueueRequeueJobs')->setArgs($jobs)
         );
 
         return $this->pluginManager->get('request')->send();

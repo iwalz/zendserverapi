@@ -126,4 +126,6 @@ The proxy setting looks like this:
         )
     );
 
-*Note*: If you don't specify a proxy port, 8080 will be used by default.
+.. note::
+
+    If you don't specify a proxy port, 8080 will be used by default.

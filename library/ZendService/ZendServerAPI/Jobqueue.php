@@ -101,10 +101,10 @@ class Jobqueue extends BaseAPI
      * @param  int   $id <p></p>
      * @return \ZendService\ZendServerAPI\DataTypes\
      */
-    public function jobqueueDeleteJob($id)
+    public function jobqueueDeleteJobs($id)
     {
         $this->pluginManager->get('request')->setAction(
-            $this->pluginManager->get('jobqueueDeleteJob')->setArgs($id)
+            $this->pluginManager->get('jobqueueDeleteJobs')->setArgs($id)
         );
 
         return $this->pluginManager->get('request')->send();

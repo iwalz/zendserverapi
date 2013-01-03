@@ -22,7 +22,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class JobqueueJobsList extends Method
+class JobqueueDeleteJobs extends Method
 {
     protected $jobs = array();
 
@@ -47,7 +47,7 @@ class JobqueueJobsList extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/jobqueueDeleteJobs');
+        $this->setFunctionPath('/ZendServer/Api/jobqueueDeleteJobs');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

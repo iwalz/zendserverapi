@@ -61,7 +61,7 @@ class ApiVersion13CommandFactory implements CommandFactory, AbstractFactoryInter
             'jobqueueStatistics',
             'jobqueueJobsList',
             'jobqueueJobInfo',
-            'jobqueueDeleteJob',
+            'jobqueueDeleteJobs',
             'jobqueueRequeueJob',
             'jobqueueListRules',
             'jobqueueRuleInfo',

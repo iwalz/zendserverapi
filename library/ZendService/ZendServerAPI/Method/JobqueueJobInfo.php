@@ -57,7 +57,7 @@ class JobqueueJobInfo extends Method
     public function configure ()
     {
         $this->setMethod('GET');
-        $this->setFunctionPath('/ZendServerManager/Api/jobqueueJobInfo');
+        $this->setFunctionPath('/ZendServer/Api/jobqueueJobInfo');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

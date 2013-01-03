@@ -88,8 +88,10 @@ And to do the same locally this way:
     $server = new \ZendService\ZendServerAPI\Server('local');
     $server->getSystemInfo();
 
-*Note*: If you use port 10082, https will be selected automatically. If you want to use http and port 10082, you've to set it explicit in the config.
-On every other port, http will be selected by default.
+.. note::
+
+    If you use port 10082, https will be selected automatically. If you want to use http and port 10082, you've to set it explicit in the config.
+    On every other port, http will be selected by default.
 
 .. _zendservice.configuration.settings:
 

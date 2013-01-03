@@ -477,7 +477,9 @@ Method clusterReconfigureServer definition
      - no
      - Sends the restart command to all servers at the same time
 
-*Note*: Because of the Zend Deployment Deamon (zdd), since Zend Server 5.5, there is an implicit restart on this method anyways.
+.. note::
+
+    Because of the Zend Deployment Deamon (zdd), since Zend Server 5.5, there is an implicit restart on this method anyways.
 
 .. _zendservice.server.methods.clusterReconfigureServer.information:
 

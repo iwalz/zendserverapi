@@ -37,7 +37,9 @@ You can install the API with composer by adding the following lines to your ``co
 
 
 
-**Note:** There are a few dependencies to the Zend Framework 2 from inside the library.
-The ``repositories`` section will allow you to install only the required components and not the whole framework.
-If you don't register the Zend packagist repository, the whole Zend Framework 2 will be installed by composer.
-I recommend to register that repository to reduce the overhead during installation.
+.. note::
+
+    There are a few dependencies to the Zend Framework 2 from inside the library.
+    The ``repositories`` section will allow you to install only the required components and not the whole framework.
+    If you don't register the Zend packagist repository, the whole Zend Framework 2 will be installed by composer.
+    I recommend to register that repository to reduce the overhead during installation.

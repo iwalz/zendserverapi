@@ -143,7 +143,7 @@ class Zdpack implements PluginInterface
         foreach($iterator as $entry) {
             if ($entry->isDir()) {
                 $newDir = $destination . '/' . str_replace($target, "", $entry);
-
+                var_dump($newDir);
                 if (!is_dir($newDir)) {
                     mkdir($newDir, 0755, true);
                 }

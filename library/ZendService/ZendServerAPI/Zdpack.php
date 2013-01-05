@@ -50,6 +50,7 @@ class Zdpack implements PluginInterface
             $xml = simplexml_load_file($deploymentXml);
             $xml->name = $name;
             file_put_contents($deploymentXml, (string) $xml->asXML());
+            var_dump(file_get_contents($deploymentXml));
         }
     }
 

@@ -29,25 +29,25 @@ class ZdpackTest extends \PHPUnit_Framework_TestCase
     {
         $zdpack = new Zdpack;
 
-        $zdpack->create('skeleton', '/tmp/data');
-        $this->assertTrue(is_dir('/tmp/data'));
-        $this->assertFileExists('/tmp/data/skeleton/deployment.xml');
+        $zdpack->create('skeleton', sys_get_temp_dir() . '/abcde12345');
+        $this->assertTrue(is_dir(sys_get_temp_dir() . '/abcde12345'));
+        $this->assertFileExists(sys_get_temp_dir() . '/abcde12345/skeleton/deployment.xml');
 
-        $zdpack->deleteFolder('/tmp/data');
-        $this->assertFalse(is_dir('/tmp/data'));
+        $zdpack->deleteFolder(sys_get_temp_dir() . '/abcde12345');
+        $this->assertFalse(is_dir(sys_get_temp_dir() . '/abcde12345'));
     }
 
     public function testForFunctionalPack()
     {
         $zdpack = new Zdpack;
 
-        $zdpack->create('test', sys_get_temp_dir());
-        $xml = simplexml_load_file(sys_get_temp_dir() . '/test/deployment.xml');
+        $zdpack->create('test', sys_get_temp_dir() . '/hijkl56789');
+        $xml = simplexml_load_file(sys_get_temp_dir() . '/hijkl56789/test/deployment.xml');
         unset($xml->parameters);
 
-        file_put_contents(sys_get_temp_dir() . '/test/deployment.xml', (string)$xml->asXML());
+        file_put_contents(sys_get_temp_dir() . '/hijkl56789/test/deployment.xml', (string)$xml->asXML());
 
-        $zdpack->pack(sys_get_temp_dir() . '/test/');
+        $zdpack->pack(sys_get_temp_dir() . '/hijkl56789/test/');
         $this->assertFileExists('./test.zpk');
 
         unlink('./test.zpk');

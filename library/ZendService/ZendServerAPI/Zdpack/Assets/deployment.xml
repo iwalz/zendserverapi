@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package version="2.0" xmlns="http://www.zend.com/server/deployment-descriptor/1.0">
+  <name></name>
+  <summary> short description</summary>
+  <description> long description</description>
+  <version>
+    <release>0.1</release>
+  </version>
+  <eula>data/LICENSE.txt</eula>
+  <appdir>data</appdir>
+  <docroot>data</docroot>
+  <scriptsdir>scripts</scriptsdir>
+  <dependencies>
+    <required>
+		<php>
+			<min>5.3.15</min>
+		</php>
+		<extension>
+			<name>pdo_mysql</name>
+		</extension>
+		<directive>
+			<name>memory_limit</name>
+			<min>16M</min>
+		</directive>
+    </required>
+  </dependencies>
+  <parameters>
+    <parameter id="locale"
+    display="Locale Settings.Locale"
+    required="true" type="choice">
+    <validation>
+    <enums>
+    	<enum>GMT</enum>
+    	<enum>other</enum>
+    </enums>
+    </validation>
+      <description></description>
+    </parameter>
+    <parameter id="db_host"
+    display="Database Connection.Host"
+    required="true" type="string">
+      <description>
+        You can specify server port, ex.: localhost:3307 If
+        you are not using default UNIX socket, you can specify it
+        here instead of host, ex.:
+        /var/run/mysqld/mysqld.sock
+      </description>
+    </parameter>
+    <parameter id="db_name"
+    display="Database Connection.Database Name"
+    required="true" type="string">
+      <defaultvalue></defaultvalue>
+      <description>
+
+      </description>
+    </parameter>
+    <parameter id="db_username"
+    display="Database Connection.User Name"
+    required="true" type="string">
+      <defaultvalue>root</defaultvalue>
+      <description>
+
+      </description>
+    </parameter>
+    <parameter id="db_password"
+    display="Database Connection.User Password"
+    required="false" type="password">
+      <defaultvalue></defaultvalue>
+      <description>
+
+      </description>
+    </parameter>
+    <parameter id="skip_base"
+    display="Web access options.Skip Base URL Validation Before the Next Step"
+    required="false" type="checkbox">
+      <defaultvalue>false</defaultvalue>
+      <description>
+        Check this box only if it is not possible to
+        automatically validate the Base URL.
+      </description>
+    </parameter>
+  </parameters>
+</package>
+

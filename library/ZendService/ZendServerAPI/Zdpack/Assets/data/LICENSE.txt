@@ -1,0 +1,1 @@
+This content can be edited in the data/license.txt file in your skeleton package. 

@@ -47,10 +47,10 @@ class ZdpackTest extends \PHPUnit_Framework_TestCase
 
         file_put_contents(sys_get_temp_dir() . '/hijkl56789/test/deployment.xml', (string)$xml->asXML());
 
-        $zdpack->pack(sys_get_temp_dir() . '/hijkl56789/test/');
-        $this->assertFileExists('./test.zpk');
+        $zdpack->pack(sys_get_temp_dir() . '/hijkl56789/test/', '/tmp');
+        $this->assertFileExists('/tmp/test.zpk');
 
-        unlink('./test.zpk');
+        unlink('/tmp/test.zpk');
     }
 
 }

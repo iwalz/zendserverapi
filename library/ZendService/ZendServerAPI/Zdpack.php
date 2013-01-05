@@ -71,7 +71,7 @@ class Zdpack implements PluginInterface
             $name = '';
 
             if ($saveTo !== null) {
-                $name .= realpath($saveTo);
+                $name .= realpath($saveTo) . '/';
             }
             $name .= (string) $deploymentXml->name . '.zpk';
             $zip = new \ZipArchive();

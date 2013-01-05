@@ -110,6 +110,12 @@ class Zdpack implements PluginInterface
         );
 
         foreach($iterator as $entry) {
+            if (substr($entry, -1) == '.') {
+                continue;
+            }
+            if (substr($entry, -2) == '..') {
+                continue;
+            }
             if ($entry->isDir()) {
                 if (!in_array($entry->getBasename(), $excludeDirNames)) {
                     try {
@@ -141,6 +147,13 @@ class Zdpack implements PluginInterface
         );
 
         foreach($iterator as $entry) {
+            if (substr($entry, -1) == '.') {
+                continue;
+            }
+            if (substr($entry, -2) == '..') {
+                continue;
+            }
+
             if ($entry->isDir()) {
                 $newDir = $destination . '/' . str_replace($target, "", $entry);
                 echo "1:";var_dump($newDir);

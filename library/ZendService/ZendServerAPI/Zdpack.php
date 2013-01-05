@@ -90,7 +90,7 @@ class Zdpack implements PluginInterface
                     $zip->addFile($entry, str_replace($path, "", $entry));
                 }
             }
-
+            var_dump($zip);
             $zip->close();
         } else {
             throw new \RuntimeException("Zip extension needs to be loaded");
@@ -143,8 +143,9 @@ class Zdpack implements PluginInterface
         foreach($iterator as $entry) {
             if ($entry->isDir()) {
                 $newDir = $destination . '/' . str_replace($target, "", $entry);
-
+                echo "1:";var_dump($newDir);
                 if (!is_dir($newDir)) {
+                    echo "2:";var_dump($newDir);
                     mkdir($newDir, 0755, true);
                 }
             }

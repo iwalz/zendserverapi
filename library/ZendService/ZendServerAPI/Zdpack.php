@@ -46,13 +46,11 @@ class Zdpack implements PluginInterface
 
         $this->copyFolder(__DIR__ . '/Zdpack/Assets/', $destDir);
         $deploymentXml = realpath($destDir) . '/deployment.xml';
-        exec("ls -la " . realpath($destDir));
 
         if (is_file($deploymentXml)) {
             $xml = simplexml_load_file($deploymentXml);
             $xml->name = $name;
             file_put_contents($deploymentXml, (string) $xml->asXML());
-            var_dump(file_get_contents($deploymentXml));
         }
     }
 
@@ -93,7 +91,7 @@ class Zdpack implements PluginInterface
                     $zip->addFile($entry, str_replace($path, "", $entry));
                 }
             }
-            var_dump($zip);
+
             $zip->close();
         } else {
             throw new \RuntimeException("Zip extension needs to be loaded");
@@ -159,9 +157,8 @@ class Zdpack implements PluginInterface
 
             if ($entry->isDir()) {
                 $newDir = $destination . '/' . str_replace($target, "", $entry);
-                echo "1:";var_dump($newDir);
+
                 if (!is_dir($newDir)) {
-                    echo "2:";var_dump($newDir);
                     mkdir($newDir, 0755, true);
                 }
             }

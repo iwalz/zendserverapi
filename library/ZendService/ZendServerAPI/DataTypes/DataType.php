@@ -24,36 +24,40 @@ use Zend\Stdlib\Hydrator\ClassMethods;
  */
 abstract class DataType
 {
+    /**
+     * Hydrator to transform datatype
+     * @var \Zend\Stdlib\Hydrator\HydratorInterface
+     */
+    protected $hydrator = null;
+
+    /**
+     * Get the hydrator to transform datatype
+     *
+     * @return \Zend\Stdlib\Hydrator\HydratorInterface
+     */
+    public function getHydrator()
+    {
+        return $this->hydrator;
+    }
+
+    /**
+     * Set the hydrator to transform datatype
+     *
+     * @param \Zend\Stdlib\Hydrator\HydratorInterface $hydrator
+     */
+    public function setHydrator(\Zend\Stdlib\Hydrator\HydratorInterface $hydrator)
+    {
+        $this->hydrator = $hydrator;
+    }
 
     /**
      * Get an associative array based on the model information
      *
      * @return array
      */
-    public function extract ($object = null)
+    public function extract ()
     {
-        $hydrator = new ClassMethods(false);
-        if($object === null) {
-            $retval = $hydrator->extract($this);
-        } else {
-            $retval = $hydrator->extract($object);
-        }
-
-        // Iterate through members to extract recursivly (including arrays)
-        foreach ($retval as $key => $value) {
-            if (is_array($value) || $value instanceof \Traversable) {
-                foreach($value as $subKey => $subValue) {
-                    if (is_object($subValue)) {
-                        $retval[$key][$subKey] = $this->extract($subValue);
-                    }
-                }
-            }
-            if (is_object($value)) {
-                $retval[$key] = $this->extract($value);
-            }
-        }
-
-        return $retval;
+        return $this->hydrator->extract($this);
     }
 
 }

@@ -22,7 +22,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class JobqueueRequeueJob extends Method
+class JobqueueListRules extends Method
 {
     protected $limit = null;
     protected $offset = null;
@@ -53,7 +53,7 @@ class JobqueueRequeueJob extends Method
     public function configure ()
     {
         $this->setMethod('GET');
-        $this->setFunctionPath('/ZendServerManager/Api/jobqueueListRules');
+        $this->setFunctionPath('/ZendServer/Api/jobqueueRulesList');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

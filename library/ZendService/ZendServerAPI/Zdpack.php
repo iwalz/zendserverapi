@@ -43,9 +43,10 @@ class Zdpack implements PluginInterface
             }
         }
         $destDir = realpath($directory) . '/' . $name;
-        $deploymentXml = realpath($destDir) . '/deployment.xml';
-        $this->copyFolder(__DIR__ . '/Zdpack/Assets/', $destDir);
 
+        $this->copyFolder(__DIR__ . '/Zdpack/Assets/', $destDir);
+        $deploymentXml = realpath($destDir) . '/deployment.xml';
+        var_dump($deploymentXml);
         if (is_file($deploymentXml)) {
             $xml = simplexml_load_file($deploymentXml);
             $xml->name = $name;

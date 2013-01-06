@@ -69,7 +69,8 @@ class Zdpack implements PluginInterface
     public function pack($path, $saveTo = null)
     {
         if (extension_loaded('zip')) {
-            $deploymentXml = simplexml_load_file(realpath($path) . '/deployment.xml');
+            $path = realpath($path);
+            $deploymentXml = simplexml_load_file($path . '/deployment.xml');
             $name = '';
 
             if ($saveTo !== null) {

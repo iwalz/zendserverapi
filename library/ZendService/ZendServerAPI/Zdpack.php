@@ -89,7 +89,7 @@ class Zdpack implements PluginInterface
                     $zip->addEmptyDir($entry);
                 }
                 elseif ($entry->isFile()) {
-                    $zip->addFile($entry, str_replace($path, "", $entry));
+                    $zip->addFile(realpath($entry), str_replace($path, "", $entry));
                 }
             }
 

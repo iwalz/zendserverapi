@@ -64,6 +64,7 @@ class Zdpack implements PluginInterface
      *
      * @param string $name The name of the project
      * @param string|null $directory The path to the directory, where to generate subdirectory $name
+     * @return \SplFileInfo
      */
     public function pack($path, $saveTo = null)
     {
@@ -93,6 +94,8 @@ class Zdpack implements PluginInterface
             }
 
             $zip->close();
+
+            return new \SplFileInfo($name);
         } else {
             throw new \RuntimeException("Zip extension needs to be loaded");
         }

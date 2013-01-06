@@ -86,7 +86,8 @@ class Zdpack implements PluginInterface
             );
 
             foreach($iterator as $entry) {
-                $lastElement = array_pop(explode(DIRECTORY_SEPARATOR, $entry));
+                $entries = explode(DIRECTORY_SEPARATOR, $entry);
+                $lastElement = array_pop($entries);
                 if ($lastElement == '.' || $lastElement == '..') {
                     continue;
                 }

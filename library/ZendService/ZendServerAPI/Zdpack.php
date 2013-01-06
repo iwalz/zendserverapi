@@ -82,12 +82,16 @@ class Zdpack implements PluginInterface
 
             $iterator = new \RecursiveIteratorIterator(
                 new \RecursiveDirectoryIterator($path),
-                \RecursiveIteratorIterator::CHILD_FIRST
+                \RecursiveIteratorIterator::SELF_FIRST
             );
 
             foreach($iterator as $entry) {
+                $lastElement = array_pop(explode(DIRECTORY_SEPARATOR, $entry));
+                if ($lastElement == '.' || $lastElement == '..') {
+                    continue;
+                }
                 if ($entry->isDir()) {
-                    $zip->addEmptyDir($entry);
+                    $zip->addEmptyDir(str_replace($path.'/', "", $entry));
                 }
                 elseif ($entry->isFile()) {
                     $zip->addFile(realpath($entry), str_replace($path.'/', "", $entry));

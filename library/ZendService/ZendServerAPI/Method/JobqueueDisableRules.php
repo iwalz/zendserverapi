@@ -22,7 +22,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class JobqueueSaveRule extends Method
+class JobqueueDisableRules extends Method
 {
     protected $rules = array();
 
@@ -47,7 +47,7 @@ class JobqueueSaveRule extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/jobqueueSuspendRules');
+        $this->setFunctionPath('/ZendServer/Api/jobqueueDisableRules');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

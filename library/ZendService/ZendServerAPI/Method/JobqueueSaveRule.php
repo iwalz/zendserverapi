@@ -29,11 +29,11 @@ class JobqueueSaveRule extends Method
     protected $options = null;
 
     /**
-     * set arguments for JobqueueRuleInfo
+     * set arguments for JobqueueSaveRule
      *
      * @param
      */
-    public function setArgs($url, $vars, $options)
+    public function setArgs($url, $options, $vars)
     {
         $this->url = $url;
         $this->vars = $vars;
@@ -51,7 +51,7 @@ class JobqueueSaveRule extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/jobqueueSaveRule');
+        $this->setFunctionPath('/ZendServer/Api/jobqueueSaveRule');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 
@@ -74,8 +74,8 @@ class JobqueueSaveRule extends Method
     public function getContent()
     {
         $content = "url=" . urlencode($this->url);
-        $content .= "&" . $this->buildParameterArray('options', $this->options);
-        $content .= "&" . $this->buildParameterArray('vars', $this->vars);
+        $content .= "&options[schedule]=" .  $this->options;
+        #$content .= "&" . $this->buildParameterArray('vars', $this->vars);
 
         return $content;
     }

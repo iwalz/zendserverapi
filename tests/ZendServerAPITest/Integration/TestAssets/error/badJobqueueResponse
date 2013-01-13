@@ -1,0 +1,18 @@
+HTTP/1.1 500 Internal Server Error
+X-Powered-By: PHP/5.3.20 ZendServer/5.0
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Content-Type: application/vnd.zend.serverapi+xml;version=1.3
+Date: Sun, 13 Jan 2013 17:02:45 GMT
+Server: lighttpd/1.4.26
+
+<zendServerAPIResponse xmlns="http://www.zend.com/server/api/1.3">
+    <requestData>
+        <apiKeyName><![CDATA[Admin]]></apiKeyName>
+        <method>jobqueueSaveRule</method>
+    </requestData>
+<errorData>
+ <errorCode>internalServerError</errorCode>
+ <errorMessage><![CDATA[Bad response from Job Queue server to a getSchedulingRule request. QLocalSocket: Remote closed.]]></errorMessage>
+</errorData></zendServerAPIResponse>

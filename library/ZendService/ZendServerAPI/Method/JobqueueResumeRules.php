@@ -47,7 +47,7 @@ class JobqueueResumeRules extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/jobqueueResumeRules');
+        $this->setFunctionPath('/ZendServer/Api/jobqueueResumeRules');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

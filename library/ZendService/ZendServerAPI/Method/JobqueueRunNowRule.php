@@ -22,18 +22,18 @@ namespace ZendService\ZendServerAPI\Method;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class JobqueueResumeRule extends Method
+class JobqueueRunNowRule extends Method
 {
-    protected $rule = null;
+    protected $ruleId = null;
 
     /**
      * set arguments for JobqueueRuleInfo
      *
      * @param
      */
-    public function setArgs($rule)
+    public function setArgs($ruleId)
     {
-        $this->rule = $rule;
+        $this->ruleId = $ruleId;
         $this->configure();
 
         return $this;
@@ -58,7 +58,7 @@ class JobqueueResumeRule extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/jobqueueRunNowRule');
+        $this->setFunctionPath('/ZendServer/Api/jobqueueRunNowRule');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 
@@ -69,7 +69,7 @@ class JobqueueResumeRule extends Method
      */
     public function getContent()
     {
-        $content = 'rule=' . $this->rule;
+        $content = 'ruleId=' . $this->ruleId;
 
         return $content;
     }

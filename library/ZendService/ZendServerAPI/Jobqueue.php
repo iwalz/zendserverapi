@@ -177,7 +177,7 @@ class Jobqueue extends BaseAPI
     public function jobqueueSaveRule($url, $options, $vars = array())
     {
         $this->pluginManager->get('request')->setAction(
-            $this->pluginManager->get('jobqueueSaveRule')->setArgs()
+            $this->pluginManager->get('jobqueueSaveRule')->setArgs($url, $options, $vars)
         );
 
         return $this->pluginManager->get('request')->send();
@@ -191,10 +191,10 @@ class Jobqueue extends BaseAPI
      * @param  array   $rules <p>an array of rule ids</p>
      * @return \ZendService\ZendServerAPI\DataTypes\
      */
-    public function jobqueueSuspendRules($rules)
+    public function jobqueueDisableRules($rules)
     {
         $this->pluginManager->get('request')->setAction(
-            $this->pluginManager->get('jobqueueSuspendRules')->setArgs($rules)
+            $this->pluginManager->get('jobqueueDisableRules')->setArgs($rules)
         );
 
         return $this->pluginManager->get('request')->send();

@@ -32,7 +32,10 @@ class ApplicationInfoTest extends \PHPUnit_Framework_TestCase
     
     public function testDataTypeToArray() 
     {
-        $applicationInfo = new \ZendService\ZendServerAPI\DataTypes\ApplicationInfo();
+        $deploy = new \ZendService\ZendServerAPI\Deployment();
+        $pm = $deploy->getPluginManager();
+
+        $applicationInfo = $pm->get('applicationinfo_datatype');;
         $applicationInfo->setId(62);
         $applicationInfo->setAppName("example");
         $applicationInfo->setBaseUrl("http://www.example.com");

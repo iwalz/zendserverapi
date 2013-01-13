@@ -11,6 +11,7 @@
 namespace ZendService\ZendServerAPI\DataTypes;
 
 use Zend\Stdlib\Hydrator\ClassMethods;
+use ZendService\ZendServerAPI\PluginInterface;
 
 /**
  * Base DataType implementation.
@@ -22,7 +23,7 @@ use Zend\Stdlib\Hydrator\ClassMethods;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-abstract class DataType
+abstract class DataType implements PluginInterface
 {
 
     /**

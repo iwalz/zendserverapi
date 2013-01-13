@@ -13,6 +13,8 @@ namespace ZendService\ZendServerAPI;
 use Zend\Log\LoggerAwareInterface;
 use Zend\ServiceManager\ConfigInterface;
 use Zend\ServiceManager\ServiceManager;
+use ZendService\ZendServerAPI\Hydrator\HydratorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
 
 /**
  * The Servicemanager configuration.
@@ -205,6 +207,12 @@ class ServiceManagerConfig implements ConfigInterface
         $serviceManager->addInitializer(function($instance, $serviceManager) {
             if ($instance instanceof LoggerAwareInterface) {
                 $instance->setLogger($serviceManager->get("logger"));
+            }
+        });
+
+        $serviceManager->addInitializer(function($instance, $serviceManager) {
+            if ($instance instanceof ServiceLocatorAwareInterface) {
+                $instance->setServicelocator($serviceManager);
             }
         });
     }

@@ -111,6 +111,9 @@ class Zdpack implements PluginInterface
      * Delete folder recursively - take care!
      *
      * @param string $dir Folder to delete
+     * @param array $excludeDirNames
+     * @param array $excludeFileNames
+     * @return void
      */
     public function deleteFolder($dir, $excludeDirNames = array(), $excludeFileNames = array())
     {

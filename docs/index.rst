@@ -13,6 +13,7 @@ The official Zend Server API documentation
    ref/filter
    ref/audit
    ref/administration
+   ref/jobqueue
 
 :ref:`search`
 

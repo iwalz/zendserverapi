@@ -81,13 +81,13 @@ class Jobqueue extends BaseAPI
      *
      * <pre></pre>
      *
-     * @param  int   $id <p>job id</p>
+     * @param  array   $ids <p>job ids</p>
      * @return \ZendService\ZendServerAPI\DataTypes\
      */
-    public function jobqueueJobInfo($id)
+    public function jobqueueJobInfo(array $ids)
     {
         $this->pluginManager->get('request')->setAction(
-            $this->pluginManager->get('jobqueueJobInfo')->setArgs($id)
+            $this->pluginManager->get('jobqueueJobInfo')->setArgs($ids)
         );
 
         return $this->pluginManager->get('request')->send();
@@ -191,7 +191,7 @@ class Jobqueue extends BaseAPI
      * @param  array   $rules <p>an array of rule ids</p>
      * @return \ZendService\ZendServerAPI\DataTypes\
      */
-    public function jobqueueDisableRules($rules)
+    public function jobqueueDisableRules(array $rules)
     {
         $this->pluginManager->get('request')->setAction(
             $this->pluginManager->get('jobqueueDisableRules')->setArgs($rules)

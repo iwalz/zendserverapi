@@ -11,7 +11,7 @@
 namespace ZendService\ZendServerAPI\DataTypes;
 
 /**
- * RuleInfo model implementation.
+ * Notification model implementation.
  *
  * @license        http://framework.zend.com/license/new-bsd New BSD License
  * @link           http://github.com/zendframework/zf2 for the canonical source repository

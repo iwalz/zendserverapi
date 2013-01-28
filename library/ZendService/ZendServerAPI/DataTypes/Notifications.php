@@ -15,7 +15,7 @@ use Countable;
 use IteratorAggregate;
 
 /**
- * Rules model implementation.
+ * Notifications model implementation.
  *
  * @license        http://framework.zend.com/license/new-bsd New BSD License
  * @link           http://github.com/zendframework/zf2 for the canonical source repository
@@ -24,33 +24,33 @@ use IteratorAggregate;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class Rules extends DataType implements Countable, IteratorAggregate
+class Notifications extends DataType implements Countable, IteratorAggregate
 {
     /**
-     * Internal container for rules storage
+     * Internal container for notification storage
      * @var array
      */
-    private $rules = array();
+    private $notifications = array();
 
     /**
-     * Get the internal rules container
+     * Get the internal notification container
      *
      * @return array
      */
-    public function getRules()
+    public function getNotifications()
     {
-        return $this->rules;
+        return $this->notifications;
     }
 
     /**
-     * Add rule to container
+     * Add notification to container
      *
-     * @param  Rule $rule
+     * @param  Notification $notification
      * @return void
      */
-    public function addRule(Rule $rule)
+    public function addNotification(Notification $notification)
     {
-        $this->rules[] = $rule;
+        $this->notifications[] = $notification;
     }
 
     /**

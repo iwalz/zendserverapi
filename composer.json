@@ -24,9 +24,9 @@
     ],
     "require": {
         "php": ">=5.3.3",
-		"zendframework/zend-log": "2.0.5",
-		"zendframework/zend-http": "2.0.5",
-		"zendframework/zend-servicemanager": "2.0.5"
+		"zendframework/zend-log": "dev-master",
+		"zendframework/zend-http": "dev-master",
+		"zendframework/zend-servicemanager": "dev-master"
     },
     "minimum-stability": "dev",
     "autoload": {

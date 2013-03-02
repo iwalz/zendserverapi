@@ -7,3 +7,20 @@
  * @license        http://framework.zend.com/license/new-bsd New BSD License
  * @package        Zend_Service
  */
+
+namespace ZendService\ZendServerAPI\DataTypes;
+
+/**
+ * ApiKey model implementation.
+ *
+ * @license        http://framework.zend.com/license/new-bsd New BSD License
+ * @link           http://github.com/zendframework/zf2 for the canonical source repository
+ * @author         Ingo Walz <ingo.walz@googlemail.com>
+ * @category       Zend
+ * @package        Zend_Service
+ * @subpackage     ZendServerAPI
+ */
+class ApiKey extends DataType
+{
+
+}

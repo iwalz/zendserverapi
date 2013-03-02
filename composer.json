@@ -8,12 +8,6 @@
         "zend server",
         "api"
     ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "http://packages.zendframework.com/"
-        }
-    ],
     "homepage": "https://github.com/iwalz/zendserverapi",
     "authors": [
         {

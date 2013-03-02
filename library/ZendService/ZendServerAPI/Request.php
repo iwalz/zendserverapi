@@ -12,8 +12,8 @@ namespace ZendService\ZendServerAPI;
 
 use Zend\Http\Headers;
 use Zend\Log\LoggerAwareInterface;
-use Zend\ServiceManager\ServiceManagerAwareInterface;
-use Zend\ServiceManager\ServiceManager;
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * <b>Request implementation</b>
@@ -28,7 +28,7 @@ use Zend\ServiceManager\ServiceManager;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, PluginInterface
+class Request implements ServiceLocatorAwareInterface, LoggerAwareInterface, PluginInterface
 {
     /**
      * Method class for the request
@@ -61,10 +61,10 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
      */
     private $adapter = null;
     /**
-     * The service manager
-     * @var \Zend\ServiceManager\ServiceManager
+     * The service locator
+     * @var \Zend\ServiceManager\ServiceLocatorInterface
      */
-    private $sm = null;
+    private $sl = null;
 
     /**
      * Set method implementation object
@@ -137,7 +137,7 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
     public function getConfig()
     {
         if($this->config === null)
-            $this->config = $this->sm->get("config");
+            $this->config = $this->sl->get("config");
 
         return $this->config;
     }
@@ -210,7 +210,7 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
     public function send()
     {
         if (!$this->client) {
-            $this->client = $this->sm->get("http_client");
+            $this->client = $this->sl->get("http_client");
 
             if ($this->adapter !== null) {
                 $this->client->setAdapter($this->adapter);
@@ -220,7 +220,7 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
         }
 
         if($this->config === null)
-            $this->config = $this->sm->get("config");
+            $this->config = $this->sl->get("config");
 
         // prepare the request & set headers
         $request = $this->client->getRequest();
@@ -370,11 +370,19 @@ class Request implements ServiceManagerAwareInterface, LoggerAwareInterface, Plu
     /**
      * Set the service manager
      *
-     * @param \Zend\ServiceManager\ServiceManager
+     * @param \Zend\ServiceManager\ServiceLocatorInterface
      * @return void
      */
-    public function setServiceManager (ServiceManager $serviceManager)
+    public function setServicelocator (ServiceLocatorInterface $serviceLocator)
     {
-        $this->sm = $serviceManager;
+        $this->sl = $serviceLocator;
+    }
+
+    /**
+     * @return null|\Zend\ServiceManager\ServiceLocatorInterface
+     */
+    public function getServiceLocator()
+    {
+        return $this->sl;
     }
 }

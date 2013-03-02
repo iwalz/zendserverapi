@@ -171,7 +171,7 @@ class Zdpack implements PluginInterface
                 $newDir = $destination . '/' . str_replace($target, "", $entry);
 
                 if (!is_dir($newDir)) {
-                    mkdir($newDir, 0775, true);
+                    mkdir($newDir, 0777, true);
                 }
             } else {
                 $newFile = $destination . '/' . str_replace($target, "", $entry);

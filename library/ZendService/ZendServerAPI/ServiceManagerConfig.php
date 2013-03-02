@@ -76,10 +76,11 @@ class ServiceManagerConfig implements ConfigInterface
         $this->configureInvokables($serviceManager);
         $this->configureFactories($serviceManager);
 
-        if(self::$disableLogging)
+        if(self::$disableLogging) {
             $this->disableLogging();
-        else
+        } else {
             $this->enableLogging();
+        }
     }
 
     /**

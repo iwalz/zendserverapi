@@ -176,11 +176,11 @@ class Zdpack implements PluginInterface
             }
             else {
                 $newFile = $destination . '/' . str_replace($target, "", $entry);
-                copy($newFile, $entry);
                 var_dump($entry);
-                system("ls -la $entry");
+
                 var_dump($newFile);
-                system("ls -la $newFile");
+
+                copy($entry, $newFile);
 
             }
         }

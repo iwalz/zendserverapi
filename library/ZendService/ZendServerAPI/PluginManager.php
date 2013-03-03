@@ -46,16 +46,18 @@ class PluginManager extends AbstractPluginManager
     /**
      * Constructor for the plugin manager
      *
-     * @param string               $name
+     * @param string|array               $name
      * @param ServiceManagerConfig $config
      */
     public function __construct($name = null, ServiceManagerConfig $config = null)
     {
-        if(static::$configFile === null)
+        if (static::$configFile === null) {
             static::$configFile = __DIR__.'/../../../config/config.php';
+        }
 
-        if($name === null)
+        if ($name === null) {
             $name = "general";
+        }
 
         $this->name = $name;
         $this->config = $config;
@@ -150,68 +152,119 @@ class PluginManager extends AbstractPluginManager
     public function setConfig($configFile)
     {
         $name = $this->name;
-        $validator = new ConfigValidator($configFile);
 
-        // Initialize the config
-        $this->setFactory("config", function($serviceManager) use ($name, $validator) {
-            $conf = $validator->getConfig($name);
+        if (is_array($name)) {
+            $config = $name;
+            $this->setFactory("config", function($serviceManager) use ($config) {
+                $apiConfig = new Config();
+                $apiConfig->setApiVersion($config['version']);
+                $apiKey = new ApiKey($config['name'], $config['key']);
+                $apiConfig->setApiKey($apiKey);
+                $apiConfig->setHost($config['host']);
+                $apiConfig->setPort($config['port']);
+                $apiConfig->setProxyHost($config['proxyHost']);
+                $apiConfig->setProxyPort($config['proxyPort']);
 
-            $apiKey = new ApiKey($conf['apiName'], $conf['key'], $conf['state']);
-            $config = new Config();
-            $config->setHost($conf['host']);
-            $config->setPort($conf['port']);
-            $config->setApiVersion($conf['version']);
-            $config->setApiKey($apiKey);
+                $apiConfig->setProtocol(($apiConfig->getPort() === 10082) ? 'https' : 'http');
 
-            if(isset($conf['protocol']))
-                $config->setProtocol($conf['protocol']);
-            else
-                $config->setProtocol(($config->getPort() === 10082) ? 'https' : 'http');
+                $configNumber = str_replace(".", "", $apiConfig->getApiVersion());
 
-            $configNumber = str_replace(".", "", $config->getApiVersion());
-
-            // Add Web API 1.0 Factory
-            $serviceManager->addAbstractFactory(
+                // Add Web API 1.0 Factory
+                $serviceManager->addAbstractFactory(
                     '\ZendService\ZendServerAPI\Factories\ApiVersion10CommandFactory', true
-            );
+                );
 
-            // Add Web API 1.1 Factory if available
-            if ($configNumber >= 11) {
-                $serviceManager->addAbstractFactory(
+                // Add Web API 1.1 Factory if available
+                if ($configNumber >= 11) {
+                    $serviceManager->addAbstractFactory(
                         '\ZendService\ZendServerAPI\Factories\ApiVersion11CommandFactory', true
-                );
-            }
+                    );
+                }
 
-            // Add Web API 1.2 Factory if available
-            if ($configNumber >= 12) {
-                $serviceManager->addAbstractFactory(
+                // Add Web API 1.2 Factory if available
+                if ($configNumber >= 12) {
+                    $serviceManager->addAbstractFactory(
                         '\ZendService\ZendServerAPI\Factories\ApiVersion12CommandFactory', true
-                );
-            }
+                    );
+                }
 
-            // Add Web API 1.3 Factory if available
-            if ($configNumber >= 13) {
-                $serviceManager->addAbstractFactory(
+                // Add Web API 1.3 Factory if available
+                if ($configNumber >= 13) {
+                    $serviceManager->addAbstractFactory(
                         '\ZendService\ZendServerAPI\Factories\ApiVersion13CommandFactory', true
+                    );
+                }
+
+                return $apiConfig;
+            });
+
+            $this->setFactory("settings", function($serviceManager) {
+                    return array();
+                });
+        } else {
+            $validator = new ConfigValidator($configFile);
+
+            // Initialize the config
+            $this->setFactory("config", function($serviceManager) use ($name, $validator) {
+                $conf = $validator->getConfig($name);
+
+                $apiKey = new ApiKey($conf['apiName'], $conf['key'], $conf['state']);
+                $config = new Config();
+                $config->setHost($conf['host']);
+                $config->setPort($conf['port']);
+                $config->setApiVersion($conf['version']);
+                $config->setApiKey($apiKey);
+
+                if(isset($conf['protocol']))
+                    $config->setProtocol($conf['protocol']);
+                else
+                    $config->setProtocol(($config->getPort() === 10082) ? 'https' : 'http');
+
+                $configNumber = str_replace(".", "", $config->getApiVersion());
+
+                // Add Web API 1.0 Factory
+                $serviceManager->addAbstractFactory(
+                        '\ZendService\ZendServerAPI\Factories\ApiVersion10CommandFactory', true
                 );
-            }
 
-            return $config;
-        });
+                // Add Web API 1.1 Factory if available
+                if ($configNumber >= 11) {
+                    $serviceManager->addAbstractFactory(
+                            '\ZendService\ZendServerAPI\Factories\ApiVersion11CommandFactory', true
+                    );
+                }
 
-        // Initialize the settings
-        $this->setFactory("settings", function($serviceManager) use ($validator) {
-            $config = $serviceManager->get("config");
+                // Add Web API 1.2 Factory if available
+                if ($configNumber >= 12) {
+                    $serviceManager->addAbstractFactory(
+                            '\ZendService\ZendServerAPI\Factories\ApiVersion12CommandFactory', true
+                    );
+                }
 
-            $settings = $validator->getSettings();
-            if (isset($settings['proxyHost'])) {
-                $port = isset($settings['proxyPort']) ? $settings['proxyPort'] : 8080;
-                $config->setProxyHost($settings['proxyHost']);
-                $config->setProxyPort($port);
-            }
+                // Add Web API 1.3 Factory if available
+                if ($configNumber >= 13) {
+                    $serviceManager->addAbstractFactory(
+                            '\ZendService\ZendServerAPI\Factories\ApiVersion13CommandFactory', true
+                    );
+                }
 
-            return $settings;
-        });
+                return $config;
+            });
+
+            // Initialize the settings
+            $this->setFactory("settings", function($serviceManager) use ($validator) {
+                $config = $serviceManager->get("config");
+
+                $settings = $validator->getSettings();
+                if (isset($settings['proxyHost'])) {
+                    $port = isset($settings['proxyPort']) ? $settings['proxyPort'] : 8080;
+                    $config->setProxyHost($settings['proxyHost']);
+                    $config->setProxyPort($port);
+                }
+
+                return $settings;
+            });
+        }
     }
 
     /**

@@ -37,7 +37,7 @@ class Zdpack implements PluginInterface
     public function create($name, $directory = null)
     {
         if (!is_dir($directory)) {
-            $isDirCreated = mkdir($directory, 0777, true);
+            $isDirCreated = mkdir($directory, 0755, true);
             if (!$isDirCreated) {
                 throw new \InvalidArgumentException("Can't create directory: $directory");
             }
@@ -171,13 +171,11 @@ class Zdpack implements PluginInterface
                 $newDir = $destination . '/' . str_replace($target, "", $entry);
 
                 if (!is_dir($newDir)) {
-                    mkdir($newDir, 0777, true);
+                    mkdir($newDir, 0755, true);
                 }
             } else {
                 $newFile = $destination . '/' . str_replace($target, "", (string)$entry);
                 if (file_exists((string)$entry)) {
-                    var_dump((string)$entry);
-                    var_dump((string)$newFile);
                     copy((string)$entry, (string)$newFile);
                 }
 

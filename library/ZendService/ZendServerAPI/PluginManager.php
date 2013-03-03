@@ -153,9 +153,11 @@ class PluginManager extends AbstractPluginManager
     {
         $name = $this->name;
 
+        $pluginManager = $this;
+
         if (is_array($name)) {
             $config = $name;
-            $this->setFactory("config", function($serviceManager) use ($config) {
+            $this->setFactory("config", function($serviceManager) use ($config, $pluginManager) {
                 $apiConfig = new Config();
                 $apiConfig->setApiVersion($config['version']);
                 $apiKey = new ApiKey($config['name'], $config['key']);
@@ -167,33 +169,7 @@ class PluginManager extends AbstractPluginManager
 
                 $apiConfig->setProtocol(($apiConfig->getPort() === 10082) ? 'https' : 'http');
 
-                $configNumber = str_replace(".", "", $apiConfig->getApiVersion());
-
-                // Add Web API 1.0 Factory
-                $serviceManager->addAbstractFactory(
-                    '\ZendService\ZendServerAPI\Factories\ApiVersion10CommandFactory', true
-                );
-
-                // Add Web API 1.1 Factory if available
-                if ($configNumber >= 11) {
-                    $serviceManager->addAbstractFactory(
-                        '\ZendService\ZendServerAPI\Factories\ApiVersion11CommandFactory', true
-                    );
-                }
-
-                // Add Web API 1.2 Factory if available
-                if ($configNumber >= 12) {
-                    $serviceManager->addAbstractFactory(
-                        '\ZendService\ZendServerAPI\Factories\ApiVersion12CommandFactory', true
-                    );
-                }
-
-                // Add Web API 1.3 Factory if available
-                if ($configNumber >= 13) {
-                    $serviceManager->addAbstractFactory(
-                        '\ZendService\ZendServerAPI\Factories\ApiVersion13CommandFactory', true
-                    );
-                }
+                $pluginManager->registerCommandFactories($serviceManager, $apiConfig->getApiVersion());
 
                 return $apiConfig;
             });
@@ -201,7 +177,7 @@ class PluginManager extends AbstractPluginManager
             $validator = new ConfigValidator($configFile);
 
             // Initialize the config
-            $this->setFactory("config", function($serviceManager) use ($name, $validator) {
+            $this->setFactory("config", function($serviceManager) use ($name, $validator, $pluginManager) {
                 $conf = $validator->getConfig($name);
 
                 $apiKey = new ApiKey($conf['apiName'], $conf['key'], $conf['state']);
@@ -216,33 +192,7 @@ class PluginManager extends AbstractPluginManager
                 else
                     $config->setProtocol(($config->getPort() === 10082) ? 'https' : 'http');
 
-                $configNumber = str_replace(".", "", $config->getApiVersion());
-
-                // Add Web API 1.0 Factory
-                $serviceManager->addAbstractFactory(
-                        '\ZendService\ZendServerAPI\Factories\ApiVersion10CommandFactory', true
-                );
-
-                // Add Web API 1.1 Factory if available
-                if ($configNumber >= 11) {
-                    $serviceManager->addAbstractFactory(
-                            '\ZendService\ZendServerAPI\Factories\ApiVersion11CommandFactory', true
-                    );
-                }
-
-                // Add Web API 1.2 Factory if available
-                if ($configNumber >= 12) {
-                    $serviceManager->addAbstractFactory(
-                            '\ZendService\ZendServerAPI\Factories\ApiVersion12CommandFactory', true
-                    );
-                }
-
-                // Add Web API 1.3 Factory if available
-                if ($configNumber >= 13) {
-                    $serviceManager->addAbstractFactory(
-                            '\ZendService\ZendServerAPI\Factories\ApiVersion13CommandFactory', true
-                    );
-                }
+                $pluginManager->registerCommandFactories($serviceManager, $config->getApiVersion());
 
                 return $config;
             });
@@ -260,6 +210,44 @@ class PluginManager extends AbstractPluginManager
 
                 return $settings;
             });
+        }
+    }
+
+    /**
+     * register command factories based on ZendServer Version
+     *
+     * @param \Zend\ServiceManager\ServiceManager $serviceManager
+     * @param float $version
+     * @return void
+     */
+    public function registerCommandFactories(\Zend\ServiceManager\ServiceManager $serviceManager, $version)
+    {
+        $configNumber = str_replace(".", "", $version);
+
+        // Add Web API 1.0 Factory
+        $serviceManager->addAbstractFactory(
+            '\ZendService\ZendServerAPI\Factories\ApiVersion10CommandFactory', true
+        );
+
+        // Add Web API 1.1 Factory if available
+        if ($configNumber >= 11) {
+            $serviceManager->addAbstractFactory(
+                '\ZendService\ZendServerAPI\Factories\ApiVersion11CommandFactory', true
+            );
+        }
+
+        // Add Web API 1.2 Factory if available
+        if ($configNumber >= 12) {
+            $serviceManager->addAbstractFactory(
+                '\ZendService\ZendServerAPI\Factories\ApiVersion12CommandFactory', true
+            );
+        }
+
+        // Add Web API 1.3 Factory if available
+        if ($configNumber >= 13) {
+            $serviceManager->addAbstractFactory(
+                '\ZendService\ZendServerAPI\Factories\ApiVersion13CommandFactory', true
+            );
         }
     }
 

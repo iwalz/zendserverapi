@@ -44,6 +44,14 @@ class Zdpack implements PluginInterface
             }
         }
         $destDir = realpath($directory) . '/' . $name;
+        if (!is_dir($destDir)) {
+            $isDirCreated = mkdir($destDir, 0755, true);
+            var_dump("DIR created: " . $destDir);
+            if (!$isDirCreated) {
+                throw new \InvalidArgumentException("Can't create directory: $destDir");
+            }
+        }
+
 
         $this->copyFolder(__DIR__ . '/Zdpack/Assets/', $destDir);
         $deploymentXml = realpath($destDir) . '/deployment.xml';

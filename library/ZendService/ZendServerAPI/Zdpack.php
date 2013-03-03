@@ -176,6 +176,8 @@ class Zdpack implements PluginInterface
             } else {
                 $newFile = $destination . '/' . str_replace($target, "", $entry);
                 if (file_exists($entry)) {
+                    var_dump($entry);
+                    var_dump($newFile);
                     copy($entry, $newFile);
                 }
 

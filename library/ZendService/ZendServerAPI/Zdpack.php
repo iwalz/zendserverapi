@@ -174,11 +174,11 @@ class Zdpack implements PluginInterface
                     mkdir($newDir, 0777, true);
                 }
             } else {
-                $newFile = $destination . '/' . str_replace($target, "", $entry);
-                if (file_exists($entry)) {
-                    var_dump($entry);
-                    var_dump($newFile);
-                    copy($entry, $newFile);
+                $newFile = $destination . '/' . str_replace($target, "", (string)$entry);
+                if (file_exists((string)$entry)) {
+                    var_dump((string)$entry);
+                    var_dump((string)$newFile);
+                    copy((string)$entry, (string)$newFile);
                 }
 
             }

@@ -61,6 +61,24 @@ class ApplicationList extends DataType implements \Countable, \IteratorAggregate
     }
 
     /**
+     * Returns the ApplicationInfo by a given name
+     *
+     * @param  string    $applicationName
+     * @return \ZendService\ZendServerAPI\DataTypes\ApplicationInfo|false
+     */
+    public function getApplicationInfoByName($applicationName)
+    {
+        foreach ($this->applicationInfos as $applicationInfo) {
+            if ($applicationInfo->getAppName() === $applicationName) {
+
+                return $applicationInfo;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Implementation for countable
      *
      * @see Countable::count()

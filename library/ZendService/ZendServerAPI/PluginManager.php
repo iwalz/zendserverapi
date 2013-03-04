@@ -176,7 +176,9 @@ class PluginManager extends AbstractPluginManager
 
             $this->setFactory("settings", function($serviceManager) {
 
-                    return array();
+                    return array(
+                        'loglevel' => \Zend\Log\Logger::DEBUG
+                    );
                 });
         } else {
             $validator = new ConfigValidator($configFile);

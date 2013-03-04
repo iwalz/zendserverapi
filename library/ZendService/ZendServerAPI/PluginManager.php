@@ -164,8 +164,12 @@ class PluginManager extends AbstractPluginManager
                 $apiConfig->setApiKey($apiKey);
                 $apiConfig->setHost($config['host']);
                 $apiConfig->setPort($config['port']);
-                $apiConfig->setProxyHost($config['proxyHost']);
-                $apiConfig->setProxyPort($config['proxyPort']);
+                if (isset($config['proxyPort'])) {
+                    $apiConfig->setProxyPort($config['proxyPort']);
+                }
+                if (isset($config['proxyHost'])) {
+                    $apiConfig->setProxyHost($config['proxyHost']);
+                }
 
                 $apiConfig->setProtocol(($apiConfig->getPort() === 10082) ? 'https' : 'http');
 

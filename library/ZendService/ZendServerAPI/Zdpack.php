@@ -109,6 +109,7 @@ class Zdpack implements PluginInterface
             }
 
             $zip->close();
+            chmod($name, 0755);
 
             return new \SplFileInfo($name);
         } else {

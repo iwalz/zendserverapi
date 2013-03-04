@@ -127,6 +127,11 @@ class Zdpack implements PluginInterface
      */
     public function deleteFolder($dir, $excludeDirNames = array(), $excludeFileNames = array())
     {
+        if (!is_dir($dir)) {
+
+            return;
+        }
+
         $iterator = new \RecursiveIteratorIterator(
             new \RecursiveDirectoryIterator($dir),
             \RecursiveIteratorIterator::CHILD_FIRST

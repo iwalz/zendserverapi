@@ -69,7 +69,7 @@ class ApplicationList extends DataType implements \Countable, \IteratorAggregate
     public function getApplicationInfoByName($applicationName)
     {
         foreach ($this->applicationInfos as $applicationInfo) {
-            if ($applicationInfo->getAppName() === $applicationName) {
+            if ($applicationInfo->getAppName() == $applicationName) {
 
                 return $applicationInfo;
             }

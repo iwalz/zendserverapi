@@ -173,6 +173,11 @@ class PluginManager extends AbstractPluginManager
 
                 return $apiConfig;
             });
+
+            $this->setFactory("settings", function($serviceManager) {
+
+                    return array();
+                });
         } else {
             $validator = new ConfigValidator($configFile);
 

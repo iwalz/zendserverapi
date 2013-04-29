@@ -74,6 +74,11 @@ class ApplicationUpdate extends Method
         return $this;
     }
 
+    public function getAcceptHeader()
+    {
+        return "application/vnd.zend.serverapi+xml;version=1.2";
+    }
+
     /**
      * Configures all needed information for the method implementation
      *
@@ -82,7 +87,7 @@ class ApplicationUpdate extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/applicationUpdate');
+        $this->setFunctionPath('/ZendServer/Api/applicationUpdate');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ApplicationInfo());
     }
 

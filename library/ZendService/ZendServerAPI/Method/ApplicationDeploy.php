@@ -92,6 +92,11 @@ class ApplicationDeploy extends Method
         return $this;
     }
 
+    public function getAcceptHeader()
+    {
+        return "application/vnd.zend.serverapi+xml;version=1.2";
+    }
+
     /**
      * Configure the action. Method, Path and Adapter
      *
@@ -101,7 +106,7 @@ class ApplicationDeploy extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/applicationDeploy');
+        $this->setFunctionPath('/ZendServer/Api/applicationDeploy');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ApplicationInfo());
     }
 

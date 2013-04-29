@@ -57,13 +57,9 @@ class ApplicationList extends Adapter
                 $applicationInfo->addServer($server);
 
             }
-            foreach ($xmlAppInfo->deployedVersions->deployedVersion as $xmlDeployedVersions) {
-
-                $deployedVersions = new  \ZendService\ZendServerAPI\DataTypes\DeployedVersions();
-                $deployedVersions->setVersion((string) trim($xmlDeployedVersions));
-                $applicationInfo->addDeployedVersions($deployedVersions);
-
-            }
+            $deployedVersions = new  \ZendService\ZendServerAPI\DataTypes\DeployedVersions();
+            $deployedVersions->setVersion((string) trim($xmlAppInfo->deployedVersion));
+            $applicationInfo->addDeployedVersions($deployedVersions);
 
             $messageListAdapter = new  \ZendService\ZendServerAPI\Adapter\MessageList();
             $xmlMessageList = (string) $xmlAppInfo->messageList;

@@ -37,8 +37,15 @@ class MessageList extends Adapter
         if($xml === null)
             $xml = $this->getResponse()->getBody();
 
-        $xml = simplexml_load_string($xml);
         $messageList = new MessageListData();
+
+        $xml = trim($xml, PHP_EOL);
+        if (empty($xml)) {
+
+            return $messageList;
+        }
+
+        $xml = simplexml_load_string($xml);
         if(isset($xml->error))
             $messageList->setError((string) $xml->error);
         if(isset($xml->info))

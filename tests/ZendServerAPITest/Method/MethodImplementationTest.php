@@ -22,7 +22,7 @@ class MethodImplementationTest extends \PHPUnit_Framework_TestCase {
 	{
 		$implementation = $this->getMock('\ZendService\ZendServerAPI\Method\GetSystemInfo', array('setMethod', 'setFunctionPath'));
 		$implementation->expects($this->once())->method('setMethod')->with('GET');
-		$implementation->expects($this->once())->method('setFunctionPath')->with('/ZendServerManager/Api/getSystemInfo');
+		$implementation->expects($this->once())->method('setFunctionPath')->with('/Api/getSystemInfo');
 		
 		$implementation->configure();
 	}
@@ -31,7 +31,7 @@ class MethodImplementationTest extends \PHPUnit_Framework_TestCase {
 	{
 	    $implementation = $this->getMock('\ZendService\ZendServerAPI\Method\ClusterGetServerStatus', array('setMethod', 'setFunctionPath'), array(ClusterGetServerStatusTest::getParameters()));
 	    $implementation->expects($this->once())->method('setMethod')->with('GET');
-	    $implementation->expects($this->once())->method('setFunctionPath')->with('/ZendServerManager/Api/clusterGetServerStatus');
+	    $implementation->expects($this->once())->method('setFunctionPath')->with('/Api/clusterGetServerStatus');
 	
 	    $implementation->configure();
 	}
@@ -40,7 +40,7 @@ class MethodImplementationTest extends \PHPUnit_Framework_TestCase {
 	{
 	    $implementation = $this->getMock('\ZendService\ZendServerAPI\Method\RestartPHP', array('setMethod', 'setFunctionPath'));
 	    $implementation->expects($this->once())->method('setMethod')->with('POST');
-	    $implementation->expects($this->once())->method('setFunctionPath')->with('/ZendServerManager/Api/restartPhp');
+	    $implementation->expects($this->once())->method('setFunctionPath')->with('/Api/restartPhp');
 	    
 	    $implementation->configure();
 	}

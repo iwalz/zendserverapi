@@ -90,7 +90,7 @@ EOF;
         $action = new \ZendService\ZendServerAPI\Method\RestartPHP();
         $action->setArgs(self::getParameter());
     
-        $this->assertEquals("/ZendServerManager/Api/restartPhp", $action->getLink());
+        $this->assertEquals("/Api/restartPhp", $action->getLink());
     }
     
     public function testContent()

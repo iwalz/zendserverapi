@@ -59,7 +59,7 @@ class ApplicationRemove extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/applicationRemove');
+        $this->setFunctionPath('/Api/applicationRemove');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ApplicationInfo());
     }
 

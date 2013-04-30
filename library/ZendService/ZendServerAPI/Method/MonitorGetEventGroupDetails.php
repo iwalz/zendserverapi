@@ -64,7 +64,7 @@ class MonitorGetEventGroupDetails extends Method
     public function configure ()
     {
         $this->setMethod('GET');
-        $this->setFunctionPath('/ZendServerManager/Api/monitorGetEventGroupDetails');
+        $this->setFunctionPath('/Api/monitorGetEventGroupDetails');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\EventsGroupDetails());
     }
 

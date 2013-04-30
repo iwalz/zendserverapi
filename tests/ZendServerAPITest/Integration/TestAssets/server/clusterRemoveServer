@@ -1,6 +1,6 @@
 HTTP/1.1 200 OK
 X-Powered-By: PHP/5.2.17 ZendServer/5.0
-Set-Cookie: ZENDSERVERSESSID=1kgtnpkjteoranceq92a1169s1; path=/ZendServerManager
+Set-Cookie: ZENDSERVERSESSID=1kgtnpkjteoranceq92a1169s1; path=/ZendServer
 Expires: Thu, 19 Nov 1981 08:52:00 GMT
 Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
 Pragma: no-cache

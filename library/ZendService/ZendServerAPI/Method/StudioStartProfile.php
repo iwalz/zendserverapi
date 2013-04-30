@@ -65,7 +65,7 @@ class StudioStartProfile extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/studioStartProfile');
+        $this->setFunctionPath('/Api/studioStartProfile');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DebugRequest());
     }
 

@@ -66,7 +66,7 @@ EOF;
         $action = new \ZendService\ZendServerAPI\Method\ClusterDisableServer();
         $action->setArgs(self::getParameter());
     
-        $this->assertEquals("/ZendServerManager/Api/clusterDisableServer", $action->getLink());
+        $this->assertEquals("/Api/clusterDisableServer", $action->getLink());
     }
     
     public function testRequestBody()

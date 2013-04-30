@@ -61,7 +61,7 @@ class ClusterGetServerStatus  extends Method
     public function configure()
     {
         $this->setMethod('GET');
-        $this->setFunctionPath('/ZendServerManager/Api/clusterGetServerStatus');
+        $this->setFunctionPath('/Api/clusterGetServerStatus');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ServersList());
     }
 

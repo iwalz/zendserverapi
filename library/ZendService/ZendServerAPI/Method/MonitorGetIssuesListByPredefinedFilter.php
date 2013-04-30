@@ -94,7 +94,7 @@ class MonitorGetIssuesListByPredefinedFilter extends Method
     public function configure ()
     {
         $this->setMethod('GET');
-        $this->setFunctionPath('/ZendServerManager/Api/monitorGetIssuesListPredefinedFilter');
+        $this->setFunctionPath('/Api/monitorGetIssuesListPredefinedFilter');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\IssueList());
     }
 

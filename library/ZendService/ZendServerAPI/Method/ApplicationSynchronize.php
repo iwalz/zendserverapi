@@ -79,7 +79,7 @@ class ApplicationSynchronize extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/applicationSynchronize');
+        $this->setFunctionPath('/Api/applicationSynchronize');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ApplicationInfo());
     }
 

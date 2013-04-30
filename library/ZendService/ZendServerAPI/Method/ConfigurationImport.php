@@ -54,7 +54,7 @@ class ConfigurationImport extends Method
      */
     public function configure()
     {
-        $this->setFunctionPath('/ZendServerManager/Api/configurationImport');
+        $this->setFunctionPath('/Api/configurationImport');
         $this->setMethod('POST');
         $this->setParser(new ServersList());
     }

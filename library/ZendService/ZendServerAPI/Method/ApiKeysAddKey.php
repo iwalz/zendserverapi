@@ -50,7 +50,7 @@ class ApiKeysAddKey extends Method
     public function configure()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/apiKeysAddKey');
+        $this->setFunctionPath('/Api/apiKeysAddKey');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

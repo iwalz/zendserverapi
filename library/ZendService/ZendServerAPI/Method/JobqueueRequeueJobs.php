@@ -58,7 +58,7 @@ class JobqueueRequeueJobs extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/jobqueueRequeueJobs');
+        $this->setFunctionPath('/Api/jobqueueRequeueJobs');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

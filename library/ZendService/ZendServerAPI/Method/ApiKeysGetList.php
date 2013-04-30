@@ -44,7 +44,7 @@ class ApiKeysGetList extends Method
     public function configure()
     {
         $this->setMethod('GET');
-        $this->setFunctionPath('/ZendServer/Api/apiKeysGetList');
+        $this->setFunctionPath('/Api/apiKeysGetList');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

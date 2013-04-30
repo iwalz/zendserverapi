@@ -92,7 +92,7 @@ class BootstrapSingleServer extends Method
     public function configure()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/bootstrapSingleServer');
+        $this->setFunctionPath('/Api/bootstrapSingleServer');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

@@ -52,7 +52,7 @@ class FilterGetByType extends Method
     public function configure()
     {
         $this->setMethod('GET');
-        $this->setFunctionPath('/ZendServer/Api/filterGetByType');
+        $this->setFunctionPath('/Api/filterGetByType');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\Filters());
     }
 

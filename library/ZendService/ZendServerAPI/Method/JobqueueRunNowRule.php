@@ -58,7 +58,7 @@ class JobqueueRunNowRule extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/jobqueueRunNowRule');
+        $this->setFunctionPath('/Api/jobqueueRunNowRule');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

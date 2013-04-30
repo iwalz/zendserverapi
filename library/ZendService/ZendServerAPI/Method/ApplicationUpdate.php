@@ -87,7 +87,7 @@ class ApplicationUpdate extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/applicationUpdate');
+        $this->setFunctionPath('/Api/applicationUpdate');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ApplicationInfo());
     }
 

@@ -53,7 +53,7 @@ class JobqueueListRules extends Method
     public function configure ()
     {
         $this->setMethod('GET');
-        $this->setFunctionPath('/ZendServer/Api/jobqueueRulesList');
+        $this->setFunctionPath('/Api/jobqueueRulesList');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

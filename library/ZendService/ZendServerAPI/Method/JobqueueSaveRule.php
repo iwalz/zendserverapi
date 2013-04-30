@@ -51,7 +51,7 @@ class JobqueueSaveRule extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/jobqueueSaveRule');
+        $this->setFunctionPath('/Api/jobqueueSaveRule');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

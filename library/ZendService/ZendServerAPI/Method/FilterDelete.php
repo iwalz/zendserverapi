@@ -52,7 +52,7 @@ class FilterDelete extends Method
     public function configure()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/filterDelete');
+        $this->setFunctionPath('/Api/filterDelete');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\Filter());
     }
 

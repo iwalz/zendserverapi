@@ -47,7 +47,7 @@ class JobqueueDisableRules extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/jobqueueDisableRules');
+        $this->setFunctionPath('/Api/jobqueueDisableRules');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

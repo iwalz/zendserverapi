@@ -106,7 +106,7 @@ class ApplicationDeploy extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/applicationDeploy');
+        $this->setFunctionPath('/Api/applicationDeploy');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ApplicationInfo());
     }
 

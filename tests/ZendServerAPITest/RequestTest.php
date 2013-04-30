@@ -57,7 +57,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
 	    $this->assertEquals('Zend_Http_Client/1.10', $request->getUserAgent());
 	    
 	    $action = $this->getMock('\ZendService\ZendServerAPI\Method\GetSystemInfo', array('getFunctionPath'));
-	    $action->expects($this->any())->method('getFunctionPath')->will($this->returnValue('/ZendServer/Api/findTheFish'));
+	    $action->expects($this->any())->method('getFunctionPath')->will($this->returnValue('/Api/findTheFish'));
 	    
 	    $request->setAction($action);
 	    $this->assertInstanceOf('\ZendService\ZendServerAPI\Method\GetSystemInfo', $request->getAction());

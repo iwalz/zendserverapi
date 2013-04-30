@@ -57,7 +57,7 @@ class ServerValidateLicense extends Method
     public function configure()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/serverValidateLicense');
+        $this->setFunctionPath('/Api/serverValidateLicense');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

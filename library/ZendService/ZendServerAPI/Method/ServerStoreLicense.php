@@ -57,7 +57,7 @@ class ServerStoreLicense extends Method
     public function configure()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/serverStoreLicense');
+        $this->setFunctionPath('/Api/serverStoreLicense');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

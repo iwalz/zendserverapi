@@ -64,7 +64,7 @@ class AuditSetSettings extends Method
     public function configure()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/auditSetSettings');
+        $this->setFunctionPath('/Api/auditSetSettings');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\AuditSettings());
     }
 

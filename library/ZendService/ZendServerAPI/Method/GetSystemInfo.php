@@ -39,6 +39,11 @@ class GetSystemInfo extends Method
         return $this;
     }
 
+    public function getAcceptHeader()
+    {
+        return "application/vnd.zend.serverapi+xml;version=1.2";
+    }
+
     /**
      * Configures all needed information for the method implementation
      *
@@ -47,7 +52,7 @@ class GetSystemInfo extends Method
     public function configure()
     {
         $this->setMethod('GET');
-        $this->setFunctionPath('/ZendServerManager/Api/getSystemInfo');
+        $this->setFunctionPath('/Api/getSystemInfo');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\SystemInfo());
     }
 }

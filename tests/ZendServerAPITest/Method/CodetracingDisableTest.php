@@ -31,7 +31,7 @@ class CodetracingDisableTest extends \PHPUnit_Framework_TestCase
     {
         $codetraceDisableMethod = new \ZendService\ZendServerAPI\Method\CodetracingDisable();
         $codetraceDisableMethod->setArgs();
-        $this->assertEquals('/ZendServerManager/Api/codetracingDisable', $codetraceDisableMethod->getLink());
+        $this->assertEquals('/Api/codetracingDisable', $codetraceDisableMethod->getLink());
     }
     
     public function testMethod()

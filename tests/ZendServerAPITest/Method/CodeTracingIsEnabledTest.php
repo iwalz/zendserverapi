@@ -13,7 +13,7 @@ class CodetracingIsEnabledTest extends \PHPUnit_Framework_TestCase
     public function testLink()
     {
         $codetraceIsEnableMethod = new \ZendService\ZendServerAPI\Method\CodetracingIsEnabled();
-        $this->assertEquals('/ZendServerManager/Api/codetracingIsEnabled', $codetraceIsEnableMethod->getLink());
+        $this->assertEquals('/Api/codetracingIsEnabled', $codetraceIsEnableMethod->getLink());
     }
     
     public function testMethod()

@@ -52,7 +52,7 @@ class ConfigurationExport extends Method
      */
     public function configure()
     {
-        $this->setFunctionPath('/ZendServerManager/Api/configurationExport');
+        $this->setFunctionPath('/Api/configurationExport');
         $this->setMethod('GET');
         $this->setParser(new ConfigExportAdapter());
     }

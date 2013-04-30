@@ -61,7 +61,7 @@ class RestartPHP extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/restartPhp');
+        $this->setFunctionPath('/Api/restartPhp');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ServersList());
     }
 

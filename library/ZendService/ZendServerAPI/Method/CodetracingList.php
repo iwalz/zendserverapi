@@ -100,7 +100,7 @@ class CodetracingList extends Method
     public function configure ()
     {
         $this->setMethod('GET');
-        $this->setFunctionPath('/ZendServerManager/Api/codetracingList');
+        $this->setFunctionPath('/Api/codetracingList');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\CodetracingList());
     }
 

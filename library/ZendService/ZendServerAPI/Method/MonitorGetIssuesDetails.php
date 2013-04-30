@@ -56,7 +56,7 @@ class MonitorGetIssuesDetails extends Method
     public function configure ()
     {
         $this->setMethod('GET');
-        $this->setFunctionPath('/ZendServerManager/Api/monitorGetIssueDetails');
+        $this->setFunctionPath('/Api/monitorGetIssueDetails');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\IssueDetails());
     }
 

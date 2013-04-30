@@ -68,7 +68,7 @@ EOF;
     {
         $action = new ClusterReconfigureServer();
         $action->setArgs(self::getParameter());
-        $this->assertEquals('/ZendServerManager/Api/clusterReconfigureServer', $action->getLink());
+        $this->assertEquals('/Api/clusterReconfigureServer', $action->getLink());
     }
     
     public function testContent()

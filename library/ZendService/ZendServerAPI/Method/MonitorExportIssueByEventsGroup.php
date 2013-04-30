@@ -61,7 +61,7 @@ class MonitorExportIssueByEventsGroup extends Method
      */
     public function configure()
     {
-        $this->setFunctionPath('/ZendServerManager/Api/monitorExportIssueByEventsGroup');
+        $this->setFunctionPath('/Api/monitorExportIssueByEventsGroup');
         $this->setMethod('GET');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\MonitorExportIssueByEventsGroup());
     }

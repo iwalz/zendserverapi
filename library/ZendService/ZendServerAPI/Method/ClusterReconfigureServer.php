@@ -71,7 +71,7 @@ class ClusterReconfigureServer extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/clusterReconfigureServer');
+        $this->setFunctionPath('/Api/clusterReconfigureServer');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ServerInfo());
     }
 

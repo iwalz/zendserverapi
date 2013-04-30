@@ -73,7 +73,7 @@ class StudioStartDebug extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/studioStartDebug');
+        $this->setFunctionPath('/Api/studioStartDebug');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DebugRequest());
     }
 

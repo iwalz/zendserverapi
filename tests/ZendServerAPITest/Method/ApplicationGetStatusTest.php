@@ -10,7 +10,7 @@ class ApplicationGetStatusTest extends \PHPUnit_Framework_TestCase
         $method = new \ZendService\ZendServerAPI\Method\ApplicationGetStatus();
         $method->setArgs(array(1,2));
 
-       $this->assertEquals("/ZendServerManager/Api/applicationGetStatus?applications%5B0%5D=1&applications%5B1%5D=2", $method->getLink());
+       $this->assertEquals("/Api/applicationGetStatus?applications%5B0%5D=1&applications%5B1%5D=2", $method->getLink());
     }
     
     public static function getResponse()

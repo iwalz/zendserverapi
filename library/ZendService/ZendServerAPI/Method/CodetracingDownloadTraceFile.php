@@ -67,7 +67,7 @@ class CodetracingDownloadTraceFile extends Method
      */
     public function configure()
     {
-        $this->setFunctionPath('/ZendServerManager/Api/codetracingDownloadTraceFile');
+        $this->setFunctionPath('/Api/codetracingDownloadTraceFile');
         $this->setMethod('GET');
         $this->setParser(new CodetracingDownloadTraceFileAdapter());
     }

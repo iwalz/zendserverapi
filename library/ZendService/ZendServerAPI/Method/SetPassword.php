@@ -63,7 +63,7 @@ class SetPassword extends Method
     public function configure()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/setPassword');
+        $this->setFunctionPath('/Api/setPassword');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

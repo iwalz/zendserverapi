@@ -79,7 +79,7 @@ class UserAuthenticateSettings extends Method
     public function configure()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/userAuthenticationSettings');
+        $this->setFunctionPath('/Api/userAuthenticationSettings');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

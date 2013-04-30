@@ -50,7 +50,7 @@ class ApiKeysRemove extends Method
     public function configure()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/apiKeysRemoveKey');
+        $this->setFunctionPath('/Api/apiKeysRemoveKey');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

@@ -57,7 +57,7 @@ class ApplicationGetStatus extends Method
     public function configure ()
     {
         $this->setMethod('GET');
-        $this->setFunctionPath('/ZendServer/Api/applicationGetStatus');
+        $this->setFunctionPath('/Api/applicationGetStatus');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ApplicationList());
     }
 

@@ -60,7 +60,7 @@ class AuditGetList extends Method
     public function configure()
     {
         $this->setMethod('GET');
-        $this->setFunctionPath('/ZendServer/Api/auditGetList');
+        $this->setFunctionPath('/Api/auditGetList');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\AuditMessages());
     }
 

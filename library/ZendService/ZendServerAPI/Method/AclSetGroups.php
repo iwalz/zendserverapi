@@ -49,7 +49,7 @@ class AclSetGroups extends Method
     public function configure()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/aclSetGroups');
+        $this->setFunctionPath('/Api/aclSetGroups');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

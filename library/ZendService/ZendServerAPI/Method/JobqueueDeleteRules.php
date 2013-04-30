@@ -47,7 +47,7 @@ class JobqueueDeleteRules extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServer/Api/jobqueueDeleteRules');
+        $this->setFunctionPath('/Api/jobqueueDeleteRules');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\DumpParser());
     }
 

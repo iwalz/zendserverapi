@@ -106,7 +106,7 @@ abstract class Method implements PluginInterface
     /**
      * Setter for the function path
      *
-     * @param  string $functionPath <p>e.g. /ZendServerManager/Api/Foo</p>
+     * @param  string $functionPath <p>e.g. Api/Foo</p>
      * @return void
      */
     public function setFunctionPath($functionPath)
@@ -139,7 +139,7 @@ abstract class Method implements PluginInterface
      * Get result from parser
      *
      * @param string
-     * @return DataTypes\DataType
+     * @return \ZendService\ZendServerAPI\DataTypes\DataType
      */
     public function parseResponse($xml = null)
     {

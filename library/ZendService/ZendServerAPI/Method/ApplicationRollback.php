@@ -57,7 +57,7 @@ class ApplicationRollback extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/applicationRollback');
+        $this->setFunctionPath('/Api/applicationRollback');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ApplicationInfo());
     }
 

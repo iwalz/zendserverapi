@@ -316,9 +316,20 @@ class Request implements ServiceLocatorAwareInterface, LoggerAwareInterface, Plu
             ));
         }
         $request->getUri()->setScheme($this->config->getProtocol());
-        $request->getUri()->setPath($this->action->getLink());
+        $request->getUri()->setPath($this->getBasePath() . $this->action->getLink());
 
         return $request;
+    }
+
+    /**
+     * Returns the base path to ZendServer GUI.
+     *
+     * @return string
+     */
+    public function getBasePath()
+    {
+        // TODO add config check for ZendServer version
+        return '/ZendServer';
     }
 
     /**
@@ -360,6 +371,7 @@ class Request implements ServiceLocatorAwareInterface, LoggerAwareInterface, Plu
     private function generateRequestSignature($date)
     {
         $data = $this->config->getHost() . ":".$this->config->getPort().":" .
+                $this->getBasePath() .
                 $this->action->getFunctionPath() . ":" .
                 $this->userAgent . ":" .
                 $date;
@@ -373,7 +385,7 @@ class Request implements ServiceLocatorAwareInterface, LoggerAwareInterface, Plu
      * @param \Zend\ServiceManager\ServiceLocatorInterface
      * @return void
      */
-    public function setServicelocator (ServiceLocatorInterface $serviceLocator)
+    public function setServicelocator(ServiceLocatorInterface $serviceLocator)
     {
         $this->sl = $serviceLocator;
     }

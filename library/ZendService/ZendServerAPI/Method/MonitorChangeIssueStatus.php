@@ -79,7 +79,7 @@ class MonitorChangeIssueStatus extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/monitorChangeIssueStatus');
+        $this->setFunctionPath('/Api/monitorChangeIssueStatus');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\Issue());
     }
 

@@ -66,7 +66,7 @@ EOF;
         $action = new \ZendService\ZendServerAPI\Method\ClusterEnableServer();
         $action->setArgs(self::getParameter());
     
-        $this->assertEquals("/ZendServerManager/Api/clusterEnableServer", $action->getLink());
+        $this->assertEquals("/Api/clusterEnableServer", $action->getLink());
     }
     
     public function testRequestBody()

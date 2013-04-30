@@ -65,7 +65,7 @@ class CodetracingDelete extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/codetracingDelete');
+        $this->setFunctionPath('/Api/codetracingDelete');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\Codetrace());
     }
 

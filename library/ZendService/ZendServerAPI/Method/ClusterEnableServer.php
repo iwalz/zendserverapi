@@ -57,7 +57,7 @@ class ClusterEnableServer extends Method
     public function configure ()
     {
         $this->setMethod('POST');
-        $this->setFunctionPath('/ZendServerManager/Api/clusterEnableServer');
+        $this->setFunctionPath('/Api/clusterEnableServer');
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ServerInfo());
     }
 

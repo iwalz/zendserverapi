@@ -28,7 +28,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class ApplicationSynchronize extends Method
+class ApplicationSynchronize extends Method implements ZS6VersionBreakInterface
 {
     /**
      * ApplicationId to sync
@@ -69,6 +69,16 @@ class ApplicationSynchronize extends Method
         $this->configure();
 
         return $this;
+    }
+
+    /**
+     * Get the Zend Server 6 Version
+     *
+     * @return string
+     */
+    public function getZS6Version()
+    {
+        return "application/vnd.zend.serverapi+xml;version=1.2";
     }
 
     /**

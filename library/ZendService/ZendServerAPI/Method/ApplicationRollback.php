@@ -27,7 +27,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class ApplicationRollback extends Method
+class ApplicationRollback extends Method implements ZS6VersionBreakInterface
 {
     /**
      * Application ID to rollback
@@ -47,6 +47,16 @@ class ApplicationRollback extends Method
         $this->configure();
 
         return $this;
+    }
+
+    /**
+     * Get the Zend Server 6 Version
+     *
+     * @return string
+     */
+    public function getZS6Version()
+    {
+        return "application/vnd.zend.serverapi+xml;version=1.2";
     }
 
     /**

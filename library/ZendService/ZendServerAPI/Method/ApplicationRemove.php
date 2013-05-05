@@ -29,7 +29,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class ApplicationRemove extends Method
+class ApplicationRemove extends Method implements ZS6VersionBreakInterface
 {
     /**
      * ApplicationId to remove
@@ -49,6 +49,16 @@ class ApplicationRemove extends Method
         $this->configure();
 
         return $this;
+    }
+
+    /**
+     * Get the Zend Server 6 Version
+     *
+     * @return string
+     */
+    public function getZS6Version()
+    {
+        return "application/vnd.zend.serverapi+xml;version=1.2";
     }
 
     /**

@@ -14,6 +14,7 @@ use Zend\Http\Headers;
 use Zend\Log\LoggerAwareInterface;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use ZendService\ZendServerAPI\Method\ZS6LinkBreakInterface;
 
 /**
  * <b>Request implementation</b>
@@ -221,6 +222,12 @@ class Request implements ServiceLocatorAwareInterface, LoggerAwareInterface, Plu
 
         if($this->config === null)
             $this->config = $this->sl->get("config");
+
+        if ($this->config->getApiVersion() == \ZendService\ZendServerAPI\Version::ZS6) {
+            if ($this->action instanceof ZS6LinkBreakInterface) {
+                $this->action->enableZS6Link();
+            }
+        }
 
         // prepare the request & set headers
         $request = $this->client->getRequest();

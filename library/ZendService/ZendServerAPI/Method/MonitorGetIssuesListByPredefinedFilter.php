@@ -26,7 +26,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class MonitorGetIssuesListByPredefinedFilter extends Method
+class MonitorGetIssuesListByPredefinedFilter extends Method implements ZS6LinkBreakInterface
 {
     /**
      * The predefined filter's id. Can be the filter's “name” or the
@@ -109,6 +109,14 @@ class MonitorGetIssuesListByPredefinedFilter extends Method
     }
 
     /**
+     * Set the ZS6 Version of the link
+     */
+    public function enableZS6Link()
+    {
+        $this->setFunctionPath('/Api/monitorGetIssuesByPredefinedFilter');
+    }
+
+    /**
      * Get link for the method
      *
      * @return string
@@ -117,10 +125,18 @@ class MonitorGetIssuesListByPredefinedFilter extends Method
     {
         $link = $this->getFunctionPath();
         $link .= "?filterId=".urlencode($this->filterId);
-        $link .= "&limit=".$this->limit;
-        $link .= "&order=".$this->order;
-        $link .= "&offset=".$this->offset;
-        $link .= "&direction=".$this->direction;
+        if (!is_null($this->limit)) {
+            $link .= "&limit=".$this->limit;
+        }
+        if (!is_null($this->order)) {
+            $link .= "&order=".$this->order;
+        }
+        if (!is_null($this->offset)) {
+            $link .= "&offset=".$this->offset;
+        }
+        if (!is_null($this->direction)) {
+            $link .= "&direction=".$this->direction;
+        }
 
         return $link;
     }

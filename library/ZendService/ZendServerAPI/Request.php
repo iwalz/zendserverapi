@@ -15,6 +15,7 @@ use Zend\Log\LoggerAwareInterface;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use ZendService\ZendServerAPI\Method\ZS6LinkBreakInterface;
+use ZendService\ZendServerAPI\Method\ZS6VersionBreakInterface;
 
 /**
  * <b>Request implementation</b>
@@ -349,7 +350,11 @@ class Request implements ServiceLocatorAwareInterface, LoggerAwareInterface, Plu
     {
         $header->addHeaderLine('Host', $this->config->getHost() . ':' . $this->config->getPort());
         $header->addHeaderLine('X-Zend-Signature', $this->config->getApiKey()->getName().';'.$this->generateRequestSignature($this->getDate()));
-        $header->addHeaderLine('Accept', $this->action->getAcceptHeader());
+        if ($this->config->getApiVersion() >= Version::ZS6 && $this->action instanceof ZS6VersionBreakInterface) {
+            $header->addHeaderLine('Accept', $this->action->getZS6Version());
+        } else {
+            $header->addHeaderLine('Accept', $this->action->getAcceptHeader());
+        }
         $header->addHeaderLine('Date', $this->getDate());
         $header->addHeaderLine('User-Agent', $this->userAgent);
 

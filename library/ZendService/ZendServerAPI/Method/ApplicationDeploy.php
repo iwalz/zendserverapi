@@ -26,7 +26,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class ApplicationDeploy extends Method
+class ApplicationDeploy extends Method implements ZS6VersionBreakInterface
 {
     /**
      * The application package file
@@ -92,7 +92,12 @@ class ApplicationDeploy extends Method
         return $this;
     }
 
-    public function getAcceptHeader()
+    /**
+     * Get the Zend Server 6 Version
+     *
+     * @return string
+     */
+    public function getZS6Version()
     {
         return "application/vnd.zend.serverapi+xml;version=1.2";
     }

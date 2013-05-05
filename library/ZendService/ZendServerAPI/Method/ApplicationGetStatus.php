@@ -26,7 +26,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class ApplicationGetStatus extends Method
+class ApplicationGetStatus extends Method implements ZS6VersionBreakInterface
 {
     /**
      * Application ID's to get status for
@@ -61,7 +61,12 @@ class ApplicationGetStatus extends Method
         $this->setParser(new  \ZendService\ZendServerAPI\Adapter\ApplicationList());
     }
 
-    public function getAcceptHeader()
+    /**
+     * Get the Zend Server 6 Version
+     *
+     * @return string
+     */
+    public function getZS6Version()
     {
         return "application/vnd.zend.serverapi+xml;version=1.2";
     }

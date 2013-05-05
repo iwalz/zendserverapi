@@ -30,7 +30,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class ApplicationUpdate extends Method
+class ApplicationUpdate extends Method implements ZS6VersionBreakInterface
 {
     /**
      * The application's ID to update
@@ -74,7 +74,12 @@ class ApplicationUpdate extends Method
         return $this;
     }
 
-    public function getAcceptHeader()
+    /**
+     * Get the Zend Server 6 Version
+     *
+     * @return string
+     */
+    public function getZS6Version()
     {
         return "application/vnd.zend.serverapi+xml;version=1.2";
     }

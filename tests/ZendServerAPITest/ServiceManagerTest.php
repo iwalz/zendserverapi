@@ -103,7 +103,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
     
     /**
      * @expectedException \Zend\ServiceManager\Exception\ServiceNotFoundException
-     * @expectedExceptionMessage Zend\ServiceManager\ServiceManager::get was unable to fetch or create an instance for applicationUpdate
+     * @expectedExceptionMessage ZendService\ZendServerAPI\PluginManager::get was unable to fetch or create an instance for applicationUpdate
      */
     public function testWebApiMethodFromNewerApiVersion()
     {
@@ -119,7 +119,7 @@ class ServiceManagerTest extends \PHPUnit_Framework_TestCase
     
     /**
      * @expectedException \Zend\ServiceManager\Exception\ServiceNotFoundException
-     * @expectedExceptionMessage Zend\ServiceManager\ServiceManager::get was unable to fetch or create an instance for test
+     * @expectedExceptionMessage ZendService\ZendServerAPI\PluginManager::get was unable to fetch or create an instance for test
      */
     public function testWebApiIncorrectCommandException()
     {

@@ -57,6 +57,11 @@ class MonitorGetIssuesListByPredefinedFilter extends Method implements ZS6LinkBr
      * @var string
      */
     protected $direction = null;
+    /**
+     * Add filter parameters in an ad-hoc manner
+     * @var array
+     */
+    protected $filters = array();
 
     /**
      * Set arguments MonitorGetIssuesListByPredefinedFilter
@@ -71,15 +76,17 @@ class MonitorGetIssuesListByPredefinedFilter extends Method implements ZS6LinkBr
      * @param  Integer|null                                                             $offset    A paging offset to begin the issues list from
      * @param  string|null                                                              $order     Column identifier for sorting the result set
      * @param  string|null                                                              $direction Sorting direction: Ascending or Descending
+     * @param  array                                                                    $filters   A list of application IDs
      * @return \ZendService\ZendServerAPI\Method\MonitorGetIssuesListByPredefinedFilter
      */
-    public function setArgs($filterId, $limit = null, $offset = null, $order = null, $direction = null)
+    public function setArgs($filterId, $limit = null, $offset = null, $order = null, $direction = null, array $filters = array())
     {
         $this->filterId = $filterId;
         $this->limit = $limit;
         $this->offset = $offset;
         $this->order = $order;
         $this->direction = $direction;
+        $this->filters = $filters;
 
         $this->configure();
 
@@ -136,6 +143,9 @@ class MonitorGetIssuesListByPredefinedFilter extends Method implements ZS6LinkBr
         }
         if (!is_null($this->direction)) {
             $link .= "&direction=".$this->direction;
+        }
+        if (!empty($this->filters)) {
+            $link .= "&".$this->buildParameterArray('filters', $this->filters);
         }
 
         return $link;

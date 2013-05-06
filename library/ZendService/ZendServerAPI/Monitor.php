@@ -86,11 +86,13 @@ class Monitor extends BaseAPI
      * Default is date</p>
      * @param string|null $direction
      * <p>Sorting direction: Ascending or Descending. Default is Descending</p>
+     * @param array $filters
+     * <p>Add filter parameters in an ad-hoc manner</p>
      * @return \ZendService\ZendServerAPI\DataTypes\IssueList
      */
-    public function monitorGetIssuesListByPredefinedFilter($filterId, $limit = null, $offset = null, $order = null, $direction = null)
+    public function monitorGetIssuesListByPredefinedFilter($filterId, $limit = null, $offset = null, $order = null, $direction = null, array $filters = array())
     {
-        $this->pluginManager->get('request')->setAction($this->pluginManager->get('monitorGetIssuesListByPredefinedFilter')->setArgs($filterId, $limit, $offset, $order, $direction));
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('monitorGetIssuesListByPredefinedFilter')->setArgs($filterId, $limit, $offset, $order, $direction, $filters));
 
         return $this->pluginManager->get('request')->send();
     }

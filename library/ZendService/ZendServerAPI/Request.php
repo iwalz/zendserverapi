@@ -336,8 +336,12 @@ class Request implements ServiceLocatorAwareInterface, LoggerAwareInterface, Plu
      */
     public function getBasePath()
     {
-        // TODO add config check for ZendServer version
-        return '/ZendServer';
+        if ($this->config->getApiVersion() >= Version::ZS6  ) {
+
+            return '/ZendServer';
+        }
+
+        return '/ZendServerManager';
     }
 
     /**

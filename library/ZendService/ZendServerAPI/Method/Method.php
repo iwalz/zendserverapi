@@ -199,9 +199,17 @@ abstract class Method implements PluginInterface
         $parameterCount = count($values);
 
         foreach ($values as $key => $value) {
-            $link .= urlencode($index."[".$key."]")."=".$value;
-            if($key+1 < $parameterCount)
+            if (is_array($value)) {
+                foreach($value as $id => $subValue) {
+                    $link .= urlencode($index."[".$key."][]")."=".$subValue;
+                }
+            } else {
+                $link .= urlencode($index."[".$key."]")."=".$value;
+            }
+
+            if($key+1 < $parameterCount) {
                 $link .= "&";
+            }
         }
 
         return $link;

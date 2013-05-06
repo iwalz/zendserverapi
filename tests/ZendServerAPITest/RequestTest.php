@@ -64,7 +64,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase {
 	    $method = new \ReflectionMethod('\ZendService\ZendServerAPI\Request', 'generateRequestSignature');
 	    $method->setAccessible(true);
 	    
- 	    $this->assertEquals('785be59b7728b1bfd6495d610271c5d47ff0737775b09191daeb5a728c2d97c0', $method->invoke($request, 'Sun, 11 Jul 2010 13:16:10 GMT'));
+ 	    $this->assertEquals('0cf8acedbfb124f1ea82d8c39a9f08078979a324b8427621656ace60948d70de', $method->invoke($request, 'Sun, 11 Jul 2010 13:16:10 GMT'));
 	}
 	
 	public function testGmtInDate()

@@ -65,9 +65,4 @@ class Version
      * API Version 1.3
      */
     const ZS6 = "1.3";
-    /**
-     * Zend Server Cluster Manager 6.0
-     * API Version 1.3
-     */
-    const ZS6CM = "1.3";
 }

@@ -23,7 +23,7 @@ namespace ZendService\ZendServerAPI\Method;
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class MonitorGetEventGroupDetails extends Method
+class MonitorGetEventGroupDetails extends Method implements ZS6LinkBreakInterface
 {
     /**
      * The issue ID of the issue to get the details for
@@ -35,6 +35,11 @@ class MonitorGetEventGroupDetails extends Method
      * @var int
      */
     protected $eventsGroupId = null;
+    /**
+     * URL parameter for event group ID.
+     * @var string
+     */
+    protected $eventGroupIdParameter = 'eventGroupId';
 
     /**
      * Set arguments for MonitorGetEventGroupDetails
@@ -78,6 +83,11 @@ class MonitorGetEventGroupDetails extends Method
         return "application/vnd.zend.serverapi+xml;version=1.2";
     }
 
+    public function enableZS6Link()
+    {
+        $this->eventGroupIdParameter = 'eventsGroupId';
+    }
+
     /**
      * Get link for the method
      *
@@ -87,7 +97,7 @@ class MonitorGetEventGroupDetails extends Method
     {
         $link = $this->getFunctionPath();
         $link .= "?issueId=".$this->issueId;
-        $link .= "&eventGroupId=".$this->eventsGroupId;
+        $link .= "&".$this->eventGroupIdParameter."=".$this->eventsGroupId;
 
         return $link;
     }

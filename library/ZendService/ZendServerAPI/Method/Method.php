@@ -201,10 +201,10 @@ abstract class Method implements PluginInterface
         foreach ($values as $key => $value) {
             if (is_array($value)) {
                 foreach($value as $id => $subValue) {
-                    $link .= urlencode($index."[".$key."][]")."=".$subValue;
+                    $link .= $index."[".$key."][]=".$subValue;
                 }
             } else {
-                $link .= urlencode($index."[".$key."]")."=".$value;
+                $link .= $index."[".$key."]=".$value;
             }
 
             if($key+1 < $parameterCount) {

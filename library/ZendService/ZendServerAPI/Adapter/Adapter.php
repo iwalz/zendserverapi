@@ -79,13 +79,14 @@ abstract class Adapter
      */
     public function setContent($content)
     {
-        $iconvExists = function_exists('iconv');
-        if (is_string($content)) {
-            $this->content = $iconvExists ? new \SimpleXMLElement(iconv("UTF-8", "UTF-8//IGNORE", $content)) : new \SimpleXMLElement($content);
-        } elseif ($content instanceof \SimpleXMLElement) {
-            $this->content = $iconvExists ? new \SimpleXMLElement(iconv("UTF-8", "UTF-8//IGNORE", $content)) : $content;
-        } else {
+        if (!(is_string($content) || $content instanceof \SimpleXMLElement )) {
             throw new \InvalidArgumentException("The content needs to be a string or a SimpleXMLElement");
+        }
+
+        if (is_string($content)) {
+            $this->content = new \SimpleXMLElement($content);
+        } else {
+            $this->content = $content;
         }
     }
 

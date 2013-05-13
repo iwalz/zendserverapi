@@ -19,7 +19,7 @@ class MethodTest extends \PHPUnit_Framework_TestCase
         $index = 'blubb';
         
         $result = $this->methodMock->buildParameterArray($index, $values);
-        $this->assertEquals('blubb%5B0%5D=foo&blubb%5B1%5D=bar', $result);
+        $this->assertEquals('blubb[0]=foo&blubb[1]=bar', $result);
     }
 }
 

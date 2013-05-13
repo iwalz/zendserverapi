@@ -87,7 +87,7 @@ EOF;
         $action = new \ZendService\ZendServerAPI\Method\ClusterGetServerStatus();
         $action->setArgs(self::getParameters());
         
-        $this->assertEquals("/Api/clusterGetServerStatus?servers%5B0%5D=12&servers%5B1%5D=15", $action->getLink());
+        $this->assertEquals("/Api/clusterGetServerStatus?servers[0]=12&servers[1]=15", $action->getLink());
     }
 }
 

@@ -53,8 +53,8 @@ class Filter extends BaseAPI
      *
      * @param  string                                            $type <p>The type of a filter (issue,job)</p>
      * @param  string                                            $name <p>Name of filter.</p>
-     * @param  int                                               $id   <p>ID of a filter.</p>
      * @param  array                                             $data <p>Array of parameters to be saved.</p>
+     * @param  int                                               $id   <p>ID of a filter.</p>
      * @return \ZendService\ZendServerAPI\DataTypes\DebugRequest
      */
     public function filterSave($type, $name, $data = array(), $id = null)

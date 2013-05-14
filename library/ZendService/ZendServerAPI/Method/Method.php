@@ -201,7 +201,10 @@ abstract class Method implements PluginInterface
         foreach ($values as $key => $value) {
             if (is_array($value)) {
                 foreach($value as $id => $subValue) {
-                    $link .= $index."[".$key."][]=".$subValue;
+                    $link .= $index."[".$key."][".$id."]=".$subValue;
+                    if (count($value) > $id+1) {
+                        $link .= '&';
+                    }
                 }
             } else {
                 $link .= $index."[".$key."]=".$value;

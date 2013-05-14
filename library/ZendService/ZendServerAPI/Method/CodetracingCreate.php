@@ -74,6 +74,6 @@ class CodetracingCreate extends Method
      */
     public function getContent()
     {
-        return ("url=".urlencode($this->url));
+        return ("url=".$this->url);
     }
 }

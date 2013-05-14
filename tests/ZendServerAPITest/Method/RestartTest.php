@@ -97,14 +97,14 @@ EOF;
     {
         $action = new \ZendService\ZendServerAPI\Method\RestartPHP();
         $action->setArgs(self::getParameter());
-        $this->assertEquals("servers%5B0%5D=1&servers%5B1%5D=2&parallelRestart=FALSE", $action->getContent());
+        $this->assertEquals("servers[0]=1&servers[1]=2&parallelRestart=FALSE", $action->getContent());
     }
     
     public function testContentWithParallelRestart()
     {
         $action = new \ZendService\ZendServerAPI\Method\RestartPHP();
         $action->setArgs(self::getParameter(), true);
-        $this->assertEquals("servers%5B0%5D=1&servers%5B1%5D=2&parallelRestart=TRUE", $action->getContent());
+        $this->assertEquals("servers[0]=1&servers[1]=2&parallelRestart=TRUE", $action->getContent());
     }
 }
 

@@ -131,7 +131,7 @@ class MonitorGetIssuesListByPredefinedFilter extends Method implements ZS6LinkBr
     public function getLink()
     {
         $link = $this->getFunctionPath();
-        $link .= "?filterId=".$this->filterId;
+        $link .= "?filterId=".urlencode($this->filterId);
         if (!is_null($this->limit)) {
             $link .= "&limit=".$this->limit;
         }

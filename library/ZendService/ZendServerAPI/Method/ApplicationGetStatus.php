@@ -85,7 +85,7 @@ class ApplicationGetStatus extends Method implements ZS6VersionBreakInterface
             $link .= "?";
 
         foreach ($this->applications as $index => $application) {
-            $link .= "applications[".$index."]=".$application;
+            $link .= urlencode("applications[".$index."]")."=".$application;
             if($index+1 < $parameterCount)
                 $link .= "&";
         }

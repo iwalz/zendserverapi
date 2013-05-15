@@ -106,7 +106,7 @@ class ApplicationSynchronize extends Method implements ZS6VersionBreakInterface
 
         if (count($this->servers) > 0) {
             foreach ($this->servers as $index => $server) {
-                $content .= "&"."servers[".$index."]=".$server;
+                $content .= "&".urlencode("servers[".$index."]")."=".$server;
                 if($index+1 < count($this->servers))
                     $content .= "&";
             }

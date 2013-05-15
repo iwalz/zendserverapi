@@ -76,7 +76,7 @@ class RestartPHP extends Method
         $parameterCount = count($this->servers);
 
         foreach ($this->servers as $index => $server) {
-            $content .= "servers[".$index."]=".$server;
+            $content .= urlencode("servers[".$index."]")."=".$server;
             if($index+1 < $parameterCount)
                 $content .= "&";
         }

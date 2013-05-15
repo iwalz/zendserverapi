@@ -73,7 +73,7 @@ class JobqueueSaveRule extends Method
      */
     public function getContent()
     {
-        $content = "url=" . $this->url;
+        $content = "url=" . urlencode($this->url);
         $content .= "&options[schedule]=" .  $this->options;
         #$content .= "&" . $this->buildParameterArray('vars', $this->vars);
 

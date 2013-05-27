@@ -134,6 +134,7 @@ class ServiceManagerConfig implements ConfigInterface
                 $proxyAdapter->setOptions($options);
                 $client->setAdapter($proxyAdapter);
             }
+            $client->setConfig(array('timeout' => $config->getTimeout()));
 
             return $client;
         });

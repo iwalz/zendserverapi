@@ -170,6 +170,11 @@ class PluginManager extends AbstractPluginManager
                 if (isset($config['proxyHost'])) {
                     $apiConfig->setProxyHost($config['proxyHost']);
                 }
+                if (isset($config['timeout'])) {
+                    $apiConfig->setTimeout($config['timeout']);
+                } else {
+                    $apiConfig->setTimeout(30);
+                }
 
                 $apiConfig->setProtocol(($apiConfig->getPort() === 10082) ? 'https' : 'http');
 

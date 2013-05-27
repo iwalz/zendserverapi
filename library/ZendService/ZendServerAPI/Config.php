@@ -64,6 +64,11 @@ class Config implements PluginInterface
      * @var bool
      */
     protected $disableLogging = null;
+    /**
+     * Timeout for http client
+     * @var int
+     */
+    protected $timeout = null;
 
     /**
      * Set the API Version
@@ -83,6 +88,26 @@ class Config implements PluginInterface
     public function getApiVersion()
     {
         return $this->apiVersion;
+    }
+
+    /**
+     * Get the timeout
+     *
+     * @return int|null
+     */
+    public function getTimeout()
+    {
+        return $this->timeout;
+    }
+
+    /**
+     * Set the timeout
+     *
+     * @param $timeout
+     */
+    public function setTimeout($timeout)
+    {
+        $this->timeout = $timeout;
     }
 
     /**

@@ -129,12 +129,12 @@ class ServiceManagerConfig implements ConfigInterface
                 $proxyAdapter = new \Zend\Http\Client\Adapter\Proxy();
                 $options = array(
                         'proxy_host' => $config->getProxyHost(),
-                        'proxy_port' => $config->getProxyPort(),
-                        'timeout' => $config->getTimeout()
+                        'proxy_port' => $config->getProxyPort()
                 );
                 $proxyAdapter->setOptions($options);
                 $client->setAdapter($proxyAdapter);
             }
+            $client->setOptions(array('timeout' => 30));
 
             return $client;
         });

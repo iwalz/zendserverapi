@@ -69,7 +69,9 @@ class ApiVersion13CommandFactory implements CommandFactory, AbstractFactoryInter
             'jobqueueDisableRules',
             'jobqueueResumeRules',
             'jobqueueDeleteRules',
-            'jobqueueRunNowRule'
+            'jobqueueRunNowRule',
+            'monitorDeleteIssuesByPredefinedFilter',
+            'monitorDeleteIssues'
         );
     }
 

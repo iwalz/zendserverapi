@@ -156,6 +156,44 @@ class Monitor extends BaseAPI
         return $this->pluginManager->get('request')->send();
     }
 
+    // -------------------------------------------------
+
+    /**
+     * <b>The monitorDeleteIssues  Method</b>
+     *
+     * <pre>Delete issues based on their IDs.</pre>
+     *
+     * @param array $issueIds
+     * @return \ZendService\ZendServerAPI\DataTypes\IssuesDeleted
+     */
+    public function monitorDeleteIssues(array $issueIds)
+    {
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('monitorDeleteIssues')->setArgs($issueIds));
+
+        return $this->pluginManager->get('request')->send();
+    }
+
+    /**
+     * <b>The monitorDeleteIssuesByPredefinedFilter  Method</b>
+     *
+     * <pre>Delete monitor issues based on some filtering parameters.</pre>
+     *
+     * @param int $filterId
+     * @param int $limit
+     * @param int $offset
+     * @param string $order
+     * @param string $direction
+     * @return \ZendService\ZendServerAPI\DataTypes\IssuesDeleted
+     */
+    public function monitorDeleteIssuesByPredefinedFilter($filterId, $limit = 50, $offset = 0, $order = null, $direction = null)
+    {
+        $this->pluginManager->get('request')->setAction($this->pluginManager->get('monitorDeleteIssuesByPredefinedFilter')->setArgs($filterId, $limit, $offset, $order, $direction));
+
+        return $this->pluginManager->get('request')->send();
+    }
+    // -------------------------------------------------
+
+
     /**
      * <b>The monitorExportIssueByEventsGroup Method</b>
      *

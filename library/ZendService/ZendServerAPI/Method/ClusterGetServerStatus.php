@@ -31,7 +31,7 @@ use ZendService\ZendServerAPI\DataTypes\ServersList,
  * @package        Zend_Service
  * @subpackage     ZendServerAPI
  */
-class ClusterGetServerStatus  extends Method
+class ClusterGetServerStatus  extends Method implements ZS6VersionBreakInterface
 {
     /**
      * Servers to get the status for
@@ -51,6 +51,16 @@ class ClusterGetServerStatus  extends Method
         $this->configure();
 
         return $this;
+    }
+
+    /**
+     * Get the Zend Server 6 Version
+     *
+     * @return string
+     */
+    public function getZS6Version()
+    {
+        return "application/vnd.zend.serverapi+xml;version=1.2";
     }
 
     /**

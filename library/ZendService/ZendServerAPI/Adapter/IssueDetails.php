@@ -33,6 +33,7 @@ class IssueDetails extends Adapter
         if($xml === null)
             $xml = $this->getResponse()->getBody();
 
+        $xml = $this->cleanupXml($xml);
         $xml = simplexml_load_string($xml);
         $this->setContent($xml);
 
@@ -90,5 +91,29 @@ class IssueDetails extends Adapter
         }
 
         return $issueDetails;
+    }
+
+    /**
+     * Remove chars that would break the simplexml_load_string
+     *
+     * @param $xml
+     * @return mixed
+     */
+    protected function cleanupXml($xml)
+    {
+        $regex = <<<'END'
+/
+  (
+    (?: [\x00-\x7F]                 # single-byte sequences   0xxxxxxx
+    |   [\xC0-\xDF][\x80-\xBF]      # double-byte sequences   110xxxxx 10xxxxxx
+    |   [\xE0-\xEF][\x80-\xBF]{2}   # triple-byte sequences   1110xxxx 10xxxxxx * 2
+    |   [\xF0-\xF7][\x80-\xBF]{3}   # quadruple-byte sequence 11110xxx 10xxxxxx * 3
+    ){1,100}                        # ...one or more times
+  )
+| .                                 # anything else
+/x
+END;
+        $xml = preg_replace($regex, '$1', $xml);
+        return $xml;
     }
 }

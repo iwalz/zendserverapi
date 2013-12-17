@@ -252,7 +252,7 @@ class EventsGroup extends DataType
      */
     public function setStartTime ($startTime)
     {
-        $this->startTime = (int) $startTime;
+        $this->startTime = $startTime;
     }
 
     /**
